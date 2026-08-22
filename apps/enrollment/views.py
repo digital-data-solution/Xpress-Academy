@@ -24,10 +24,12 @@ def dashboard(request):
     )
     rows = []
     for enrollment in enrollments:
+        certificate = getattr(enrollment, "certificate", None)
         rows.append({
             "enrollment": enrollment,
             "progress_percent": get_progress_percent(enrollment),
             "next_lesson": get_next_lesson(enrollment),
+            "certificate": certificate,
         })
     return render(request, "enrollment/dashboard.html", {"rows": rows})
 

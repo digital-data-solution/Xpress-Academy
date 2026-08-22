@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Your certificate — {{ certificate.course_title_snapshot }}{% endblock %}
+{% block content %}
+  <h1>Your certificate</h1>
+  <div class="card">
+    <p><strong>Course:</strong> {{ certificate.course_title_snapshot }}</p>
+    <p><strong>Issued:</strong> {{ certificate.issued_at|date:"j F Y" }}</p>
+    <p><strong>Serial:</strong> {{ certificate.serial }}</p>
+    {% if certificate.is_revoked %}
+      <p style="color:#b91c1c;">This certificate has been revoked.</p>
+    {% else %}
+      <p><a class="btn" href="{{ certificate.pdf.url }}">Download PDF</a></p>
+      <p style="font-size:13px; color:var(--color-muted);">
+        Public verification link: /verify/{{ certificate.verification_slug }}/
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}

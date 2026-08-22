@@ -153,6 +153,13 @@ def _mark_enrollment_completed_if_ready(enrollment: Enrollment) -> None:
         enrollment.completed_at = timezone.now()
         enrollment.save(update_fields=["status", "completed_at", "updated_at"])
 
+        # Local import: apps.certificates.services imports
+        # is_course_complete from this module, so a module-level
+        # import here would be circular.
+        from apps.certificates.services import issue_certificate
+
+        issue_certificate(enrollment)
+
 
 def mark_lesson_complete(enrollment: Enrollment, lesson) -> LessonProgress:
     """Idempotent. Bumps last_activity_at, and marks the enrollment

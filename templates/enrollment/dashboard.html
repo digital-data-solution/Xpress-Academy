@@ -21,6 +21,9 @@
 
       {% if row.enrollment.status == "COMPLETED" %}
         <p class="badge-done">✓ Course complete</p>
+        {% if row.certificate %}
+          <a class="btn" href="{% url 'certificates:mine' serial=row.certificate.serial %}">View certificate</a>
+        {% endif %}
       {% elif row.next_lesson %}
         <a class="btn" href="{% url 'enrollment:lesson' course_slug=row.enrollment.course.slug lesson_slug=row.next_lesson.slug %}">
           {% if row.progress_percent == 0 %}Start course{% else %}Continue{% endif %}

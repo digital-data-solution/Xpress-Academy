@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Certificate verification — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Certificate verification</h1>
+
+  {% if not certificate %}
+    <div class="card">
+      <p style="color:#b91c1c; font-weight:600;">No certificate found for this link.</p>
+      <p style="color:var(--color-muted); font-size:14px;">Check the link was copied in full. If you believe this is an error, contact Xpress Digital Academy.</p>
+    </div>
+  {% elif certificate.is_revoked %}
+    <div class="card">
+      <p style="color:#b91c1c; font-weight:600;">This certificate has been revoked.</p>
+      <p style="font-size:14px;">Serial: {{ certificate.serial }}</p>
+    </div>
+  {% else %}
+    <div class="card">
+      <p class="badge-done" style="font-size:15px;">✓ Valid certificate</p>
+      <p style="margin-top:12px;"><strong>Name:</strong> {{ certificate.learner_name_snapshot }}</p>
+      <p><strong>Course:</strong> {{ certificate.course_title_snapshot }}</p>
+      <p><strong>Issued:</strong> {{ certificate.issued_at|date:"j F Y" }}</p>
+      <p><strong>Serial:</strong> {{ certificate.serial }}</p>
+    </div>
+  {% endif %}
+{% endblock %}
