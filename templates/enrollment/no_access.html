@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}No access — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>You don't have access to this course</h1>
+  <p>{{ course.title }} isn't in your account, or your access to it has ended.</p>
+  <p>If you've paid for this course and think this is a mistake, contact support.</p>
+  <a class="btn" href="{% url 'enrollment:dashboard' %}">Back to my courses</a>
+{% endblock %}

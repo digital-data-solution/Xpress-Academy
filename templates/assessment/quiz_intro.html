@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }} — {{ course.title }}{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'enrollment:curriculum' course_slug=course.slug %}">← {{ course.title }}</a></p>
+  <h1>{{ quiz.title }}</h1>
+  {% if quiz.instructions %}<div>{{ quiz.instructions|linebreaks }}</div>{% endif %}
+
+  <div class="card">
+    <p>{{ quiz.question_count }} question{{ quiz.question_count|pluralize }} · Pass mark {{ quiz.pass_mark }}%
+      {% if quiz.time_limit_minutes %} · {{ quiz.time_limit_minutes }} minute time limit{% endif %}
+      {% if quiz.max_attempts %} · {{ quiz.max_attempts }} attempt{{ quiz.max_attempts|pluralize }} allowed{% else %} · Unlimited attempts{% endif %}
+    </p>
+
+    {% if can_start %}
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Start quiz</button>
+      </form>
+    {% else %}
+      <p style="color:#b91c1c;">You've used all your attempts for this quiz.</p>
+    {% endif %}
+  </div>
+
+  {% if past_attempts %}
+    <h2>Past attempts</h2>
+    <ul class="lesson-list">
+      {% for a in past_attempts %}
+        <li>
+          <a href="{% url 'assessment:results' course_slug=course.slug quiz_id=quiz.id attempt_id=a.id %}">
+            Attempt {{ a.attempt_number }} — {{ a.submitted_at|date:"j M Y, g:i a" }}
+          </a>
+          <span>{{ a.score_percent }}% {% if a.passed %}<span class="badge-done">✓ Passed</span>{% else %}<span style="color:#b91c1c;">Not passed</span>{% endif %}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

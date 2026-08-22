@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h1>Import questions into "{{ bank.name }}"</h1>
+  <p>CSV columns: <code>stem, type, difficulty, explanation, topics, source_note,
+     choice_1, choice_1_correct, choice_2, choice_2_correct, choice_3, choice_3_correct, choice_4, choice_4_correct</code></p>
+  <ul>
+    <li><code>type</code>: MCQ, MULTI_SELECT, or TRUE_FALSE</li>
+    <li><code>difficulty</code>: EASY, MEDIUM, or HARD (defaults to MEDIUM)</li>
+    <li><code>topics</code>: semicolon-separated, created automatically if new</li>
+    <li><code>choice_N_correct</code>: TRUE/FALSE — up to 4 choices, at least 2 required</li>
+  </ul>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Import" class="default">
+  </form>
+{% endblock %}

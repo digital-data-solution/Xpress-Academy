@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ course.title }} — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>{{ course.title }}</h1>
+  <div class="progress-track"><div class="progress-fill" style="width:{{ progress_percent }}%;"></div></div>
+  <p style="font-size:14px; color:var(--color-muted);">{{ progress_percent }}% complete</p>
+
+  {% for entry in modules %}
+    <div class="module-block {% if not entry.unlocked %}locked{% endif %}">
+      <div class="module-title">Module {{ entry.module.order }}: {{ entry.module.title }}</div>
+      {% if entry.lock_reason %}
+        <div class="lock-note">🔒 {{ entry.lock_reason }}</div>
+      {% endif %}
+      <ul class="lesson-list">
+        {% for lesson in entry.lessons %}
+          <li class="{% if not entry.unlocked %}locked{% endif %}">
+            {% if entry.unlocked %}
+              <a href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=lesson.slug %}">{{ lesson.title }}</a>
+            {% else %}
+              <span>{{ lesson.title }}</span>
+            {% endif %}
+            <span>
+              {% if lesson.is_preview %}<span class="badge-preview">Preview</span>{% endif %}
+              {% if lesson.id in completed_lesson_ids %}<span class="badge-done">✓</span>{% endif %}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if entry.quiz %}
+        <p style="margin-top:8px;">
+          {% if entry.unlocked %}
+            <a class="btn secondary" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=entry.quiz.id %}">📝 {{ entry.quiz.title }}</a>
+          {% else %}
+            <span style="font-size:13px; color:var(--color-muted);">📝 {{ entry.quiz.title }} (locked)</span>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  {% if final_quiz %}
+    <h2>Final assessment</h2>
+    <div class="card">
+      <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=final_quiz.id %}">📝 {{ final_quiz.title }}</a>
+    </div>
+  {% endif %}
+{% endblock %}

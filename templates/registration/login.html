@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Log in — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Log in</h1>
+  {% if form.errors %}
+    <p style="color:#b91c1c;">Your email or password didn't match. Try again.</p>
+  {% endif %}
+  <form class="login-form" method="post">
+    {% csrf_token %}
+    <label for="id_username">Email</label>
+    <input type="email" name="username" id="id_username" autocomplete="email" required autofocus>
+    <label for="id_password">Password</label>
+    <input type="password" name="password" id="id_password" autocomplete="current-password" required>
+    <input type="hidden" name="next" value="{{ next }}">
+    <button class="btn" type="submit">Log in</button>
+  </form>
+{% endblock %}

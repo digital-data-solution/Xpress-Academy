@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Results — {{ quiz.title }}{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=quiz.id %}">← {{ quiz.title }}</a></p>
+  <h1>{{ attempt.score_percent }}% {% if attempt.passed %}<span class="badge-done">✓ Passed</span>{% else %}<span style="color:#b91c1c;">Not passed</span>{% endif %}</h1>
+  <p style="color:var(--color-muted);">Pass mark: {{ quiz.pass_mark }}%</p>
+
+  {% for row in rows %}
+    <div class="card">
+      <p style="font-weight:600;">{{ forloop.counter }}. {{ row.stem }}</p>
+      {% for c in row.choices %}
+        <p style="margin:4px 0;
+          {% if c.is_correct %}color:var(--color-success-text); font-weight:600;{% endif %}
+          {% if c.was_selected and not c.is_correct %}color:#b91c1c; text-decoration:line-through;{% endif %}">
+          {% if c.was_selected %}☑{% else %}☐{% endif %} {{ c.text }}
+          {% if c.is_correct %} — correct{% endif %}
+        </p>
+      {% endfor %}
+      {% if not row.answered %}<p style="color:var(--color-muted); font-size:13px;">Not answered.</p>{% endif %}
+      {% if row.explanation %}<p style="font-size:14px; color:var(--color-muted); margin-top:8px;">{{ row.explanation }}</p>{% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

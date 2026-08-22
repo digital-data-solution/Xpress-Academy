@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }} — {{ course.title }}{% endblock %}
+{% block content %}
+  <h1>{{ quiz.title }}</h1>
+  <p style="font-size:14px; color:var(--color-muted);">
+    Attempt {{ attempt.attempt_number }}
+    {% if attempt.expires_at %} · <span id="countdown" data-expires="{{ attempt.expires_at|date:'c' }}"></span>{% endif %}
+  </p>
+  <p style="font-size:13px; color:var(--color-muted);">Your answers save automatically as you pick them — if your connection drops, nothing you've already answered is lost.</p>
+
+  <form method="post" id="quiz-form">
+    {% csrf_token %}
+    {% for q in questions %}
+      <div class="card" data-question-id="{{ q.question_id }}">
+        <p style="font-weight:600;">{{ forloop.counter }}. {{ q.stem }}</p>
+        {% for c in q.choices %}
+          <label style="display:block; margin-bottom:6px; font-weight:400;">
+            <input
+              type="{% if q.type == 'MULTI_SELECT' %}checkbox{% else %}radio{% endif %}"
+              name="q_{{ q.question_id }}"
+              value="{{ c.choice_id }}"
+              {% if c.choice_id in q.selected %}checked{% endif %}
+              class="answer-input">
+            {{ c.text }}
+          </label>
+        {% endfor %}
+        <span class="save-status" style="font-size:12px; color:var(--color-muted);"></span>
+      </div>
+    {% endfor %}
+    <button class="btn" type="submit">Submit quiz</button>
+  </form>
+
+  <script>
+    (function () {
+      function csrfToken() {
+        return document.querySelector('#quiz-form [name=csrfmiddlewaretoken]').value;
+      }
+
+      function selectedIdsFor(card) {
+        return Array.from(card.querySelectorAll('.answer-input:checked')).map(function (el) { return el.value; });
+      }
+
+      function autosave(card) {
+        var questionId = card.getAttribute('data-question-id');
+        var status = card.querySelector('.save-status');
+        status.textContent = 'Saving…';
+        fetch(window.location.pathname + 'answer/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken() },
+          body: JSON.stringify({ question_id: parseInt(questionId, 10), choice_ids: selectedIdsFor(card).map(Number) }),
+        }).then(function (resp) {
+          status.textContent = resp.ok ? 'Saved ✓' : 'Not saved — will retry when you submit';
+        }).catch(function () {
+          // Tolerate failure silently, per the metered-connection
+          // principle — the form's own state is the real fallback
+          // (see attempt_view's POST handler).
+          status.textContent = 'Not saved — will retry when you submit';
+        });
+      }
+
+      document.querySelectorAll('[data-question-id]').forEach(function (card) {
+        card.querySelectorAll('.answer-input').forEach(function (input) {
+          input.addEventListener('change', function () { autosave(card); });
+        });
+      });
+
+      var countdownEl = document.getElementById('countdown');
+      if (countdownEl) {
+        var expires = new Date(countdownEl.getAttribute('data-expires'));
+        var tick = function () {
+          var secs = Math.max(0, Math.floor((expires - new Date()) / 1000));
+          var m = Math.floor(secs / 60), s = secs % 60;
+          countdownEl.textContent = 'Time remaining: ' + m + ':' + (s < 10 ? '0' : '') + s;
+          if (secs <= 0) { window.location.reload(); }
+        };
+        tick();
+        setInterval(tick, 1000);
+      }
+    })();
+  </script>
+{% endblock %}

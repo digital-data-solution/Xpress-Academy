@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}My courses — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>My courses</h1>
+
+  {% if not rows %}
+    <div class="card">
+      <p>You're not enrolled in anything yet. If you've paid for a course and don't see it here, contact support.</p>
+    </div>
+  {% endif %}
+
+  {% for row in rows %}
+    <div class="card">
+      <h2 style="margin-top:0;">{{ row.enrollment.course.title }}</h2>
+      <p style="color:var(--color-muted); font-size:14px;">
+        Status: {{ row.enrollment.get_status_display }}
+        {% if row.enrollment.expires_at %} · Access until {{ row.enrollment.expires_at|date:"j M Y" }}{% endif %}
+      </p>
+      <div class="progress-track"><div class="progress-fill" style="width:{{ row.progress_percent }}%;"></div></div>
+      <p style="font-size:14px;">{{ row.progress_percent }}% complete</p>
+
+      {% if row.enrollment.status == "COMPLETED" %}
+        <p class="badge-done">✓ Course complete</p>
+      {% elif row.next_lesson %}
+        <a class="btn" href="{% url 'enrollment:lesson' course_slug=row.enrollment.course.slug lesson_slug=row.next_lesson.slug %}">
+          {% if row.progress_percent == 0 %}Start course{% else %}Continue{% endif %}
+        </a>
+      {% endif %}
+      <a class="btn secondary" style="margin-left:8px;" href="{% url 'enrollment:curriculum' course_slug=row.enrollment.course.slug %}">View curriculum</a>
+    </div>
+  {% endfor %}
+{% endblock %}

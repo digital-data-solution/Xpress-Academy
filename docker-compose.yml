@@ -1,0 +1,30 @@
+# Local dependencies only — NOT the Django app itself (that stays
+# Docker-free per the build spec, run via venv). Use this to get a
+# real Postgres for dev instead of SQLite (recommended from Phase 4
+# onward, where JSONField/array behaviour and constraints start to
+# matter), and Redis once Celery is wired in Phase 7.
+#
+# Usage: docker compose up -d
+# Then set DATABASE_URL in .env — see .env.example.
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: xpress_academy
+    ports:
+      - "5432:5432"
+    volumes:
+      - xpress_academy_pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+volumes:
+  xpress_academy_pgdata:

@@ -1,0 +1,222 @@
+from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils.text import slugify
+from django_ckeditor_5.fields import CKEditor5Field
+
+from apps.common.models import OrganizationOwnedModel, TimeStampedModel
+
+
+class Audience(models.TextChoices):
+    BREEDER = "BREEDER", "Breeder"
+    VET = "VET", "Veterinarian"
+    GENERAL = "GENERAL", "General"
+
+
+class Programme(OrganizationOwnedModel):
+    """Top of the content hierarchy — e.g. "Dog Breeding Courses"."""
+
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    audience = models.CharField(max_length=20, choices=Audience.choices)
+    description = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["title"]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
+class Course(OrganizationOwnedModel):
+    """A sellable course. Tenant ownership lives here and on Programme —
+    Module/Lesson/Resource below scope through their FK to Course and
+    deliberately do NOT carry a duplicate organization FK. Two owned
+    entities disagreeing on tenant (a Module pointing at a different
+    org than its Course) is a data-integrity risk a redundant FK would
+    invite, not prevent; the chain of FKs is the single source of
+    truth. See ARCHITECTURE.md.
+    """
+
+    class Level(models.TextChoices):
+        FOUNDATION = "FOUNDATION", "Foundation"
+        INTERMEDIATE = "INTERMEDIATE", "Intermediate"
+        ADVANCED = "ADVANCED", "Advanced"
+
+    class AccessType(models.TextChoices):
+        LIFETIME = "LIFETIME", "Lifetime"
+        TIMED = "TIMED", "Timed"
+
+    # PROTECT: losing a Programme must never cascade-delete the paid
+    # courses under it. Same discipline as Organization → everything.
+    programme = models.ForeignKey(Programme, on_delete=models.PROTECT, related_name="courses")
+
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    subtitle = models.CharField(max_length=255, blank=True)
+    description = CKEditor5Field(blank=True, config_name="default")
+
+    cover_image = models.ImageField(upload_to="courses/covers/", blank=True, null=True)
+    promo_video_id = models.CharField(max_length=255, blank=True)
+
+    audience = models.CharField(max_length=20, choices=Audience.choices)
+    level = models.CharField(max_length=20, choices=Level.choices, default=Level.FOUNDATION)
+
+    price_ngn = models.PositiveIntegerField(default=0, help_text="Whole naira.")
+    compare_at_price_ngn = models.PositiveIntegerField(
+        null=True, blank=True, help_text="Strike-through 'was' price. Leave blank if none."
+    )
+
+    access_type = models.CharField(
+        max_length=20, choices=AccessType.choices, default=AccessType.LIFETIME
+    )
+    access_months = models.PositiveIntegerField(
+        null=True, blank=True, help_text="Required when access_type is TIMED."
+    )
+
+    content_version = models.PositiveIntegerField(
+        default=1, help_text="Bump when material is materially updated."
+    )
+    free_update_months = models.PositiveIntegerField(default=12)
+
+    requires_final_assessment = models.BooleanField(default=False)
+    pass_mark = models.PositiveIntegerField(default=70)
+
+    estimated_hours = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+
+    is_published = models.BooleanField(default=False)
+    published_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["programme", "title"]
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        if self.access_type == self.AccessType.TIMED and not self.access_months:
+            raise ValidationError(
+                {"access_months": "Required when access type is TIMED."}
+            )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
+class Module(TimeStampedModel):
+    class UnlockRule(models.TextChoices):
+        IMMEDIATE = "IMMEDIATE", "Immediate"
+        SEQUENTIAL = "SEQUENTIAL", "Sequential (previous module completed)"
+        DRIP_DAYS = "DRIP_DAYS", "Drip — days after enrollment"
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="modules")
+    order = models.PositiveIntegerField(default=0)
+    title = models.CharField(max_length=255)
+    summary = models.TextField(blank=True)
+
+    unlock_rule = models.CharField(
+        max_length=20, choices=UnlockRule.choices, default=UnlockRule.SEQUENTIAL
+    )
+    drip_days = models.PositiveIntegerField(
+        default=0, help_text="Days after enrollment. Used only when unlock_rule is DRIP_DAYS."
+    )
+    requires_quiz_pass_to_advance = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["course", "order"]
+
+    def __str__(self):
+        return f"{self.course.title} — Module {self.order}: {self.title}"
+
+
+class Lesson(TimeStampedModel):
+    class Type(models.TextChoices):
+        VIDEO = "VIDEO", "Video"
+        TEXT = "TEXT", "Text"
+        PDF = "PDF", "PDF"
+        DOWNLOAD = "DOWNLOAD", "Download"
+        LIVE = "LIVE", "Live session"
+
+    class VideoProvider(models.TextChoices):
+        BUNNY = "BUNNY", "Bunny Stream"
+        CLOUDINARY = "CLOUDINARY", "Cloudinary"
+
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="lessons")
+    order = models.PositiveIntegerField(default=0)
+    title = models.CharField(max_length=255)
+    # Not in the original §4 model list — added because §6's learner
+    # URL scheme (/learn/<course_slug>/<lesson_slug>/) needs one and
+    # the spec doesn't otherwise say how a lesson is addressed in a
+    # URL. Global uniqueness (not per-module) because it's simplest
+    # and the only author today is Sam; save() disambiguates a title
+    # collision by suffixing rather than erroring.
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    type = models.CharField(max_length=20, choices=Type.choices, default=Type.VIDEO)
+
+    video_provider = models.CharField(
+        max_length=20, choices=VideoProvider.choices, blank=True
+    )
+    video_id = models.CharField(max_length=255, blank=True)
+    duration_seconds = models.PositiveIntegerField(null=True, blank=True)
+
+    body = CKEditor5Field(
+        blank=True,
+        config_name="default",
+        help_text="Used as the lesson content for TEXT lessons, and as notes otherwise.",
+    )
+    attachment = models.FileField(upload_to="lessons/attachments/", blank=True, null=True)
+
+    is_preview = models.BooleanField(
+        default=False, help_text="Viewable without enrollment, for the sales page."
+    )
+    transcript = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["module", "order"]
+
+    def __str__(self):
+        return f"{self.module.title} — {self.title}"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.title)
+            slug = base
+            n = 2
+            while Lesson.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base}-{n}"
+                n += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+
+class Resource(TimeStampedModel):
+    """A downloadable one-pager attached to a Course or a Module —
+    exactly one of the two must be set."""
+
+    course = models.ForeignKey(
+        Course, on_delete=models.CASCADE, related_name="resources", null=True, blank=True
+    )
+    module = models.ForeignKey(
+        Module, on_delete=models.CASCADE, related_name="resources", null=True, blank=True
+    )
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    file = models.FileField(upload_to="resources/")
+    download_count = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        if bool(self.course_id) == bool(self.module_id):
+            raise ValidationError("Set exactly one of course or module, not both or neither.")
