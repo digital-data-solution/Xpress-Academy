@@ -23,6 +23,17 @@ else:
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
+            # SQLite has no real row-level locking — select_for_update()
+            # (used in apps.payments.services.grant_access) is a no-op
+            # here and true concurrent writers instead contend for the
+            # whole-database file lock. The default ~5s busy timeout is
+            # too short for a burst of concurrent requests (surfaced by
+            # apps/payments/tests.py's concurrency test) and raises
+            # "database is locked" where Postgres would just serialize
+            # the transactions and wait. Not a production concern —
+            # Postgres (prod.py) has real row locking — but worth a
+            # generous timeout here so dev/test behaviour is closer to it.
+            "OPTIONS": {"timeout": 30},
         }
     }
 

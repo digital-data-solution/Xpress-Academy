@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Payment status — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>We couldn't confirm this payment</h1>
+  <div class="card">
+    <p>{{ message }}</p>
+    {% if reference %}<p style="font-size:13px; color:var(--color-muted);">Reference: {{ reference }}</p>{% endif %}
+    <p style="font-size:14px;">If you were charged, don't worry — our system checks Paystack automatically every
+      few minutes and will grant access once it confirms. If it's been a while, contact support with the
+      reference above.</p>
+  </div>
+  <a class="btn secondary" href="{% url 'enrollment:dashboard' %}">Back to my courses</a>
+{% endblock %}

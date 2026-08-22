@@ -3,13 +3,14 @@
 Self-paced online course platform. Django 5 LMS. See `xpress-academy-build-spec.md`
 (kept alongside this repo, not committed) for the full spec and phase plan.
 
-**Status: Phase 5 — Certificates complete. At Hard Stop 2.** Custom
-User, Organization, full catalog hierarchy, Enrollment/progress/
-unlocking, the full quiz engine, and now automatic certificate
-issuance with PDF generation and public verification. Manually
-enrolled via admin, no payments wired. **Per the build spec, no
-Paystack work starts until this phase is reviewed and explicitly
-approved.**
+**Status: Phase 6 — Payments complete.** Custom User, Organization,
+full catalog hierarchy, Enrollment/progress/unlocking, the full quiz
+engine, automatic certificate issuance, and now real Paystack
+checkout — built per a **payments addendum that supersedes build spec
+§4's webhook rules** (kept alongside the build spec, not committed):
+the Paystack account is shared with Xpress Vet Marketplace, so there
+is **no webhook** here at all — see *Payments* below and
+`ARCHITECTURE.md`.
 
 ## Stack
 
@@ -180,6 +181,73 @@ end-to-end (enrolled a test learner, completed all 8 seeded modules,
 certificate auto-issued) and sent for review rather than just
 described.
 
+## Payments (Phase 6)
+
+**Built per a payments addendum, not build spec §4 directly** — the
+addendum supersedes §4's Paystack rules entirely (the Payment/Coupon/
+PartnerClinic *models* it specified still stand; the *integration
+mechanism* doesn't). Read `ARCHITECTURE.md`'s "Why there is no Paystack
+webhook" section before touching anything here.
+
+**The governing constraint**: this Paystack account is shared with
+Xpress Vet Marketplace. One webhook URL per account, already claimed
+by Xpress Vet's backend — Academy can't use it and must never try.
+Instead:
+
+- `/checkout/<course_slug>/` — login required, optional coupon code,
+  initializes a Paystack transaction with a **per-transaction
+  `callback_url`** (mandatory — omitting it silently sends the learner
+  to Xpress Vet's dashboard) and `metadata.product = "xpress_academy"`
+  on every single transaction, no exceptions. The local `Payment` row
+  is created `PENDING` *before* Paystack is ever called.
+- `/checkout/return/` — the learner lands here after paying. The
+  query string is **untrusted** — it only says which reference to
+  check. `verify_and_grant()` calls Paystack's verify endpoint
+  server-side and asserts status/amount/currency/reference/
+  `metadata.product` all match before granting anything.
+- `grant_access()` (`apps/payments/services.py`) is the **single choke
+  point** — atomic, `select_for_update()`-locked, idempotent. Every
+  path that can conclude a payment succeeded calls this one function;
+  nothing else creates an `Enrollment` from a `Payment`.
+- **Reconciliation is the safety net, not optional.** Two management
+  commands implement what the addendum specifies as scheduled tasks —
+  `reconcile_pending_payments` (meant to run every 10 minutes: verifies
+  any `PENDING` payment 5min–7days old, marks anything older
+  `ABANDONED`) and `sweep_paystack_transactions` (meant to run daily:
+  lists recent Paystack successes, filters to `XDA-`/`xpress_academy`
+  transactions only — everything else is Xpress Vet's and is skipped
+  entirely, never logged with customer detail — and flags, never
+  auto-grants, any Academy success with no local match). **Neither is
+  actually scheduled yet** — Celery beat doesn't exist until Phase 7,
+  so until then these need running by hand or via Windows Task
+  Scheduler/cron if real money is moving. This is a real operational
+  gap, not a cosmetic one; flagging it plainly rather than burying it.
+- **No webhook view exists**, deliberately — see `ARCHITECTURE.md`.
+- **Referral capture**: `ReferralCaptureMiddleware` stores `?ref=CODE`
+  in the session for 30 days on any request (not just a checkout page,
+  since Phase 8's sales pages don't exist yet but a referral link
+  should still work whenever they land). Attribution and coupon
+  redemption both happen inside `grant_access()`'s atomic block.
+- **Refunds are manual, always** — `refund_payment()` only ever flips
+  local `Payment.status = REFUNDED`. It never calls Paystack's refund
+  API (addendum §5: that endpoint touches account-wide state shared
+  with Xpress Vet). Sam issues the actual refund from the dashboard.
+
+**The concurrency test the addendum specifically calls out** —
+"Return handler and reconciliation task racing on the same reference
+create exactly one Enrollment... the one people skip" — is
+`TestGrantAccessIdempotency::test_concurrent_grant_access_creates_exactly_one_enrollment`,
+five real threads hitting `grant_access()` simultaneously. Building it
+surfaced two genuine bugs before either could ship (see *Deviations*).
+
+**To click through checkout in a browser** (not just run the test
+suite, which mocks Paystack entirely): put real Paystack **test mode**
+keys from the shared Xpress Vet dashboard into `.env` —
+`PAYSTACK_SECRET_KEY` / `PAYSTACK_PUBLIC_KEY` — nothing else is
+needed locally. `SITE_URL` already defaults to
+`http://localhost:8000`, which is what gets used to build the
+callback URL Paystack redirects back to.
+
 ## Database
 
 **Local default: SQLite**, zero setup — good enough for Phase 1–3 model
@@ -234,7 +302,9 @@ apps/
                       attempt lifecycle + grading, quiz runner views — Phase 4
   certificates/       Certificate + CertificateSequence, PDF generation,
                       public verify + learner's own copy — Phase 5
-  payments/          Paystack — Phase 6
+  payments/          Payment/Coupon/Partner/ReconciliationFlag, Paystack
+                      gateway client, checkout + return-handler views,
+                      referral middleware — Phase 6
   engagement/         email gate, Celery tasks — Phase 7
 templates/, static/, requirements/
 ```
@@ -325,6 +395,44 @@ it's a two-migration change to add the field back everywhere.
 - **Certificate issuance triggered inline, not by a Celery task** —
   same "no task queue exists yet" reasoning as quiz-attempt expiry in
   Phase 4.
+- **`PartnerClinic` renamed to `Partner`** before it ever touched a
+  migration — Sam's call mid-build: the referral mechanism is generic
+  and later verticals (JAMB prep, cybersecurity — Phase 10) will have
+  referral partners that aren't veterinary clinics. `Enrollment.Source.CLINIC_PARTNER`
+  renamed to `PARTNER` to match.
+- **`Payment.raw_webhook_payload` (spec §4) doesn't exist — replaced
+  by `raw_verify_response`.** There's no webhook (see *Payments*
+  above), so what's actually captured is the verify-endpoint response;
+  the field is named for what it holds.
+- **`ReconciliationFlag` stands in for Phase 11's `operations.Signal`**,
+  which doesn't exist yet. The addendum requires
+  `sweep_paystack_transactions` to raise a `CRITICAL` signal for a
+  human to review — built a minimal model that does the same job now
+  (visible in admin, resolvable) rather than blocking Phase 6 on
+  Phase 11. Migrate its rows across when Phase 11 ships; don't delete
+  the safety net in the meantime — see the model's docstring.
+- **Reconciliation isn't actually scheduled** — no Celery beat until
+  Phase 7. The two management commands exist and are correct, but
+  nothing runs them automatically yet. Flagged plainly in *Payments*
+  above since this is a real gap if real money starts moving before
+  Phase 7 lands, not a cosmetic one.
+- **Two real concurrency-adjacent bugs, caught by actually running the
+  required concurrency test rather than skipping it** (the addendum
+  predicted people skip it — didn't): (1) `initialize_payment` was
+  wrapped in `@transaction.atomic`, so deliberately raising
+  `PaymentInitError` after marking a failed `Payment` rolled back the
+  Payment's *creation* too — the exact "payment lost track of" failure
+  mode the addendum warns against. Fixed by removing the wrapper;
+  each write commits on its own. (2) `verify_and_grant` returned the
+  caller's stale, pre-update `Payment` object instead of the one
+  `grant_access` actually mutated (`grant_access` re-fetches its own
+  copy under `select_for_update()` and returns the `Enrollment`, not
+  the `Payment`) — fixed with an explicit `refresh_from_db()`. Also:
+  SQLite has no real row-level locking (`select_for_update()` degrades
+  to file-level contention), which isn't a code bug but did require a
+  higher `busy_timeout` in `dev.py` and a bounded retry in the
+  concurrency test itself to get a stable result — noted inline in
+  both places so it doesn't read as the underlying logic being flaky.
 
 ## Tests
 
@@ -332,7 +440,7 @@ it's a two-migration change to add the field back everywhere.
 .\venv\Scripts\pytest
 ```
 
-59 tests total. `apps/enrollment/tests.py` (23) covers what spec §11
+91 tests total. `apps/enrollment/tests.py` (23) covers what spec §11
 requires before Hard Stop 1: unlock rules and edges, enrollment-active
 edge cases, progress/completion, access control. `apps/assessment/tests.py`
 (21) covers what §11 requires for assessment: MCQ/multi-select/partial-
@@ -350,16 +458,25 @@ not passed → no certificate), idempotency, serial sequencing, the
 required-wording/forbidden-words check, a real PDF actually
 generating (`%PDF` magic bytes), and the verification views (valid /
 revoked / not-found states, owner-only access to the learner's own
-copy page). Catalog/accounts/organizations still have no tests — same
+copy page). `apps/payments/tests.py` (32) covers every case the
+payments addendum §6 lists by name: callback_url/metadata.product
+always present, tampered/unknown reference grants nothing,
+Paystack-reports-failed grants nothing, mismatched amount grants
+nothing and marks FAILED, double `grant_access()` call creates
+exactly one Enrollment, **the concurrency test** (five real threads
+racing `grant_access()` on the same Payment — the one the addendum
+explicitly says people skip), sweep ignores non-`XDA-` references
+entirely, a stale `PENDING` that actually succeeded gets picked up by
+reconciliation, coupon usage increments exactly once. All Paystack
+HTTP calls are mocked — no real network calls or keys needed to run
+the suite. Catalog/accounts/organizations still have no tests — same
 reasoning as before, revisit before either grows real business logic.
 
 ## What's NOT built yet
 
-Payments, email/Celery, the public site — all later phases.
-**Currently at Hard Stop 2** (end of Phase 5, per build spec §8): no
-Paystack work starts until this is reviewed and explicitly approved.
-Phase 6 (payments) is next after that — see the payments addendum
-(kept alongside this repo, not committed, same as the main build
-spec) for the required architecture: the Paystack account is shared
-with Xpress Vet Marketplace, so no webhooks — verify-on-return +
-reconciliation instead.
+Email/Celery and the public site — the two remaining phases.
+Reconciliation exists but **isn't actually scheduled** (see
+*Payments* above) — a real gap, not cosmetic, until Phase 7's Celery
+beat lands. Phase 7 (engagement — the email gate, the Celery tasks
+from build spec §5, and putting the two payments management commands
+on an actual schedule) is next.

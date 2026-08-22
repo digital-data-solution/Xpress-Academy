@@ -8,11 +8,10 @@ django-ckeditor-5==0.2.20
 django-admin-sortable2==2.3.1
 
 reportlab==5.0.1
+requests==2.34.2
 
 # Added when the phase that needs them starts — listed here so the
 # eventual shape of the stack is visible, but NOT installed yet:
-#
-#   Phase 6     requests                  (Paystack REST calls)
 #   Phase 7     celery, redis             (async jobs, Phase 5 tasks)
 #   Phase 7     resend                    (email — via the send-gate service)
 #   Phase 7     cloudinary                (image/file storage)

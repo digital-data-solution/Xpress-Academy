@@ -27,6 +27,29 @@ CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[])
 # the default "admin/" in a deployed environment.
 ADMIN_URL_PATH = env("DJANGO_ADMIN_URL_PATH", default="admin/")
 
+# --- Paystack (Phase 6) ---------------------------------------------
+# See the payments addendum (kept alongside the build spec, not
+# committed): this Paystack account is SHARED with Xpress Vet
+# Marketplace. One webhook URL per account, already pointed at Xpress
+# Vet's backend — Academy cannot use it. No webhook view exists in
+# this codebase; payment status is determined by verify-on-return +
+# reconciliation, never by being told. See apps/payments/gateway.py,
+# services.py, and ARCHITECTURE.md.
+PAYSTACK_SECRET_KEY = env("PAYSTACK_SECRET_KEY", default="")
+PAYSTACK_PUBLIC_KEY = env("PAYSTACK_PUBLIC_KEY", default="")
+# "shared_xpressvet" | "academy_own" — informational only for now,
+# read by ops/support tooling later. Switching Paystack businesses is
+# meant to be a config change, not a code change.
+PAYSTACK_ACCOUNT_LABEL = env("PAYSTACK_ACCOUNT_LABEL", default="shared_xpressvet")
+# Deliberately not wired to anything yet — no webhook view exists.
+# Reserved so flipping it on later doesn't require a code change to
+# this setting, only to config/urls.py adding the view.
+PAYSTACK_WEBHOOK_ENABLED = env.bool("PAYSTACK_WEBHOOK_ENABLED", default=False)
+
+# Used to build the mandatory per-transaction callback_url. Must be
+# the scheme+host the learner will actually be redirected back to.
+SITE_URL = env("SITE_URL", default="http://localhost:8000")
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -59,6 +82,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "apps.payments.middleware.ReferralCaptureMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"

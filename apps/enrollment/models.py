@@ -39,7 +39,7 @@ class Enrollment(TimeStampedModel):
         PURCHASE = "PURCHASE", "Purchase"
         MANUAL = "MANUAL", "Manual"
         COUPON = "COUPON", "Coupon"
-        CLINIC_PARTNER = "CLINIC_PARTNER", "Clinic partner"
+        PARTNER = "PARTNER", "Partner referral"
 
     # PROTECT on both — per build spec §10, enrollment records must
     # never be lost to a careless admin delete of the course, and the
@@ -54,9 +54,9 @@ class Enrollment(TimeStampedModel):
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.ACTIVE)
     source = models.CharField(max_length=20, choices=Source.choices, default=Source.MANUAL)
 
-    # partner_clinic FK is added in Phase 6 alongside apps.payments.PartnerClinic
-    # (that model doesn't exist yet). The CLINIC_PARTNER source choice
-    # is already here so Source values don't need a later migration.
+    partner = models.ForeignKey(
+        "payments.Partner", on_delete=models.PROTECT, related_name="enrollments", null=True, blank=True
+    )
 
     content_version_at_enrollment = models.PositiveIntegerField(
         editable=False,
