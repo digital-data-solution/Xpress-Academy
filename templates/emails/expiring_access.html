@@ -1,0 +1,6 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>Your access to <strong>{{ course_title }}</strong> ends on <strong>{{ expires_at|date:"j F Y" }}</strong> ({{ days_left }} day{{ days_left|pluralize }} from now).</p>
+  <p><a href="{{ site_url }}/learn/{{ course_slug }}/" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Continue learning</a></p>
+{% endblock %}

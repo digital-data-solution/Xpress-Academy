@@ -9,10 +9,14 @@ django-admin-sortable2==2.3.1
 
 reportlab==5.0.1
 requests==2.34.2
+celery==5.6.3
+redis==8.1.0
 
 # Added when the phase that needs them starts — listed here so the
 # eventual shape of the stack is visible, but NOT installed yet:
-#   Phase 7     celery, redis             (async jobs, Phase 5 tasks)
-#   Phase 7     resend                    (email — via the send-gate service)
-#   Phase 7     cloudinary                (image/file storage)
+#   Phase 8     cloudinary                (image/file storage)
 #   —           django-storages           (only if Cloudinary needs the storage backend)
+#
+# Resend is called directly via requests (already installed) in
+# apps/engagement/gateway.py, matching apps/payments/gateway.py's
+# pattern — no separate Resend SDK needed.

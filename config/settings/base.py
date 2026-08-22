@@ -50,6 +50,28 @@ PAYSTACK_WEBHOOK_ENABLED = env.bool("PAYSTACK_WEBHOOK_ENABLED", default=False)
 # the scheme+host the learner will actually be redirected back to.
 SITE_URL = env("SITE_URL", default="http://localhost:8000")
 
+# --- Celery (Phase 7) -------------------------------------------------
+REDIS_URL = env("REDIS_URL", default="redis://localhost:6379/0")
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = REDIS_URL
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+# Match TIME_ZONE below — the beat schedule in config/celery.py is
+# written in WAT ("daily 09:00 WAT" per spec §5), and this is what
+# makes crontab(hour=9) actually mean 9am Lagos time, not UTC.
+CELERY_TIMEZONE = "Africa/Lagos"
+CELERY_TASK_ALWAYS_EAGER = False  # dev.py flips this on — no worker/Redis needed locally
+
+# --- Email / Resend (Phase 7) ------------------------------------------
+RESEND_API_KEY = env("RESEND_API_KEY", default="")
+# Sent-from address falls back to the Organization's own from_email
+# (set per-org in admin) when not overridden here — see
+# apps/engagement/services.py.
+DEFAULT_FROM_EMAIL_FALLBACK = env("DEFAULT_FROM_EMAIL_FALLBACK", default="academy@xpressdigital.ng")
+# A generous ceiling, not a target — see apps/engagement/services.py::send_email.
+EMAIL_RATE_LIMIT_PER_MINUTE = env.int("EMAIL_RATE_LIMIT_PER_MINUTE", default=100)
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",

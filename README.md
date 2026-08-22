@@ -3,14 +3,12 @@
 Self-paced online course platform. Django 5 LMS. See `xpress-academy-build-spec.md`
 (kept alongside this repo, not committed) for the full spec and phase plan.
 
-**Status: Phase 6 — Payments complete.** Custom User, Organization,
-full catalog hierarchy, Enrollment/progress/unlocking, the full quiz
-engine, automatic certificate issuance, and now real Paystack
-checkout — built per a **payments addendum that supersedes build spec
-§4's webhook rules** (kept alongside the build spec, not committed):
-the Paystack account is shared with Xpress Vet Marketplace, so there
-is **no webhook** here at all — see *Payments* below and
-`ARCHITECTURE.md`.
+**Status: Phase 7 — Engagement complete.** Everything through payments
+(Phase 6), plus real Celery + the email send-gate + Resend + every
+scheduled task from build spec §5 — including finally putting Phase
+6's reconciliation on an actual schedule. No hard stops remain; still
+building straight through per the owner's direction — see *What's
+next* at the bottom.
 
 ## Stack
 
@@ -248,6 +246,63 @@ needed locally. `SITE_URL` already defaults to
 `http://localhost:8000`, which is what gets used to build the
 callback URL Paystack redirects back to.
 
+## Engagement (Phase 7)
+
+**Nothing extra to run locally.** `CELERY_TASK_ALWAYS_EAGER=True` in
+`dev.py` means every task runs synchronously, in-process, on
+`.delay()` — no Redis, no worker, no beat needed for `manage.py
+runserver` or the test suite. A real deployment (Phase 9) runs
+`celery -A config worker -B` against Redis for real.
+
+**The email gate** (`apps/engagement/services.py::send_email()`) is
+the only thing in the codebase allowed to call Resend — same
+one-choke-point discipline as the Paystack gateway. It's idempotent
+per `dedupe_key` (a retried Celery task, or two tasks racing on the
+same event, can't double-send — tested, including that a *failed*
+send under a dedupe_key can still be retried, only a *successful* one
+blocks a resend), and soft-rate-limits by sleeping briefly if too many
+sent in the last 60 seconds rather than hard-rejecting or silently
+dropping. With no `RESEND_API_KEY` configured (the local default),
+it logs the email and marks it `SENT` anyway rather than erroring —
+the whole app works end to end without a Resend account.
+
+**All six §5 tasks are real**, on `config/celery.py`'s beat schedule,
+WAT-timezoned:
+
+| Task | Schedule | Notes |
+|---|---|---|
+| `unlock_dripped_modules` | hourly | "just crossed the threshold" window, not every already-unlocked module |
+| `detect_stalled_learners` | daily 09:00 | stops at 3 nudges, counted from past `EmailLog` rows, not a stored counter |
+| `warn_expiring_access` | daily | 14-day and 3-day warnings — see the exclusive-bands note below |
+| `expire_enrollments` | daily | flips past-expiry `ACTIVE` → `EXPIRED` |
+| `remind_live_session` | hourly | 24h and 1h windows |
+| `expire_stale_attempts` | every 15 min | new bulk `expire_all_stale_attempts()` — Phase 4 only had the reactive per-attempt version |
+
+Plus what Phase 6 built but couldn't schedule — `reconcile_pending_payments_task`
+(every 10 min) and `sweep_paystack_transactions_task` (daily 02:00
+WAT), closing the gap flagged at the end of Phase 6. `issue_certificate`
+stays a direct inline call, not a task — it's event-triggered, not
+scheduled, so there's nothing for a beat schedule to do with it.
+
+**A real bug in `warn_expiring_access`, caught by testing an edge
+case that matters in practice** (a task that catches up after being
+down, or an enrollment whose window is discovered late): the first
+version checked the 14-day and 3-day thresholds independently
+(`days_left <= window`), which overlap — a `days_left` of 2 satisfies
+*both*. If the 14-day warning hadn't gone out yet, the very next run
+sent it **and** the 3-day warning back to back, seconds apart. Fixed
+by treating the windows as exclusive bands (14 fires for
+`3 < days_left <= 14`, 3 fires for `days_left <= 3`) so at most one
+email ever goes out per enrollment per run, while each window still
+independently fires exactly once over the enrollment's lifetime.
+
+**Welcome and certificate-issued emails are now real**, not the log
+placeholders Phases 5 and 6 left behind — `grant_access()` and
+`issue_certificate()` each queue their send via `transaction.on_commit()`,
+so a failed send can never roll back the enrollment/certificate it's
+about, and the send only fires once the surrounding transaction has
+actually committed.
+
 ## Database
 
 **Local default: SQLite**, zero setup — good enough for Phase 1–3 model
@@ -305,7 +360,8 @@ apps/
   payments/          Payment/Coupon/Partner/ReconciliationFlag, Paystack
                       gateway client, checkout + return-handler views,
                       referral middleware — Phase 6
-  engagement/         email gate, Celery tasks — Phase 7
+  engagement/         EmailLog/LiveSession, Resend gateway, send-gate
+                      service, all six scheduled Celery tasks — Phase 7
 templates/, static/, requirements/
 ```
 
@@ -469,14 +525,28 @@ explicitly says people skip), sweep ignores non-`XDA-` references
 entirely, a stale `PENDING` that actually succeeded gets picked up by
 reconciliation, coupon usage increments exactly once. All Paystack
 HTTP calls are mocked — no real network calls or keys needed to run
-the suite. Catalog/accounts/organizations still have no tests — same
-reasoning as before, revisit before either grows real business logic.
+the suite. `apps/engagement/tests.py` (23, not in spec §11's list but
+written anyway — dedupe/windowing logic is exactly the kind of thing
+that's silently wrong without a test) covers the send-gate's
+idempotency and retry behaviour, every task's core windowing/dedup
+logic including the exclusive-bands fix above, and the welcome/
+certificate email wiring (using `pytest.mark.django_db(transaction=True)`,
+required for `transaction.on_commit()` to actually fire in a test —
+noted inline so it doesn't look like an arbitrary marker). Catalog/
+accounts/organizations still have no tests — same reasoning as
+before, revisit before either grows real business logic.
 
-## What's NOT built yet
+## What's next
 
-Email/Celery and the public site — the two remaining phases.
-Reconciliation exists but **isn't actually scheduled** (see
-*Payments* above) — a real gap, not cosmetic, until Phase 7's Celery
-beat lands. Phase 7 (engagement — the email gate, the Celery tasks
-from build spec §5, and putting the two payments management commands
-on an actual schedule) is next.
+No hard stops remain in the build spec after Phase 6, and the owner
+has since said to keep building straight through rather than pause
+between phases. Order: Phase 11 (operations/signals layer) next —
+out of spec order deliberately, since Phase 11's own instruction was
+to ship its money-rule §1–5 *before* Phase 6 went live, which already
+didn't happen; closing that gap now rather than letting it ride
+further. Then Phase 8 (public site) and Phase 9 (deploy). **Phase 10
+(instructor platform) is the one exception** — its spec explicitly
+says not to build it until Phase 9 is done *and* a first-party course
+has actually sold to a real learner. That's a fact-of-reality gate,
+not an approval checkpoint, so it's the one place this project stops
+and waits regardless of how much momentum there is.

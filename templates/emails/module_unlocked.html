@@ -1,0 +1,6 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>A new module is now available in <strong>{{ course_title }}</strong>: <strong>{{ module_title }}</strong>.</p>
+  <p><a href="{{ site_url }}/learn/{{ course_slug }}/" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Continue learning</a></p>
+{% endblock %}

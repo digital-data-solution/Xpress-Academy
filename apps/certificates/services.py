@@ -5,11 +5,11 @@ enrollment meets the completion rule."
 Generation is triggered inline at the moment an enrollment completes
 (called from apps.enrollment.services._mark_enrollment_completed_if_ready)
 rather than by a Celery task — the spec says "triggered by a Celery
-task, only when the enrollment meets the completion rule," but Celery
-isn't wired until Phase 7. Same pattern as Phase 4's expire_attempt_if_stale:
-call the real logic synchronously now; Phase 7 puts it on a task queue
-instead of writing new logic. issue_certificate() is also callable
-directly from admin for a manual/backfill case.
+task," but by the time Phase 7 actually wired Celery, there was no
+reason to move this off the inline call: it's event-triggered, not
+scheduled, so there's nothing for a beat schedule to do here. It stays
+synchronous. issue_certificate() is also callable directly from admin
+for a manual/backfill case.
 """
 
 from django.db import transaction
@@ -79,6 +79,13 @@ def issue_certificate(enrollment):
     from django.core.files.base import ContentFile
 
     certificate.pdf.save(f"{certificate.serial}.pdf", ContentFile(pdf_bytes), save=True)
+
+    def _send_certificate_email():
+        from apps.engagement.services import send_certificate_issued_email
+        send_certificate_issued_email(certificate)
+
+    transaction.on_commit(_send_certificate_email)
+
     return certificate
 
 

@@ -205,10 +205,26 @@ def finalize_attempt(attempt: Attempt) -> Attempt:
 
 
 def expire_attempt_if_stale(attempt: Attempt) -> Attempt:
-    """Call at the top of any view that touches an in-progress attempt.
-    This is what build spec §5's `expire_stale_attempts` Celery task
-    (every 15 min, Phase 7) will eventually call on a schedule instead
-    — same function, just not on a beat yet."""
+    """Call at the top of any view that touches an in-progress attempt
+    — the reactive path, catches an attempt the moment its owner comes
+    back to it."""
     if attempt.is_expired:
         return finalize_attempt(attempt)
     return attempt
+
+
+def expire_all_stale_attempts() -> int:
+    """The proactive path — build spec §5's `expire_stale_attempts`
+    Celery task (every 15 min, Phase 7) calls this. Finalizes every
+    in-progress attempt past its expires_at platform-wide, not just
+    the one a view happens to touch, so a learner who simply never
+    comes back still gets graded on what they'd answered rather than
+    leaving the attempt open forever. Returns the count finalized."""
+    from django.utils import timezone
+
+    stale = Attempt.objects.filter(submitted_at__isnull=True, expires_at__isnull=False, expires_at__lte=timezone.now())
+    count = 0
+    for attempt in stale:
+        finalize_attempt(attempt)
+        count += 1
+    return count

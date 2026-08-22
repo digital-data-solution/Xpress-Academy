@@ -1,0 +1,6 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p><strong>{{ session_title }}</strong> ({{ course_title }}) starts {{ when_text }}, at {{ starts_at|date:"g:i A" }} WAT.</p>
+  {% if join_url %}<p><a href="{{ join_url }}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Join session</a></p>{% endif %}
+{% endblock %}

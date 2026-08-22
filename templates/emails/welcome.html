@@ -1,0 +1,6 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>You're enrolled in <strong>{{ course_title }}</strong>. Log in to get started whenever you're ready.</p>
+  <p><a href="{{ site_url }}/dashboard/" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Go to my courses</a></p>
+{% endblock %}

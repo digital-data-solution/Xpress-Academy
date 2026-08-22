@@ -223,11 +223,19 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment:
         from django.db.models import F
         Coupon.objects.filter(pk=payment.coupon_id).update(times_used=F("times_used") + 1)
 
-    # Welcome email queued here in the eventual design (dedupe_key =
-    # f"enroll:{payment.reference}", via transaction.on_commit) — the
-    # send-gate service (apps.engagement.services.send_email) doesn't
-    # exist until Phase 7. Logging in its place for now.
     logger.info("grant_access: enrolled %s in %s via payment %s", payment.user.email, payment.course.title, payment.reference)
+
+    # Queued outside the transaction — must not fire until the
+    # Enrollment/Payment writes above are actually committed, and a
+    # failed send here must never roll back the enrollment itself.
+    # Local import: apps.engagement.tasks imports apps.payments.services
+    # (for the reconciliation Celery tasks), so importing at module
+    # level here would be circular.
+    def _send_welcome():
+        from apps.engagement.services import send_welcome_email
+        send_welcome_email(enrollment)
+
+    transaction.on_commit(_send_welcome)
 
     return enrollment
 

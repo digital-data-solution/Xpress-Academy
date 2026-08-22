@@ -1,0 +1,7 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>Congratulations — you've completed <strong>{{ course_title }}</strong>. Your certificate is ready.</p>
+  <p><a href="{{ site_url }}/certificates/{{ serial }}/" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">View my certificate</a></p>
+  <p style="font-size:13px; color:#6b7280;">Serial: {{ serial }}</p>
+{% endblock %}

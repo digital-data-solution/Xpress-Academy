@@ -45,3 +45,13 @@ CSRF_TRUSTED_ORIGINS = env.list(
     "DJANGO_CSRF_TRUSTED_ORIGINS",
     default=["http://localhost:8000", "http://127.0.0.1:8000"],
 )
+
+# Celery tasks run synchronously, in-process, on .delay()/.apply_async() —
+# no Redis or worker process needed for `manage.py runserver` or the
+# test suite. This is what lets Phase 4-6's Celery-shaped logic
+# (expire_attempt_if_stale, issue_certificate, reconciliation) keep
+# working locally exactly as it did before Phase 7 added the real
+# task/schedule wrappers. prod.py leaves this at base.py's False — a
+# real deployment needs a real worker.
+CELERY_TASK_ALWAYS_EAGER = True
+CELERY_TASK_EAGER_PROPAGATES = True
