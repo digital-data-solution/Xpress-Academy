@@ -99,6 +99,23 @@ class Payment(TimeStampedModel):
         Partner, on_delete=models.PROTECT, related_name="payments", null=True, blank=True
     )
 
+    # --- Phase 10: instructor attribution ---------------------------
+    class Attribution(models.TextChoices):
+        OWN_TRAFFIC = "OWN_TRAFFIC", "Own traffic"
+        PLATFORM_TRAFFIC = "PLATFORM_TRAFFIC", "Platform traffic"
+
+    class AttributionSource(models.TextChoices):
+        REFERRAL_LINK = "REFERRAL_LINK", "Referral link"
+        COUPON = "COUPON", "Coupon"
+        DIRECT = "DIRECT", "Direct"
+        ORGANIC = "ORGANIC", "Organic"
+
+    attribution = models.CharField(max_length=20, choices=Attribution.choices, blank=True)
+    attributed_instructor = models.ForeignKey(
+        "instructors.Instructor", on_delete=models.PROTECT, null=True, blank=True, related_name="attributed_payments"
+    )
+    attribution_source = models.CharField(max_length=20, choices=AttributionSource.choices, blank=True)
+
     initialized_at = models.DateTimeField(auto_now_add=True)
     paid_at = models.DateTimeField(null=True, blank=True)
 

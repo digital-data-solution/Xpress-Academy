@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Learners — {{ course.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'instructors:course_list' %}">← My courses</a></p>
+  <h1>Learners — {{ course.title }}</h1>
+  {# Names and progress only — never email or phone, per the anti-poaching rule (see views.py) #}
+  {% if not rows %}<div class="card"><p>No learners yet.</p></div>{% endif %}
+  <ul class="lesson-list">
+    {% for row in rows %}
+      <li>
+        <span>{{ row.name }}</span>
+        <span>{{ row.status }} · {{ row.progress_percent }}%</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

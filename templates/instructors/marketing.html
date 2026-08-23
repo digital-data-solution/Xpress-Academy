@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Marketing kit — Teach{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'instructors:dashboard' %}">← Dashboard</a></p>
+  <h1>Marketing kit</h1>
+  <p style="color:var(--color-muted);">Your referral code: <strong>{{ instructor.referral_code }}</strong></p>
+
+  {% if not links %}<div class="card"><p>Publish a course to get a shareable link.</p></div>{% endif %}
+  {% for link in links %}
+    <div class="card">
+      <p style="font-weight:600;">{{ link.course.title }}</p>
+      <p style="font-size:13px; word-break:break-all; color:var(--color-primary);">{{ link.url }}</p>
+    </div>
+  {% endfor %}
+
+  <h2>Ready-made social copy</h2>
+  <div class="card">
+    <p>"I just launched a course — practical, no fluff, built for how you actually work. Link in bio."</p>
+  </div>
+  <div class="card">
+    <p>"If you've been putting off learning this properly, this is the shortest path I know to actually getting there."</p>
+  </div>
+{% endblock %}

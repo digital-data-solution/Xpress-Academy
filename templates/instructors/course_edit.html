@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ course.title }} — Teach{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'instructors:course_list' %}">← My courses</a></p>
+  <h1>{{ course.title }}</h1>
+  <p style="color:var(--color-muted);">{{ course.get_review_status_display }}</p>
+
+  {% if locked %}
+    <div class="card"><p>This course is locked for editing while it's under review.</p></div>
+  {% else %}
+    <form method="post" class="signup-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn" type="submit">Save</button>
+    </form>
+    <form method="post" action="{% url 'instructors:course_submit' slug=course.slug %}" style="margin-top:16px;">
+      {% csrf_token %}
+      <button class="btn secondary" type="submit">Submit for review</button>
+    </form>
+  {% endif %}
+
+  <p style="font-size:13px; color:var(--color-muted); margin-top:24px;">
+    Modules, lessons, and quizzes are authored by staff in the admin — contact us to get content added or changed.
+  </p>
+{% endblock %}

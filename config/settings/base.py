@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     "apps.assessment",
     "apps.certificates",
     "apps.operations",
+    "apps.instructors",
     "apps.payments",
     "apps.engagement",
 ]

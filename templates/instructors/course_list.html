@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}My courses — Teach{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>My courses</h1>
+  {% if not courses %}<div class="card"><p>No courses yet.</p></div>{% endif %}
+  {% for course in courses %}
+    <div class="card">
+      <p style="font-weight:600; margin:0 0 4px;">{{ course.title }}</p>
+      <p style="font-size:13px; color:var(--color-muted);">{{ course.get_review_status_display }}{% if course.is_published %} · Published{% endif %}</p>
+      <div class="nav-row" style="justify-content:flex-start; gap:8px; margin-top:10px;">
+        <a class="btn secondary" href="{% url 'instructors:course_edit' slug=course.slug %}">Edit</a>
+        <a class="btn secondary" href="{% url 'instructors:course_learners' slug=course.slug %}">Learners</a>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Earnings — Teach{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'instructors:dashboard' %}">← Dashboard</a></p>
+  <h1>Earnings</h1>
+  <p class="price-now">₦{{ balance_naira|floatformat:2 }}</p>
+
+  {% if not entries %}<div class="card"><p>No earnings entries yet.</p></div>{% endif %}
+  <ul class="lesson-list">
+    {% for e in entries %}
+      <li>
+        <span>{{ e.get_entry_type_display }}{% if e.course %} — {{ e.course.title }}{% endif %}</span>
+        <span>{% if e.amount_kobo >= 0 %}+{% endif %}₦{{ e.amount_kobo|floatformat:0 }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

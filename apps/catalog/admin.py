@@ -36,16 +36,19 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = [
         "title",
         "programme",
+        "instructor",
+        "review_status",
         "audience",
         "level",
         "price_ngn",
         "is_published",
         "module_count",
     ]
-    list_filter = ["programme", "audience", "level", "is_published", "access_type"]
+    list_filter = ["programme", "instructor", "review_status", "audience", "level", "is_published", "access_type"]
     search_fields = ["title", "slug", "subtitle"]
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ModuleInline, CourseFAQInline]
+    autocomplete_fields = ["instructor", "vertical", "reviewed_by", "domain_reviewer"]
     fieldsets = (
         (None, {"fields": ("organization", "programme", "title", "slug", "subtitle", "description")}),
         ("Media", {"fields": ("cover_image", "promo_video_id")}),
@@ -64,6 +67,15 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
                 "instructor_bio", "meta_description",
             ),
             "description": "Shown on the public /courses/&lt;slug&gt;/ page. Falls back to subtitle/description when blank.",
+        }),
+        ("Instructor & review (Phase 10)", {
+            "fields": (
+                "instructor", "vertical", "review_status", "reviewed_by", "reviewed_at",
+                "domain_reviewer", "review_notes", "delisted_reason",
+                "last_content_review_at", "next_content_review_due",
+            ),
+            "description": "is_published can only be True when review_status is APPROVED — enforced by a "
+                            "database constraint, not just this form.",
         }),
         ("Publishing", {"fields": ("is_published", "published_at")}),
     )

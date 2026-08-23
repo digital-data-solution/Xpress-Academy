@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Apply to teach — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Apply to teach</h1>
+  <p style="color:var(--color-muted);">Applications are reviewed by a human — there's no instant approval.</p>
+  {% if form.errors %}
+    <div class="card" style="border-color:#fecaca;">
+      {% for field in form %}{% for error in field.errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}{% endfor %}
+    </div>
+  {% endif %}
+  <form method="post" class="signup-form">
+    {% csrf_token %}
+    <label for="id_display_name">Display name</label>
+    <input type="text" name="display_name" id="id_display_name" required>
+    <label for="id_headline">Headline</label>
+    <input type="text" name="headline" id="id_headline" placeholder="e.g. Veterinarian, 12 years in mixed practice">
+    <label for="id_bio">Bio</label>
+    <textarea name="bio" id="id_bio" rows="4" style="width:100%; padding:12px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:inherit; margin-bottom:14px;"></textarea>
+    <label for="id_credentials">Credentials</label>
+    <textarea name="credentials" id="id_credentials" rows="3" style="width:100%; padding:12px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:inherit; margin-bottom:14px;"></textarea>
+    <button class="btn" type="submit">Submit application</button>
+  </form>
+{% endblock %}

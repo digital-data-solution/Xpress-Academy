@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Teach — Dashboard{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Teaching dashboard</h1>
+  <p style="color:var(--color-muted);">{{ instructor.get_status_display }} · {{ instructor.get_verification_status_display }}</p>
+
+  <div class="course-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="card"><p style="font-size:13px; color:var(--color-muted);">Balance</p><p class="price-now">₦{{ balance_naira|floatformat:2 }}</p></div>
+    <div class="card"><p style="font-size:13px; color:var(--color-muted);">Courses</p><p class="price-now">{{ course_count }}</p></div>
+    <div class="card"><p style="font-size:13px; color:var(--color-muted);">New enrollments this month</p><p class="price-now">{{ enrollments_this_month }}</p></div>
+    <div class="card"><p style="font-size:13px; color:var(--color-muted);">Completion rate</p><p class="price-now">{{ completion_rate }}%</p></div>
+  </div>
+
+  {% if pending_payout %}
+    <div class="card"><p>Pending payout: ₦{{ pending_payout.amount_kobo|floatformat:0 }} kobo ({{ pending_payout.get_status_display }})</p></div>
+  {% endif %}
+
+  <div class="nav-row" style="justify-content:flex-start; gap:12px;">
+    <a class="btn secondary" href="{% url 'instructors:course_list' %}">My courses</a>
+    <a class="btn secondary" href="{% url 'instructors:earnings' %}">Earnings</a>
+    <a class="btn secondary" href="{% url 'instructors:marketing' %}">Marketing kit</a>
+  </div>
+{% endblock %}

@@ -107,8 +107,50 @@ class Course(OrganizationOwnedModel):
         max_length=160, blank=True, help_text="SEO meta description. Falls back to subtitle if blank."
     )
 
+    # --- Phase 10: instructor marketplace ---------------------------
+    class ReviewStatus(models.TextChoices):
+        DRAFT = "DRAFT", "Draft"
+        SUBMITTED = "SUBMITTED", "Submitted"
+        IN_REVIEW = "IN_REVIEW", "In review"
+        CHANGES_REQUESTED = "CHANGES_REQUESTED", "Changes requested"
+        APPROVED = "APPROVED", "Approved"
+        DELISTED = "DELISTED", "Delisted"
+
+    # null = a first-party Xpress Digital course, per spec.
+    instructor = models.ForeignKey(
+        "instructors.Instructor", on_delete=models.PROTECT, null=True, blank=True, related_name="courses"
+    )
+    vertical = models.ForeignKey(
+        "instructors.Vertical", on_delete=models.PROTECT, null=True, blank=True, related_name="courses"
+    )
+    review_status = models.CharField(max_length=20, choices=ReviewStatus.choices, default=ReviewStatus.DRAFT)
+    reviewed_by = models.ForeignKey(
+        "accounts.User", on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
+    )
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    domain_reviewer = models.ForeignKey(
+        "accounts.User", on_delete=models.SET_NULL, null=True, blank=True, related_name="+",
+        help_text="Snapshot of who actually reviewed this course — may differ from the Vertical's current reviewer over time.",
+    )
+    review_notes = models.TextField(blank=True, help_text="Internal — never shown on the public sales page.")
+    delisted_reason = models.CharField(max_length=255, blank=True)
+    last_content_review_at = models.DateTimeField(null=True, blank=True)
+    next_content_review_due = models.DateField(null=True, blank=True)
+
     class Meta:
         ordering = ["programme", "title"]
+        constraints = [
+            # The spec's literal "hard constraint" — enforced at the
+            # DATABASE level, not just in clean(), so it holds even
+            # against a raw .update() or a future API route that
+            # forgets to call full_clean(). See
+            # apps.catalog.tests.TestPublicationGate for the bypass
+            # attempt this is proven against.
+            models.CheckConstraint(
+                check=models.Q(is_published=False) | models.Q(review_status="APPROVED"),
+                name="course_publish_requires_approved_review_status",
+            ),
+        ]
 
     def __str__(self):
         return self.title
@@ -118,6 +160,28 @@ class Course(OrganizationOwnedModel):
             raise ValidationError(
                 {"access_months": "Required when access type is TIMED."}
             )
+
+        if self.instructor_id and not self.instructor.is_eligible_for_courses:
+            raise ValidationError({
+                "instructor": "This instructor isn't VERIFIED with a signed agreement yet — "
+                               "cannot attach them to a course.",
+            })
+
+        if self.review_status == self.ReviewStatus.APPROVED:
+            # §4.1: "review_status cannot move to APPROVED if the
+            # Vertical has no domain_reviewer." Enforced here via
+            # clean() (admin/forms always call this); a raw .update()
+            # bypassing clean() is a narrower gap than the
+            # is_published one above, which the DB constraint closes
+            # unconditionally — documented as a known scoping decision
+            # in README rather than retrofitting a save()-override
+            # onto a model that's been stable since Phase 2.
+            if not self.vertical_id:
+                raise ValidationError({"review_status": "Cannot approve a course with no Vertical set."})
+            if not self.vertical.domain_reviewer_id:
+                raise ValidationError({
+                    "review_status": f'The Vertical "{self.vertical}" has no domain reviewer — cannot approve.',
+                })
 
     def save(self, *args, **kwargs):
         if not self.slug:
