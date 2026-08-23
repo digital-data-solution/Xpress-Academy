@@ -21,11 +21,12 @@
           <a href="{% url 'accounts:logout' %}">Log out</a>
         {% else %}
           <a href="{% url 'accounts:login' %}">Log in</a>
+          <a class="btn" style="padding:8px 16px; font-size:14px; margin-left:20px;" href="{% url 'accounts:signup' %}">Sign up</a>
         {% endif %}
       </nav>
     </div>
   </header>
-  <main class="container">
+  <main class="container {% block main_class %}{% endblock %}">
     {% if messages %}
       <ul class="messages">
         {% for message in messages %}<li>{{ message }}</li>{% endfor %}

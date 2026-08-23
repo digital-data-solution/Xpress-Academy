@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Verify your email — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Verify your email first</h1>
+  <div class="card">
+    <p>Before you can enroll in <strong>{{ course.title }}</strong>, confirm your email address.</p>
+    <p>Check your inbox for the verification link, or:</p>
+    <form method="post" action="{% url 'accounts:resend_verification' %}">
+      {% csrf_token %}
+      <button class="btn" type="submit">Resend verification email</button>
+    </form>
+  </div>
+{% endblock %}

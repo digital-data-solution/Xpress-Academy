@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Log in — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
 {% block content %}
   <h1>Log in</h1>
   {% if form.errors %}
@@ -14,4 +15,5 @@
     <input type="hidden" name="next" value="{{ next }}">
     <button class="btn" type="submit">Log in</button>
   </form>
+  <p style="font-size:14px; margin-top:16px;">New here? <a href="{% url 'accounts:signup' %}">Create an account</a></p>
 {% endblock %}

@@ -1,0 +1,112 @@
+# Render Blueprint — build spec §9 Phase 9: "render.yaml with web +
+# worker + beat services, Postgres and Redis wiring, static
+# collection, health check endpoint."
+#
+# Postgres is Supabase, NOT provisioned here (see build spec §3) —
+# DATABASE_URL is set manually per service after creating the Supabase
+# project. Redis IS provisioned here (the stack allows "Render Redis
+# or Upstash" — this uses Render's own managed instance so REDIS_URL
+# wires automatically via fromService, no manual step).
+#
+# Deploy runbook: see README.md "Deploying (Phase 9)".
+
+databases: []  # deliberately empty — Postgres is Supabase, not Render
+
+services:
+  - type: redis
+    name: xpress-academy-redis
+    plan: starter
+    ipAllowList: []  # internal-only; nothing outside Render's network needs to reach it
+
+  - type: web
+    name: xpress-academy-web
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements/prod.txt && python manage.py collectstatic --noinput"
+    # Migrations run as a separate, explicit step (see runbook) — never
+    # auto-run on every deploy. A migration that fails mid-deploy on an
+    # auto-run is a much worse night than running it by hand once.
+    startCommand: "gunicorn config.wsgi:application"
+    healthCheckPath: /healthz/
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.prod
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        sync: false  # set to the real domain(s) once known
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        sync: false
+      - key: DJANGO_ADMIN_URL_PATH
+        sync: false  # never leave at the default "admin/" in prod — see build spec §10
+      - key: SITE_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false  # Supabase — see runbook. Use the port-6543 pooler URL here, 5432 only for migrate.
+      - key: REDIS_URL
+        fromService: { type: redis, name: xpress-academy-redis, property: connectionString }
+      - key: PAYSTACK_SECRET_KEY
+        sync: false
+      - key: PAYSTACK_PUBLIC_KEY
+        sync: false
+      - key: PAYSTACK_ACCOUNT_LABEL
+        value: shared_xpressvet
+      - key: RESEND_API_KEY
+        sync: false
+      - key: DEFAULT_FROM_EMAIL_FALLBACK
+        sync: false
+      - key: OPS_ALERT_EMAIL
+        sync: false
+
+  - type: worker
+    name: xpress-academy-worker
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements/prod.txt"
+    # --pool=solo is a Windows-only concern for local dev — Render's
+    # workers run Linux, so the default prefork pool is fine here.
+    startCommand: "celery -A config worker --loglevel=info --concurrency=2"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.prod
+      - fromGroup: xpress-academy-shared
+
+  - type: worker
+    name: xpress-academy-beat
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements/prod.txt"
+    startCommand: "celery -A config beat --loglevel=info"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.prod
+      - fromGroup: xpress-academy-shared
+
+envVarGroups:
+  - name: xpress-academy-shared
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        sync: false  # copy the web service's generated value in here — must match across all three
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: PAYSTACK_SECRET_KEY
+        sync: false
+      - key: PAYSTACK_PUBLIC_KEY
+        sync: false
+      - key: PAYSTACK_ACCOUNT_LABEL
+        value: shared_xpressvet
+      - key: RESEND_API_KEY
+        sync: false
+      - key: DEFAULT_FROM_EMAIL_FALLBACK
+        sync: false
+      - key: OPS_ALERT_EMAIL
+        sync: false
+      - key: SITE_URL
+        sync: false

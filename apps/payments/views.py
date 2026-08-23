@@ -19,6 +19,12 @@ def checkout(request, course_slug):
         messages.info(request, "You already have access to this course.")
         return redirect("enrollment:curriculum", course_slug=course.slug)
 
+    # Build spec §10: "Email verification required before enrollment
+    # activates." Checked here, not at signup — a learner can still
+    # browse/log in unverified, they just can't pay until confirmed.
+    if not request.user.profile.email_verified:
+        return render(request, "payments/verify_required.html", {"course": course})
+
     if request.method == "POST":
         coupon_code = request.POST.get("coupon_code", "").strip() or None
         partner = get_active_partner(request)

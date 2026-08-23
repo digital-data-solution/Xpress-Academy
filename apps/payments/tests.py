@@ -44,7 +44,12 @@ def course(org):
 
 @pytest.fixture
 def user():
-    return User.objects.create_user(email="learner@example.com", password="testpass123")
+    u = User.objects.create_user(email="learner@example.com", password="testpass123")
+    # Checkout now gates on email verification (Phase 8) — verified by
+    # default here since that's not what these tests are about.
+    u.profile.email_verified = True
+    u.profile.save(update_fields=["email_verified"])
+    return u
 
 
 def make_payment(user, course, amount_kobo=None):

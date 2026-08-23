@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Results — {{ quiz.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
 {% block content %}
   <p style="font-size:14px;"><a href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=quiz.id %}">← {{ quiz.title }}</a></p>
   <h1>{{ attempt.score_percent }}% {% if attempt.passed %}<span class="badge-done">✓ Passed</span>{% else %}<span style="color:#b91c1c;">Not passed</span>{% endif %}</h1>

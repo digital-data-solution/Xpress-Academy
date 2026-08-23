@@ -3,12 +3,14 @@
 Self-paced online course platform. Django 5 LMS. See `xpress-academy-build-spec.md`
 (kept alongside this repo, not committed) for the full spec and phase plan.
 
-**Status: Phase 7 — Engagement complete.** Everything through payments
-(Phase 6), plus real Celery + the email send-gate + Resend + every
-scheduled task from build spec §5 — including finally putting Phase
-6's reconciliation on an actual schedule. No hard stops remain; still
-building straight through per the owner's direction — see *What's
-next* at the bottom.
+**Status: Phases 1–9 and 11 complete.** The full LMS core — catalog,
+enrollment, quizzes, certificates, payments, email/Celery, a public
+site, and the operations/signals layer (built out of spec order,
+right after Phase 7 — see *Operations* below) — plus deploy tooling
+(`render.yaml`, the runbook at the bottom of this file). Built
+straight through per the owner's explicit direction, no pauses between
+phases. **Phase 10 (instructor platform) is next**, per the owner's
+override of its "wait for a first sale" gate — see *What's next*.
 
 ## Stack
 
@@ -303,6 +305,127 @@ so a failed send can never roll back the enrollment/certificate it's
 about, and the send only fires once the surrounding transaction has
 actually committed.
 
+## Operations / signals (Phase 11)
+
+Built right after Phase 7, out of spec order deliberately — Phase 11's
+own instruction was to ship its money-rule sections *before* Phase 6
+payments went live, which had already happened by the time this was
+noticed; this closes that gap rather than letting it ride further.
+
+`apps/operations` — `Signal`/`SignalRule`/`CalendarObligation`/`DigestRun`
+models. `raise_signal()` (`services.py`) is the single choke point:
+idempotent per `dedupe_key` (a real partial unique DB index, not just
+application logic — unique among non-resolved/dismissed rows only, so
+a fixed-then-regressed course can raise fresh), escalates severity on
+re-fire, reopens a snoozed signal if it escalates. `/ops/` is the
+daily action queue (resolve/snooze/dismiss, staff-only). The daily
+digest (07:00 WAT) follows the spec's exact structure — Decide today /
+This week / Watch / Numbers / Quiet — with the "Nothing needs a
+decision today" line for quiet days and a self-tuning nudge when a
+rule's been dismissed 3 times running.
+
+**Rules built across every category actually computable today**:
+money (`payment.reconcile_mismatch`, `.none_today`, `.refund_spike`),
+system (`.cert_expiring` via a real SSL check, `.job_failures` via a
+Celery `task_failure` signal receiver — event-driven, not polled),
+legal (`.obligation_due`), quality (`course.completion_low` with
+per-module drop-off analysis, `quiz.item_bad`), learner
+(`.stalled_cohort`, `.access_expiring_bulk`, `.certificate_stuck`),
+partner (`.contract_expiring`, `.engagement_low` — both approximated
+via `Cohort`, since there's no dedicated institutional-contract model
+yet). **Every Instructor-category rule, plus a handful of others
+(`course.review_overdue`, `course.rating_decline`, `learner.complaint_open`,
+`payout.due`, `payment.webhook_failures`, `legal.agreement_unsigned`,
+`system.service_down`, `system.backup_stale`), are explicitly deferred**
+in `rules.py`'s module docstring, not silently missing — they depend
+on Phase 10 models that don't exist yet, or on external monitoring
+(true uptime, Supabase's backup status) the app genuinely can't
+self-report.
+
+`apps.payments.services.sweep_paystack_transactions` now raises a real
+`Signal` (`payment.reconcile_mismatch`, CRITICAL, INTERRUPT channel)
+instead of the Phase 6 `ReconciliationFlag` stand-in, exactly as that
+model's docstring said it would.
+
+**The interrupt cap (3/day, CRITICAL + INTERRUPT-channel only) is
+enforced by `InterruptBudget`**, an atomic `select_for_update()`
+counter — same pattern as certificate serial generation. The first
+version used a plain count-then-create check, which is fine
+single-threaded but genuinely racy under concurrent Celery workers;
+caught via test flakiness (not immediately reproducible — didn't
+shrug it off) and rebuilt properly rather than patched around.
+
+`simulate_signals` management command (per spec) fabricates one
+signal of each category so the digest/queue can be reviewed without
+waiting for real conditions. Default thresholds seeded via a data
+migration — tunable in admin from day one, no deploy needed.
+
+## Public site (Phase 8)
+
+`/` (landing), `/courses/` (catalog, published only), `/courses/<slug>/`
+(sales page — headline/audience/curriculum/FAQ/price, "Enroll now" or
+"Go to course" depending on whether the visitor already has access).
+`Course` gained sales-page fields (`sales_headline`, `sales_subheadline`,
+`target_audience`, `not_for`, `instructor_bio`, `meta_description`) and
+a new `CourseFAQ` model — not in the spec's original §4 list, added
+because the sales page it asks for needs somewhere to hold this
+content and admin is the only authoring tool. Every field is
+blank-safe (falls back to `subtitle`/`description`), so a course with
+no marketing copy still renders sensibly. The demo course has real
+copy seeded from the actual breeder-track brief, not placeholder text.
+
+SEO: `/sitemap.xml` (published courses only), `/robots.txt`, per-page
+`<title>`/meta-description/Open Graph tags via template blocks. Custom
+`404.html`/`500.html` — deliberately self-contained (no `{% extends %}`,
+no context-processor dependency), since a 500 might mean the database
+itself is unreachable and the error page still has to render.
+
+## Deploying (Phase 9)
+
+`render.yaml` provisions three services (web/worker/beat) plus a
+managed Redis instance — **not** a Postgres database, since that's
+Supabase per build spec §3, wired manually. Health check already
+exists (`/healthz/`, since Phase 1) and is wired into the web
+service's `healthCheckPath`.
+
+**Runbook:**
+
+1. **Supabase**: create the project. Grab two connection strings —
+   the direct one (port `5432`) and the transaction-pooler one (port
+   `6543`). `prod.py` auto-detects `:6543` in `DATABASE_URL` and sets
+   `DISABLE_SERVER_SIDE_CURSORS`/`CONN_MAX_AGE=0` accordingly (build
+   spec §3's pgbouncer gotcha).
+2. **Render**: connect the repo, apply this Blueprint (`render.yaml`).
+   It provisions `xpress-academy-web`, `xpress-academy-worker`,
+   `xpress-academy-beat`, and `xpress-academy-redis`; `REDIS_URL`
+   wires automatically via `fromService`.
+3. **Env vars** — every `sync: false` entry in `render.yaml` needs a
+   real value, set once in the `xpress-academy-shared` env var group
+   (worker/beat) and mirrored onto the web service:
+   `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`,
+   `DJANGO_ADMIN_URL_PATH` (never the default `admin/` in prod —
+   build spec §10), `SITE_URL`, `DATABASE_URL` (the **6543** pooler
+   URL — see step 4 for migration), `PAYSTACK_SECRET_KEY`/`PUBLIC_KEY`
+   (live keys, only here, never in the repo), `RESEND_API_KEY`,
+   `DEFAULT_FROM_EMAIL_FALLBACK`, `OPS_ALERT_EMAIL`. `DJANGO_SECRET_KEY`
+   auto-generates on the web service — copy that same value into the
+   shared group so worker/beat sign sessions identically.
+4. **First migration** — run once, by hand, against the **direct**
+   (5432) connection, not the pooler:
+   ```bash
+   DATABASE_URL=postgres://...:5432/postgres python manage.py migrate
+   ```
+   Deliberately not automated into the build/deploy command — a
+   migration failing mid-deploy on an unattended auto-run is a worse
+   night than running it once by hand and watching it succeed.
+5. **Superuser**: `python manage.py createsuperuser` against the same
+   direct connection.
+6. **Verify**: `/healthz/` returns `ok`, `/admin/<path>/` logs in,
+   `/ops/` loads, a test Paystack payment round-trips through
+   `/checkout/return/`.
+7. **Live Paystack keys go in only at this step, directly in Render's
+   env vars** — never earlier, never in `.env`, never committed.
+
 ## Database
 
 **Local default: SQLite**, zero setup — good enough for Phase 1–3 model
@@ -350,7 +473,8 @@ apps/
   common/           TimeStampedModel, OrganizationOwnedModel, shared mixins
   organizations/     Organization — the tenant. One row today.
   accounts/          custom User (email login, no username) + Profile
-  catalog/           Programme/Course/Module/Lesson — Phase 2
+  catalog/           Programme/Course/Module/Lesson/CourseFAQ, public
+                      landing/catalog/sales-page views, sitemap — Phases 2 & 8
   enrollment/        Enrollment/Cohort/LessonProgress, unlock service,
                       access control, learner dashboard/curriculum/player — Phase 3
   assessment/        QuestionBank/Question/Quiz/Attempt, CSV import,
@@ -362,7 +486,10 @@ apps/
                       referral middleware — Phase 6
   engagement/         EmailLog/LiveSession, Resend gateway, send-gate
                       service, all six scheduled Celery tasks — Phase 7
+  operations/         Signal/SignalRule/CalendarObligation/DigestRun,
+                      /ops/ queue, daily digest, rule evaluation — Phase 11
 templates/, static/, requirements/
+render.yaml — Render Blueprint (web/worker/beat + Redis) — Phase 9
 ```
 
 Business logic belongs in `apps/<app>/services.py`, not in views.
@@ -538,15 +665,12 @@ before, revisit before either grows real business logic.
 
 ## What's next
 
-No hard stops remain in the build spec after Phase 6, and the owner
-has since said to keep building straight through rather than pause
-between phases. Order: Phase 11 (operations/signals layer) next —
-out of spec order deliberately, since Phase 11's own instruction was
-to ship its money-rule §1–5 *before* Phase 6 went live, which already
-didn't happen; closing that gap now rather than letting it ride
-further. Then Phase 8 (public site) and Phase 9 (deploy). **Phase 10
-(instructor platform) is the one exception** — its spec explicitly
-says not to build it until Phase 9 is done *and* a first-party course
-has actually sold to a real learner. That's a fact-of-reality gate,
-not an approval checkpoint, so it's the one place this project stops
-and waits regardless of how much momentum there is.
+Phases 1–9 and 11 are done. **Phase 10 (instructor marketplace
+platform) is next** — its own spec originally said not to build it
+until Phase 9 was done *and* a first-party course had actually sold to
+a real learner (a fact-of-reality gate about being able to credibly
+coach instructors, not just an approval checkpoint). The owner
+explicitly overrode that timing and asked for it to be built now
+regardless — noted here plainly rather than silently reinterpreted.
+Building the code doesn't itself launch anything; whether to actually
+open instructor applications is still a separate decision for later.

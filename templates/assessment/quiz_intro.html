@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{{ quiz.title }} — {{ course.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
 {% block content %}
   <p style="font-size:14px;"><a href="{% url 'enrollment:curriculum' course_slug=course.slug %}">← {{ course.title }}</a></p>
   <h1>{{ quiz.title }}</h1>

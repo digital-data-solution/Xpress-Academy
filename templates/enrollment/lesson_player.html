@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{{ lesson.title }} — {{ course.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
 {% block content %}
   {% if is_preview_view %}
     <p class="lock-note">👁 Preview lesson — you're viewing this without an enrollment.</p>

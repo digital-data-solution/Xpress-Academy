@@ -55,6 +55,11 @@ class Profile(models.Model):
     vcn_number = models.CharField(max_length=50, blank=True)
     years_experience = models.PositiveIntegerField(null=True, blank=True)
     marketing_opt_in = models.BooleanField(default=False)
+    # Build spec §10: "Email verification required before enrollment
+    # activates." Login isn't blocked by this (User.is_active handles
+    # that separately) — only the checkout flow checks it, via
+    # apps.payments.views.checkout.
+    email_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
