@@ -18,7 +18,7 @@ from django.utils import timezone
 from apps.enrollment.models import Cohort, Enrollment
 
 from .gateway import PaystackError, PaystackGateway
-from .models import Coupon, Payment, ReconciliationFlag
+from .models import Coupon, Payment
 
 logger = logging.getLogger(__name__)
 
@@ -274,11 +274,14 @@ def reconcile_pending_payments(*, now=None) -> dict:
 
 
 def sweep_paystack_transactions(*, now=None) -> dict:
-    """Daily, 02:00 WAT in the eventual schedule (Phase 7). Lists
-    recent Paystack successes, filters to Academy transactions only,
-    and flags (never auto-grants) any with no matching local SUCCESS
-    Payment — see ReconciliationFlag's docstring for why this isn't
-    the real operations.Signal system yet."""
+    """Daily, 02:00 WAT (config/celery.py). Lists recent Paystack
+    successes, filters to Academy transactions only, and flags (never
+    auto-grants) any with no matching local SUCCESS Payment — raised
+    as a real apps.operations Signal (payment.reconcile_mismatch,
+    CRITICAL, INTERRUPT channel) since Phase 11, which is what
+    ReconciliationFlag's docstring always said would eventually
+    replace it. ReconciliationFlag itself stays in the codebase for
+    any historical rows from before Phase 11 shipped."""
     now = now or timezone.now()
     from_dt = now - timezone.timedelta(hours=48)
 
@@ -310,14 +313,13 @@ def sweep_paystack_transactions(*, now=None) -> dict:
             if local:
                 continue
 
-            if not ReconciliationFlag.objects.filter(reference=reference, is_resolved=False).exists():
-                ReconciliationFlag.objects.create(
-                    reference=reference,
-                    reason="Paystack shows a successful Academy transaction with no matching local SUCCESS payment.",
-                    raw_data={"amount": txn.get("amount"), "paid_at": txn.get("paid_at")},
-                )
-                flagged += 1
-                logger.critical("sweep_paystack_transactions: reconciliation mismatch for %s", reference)
+            # Local import: apps.operations.rules imports apps.payments.models
+            # (Payment), so importing at module level here would be circular.
+            from apps.operations.rules import payment_reconcile_mismatch
+
+            payment_reconcile_mismatch(reference, {"amount": txn.get("amount"), "paid_at": txn.get("paid_at")})
+            flagged += 1
+            logger.critical("sweep_paystack_transactions: reconciliation mismatch for %s", reference)
 
         meta = response.get("meta", {})
         if page * 100 >= meta.get("total", 0):

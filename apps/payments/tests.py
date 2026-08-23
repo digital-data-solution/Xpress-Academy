@@ -16,7 +16,7 @@ from apps.enrollment.models import Enrollment
 from apps.organizations.models import Organization
 
 from .gateway import PaystackError
-from .models import Coupon, Partner, Payment, ReconciliationFlag
+from .models import Coupon, Partner, Payment
 from .services import (
     CouponInvalid,
     PaymentInitError,
@@ -331,9 +331,14 @@ class TestSweep:
 
         assert result["seen"] == 0
         assert result["flagged"] == 0
-        assert ReconciliationFlag.objects.count() == 0
+        from apps.operations.models import Signal
+        assert Signal.objects.filter(key="payment.reconcile_mismatch").count() == 0
 
     def test_flags_academy_success_with_no_local_match(self, user, course):
+        """Since Phase 11, this raises a real operations.Signal
+        (payment.reconcile_mismatch) instead of the old
+        ReconciliationFlag stand-in — see apps.payments.models.Payment
+        and apps.operations.rules.payment_reconcile_mismatch."""
         with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
             mock_list.return_value = {
                 "status": True,
@@ -347,8 +352,10 @@ class TestSweep:
 
         assert result["seen"] == 1
         assert result["flagged"] == 1
-        flag = ReconciliationFlag.objects.get(reference="XDA-orphaned-transaction")
-        assert flag.is_resolved is False
+        from apps.operations.models import Signal
+        signal = Signal.objects.get(key="payment.reconcile_mismatch", dedupe_key="payment.reconcile_mismatch:XDA-orphaned-transaction")
+        assert signal.severity == Signal.Severity.CRITICAL
+        assert signal.status == Signal.Status.OPEN
 
     def test_does_not_flag_when_local_success_exists(self, user, course):
         payment = make_payment(user, course)

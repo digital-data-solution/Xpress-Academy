@@ -56,4 +56,34 @@ app.conf.beat_schedule = {
         "task": "apps.engagement.tasks.sweep_paystack_transactions_task",
         "schedule": crontab(hour=2, minute=0),  # daily 02:00 WAT
     },
+    # --- Phase 11: operations/signals — build spec §5, "money hourly,
+    # quality nightly, growth weekly" ---
+    "ops-evaluate-money-rules": {
+        "task": "apps.operations.tasks.evaluate_money_rules",
+        "schedule": crontab(minute=0),  # hourly
+    },
+    "ops-evaluate-system-and-legal-rules": {
+        "task": "apps.operations.tasks.evaluate_system_and_legal_rules",
+        "schedule": crontab(hour=3, minute=0),  # daily
+    },
+    "ops-evaluate-quality-rules": {
+        "task": "apps.operations.tasks.evaluate_quality_rules",
+        "schedule": crontab(hour=4, minute=0),  # nightly
+    },
+    "ops-evaluate-learner-rules": {
+        "task": "apps.operations.tasks.evaluate_learner_rules",
+        "schedule": crontab(hour=4, minute=30),  # nightly
+    },
+    "ops-evaluate-partner-rules": {
+        "task": "apps.operations.tasks.evaluate_partner_rules",
+        "schedule": crontab(hour=5, minute=0),  # nightly
+    },
+    "ops-expire-snoozed-signals": {
+        "task": "apps.operations.tasks.expire_snoozed_signals",
+        "schedule": crontab(minute=0),  # hourly
+    },
+    "ops-send-digest": {
+        "task": "apps.operations.tasks.send_digest",
+        "schedule": crontab(hour=7, minute=0),  # daily 07:00 WAT, per §3.1
+    },
 }

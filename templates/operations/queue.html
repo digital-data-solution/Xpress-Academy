@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Ops queue — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Ops queue</h1>
+  {% if not signals %}
+    <div class="card"><p class="badge-done">✓ Nothing open.</p></div>
+  {% endif %}
+  {% for s in signals %}
+    <div class="card">
+      <p style="font-size:11px; text-transform:uppercase; color:var(--color-muted);">{{ s.category }} · {{ s.severity }}{% if s.occurrence_count > 1 %} · seen {{ s.occurrence_count }}×{% endif %}</p>
+      <p style="font-weight:600; margin:4px 0;">{{ s.title }}</p>
+      {% if s.detail %}<p style="font-size:14px; color:var(--color-muted);">{{ s.detail }}</p>{% endif %}
+      {% if s.recommended_action %}<p style="font-size:14px;">{{ s.recommended_action }}</p>{% endif %}
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+        {% if s.action_url %}<a class="btn secondary" href="{{ s.action_url }}">Open</a>{% endif %}
+        <form method="post" action="{% url 'operations:act' signal_id=s.id %}" style="display:inline;">
+          {% csrf_token %}<input type="hidden" name="action" value="resolve">
+          <button class="btn" type="submit">Resolve</button>
+        </form>
+        <form method="post" action="{% url 'operations:act' signal_id=s.id %}" style="display:inline;">
+          {% csrf_token %}<input type="hidden" name="action" value="snooze"><input type="hidden" name="days" value="7">
+          <button class="btn secondary" type="submit">Snooze 7d</button>
+        </form>
+        <form method="post" action="{% url 'operations:act' signal_id=s.id %}" style="display:inline;">
+          {% csrf_token %}<input type="hidden" name="action" value="dismiss">
+          <button class="btn secondary" type="submit">Dismiss</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

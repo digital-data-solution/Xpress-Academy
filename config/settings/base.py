@@ -72,6 +72,14 @@ DEFAULT_FROM_EMAIL_FALLBACK = env("DEFAULT_FROM_EMAIL_FALLBACK", default="academ
 # A generous ceiling, not a target — see apps/engagement/services.py::send_email.
 EMAIL_RATE_LIMIT_PER_MINUTE = env.int("EMAIL_RATE_LIMIT_PER_MINUTE", default=100)
 
+# --- Operations digest (Phase 11) ---------------------------------------
+# Where the daily digest and interrupts actually land — deliberately
+# NOT hardcoded to a person's address anywhere in source. Empty by
+# default; apps.operations.services falls back to the first superuser's
+# email at send time if this is unset, so the app still works out of
+# the box, but the real address belongs in env/Render, not in git.
+OPS_ALERT_EMAIL = env("OPS_ALERT_EMAIL", default="")
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -91,6 +99,7 @@ INSTALLED_APPS = [
     "apps.enrollment",
     "apps.assessment",
     "apps.certificates",
+    "apps.operations",
     "apps.payments",
     "apps.engagement",
 ]
