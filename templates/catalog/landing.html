@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Xpress Digital Academy — Practical courses, real skills{% endblock %}
+{% block meta_description %}Practical, Nigeria-specific online courses that turn watching into doing — from Xpress Digital Academy.{% endblock %}
+{% block content %}
+  <div class="hero">
+    <h1>Courses built for how you actually work</h1>
+    <p class="lead">Practical, Nigeria-specific training — sequential lessons, real quizzes, a certificate you can verify.</p>
+    <a class="btn" href="{% url 'catalog:course_catalog' %}">Browse courses</a>
+  </div>
+
+  {% if featured_courses %}
+    <h2 style="margin-top:40px;">Available now</h2>
+    <div class="course-grid">
+      {% for course in featured_courses %}
+        <a class="course-card-link" href="{% url 'catalog:course_detail' slug=course.slug %}">
+          <div class="card">
+            <p style="font-weight:600; margin:0 0 4px;">{{ course.title }}</p>
+            {% if course.subtitle %}<p style="font-size:14px; color:var(--color-muted); margin:0 0 8px;">{{ course.subtitle }}</p>{% endif %}
+            <div class="price-row">
+              {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+              <span class="price-now">₦{{ course.price_ngn }}</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

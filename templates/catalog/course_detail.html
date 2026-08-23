@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}{{ course.sales_headline|default:course.title }} — Xpress Digital Academy{% endblock %}
+{% block meta_description %}{{ course.meta_description|default:course.subtitle|truncatechars:160 }}{% endblock %}
+{% block og_title %}{{ course.sales_headline|default:course.title }}{% endblock %}
+{% block og_description %}{{ course.meta_description|default:course.subtitle }}{% endblock %}
+{% block content %}
+  <div class="hero">
+    <h1>{{ course.sales_headline|default:course.title }}</h1>
+    {% if course.sales_subheadline or course.subtitle %}
+      <p class="lead">{{ course.sales_subheadline|default:course.subtitle }}</p>
+    {% endif %}
+    <div class="price-row" style="justify-content:center;">
+      {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+      <span class="price-now">₦{{ course.price_ngn }}</span>
+    </div>
+    <p style="margin-top:16px;">
+      {% if is_enrolled %}
+        <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
+      {% else %}
+        <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now</a>
+      {% endif %}
+    </p>
+  </div>
+
+  {% if course.description %}
+    <h2>About this course</h2>
+    <div>{{ course.description|safe }}</div>
+  {% endif %}
+
+  <h2>What you'll learn</h2>
+  <ul class="plain-list">
+    {% for module in modules %}
+      <li>{{ module.title }}{% if module.summary %} — {{ module.summary|truncatewords:20 }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+
+  {% if course.target_audience %}
+    <h2>Who this is for</h2>
+    <ul class="plain-list">
+      {% for line in course.target_audience.splitlines %}{% if line %}<li>{{ line }}</li>{% endif %}{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if course.not_for %}
+    <h2>Who this is NOT for</h2>
+    <ul class="plain-list">
+      {% for line in course.not_for.splitlines %}{% if line %}<li>{{ line }}</li>{% endif %}{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if course.instructor_bio %}
+    <h2>About the instructor</h2>
+    <p>{{ course.instructor_bio }}</p>
+  {% endif %}
+
+  {% if faqs %}
+    <h2>FAQ</h2>
+    {% for faq in faqs %}
+      <details class="faq-item">
+        <summary>{{ faq.question }}</summary>
+        <p style="margin-top:8px;">{{ faq.answer }}</p>
+      </details>
+    {% endfor %}
+  {% endif %}
+
+  <div class="card" style="margin-top:32px; text-align:center;">
+    {% if is_enrolled %}
+      <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
+    {% else %}
+      <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — ₦{{ course.price_ngn }}</a>
+    {% endif %}
+  </div>
+{% endblock %}

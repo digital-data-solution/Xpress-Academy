@@ -92,6 +92,21 @@ class Course(OrganizationOwnedModel):
     is_published = models.BooleanField(default=False)
     published_at = models.DateTimeField(null=True, blank=True)
 
+    # Sales-page copy (Phase 8) — not in the spec's original §4 model
+    # list, added because the public sales page it asks for needs
+    # somewhere to hold this content, and Django admin is the only
+    # authoring tool. All blank-safe: the template falls back to
+    # subtitle/description when these are empty, so an un-marketed
+    # course still renders sensibly.
+    sales_headline = models.CharField(max_length=255, blank=True)
+    sales_subheadline = models.CharField(max_length=255, blank=True)
+    target_audience = models.TextField(blank=True, help_text="Who this course is for — one point per line.")
+    not_for = models.TextField(blank=True, help_text="Who this course is NOT for — one point per line.")
+    instructor_bio = models.TextField(blank=True)
+    meta_description = models.CharField(
+        max_length=160, blank=True, help_text="SEO meta description. Falls back to subtitle if blank."
+    )
+
     class Meta:
         ordering = ["programme", "title"]
 
@@ -220,3 +235,18 @@ class Resource(TimeStampedModel):
     def clean(self):
         if bool(self.course_id) == bool(self.module_id):
             raise ValidationError("Set exactly one of course or module, not both or neither.")
+
+
+class CourseFAQ(models.Model):
+    """Sales-page FAQ — Phase 8. Admin-managed, ordered per course."""
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="faqs")
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["course", "order"]
+
+    def __str__(self):
+        return self.question

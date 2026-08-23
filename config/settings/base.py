@@ -88,6 +88,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     # Third-party — admin authoring UX only, no learner-facing footprint
     "adminsortable2",
     "django_ckeditor_5",
@@ -184,9 +185,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URL = "/dashboard/"
-# No landing page at "/" until Phase 8 — send a logged-out user
-# somewhere that actually resolves. Revisit once the public site exists.
-LOGOUT_REDIRECT_URL = "/account/login/"
+LOGOUT_REDIRECT_URL = "/"  # the public landing page, since Phase 8
 
 # Structured logging to stdout — Render captures it from there.
 LOGGING = {

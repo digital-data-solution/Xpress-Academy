@@ -2,7 +2,7 @@ from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Course, Lesson, Module, Programme, Resource
+from .models import Course, CourseFAQ, Lesson, Module, Programme, Resource
 
 
 @admin.register(Programme)
@@ -25,6 +25,12 @@ class ModuleInline(SortableInlineAdminMixin, admin.TabularInline):
     show_change_link = True
 
 
+class CourseFAQInline(SortableInlineAdminMixin, admin.TabularInline):
+    model = CourseFAQ
+    extra = 0
+    fields = ["order", "question", "answer"]
+
+
 @admin.register(Course)
 class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = [
@@ -39,7 +45,7 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_filter = ["programme", "audience", "level", "is_published", "access_type"]
     search_fields = ["title", "slug", "subtitle"]
     prepopulated_fields = {"slug": ("title",)}
-    inlines = [ModuleInline]
+    inlines = [ModuleInline, CourseFAQInline]
     fieldsets = (
         (None, {"fields": ("organization", "programme", "title", "slug", "subtitle", "description")}),
         ("Media", {"fields": ("cover_image", "promo_video_id")}),
@@ -52,6 +58,13 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
             )
         }),
         ("Completion", {"fields": ("requires_final_assessment", "pass_mark")}),
+        ("Sales page", {
+            "fields": (
+                "sales_headline", "sales_subheadline", "target_audience", "not_for",
+                "instructor_bio", "meta_description",
+            ),
+            "description": "Shown on the public /courses/&lt;slug&gt;/ page. Falls back to subtitle/description when blank.",
+        }),
         ("Publishing", {"fields": ("is_published", "published_at")}),
     )
 

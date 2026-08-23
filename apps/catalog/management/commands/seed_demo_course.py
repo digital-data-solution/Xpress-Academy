@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from apps.assessment.models import Choice, Question, QuestionBank, Quiz
-from apps.catalog.models import Audience, Course, Lesson, Module, Programme, Resource
+from apps.catalog.models import Audience, Course, CourseFAQ, Lesson, Module, Programme, Resource
 from apps.organizations.models import Organization
 
 # Real curriculum from the breeder-track course brief, not placeholder
@@ -105,6 +105,27 @@ class Command(BaseCommand):
                     "requires_final_assessment": False,  # Phase 4 not built yet
                     "estimated_hours": 4.0,
                     "is_published": False,  # seed data starts unpublished on purpose
+                    # Sales-page copy — drawn from the actual breeder-track
+                    # course brief, not placeholder text.
+                    "sales_headline": "Stop losing litters to things you could have caught early",
+                    "sales_subheadline": "8 modules on breeding with judgement — from choosing the "
+                                          "pair to knowing exactly when to call your vet.",
+                    "target_audience": (
+                        "Hobby and small commercial breeders with 1–10 breeding females\n"
+                        "Breeders of German Shepherd, Rottweiler, Caucasian Shepherd, Boerboel, "
+                        "Belgian Malinois, Lhasa Apso, and local crosses\n"
+                        "Anyone who has lost a litter and never found out why\n"
+                        "Breeders who want to be a better partner to their vet, not a replacement for one"
+                    ),
+                    "not_for": (
+                        "Anyone looking to learn surgery, prescribing, or lab interpretation — "
+                        "that's a vet's job, and this course teaches you to recognise the moment "
+                        "you need one\n"
+                        "Veterinarians — see the separate Canine Reproduction for Practitioners track"
+                    ),
+                    "instructor_bio": "Dr. Omale Ojonimi Samuel, veterinarian (VCN 9217).",
+                    "meta_description": "A practical, Nigeria-specific dog breeding course — "
+                                         "real prices, real constraints, and exactly when to call your vet.",
                 },
             )
             if not course_created:
@@ -214,5 +235,18 @@ class Command(BaseCommand):
                 time_limit_minutes=0,
             )
             self.stdout.write(self.style.SUCCESS("Created a sample question bank and module 1 quiz."))
+
+            faqs = [
+                ("Do I need to be a vet to take this course?",
+                 "No — it's built for breeders, not vets. Any clinical decision routes you to your "
+                 "own vet; the course teaches you to recognise that moment early, which is the real skill."),
+                ("How long do I have access?",
+                 "Lifetime access — go at your own pace, and revisit any module whenever you need it."),
+                ("Is there a certificate?",
+                 "Yes, a Certificate of Completion once you finish every module."),
+            ]
+            for order, (question, answer) in enumerate(faqs, start=1):
+                CourseFAQ.objects.create(course=course, question=question, answer=answer, order=order)
+            self.stdout.write(self.style.SUCCESS(f"Created {len(faqs)} FAQ entries."))
 
             self.stdout.write(self.style.SUCCESS("Done. Course is unpublished — review in admin before flipping is_published."))
