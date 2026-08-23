@@ -28,9 +28,20 @@ def checkout(request, course_slug):
     if request.method == "POST":
         coupon_code = request.POST.get("coupon_code", "").strip() or None
         partner = get_active_partner(request)
+
+        # Phase 10 — instructor attribution, determined now (this is
+        # when the session's referral state is live) and snapshotted
+        # onto the Payment for grant_access() to read back later.
+        attribution = attributed_instructor = attribution_source = None
+        if course.instructor_id:
+            from apps.instructors.services import determine_attribution
+            attribution, attributed_instructor, attribution_source = determine_attribution(request, course)
+
         try:
             payment, authorization_url = initialize_payment(
                 user=request.user, course=course, coupon_code=coupon_code, partner=partner,
+                attribution=attribution or "", attributed_instructor=attributed_instructor,
+                attribution_source=attribution_source or "",
             )
         except CouponInvalid as exc:
             return render(request, "payments/checkout.html", {"course": course, "error": str(exc)})

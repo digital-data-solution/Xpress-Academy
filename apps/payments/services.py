@@ -65,7 +65,10 @@ def compute_amount_kobo(course, coupon: Coupon | None = None) -> int:
     return max(amount, MIN_CHARGE_KOBO)
 
 
-def initialize_payment(*, user, course, coupon_code=None, partner=None, cohort=None) -> tuple[Payment, str]:
+def initialize_payment(
+    *, user, course, coupon_code=None, partner=None, cohort=None,
+    attribution="", attributed_instructor=None, attribution_source="",
+) -> tuple[Payment, str]:
     """Returns (payment, authorization_url). Raises PaymentInitError if
     Paystack rejects the call — the Payment row still exists, marked
     FAILED, so nothing is lost track of.
@@ -95,6 +98,11 @@ def initialize_payment(*, user, course, coupon_code=None, partner=None, cohort=N
         user=user, course=course, cohort=cohort,
         reference=reference, amount_kobo=amount_kobo,
         coupon=coupon, partner=partner,
+        # Phase 10 — snapshotted at init time (this is when we know
+        # the session's referral state), read back at grant_access
+        # time to write the instructor earnings split.
+        attribution=attribution, attributed_instructor=attributed_instructor,
+        attribution_source=attribution_source,
     )
 
     callback_url = f"{_site_url()}/checkout/return/"
@@ -223,6 +231,16 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment:
         from django.db.models import F
         Coupon.objects.filter(pk=payment.coupon_id).update(times_used=F("times_used") + 1)
 
+    if payment.course.instructor_id:
+        # Phase 10 — no-op for a first-party course (instructor_id is
+        # None). Safe to call inside this same atomic block:
+        # record_sale_earnings is itself idempotent (checks for
+        # existing entries against this payment first), so a re-run
+        # via grant_access's own early-return-on-SUCCESS guard above
+        # can never double-write it anyway.
+        from apps.instructors.services import record_sale_earnings
+        record_sale_earnings(payment)
+
     logger.info("grant_access: enrolled %s in %s via payment %s", payment.user.email, payment.course.title, payment.reference)
 
     # Queued outside the transaction — must not fire until the
@@ -339,4 +357,11 @@ def refund_payment(payment: Payment, reason: str) -> Payment:
     payment.refunded_at = timezone.now()
     payment.refund_reason = reason
     payment.save(update_fields=["status", "refunded_at", "refund_reason", "updated_at"])
+
+    if payment.course.instructor_id:
+        # Phase 10 — build spec §6: "Refunds are debited from the
+        # instructor's ledger via REFUND_REVERSAL."
+        from apps.instructors.services import reverse_earnings_for_refund
+        reverse_earnings_for_refund(payment)
+
     return payment

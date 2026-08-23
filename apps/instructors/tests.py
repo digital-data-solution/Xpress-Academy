@@ -285,3 +285,58 @@ class TestTeachViews:
         client.force_login(instructor_user)  # logged in as `instructor`, not `other`
         resp = client.get(f"/teach/courses/{other_course.slug}/edit/")
         assert resp.status_code == 404
+
+
+@pytest.mark.django_db
+class TestEndToEndCheckoutWiring:
+    """Proves the gap flagged after the initial Phase 10 build is
+    actually closed: a real checkout against an instructor-owned
+    course creates EarningsEntry rows, not just the standalone
+    service functions in isolation."""
+
+    def test_checkout_creates_earnings_entries(self, instructor, instructor_course):
+        from unittest.mock import patch
+
+        buyer = User.objects.create_user(email="e2e-buyer@example.com", password="testpass123")
+        buyer.profile.email_verified = True
+        buyer.profile.save(update_fields=["email_verified"])
+
+        client = Client()
+        client.force_login(buyer)
+
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            client.post(f"/checkout/{instructor_course.slug}/")
+
+        payment = Payment.objects.get(user=buyer, course=instructor_course)
+        assert payment.attribution == Payment.Attribution.PLATFORM_TRAFFIC  # no referral link used
+
+        verify_data = {
+            "status": "success", "amount": payment.amount_kobo, "currency": "NGN",
+            "reference": payment.reference, "metadata": {"product": "xpress_academy"},
+        }
+        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = {"status": True, "data": verify_data}
+            client.get(f"/checkout/return/?reference={payment.reference}")
+
+        assert EarningsEntry.objects.filter(payment=payment, entry_type=EarningsEntry.EntryType.INSTRUCTOR_EARNING).exists()
+        assert get_instructor_balance(instructor) == 500_000  # 50% platform-traffic rate
+
+    def test_checkout_with_referral_link_attributes_own_traffic(self, instructor, instructor_course):
+        from unittest.mock import patch
+
+        buyer = User.objects.create_user(email="e2e-buyer2@example.com", password="testpass123")
+        buyer.profile.email_verified = True
+        buyer.profile.save(update_fields=["email_verified"])
+
+        client = Client()
+        client.force_login(buyer)
+        client.get(f"/courses/{instructor_course.slug}/?ref={instructor.referral_code}")  # captures the referral
+
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            client.post(f"/checkout/{instructor_course.slug}/")
+
+        payment = Payment.objects.get(user=buyer, course=instructor_course)
+        assert payment.attribution == Payment.Attribution.OWN_TRAFFIC
+        assert payment.attributed_instructor == instructor

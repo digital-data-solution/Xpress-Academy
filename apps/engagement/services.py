@@ -42,6 +42,29 @@ def _throttle_if_needed():
         time.sleep(sleep_for)
 
 
+def _send_via_smtp(*, to_email, from_email, subject, html) -> str:
+    """Interim path before Resend is configured — real SMTP against
+    whatever mailbox EMAIL_HOST_USER/PASSWORD point at (Gmail with an
+    App Password works fine). Constructs the SMTP backend explicitly
+    rather than relying on the global EMAIL_BACKEND setting, since
+    that's left at the console backend for anything else that might
+    call django.core.mail directly — this function is the one place
+    that deliberately overrides it. Raises on failure, same contract
+    as ResendGateway.send()."""
+    from django.core.mail.backends.smtp import EmailBackend
+    from django.core.mail.message import EmailMultiAlternatives
+
+    backend = EmailBackend(
+        host=settings.EMAIL_HOST, port=settings.EMAIL_PORT,
+        username=settings.EMAIL_HOST_USER, password=settings.EMAIL_HOST_PASSWORD,
+        use_tls=settings.EMAIL_USE_TLS, fail_silently=False,
+    )
+    message = EmailMultiAlternatives(subject=subject, body=html, from_email=from_email, to=[to_email], connection=backend)
+    message.attach_alternative(html, "text/html")
+    message.send()
+    return "smtp"
+
+
 def send_email(*, to_email, template_key, subject, html, user=None, dedupe_key=None, from_email=None) -> EmailLog:
     if dedupe_key:
         existing = EmailLog.objects.filter(dedupe_key=dedupe_key).first()
@@ -57,31 +80,44 @@ def send_email(*, to_email, template_key, subject, html, user=None, dedupe_key=N
 
     from_email = from_email or settings.DEFAULT_FROM_EMAIL_FALLBACK
 
-    if not settings.RESEND_API_KEY:
-        # Dev/test with no Resend account configured — visible in
-        # logs rather than a silent no-op, same spirit as dev.py's
-        # console EMAIL_BACKEND for Django's own (separate, unused
-        # here) mail framework.
-        logger.info("send_email (no RESEND_API_KEY — not actually sent): to=%s subject=%r", to_email, subject)
+    # Three tiers: Resend (real, once configured) > SMTP fallback
+    # (real, using a mailbox you already have — e.g. Gmail with an App
+    # Password) > log-only dev no-op (nothing configured at all).
+    if settings.RESEND_API_KEY:
+        _throttle_if_needed()
+        try:
+            response = ResendGateway().send(to_email=to_email, from_email=from_email, subject=subject, html=html)
+        except ResendError as exc:
+            logger.error("send_email failed (Resend): to=%s template=%s error=%s", to_email, template_key, exc)
+            log.status = EmailLog.Status.FAILED
+            log.error = str(exc)
+            log.save(update_fields=["status", "error", "updated_at"])
+            return log
+        provider_id = response.get("id", "")
+
+    elif settings.EMAIL_HOST_USER and settings.EMAIL_HOST_PASSWORD:
+        _throttle_if_needed()
+        try:
+            provider_id = _send_via_smtp(to_email=to_email, from_email=from_email, subject=subject, html=html)
+        except Exception as exc:  # noqa: BLE001 — smtplib raises several distinct exception types
+            logger.error("send_email failed (SMTP): to=%s template=%s error=%s", to_email, template_key, exc)
+            log.status = EmailLog.Status.FAILED
+            log.error = str(exc)
+            log.save(update_fields=["status", "error", "updated_at"])
+            return log
+
+    else:
+        # Nothing configured at all — visible in logs rather than a
+        # silent no-op.
+        logger.info("send_email (no Resend/SMTP configured — not actually sent): to=%s subject=%r", to_email, subject)
         log.status = EmailLog.Status.SENT
         log.provider_id = "dev-noop"
         log.sent_at = timezone.now()
         log.save(update_fields=["status", "provider_id", "sent_at", "updated_at"])
         return log
 
-    _throttle_if_needed()
-
-    try:
-        response = ResendGateway().send(to_email=to_email, from_email=from_email, subject=subject, html=html)
-    except ResendError as exc:
-        logger.error("send_email failed: to=%s template=%s error=%s", to_email, template_key, exc)
-        log.status = EmailLog.Status.FAILED
-        log.error = str(exc)
-        log.save(update_fields=["status", "error", "updated_at"])
-        return log
-
     log.status = EmailLog.Status.SENT
-    log.provider_id = response.get("id", "")
+    log.provider_id = provider_id
     log.sent_at = timezone.now()
     log.save(update_fields=["status", "provider_id", "sent_at", "updated_at"])
     return log

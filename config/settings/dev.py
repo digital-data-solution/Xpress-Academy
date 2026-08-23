@@ -37,8 +37,13 @@ else:
         }
     }
 
-# Emails print to the console instead of sending — no Resend calls
-# from a dev machine.
+# This EMAIL_BACKEND setting itself isn't what send_email() uses (see
+# apps/engagement/services.py — it calls Resend directly, or
+# constructs an SMTP backend explicitly when EMAIL_HOST_USER is set,
+# bypassing this setting either way). Left at console here only as
+# the safe default for anything that might use Django's own
+# django.core.mail.send_mail() directly instead of going through the
+# send-gate.
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 CSRF_TRUSTED_ORIGINS = env.list(

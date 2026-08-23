@@ -72,6 +72,23 @@ DEFAULT_FROM_EMAIL_FALLBACK = env("DEFAULT_FROM_EMAIL_FALLBACK", default="academ
 # A generous ceiling, not a target — see apps/engagement/services.py::send_email.
 EMAIL_RATE_LIMIT_PER_MINUTE = env.int("EMAIL_RATE_LIMIT_PER_MINUTE", default=100)
 
+# --- Interim SMTP fallback, before Resend is set up -----------------
+# Supabase has no general-purpose transactional-email API for an app
+# outside its own Auth flows (and this project deliberately doesn't
+# use Supabase Auth — see Phase 1 notes), so it isn't a fit here.
+# Django's own SMTP backend against a real mailbox is: set
+# EMAIL_HOST_USER to a Gmail address and EMAIL_HOST_PASSWORD to a
+# Gmail "App Password" (myaccount.google.com/apppasswords — needs
+# 2-Step Verification on first) and send_email() in
+# apps/engagement/services.py uses this path automatically whenever
+# RESEND_API_KEY is blank but these are set. Leave both blank to fall
+# back further to the log-only dev no-op.
+EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = env.int("EMAIL_PORT", default=587)
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+
 # --- Operations digest (Phase 11) ---------------------------------------
 # Where the daily digest and interrupts actually land — deliberately
 # NOT hardcoded to a person's address anywhere in source. Empty by

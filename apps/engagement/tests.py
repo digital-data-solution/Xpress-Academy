@@ -91,6 +91,46 @@ class TestSendEmail:
         assert log.status == EmailLog.Status.SENT
         assert EmailLog.objects.filter(dedupe_key="retry-me").count() == 1
 
+    def test_smtp_fallback_used_when_no_resend_but_smtp_configured(self, settings):
+        settings.RESEND_API_KEY = ""
+        settings.EMAIL_HOST_USER = "sender@gmail.com"
+        settings.EMAIL_HOST_PASSWORD = "app-password"
+        with patch("apps.engagement.services._send_via_smtp") as mock_smtp:
+            mock_smtp.return_value = "smtp"
+            log = send_email(to_email="x@example.com", template_key="t", subject="s", html="<p>x</p>")
+        mock_smtp.assert_called_once()
+        assert log.status == EmailLog.Status.SENT
+        assert log.provider_id == "smtp"
+
+    def test_resend_preferred_over_smtp_when_both_configured(self, settings):
+        settings.RESEND_API_KEY = "fake-key"
+        settings.EMAIL_HOST_USER = "sender@gmail.com"
+        settings.EMAIL_HOST_PASSWORD = "app-password"
+        with patch("apps.engagement.services.ResendGateway.send") as mock_resend, \
+             patch("apps.engagement.services._send_via_smtp") as mock_smtp:
+            mock_resend.return_value = {"id": "resend-1"}
+            send_email(to_email="x@example.com", template_key="t", subject="s", html="<p>x</p>")
+        mock_resend.assert_called_once()
+        mock_smtp.assert_not_called()
+
+    def test_smtp_failure_marks_failed_not_raised(self, settings):
+        settings.RESEND_API_KEY = ""
+        settings.EMAIL_HOST_USER = "sender@gmail.com"
+        settings.EMAIL_HOST_PASSWORD = "wrong-password"
+        with patch("apps.engagement.services._send_via_smtp") as mock_smtp:
+            mock_smtp.side_effect = Exception("(535) Authentication failed")
+            log = send_email(to_email="x@example.com", template_key="t", subject="s", html="<p>x</p>")
+        assert log.status == EmailLog.Status.FAILED
+        assert "Authentication failed" in log.error
+
+    def test_no_config_at_all_falls_back_to_noop(self, settings):
+        settings.RESEND_API_KEY = ""
+        settings.EMAIL_HOST_USER = ""
+        settings.EMAIL_HOST_PASSWORD = ""
+        log = send_email(to_email="x@example.com", template_key="t", subject="s", html="<p>x</p>")
+        assert log.status == EmailLog.Status.SENT
+        assert log.provider_id == "dev-noop"
+
 
 @pytest.mark.django_db
 class TestStalledLearners:
