@@ -64,7 +64,9 @@ def _send_via_smtp(*, to_email, from_email, subject, html) -> str:
     backend = EmailBackend(
         host=settings.EMAIL_HOST, port=settings.EMAIL_PORT,
         username=settings.EMAIL_HOST_USER, password=settings.EMAIL_HOST_PASSWORD,
-        use_tls=settings.EMAIL_USE_TLS, fail_silently=False, timeout=10,
+        use_tls=settings.EMAIL_USE_TLS and not settings.EMAIL_USE_SSL,
+        use_ssl=settings.EMAIL_USE_SSL,
+        fail_silently=False, timeout=10,
     )
     message = EmailMultiAlternatives(subject=subject, body=html, from_email=from_email, to=[to_email], connection=backend)
     message.attach_alternative(html, "text/html")

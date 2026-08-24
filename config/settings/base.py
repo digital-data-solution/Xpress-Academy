@@ -94,6 +94,12 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+# Some hosts block/filter outbound SMTP on 587 (STARTTLS) but allow
+# 465 (implicit SSL) or vice versa — seen in practice on Render's free
+# tier. Set EMAIL_PORT=465 and EMAIL_USE_SSL=True (leaves
+# EMAIL_USE_TLS as whatever, only one of the two is actually passed
+# to the backend below) to try the other path without a code change.
+EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 
 # --- Operations digest (Phase 11) ---------------------------------------
 # Where the daily digest and interrupts actually land — deliberately
