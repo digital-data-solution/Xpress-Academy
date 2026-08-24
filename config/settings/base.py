@@ -61,7 +61,13 @@ CELERY_RESULT_SERIALIZER = "json"
 # written in WAT ("daily 09:00 WAT" per spec §5), and this is what
 # makes crontab(hour=9) actually mean 9am Lagos time, not UTC.
 CELERY_TIMEZONE = "Africa/Lagos"
-CELERY_TASK_ALWAYS_EAGER = False  # dev.py flips this on — no worker/Redis needed locally
+CELERY_TASK_ALWAYS_EAGER = env.bool("CELERY_TASK_ALWAYS_EAGER", default=False)
+# dev.py flips this on unconditionally — no worker/Redis needed locally.
+# In prod, this stays False (real async via worker+beat+Redis) unless
+# explicitly overridden — a deliberate escape hatch for running the web
+# service alone, free-tier, before there's revenue to justify paying for
+# a worker+beat+Redis. Flip back to False (or unset) once those are
+# provisioned for real background processing.
 
 # --- Email / Resend (Phase 7) ------------------------------------------
 RESEND_API_KEY = env("RESEND_API_KEY", default="")
