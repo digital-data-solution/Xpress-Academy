@@ -4,6 +4,9 @@
 {% block og_title %}{{ course.sales_headline|default:course.title }}{% endblock %}
 {% block og_description %}{{ course.meta_description|default:course.subtitle }}{% endblock %}
 {% block content %}
+  {% if course.cover_image %}
+    <div class="detail-cover" style="background-image:url('{{ course.cover_image.url }}');"></div>
+  {% endif %}
   <div class="hero">
     <p class="chip">{{ course.get_audience_display }} · {{ course.get_level_display }}</p>
     <h1 style="margin-top:12px;">{{ course.sales_headline|default:course.title }}</h1>

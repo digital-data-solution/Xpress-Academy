@@ -10,9 +10,15 @@
     {% for course in courses %}
       <a class="course-card-link" href="{% url 'catalog:course_detail' slug=course.slug %}">
         <div class="card course-card">
-          <div class="course-cover {% cycle 'cover-a' 'cover-b' 'cover-c' 'cover-d' 'cover-e' %}">
-            <span class="chip chip-light">{{ course.get_level_display }}</span>
-          </div>
+          {% if course.cover_image %}
+            <div class="course-cover" style="background-image:url('{{ course.cover_image.url }}'); background-size:cover; background-position:center;">
+              <span class="chip chip-light">{{ course.get_level_display }}</span>
+            </div>
+          {% else %}
+            <div class="course-cover {% cycle 'cover-a' 'cover-b' 'cover-c' 'cover-d' 'cover-e' %}">
+              <span class="chip chip-light">{{ course.get_level_display }}</span>
+            </div>
+          {% endif %}
           <div class="course-card-body">
             <p class="chip">{{ course.get_audience_display }}</p>
             <p style="font-weight:600; margin:8px 0 4px;">{{ course.title }}</p>
