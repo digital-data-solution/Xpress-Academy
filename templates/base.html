@@ -18,6 +18,11 @@
         <a href="{% url 'catalog:course_catalog' %}">Courses</a>
         {% if user.is_authenticated %}
           <a href="{% url 'enrollment:dashboard' %}">Dashboard</a>
+          {% if user.instructor_profile %}
+            <a href="{% url 'instructors:dashboard' %}">Teach</a>
+          {% else %}
+            <a href="{% url 'instructors:apply' %}">Become an instructor</a>
+          {% endif %}
           <a href="{% url 'accounts:logout' %}">Log out</a>
         {% else %}
           <a href="{% url 'accounts:login' %}">Log in</a>
