@@ -16,13 +16,14 @@ services:
   - type: redis
     name: xpress-academy-redis
     plan: starter
+    region: frankfurt
     ipAllowList: []  # internal-only; nothing outside Render's network needs to reach it
 
   - type: web
     name: xpress-academy-web
     runtime: python
     plan: starter
-    region: oregon
+    region: frankfurt
     buildCommand: "pip install -r requirements/prod.txt && python manage.py collectstatic --noinput"
     # Migrations run as a separate, explicit step (see runbook) — never
     # auto-run on every deploy. A migration that fails mid-deploy on an
@@ -65,7 +66,7 @@ services:
     name: xpress-academy-worker
     runtime: python
     plan: starter
-    region: oregon
+    region: frankfurt
     buildCommand: "pip install -r requirements/prod.txt"
     # --pool=solo is a Windows-only concern for local dev — Render's
     # workers run Linux, so the default prefork pool is fine here.
@@ -79,7 +80,7 @@ services:
     name: xpress-academy-beat
     runtime: python
     plan: starter
-    region: oregon
+    region: frankfurt
     buildCommand: "pip install -r requirements/prod.txt"
     startCommand: "celery -A config beat --loglevel=info"
     envVars:
