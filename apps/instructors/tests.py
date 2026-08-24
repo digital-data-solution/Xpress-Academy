@@ -246,6 +246,24 @@ class TestTeachViews:
         resp = Client().get("/teach/apply/")
         assert resp.status_code == 302
 
+    def test_apply_notifies_ops(self, org, settings):
+        from unittest.mock import patch
+
+        settings.OPS_ALERT_EMAIL = "ops@example.com"
+        settings.RESEND_API_KEY = "fake-key"  # force the Resend branch so the mock below is actually exercised
+        user = User.objects.create_user(email="applicant@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        with patch("apps.engagement.services.ResendGateway.send", return_value={"id": "resend-test-id"}) as mock_send:
+            resp = client.post("/teach/apply/", {
+                "display_name": "Ada Applicant", "headline": "Vet nutrition specialist",
+                "bio": "", "credentials": "",
+            })
+        assert resp.status_code == 302
+        mock_send.assert_called_once()
+        assert mock_send.call_args.kwargs["to_email"] == "ops@example.com"
+        assert "Ada Applicant" in mock_send.call_args.kwargs["subject"]
+
     def test_dashboard_redirects_non_instructor_to_apply(self):
         user = User.objects.create_user(email="plain@example.com", password="testpass123")
         client = Client()

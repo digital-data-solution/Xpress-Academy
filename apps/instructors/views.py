@@ -15,6 +15,41 @@ from .models import EarningsEntry, Instructor, Payout
 from .services import get_instructor_balance, submit_course_for_review
 
 
+def _notify_ops_of_application(instructor: Instructor):
+    """Alerts whoever reviews applications (settings.OPS_ALERT_EMAIL,
+    falling back to the first superuser — see
+    apps.operations.services._ops_recipient, reused here rather than
+    duplicated) that a new instructor application is waiting. Never
+    hardcodes a person's address — see that function's own docstring
+    for why."""
+    from django.conf import settings
+    from django.urls import reverse
+
+    from apps.engagement.services import send_email
+    from apps.operations.services import _ops_recipient
+
+    recipient = _ops_recipient(instructor.organization)
+    if not recipient:
+        return  # nowhere to send — see _ops_recipient's own fallback chain
+
+    review_path = reverse(
+        f"admin:{instructor._meta.app_label}_{instructor._meta.model_name}_change",
+        args=[instructor.pk],
+    )
+    send_email(
+        to_email=recipient,
+        template_key="ops_instructor_application",
+        subject=f"New instructor application — {instructor.display_name}",
+        html=(
+            f"<p><strong>{instructor.display_name}</strong> ({instructor.user.email}) "
+            f"applied to teach.</p>"
+            f"<p>{instructor.headline}</p>"
+            f'<p><a href="{settings.SITE_URL}{review_path}">Review in the admin</a></p>'
+        ),
+        dedupe_key=f"instructor_application:{instructor.id}",
+    )
+
+
 def instructor_required(view_func):
     """Every /teach/ view (after apply/) needs a logged-in user WITH
     an Instructor row — this is the one gate all of them share."""
@@ -46,6 +81,7 @@ def apply(request):
             instructor.organization = Organization.objects.first()
             instructor.status = Instructor.Status.APPLICANT
             instructor.save()
+            _notify_ops_of_application(instructor)
             messages.success(request, "Application received — we'll be in touch once it's reviewed.")
             return redirect("instructors:dashboard")
     else:

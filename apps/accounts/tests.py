@@ -7,7 +7,7 @@ from apps.catalog.models import Audience, Course, Programme
 from apps.organizations.models import Organization
 
 from .models import Profile, User
-from .views import _make_verify_token
+from .views import _make_reset_token, _make_verify_token
 
 
 @pytest.mark.django_db
@@ -119,3 +119,69 @@ class TestCheckoutRequiresVerification:
         resp = client.get(f"/checkout/{course.slug}/")
         assert resp.status_code == 200
         assert b"Pay with Paystack" in resp.content
+
+
+@pytest.mark.django_db
+class TestForgotPassword:
+    def test_existing_email_sends_reset_and_shows_generic_message(self):
+        User.objects.create_user(email="hasaccount@example.com", password="oldpassword123")
+        client = Client()
+        with patch("apps.engagement.services.ResendGateway.send"):
+            resp = client.post("/account/forgot-password/", {"email": "hasaccount@example.com"}, follow=True)
+        assert b"If that email has an account" in resp.content
+
+    def test_unknown_email_shows_same_generic_message(self):
+        """Doesn't confirm/deny an email is registered — see the
+        view's own comment on why."""
+        client = Client()
+        resp = client.post("/account/forgot-password/", {"email": "nobody@example.com"}, follow=True)
+        assert b"If that email has an account" in resp.content
+
+
+@pytest.mark.django_db
+class TestResetPassword:
+    def test_valid_token_resets_password(self):
+        user = User.objects.create_user(email="reset@example.com", password="oldpassword123")
+        token = _make_reset_token(user)
+        client = Client()
+        resp = client.post(f"/account/reset-password/{token}/", {
+            "new_password1": "a-genuinely-long-passphrase-456",
+            "new_password2": "a-genuinely-long-passphrase-456",
+        })
+        assert resp.status_code == 302
+        user.refresh_from_db()
+        assert user.check_password("a-genuinely-long-passphrase-456")
+
+    def test_token_is_single_use(self):
+        """The password-hash-fragment trick: once the password has
+        changed, the same link can't be replayed to set it again."""
+        user = User.objects.create_user(email="onceonly@example.com", password="oldpassword123")
+        token = _make_reset_token(user)
+        client = Client()
+        client.post(f"/account/reset-password/{token}/", {
+            "new_password1": "first-new-passphrase-789",
+            "new_password2": "first-new-passphrase-789",
+        })
+        resp = client.post(f"/account/reset-password/{token}/", {
+            "new_password1": "second-attempt-passphrase-000",
+            "new_password2": "second-attempt-passphrase-000",
+        }, follow=True)
+        assert b"already been used" in resp.content
+        user.refresh_from_db()
+        assert user.check_password("first-new-passphrase-789")
+
+    def test_garbage_token_rejected(self):
+        client = Client()
+        resp = client.get("/account/reset-password/not-a-real-token/")
+        assert resp.status_code == 302
+
+    def test_mismatched_passwords_rejected(self):
+        user = User.objects.create_user(email="mismatch@example.com", password="oldpassword123")
+        token = _make_reset_token(user)
+        client = Client()
+        client.post(f"/account/reset-password/{token}/", {
+            "new_password1": "one-passphrase-here-111",
+            "new_password2": "a-different-passphrase-222",
+        })
+        user.refresh_from_db()
+        assert user.check_password("oldpassword123")  # unchanged

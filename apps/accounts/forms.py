@@ -36,3 +36,10 @@ class SignupForm(forms.Form):
         user.profile.marketing_opt_in = self.cleaned_data.get("marketing_opt_in", False)
         user.profile.save(update_fields=["marketing_opt_in"])
         return user
+
+
+class ForgotPasswordForm(forms.Form):
+    email = forms.EmailField()
+
+    def clean_email(self):
+        return self.cleaned_data["email"].strip().lower()
