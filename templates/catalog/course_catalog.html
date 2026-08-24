@@ -4,18 +4,23 @@
 {% block content %}
   <h1>Courses</h1>
   {% if not courses %}
-    <div class="card"><p>No courses published yet — check back soon.</p></div>
+    <div class="empty-state"><p style="margin:0;">No courses published yet — check back soon.</p></div>
   {% endif %}
   <div class="course-grid">
     {% for course in courses %}
       <a class="course-card-link" href="{% url 'catalog:course_detail' slug=course.slug %}">
-        <div class="card">
-          <p style="font-size:11px; text-transform:uppercase; color:var(--color-muted);">{{ course.get_audience_display }} · {{ course.get_level_display }}</p>
-          <p style="font-weight:600; margin:4px 0;">{{ course.title }}</p>
-          {% if course.subtitle %}<p style="font-size:14px; color:var(--color-muted);">{{ course.subtitle }}</p>{% endif %}
-          <div class="price-row" style="margin-top:8px;">
-            {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
-            <span class="price-now">₦{{ course.price_ngn }}</span>
+        <div class="card course-card">
+          <div class="course-cover {% cycle 'cover-a' 'cover-b' 'cover-c' 'cover-d' 'cover-e' %}">
+            <span class="chip chip-light">{{ course.get_level_display }}</span>
+          </div>
+          <div class="course-card-body">
+            <p class="chip">{{ course.get_audience_display }}</p>
+            <p style="font-weight:600; margin:8px 0 4px;">{{ course.title }}</p>
+            {% if course.subtitle %}<p style="font-size:14px; color:var(--color-muted);">{{ course.subtitle }}</p>{% endif %}
+            <div class="price-row" style="margin-top:8px;">
+              {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+              <span class="price-now">₦{{ course.price_ngn }}</span>
+            </div>
           </div>
         </div>
       </a>

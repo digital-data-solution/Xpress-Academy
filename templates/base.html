@@ -8,12 +8,13 @@
   <meta property="og:title" content="{% block og_title %}Xpress Digital Academy{% endblock %}">
   <meta property="og:description" content="{% block og_description %}Practical, Nigeria-specific online courses.{% endblock %}">
   <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzE2NjUzNCIvPjx0ZXh0IHg9IjE2IiB5PSIyMS41IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5YQTwvdGV4dD48L3N2Zz4=">
   <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="{% url 'catalog:landing' %}">Xpress Digital Academy</a>
+      <a class="brand" href="{% url 'catalog:landing' %}"><span class="logo-mark">XA</span>Xpress Digital Academy</a>
       <nav>
         <a href="{% url 'catalog:course_catalog' %}">Courses</a>
         {% if user.is_authenticated %}
