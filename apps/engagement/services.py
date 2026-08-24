@@ -50,14 +50,21 @@ def _send_via_smtp(*, to_email, from_email, subject, html) -> str:
     that's left at the console backend for anything else that might
     call django.core.mail directly — this function is the one place
     that deliberately overrides it. Raises on failure, same contract
-    as ResendGateway.send()."""
+    as ResendGateway.send().
+
+    timeout is deliberately explicit and short: some hosts (seen in
+    practice on Render's free tier) silently block/filter outbound
+    SMTP so the connect() call hangs instead of failing fast. Without
+    a timeout that hang runs past Gunicorn's worker timeout and takes
+    the whole worker process down with it — this bounds the damage to
+    a clean, caught exception instead."""
     from django.core.mail.backends.smtp import EmailBackend
     from django.core.mail.message import EmailMultiAlternatives
 
     backend = EmailBackend(
         host=settings.EMAIL_HOST, port=settings.EMAIL_PORT,
         username=settings.EMAIL_HOST_USER, password=settings.EMAIL_HOST_PASSWORD,
-        use_tls=settings.EMAIL_USE_TLS, fail_silently=False,
+        use_tls=settings.EMAIL_USE_TLS, fail_silently=False, timeout=10,
     )
     message = EmailMultiAlternatives(subject=subject, body=html, from_email=from_email, to=[to_email], connection=backend)
     message.attach_alternative(html, "text/html")
