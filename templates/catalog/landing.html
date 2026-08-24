@@ -8,8 +8,61 @@
     <a class="btn" href="{% url 'catalog:course_catalog' %}">Browse courses</a>
   </div>
 
+  <p class="section-label" style="margin-top:48px;">Why learn here</p>
+  <h2 style="margin-top:0;">Built for finishing, not just starting</h2>
+  <div class="feature-grid">
+    <div class="card feature-card">
+      <div class="feature-icon">📶</div>
+      <h3>Works on any connection</h3>
+      <p>No bloated video player or heavy app to download — pages load fast even on limited mobile data.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Real quizzes, real pass marks</h3>
+      <p>Each course has assessments that actually gate progress — a certificate here means you did the work.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">🎓</div>
+      <h3>Verifiable certificates</h3>
+      <p>Every certificate issued carries a unique serial you — or anyone you share it with — can check is genuine.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">🧭</div>
+      <h3>Structured, sequential lessons</h3>
+      <p>Modules unlock in order, so you build on what you actually understood, not just skip to the end.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">🇳🇬</div>
+      <h3>Nigeria-specific content</h3>
+      <p>Examples, pricing, and context built around the market learners here actually operate in.</p>
+    </div>
+    <div class="card feature-card">
+      <div class="feature-icon">👩🏽‍🏫</div>
+      <h3>A growing catalog</h3>
+      <p>New courses from vetted instructors, each one reviewed before it ever reaches the catalog.</p>
+    </div>
+  </div>
+
+  <p class="section-label">How it works</p>
+  <h2 style="margin-top:0;">From sign-up to certificate in three steps</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Pick a course</h3>
+      <p>Browse the catalog, see exactly what's covered before you pay.</p>
+    </div>
+    <div class="step">
+      <h3>Learn at your pace</h3>
+      <p>Work through lessons and quizzes whenever suits you — progress is saved automatically.</p>
+    </div>
+    <div class="step">
+      <h3>Get certified</h3>
+      <p>Pass the final assessment and get a certificate you can verify and share.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Available now</p>
+  <h2 style="margin-top:0;">Courses</h2>
   {% if featured_courses %}
-    <h2 style="margin-top:40px;">Available now</h2>
     <div class="course-grid">
       {% for course in featured_courses %}
         <a class="course-card-link" href="{% url 'catalog:course_detail' slug=course.slug %}">
@@ -24,5 +77,15 @@
         </a>
       {% endfor %}
     </div>
+  {% else %}
+    <div class="empty-state">
+      <p style="margin:0;">New courses are on the way — check back soon.</p>
+    </div>
   {% endif %}
+
+  <div class="cta-band">
+    <h2>Ready to start?</h2>
+    <p>Browse the full catalog and find the course that fits what you're trying to do.</p>
+    <a class="btn" href="{% url 'catalog:course_catalog' %}">Browse courses</a>
+  </div>
 {% endblock %}
