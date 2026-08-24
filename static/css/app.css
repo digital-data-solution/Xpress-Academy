@@ -93,6 +93,15 @@ header.site-header nav a {
 }
 header.site-header nav a:hover { color: var(--color-text); }
 
+.logout-form { display: inline-block; margin-left: 20px; }
+.logout-form button {
+  background: none; border: none; padding: 0; margin: 0;
+  color: var(--color-muted); text-decoration: none;
+  font-size: 14px; font-weight: 500; font-family: inherit;
+  cursor: pointer; transition: color 0.15s;
+}
+.logout-form button:hover { color: var(--color-text); }
+
 main { padding: 40px 0 64px; }
 main.container-narrow { padding: 32px 20px 56px; }
 
