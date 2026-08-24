@@ -4,6 +4,16 @@
 {% block content %}
   <h1>My courses</h1>
 
+  {% if not user.profile.email_verified %}
+    <div class="card" style="background:var(--color-primary-soft); border-color:var(--color-primary);">
+      <p style="margin:0 0 10px;">Your email isn't verified yet — verify it to enroll in courses.</p>
+      <form method="post" action="{% url 'accounts:resend_verification' %}">
+        {% csrf_token %}
+        <button class="btn secondary" type="submit">Resend verification email</button>
+      </form>
+    </div>
+  {% endif %}
+
   {% if not rows %}
     <div class="card">
       <p>You're not enrolled in anything yet. If you've paid for a course and don't see it here, contact support.</p>
