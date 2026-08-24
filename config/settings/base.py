@@ -74,7 +74,10 @@ RESEND_API_KEY = env("RESEND_API_KEY", default="")
 # Sent-from address falls back to the Organization's own from_email
 # (set per-org in admin) when not overridden here — see
 # apps/engagement/services.py.
-DEFAULT_FROM_EMAIL_FALLBACK = env("DEFAULT_FROM_EMAIL_FALLBACK", default="academy@xpressdigital.ng")
+DEFAULT_FROM_EMAIL_FALLBACK = env(
+    "DEFAULT_FROM_EMAIL_FALLBACK",
+    default="Xpress Digital Academy <academy@xpressdigitalanddatasolutions.online>",
+)
 # A generous ceiling, not a target — see apps/engagement/services.py::send_email.
 EMAIL_RATE_LIMIT_PER_MINUTE = env.int("EMAIL_RATE_LIMIT_PER_MINUTE", default=100)
 
