@@ -2,8 +2,10 @@
 {% block title %}No access — Xpress Digital Academy{% endblock %}
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
-  <h1>You don't have access to this course</h1>
-  <p>{{ course.title }} isn't in your account, or your access to it has ended.</p>
-  <p>If you've paid for this course and think this is a mistake, contact support.</p>
-  <a class="btn" href="{% url 'enrollment:dashboard' %}">Back to my courses</a>
+  <div class="empty-state">
+    <h1 style="margin-bottom:8px;">You don't have access to this course</h1>
+    <p style="margin:0 0 4px;">{{ course.title }} isn't in your account, or your access to it has ended.</p>
+    <p style="margin:0 0 18px;">If you've paid for this course and think this is a mistake, contact support.</p>
+    <a class="btn" href="{% url 'enrollment:dashboard' %}">Back to my courses</a>
+  </div>
 {% endblock %}

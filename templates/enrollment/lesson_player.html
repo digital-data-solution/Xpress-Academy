@@ -5,7 +5,18 @@
   {% if is_preview_view %}
     <p class="lock-note">👁 Preview lesson — you're viewing this without an enrollment.</p>
   {% else %}
-    <p style="font-size:14px;"><a href="{% url 'enrollment:curriculum' course_slug=course.slug %}">← {{ course.title }}</a></p>
+    <p class="lesson-crumb">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <a href="{% url 'enrollment:curriculum' course_slug=course.slug %}">{{ course.title }}</a>
+    </p>
+  {% endif %}
+
+  {% if lesson.type == "VIDEO" %}
+    <span class="type-pill"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg> Video lesson</span>
+  {% elif lesson.type == "PDF" or lesson.type == "DOWNLOAD" %}
+    <span class="type-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> {{ lesson.type|title }}</span>
+  {% elif lesson.type == "LIVE" %}
+    <span class="type-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Live session</span>
   {% endif %}
 
   <h1>{{ lesson.title }}</h1>
@@ -13,11 +24,14 @@
   {% if lesson.type == "VIDEO" %}
     {% if lesson.video_id %}
       <div class="video-placeholder">
-        Video playback isn't wired yet (Bunny Stream integration is a later phase — see build spec §6).
-        <br>video_id: {{ lesson.video_id }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><polygon points="21,8 21,16 17,12"/></svg>
+        <span>Video playback isn't wired yet — see build spec §6.<br>video_id: {{ lesson.video_id }}</span>
       </div>
     {% else %}
-      <div class="video-placeholder">Video not yet recorded for this lesson.</div>
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><polygon points="21,8 21,16 17,12"/></svg>
+        <span>Video not yet recorded for this lesson.</span>
+      </div>
     {% endif %}
     {% if lesson.body %}<div>{{ lesson.body|safe }}</div>{% endif %}
 
@@ -29,7 +43,7 @@
     {% if lesson.attachment %}
       <p><a class="btn" href="{{ lesson.attachment.url }}">Download {{ lesson.type|title }}</a></p>
     {% else %}
-      <p style="color:var(--color-muted);">No file attached to this lesson yet.</p>
+      <div class="empty-state"><p style="margin:0;">No file attached to this lesson yet.</p></div>
     {% endif %}
 
   {% elif lesson.type == "LIVE" %}
@@ -39,9 +53,9 @@
 
   {% if not is_preview_view %}
     {% if completed %}
-      <p class="badge-done">✓ Marked complete</p>
+      <p class="badge-done" style="font-size:15px; margin-top:20px;">✓ Marked complete</p>
     {% else %}
-      <form method="post" action="{% url 'enrollment:mark_complete' course_slug=course.slug lesson_slug=lesson.slug %}">
+      <form method="post" action="{% url 'enrollment:mark_complete' course_slug=course.slug lesson_slug=lesson.slug %}" style="margin-top:20px;">
         {% csrf_token %}
         <button class="btn" type="submit">Mark lesson complete</button>
       </form>

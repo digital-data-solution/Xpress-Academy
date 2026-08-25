@@ -2,24 +2,43 @@
 {% block title %}{{ course.title }} — Xpress Digital Academy{% endblock %}
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
-  <h1>{{ course.title }}</h1>
-  <div class="progress-track"><div class="progress-fill" style="width:{{ progress_percent }}%;"></div></div>
-  <p style="font-size:14px; color:var(--color-muted);">{{ progress_percent }}% complete</p>
+  <div class="card curriculum-header">
+    <p class="chip" style="margin-bottom:10px;">{{ course.get_audience_display }} · {{ course.get_level_display }}</p>
+    <h1>{{ course.title }}</h1>
+    <div class="progress-track"><div class="progress-fill" style="width:{{ progress_percent }}%;"></div></div>
+    <p style="font-size:14px; color:var(--color-muted); margin:8px 0 0;">{{ progress_percent }}% complete</p>
+  </div>
 
   {% for entry in modules %}
-    <div class="module-block {% if not entry.unlocked %}locked{% endif %}">
-      <div class="module-title">Module {{ entry.module.order }}: {{ entry.module.title }}</div>
+    <div class="card module-card {% if not entry.unlocked %}locked{% endif %}">
+      <div class="module-title">
+        <span class="module-num">{{ entry.module.order }}</span>
+        <span>{{ entry.module.title }}</span>
+      </div>
       {% if entry.lock_reason %}
         <div class="lock-note">🔒 {{ entry.lock_reason }}</div>
       {% endif %}
-      <ul class="lesson-list">
+      <ul class="lesson-list" style="margin-top:12px;">
         {% for lesson in entry.lessons %}
           <li class="{% if not entry.unlocked %}locked{% endif %}">
-            {% if entry.unlocked %}
-              <a href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=lesson.slug %}">{{ lesson.title }}</a>
-            {% else %}
-              <span>{{ lesson.title }}</span>
-            {% endif %}
+            <span>
+              <span class="lesson-icon">
+                {% if lesson.type == "VIDEO" %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><polygon points="21,8 21,16 17,12"/></svg>
+                {% elif lesson.type == "PDF" or lesson.type == "DOWNLOAD" %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                {% elif lesson.type == "LIVE" %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+                {% else %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                {% endif %}
+              </span>
+              {% if entry.unlocked %}
+                <a href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=lesson.slug %}">{{ lesson.title }}</a>
+              {% else %}
+                <span>{{ lesson.title }}</span>
+              {% endif %}
+            </span>
             <span>
               {% if lesson.is_preview %}<span class="badge-preview">Preview</span>{% endif %}
               {% if lesson.id in completed_lesson_ids %}<span class="badge-done">✓</span>{% endif %}
@@ -28,7 +47,7 @@
         {% endfor %}
       </ul>
       {% if entry.quiz %}
-        <p style="margin-top:8px;">
+        <p style="margin-top:12px;">
           {% if entry.unlocked %}
             <a class="btn secondary" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=entry.quiz.id %}">📝 {{ entry.quiz.title }}</a>
           {% else %}
@@ -40,8 +59,9 @@
   {% endfor %}
 
   {% if final_quiz %}
-    <h2>Final assessment</h2>
-    <div class="card">
+    <p class="section-label" style="margin-top:32px;">Final step</p>
+    <h2 style="margin-top:0;">Final assessment</h2>
+    <div class="card" style="text-align:center;">
       <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=final_quiz.id %}">📝 {{ final_quiz.title }}</a>
     </div>
   {% endif %}

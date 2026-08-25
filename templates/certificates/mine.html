@@ -3,17 +3,28 @@
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
   <h1>Your certificate</h1>
-  <div class="card">
-    <p><strong>Course:</strong> {{ certificate.course_title_snapshot }}</p>
-    <p><strong>Issued:</strong> {{ certificate.issued_at|date:"j F Y" }}</p>
-    <p><strong>Serial:</strong> {{ certificate.serial }}</p>
+
+  <div class="cert-frame">
+    <div class="cert-seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M9 12.5 7 21l5-3 5 3-2-8.5"/></svg>
+    </div>
+    <p class="cert-meta" style="position:relative; z-index:1;">Certificate of Completion</p>
+    <p class="cert-course">{{ certificate.course_title_snapshot }}</p>
+    <p class="cert-meta">Issued {{ certificate.issued_at|date:"j F Y" }}</p>
+    <div class="cert-serial">{{ certificate.serial }}</div>
+
     {% if certificate.is_revoked %}
-      <p style="color:#b91c1c;">This certificate has been revoked.</p>
+      <p style="color:#b91c1c; position:relative; z-index:1; margin-top:16px;">This certificate has been revoked.</p>
     {% else %}
-      <p><a class="btn" href="{{ certificate.pdf.url }}">Download PDF</a></p>
-      <p style="font-size:13px; color:var(--color-muted);">
-        Public verification link: /verify/{{ certificate.verification_slug }}/
+      <p style="margin-top:20px; position:relative; z-index:1;">
+        <a class="btn" href="{{ certificate.pdf.url }}">Download PDF</a>
       </p>
     {% endif %}
   </div>
+
+  {% if not certificate.is_revoked %}
+    <p style="font-size:13px; color:var(--color-muted); margin-top:16px; text-align:center;">
+      Anyone can verify this certificate at <code>/verify/{{ certificate.verification_slug }}/</code>
+    </p>
+  {% endif %}
 {% endblock %}

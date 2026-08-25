@@ -23,15 +23,25 @@ def dashboard(request):
         .order_by("-last_activity_at", "-started_at")
     )
     rows = []
+    completed_count = 0
+    certificate_count = 0
     for enrollment in enrollments:
         certificate = getattr(enrollment, "certificate", None)
+        if enrollment.status == Enrollment.Status.COMPLETED:
+            completed_count += 1
+        if certificate:
+            certificate_count += 1
         rows.append({
             "enrollment": enrollment,
             "progress_percent": get_progress_percent(enrollment),
             "next_lesson": get_next_lesson(enrollment),
             "certificate": certificate,
         })
-    return render(request, "enrollment/dashboard.html", {"rows": rows})
+    return render(request, "enrollment/dashboard.html", {
+        "rows": rows,
+        "completed_count": completed_count,
+        "certificate_count": certificate_count,
+    })
 
 
 @requires_active_enrollment

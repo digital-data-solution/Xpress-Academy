@@ -2,19 +2,25 @@
 {% block title %}Log in — Xpress Digital Academy{% endblock %}
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
-  <h1>Log in</h1>
-  {% if form.errors %}
-    <p style="color:#b91c1c;">Your email or password didn't match. Try again.</p>
-  {% endif %}
-  <form class="login-form" method="post">
-    {% csrf_token %}
-    <label for="id_username">Email</label>
-    <input type="email" name="username" id="id_username" autocomplete="email" required autofocus>
-    <label for="id_password">Password</label>
-    <input type="password" name="password" id="id_password" autocomplete="current-password" required>
-    <input type="hidden" name="next" value="{{ next }}">
-    <button class="btn" type="submit">Log in</button>
-  </form>
-  <p style="font-size:14px; margin-top:16px;">New here? <a href="{% url 'accounts:signup' %}">Create an account</a></p>
-  <p style="font-size:14px; margin-top:8px;"><a href="{% url 'accounts:forgot_password' %}">Forgot your password?</a></p>
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Welcome back</h1>
+      <p class="auth-sub">Log in to keep learning.</p>
+      {% if form.errors %}
+        <div class="form-error-list"><p style="margin:0;">Your email or password didn't match. Try again.</p></div>
+      {% endif %}
+      <form class="login-form" method="post">
+        {% csrf_token %}
+        <label for="id_username">Email</label>
+        <input type="email" name="username" id="id_username" autocomplete="email" required autofocus>
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" autocomplete="current-password" required>
+        <input type="hidden" name="next" value="{{ next }}">
+        <button class="btn" type="submit" style="width:100%; margin-top:6px;">Log in</button>
+      </form>
+      <p class="auth-links">New here? <a href="{% url 'accounts:signup' %}">Create an account</a></p>
+      <p class="auth-links" style="margin-top:4px;"><a href="{% url 'accounts:forgot_password' %}">Forgot your password?</a></p>
+    </div>
+  </div>
 {% endblock %}

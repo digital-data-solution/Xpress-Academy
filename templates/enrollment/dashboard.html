@@ -14,33 +14,60 @@
     </div>
   {% endif %}
 
+  {% if rows %}
+    <div class="stat-row">
+      <div class="card stat-tile">
+        <p class="stat-value">{{ rows|length }}</p>
+        <p class="stat-label">Enrolled</p>
+      </div>
+      <div class="card stat-tile">
+        <p class="stat-value">{{ completed_count }}</p>
+        <p class="stat-label">Completed</p>
+      </div>
+      <div class="card stat-tile">
+        <p class="stat-value">{{ certificate_count }}</p>
+        <p class="stat-label">Certificates</p>
+      </div>
+    </div>
+  {% endif %}
+
   {% if not rows %}
-    <div class="card">
-      <p>You're not enrolled in anything yet. If you've paid for a course and don't see it here, contact support.</p>
+    <div class="empty-state">
+      <p style="margin:0 0 14px;">You're not enrolled in anything yet.</p>
+      <a class="btn" href="{% url 'catalog:course_catalog' %}">Browse courses</a>
     </div>
   {% endif %}
 
   {% for row in rows %}
-    <div class="card">
-      <h2 style="margin-top:0;">{{ row.enrollment.course.title }}</h2>
-      <p style="color:var(--color-muted); font-size:14px;">
-        Status: {{ row.enrollment.get_status_display }}
-        {% if row.enrollment.expires_at %} · Access until {{ row.enrollment.expires_at|date:"j M Y" }}{% endif %}
-      </p>
-      <div class="progress-track"><div class="progress-fill" style="width:{{ row.progress_percent }}%;"></div></div>
-      <p style="font-size:14px;">{{ row.progress_percent }}% complete</p>
-
-      {% if row.enrollment.status == "COMPLETED" %}
-        <p class="badge-done">✓ Course complete</p>
-        {% if row.certificate %}
-          <a class="btn" href="{% url 'certificates:mine' serial=row.certificate.serial %}">View certificate</a>
+    <div class="card enrolled-card">
+      <div class="enrolled-cover {% cycle 'cover-a' 'cover-b' 'cover-c' 'cover-d' 'cover-e' %}">
+        {% if row.enrollment.status == "COMPLETED" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M9 12.5 7 21l5-3 5 3-2-8.5"/></svg>
+        {% else %}
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
         {% endif %}
-      {% elif row.next_lesson %}
-        <a class="btn" href="{% url 'enrollment:lesson' course_slug=row.enrollment.course.slug lesson_slug=row.next_lesson.slug %}">
-          {% if row.progress_percent == 0 %}Start course{% else %}Continue{% endif %}
-        </a>
-      {% endif %}
-      <a class="btn secondary" style="margin-left:8px;" href="{% url 'enrollment:curriculum' course_slug=row.enrollment.course.slug %}">View curriculum</a>
+      </div>
+      <div class="enrolled-body">
+        <h2 style="margin:0 0 4px; font-size:17px;">{{ row.enrollment.course.title }}</h2>
+        <p style="color:var(--color-muted); font-size:13px; margin:0 0 10px;">
+          {{ row.enrollment.get_status_display }}
+          {% if row.enrollment.expires_at %} · Access until {{ row.enrollment.expires_at|date:"j M Y" }}{% endif %}
+        </p>
+        <div class="progress-track"><div class="progress-fill" style="width:{{ row.progress_percent }}%;"></div></div>
+        <p style="font-size:13px; margin:6px 0 12px;">{{ row.progress_percent }}% complete</p>
+
+        {% if row.enrollment.status == "COMPLETED" %}
+          <p class="badge-done" style="margin-bottom:10px;">✓ Course complete</p>
+          {% if row.certificate %}
+            <a class="btn" href="{% url 'certificates:mine' serial=row.certificate.serial %}">View certificate</a>
+          {% endif %}
+        {% elif row.next_lesson %}
+          <a class="btn" href="{% url 'enrollment:lesson' course_slug=row.enrollment.course.slug lesson_slug=row.next_lesson.slug %}">
+            {% if row.progress_percent == 0 %}Start course{% else %}Continue{% endif %}
+          </a>
+        {% endif %}
+        <a class="btn secondary" style="margin-left:8px;" href="{% url 'enrollment:curriculum' course_slug=row.enrollment.course.slug %}">View curriculum</a>
+      </div>
     </div>
   {% endfor %}
 {% endblock %}

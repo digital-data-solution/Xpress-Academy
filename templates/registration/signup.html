@@ -2,27 +2,33 @@
 {% block title %}Sign up — Xpress Digital Academy{% endblock %}
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
-  <h1>Create your account</h1>
-  {% if form.errors %}
-    <div class="card" style="border-color:#fecaca;">
-      {% for field in form %}{% for error in field.errors %}<p style="color:#b91c1c; margin:4px 0;">{{ error }}</p>{% endfor %}{% endfor %}
-      {% for error in form.non_field_errors %}<p style="color:#b91c1c; margin:4px 0;">{{ error }}</p>{% endfor %}
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Create your account</h1>
+      <p class="auth-sub">Start learning in a couple of minutes.</p>
+      {% if form.errors %}
+        <div class="form-error-list">
+          {% for field in form %}{% for error in field.errors %}<p>{{ error }}</p>{% endfor %}{% endfor %}
+          {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+        </div>
+      {% endif %}
+      <form class="signup-form" method="post">
+        {% csrf_token %}
+        <label for="id_first_name">First name</label>
+        <input type="text" name="first_name" id="id_first_name" required autofocus>
+        <label for="id_last_name">Last name</label>
+        <input type="text" name="last_name" id="id_last_name">
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" required>
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" required>
+        <label style="font-weight:400; display:flex; align-items:center; gap:8px;">
+          <input type="checkbox" name="marketing_opt_in" style="width:auto; margin:0;"> Send me course updates
+        </label>
+        <button class="btn" type="submit" style="width:100%; margin-top:16px;">Create account</button>
+      </form>
+      <p class="auth-links">Already have an account? <a href="{% url 'accounts:login' %}">Log in</a></p>
     </div>
-  {% endif %}
-  <form class="signup-form" method="post">
-    {% csrf_token %}
-    <label for="id_first_name">First name</label>
-    <input type="text" name="first_name" id="id_first_name" required autofocus>
-    <label for="id_last_name">Last name</label>
-    <input type="text" name="last_name" id="id_last_name">
-    <label for="id_email">Email</label>
-    <input type="email" name="email" id="id_email" required>
-    <label for="id_password">Password</label>
-    <input type="password" name="password" id="id_password" required>
-    <label style="font-weight:400; display:flex; align-items:center; gap:8px;">
-      <input type="checkbox" name="marketing_opt_in" style="width:auto; margin:0;"> Send me course updates
-    </label>
-    <button class="btn" type="submit" style="margin-top:16px;">Create account</button>
-  </form>
-  <p style="font-size:14px; margin-top:16px;">Already have an account? <a href="{% url 'accounts:login' %}">Log in</a></p>
+  </div>
 {% endblock %}
