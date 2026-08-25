@@ -28,6 +28,8 @@
       <a class="btn" href="{% url 'certificates:mine' serial=certificate.serial %}">View your certificate →</a>
     {% elif next_lesson %}
       <a class="btn" href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=next_lesson.slug %}">Next lesson →</a>
+    {% elif attempt.passed and quiz.scope == "FINAL" and course.pricing_model == "CERTIFICATE_PAID" %}
+      <a class="btn" href="{% url 'payments:checkout_certificate' course_slug=course.slug %}">Get your certificate — ₦{{ course.price_ngn }} →</a>
     {% elif not attempt.passed %}
       <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=quiz.id %}">Try again →</a>
     {% endif %}

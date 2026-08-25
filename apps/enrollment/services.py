@@ -64,22 +64,33 @@ def is_module_completed(enrollment: Enrollment, module: Module) -> bool:
     return True
 
 
+def all_lessons_completed(enrollment: Enrollment) -> bool:
+    """Every lesson in every module of the course has a completed
+    LessonProgress — the "finished reading/watching everything" bar,
+    separate from is_course_complete()'s additional final-assessment
+    requirement. Pulled out as its own function so
+    apps.assessment.access can gate FINAL-scope quiz access on it
+    directly, without needing is_course_complete() (which would be
+    circular — that function itself needs to know whether the final
+    quiz was passed, not just attempted)."""
+    all_lessons = [l for m in enrollment.course.modules.all() for l in m.lessons.all()]
+    if not all_lessons:
+        return False
+    return all(
+        LessonProgress.objects.filter(
+            enrollment=enrollment, lesson=l, completed_at__isnull=False
+        ).exists()
+        for l in all_lessons
+    )
+
+
 def is_course_complete(enrollment: Enrollment) -> bool:
     """Every lesson in every module complete, AND — when the course
     requires it — a passing Attempt on its FINAL quiz. Phase 4/5
     extension point promised in the old mark_lesson_complete
     docstring; centralised here instead of inlined so certificates
     (Phase 5) can call the same function completion relies on."""
-    all_lessons = [l for m in enrollment.course.modules.all() for l in m.lessons.all()]
-    if not all_lessons:
-        return False
-    all_done = all(
-        LessonProgress.objects.filter(
-            enrollment=enrollment, lesson=l, completed_at__isnull=False
-        ).exists()
-        for l in all_lessons
-    )
-    if not all_done:
+    if not all_lessons_completed(enrollment):
         return False
 
     if enrollment.course.requires_final_assessment:

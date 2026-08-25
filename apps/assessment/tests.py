@@ -397,3 +397,59 @@ class TestQuizHTTPFlow:
         client.force_login(user)
         resp = client.get(f"/learn/{course.slug}/quiz/{quiz.id}/")
         assert resp.status_code == 403
+
+    def test_final_quiz_blocked_until_all_lessons_complete(self, bank, course, enrollment, user):
+        """Real bug caught live: a learner could open and attempt the
+        final exam having barely started the course — the only gate
+        that existed was on passing affecting certificate issuance,
+        not on attempting it at all."""
+        make_module(course, 1)  # lesson never marked complete
+        make_mcq(bank)
+        final_quiz = Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, title="Final", bank=bank, question_count=1)
+
+        client = Client(raise_request_exception=True)
+        client.force_login(user)
+        resp = client.get(f"/learn/{course.slug}/quiz/{final_quiz.id}/")
+        assert resp.status_code == 302
+        assert resp["Location"].endswith(f"/learn/{course.slug}/")
+        assert not Attempt.objects.filter(enrollment=enrollment, quiz=final_quiz).exists()
+
+    def test_final_quiz_accessible_once_all_lessons_complete(self, bank, course, enrollment, user):
+        m1 = make_module(course, 1)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+        make_mcq(bank)
+        final_quiz = Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, title="Final", bank=bank, question_count=1)
+
+        client = Client(raise_request_exception=True)
+        client.force_login(user)
+        resp = client.get(f"/learn/{course.slug}/quiz/{final_quiz.id}/")
+        assert resp.status_code == 200
+
+    def test_passing_final_exam_shows_certificate_link_in_results(self, bank, course, enrollment, user):
+        """The exact flow requested: finishing the final exam should
+        lead straight to the certificate, not back to the course."""
+        m1 = make_module(course, 1)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+        q = make_mcq(bank)
+        course.requires_final_assessment = True
+        course.save(update_fields=["requires_final_assessment"])
+        final_quiz = Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, title="Final", bank=bank, question_count=1)
+
+        client = Client(raise_request_exception=True)
+        client.force_login(user)
+
+        resp = client.post(f"/learn/{course.slug}/quiz/{final_quiz.id}/")
+        attempt = Attempt.objects.get(enrollment=enrollment, quiz=final_quiz)
+        attempt_url = f"/learn/{course.slug}/quiz/{final_quiz.id}/attempt/{attempt.id}/"
+
+        correct_choice_id = next(c["choice_id"] for c in attempt.question_snapshot[0]["choices"] if c["is_correct"])
+        client.post(attempt_url + "answer/", data={"question_id": q.id, "choice_ids": [correct_choice_id]}, content_type="application/json")
+        resp = client.post(attempt_url)
+        results_url = resp["Location"]
+
+        resp = client.get(results_url)
+        assert resp.status_code == 200
+        assert b"View your certificate" in resp.content
+
+        from apps.certificates.models import Certificate
+        assert Certificate.objects.filter(enrollment=enrollment).exists()

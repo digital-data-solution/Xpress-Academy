@@ -1,10 +1,12 @@
 """Access control for quiz views — same discipline as
 apps.enrollment.access.requires_active_enrollment (build spec §7),
-adapted for a quiz instead of a lesson. A MODULE-scope quiz also
-requires its module to be unlocked; a FINAL-scope quiz just needs an
-active enrollment (attempting the final assessment isn't itself
-locked behind lesson completion — only *passing* course completion is,
-via is_course_complete)."""
+adapted for a quiz instead of a lesson. A MODULE-scope quiz requires
+its module to be unlocked; a FINAL-scope quiz requires every lesson
+in the course to already be complete — real bug caught live: a
+learner could open and attempt the final exam having barely started
+the course, because the only gate that existed was on *passing*
+affecting certificate issuance (is_course_complete), not on
+attempting it at all."""
 
 from functools import wraps
 
@@ -15,7 +17,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from apps.catalog.models import Course
 from apps.enrollment.models import Enrollment
-from apps.enrollment.services import is_enrollment_currently_active, is_module_unlocked
+from apps.enrollment.services import all_lessons_completed, is_enrollment_currently_active, is_module_unlocked
 
 from .models import Quiz
 
@@ -39,6 +41,10 @@ def requires_quiz_access(view_func):
 
         if quiz.scope == Quiz.Scope.MODULE and not is_module_unlocked(enrollment, quiz.module):
             messages.info(request, "That module isn't unlocked yet.")
+            return redirect("enrollment:curriculum", course_slug=course.slug)
+
+        if quiz.scope == Quiz.Scope.FINAL and not all_lessons_completed(enrollment):
+            messages.info(request, "Finish every module first — then you can take the final exam.")
             return redirect("enrollment:curriculum", course_slug=course.slug)
 
         request.course = course

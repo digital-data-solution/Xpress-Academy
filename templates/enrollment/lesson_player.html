@@ -78,6 +78,13 @@
     </div>
   {% endif %}
 
+  {% if not is_preview_view and completed and not next_lesson and not final_quiz and course.pricing_model == "CERTIFICATE_PAID" and not enrollment.certificate %}
+    <div class="card" style="margin-top:20px; text-align:center; background:var(--color-primary-soft); border-color:var(--color-primary);">
+      <p style="margin:0 0 10px; font-weight:600;">That's the course complete — one step left for your certificate.</p>
+      <a class="btn" href="{% url 'payments:checkout_certificate' course_slug=course.slug %}">Get your certificate — ₦{{ course.price_ngn }}</a>
+    </div>
+  {% endif %}
+
   {% if not is_preview_view and final_quiz %}
     <div class="card" style="margin-top:20px; text-align:center; background:var(--color-primary-soft); border-color:var(--color-primary);">
       <p style="margin:0 0 10px; font-weight:600;">That's the last lesson — one step left for your certificate.</p>

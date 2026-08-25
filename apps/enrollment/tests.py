@@ -272,3 +272,24 @@ class TestAccessControl:
         resp = client.get("/dashboard/")
         assert resp.status_code == 302
         assert "/account/login/" in resp["Location"]
+
+    def test_certificate_paid_course_shows_pay_link_on_last_lesson(self, course, user):
+        """Same class of dead-end bug as the module/final-lesson
+        navigation fixes: a CERTIFICATE_PAID course with no final
+        assessment completes via its last lesson directly — the
+        learner needs a path to pay for the certificate right there,
+        not silently nothing."""
+        from apps.catalog.models import Course as CourseModel
+
+        course.pricing_model = CourseModel.PricingModel.CERTIFICATE_PAID
+        course.price_ngn = 2000
+        course.save(update_fields=["pricing_model", "price_ngn"])
+        m1 = make_module(course, 1)
+        Enrollment.objects.create(user=user, course=course)
+
+        client = Client()
+        client.force_login(user)
+        resp = client.post(f"/learn/{course.slug}/{m1.lessons.first().slug}/complete/")
+        assert resp.status_code == 302
+        resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
+        assert b"Get your certificate" in resp.content

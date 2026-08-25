@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 from .access import requires_active_enrollment
 from .models import Enrollment
 from .services import (
+    all_lessons_completed,
     get_lock_reason,
     get_next_lesson,
     get_progress_percent,
@@ -77,6 +78,12 @@ def curriculum(request, course_slug, lesson_slug=None):
             "enrollment": enrollment,
             "modules": modules,
             "final_quiz": final_quiz,
+            # Gates whether the final exam is shown as a live link vs a
+            # locked notice — the actual enforcement is server-side in
+            # apps.assessment.access.requires_quiz_access, this is just
+            # so the page doesn't show a link that would only redirect
+            # you straight back here.
+            "final_quiz_unlocked": all_lessons_completed(enrollment),
             "completed_lesson_ids": completed_lesson_ids,
             "progress_percent": get_progress_percent(enrollment),
         },

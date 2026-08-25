@@ -62,7 +62,11 @@
     <p class="section-label" style="margin-top:32px;">Final step</p>
     <h2 style="margin-top:0;">Final assessment</h2>
     <div class="card" style="text-align:center;">
-      <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=final_quiz.id %}">📝 {{ final_quiz.title }}</a>
+      {% if final_quiz_unlocked %}
+        <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=final_quiz.id %}">📝 {{ final_quiz.title }}</a>
+      {% else %}
+        <p style="color:var(--color-muted); margin:0;">🔒 Finish every module above first — then the final exam unlocks here.</p>
+      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
