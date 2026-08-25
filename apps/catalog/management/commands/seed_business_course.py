@@ -224,9 +224,8 @@ class Command(BaseCommand):
                         "businesses, with Nigeria-specific detail (CAC registration, FIRS/PAYE, local funding routes)"
                     ),
                     "instructor_bio": "Dr. Omale Ojonimi Samuel, Founder, Xpress Digital & Data Solutions Limited.",
-                    "meta_description": "A deep, practical business-management course for Nigerian entrepreneurs "
-                                         "and SME owners — planning, legal, finance, marketing, sales, operations, "
-                                         "leadership, funding, and growth.",
+                    "meta_description": "A deep, practical business course for Nigerian entrepreneurs — planning, "
+                                         "finance, marketing, sales, operations, leadership, funding, and growth.",
                 },
             )
 
