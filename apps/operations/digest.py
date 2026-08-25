@@ -35,13 +35,18 @@ def build_digest_context(organization) -> dict:
     ).exclude(id__in=[s.id for s in decide_today])
 
     yesterday = timezone.now() - timezone.timedelta(days=1)
+    revenue_kobo = sum(
+        Payment.objects.filter(status=Payment.Status.SUCCESS, paid_at__gte=yesterday).values_list(
+            "amount_kobo", flat=True
+        )
+    )
     numbers = {
         "new_enrollments": Enrollment.objects.filter(started_at__gte=yesterday).count(),
-        "revenue_kobo": sum(
-            Payment.objects.filter(status=Payment.Status.SUCCESS, paid_at__gte=yesterday).values_list(
-                "amount_kobo", flat=True
-            )
-        ),
+        # Stored in kobo everywhere else in this codebase (Payment
+        # .amount_kobo) — this is the one place that turns it into the
+        # ₦ figure a person actually reads, so it's computed once here
+        # rather than every caller remembering to divide by 100.
+        "revenue_naira": revenue_kobo / 100,
         "completions": Enrollment.objects.filter(
             status=Enrollment.Status.COMPLETED, completed_at__gte=yesterday
         ).count(),

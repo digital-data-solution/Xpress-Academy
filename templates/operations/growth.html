@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Growth — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Growth</h1>
+  <p style="margin-top:-10px;"><a href="{% url 'operations:queue' %}">← Ops queue</a></p>
+
+  <div class="stat-row">
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.total_learners }}</p>
+      <p class="stat-label">Learners</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.total_enrollments }}</p>
+      <p class="stat-label">Enrollments</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.total_completions }}</p>
+      <p class="stat-label">Completions</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.total_certificates }}</p>
+      <p class="stat-label">Certificates</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">₦{{ totals.total_revenue_naira|floatformat:0 }}</p>
+      <p class="stat-label">Revenue (all-time)</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.published_courses }}</p>
+      <p class="stat-label">Published courses</p>
+    </div>
+    <div class="card stat-tile">
+      <p class="stat-value">{{ totals.verified_instructors }}</p>
+      <p class="stat-label">Verified instructors</p>
+    </div>
+  </div>
+
+  <div style="margin:20px 0; display:flex; gap:8px;">
+    <a class="btn {% if days == 30 %}{% else %}secondary{% endif %}" href="?days=30">Last 30 days</a>
+    <a class="btn {% if days == 90 %}{% else %}secondary{% endif %}" href="?days=90">Last 90 days</a>
+  </div>
+  <p style="color:var(--color-muted); font-size:13px; margin-top:-14px;">{{ range_start|date:"j M Y" }} – {{ range_end|date:"j M Y" }}</p>
+
+  {% for m in metrics %}
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;">
+        <h2 style="margin:0; font-size:16px;">{{ m.label }}</h2>
+        <p style="margin:0; font-weight:600;">{{ m.period_total_display }} <span style="font-weight:400; color:var(--color-muted); font-size:13px;">over {{ days }} days</span></p>
+      </div>
+      {% if m.points %}
+        <svg viewBox="0 0 {{ chart_width }} {{ chart_height }}" preserveAspectRatio="none" style="width:100%; height:100px; margin-top:10px; display:block;">
+          <polyline points="{{ m.points }}" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <p style="font-size:12px; color:var(--color-muted); margin:4px 0 0;">Daily peak: {% if m.fmt == "naira" %}₦{{ m.max|floatformat:0 }}{% else %}{{ m.max }}{% endif %}</p>
+      {% else %}
+        <p style="color:var(--color-muted); font-size:14px;">Not enough data yet.</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

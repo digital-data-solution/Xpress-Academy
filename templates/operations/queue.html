@@ -2,6 +2,7 @@
 {% block title %}Ops queue — Xpress Digital Academy{% endblock %}
 {% block content %}
   <h1>Ops queue</h1>
+  <p style="margin-top:-10px;"><a href="{% url 'operations:growth' %}">📈 Growth dashboard →</a></p>
   {% if not signals %}
     <div class="card"><p class="badge-done">✓ Nothing open.</p></div>
   {% endif %}

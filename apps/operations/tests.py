@@ -324,3 +324,29 @@ class TestSimulateSignalsCommand:
     def test_runs_without_error_and_creates_signals(self, org):
         call_command("simulate_signals")
         assert Signal.objects.filter(dedupe_key__startswith="demo:").count() >= 5
+
+
+@pytest.mark.django_db
+class TestGrowthDashboard:
+    def test_requires_staff(self, org):
+        client = Client()
+        resp = client.get("/ops/growth/")
+        assert resp.status_code == 302  # redirected to login
+
+    def test_staff_can_view_and_totals_reflect_real_data(self, org, staff_user, course):
+        u = User.objects.create_user(email="growth-learner@example.com", password="pw12345!")
+        Enrollment.objects.create(user=u, course=course)
+
+        client = Client()
+        client.force_login(staff_user)
+        resp = client.get("/ops/growth/")
+        assert resp.status_code == 200
+        assert b"Growth" in resp.content
+        assert resp.context["totals"]["total_enrollments"] >= 1
+
+    def test_days_param_only_accepts_30_or_90(self, org, staff_user):
+        client = Client()
+        client.force_login(staff_user)
+        resp = client.get("/ops/growth/?days=9999")
+        assert resp.status_code == 200
+        assert resp.context["days"] == 30

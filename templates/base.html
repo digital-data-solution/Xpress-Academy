@@ -28,6 +28,9 @@
         {% if user.is_authenticated %}
           <a href="{% url 'enrollment:dashboard' %}">Dashboard</a>
           <a href="{% url 'support:inbox' %}">Support</a>
+          {% if user.is_staff %}
+            <a href="{% url 'operations:growth' %}">Growth</a>
+          {% endif %}
           {% if user.instructor_profile %}
             <a href="{% url 'instructors:dashboard' %}">Teach</a>
           {% else %}
