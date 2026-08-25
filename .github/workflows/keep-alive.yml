@@ -1,0 +1,25 @@
+# Pings the live site's health check every 10 minutes so Render's
+# free-tier web service never sits idle long enough (15 minutes) to
+# spin down — avoids the ~30-60s cold-start splash screen for real
+# visitors. Not airtight: GitHub's scheduled-workflow timing isn't
+# guaranteed to the minute and can slip further under load, and this
+# does nothing for Render's own maintenance restarts — but it's free
+# and needs no third-party account, unlike an external uptime pinger.
+# Superseded entirely once the app is on a paid Render plan (no
+# spin-down at all) — safe to delete this file at that point.
+name: Keep Render instance awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit the health check endpoint
+        run: |
+          curl -fsS --max-time 20 https://xpress-academy-web.onrender.com/healthz/ \
+            && echo "OK" \
+            || echo "Ping failed (site may be cold-starting or down) — not failing the job over a single miss"
