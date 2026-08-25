@@ -60,6 +60,8 @@
           <p class="badge-done" style="margin-bottom:10px;">✓ Course complete</p>
           {% if row.certificate %}
             <a class="btn" href="{% url 'certificates:mine' serial=row.certificate.serial %}">View certificate</a>
+          {% elif row.enrollment.course.pricing_model == "CERTIFICATE_PAID" %}
+            <a class="btn" href="{% url 'payments:checkout_certificate' course_slug=row.enrollment.course.slug %}">Get certificate — ₦{{ row.enrollment.course.price_ngn }}</a>
           {% endif %}
         {% elif row.next_lesson %}
           <a class="btn" href="{% url 'enrollment:lesson' course_slug=row.enrollment.course.slug lesson_slug=row.next_lesson.slug %}">

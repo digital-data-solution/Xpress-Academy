@@ -60,6 +60,31 @@ class TestCertificateIssuance:
         assert cert.course_title_snapshot == course.title
         assert cert.final_score is None
 
+    def test_certificate_paid_course_withholds_certificate_on_completion(self, course, enrollment):
+        course.pricing_model = Course.PricingModel.CERTIFICATE_PAID
+        course.save(update_fields=["pricing_model"])
+        m1 = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+
+        # Course completed, but no certificate — it's gated on a
+        # separate payment, not on finishing the course.
+        enrollment.refresh_from_db()
+        assert enrollment.status == Enrollment.Status.COMPLETED
+        assert Certificate.objects.filter(enrollment=enrollment).count() == 0
+
+    def test_certificate_paid_course_issues_once_bypassed(self, course, enrollment):
+        """bypass_payment_gate=True is what apps.payments.services.grant_access
+        passes after a successful Payment.Purpose.CERTIFICATE payment."""
+        course.pricing_model = Course.PricingModel.CERTIFICATE_PAID
+        course.save(update_fields=["pricing_model"])
+        m1 = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+
+        assert Certificate.objects.filter(enrollment=enrollment).count() == 0
+        cert = issue_certificate(enrollment, bypass_payment_gate=True)
+        assert cert is not None
+        assert Certificate.objects.filter(enrollment=enrollment).count() == 1
+
     def test_final_assessment_required_but_not_passed_issues_nothing(self, org, course, enrollment):
         """The negative case §11 explicitly asks for."""
         course.requires_final_assessment = True

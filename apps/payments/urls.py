@@ -6,5 +6,6 @@ app_name = "payments"
 
 urlpatterns = [
     path("checkout/return/", views.checkout_return, name="checkout_return"),
+    path("checkout/<slug:course_slug>/certificate/", views.checkout_certificate, name="checkout_certificate"),
     path("checkout/<slug:course_slug>/", views.checkout, name="checkout"),
 ]

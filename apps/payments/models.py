@@ -79,6 +79,16 @@ class Payment(TimeStampedModel):
         ABANDONED = "ABANDONED", "Abandoned"
         REFUNDED = "REFUNDED", "Refunded"
 
+    class Purpose(models.TextChoices):
+        # What a SUCCESS on this Payment actually grants — see
+        # grant_access(). COURSE_ACCESS creates/confirms the
+        # Enrollment (the only path that existed before Course got a
+        # CERTIFICATE_PAID pricing_model). CERTIFICATE issues the
+        # Certificate for an enrollment that's already free and
+        # already complete — course access itself was never gated.
+        COURSE_ACCESS = "COURSE_ACCESS", "Course access"
+        CERTIFICATE = "CERTIFICATE", "Certificate"
+
     # PROTECT on user/course — same "never lose payment history"
     # discipline as Enrollment. A Payment is the only record of what
     # someone actually paid, kept or not.
@@ -93,6 +103,7 @@ class Payment(TimeStampedModel):
     amount_kobo = models.PositiveIntegerField()
     currency = models.CharField(max_length=3, default="NGN")
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
+    purpose = models.CharField(max_length=20, choices=Purpose.choices, default=Purpose.COURSE_ACCESS)
 
     coupon = models.ForeignKey(Coupon, on_delete=models.PROTECT, related_name="payments", null=True, blank=True)
     partner = models.ForeignKey(

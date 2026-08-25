@@ -17,4 +17,8 @@ class CourseMetadataForm(forms.ModelForm):
     class Meta:
         from apps.catalog.models import Course
         model = Course
-        fields = ["title", "subtitle", "description", "price_ngn", "audience", "level"]
+        fields = [
+            "title", "subtitle", "description",
+            "pricing_model", "price_ngn", "minimum_price_ngn",
+            "audience", "level",
+        ]

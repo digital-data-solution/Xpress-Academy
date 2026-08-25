@@ -454,3 +454,98 @@ class TestReferralCapture:
 
         payment = Payment.objects.get(user=user, course=course)
         assert payment.partner_id is None
+
+
+@pytest.mark.django_db
+class TestPricingModels:
+    def test_free_course_grants_access_with_no_payment(self, user, course):
+        course.pricing_model = Course.PricingModel.FREE
+        course.save(update_fields=["pricing_model"])
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{course.slug}/")
+        assert resp.status_code == 302
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+        assert Payment.objects.filter(user=user, course=course).count() == 0
+
+    def test_certificate_paid_course_grants_free_access(self, user, course):
+        course.pricing_model = Course.PricingModel.CERTIFICATE_PAID
+        course.save(update_fields=["pricing_model"])
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{course.slug}/")
+        assert resp.status_code == 302
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+        assert Payment.objects.filter(user=user, course=course).count() == 0
+
+    def test_pay_what_you_want_below_minimum_rejected(self, user, course):
+        course.pricing_model = Course.PricingModel.PAY_WHAT_YOU_WANT
+        course.minimum_price_ngn = 1000
+        course.save(update_fields=["pricing_model", "minimum_price_ngn"])
+        client = Client()
+        client.force_login(user)
+        resp = client.post(f"/checkout/{course.slug}/", {"amount_ngn": "500"})
+        assert resp.status_code == 200
+        assert b"least" in resp.content
+        assert not Enrollment.objects.filter(user=user, course=course).exists()
+
+    def test_pay_what_you_want_zero_with_zero_minimum_is_free(self, user, course):
+        course.pricing_model = Course.PricingModel.PAY_WHAT_YOU_WANT
+        course.minimum_price_ngn = 0
+        course.save(update_fields=["pricing_model", "minimum_price_ngn"])
+        client = Client()
+        client.force_login(user)
+        resp = client.post(f"/checkout/{course.slug}/", {"amount_ngn": "0"})
+        assert resp.status_code == 302
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+        assert Payment.objects.filter(user=user, course=course).count() == 0
+
+    def test_pay_what_you_want_uses_custom_amount(self, user, course):
+        course.pricing_model = Course.PricingModel.PAY_WHAT_YOU_WANT
+        course.minimum_price_ngn = 1000
+        course.save(update_fields=["pricing_model", "minimum_price_ngn"])
+        client = Client()
+        client.force_login(user)
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            client.post(f"/checkout/{course.slug}/", {"amount_ngn": "7000"})
+        payment = Payment.objects.get(user=user, course=course)
+        assert payment.amount_kobo == 700_000
+
+    def test_certificate_checkout_requires_completion(self, user, course):
+        course.pricing_model = Course.PricingModel.CERTIFICATE_PAID
+        course.save(update_fields=["pricing_model"])
+        Enrollment.objects.create(user=user, course=course)  # not completed
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{course.slug}/certificate/")
+        assert resp.status_code == 302
+        assert "curriculum" in resp["Location"] or f"/learn/{course.slug}/" in resp["Location"]
+
+    def test_certificate_checkout_and_payment_issues_certificate(self, user, course):
+        from apps.catalog.models import Lesson, Module
+        from apps.certificates.models import Certificate
+        from apps.enrollment.services import mark_lesson_complete
+
+        course.pricing_model = Course.PricingModel.CERTIFICATE_PAID
+        course.price_ngn = 2000
+        course.save(update_fields=["pricing_model", "price_ngn"])
+        module = Module.objects.create(course=course, order=1, title="M1")
+        Lesson.objects.create(module=module, order=1, title="L1", type=Lesson.Type.TEXT)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        mark_lesson_complete(enrollment, module.lessons.first())
+        assert Certificate.objects.filter(enrollment=enrollment).count() == 0
+
+        client = Client()
+        client.force_login(user)
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            client.post(f"/checkout/{course.slug}/certificate/")
+        payment = Payment.objects.get(user=user, course=course, purpose=Payment.Purpose.CERTIFICATE)
+
+        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
+            resp = client.get(f"/checkout/return/?reference={payment.reference}")
+
+        assert resp.status_code == 302
+        assert Certificate.objects.filter(enrollment=enrollment).count() == 1

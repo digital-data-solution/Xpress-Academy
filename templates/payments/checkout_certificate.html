@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Get your certificate — {{ course.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Get your certificate</h1>
+  <div class="card checkout-card">
+    <div class="checkout-row">
+      <span style="font-weight:600;">{{ course.title }}</span>
+      <span class="chip">Certificate</span>
+    </div>
+    <div class="checkout-row">
+      <span style="color:var(--color-muted);">Certificate fee</span>
+      <span class="checkout-price">₦{{ course.price_ngn }}</span>
+    </div>
+    <p style="font-size:14px; color:var(--color-muted); margin-top:14px;">
+      You've completed the course — nice work. This course's certificate is issued separately from the (free) course itself.
+    </p>
+
+    {% if error %}
+      <p style="color:#b91c1c; margin-top:14px;">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" style="margin-top:18px;">
+      {% csrf_token %}
+      <button class="btn" type="submit" style="width:100%;">Pay with Paystack</button>
+    </form>
+    <div class="secure-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      You'll be redirected to Paystack to complete payment securely, then brought back here with your certificate.
+    </div>
+  </div>
+{% endblock %}

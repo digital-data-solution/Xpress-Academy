@@ -52,6 +52,12 @@ class Course(OrganizationOwnedModel):
         LIFETIME = "LIFETIME", "Lifetime"
         TIMED = "TIMED", "Timed"
 
+    class PricingModel(models.TextChoices):
+        PAID = "PAID", "Paid — pay to access the course"
+        FREE = "FREE", "Free — course and certificate both free"
+        CERTIFICATE_PAID = "CERTIFICATE_PAID", "Free course, paid certificate"
+        PAY_WHAT_YOU_WANT = "PAY_WHAT_YOU_WANT", "Pay what you want — buyer names the price"
+
     # PROTECT: losing a Programme must never cascade-delete the paid
     # courses under it. Same discipline as Organization → everything.
     programme = models.ForeignKey(Programme, on_delete=models.PROTECT, related_name="courses")
@@ -67,7 +73,21 @@ class Course(OrganizationOwnedModel):
     audience = models.CharField(max_length=20, choices=Audience.choices)
     level = models.CharField(max_length=20, choices=Level.choices, default=Level.FOUNDATION)
 
-    price_ngn = models.PositiveIntegerField(default=0, help_text="Whole naira.")
+    pricing_model = models.CharField(
+        max_length=20, choices=PricingModel.choices, default=PricingModel.PAID,
+        help_text="PAID: pay to access. FREE: course and certificate both free. "
+                   "CERTIFICATE_PAID: access is free, price_ngn is charged for the certificate instead.",
+    )
+    price_ngn = models.PositiveIntegerField(
+        default=0,
+        help_text="Whole naira. Ignored (treated as 0) when pricing_model is FREE. Used as "
+                   "the suggested price when pricing_model is PAY_WHAT_YOU_WANT.",
+    )
+    minimum_price_ngn = models.PositiveIntegerField(
+        default=0,
+        help_text="Only used when pricing_model is PAY_WHAT_YOU_WANT — the floor the buyer "
+                   "can't go under. 0 means a buyer can genuinely pay nothing.",
+    )
     compare_at_price_ngn = models.PositiveIntegerField(
         null=True, blank=True, help_text="Strike-through 'was' price. Leave blank if none."
     )

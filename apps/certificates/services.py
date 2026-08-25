@@ -41,11 +41,20 @@ def next_serial(course) -> str:
 
 
 @transaction.atomic
-def issue_certificate(enrollment):
+def issue_certificate(enrollment, *, bypass_payment_gate=False):
     """Idempotent — returns the existing Certificate if one already
     exists for this enrollment. Returns None (issues nothing) if the
     completion rule isn't actually met, so it's always safe to call
-    speculatively."""
+    speculatively — including the automatic call from
+    _mark_enrollment_completed_if_ready every time a course completes.
+
+    bypass_payment_gate=True is passed only from
+    apps.payments.services.grant_access, after a successful
+    Payment.Purpose.CERTIFICATE payment — that's the only legitimate
+    way past the gate below for a CERTIFICATE_PAID course. The
+    automatic on-completion call always passes False, so a
+    CERTIFICATE_PAID course's certificate simply doesn't exist yet
+    until it's paid for; completing the course itself stays free."""
     existing = Certificate.objects.filter(enrollment=enrollment).first()
     if existing:
         return existing
@@ -54,6 +63,9 @@ def issue_certificate(enrollment):
         return None
 
     course = enrollment.course
+    if course.pricing_model == course.PricingModel.CERTIFICATE_PAID and not bypass_payment_gate:
+        return None
+
     final_score = None
     if course.requires_final_assessment:
         from apps.assessment.models import Attempt, Quiz

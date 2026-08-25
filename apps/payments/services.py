@@ -68,6 +68,7 @@ def compute_amount_kobo(course, coupon: Coupon | None = None) -> int:
 def initialize_payment(
     *, user, course, coupon_code=None, partner=None, cohort=None,
     attribution="", attributed_instructor=None, attribution_source="",
+    purpose=Payment.Purpose.COURSE_ACCESS, custom_amount_kobo=None,
 ) -> tuple[Payment, str]:
     """Returns (payment, authorization_url). Raises PaymentInitError if
     Paystack rejects the call — the Payment row still exists, marked
@@ -88,7 +89,11 @@ def initialize_payment(
             raise CouponInvalid("Coupon code not found.")
         validate_coupon(coupon, course)
 
-    amount_kobo = compute_amount_kobo(course, coupon)
+    # custom_amount_kobo: PAY_WHAT_YOU_WANT courses — the buyer's own
+    # entered amount, already validated against course.minimum_price_ngn
+    # by the caller (checkout()). Still floored at MIN_CHARGE_KOBO —
+    # Paystack itself won't process a literal ₦0 charge.
+    amount_kobo = max(custom_amount_kobo, MIN_CHARGE_KOBO) if custom_amount_kobo is not None else compute_amount_kobo(course, coupon)
     reference = generate_reference(course, user)
 
     # Created BEFORE calling Paystack — per the addendum, "a payment
@@ -97,7 +102,7 @@ def initialize_payment(
     payment = Payment.objects.create(
         user=user, course=course, cohort=cohort,
         reference=reference, amount_kobo=amount_kobo,
-        coupon=coupon, partner=partner,
+        coupon=coupon, partner=partner, purpose=purpose,
         # Phase 10 — snapshotted at init time (this is when we know
         # the session's referral state), read back at grant_access
         # time to write the instructor earnings split.
@@ -113,6 +118,7 @@ def initialize_payment(
         "user_id": user.id,
         "coupon_code": coupon.code if coupon else None,
         "partner_ref": partner.referral_code if partner else None,
+        "purpose": purpose,
     }
 
     try:
@@ -189,12 +195,61 @@ def verify_and_grant(reference: str) -> tuple[Payment | None, str | None]:
     return payment, None
 
 
+def _create_or_get_enrollment(*, user, course, cohort=None, source, partner=None) -> tuple[Enrollment, bool]:
+    """Shared by grant_access (paid) and grant_free_access (FREE /
+    CERTIFICATE_PAID courses) — the TIMED-expiry calculation must stay
+    identical for both, so it isn't duplicated."""
+    enrollment, created = Enrollment.objects.get_or_create(
+        user=user, course=course,
+        defaults={"cohort": cohort, "source": source, "partner": partner},
+    )
+    if course.access_type == course.AccessType.TIMED and created:
+        months = course.access_months or 0
+        enrollment.expires_at = timezone.now() + timezone.timedelta(days=30 * months)
+        enrollment.save(update_fields=["expires_at"])
+    return enrollment, created
+
+
 @transaction.atomic
-def grant_access(payment: Payment, verify_data: dict) -> Enrollment:
-    """The single choke point. Every path that can conclude a payment
-    succeeded calls this — nothing else creates an Enrollment from a
-    Payment. Idempotent and safe to race (see apps/payments/tests.py's
-    concurrency test)."""
+def grant_free_access(*, user, course) -> Enrollment:
+    """Entry point for Course.PricingModel.FREE and CERTIFICATE_PAID —
+    both grant course access immediately, no payment involved (the
+    CERTIFICATE_PAID payment happens later, at certificate time, via
+    grant_access with Payment.Purpose.CERTIFICATE). No Payment row at
+    all here — there's nothing to reconcile against Paystack for
+    something that was never charged."""
+    enrollment, created = _create_or_get_enrollment(
+        user=user, course=course, source=Enrollment.Source.PURCHASE,
+    )
+    if created:
+        logger.info("grant_free_access: enrolled %s in %s (pricing_model=%s)", user.email, course.title, course.pricing_model)
+
+        def _send_welcome():
+            from apps.engagement.services import send_welcome_email
+            send_welcome_email(enrollment)
+
+        transaction.on_commit(_send_welcome)
+    return enrollment
+
+
+@transaction.atomic
+def grant_access(payment: Payment, verify_data: dict) -> Enrollment | None:
+    """The single choke point for anything a successful Payment can
+    grant. Every path that can conclude a payment succeeded calls
+    this — nothing else creates an Enrollment or issues a
+    CERTIFICATE-purpose Certificate from a Payment. Idempotent and
+    safe to race (see apps/payments/tests.py's concurrency test).
+
+    Branches on payment.purpose:
+    - COURSE_ACCESS (the original, only case before pricing_model
+      existed): creates/confirms the Enrollment, same as always.
+    - CERTIFICATE: the enrollment already exists and is already free
+      (CERTIFICATE_PAID courses grant access via grant_free_access at
+      enrollment time) — this just unlocks issuing the Certificate,
+      which issue_certificate() otherwise withholds for that pricing
+      model. Returns the Enrollment either way so callers have
+      somewhere to redirect to.
+    """
     payment = Payment.objects.select_for_update().get(pk=payment.pk)
     if payment.status == Payment.Status.SUCCESS:
         return payment.course.enrollments.get(user=payment.user)  # already done, no side effects
@@ -204,25 +259,23 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment:
     payment.raw_verify_response = verify_data
     payment.save(update_fields=["status", "paid_at", "raw_verify_response", "updated_at"])
 
+    if payment.purpose == Payment.Purpose.CERTIFICATE:
+        enrollment = payment.course.enrollments.get(user=payment.user)
+        from apps.certificates.services import issue_certificate
+        issue_certificate(enrollment, bypass_payment_gate=True)
+        logger.info("grant_access: certificate unlocked for %s on %s via payment %s", payment.user.email, payment.course.title, payment.reference)
+        return enrollment
+
     source = Enrollment.Source.PURCHASE
     if payment.coupon:
         source = Enrollment.Source.COUPON
     elif payment.partner:
         source = Enrollment.Source.PARTNER
 
-    enrollment, created = Enrollment.objects.get_or_create(
-        user=payment.user, course=payment.course,
-        defaults={
-            "cohort": payment.cohort,
-            "source": source,
-            "partner": payment.partner,
-        },
+    enrollment, created = _create_or_get_enrollment(
+        user=payment.user, course=payment.course, cohort=payment.cohort,
+        source=source, partner=payment.partner,
     )
-
-    if payment.course.access_type == payment.course.AccessType.TIMED and created:
-        months = payment.course.access_months or 0
-        enrollment.expires_at = timezone.now() + timezone.timedelta(days=30 * months)
-        enrollment.save(update_fields=["expires_at"])
 
     if payment.coupon:
         # F() expression, not a Python read-modify-write — the

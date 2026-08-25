@@ -55,7 +55,7 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
         ("Classification", {"fields": ("audience", "level", "estimated_hours")}),
         ("Pricing & access", {
             "fields": (
-                "price_ngn", "compare_at_price_ngn",
+                "pricing_model", "price_ngn", "minimum_price_ngn", "compare_at_price_ngn",
                 "access_type", "access_months",
                 "content_version", "free_update_months",
             )

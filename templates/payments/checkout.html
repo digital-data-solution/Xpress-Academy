@@ -8,13 +8,21 @@
       <span style="font-weight:600;">{{ course.title }}</span>
       <span class="chip">{{ course.get_level_display }}</span>
     </div>
-    <div class="checkout-row">
-      <span style="color:var(--color-muted);">Price</span>
-      <span>
-        {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+
+    {% if course.pricing_model == "PAY_WHAT_YOU_WANT" %}
+      <div class="checkout-row">
+        <span style="color:var(--color-muted);">Suggested price</span>
         <span class="checkout-price">₦{{ course.price_ngn }}</span>
-      </span>
-    </div>
+      </div>
+    {% else %}
+      <div class="checkout-row">
+        <span style="color:var(--color-muted);">Price</span>
+        <span>
+          {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+          <span class="checkout-price">₦{{ course.price_ngn }}</span>
+        </span>
+      </div>
+    {% endif %}
 
     {% if error %}
       <p style="color:#b91c1c; margin-top:14px;">{{ error }}</p>
@@ -22,8 +30,13 @@
 
     <form method="post" style="margin-top:18px;">
       {% csrf_token %}
-      <label for="id_coupon">Coupon code (optional)</label>
-      <input type="text" name="coupon_code" id="id_coupon" style="display:block; width:100%; padding:12px 14px; margin:8px 0 16px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-size:16px; font-family:inherit;">
+      {% if course.pricing_model == "PAY_WHAT_YOU_WANT" %}
+        <label for="id_amount">How much would you like to pay? (₦{{ course.minimum_price_ngn }} minimum{% if course.minimum_price_ngn == 0 %}, ₦0 is fine{% endif %})</label>
+        <input type="number" name="amount_ngn" id="id_amount" min="{{ course.minimum_price_ngn }}" value="{{ course.price_ngn }}" step="1" style="display:block; width:100%; padding:12px 14px; margin:8px 0 16px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-size:16px; font-family:inherit;">
+      {% else %}
+        <label for="id_coupon">Coupon code (optional)</label>
+        <input type="text" name="coupon_code" id="id_coupon" style="display:block; width:100%; padding:12px 14px; margin:8px 0 16px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-size:16px; font-family:inherit;">
+      {% endif %}
       <button class="btn" type="submit" style="width:100%;">Pay with Paystack</button>
     </form>
     <div class="secure-note">
