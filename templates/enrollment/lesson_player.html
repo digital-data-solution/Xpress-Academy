@@ -62,12 +62,21 @@
     {% endif %}
   {% endif %}
 
+  {% if not is_preview_view and module_quiz %}
+    <div class="card" style="margin-top:20px; text-align:center;">
+      <p style="margin:0 0 10px;">You've finished this module — there's a short check on what you just read.</p>
+      <a class="btn secondary" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=module_quiz.id %}">📝 {{ module_quiz.title }}</a>
+    </div>
+  {% endif %}
+
   <div class="nav-row">
     {% if prev_lesson %}
       <a class="btn secondary" href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=prev_lesson.slug %}">← {{ prev_lesson.title }}</a>
     {% else %}<span></span>{% endif %}
     {% if next_lesson %}
       <a class="btn secondary" href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=next_lesson.slug %}">{{ next_lesson.title }} →</a>
+    {% elif not is_preview_view %}
+      <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Back to course</a>
     {% endif %}
   </div>
 {% endblock %}

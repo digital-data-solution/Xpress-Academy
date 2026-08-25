@@ -93,10 +93,24 @@ def lesson_player(request, course_slug, lesson_slug):
     if enrollment:
         completed = enrollment.lesson_progress.filter(lesson=lesson, completed_at__isnull=False).exists()
 
-    all_lessons = list(module.lessons.order_by("order"))
+    # Spans the WHOLE course, not just this lesson's module — a
+    # module with only one lesson (common; every module in the demo
+    # course has exactly one) previously had no "next" at all once
+    # you finished it, a real dead end rather than a design choice.
+    all_lessons = []
+    for m in course.modules.order_by("order"):
+        all_lessons.extend(m.lessons.order_by("order"))
     idx = next((i for i, l in enumerate(all_lessons) if l.id == lesson.id), 0)
     prev_lesson = all_lessons[idx - 1] if idx > 0 else None
     next_lesson = all_lessons[idx + 1] if idx + 1 < len(all_lessons) else None
+
+    # If this is the last lesson in its module, surface that module's
+    # quiz (if any) as an explicit next step too — otherwise it's only
+    # ever reachable by going back to the curriculum page.
+    module_quiz = None
+    if lesson.id == list(module.lessons.order_by("order"))[-1].id:
+        from apps.assessment.models import Quiz
+        module_quiz = Quiz.objects.filter(scope=Quiz.Scope.MODULE, module=module).first()
 
     return render(
         request,
@@ -109,6 +123,7 @@ def lesson_player(request, course_slug, lesson_slug):
             "completed": completed,
             "prev_lesson": prev_lesson,
             "next_lesson": next_lesson,
+            "module_quiz": module_quiz,
             "is_preview_view": enrollment is None,
         },
     )
