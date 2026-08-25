@@ -13,11 +13,21 @@ from .models import Enrollment, LessonProgress
 
 
 def is_enrollment_currently_active(enrollment: Enrollment) -> bool:
-    """Real-time access check. status == ACTIVE alone isn't enough —
+    """Real-time access check — used to gate /learn/ views (curriculum,
+    lesson player). ACTIVE and COMPLETED both grant access: finishing
+    a course must never lock a learner out of reviewing it afterward
+    (lifetime access means exactly that) — only EXPIRED/REVOKED
+    actually block. Real bug this fixes: a learner who finished every
+    lesson got a 403 the moment they tried to go back to their own
+    curriculum page or reach the final exam, because status flips to
+    COMPLETED as soon as is_course_complete() is true, and this
+    function used to treat anything but ACTIVE as no-access.
+
+    status == ACTIVE/COMPLETED alone isn't enough for the TIMED case —
     an enrollment can be logically expired before the (Phase 7)
     `expire_enrollments` Celery task has run and flipped the status
     field, so expires_at is always checked live here too."""
-    if enrollment.status != Enrollment.Status.ACTIVE:
+    if enrollment.status not in (Enrollment.Status.ACTIVE, Enrollment.Status.COMPLETED):
         return False
     if enrollment.expires_at and enrollment.expires_at <= timezone.now():
         return False

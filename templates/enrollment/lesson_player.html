@@ -78,6 +78,13 @@
     </div>
   {% endif %}
 
+  {% if not is_preview_view and final_quiz %}
+    <div class="card" style="margin-top:20px; text-align:center; background:var(--color-primary-soft); border-color:var(--color-primary);">
+      <p style="margin:0 0 10px; font-weight:600;">That's the last lesson — one step left for your certificate.</p>
+      <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=final_quiz.id %}">📝 {{ final_quiz.title }}</a>
+    </div>
+  {% endif %}
+
   <div class="nav-row">
     {% if prev_lesson %}
       <a class="btn secondary" href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=prev_lesson.slug %}">← {{ prev_lesson.title }}</a>

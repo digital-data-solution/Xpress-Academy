@@ -12,10 +12,18 @@ requests==2.34.2
 celery==5.6.3
 redis==8.1.0
 
-# Added when the phase that needs them starts — listed here so the
-# eventual shape of the stack is visible, but NOT installed yet:
-#   Phase 8     cloudinary                (image/file storage)
-#   —           django-storages           (only if Cloudinary needs the storage backend)
+django-storages==1.14.4
+boto3==1.35.36
+# Real bug this closes: certificate PDFs (and any future course cover
+# uploads) were saved to local disk, which Render's free tier neither
+# serves in prod (DEBUG=False disables Django's media-serving view,
+# by design — never re-enable that in production) nor persists across
+# redeploys anyway (no disk). S3Boto3Storage against Supabase's
+# S3-compatible Storage API (see config/settings/prod.py) fixes both:
+# a real public URL, and files that survive a redeploy. Only active
+# in prod when AWS_STORAGE_BUCKET_NAME is set — falls back to local
+# storage (same as dev) otherwise, so this doesn't require the bucket
+# to exist yet to deploy the code itself.
 #
 # Resend is called directly via requests (already installed) in
 # apps/engagement/gateway.py, matching apps/payments/gateway.py's

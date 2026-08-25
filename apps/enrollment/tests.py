@@ -124,6 +124,22 @@ class TestEnrollmentActive:
         enrollment = Enrollment.objects.create(user=user, course=course, status=Enrollment.Status.REVOKED)
         assert is_enrollment_currently_active(enrollment) is False
 
+    def test_completed_status_is_still_active(self, course, user):
+        """Real bug caught live: a learner who finished every lesson
+        (status flips to COMPLETED) got a 403 the moment they tried to
+        go back to their own curriculum page or reach the final exam.
+        Lifetime access must mean lifetime access — finishing a course
+        can never lock you out of it."""
+        enrollment = Enrollment.objects.create(user=user, course=course, status=Enrollment.Status.COMPLETED)
+        assert is_enrollment_currently_active(enrollment) is True
+
+    def test_completed_status_but_past_expires_at_is_not_active(self, course, user):
+        """A COMPLETED TIMED enrollment past its expiry is still correctly locked out."""
+        enrollment = Enrollment.objects.create(user=user, course=course, status=Enrollment.Status.COMPLETED)
+        enrollment.expires_at = timezone.now() - timezone.timedelta(days=1)
+        enrollment.save(update_fields=["expires_at"])
+        assert is_enrollment_currently_active(enrollment) is False
+
 
 @pytest.mark.django_db
 class TestProgressAndCompletion:
@@ -235,6 +251,21 @@ class TestAccessControl:
         client.force_login(user)
         resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
         assert resp.status_code == 403
+
+    def test_completed_enrollment_can_still_view_curriculum_and_lessons(self, course, user):
+        """HTTP-level regression for the real bug caught live: finishing
+        a course (status -> COMPLETED) must not 403 a learner out of
+        their own curriculum page or a lesson they've already done."""
+        m1 = make_module(course, 1)
+        Enrollment.objects.create(user=user, course=course, status=Enrollment.Status.COMPLETED)
+        client = Client()
+        client.force_login(user)
+
+        resp = client.get(f"/learn/{course.slug}/")
+        assert resp.status_code == 200
+
+        resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
+        assert resp.status_code == 200
 
     def test_dashboard_requires_login(self):
         client = Client()

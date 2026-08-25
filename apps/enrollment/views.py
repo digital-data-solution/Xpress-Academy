@@ -109,9 +109,15 @@ def lesson_player(request, course_slug, lesson_slug):
     # quiz (if any) as an explicit next step too — otherwise it's only
     # ever reachable by going back to the curriculum page.
     module_quiz = None
+    final_quiz = None
     if lesson.id == list(module.lessons.order_by("order"))[-1].id:
         from apps.assessment.models import Quiz
         module_quiz = Quiz.objects.filter(scope=Quiz.Scope.MODULE, module=module).first()
+        # This is also the last lesson of the LAST module — surface
+        # the final exam directly too, so finishing the course doesn't
+        # require going back to the curriculum page just to find it.
+        if not next_lesson:
+            final_quiz = Quiz.objects.filter(scope=Quiz.Scope.FINAL, course=course).first()
 
     return render(
         request,
@@ -125,6 +131,7 @@ def lesson_player(request, course_slug, lesson_slug):
             "prev_lesson": prev_lesson,
             "next_lesson": next_lesson,
             "module_quiz": module_quiz,
+            "final_quiz": final_quiz,
             "is_preview_view": enrollment is None,
         },
     )
