@@ -1,0 +1,31 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  {% if variant == "vet" %}
+    <p>Hi {{ first_name }},</p>
+    <p>Congratulations — you've completed your certification in <strong>{{ course_title }}</strong>. That's real work, and I know exactly what it took, because I sat the same kind of exams myself coming out of ABU Zaria in 2019.</p>
+    <p>I built Xpress Digital Academy alongside <strong>Xpress Vet</strong>, our veterinary marketplace, for exactly this moment — so your certification doesn't just sit as a PDF, it becomes something clients can actually find.</p>
+    <p>If you'd like to be listed as a verified professional on Xpress Vet — where pet owners look for vets directly:</p>
+    <p><a href="{{ vet_onboarding_url }}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Get listed as a verified vet</a></p>
+    <p>If you run or help run a practice, there are also business tools (records, staff, the operational side) here: <a href="{{ business_tools_url }}">{{ business_tools_url }}</a></p>
+    <p>No pressure either way — if you just want to see what's already on the platform first, our public listings channel is open to anyone: <a href="{{ listings_channel_url }}">{{ listings_channel_url }}</a></p>
+    <p>Well done again on finishing the course.</p>
+    <p>— Dr. Omale Ojonimi Samuel<br>Xpress Vet / Xpress Digital Academy</p>
+
+  {% elif variant == "breeder" %}
+    <p>Hi {{ first_name }},</p>
+    <p>Congratulations on finishing your certification in <strong>{{ course_title }}</strong> — that's a real investment in doing this properly, and it shows.</p>
+    <p>I built <strong>Xpress Vet</strong>, our marketplace, right alongside Xpress Digital Academy, so a certification like yours doesn't just stay on paper — it can actually bring buyers to you.</p>
+    <p><a href="{{ market_url }}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">List on the marketplace</a></p>
+    <p>If you'd like to see what's already live before you commit to anything, our public listings channel is open, no signup needed: <a href="{{ listings_channel_url }}">{{ listings_channel_url }}</a></p>
+    <p>Congratulations again — glad to have you through the course.</p>
+    <p>— Dr. Omale Ojonimi Samuel<br>Xpress Vet / Xpress Digital Academy</p>
+
+  {% else %}
+    <p>Hi {{ first_name }},</p>
+    <p>Congratulations on completing <strong>{{ course_title }}</strong> with Xpress Digital Academy — well done.</p>
+    <p>Xpress Digital Academy is run alongside <strong>Xpress Vet</strong>, our veterinary and pet-care marketplace. If you're curious what else is happening under the same roof, our public listings channel is open to anyone, no signup needed: <a href="{{ listings_channel_url }}">{{ listings_channel_url }}</a></p>
+    <p>— Dr. Omale Ojonimi Samuel<br>Xpress Digital Academy</p>
+  {% endif %}
+
+  <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you opted in to course updates when you signed up. Reply to this email any time to stop receiving these.</p>
+{% endblock %}

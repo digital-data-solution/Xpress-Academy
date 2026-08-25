@@ -4,15 +4,18 @@
 
 import pytest
 from django.test import Client
+from django.utils import timezone
 
 from apps.accounts.models import User
 from apps.assessment.models import Choice, Question, QuestionBank, Quiz
 from apps.assessment.services import finalize_attempt, save_answer, start_attempt
 from apps.catalog.models import Audience, Course, Lesson, Module, Programme
+from apps.engagement.models import EmailLog
 from apps.enrollment.models import Enrollment
 from apps.enrollment.services import mark_lesson_complete
 from apps.organizations.models import Organization
 
+from .marketing import GRADUATE_MARKETING_STARTS_AT, send_graduate_marketing_emails
 from .models import Certificate
 from .pdf import CERTIFICATE_WORDING, FORBIDDEN_WORDS, build_certificate_pdf
 from .services import issue_certificate, next_serial, revoke_certificate
@@ -292,3 +295,64 @@ class TestVerificationViews:
         client = Client()
         resp = client.get(f"/certificates/{cert.serial}/")
         assert resp.status_code == 302
+
+
+@pytest.mark.django_db
+class TestGraduateMarketing:
+    def _issue(self, course, enrollment, when):
+        m = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m.lessons.first())
+        cert = Certificate.objects.get(enrollment=enrollment)
+        # auto_now_add ignores an assigned value on save() — bypass via
+        # queryset.update() so tests aren't at the mercy of wall-clock
+        # "now" relative to the fixed GRADUATE_MARKETING_STARTS_AT cutoff.
+        Certificate.objects.filter(pk=cert.pk).update(issued_at=when)
+        cert.refresh_from_db()
+        return cert
+
+    def _opt_in(self, user):
+        user.profile.marketing_opt_in = True
+        user.profile.save(update_fields=["marketing_opt_in"])
+
+    def test_skips_learner_who_did_not_opt_in(self, course, enrollment):
+        self._issue(course, enrollment, GRADUATE_MARKETING_STARTS_AT + timezone.timedelta(days=1))
+        assert send_graduate_marketing_emails() == 0
+
+    def test_skips_certificate_issued_before_cutoff(self, course, enrollment, user):
+        self._opt_in(user)
+        self._issue(course, enrollment, GRADUATE_MARKETING_STARTS_AT - timezone.timedelta(days=1))
+        assert send_graduate_marketing_emails() == 0
+
+    def test_sends_for_opted_in_learner_after_cutoff(self, course, enrollment, user):
+        self._opt_in(user)
+        self._issue(course, enrollment, GRADUATE_MARKETING_STARTS_AT + timezone.timedelta(days=1))
+        assert send_graduate_marketing_emails() == 1
+        log = EmailLog.objects.get(template_key="graduate_marketing")
+        assert log.to_email == user.email
+
+    def test_second_run_does_not_resend(self, course, enrollment, user):
+        self._opt_in(user)
+        self._issue(course, enrollment, GRADUATE_MARKETING_STARTS_AT + timezone.timedelta(days=1))
+        send_graduate_marketing_emails()
+        assert send_graduate_marketing_emails() == 0
+        assert EmailLog.objects.filter(template_key="graduate_marketing").count() == 1
+
+    def test_vet_audience_uses_vet_copy(self, org, user):
+        programme = Programme.objects.create(organization=org, title="Vet Programme", audience=Audience.VET)
+        vet_course = Course.objects.create(organization=org, programme=programme, title="Vet Course", audience=Audience.VET)
+        enr = Enrollment.objects.create(user=user, course=vet_course)
+        self._opt_in(user)
+        self._issue(vet_course, enr, GRADUATE_MARKETING_STARTS_AT + timezone.timedelta(days=1))
+        send_graduate_marketing_emails()
+        log = EmailLog.objects.get(template_key="graduate_marketing")
+        assert "next step" in log.subject
+
+    def test_general_audience_uses_soft_copy(self, org, user):
+        programme = Programme.objects.create(organization=org, title="AI Programme", audience=Audience.GENERAL)
+        general_course = Course.objects.create(organization=org, programme=programme, title="AI Course", audience=Audience.GENERAL)
+        enr = Enrollment.objects.create(user=user, course=general_course)
+        self._opt_in(user)
+        self._issue(general_course, enr, GRADUATE_MARKETING_STARTS_AT + timezone.timedelta(days=1))
+        send_graduate_marketing_emails()
+        log = EmailLog.objects.get(template_key="graduate_marketing")
+        assert log.subject == "Congratulations on your certification"

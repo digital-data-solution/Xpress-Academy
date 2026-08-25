@@ -21,11 +21,11 @@ def run_scheduled_tasks(request):
     broker involved either way, works the same whether
     CELERY_TASK_ALWAYS_EAGER is on or off.
 
-    Deliberately scoped to the engagement app's own learner-retention
+    Deliberately scoped to learner-retention and post-certification
     tasks (stalled-learner nudges, expiring-access warnings, drip
     unlocks, enrollment expiry, stale-attempt cleanup, payment
-    reconciliation) — apps.operations' signal-rule evaluation/digest
-    tasks are a separate concern, not wired here yet.
+    reconciliation, graduate marketing) — apps.operations' signal-rule
+    evaluation/digest tasks are a separate concern, not wired here yet.
 
     Every task this calls is independently idempotent (dedupe_key on
     EmailLog, capped nudge counts, etc.) — calling this more often
@@ -41,6 +41,7 @@ def run_scheduled_tasks(request):
         expire_stale_attempts,
         reconcile_pending_payments_task,
         remind_live_session,
+        send_graduate_marketing_emails_task,
         sweep_paystack_transactions_task,
         unlock_dripped_modules,
         warn_expiring_access,
@@ -56,6 +57,7 @@ def run_scheduled_tasks(request):
         ("expire_stale_attempts", expire_stale_attempts),
         ("reconcile_pending_payments", reconcile_pending_payments_task),
         ("sweep_paystack_transactions", sweep_paystack_transactions_task),
+        ("send_graduate_marketing_emails", send_graduate_marketing_emails_task),
     ]:
         try:
             results[name] = fn() or "ok"

@@ -226,3 +226,15 @@ def reconcile_pending_payments_task():
 def sweep_paystack_transactions_task():
     """Daily 02:00 WAT — same as above for sweep_paystack_transactions."""
     return sweep_paystack_transactions()
+
+
+@shared_task
+def send_graduate_marketing_emails_task():
+    """Daily — introduces newly-certified, marketing-opted-in graduates
+    to Xpress Vet Marketplace. See apps.certificates.marketing's
+    module docstring for the consent gate and no-retroactive-blast
+    scoping; the actual logic lives there since it's fundamentally
+    about certificates, not engagement mechanics — this is a thin
+    wrapper only, same as reconcile_pending_payments_task above."""
+    from apps.certificates.marketing import send_graduate_marketing_emails
+    return send_graduate_marketing_emails()
