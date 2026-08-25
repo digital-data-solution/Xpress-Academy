@@ -193,7 +193,20 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# Django 5.1 fully removed the old standalone DEFAULT_FILE_STORAGE /
+# STATICFILES_STORAGE settings in favour of this single STORAGES
+# dict — setting the old-style names is silently ignored (no error,
+# no warning, just quietly does nothing), which is exactly what
+# happened here: prod.py set DEFAULT_FILE_STORAGE to the S3 backend
+# and it was never actually used, no matter how many times the app
+# redeployed with correct env vars. config/settings/prod.py mutates
+# STORAGES["default"] directly rather than redefining this whole
+# dict, so it only overrides the file-storage backend and leaves
+# "staticfiles" (whitenoise) alone.
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+}
 STATICFILES_DIRS = [BASE_DIR / "static"] if (BASE_DIR / "static").exists() else []
 
 MEDIA_URL = "media/"

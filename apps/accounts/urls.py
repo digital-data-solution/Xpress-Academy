@@ -12,5 +12,11 @@ urlpatterns = [
     path("verify/<str:token>/", views.verify_email, name="verify_email"),
     path("resend-verification/", views.resend_verification, name="resend_verification"),
     path("forgot-password/", views.forgot_password, name="forgot_password"),
-    path("reset-password/<str:token>/", views.reset_password, name="reset_password"),
+    # path, not str: the token embeds a slice of the user's raw
+    # PBKDF2 password hash (see _make_reset_token), which uses
+    # standard (non-urlsafe) base64 and can contain a literal "/" —
+    # <str:...> excludes "/" and 404s whenever that happens to occur,
+    # a real bug caught by a test that got unlucky/lucky depending on
+    # how you look at it, since the hash bytes are random per-user.
+    path("reset-password/<path:token>/", views.reset_password, name="reset_password"),
 ]

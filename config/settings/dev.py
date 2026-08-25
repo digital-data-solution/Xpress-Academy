@@ -60,3 +60,14 @@ CSRF_TRUSTED_ORIGINS = env.list(
 # real deployment needs a real worker.
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
+
+# base.py's whitenoise manifest storage needs `collectstatic` to have
+# run first (it looks up a hashed filename per static asset from a
+# manifest.json) — fine in prod, where the build command always runs
+# collectstatic, but not for `runserver`/the test suite locally,
+# which never do. Falls back to Django's plain staticfiles storage
+# here, same as what was actually happening before base.py's setting
+# was switched from the old (silently-ignored under Django 5.1)
+# STATICFILES_STORAGE string to the STORAGES dict Django 5.1 actually
+# reads — this restores dev's previous real behavior, just explicit now.
+STORAGES["staticfiles"] = {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"}  # noqa: F405

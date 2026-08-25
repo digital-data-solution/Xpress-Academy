@@ -57,7 +57,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # same reason as before, but not a new failure mode).
 AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default="")
 if AWS_STORAGE_BUCKET_NAME:
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    # Mutates the dict base.py already built rather than reassigning
+    # STORAGES wholesale — that would silently drop the "staticfiles"
+    # key back to Django's built-in default (no manifest hashing, no
+    # whitenoise compression) since noqa: F405 STORAGES here is the
+    # same dict object base.py defined, imported via `from .base import *`.
+    STORAGES["default"] = {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}  # noqa: F405
     AWS_ACCESS_KEY_ID = env("AWS_S3_ACCESS_KEY_ID", default="")
     AWS_SECRET_ACCESS_KEY = env("AWS_S3_SECRET_ACCESS_KEY", default="")
     AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL", default="")
