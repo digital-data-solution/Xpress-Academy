@@ -111,6 +111,11 @@ EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 # email at send time if this is unset, so the app still works out of
 # the box, but the real address belongs in env/Render, not in git.
 OPS_ALERT_EMAIL = env("OPS_ALERT_EMAIL", default="")
+# Authorizes the free-tier scheduled-task workaround (see
+# apps.engagement.views.run_scheduled_tasks) — required (non-empty)
+# to actually run anything; a blank value refuses every request
+# rather than accepting an "empty token" as valid.
+CRON_SECRET = env("CRON_SECRET", default="")
 
 
 INSTALLED_APPS = [

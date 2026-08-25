@@ -323,3 +323,30 @@ class TestEmailWiring:
 
         assert Certificate.objects.filter(enrollment=enrollment).exists()
         assert EmailLog.objects.filter(template_key="certificate_issued", to_email=user.email).exists()
+
+
+@pytest.mark.django_db
+class TestRunScheduledTasksEndpoint:
+    def test_no_secret_configured_refuses_everyone(self, settings, client):
+        settings.CRON_SECRET = ""
+        resp = client.post("/internal/run-scheduled-tasks/", HTTP_X_CRON_SECRET="anything")
+        assert resp.status_code == 403
+
+    def test_wrong_secret_refused(self, settings, client):
+        settings.CRON_SECRET = "the-real-secret"
+        resp = client.post("/internal/run-scheduled-tasks/", HTTP_X_CRON_SECRET="wrong")
+        assert resp.status_code == 403
+
+    def test_get_not_allowed(self, settings, client):
+        settings.CRON_SECRET = "the-real-secret"
+        resp = client.get("/internal/run-scheduled-tasks/", HTTP_X_CRON_SECRET="the-real-secret")
+        assert resp.status_code == 405
+
+    def test_correct_secret_runs_tasks(self, settings, client):
+        settings.CRON_SECRET = "the-real-secret"
+        with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
+            mock_list.return_value = {"data": []}
+            resp = client.post("/internal/run-scheduled-tasks/", HTTP_X_CRON_SECRET="the-real-secret")
+        assert resp.status_code == 200
+        body = resp.json()
+        assert "detect_stalled_learners" in body["ran"]

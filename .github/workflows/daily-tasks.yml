@@ -1,0 +1,33 @@
+# Free-tier stand-in for a real Celery beat schedule (see the Render
+# deploy notes — a single free web service, no worker/beat/Redis to
+# run one on). Runs the engagement app's learner-retention tasks once
+# a day: stalled-learner nudge emails, expiring-access warnings,
+# drip-module unlocking, enrollment expiry, stale-attempt cleanup,
+# and payment reconciliation. Every one of those tasks is
+# independently idempotent, so a missed or repeated run doesn't
+# double-send anything.
+#
+# Requires a repository secret named CRON_SECRET, set to the exact
+# same value as the CRON_SECRET env var in Render — GitHub Settings →
+# Secrets and variables → Actions → New repository secret. Without
+# that secret set (on either side), every run just gets a 403.
+#
+# Superseded once there's a real Celery worker+beat running (paid
+# Render plan) — apps/engagement/views.py::run_scheduled_tasks and
+# this workflow are both safe to delete at that point.
+name: Run daily engagement tasks
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # 08:00 UTC ≈ 09:00 WAT, matching the stalled-learner nudge's intended time
+  workflow_dispatch: {}
+
+jobs:
+  run-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the scheduled-tasks endpoint
+        run: |
+          curl -fsS --max-time 60 -X POST \
+            -H "X-Cron-Secret: ${{ secrets.CRON_SECRET }}" \
+            https://xpress-academy-web.onrender.com/internal/run-scheduled-tasks/

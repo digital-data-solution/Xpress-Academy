@@ -37,6 +37,7 @@ urlpatterns = [
     path("", include("apps.assessment.urls")),
     path("", include("apps.certificates.urls")),
     path("", include("apps.payments.urls")),
+    path("", include("apps.engagement.urls")),
     path("", include("apps.operations.urls")),
     path("", include("apps.instructors.urls")),
     # catalog owns "/" (landing) and "/courses/..." — included last so

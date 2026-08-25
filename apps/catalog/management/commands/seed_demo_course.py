@@ -227,7 +227,7 @@ class Command(BaseCommand):
                 scope=Quiz.Scope.MODULE,
                 module=module_1,
                 title="Module 1 Check",
-                instructions="Three quick questions on what you just watched.",
+                instructions="Three quick questions on what you just covered.",
                 bank=bank,
                 question_count=3,
                 pass_mark=70,
