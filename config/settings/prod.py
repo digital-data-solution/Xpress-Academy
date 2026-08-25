@@ -73,4 +73,14 @@ if AWS_STORAGE_BUCKET_NAME:
     # deliberately not setting AWS_DEFAULT_ACL here.
     AWS_S3_ADDRESSING_STYLE = "path"  # Supabase's S3 gateway needs bucket-in-path, not subdomain
     AWS_S3_FILE_OVERWRITE = False
-    AWS_QUERYSTRING_AUTH = False  # public bucket — plain URLs, no signed-query noise
+    # Learned live: even with the bucket marked "Public" in Supabase's
+    # own dashboard, its S3-compatible gateway still rejected plain
+    # unsigned URLs with "AccessDenied: Missing signature" — unlike
+    # real AWS S3, a public bucket there doesn't seem to mean
+    # unsigned GETs are accepted over the S3 protocol. Presigned URLs
+    # sidestep that entirely (self-authenticating, works regardless of
+    # bucket-public setting) at the cost of the URL expiring — fine
+    # here, since certificate.pdf.url is regenerated fresh on every
+    # page load rather than being a permanently bookmarked link.
+    AWS_QUERYSTRING_AUTH = True
+    AWS_QUERYSTRING_EXPIRE = 3600  # 1 hour — plenty for "click download after loading the page"
