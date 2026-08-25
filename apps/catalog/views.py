@@ -13,7 +13,11 @@ def landing(request):
 
 def course_catalog(request):
     courses = Course.objects.filter(is_published=True).select_related("programme").order_by("title")
-    return render(request, "catalog/course_catalog.html", {"courses": courses})
+    query = request.GET.get("q", "").strip()
+    if query:
+        from django.db.models import Q
+        courses = courses.filter(Q(title__icontains=query) | Q(subtitle__icontains=query))
+    return render(request, "catalog/course_catalog.html", {"courses": courses, "query": query})
 
 
 def course_detail(request, slug):

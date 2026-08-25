@@ -139,9 +139,19 @@ def results_view(request, course_slug, quiz_id, attempt_id):
             "answered": answer is not None,
         })
 
+    from apps.enrollment.services import get_next_lesson
+
+    next_lesson = None
+    certificate = None
+    if attempt.enrollment:
+        next_lesson = get_next_lesson(attempt.enrollment)
+        certificate = getattr(attempt.enrollment, "certificate", None)
+
     return render(request, "assessment/results.html", {
         "course": request.course,
         "quiz": request.quiz,
         "attempt": attempt,
         "rows": rows,
+        "next_lesson": next_lesson,
+        "certificate": certificate,
     })

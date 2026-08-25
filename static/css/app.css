@@ -388,6 +388,13 @@ ul.plain-list li { margin-bottom: 6px; }
   letter-spacing: 0.06em; color: var(--color-primary); margin: 0 0 6px;
 }
 
+.search-row { display: flex; gap: 10px; margin: 4px 0 28px; max-width: 480px; }
+.search-row input {
+  flex: 1; padding: 11px 14px; border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm); font-size: 15px; font-family: inherit;
+}
+.search-row input:focus { outline: none; border-color: var(--color-primary); }
+
 .empty-state {
   text-align: center; padding: 40px 20px; color: var(--color-muted);
   border: 1px dashed var(--color-border); border-radius: var(--radius);
@@ -530,6 +537,32 @@ ul.lesson-list li:not(.locked):hover { box-shadow: var(--shadow); }
   display: inline-block; font-family: ui-monospace, "SF Mono", Consolas, monospace;
   font-size: 12px; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-sm);
   padding: 4px 10px; margin-top: 10px; position: relative; z-index: 1;
+}
+
+/* Mobile nav — pure CSS checkbox toggle, no JS. This audience is
+   mostly on phones (see the file header note on why there's no
+   framework here at all), so a working small-screen nav isn't
+   optional polish. */
+.nav-toggle-checkbox { display: none; }
+.nav-toggle-label {
+  display: none; cursor: pointer; color: var(--color-text);
+  padding: 6px; border-radius: var(--radius-sm); margin-left: auto;
+}
+.nav-toggle-label svg { width: 24px; height: 24px; display: block; }
+
+@media (max-width: 720px) {
+  header.site-header .container { flex-wrap: wrap; }
+  .nav-toggle-label { display: block; }
+  header.site-header nav {
+    display: none; width: 100%; flex-direction: column; align-items: flex-start;
+    gap: 4px; padding-top: 16px; order: 3;
+  }
+  .nav-toggle-checkbox:checked ~ nav { display: flex; }
+  header.site-header nav a, header.site-header nav .logout-form {
+    margin-left: 0; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--color-border);
+  }
+  header.site-header nav a.btn { width: auto; border-bottom: none; margin-top: 6px; }
+  .logout-form button { width: 100%; text-align: left; padding: 10px 0; }
 }
 
 @media (max-width: 640px) {

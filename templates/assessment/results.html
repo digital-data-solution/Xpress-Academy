@@ -21,4 +21,15 @@
       {% if row.explanation %}<p style="font-size:14px; color:var(--color-muted); margin-top:8px;">{{ row.explanation }}</p>{% endif %}
     </div>
   {% endfor %}
+
+  <div class="nav-row">
+    <a class="btn secondary" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">← Course overview</a>
+    {% if certificate %}
+      <a class="btn" href="{% url 'certificates:mine' serial=certificate.serial %}">View your certificate →</a>
+    {% elif next_lesson %}
+      <a class="btn" href="{% url 'enrollment:lesson' course_slug=course.slug lesson_slug=next_lesson.slug %}">Next lesson →</a>
+    {% elif not attempt.passed %}
+      <a class="btn" href="{% url 'assessment:quiz_intro' course_slug=course.slug quiz_id=quiz.id %}">Try again →</a>
+    {% endif %}
+  </div>
 {% endblock %}

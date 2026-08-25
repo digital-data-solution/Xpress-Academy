@@ -15,6 +15,10 @@
   <header class="site-header">
     <div class="container">
       <a class="brand" href="{% url 'catalog:landing' %}"><span class="logo-mark">XA</span>Xpress Digital Academy</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </label>
       <nav>
         <a href="{% url 'catalog:course_catalog' %}">Courses</a>
         {% if user.is_authenticated %}
@@ -71,5 +75,21 @@
       <p>Xpress Digital Academy — a brand of Xpress Digital &amp; Data Solutions Limited (RC 9112280).</p>
     </div>
   </footer>
+  <script>
+    // Prevents accidental double-submission (double-click, slow
+    // connection, impatient tap) on forms that opt in via
+    // data-once — mainly payment and auth forms, where a duplicate
+    // submit is either wasted money-adjacent API calls or a
+    // confusing double-login attempt. No framework, ~10 lines.
+    document.querySelectorAll('form[data-once]').forEach(function (form) {
+      form.addEventListener('submit', function () {
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn && !btn.disabled) {
+          btn.disabled = true;
+          btn.textContent = 'Please wait…';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

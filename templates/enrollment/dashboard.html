@@ -29,6 +29,11 @@
         <p class="stat-label">Certificates</p>
       </div>
     </div>
+    {% if in_progress_count > 0 %}
+      <p style="color:var(--color-muted); font-size:14px; margin:-16px 0 24px;">
+        {% if completed_count == 0 %}You're just getting started — pick up where you left off below.{% else %}Keep going — {{ in_progress_count }} course{{ in_progress_count|pluralize }} still in progress.{% endif %}
+      </p>
+    {% endif %}
   {% endif %}
 
   {% if not rows %}

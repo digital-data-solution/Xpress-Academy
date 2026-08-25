@@ -13,7 +13,7 @@
           {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
         </div>
       {% endif %}
-      <form class="signup-form" method="post">
+      <form class="signup-form" method="post" data-once>
         {% csrf_token %}
         <label for="id_first_name">First name</label>
         <input type="text" name="first_name" id="id_first_name" required autofocus>

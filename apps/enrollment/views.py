@@ -41,6 +41,7 @@ def dashboard(request):
         "rows": rows,
         "completed_count": completed_count,
         "certificate_count": certificate_count,
+        "in_progress_count": len(rows) - completed_count,
     })
 
 

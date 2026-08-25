@@ -10,7 +10,7 @@
       {% if form.errors %}
         <div class="form-error-list"><p style="margin:0;">Your email or password didn't match. Try again.</p></div>
       {% endif %}
-      <form class="login-form" method="post">
+      <form class="login-form" method="post" data-once>
         {% csrf_token %}
         <label for="id_username">Email</label>
         <input type="email" name="username" id="id_username" autocomplete="email" required autofocus>

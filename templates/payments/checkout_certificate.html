@@ -20,7 +20,7 @@
       <p style="color:#b91c1c; margin-top:14px;">{{ error }}</p>
     {% endif %}
 
-    <form method="post" style="margin-top:18px;">
+    <form method="post" style="margin-top:18px;" data-once>
       {% csrf_token %}
       <button class="btn" type="submit" style="width:100%;">Pay with Paystack</button>
     </form>
