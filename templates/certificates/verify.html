@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Certificate verification — Xpress Digital Academy{% endblock %}
 {% block main_class %}container-narrow{% endblock %}
+{% block extra_head %}
+  {% if certificate and not certificate.is_revoked %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  {% endif %}
+{% endblock %}
 {% block content %}
   <h1>Certificate verification</h1>
 
@@ -15,12 +22,27 @@
       <p style="font-size:14px;">Serial: {{ certificate.serial }}</p>
     </div>
   {% else %}
-    <div class="card">
-      <p class="badge-done" style="font-size:15px;">✓ Valid certificate</p>
-      <p style="margin-top:12px;"><strong>Name:</strong> {{ certificate.learner_name_snapshot }}</p>
-      <p><strong>Course:</strong> {{ certificate.course_title_snapshot }}</p>
-      <p><strong>Issued:</strong> {{ certificate.issued_at|date:"j F Y" }}</p>
-      <p><strong>Serial:</strong> {{ certificate.serial }}</p>
+    <div class="chip" style="background:var(--color-success-bg); color:var(--color-success-text); margin-bottom:16px;">✓ Valid certificate</div>
+    <div class="cert-frame">
+      <div class="cert-seal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M9 12.5 7 21l5-3 5 3-2-8.5"/></svg>
+      </div>
+      <p class="cert-brand">XPRESS DIGITAL ACADEMY</p>
+      <p class="cert-heading">Certificate of Completion</p>
+      <p class="cert-meta">This certifies that</p>
+      <p class="cert-name">{{ certificate.learner_name_snapshot }}</p>
+      <p class="cert-meta">has completed</p>
+      <p class="cert-course">{{ certificate.course_title_snapshot }}</p>
+      <div class="cert-footer-row">
+        <div>
+          <p class="cert-meta" style="margin:0;">Serial</p>
+          <div class="cert-serial">{{ certificate.serial }}</div>
+        </div>
+        <div>
+          <p class="cert-meta" style="margin:0;">Issued</p>
+          <p style="margin:4px 0 0; font-weight:600; position:relative; z-index:1;">{{ certificate.issued_at|date:"j F Y" }}</p>
+        </div>
+      </div>
     </div>
   {% endif %}
 {% endblock %}
