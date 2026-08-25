@@ -549,3 +549,33 @@ class TestPricingModels:
 
         assert resp.status_code == 302
         assert Certificate.objects.filter(enrollment=enrollment).count() == 1
+
+
+@pytest.mark.django_db
+class TestCoursePrerequisite:
+    def test_checkout_blocked_without_prerequisite_completed(self, user, course, org):
+        from apps.catalog.models import Programme
+
+        programme = course.programme
+        advanced = Course.objects.create(
+            organization=org, programme=programme, title="Advanced Course", audience=Audience.BREEDER,
+            price_ngn=5000, prerequisite=course,
+        )
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{advanced.slug}/")
+        assert resp.status_code == 302
+        assert resp["Location"].endswith(f"/courses/{course.slug}/")
+        assert not Enrollment.objects.filter(user=user, course=advanced).exists()
+
+    def test_checkout_allowed_once_prerequisite_completed(self, user, course, org):
+        advanced = Course.objects.create(
+            organization=org, programme=course.programme, title="Advanced Course", audience=Audience.BREEDER,
+            pricing_model=Course.PricingModel.FREE, prerequisite=course,
+        )
+        Enrollment.objects.create(user=user, course=course, status=Enrollment.Status.COMPLETED)
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{advanced.slug}/")
+        assert resp.status_code == 302
+        assert Enrollment.objects.filter(user=user, course=advanced).exists()

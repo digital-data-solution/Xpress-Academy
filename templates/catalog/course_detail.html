@@ -26,9 +26,14 @@
     {% if course.pricing_model == "CERTIFICATE_PAID" %}
       <p style="font-size:13px; color:var(--color-muted); margin-top:-8px;">Certificate available for ₦{{ course.price_ngn }} once you finish</p>
     {% endif %}
+    {% if course.prerequisite_id and not prerequisite_met %}
+      <div class="chip" style="background:#fef3c7; color:#92400e;">🔒 Requires "{{ course.prerequisite.title }}" completed first</div>
+    {% endif %}
     <p style="margin-top:16px;">
       {% if is_enrolled %}
         <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
+      {% elif course.prerequisite_id and not prerequisite_met %}
+        <a class="btn secondary" href="{% url 'catalog:course_detail' slug=course.prerequisite.slug %}">Start with "{{ course.prerequisite.title }}"</a>
       {% else %}
         <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now</a>
       {% endif %}
@@ -92,6 +97,8 @@
   <div class="card" style="margin-top:32px; text-align:center;">
     {% if is_enrolled %}
       <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
+    {% elif course.prerequisite_id and not prerequisite_met %}
+      <a class="btn secondary" href="{% url 'catalog:course_detail' slug=course.prerequisite.slug %}">Start with "{{ course.prerequisite.title }}"</a>
     {% else %}
       {% if course.pricing_model == "FREE" or course.pricing_model == "CERTIFICATE_PAID" %}
         <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — free</a>

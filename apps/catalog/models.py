@@ -140,6 +140,18 @@ class Course(OrganizationOwnedModel):
     instructor = models.ForeignKey(
         "instructors.Instructor", on_delete=models.PROTECT, null=True, blank=True, related_name="courses"
     )
+    # Self-referential — e.g. "Advanced" requiring "Intermediate"
+    # completed first. PROTECT: a course other courses depend on
+    # shouldn't be deletable out from under them without deliberately
+    # clearing the dependency first. Enforced at checkout() (blocks
+    # enrollment/payment) and surfaced on the course detail page —
+    # not a DB constraint, since "has this user COMPLETED that
+    # course" is an Enrollment-table question, not expressible as a
+    # CheckConstraint on Course alone.
+    prerequisite = models.ForeignKey(
+        "self", on_delete=models.PROTECT, null=True, blank=True, related_name="unlocks",
+        help_text="Learner must have COMPLETED this course before they can enroll in this one. Leave blank for no prerequisite.",
+    )
     vertical = models.ForeignKey(
         "instructors.Vertical", on_delete=models.PROTECT, null=True, blank=True, related_name="courses"
     )

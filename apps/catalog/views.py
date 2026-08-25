@@ -22,11 +22,17 @@ def course_detail(request, slug):
     faqs = course.faqs.order_by("order")
 
     is_enrolled = False
+    prerequisite_met = True
     if request.user.is_authenticated:
         is_enrolled = request.user.enrollments.filter(
             course=course, status__in=["ACTIVE", "COMPLETED"]
         ).exists()
+        if course.prerequisite_id:
+            prerequisite_met = request.user.enrollments.filter(
+                course=course.prerequisite, status="COMPLETED"
+            ).exists()
 
     return render(request, "catalog/course_detail.html", {
         "course": course, "modules": modules, "faqs": faqs, "is_enrolled": is_enrolled,
+        "prerequisite_met": prerequisite_met,
     })

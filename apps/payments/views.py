@@ -26,6 +26,14 @@ def checkout(request, course_slug):
     if not request.user.profile.email_verified:
         return render(request, "payments/verify_required.html", {"course": course})
 
+    if course.prerequisite_id:
+        prereq_done = Enrollment.objects.filter(
+            user=request.user, course=course.prerequisite, status=Enrollment.Status.COMPLETED
+        ).exists()
+        if not prereq_done:
+            messages.error(request, f'Finish "{course.prerequisite.title}" first — that unlocks this course.')
+            return redirect("catalog:course_detail", slug=course.prerequisite.slug)
+
     # FREE and CERTIFICATE_PAID both grant course access with no
     # payment at all — the only difference between them shows up
     # later, at certificate time (see checkout_certificate below).
