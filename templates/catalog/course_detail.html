@@ -14,9 +14,18 @@
       <p class="lead">{{ course.sales_subheadline|default:course.subtitle }}</p>
     {% endif %}
     <div class="price-row" style="justify-content:center;">
-      {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
-      <span class="price-now">₦{{ course.price_ngn }}</span>
+      {% if course.pricing_model == "FREE" or course.pricing_model == "CERTIFICATE_PAID" %}
+        <span class="price-now">Free</span>
+      {% elif course.pricing_model == "PAY_WHAT_YOU_WANT" %}
+        <span class="price-now">Pay what you want</span>
+      {% else %}
+        {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+        <span class="price-now">₦{{ course.price_ngn }}</span>
+      {% endif %}
     </div>
+    {% if course.pricing_model == "CERTIFICATE_PAID" %}
+      <p style="font-size:13px; color:var(--color-muted); margin-top:-8px;">Certificate available for ₦{{ course.price_ngn }} once you finish</p>
+    {% endif %}
     <p style="margin-top:16px;">
       {% if is_enrolled %}
         <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
@@ -84,7 +93,13 @@
     {% if is_enrolled %}
       <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>
     {% else %}
-      <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — ₦{{ course.price_ngn }}</a>
+      {% if course.pricing_model == "FREE" or course.pricing_model == "CERTIFICATE_PAID" %}
+        <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — free</a>
+      {% elif course.pricing_model == "PAY_WHAT_YOU_WANT" %}
+        <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — pay what you want</a>
+      {% else %}
+        <a class="btn" href="/checkout/{{ course.slug }}/">Enroll now — ₦{{ course.price_ngn }}</a>
+      {% endif %}
     {% endif %}
   </div>
 {% endblock %}

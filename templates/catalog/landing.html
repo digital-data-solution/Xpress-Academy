@@ -146,8 +146,14 @@
               <p style="font-weight:600; margin:8px 0 4px;">{{ course.title }}</p>
               {% if course.subtitle %}<p style="font-size:14px; color:var(--color-muted); margin:0 0 8px;">{{ course.subtitle }}</p>{% endif %}
               <div class="price-row">
-                {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
-                <span class="price-now">₦{{ course.price_ngn }}</span>
+                {% if course.pricing_model == "FREE" or course.pricing_model == "CERTIFICATE_PAID" %}
+                  <span class="price-now">Free</span>
+                {% elif course.pricing_model == "PAY_WHAT_YOU_WANT" %}
+                  <span class="price-now">Pay what you want</span>
+                {% else %}
+                  {% if course.compare_at_price_ngn %}<span class="price-strike">₦{{ course.compare_at_price_ngn }}</span>{% endif %}
+                  <span class="price-now">₦{{ course.price_ngn }}</span>
+                {% endif %}
               </div>
             </div>
           </div>
