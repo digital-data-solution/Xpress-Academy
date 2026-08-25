@@ -171,6 +171,66 @@ class TestCertificateWording:
         # certificate.pdf field should already be populated by issuance
         assert cert.pdf.name
 
+    def test_pdf_generates_for_instructor_taught_course(self, org, user):
+        """The signatory branch is different for an instructor's own
+        course (see build_certificate_pdf) — a real Instructor/User
+        pairing, not the org-only fixture, exercises that path rather
+        than just the first-party fallback every other test here uses."""
+        from apps.accounts.models import User
+        from apps.instructors.models import Instructor, Vertical
+
+        instructor_user = User.objects.create_user(email="instructor@example.com", password="testpass123")
+        vertical = Vertical.objects.create(organization=org, name="General", domain_reviewer=instructor_user)
+        instructor = Instructor.objects.create(
+            organization=org, user=instructor_user, display_name="Dr. Jane Vet",
+            verification_status=Instructor.VerificationStatus.VERIFIED,
+        )
+        programme = Programme.objects.create(organization=org, title="P2", audience=Audience.BREEDER)
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Instructor Course", audience=Audience.BREEDER,
+            instructor=instructor, vertical=vertical,
+        )
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        m1 = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+        cert = Certificate.objects.get(enrollment=enrollment)
+
+        pdf_bytes = build_certificate_pdf(cert)
+        assert pdf_bytes.startswith(b"%PDF")
+        assert len(pdf_bytes) > 500
+
+    def test_org_name_only_signature_mode(self, org, course, enrollment):
+        """A real, explicit choice — not a fallback for a blank name.
+        See CertificateSignatureMode's docstring."""
+        from apps.common.models import CertificateSignatureMode
+
+        org.certificate_signature_mode = CertificateSignatureMode.ORG_NAME_ONLY
+        org.certificate_signatory_name = ""
+        org.save(update_fields=["certificate_signature_mode", "certificate_signatory_name"])
+
+        m1 = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+        cert = Certificate.objects.get(enrollment=enrollment)
+        pdf_bytes = build_certificate_pdf(cert)
+        assert pdf_bytes.startswith(b"%PDF")
+        assert len(pdf_bytes) > 500
+
+    def test_signature_mode_chosen_but_no_image_uploaded_falls_back_to_name(self, org, course, enrollment):
+        """Picking SIGNATURE_IMAGE without ever uploading one shouldn't
+        draw nothing — falls back to the name/title style."""
+        from apps.common.models import CertificateSignatureMode
+
+        org.certificate_signature_mode = CertificateSignatureMode.SIGNATURE_IMAGE
+        org.certificate_signatory_name = "Dr. Omale Ojonimi Samuel"
+        org.save(update_fields=["certificate_signature_mode", "certificate_signatory_name"])
+
+        m1 = make_module_with_lesson(course)
+        mark_lesson_complete(enrollment, m1.lessons.first())
+        cert = Certificate.objects.get(enrollment=enrollment)
+        pdf_bytes = build_certificate_pdf(cert)
+        assert pdf_bytes.startswith(b"%PDF")
+        assert len(pdf_bytes) > 500
+
 
 @pytest.mark.django_db
 class TestVerificationViews:

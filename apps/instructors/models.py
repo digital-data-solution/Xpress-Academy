@@ -18,7 +18,7 @@ from django.db import models
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 
-from apps.common.models import OrganizationOwnedModel, TimeStampedModel
+from apps.common.models import CertificateSignatureMode, OrganizationOwnedModel, TimeStampedModel
 
 
 class Vertical(OrganizationOwnedModel):
@@ -90,6 +90,25 @@ class Instructor(OrganizationOwnedModel):
 
     agreement_signed_at = models.DateTimeField(null=True, blank=True)
     agreement_version = models.CharField(max_length=20, blank=True)
+
+    # Certificate signature — a real choice per instructor, not a
+    # hardcoded "display_name + Instructor" default. See
+    # apps.common.models.CertificateSignatureMode's docstring for why
+    # this is its own explicit field rather than inferred from blanks.
+    certificate_signature_mode = models.CharField(
+        max_length=20, choices=CertificateSignatureMode.choices, default=CertificateSignatureMode.NAME_TITLE,
+        help_text="How your signature reads on certificates for your own courses.",
+    )
+    certificate_signature_image = models.ImageField(
+        upload_to="instructors/signatures/", blank=True, null=True,
+        help_text="Optional — a photo/scan of your actual signature, ideally on a plain background.",
+    )
+    certificate_signatory_name = models.CharField(
+        max_length=255, blank=True, help_text="Leave blank to use your display name above.",
+    )
+    certificate_signatory_title = models.CharField(
+        max_length=255, blank=True, help_text='Leave blank to show "Instructor".',
+    )
 
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.APPLICANT)
     suspended_reason = models.CharField(max_length=255, blank=True)

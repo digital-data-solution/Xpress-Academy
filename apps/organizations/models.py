@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
-from apps.common.models import TimeStampedModel
+from apps.common.models import CertificateSignatureMode, TimeStampedModel
 
 
 class Organization(TimeStampedModel):
@@ -30,6 +30,10 @@ class Organization(TimeStampedModel):
     )
     support_whatsapp = models.CharField(max_length=32, blank=True)
 
+    certificate_signature_mode = models.CharField(
+        max_length=20, choices=CertificateSignatureMode.choices, default=CertificateSignatureMode.NAME_TITLE,
+        help_text="How the signature block reads on certificates for first-party (non-instructor) courses.",
+    )
     certificate_signature_image = models.ImageField(
         upload_to="organizations/signatures/", blank=True, null=True
     )

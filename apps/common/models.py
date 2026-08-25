@@ -3,6 +3,22 @@ import uuid
 from django.db import models
 
 
+class CertificateSignatureMode(models.TextChoices):
+    """Shared by Organization and Instructor — how a certificate's
+    signature block should render for courses that party signs.
+    Deliberately an explicit choice, not something inferred from
+    which fields happen to be blank: "I left my name blank" and "I
+    chose to not show my name" read the same in the data either way,
+    but only one of those is really a decision. Making the mode its
+    own field means every person (the platform founder, and every
+    marketplace instructor) picks what they want, not what a fallback
+    rule guesses they'd want."""
+
+    NAME_TITLE = "NAME_TITLE", "My name and title"
+    ORG_NAME_ONLY = "ORG_NAME_ONLY", "Organization name only (no personal name)"
+    SIGNATURE_IMAGE = "SIGNATURE_IMAGE", "An uploaded signature image"
+
+
 class TimeStampedModel(models.Model):
     """Abstract base adding created/updated timestamps to any model."""
 
