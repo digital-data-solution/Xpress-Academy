@@ -27,6 +27,7 @@
         <a href="{% url 'catalog:course_catalog' %}">Courses</a>
         {% if user.is_authenticated %}
           <a href="{% url 'enrollment:dashboard' %}">Dashboard</a>
+          <a href="{% url 'support:inbox' %}">Support</a>
           {% if user.instructor_profile %}
             <a href="{% url 'instructors:dashboard' %}">Teach</a>
           {% else %}
@@ -73,6 +74,14 @@
             <a href="{% url 'instructors:dashboard' %}">Instructor dashboard</a>
           {% else %}
             <a href="{% url 'instructors:apply' %}">Apply to teach</a>
+          {% endif %}
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          {% if user.is_authenticated %}
+            <a href="{% url 'support:inbox' %}">Get help</a>
+          {% else %}
+            <a href="{% url 'accounts:login' %}">Log in for support</a>
           {% endif %}
         </div>
       </div>

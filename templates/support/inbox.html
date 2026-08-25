@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Support — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Support</h1>
+  <p style="color:var(--color-muted);">Ask a question below — most common questions get an instant answer. Anything the bot can't answer goes straight to a person.</p>
+
+  {% if form.errors %}
+    <div class="card" style="border-color:#fecaca;">
+      {% for field in form %}{% for error in field.errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}{% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="card">
+    <h2 style="margin-top:0; font-size:17px;">Start a new conversation</h2>
+    <form method="post">
+      {% csrf_token %}
+      <label for="id_subject">What's this about?</label>
+      <input type="text" name="subject" id="id_subject" required style="width:100%; padding:12px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:inherit; margin-bottom:14px;">
+      <label for="id_body">Your question</label>
+      <textarea name="body" id="id_body" rows="4" required style="width:100%; padding:12px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:inherit; margin-bottom:14px;"></textarea>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </div>
+
+  {% if tickets %}
+    <h2 style="font-size:18px; margin-top:32px;">Your conversations</h2>
+    {% for ticket in tickets %}
+      <a href="{% url 'support:thread' ticket_id=ticket.pk %}" style="text-decoration:none; color:inherit;">
+        <div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <p style="font-weight:600; margin:0 0 4px;">{{ ticket.subject }}</p>
+            <p style="color:var(--color-muted); font-size:13px; margin:0;">{{ ticket.last_message_at|date:"j M Y, H:i" }}</p>
+          </div>
+          <span class="type-pill">{{ ticket.get_status_display }}</span>
+        </div>
+      </a>
+    {% endfor %}
+  {% endif %}
+
+  <details style="margin-top:32px;">
+    <summary style="cursor:pointer; font-weight:600;">Common questions</summary>
+    <div style="margin-top:12px;">
+      {% for entry in faq_entries %}
+        <div class="card">
+          <p style="font-weight:600; margin:0 0 6px;">{{ entry.question }}</p>
+          <p style="color:var(--color-muted); font-size:14px; margin:0;">{{ entry.answer }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </details>
+{% endblock %}

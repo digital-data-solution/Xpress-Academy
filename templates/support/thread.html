@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ ticket.subject }} — Support{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <p style="font-size:14px;"><a href="{% url 'support:inbox' %}">← Support</a></p>
+  <h1>{{ ticket.subject }}</h1>
+  <span class="type-pill">{{ ticket.get_status_display }}</span>
+
+  <div style="margin-top:20px;">
+    {% for message in thread_messages %}
+      <div class="card" style="{% if message.sender_type == 'LEARNER' %}background:var(--color-primary-soft); border-color:var(--color-primary);{% endif %}">
+        <p style="font-weight:600; margin:0 0 6px; font-size:13px; color:var(--color-muted);">
+          {% if message.sender_type == "LEARNER" %}You{% elif message.sender_type == "BOT" %}Xpress Digital Academy bot{% else %}Xpress Digital Academy support{% endif %}
+          · {{ message.created_at|date:"j M Y, H:i" }}
+        </p>
+        <p style="margin:0; white-space:pre-wrap;">{{ message.body }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if ticket.status == "RESOLVED" %}
+    <div class="empty-state">
+      <p style="margin:0 0 14px;">This conversation is marked resolved.</p>
+      <a class="btn" href="{% url 'support:inbox' %}">Start a new conversation</a>
+    </div>
+  {% else %}
+    <div class="card" style="margin-top:8px;">
+      <form method="post">
+        {% csrf_token %}
+        <textarea name="body" rows="3" required style="width:100%; padding:12px; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:inherit; margin-bottom:14px;" placeholder="Reply..."></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  {% endif %}
+{% endblock %}

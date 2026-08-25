@@ -3,7 +3,22 @@
 {% block main_class %}container-narrow{% endblock %}
 {% block content %}
   <h1>Apply to teach</h1>
-  <p style="color:var(--color-muted);">Applications are reviewed by a human — there's no instant approval.</p>
+  <p style="color:var(--color-muted);">Applications are reviewed by a human — there's no instant approval. Once you're verified, we work with you to build the course together — you don't have to figure out course design alone.</p>
+
+  <div class="card" style="background:var(--color-primary-soft); border-color:var(--color-primary);">
+    <h2 style="margin-top:0; font-size:16px;">What you'll bring, in whatever mix fits your subject</h2>
+    <p style="font-size:14px; color:var(--color-muted); margin-bottom:12px;">A course is built from lessons, and the platform supports several lesson formats — most courses mix a few of these:</p>
+    <ul style="margin:0; padding-left:20px; font-size:14px; line-height:1.7;">
+      <li><strong>Video</strong> — recorded lessons, demonstrations, screen recordings. Doesn't need to be studio-quality; clear and audible is enough.</li>
+      <li><strong>Reading (text)</strong> — written lessons, explanations, step-by-step notes.</li>
+      <li><strong>Images and diagrams</strong> — illustrations, charts, photos of real procedures/equipment where relevant — anything that makes a concept clearer visually.</li>
+      <li><strong>Downloadable PDFs</strong> — checklists, worksheets, reference sheets, protocols learners can keep and reuse.</li>
+      <li><strong>Live sessions</strong> — scheduled Q&A or demonstration sessions, if your course suits that.</li>
+      <li><strong>Quizzes and a final exam</strong> — questions that check real understanding at the end of each module and the course, and unlock the certificate.</li>
+    </ul>
+    <p style="font-size:13px; color:var(--color-muted); margin:12px 0 0;">You don't need to have all of this ready before applying — this is just so you know what's possible once we start building. Tell us what you already have in the bio/credentials fields below, and we'll help with the rest.</p>
+  </div>
+
   {% if form.errors %}
     <div class="card" style="border-color:#fecaca;">
       {% for field in form %}{% for error in field.errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}{% endfor %}

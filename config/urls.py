@@ -40,6 +40,7 @@ urlpatterns = [
     path("", include("apps.engagement.urls")),
     path("", include("apps.operations.urls")),
     path("", include("apps.instructors.urls")),
+    path("", include("apps.support.urls")),
     # catalog owns "/" (landing) and "/courses/..." — included last so
     # its catch-all-shaped slug pattern never shadows a more specific
     # path above it.

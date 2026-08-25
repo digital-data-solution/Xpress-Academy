@@ -32,7 +32,10 @@ def org():
 @pytest.fixture
 def course(org):
     programme = Programme.objects.create(organization=org, title="Test Programme", audience=Audience.BREEDER)
-    return Course.objects.create(organization=org, programme=programme, title="Test Course", audience=Audience.BREEDER, is_published=True)
+    return Course.objects.create(
+        organization=org, programme=programme, title="Test Course", audience=Audience.BREEDER,
+        is_published=True, review_status=Course.ReviewStatus.APPROVED,
+    )
 
 
 @pytest.fixture

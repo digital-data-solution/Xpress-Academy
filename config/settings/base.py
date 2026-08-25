@@ -141,6 +141,7 @@ INSTALLED_APPS = [
     "apps.instructors",
     "apps.payments",
     "apps.engagement",
+    "apps.support",
 ]
 
 MIDDLEWARE = [
