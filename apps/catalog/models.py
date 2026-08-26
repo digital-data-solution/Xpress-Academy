@@ -218,7 +218,28 @@ class Course(OrganizationOwnedModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+
+        # Detect draft→published on THIS save, before super().save()
+        # overwrites what's in the DB — a raw .update() bypasses this
+        # (same narrower gap as clean(), documented above), but every
+        # real publish path (admin, management commands) goes through
+        # a normal .save().
+        just_published = False
+        if self.is_published and self.pk:
+            was_published = Course.objects.filter(pk=self.pk).values_list("is_published", flat=True).first()
+            just_published = was_published is False
+        elif self.is_published and not self.pk:
+            just_published = True  # created directly as published — rare, but a real publish event too
+
+        if just_published and not self.published_at:
+            from django.utils import timezone
+            self.published_at = timezone.now()
+
         super().save(*args, **kwargs)
+
+        if just_published:
+            from .webhooks import notify_course_published
+            notify_course_published(self)
 
 
 class Module(TimeStampedModel):

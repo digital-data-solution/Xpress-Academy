@@ -3,6 +3,8 @@ before this (noted in README as thin, revisit when they grow real
 logic) — the public views are exactly that growth, so real coverage
 starts here."""
 
+from unittest.mock import patch
+
 import pytest
 from django.test import Client
 
@@ -234,3 +236,77 @@ class TestPublicationGate:
         )
         with pytest.raises(Exception):
             course.full_clean()
+
+
+@pytest.mark.django_db
+class TestCoursePublishWebhook:
+    def _draft_course(self, org):
+        programme = Programme.objects.create(organization=org, title="Webhook Programme", audience=Audience.BREEDER)
+        return Course.objects.create(
+            organization=org, programme=programme, title="Webhook Course", slug="webhook-course",
+            audience=Audience.BREEDER, price_ngn=5000, subtitle="A short subtitle",
+            is_published=False, review_status=Course.ReviewStatus.APPROVED,
+        )
+
+    def test_fires_on_draft_to_published_transition(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        settings.COURSE_PUBLISH_WEBHOOK_SECRET = "shh"
+        course = self._draft_course(org)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
+        mock_post.assert_called_once()
+        args, kwargs = mock_post.call_args
+        assert args[0] == "https://example.com/webhook"
+        payload = kwargs["json"]
+        assert payload["event"] == "course.published"
+        assert payload["slug"] == "webhook-course"
+        assert payload["category"] == "Webhook Programme"
+        assert payload["price_ngn"] == 5000
+        assert kwargs["headers"]["X-Webhook-Secret"] == "shh"
+
+    def test_sets_published_at_automatically(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = ""
+        course = self._draft_course(org)
+        assert course.published_at is None
+        course.is_published = True
+        course.save()
+        course.refresh_from_db()
+        assert course.published_at is not None
+
+    def test_does_not_fire_on_unrelated_save_once_already_published(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        course = self._draft_course(org)
+        course.is_published = True
+        course.save()
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.subtitle = "Updated subtitle"
+            course.save()
+        mock_post.assert_not_called()
+
+    def test_does_not_fire_on_unpublish(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        course = self._draft_course(org)
+        course.is_published = True
+        course.save()
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = False
+            course.save()
+        mock_post.assert_not_called()
+
+    def test_skipped_entirely_when_not_configured(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = ""
+        course = self._draft_course(org)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
+        mock_post.assert_not_called()
+
+    def test_webhook_failure_does_not_break_save(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        course = self._draft_course(org)
+        with patch("apps.catalog.webhooks.requests.post", side_effect=Exception("boom")):
+            course.is_published = True
+            course.save()
+        course.refresh_from_db()
+        assert course.is_published is True
