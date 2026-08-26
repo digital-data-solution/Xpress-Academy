@@ -35,6 +35,9 @@ def post_learner_message(ticket: SupportTicket, body: str) -> SupportMessage:
     return message
 
 
+ESCALATION_EMAIL_COOLDOWN_SECONDS = 60
+
+
 def _escalate(ticket: SupportTicket, message: SupportMessage):
     """No FAQ entry matched (or the learner explicitly asked for a
     human) — mark the ticket as needing staff, and email ops. Reuses
@@ -42,7 +45,19 @@ def _escalate(ticket: SupportTicket, message: SupportMessage):
     OPS_ALERT_EMAIL points (contact@xpressdigitalanddatasolutions
     .online once that's set in Render), same as every other
     ops-facing notification in this codebase — never a second,
-    separately-hardcoded address."""
+    separately-hardcoded address.
+
+    Ticket/message rows are always created regardless — that's cheap,
+    harmless data. What's rate-limited here is specifically the
+    OUTBOUND EMAIL: send_email()'s dedupe_key is per-message (unique
+    every time, deliberately, so a genuinely new question always
+    reaches ops), which means nothing previously stopped a learner
+    creating many rapid unmatched messages from generating a real
+    email to ops for every single one. A per-user cooldown on the
+    email specifically — not on creating tickets/messages — fixes the
+    actual cost/abuse vector without restricting genuine rapid
+    back-and-forth conversation."""
+    from apps.engagement.models import EmailLog
     from apps.engagement.services import send_email
     from apps.operations.services import _ops_recipient
 
@@ -54,6 +69,13 @@ def _escalate(ticket: SupportTicket, message: SupportMessage):
     recipient = _ops_recipient(ticket.organization)
     if not recipient:
         return  # nowhere to send — see _ops_recipient's own fallback chain
+
+    cutoff = timezone.now() - timezone.timedelta(seconds=ESCALATION_EMAIL_COOLDOWN_SECONDS)
+    recently_escalated = EmailLog.objects.filter(
+        user=ticket.user, template_key="support_escalation", created_at__gte=cutoff,
+    ).exists()
+    if recently_escalated:
+        return  # already notified ops about this learner very recently — ticket/message still recorded above
 
     from django.conf import settings
     from django.urls import reverse
@@ -68,6 +90,7 @@ def _escalate(ticket: SupportTicket, message: SupportMessage):
             f"the bot couldn't answer.</p><p>{message.body}</p>"
             f'<p><a href="{settings.SITE_URL}{review_path}">Reply in the admin</a></p>'
         ),
+        user=ticket.user,
         dedupe_key=f"support_escalation:{message.id}",
     )
 

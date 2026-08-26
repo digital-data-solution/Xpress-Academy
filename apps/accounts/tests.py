@@ -6,7 +6,7 @@ from django.test import Client
 from apps.catalog.models import Audience, Course, Programme
 from apps.organizations.models import Organization
 
-from .models import Profile, User
+from .models import LoginAttempt, Profile, User
 from .views import _make_reset_token, _make_verify_token
 
 
@@ -93,6 +93,39 @@ class TestEmailVerification:
 
 
 @pytest.mark.django_db
+class TestResendVerificationRateLimit:
+    def test_rapid_repeated_clicks_only_send_once(self):
+        """The real incident this guards against: a logged-in user
+        (or a stuck double-submit) clicking "Resend verification
+        email" repeatedly generated a real send every single time —
+        six identical emails inside about a minute, confirmed via
+        Resend's own delivery log. Only the first of several rapid
+        clicks should actually dispatch."""
+        from apps.engagement.models import EmailLog
+
+        user = User.objects.create_user(email="clicker@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        for _ in range(6):
+            resp = client.post("/account/resend-verification/", follow=True)
+            assert resp.status_code == 200
+        # user was created directly via create_user(), not the signup view,
+        # so only the first of these 6 rapid resend clicks should have sent.
+        assert EmailLog.objects.filter(template_key="verify_email", user=user, status=EmailLog.Status.SENT).count() == 1
+
+    def test_already_verified_user_gets_no_email_regardless(self):
+        from apps.engagement.models import EmailLog
+
+        user = User.objects.create_user(email="already@example.com", password="testpass123")
+        user.profile.email_verified = True
+        user.profile.save(update_fields=["email_verified"])
+        client = Client()
+        client.force_login(user)
+        client.post("/account/resend-verification/", follow=True)
+        assert not EmailLog.objects.filter(template_key="verify_email", user=user).exists()
+
+
+@pytest.mark.django_db
 class TestCheckoutRequiresVerification:
     def test_unverified_user_blocked_from_checkout(self):
         org = Organization.objects.create(name="Test Org", from_email="test@example.com")
@@ -136,6 +169,22 @@ class TestForgotPassword:
         client = Client()
         resp = client.post("/account/forgot-password/", {"email": "nobody@example.com"}, follow=True)
         assert b"If that email has an account" in resp.content
+
+    def test_rapid_repeated_submissions_only_send_once(self):
+        """The real incident this guards against: nothing previously
+        stopped anyone — no login required — from repeatedly
+        submitting this public form for a known email and generating a
+        real email every single time. Same generic message either way,
+        but only the first of several rapid submissions should
+        actually dispatch."""
+        from apps.engagement.models import EmailLog
+
+        User.objects.create_user(email="spammed@example.com", password="oldpassword123")
+        client = Client()
+        for _ in range(6):
+            resp = client.post("/account/forgot-password/", {"email": "spammed@example.com"}, follow=True)
+            assert b"If that email has an account" in resp.content  # identical message every time
+        assert EmailLog.objects.filter(template_key="password_reset", status=EmailLog.Status.SENT).count() == 1
 
 
 @pytest.mark.django_db
@@ -185,3 +234,58 @@ class TestResetPassword:
         })
         user.refresh_from_db()
         assert user.check_password("oldpassword123")  # unchanged
+
+
+@pytest.mark.django_db
+class TestLoginBruteForceProtection:
+    """Django's stock LoginView (used directly in urls.py) has zero
+    built-in throttling — this is the fix. See
+    RateLimitedAuthenticationForm and LoginAttempt."""
+
+    def test_locks_out_after_threshold_failures(self):
+        User.objects.create_user(email="target@example.com", password="the-real-password-123")
+        client = Client()
+        for _ in range(5):
+            resp = client.post("/account/login/", {"username": "target@example.com", "password": "wrong"})
+            assert resp.status_code == 200  # re-renders the login form, doesn't log in
+
+        # Even the CORRECT password is now blocked — the whole point.
+        resp = client.post("/account/login/", {
+            "username": "target@example.com", "password": "the-real-password-123",
+        }, follow=True)
+        assert b"Too many failed login attempts" in resp.content
+        assert not resp.wsgi_request.user.is_authenticated
+
+    def test_correct_password_still_works_under_the_threshold(self):
+        User.objects.create_user(email="normal@example.com", password="the-real-password-456")
+        client = Client()
+        for _ in range(3):
+            client.post("/account/login/", {"username": "normal@example.com", "password": "wrong"})
+
+        resp = client.post("/account/login/", {
+            "username": "normal@example.com", "password": "the-real-password-456",
+        })
+        assert resp.status_code == 302  # real login succeeds and redirects
+
+    def test_failed_and_successful_attempts_are_recorded(self):
+        User.objects.create_user(email="recorded@example.com", password="the-real-password-789")
+        client = Client()
+        client.post("/account/login/", {"username": "recorded@example.com", "password": "wrong"})
+        client.post("/account/login/", {"username": "recorded@example.com", "password": "the-real-password-789"})
+
+        assert LoginAttempt.objects.filter(email="recorded@example.com", successful=False).count() == 1
+        assert LoginAttempt.objects.filter(email="recorded@example.com", successful=True).count() == 1
+
+    def test_lockout_is_per_email_not_global(self):
+        """A different account's login attempts must not be affected
+        by someone else being locked out."""
+        User.objects.create_user(email="victim@example.com", password="victim-password-123")
+        User.objects.create_user(email="bystander@example.com", password="bystander-password-456")
+        client = Client()
+        for _ in range(5):
+            client.post("/account/login/", {"username": "victim@example.com", "password": "wrong"})
+
+        resp = client.post("/account/login/", {
+            "username": "bystander@example.com", "password": "bystander-password-456",
+        })
+        assert resp.status_code == 302  # unaffected by victim@example.com's lockout

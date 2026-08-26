@@ -64,6 +64,22 @@ class SupportServiceTests(TestCase):
         self.assertIsNotNone(log)
         self.assertEqual(log.to_email, self.user.email)
 
+    def test_rapid_unmatched_messages_only_email_ops_once(self):
+        """The real risk this closes: send_email()'s dedupe_key here
+        is per-message (deliberately unique every time, so a genuinely
+        new question always reaches ops) — nothing previously stopped
+        a learner rapidly creating many unmatched messages from
+        generating a real email to ops for every single one. Ticket/
+        message rows still get created each time; only the repeated
+        outbound email is suppressed."""
+        with self.settings(OPS_ALERT_EMAIL="ops@example.com"):
+            for i in range(5):
+                post_learner_message(self.ticket, f"unrelated gibberish {i} 12345")
+        self.assertEqual(
+            SupportMessage.objects.filter(ticket=self.ticket, sender_type=SupportMessage.Sender.LEARNER).count(), 5,
+        )
+        self.assertEqual(EmailLog.objects.filter(template_key="support_escalation").count(), 1)
+
 
 class SupportViewTests(TestCase):
     def setUp(self):

@@ -25,6 +25,31 @@ class User(AbstractUser):
         return self.email
 
 
+class LoginAttempt(models.Model):
+    """Every login attempt, success or failure, by attempted email —
+    the only thing standing between this app and unlimited password
+    guessing against any known account. Django's stock LoginView (used
+    directly in urls.py) has zero built-in throttling on its own.
+
+    DB-backed rather than cache-backed deliberately — this whole app
+    runs without Redis on the free tier (see engagement/operations
+    task scheduling elsewhere), so a cache-based rate limiter isn't a
+    real option here; a plain indexed table, queried over a short
+    recent window, is cheap enough at this scale. See
+    apps.accounts.forms.RateLimitedAuthenticationForm for the actual
+    lockout logic that reads this."""
+
+    email = models.EmailField(db_index=True)
+    successful = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.email} — {'ok' if self.successful else 'failed'} — {self.created_at:%Y-%m-%d %H:%M}"
+
+
 class Profile(models.Model):
     class Role(models.TextChoices):
         LEARNER = "LEARNER", "Learner"

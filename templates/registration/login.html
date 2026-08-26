@@ -7,7 +7,11 @@
       <span class="logo-mark">XA</span>
       <h1>Welcome back</h1>
       <p class="auth-sub">Log in to keep learning.</p>
-      {% if form.errors %}
+      {% if form.non_field_errors %}
+        <div class="form-error-list">
+          {% for error in form.non_field_errors %}<p style="margin:0;">{{ error }}</p>{% endfor %}
+        </div>
+      {% elif form.errors %}
         <div class="form-error-list"><p style="margin:0;">Your email or password didn't match. Try again.</p></div>
       {% endif %}
       <form class="login-form" method="post" data-once>

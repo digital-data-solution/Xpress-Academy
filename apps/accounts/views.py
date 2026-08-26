@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import SetPasswordForm
 from django.core.signing import BadSignature, SignatureExpired, TimestampSigner
 from django.shortcuts import redirect, render
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from .forms import ForgotPasswordForm, SignupForm
@@ -13,6 +14,23 @@ VERIFY_MAX_AGE_SECONDS = 60 * 60 * 48  # 48h
 
 RESET_SALT = "accounts.password-reset"
 RESET_MAX_AGE_SECONDS = 60 * 60  # 1h — shorter-lived than email verification, this is more sensitive
+
+# Both _send_verification_email and _send_password_reset_email use a
+# dedupe_key that's deliberately unique per call (includes a slice of
+# the freshly-signed token, which changes every time) — so a genuine
+# resend is never blocked by send_email()'s own dedupe. That's correct
+# behaviour, but it also means nothing stopped rapid repeated clicks
+# (or, for forgot_password specifically, repeated unauthenticated form
+# submissions from anyone who knows a real email) from sending real
+# email after real email with zero limit. This cooldown is that limit.
+RESEND_COOLDOWN_SECONDS = 120
+
+
+def _recently_sent(user, template_key: str) -> bool:
+    from apps.engagement.models import EmailLog
+
+    cutoff = timezone.now() - timezone.timedelta(seconds=RESEND_COOLDOWN_SECONDS)
+    return EmailLog.objects.filter(user=user, template_key=template_key, created_at__gte=cutoff).exists()
 
 
 def _make_verify_token(user: User) -> str:
@@ -83,6 +101,8 @@ def resend_verification(request):
         return redirect("accounts:login")
     if request.user.profile.email_verified:
         messages.info(request, "Your email is already verified.")
+    elif _recently_sent(request.user, "verify_email"):
+        messages.info(request, "We just sent that — check your inbox (and spam folder) before requesting another.")
     else:
         _send_verification_email(request.user)
         messages.success(request, "Verification email sent.")
@@ -123,12 +143,13 @@ def forgot_password(request):
         if form.is_valid():
             email = form.cleaned_data["email"]
             user = User.objects.filter(email__iexact=email).first()
-            if user:
+            if user and not _recently_sent(user, "password_reset"):
                 _send_password_reset_email(user)
-            # Same message regardless of whether the account exists —
-            # doesn't confirm/deny an email is registered to a stranger
-            # probing the form (standard practice, not paranoia here:
-            # this is a public, unauthenticated form).
+            # Same message regardless of whether the account exists, or
+            # even whether an email was actually sent this time (rate
+            # limited) — doesn't confirm/deny an email is registered to
+            # a stranger probing the form (standard practice, not
+            # paranoia here: this is a public, unauthenticated form).
             messages.success(request, "If that email has an account, we've sent a password reset link.")
             return redirect("accounts:login")
     else:
