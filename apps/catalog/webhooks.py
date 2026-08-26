@@ -1,8 +1,15 @@
-"""Outbound-only notification fired when a Course goes from draft to
+"""Outbound-only notifications fired when a Course goes from draft to
 published. Deliberately does NOT send any email or message to any
-learner/lead itself — see the module docstring in config.settings
-.base.COURSE_PUBLISH_WEBHOOK_URL. This is the one place that builds
-and sends the payload; Course.save() calls it, nothing else should.
+learner/lead itself — see the module docstrings on
+config.settings.base's *_WEBHOOK_URL settings and
+Programme.WebhookLine. This is the one place that builds and sends
+each payload; Course.save() calls it, nothing else should.
+
+Two independent destinations today, one per Programme.webhook_line —
+DIGITAL (Xpress Digital Academy's own campaign system) and VET (Xpress
+Vet Marketplace). Adding a third destination later is: one new
+WebhookLine choice + one new settings URL/secret pair + one new row in
+_TARGETS below — no change to the dispatch logic itself.
 """
 
 import logging
@@ -15,18 +22,35 @@ logger = logging.getLogger(__name__)
 
 WEBHOOK_TIMEOUT_SECONDS = 5
 
+# WebhookLine value -> (settings attr for URL, settings attr for secret)
+_TARGETS = {
+    "DIGITAL": ("COURSE_PUBLISH_WEBHOOK_URL", "COURSE_PUBLISH_WEBHOOK_SECRET"),
+    "VET": ("VET_COURSE_PUBLISH_WEBHOOK_URL", "VET_COURSE_PUBLISH_WEBHOOK_SECRET"),
+}
+
 
 def notify_course_published(course):
     """Fired once, the moment is_published flips False→True (see
-    Course.save()). A failed/unreachable webhook must never break
-    publishing a course — errors are logged and swallowed, never
-    raised, same resilience discipline as run_scheduled_tasks."""
-    if not settings.COURSE_PUBLISH_WEBHOOK_URL:
-        return  # not configured — nothing to notify, not an error
+    Course.save()). Looks up which destination (if any) this course's
+    Programme is wired to, and skips entirely for WebhookLine.NONE or
+    an unconfigured destination — same fail-open discipline as
+    OPS_ALERT_EMAIL/CRON_SECRET elsewhere. A failed/unreachable
+    endpoint is logged and swallowed, never raised — must never break
+    publishing a course."""
+    line = course.programme.webhook_line
+    target = _TARGETS.get(line)
+    if not target:
+        return  # WebhookLine.NONE, or a line with no configured settings pair
+
+    url = getattr(settings, target[0], "")
+    secret = getattr(settings, target[1], "")
+    if not url:
+        return  # destination not configured yet — nothing to send
 
     course_url = f"{settings.SITE_URL}{reverse('catalog:course_detail', args=[course.slug])}"
     payload = {
         "event": "course.published",
+        "line": line,
         "course_name": course.title,
         "slug": course.slug,
         "price_ngn": course.price_ngn,
@@ -37,10 +61,10 @@ def notify_course_published(course):
         "published_at": course.published_at.isoformat() if course.published_at else None,
     }
     headers = {
-        "X-Webhook-Secret": settings.COURSE_PUBLISH_WEBHOOK_SECRET,
+        "X-Webhook-Secret": secret,
         "Content-Type": "application/json",
     }
     try:
-        requests.post(settings.COURSE_PUBLISH_WEBHOOK_URL, json=payload, headers=headers, timeout=WEBHOOK_TIMEOUT_SECONDS)
+        requests.post(url, json=payload, headers=headers, timeout=WEBHOOK_TIMEOUT_SECONDS)
     except Exception as exc:  # noqa: BLE001 — a failed webhook must never break publishing a course
-        logger.error("notify_course_published failed for %s: %s", course.slug, exc)
+        logger.error("notify_course_published(%s) failed for %s: %s", line, course.slug, exc)

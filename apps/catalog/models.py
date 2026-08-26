@@ -20,16 +20,23 @@ class Programme(OrganizationOwnedModel):
     audience = models.CharField(max_length=20, choices=Audience.choices)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
-    # Per-Programme control over apps.catalog.webhooks.notify_course_published
-    # — an explicit, admin-editable choice rather than a hardcoded list of
-    # "digital" slugs in Python, so which categories notify can change
-    # without a redeploy. Defaults True so new Programmes notify unless
-    # someone deliberately turns it off (e.g. Veterinary Continuing
-    # Education, if that audience isn't who the webhook's downstream
-    # campaign system is built for).
-    notify_on_publish = models.BooleanField(
-        default=True,
-        help_text="Fire the course-publish webhook (if configured) when a course in this Programme publishes.",
+
+    class WebhookLine(models.TextChoices):
+        """Which external system (if any) apps.catalog.webhooks notifies
+        when a course in this Programme publishes. An explicit,
+        admin-editable choice per Programme rather than a hardcoded
+        list of slugs in Python — new destinations are added by adding
+        a choice + a settings URL/secret pair, not a redeploy-required
+        rule change. Defaults NONE (opt-in): with more than one real
+        destination now, assuming a new Programme belongs to any
+        particular line is no longer a safe guess."""
+        NONE = "NONE", "None — publishing doesn't notify any external system"
+        DIGITAL = "DIGITAL", "Digital line (Xpress Digital Academy campaign system)"
+        VET = "VET", "Veterinary line (Xpress Vet Marketplace)"
+
+    webhook_line = models.CharField(
+        max_length=20, choices=WebhookLine.choices, default=WebhookLine.NONE,
+        help_text="Fires the matching course-publish webhook (if that destination is configured) when a course here publishes.",
     )
 
     class Meta:
@@ -248,7 +255,7 @@ class Course(OrganizationOwnedModel):
 
         super().save(*args, **kwargs)
 
-        if just_published and self.programme.notify_on_publish:
+        if just_published:
             from .webhooks import notify_course_published
             notify_course_published(self)
 

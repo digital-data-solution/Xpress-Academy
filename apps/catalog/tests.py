@@ -240,11 +240,13 @@ class TestPublicationGate:
 
 @pytest.mark.django_db
 class TestCoursePublishWebhook:
-    def _draft_course(self, org):
-        programme = Programme.objects.create(organization=org, title="Webhook Programme", audience=Audience.BREEDER)
+    def _draft_course(self, org, line=Programme.WebhookLine.DIGITAL, audience=Audience.BREEDER):
+        programme = Programme.objects.create(
+            organization=org, title="Webhook Programme", audience=audience, webhook_line=line,
+        )
         return Course.objects.create(
             organization=org, programme=programme, title="Webhook Course", slug="webhook-course",
-            audience=Audience.BREEDER, price_ngn=5000, subtitle="A short subtitle",
+            audience=audience, price_ngn=5000, subtitle="A short subtitle",
             is_published=False, review_status=Course.ReviewStatus.APPROVED,
         )
 
@@ -260,10 +262,25 @@ class TestCoursePublishWebhook:
         assert args[0] == "https://example.com/webhook"
         payload = kwargs["json"]
         assert payload["event"] == "course.published"
+        assert payload["line"] == "DIGITAL"
         assert payload["slug"] == "webhook-course"
         assert payload["category"] == "Webhook Programme"
         assert payload["price_ngn"] == 5000
         assert kwargs["headers"]["X-Webhook-Secret"] == "shh"
+
+    def test_fires_on_vet_destination_when_line_is_vet(self, org, settings):
+        settings.VET_COURSE_PUBLISH_WEBHOOK_URL = "https://vetmarketplace.example.com/webhook"
+        settings.VET_COURSE_PUBLISH_WEBHOOK_SECRET = "vetshh"
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"  # digital dest also configured
+        course = self._draft_course(org, line=Programme.WebhookLine.VET, audience=Audience.VET)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
+        mock_post.assert_called_once()  # only the VET destination, not the DIGITAL one too
+        args, kwargs = mock_post.call_args
+        assert args[0] == "https://vetmarketplace.example.com/webhook"
+        assert kwargs["json"]["line"] == "VET"
+        assert kwargs["headers"]["X-Webhook-Secret"] == "vetshh"
 
     def test_sets_published_at_automatically(self, org, settings):
         settings.COURSE_PUBLISH_WEBHOOK_URL = ""
@@ -311,17 +328,10 @@ class TestCoursePublishWebhook:
         course.refresh_from_db()
         assert course.is_published is True
 
-    def test_does_not_fire_when_programme_has_notify_on_publish_false(self, org, settings):
+    def test_does_not_fire_when_programme_webhook_line_is_none(self, org, settings):
         settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
-        programme = Programme.objects.create(
-            organization=org, title="Veterinary Continuing Education", audience=Audience.VET,
-            notify_on_publish=False,
-        )
-        course = Course.objects.create(
-            organization=org, programme=programme, title="Non-Digital Course", slug="non-digital-course",
-            audience=Audience.VET, price_ngn=5000, is_published=False,
-            review_status=Course.ReviewStatus.APPROVED,
-        )
+        settings.VET_COURSE_PUBLISH_WEBHOOK_URL = "https://vetmarketplace.example.com/webhook"
+        course = self._draft_course(org, line=Programme.WebhookLine.NONE, audience=Audience.VET)
         with patch("apps.catalog.webhooks.requests.post") as mock_post:
             course.is_published = True
             course.save()

@@ -117,16 +117,21 @@ OPS_ALERT_EMAIL = env("OPS_ALERT_EMAIL", default="")
 # rather than accepting an "empty token" as valid.
 CRON_SECRET = env("CRON_SECRET", default="")
 
-# --- Course-publish webhook ---------------------------------------------
-# Outbound-only notification fired when a Course flips draft→published
+# --- Course-publish webhooks ---------------------------------------------
+# Outbound-only notifications fired when a Course flips draft→published
 # (see apps.catalog.webhooks.notify_course_published, called from
 # Course.save()). Deliberately does NOT email anyone itself — it just
 # tells an external system a course went live, so a human decides what
 # to send. Blank by default (no URL/secret in source, same discipline
-# as OPS_ALERT_EMAIL/CRON_SECRET above) — a blank URL means the webhook
-# is simply skipped, not sent unauthenticated.
+# as OPS_ALERT_EMAIL/CRON_SECRET above) — a blank URL means that
+# destination is simply skipped, not sent unauthenticated. Two
+# independent destinations, one per Programme.WebhookLine — which one
+# (if any) fires for a given course is chosen by that course's
+# Programme, not by these settings.
 COURSE_PUBLISH_WEBHOOK_URL = env("COURSE_PUBLISH_WEBHOOK_URL", default="")
 COURSE_PUBLISH_WEBHOOK_SECRET = env("COURSE_PUBLISH_WEBHOOK_SECRET", default="")
+VET_COURSE_PUBLISH_WEBHOOK_URL = env("VET_COURSE_PUBLISH_WEBHOOK_URL", default="")
+VET_COURSE_PUBLISH_WEBHOOK_SECRET = env("VET_COURSE_PUBLISH_WEBHOOK_SECRET", default="")
 
 
 INSTALLED_APPS = [
