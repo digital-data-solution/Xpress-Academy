@@ -429,6 +429,64 @@ class TestCheckoutViews:
 
 
 @pytest.mark.django_db
+class TestCouponBruteForceProtection:
+    """A short, human-readable coupon code is genuinely guessable
+    given unlimited attempts — checkout previously had no limit at
+    all on how many codes a logged-in user could try."""
+
+    def test_locks_out_after_threshold_failed_guesses(self, user, course):
+        client = Client()
+        client.force_login(user)
+        for _ in range(5):
+            resp = client.post(f"/checkout/{course.slug}/", {"coupon_code": "GUESS-WRONG"})
+            assert resp.status_code == 200
+            assert b"coupon" in resp.content.lower()
+
+        # Even a coupon that WOULD have been valid is now blocked.
+        Coupon.objects.create(code="REALCODE", discount_type=Coupon.DiscountType.PERCENT, value=10)
+        resp = client.post(f"/checkout/{course.slug}/", {"coupon_code": "REALCODE"})
+        assert b"Too many invalid coupon attempts" in resp.content
+
+    def test_checking_out_without_a_coupon_still_works_while_locked_out(self, user, course):
+        client = Client()
+        client.force_login(user)
+        for _ in range(5):
+            client.post(f"/checkout/{course.slug}/", {"coupon_code": "GUESS-WRONG"})
+
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            resp = client.post(f"/checkout/{course.slug}/")  # no coupon_code at all
+        assert resp.status_code == 302  # full-price checkout still proceeds normally
+
+    def test_lockout_is_per_user(self, course):
+        attacker = User.objects.create_user(email="attacker@example.com", password="testpass123")
+        attacker.profile.email_verified = True
+        attacker.profile.save(update_fields=["email_verified"])
+        other = User.objects.create_user(email="innocent@example.com", password="testpass123")
+        other.profile.email_verified = True
+        other.profile.save(update_fields=["email_verified"])
+
+        client = Client()
+        client.force_login(attacker)
+        for _ in range(5):
+            client.post(f"/checkout/{course.slug}/", {"coupon_code": "GUESS-WRONG"})
+
+        client2 = Client()
+        client2.force_login(other)
+        resp = client2.post(f"/checkout/{course.slug}/", {"coupon_code": "GUESS-WRONG"})
+        assert b"Too many invalid coupon attempts" not in resp.content  # unaffected by attacker's lockout
+
+    def test_successful_coupon_still_applies_under_the_threshold(self, user, course):
+        Coupon.objects.create(code="SAVE10", discount_type=Coupon.DiscountType.PERCENT, value=10)
+        client = Client()
+        client.force_login(user)
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            resp = client.post(f"/checkout/{course.slug}/", {"coupon_code": "SAVE10"})
+        assert resp.status_code == 302
+
+
+@pytest.mark.django_db
 class TestReferralCapture:
     def test_ref_param_stored_and_attributed_on_checkout(self, user, course):
         partner = Partner.objects.create(name="Test Clinic", referral_code="testclinic")

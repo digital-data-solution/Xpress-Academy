@@ -7,7 +7,15 @@ from apps.enrollment.models import Enrollment
 
 from .middleware import get_active_partner
 from .models import Payment
-from .services import CouponInvalid, PaymentInitError, grant_free_access, initialize_payment, verify_and_grant
+from .services import (
+    CouponInvalid,
+    PaymentInitError,
+    coupon_attempts_locked_out,
+    grant_free_access,
+    initialize_payment,
+    record_coupon_attempt,
+    verify_and_grant,
+)
 
 
 @login_required
@@ -46,6 +54,13 @@ def checkout(request, course_slug):
         coupon_code = request.POST.get("coupon_code", "").strip() or None
         partner = get_active_partner(request)
 
+        if coupon_code and coupon_attempts_locked_out(request.user):
+            return render(request, "payments/checkout.html", {
+                "course": course,
+                "error": "Too many invalid coupon attempts. Please wait a few minutes, "
+                         "or check out without a coupon code.",
+            })
+
         custom_amount_kobo = None
         if course.pricing_model == Course.PricingModel.PAY_WHAT_YOU_WANT:
             try:
@@ -81,12 +96,16 @@ def checkout(request, course_slug):
                 attribution_source=attribution_source or "", custom_amount_kobo=custom_amount_kobo,
             )
         except CouponInvalid as exc:
+            if coupon_code:
+                record_coupon_attempt(request.user, coupon_code, successful=False)
             return render(request, "payments/checkout.html", {"course": course, "error": str(exc)})
         except PaymentInitError:
             return render(request, "payments/checkout.html", {
                 "course": course,
                 "error": "We couldn't start checkout right now. Please try again shortly.",
             })
+        if coupon_code:
+            record_coupon_attempt(request.user, coupon_code, successful=True)
         return redirect(authorization_url)
 
     return render(request, "payments/checkout.html", {"course": course})

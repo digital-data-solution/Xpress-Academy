@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.text import slugify
@@ -69,6 +70,28 @@ class Coupon(TimeStampedModel):
     def save(self, *args, **kwargs):
         self.code = self.code.upper().strip()
         super().save(*args, **kwargs)
+
+
+class CouponAttempt(models.Model):
+    """Every coupon-code attempt at checkout, by user — the real gap
+    this closes: checkout previously let anyone try unlimited coupon
+    codes with no attempt limit, which is a real brute-force/guessing
+    vector against a short, human-readable code space. See
+    apps.payments.services.coupon_attempts_locked_out, the actual
+    lockout logic that reads this — same DB-backed-not-cache-backed
+    reasoning as apps.accounts.models.LoginAttempt (no Redis on the
+    free tier)."""
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="+")
+    code_tried = models.CharField(max_length=50)
+    successful = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.user_id} — {self.code_tried} — {'ok' if self.successful else 'failed'}"
 
 
 class Payment(TimeStampedModel):

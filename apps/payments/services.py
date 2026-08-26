@@ -18,16 +18,39 @@ from django.utils import timezone
 from apps.enrollment.models import Cohort, Enrollment
 
 from .gateway import PaystackError, PaystackGateway
-from .models import Coupon, Payment
+from .models import Coupon, CouponAttempt, Payment
 
 logger = logging.getLogger(__name__)
 
 PRODUCT_TAG = "xpress_academy"
 MIN_CHARGE_KOBO = 100  # ₦1 — a coupon can discount close to free, never to literally zero
 
+COUPON_LOCKOUT_THRESHOLD = 5
+COUPON_LOCKOUT_WINDOW_MINUTES = 15
+
 
 class CouponInvalid(ValueError):
     pass
+
+
+def coupon_attempts_locked_out(user) -> bool:
+    """A short, human-readable code space (e.g. "LAUNCH20") is
+    genuinely guessable given enough unlimited attempts — checkout
+    previously let anyone try as many codes as they wanted, no limit
+    at all. Same lockout shape as apps.accounts.forms
+    .RateLimitedAuthenticationForm: N failures in a window blocks
+    further attempts, regardless of whether the next guess would have
+    worked. Does NOT block checkout itself — only attempting a coupon
+    code; a locked-out user can still pay full price."""
+    cutoff = timezone.now() - timezone.timedelta(minutes=COUPON_LOCKOUT_WINDOW_MINUTES)
+    recent_failures = CouponAttempt.objects.filter(
+        user=user, successful=False, created_at__gte=cutoff,
+    ).count()
+    return recent_failures >= COUPON_LOCKOUT_THRESHOLD
+
+
+def record_coupon_attempt(user, code: str, *, successful: bool) -> None:
+    CouponAttempt.objects.create(user=user, code_tried=code.upper().strip(), successful=successful)
 
 
 class PaymentInitError(Exception):
