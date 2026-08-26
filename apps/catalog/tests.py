@@ -428,3 +428,32 @@ class TestTriggerCoursePublishWebhooksCommand:
             call_command("trigger_course_publish_webhooks", slug="course-a")
 
         mock_post.assert_called_once()
+
+
+@pytest.mark.django_db
+class TestCourseAdminResendWebhookAction:
+    def test_resends_webhook_for_published_courses_via_admin_action(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+
+        staff = User.objects.create_user(email="staff@example.com", password="testpass123", is_staff=True, is_superuser=True)
+        programme = Programme.objects.create(
+            organization=org, title="Digital", audience=Audience.GENERAL,
+            webhook_line=Programme.WebhookLine.DIGITAL,
+        )
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Admin Action Course", slug="admin-action-course",
+            audience=Audience.GENERAL, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+
+        client = Client()
+        client.force_login(staff)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            resp = client.post("/admin/catalog/course/", {
+                "action": "resend_publish_webhook",
+                "_selected_action": [str(course.pk)],
+            }, follow=True)
+
+        assert resp.status_code == 200
+        mock_post.assert_called_once()
+        assert mock_post.call_args.args[0] == "https://example.com/webhook"

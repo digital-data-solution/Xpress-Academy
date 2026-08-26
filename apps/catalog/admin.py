@@ -49,6 +49,29 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ModuleInline, CourseFAQInline]
     autocomplete_fields = ["instructor", "vertical", "reviewed_by", "domain_reviewer"]
+    actions = ["resend_publish_webhook"]
+
+    @admin.action(description="Resend course-publish webhook for selected (published) courses")
+    def resend_publish_webhook(self, request, queryset):
+        """Runs server-side, inside the real deployed process — same
+        reason apps.certificates.admin.CertificateAdmin has
+        regenerate_pdf: a management command run from a developer's
+        laptop only has whatever env vars were manually typed into
+        that terminal (e.g. DATABASE_URL alone), never Render's actual
+        environment for everything else. This action has no such gap —
+        it always reads the real COURSE_PUBLISH_WEBHOOK_URL/
+        VET_COURSE_PUBLISH_WEBHOOK_URL wherever it's actually running."""
+        from .webhooks import notify_course_published
+
+        published = queryset.filter(is_published=True)
+        skipped = queryset.count() - published.count()
+        for course in published:
+            notify_course_published(course)
+
+        msg = f"Resent publish webhook for {published.count()} course(s)."
+        if skipped:
+            msg += f" Skipped {skipped} unpublished course(s)."
+        self.message_user(request, msg)
     fieldsets = (
         (None, {"fields": ("organization", "programme", "title", "slug", "subtitle", "description")}),
         ("Media", {"fields": ("cover_image", "promo_video_id")}),
