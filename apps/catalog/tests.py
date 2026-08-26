@@ -336,3 +336,75 @@ class TestCoursePublishWebhook:
             course.is_published = True
             course.save()
         mock_post.assert_not_called()
+
+
+@pytest.mark.django_db
+class TestTriggerCoursePublishWebhooksCommand:
+    def test_fires_for_eligible_published_courses_only(self, org, settings):
+        from django.core.management import call_command
+
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        settings.VET_COURSE_PUBLISH_WEBHOOK_URL = "https://vetmarketplace.example.com/webhook"
+
+        digital_programme = Programme.objects.create(
+            organization=org, title="Digital", audience=Audience.GENERAL,
+            webhook_line=Programme.WebhookLine.DIGITAL,
+        )
+        vet_programme = Programme.objects.create(
+            organization=org, title="Vet", audience=Audience.VET,
+            webhook_line=Programme.WebhookLine.VET,
+        )
+        none_programme = Programme.objects.create(
+            organization=org, title="None Line", audience=Audience.BREEDER,
+        )
+
+        published_digital = Course.objects.create(
+            organization=org, programme=digital_programme, title="Published Digital", slug="published-digital",
+            audience=Audience.GENERAL, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+        published_vet = Course.objects.create(
+            organization=org, programme=vet_programme, title="Published Vet", slug="published-vet",
+            audience=Audience.VET, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+        Course.objects.create(
+            organization=org, programme=none_programme, title="Published None Line", slug="published-none",
+            audience=Audience.BREEDER, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+        Course.objects.create(
+            organization=org, programme=digital_programme, title="Unpublished Digital", slug="unpublished-digital",
+            audience=Audience.GENERAL, price_ngn=1000, is_published=False,
+        )
+
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            call_command("trigger_course_publish_webhooks")
+
+        assert mock_post.call_count == 2
+        called_urls = {c.args[0] for c in mock_post.call_args_list}
+        assert called_urls == {"https://example.com/webhook", "https://vetmarketplace.example.com/webhook"}
+
+    def test_slug_option_scopes_to_one_course(self, org, settings):
+        from django.core.management import call_command
+
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        programme = Programme.objects.create(
+            organization=org, title="Digital", audience=Audience.GENERAL,
+            webhook_line=Programme.WebhookLine.DIGITAL,
+        )
+        Course.objects.create(
+            organization=org, programme=programme, title="Course A", slug="course-a",
+            audience=Audience.GENERAL, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+        Course.objects.create(
+            organization=org, programme=programme, title="Course B", slug="course-b",
+            audience=Audience.GENERAL, price_ngn=1000, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            call_command("trigger_course_publish_webhooks", slug="course-a")
+
+        mock_post.assert_called_once()
