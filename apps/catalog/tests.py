@@ -310,3 +310,19 @@ class TestCoursePublishWebhook:
             course.save()
         course.refresh_from_db()
         assert course.is_published is True
+
+    def test_does_not_fire_when_programme_has_notify_on_publish_false(self, org, settings):
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        programme = Programme.objects.create(
+            organization=org, title="Veterinary Continuing Education", audience=Audience.VET,
+            notify_on_publish=False,
+        )
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Non-Digital Course", slug="non-digital-course",
+            audience=Audience.VET, price_ngn=5000, is_published=False,
+            review_status=Course.ReviewStatus.APPROVED,
+        )
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
+        mock_post.assert_not_called()

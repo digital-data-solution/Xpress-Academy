@@ -20,6 +20,17 @@ class Programme(OrganizationOwnedModel):
     audience = models.CharField(max_length=20, choices=Audience.choices)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
+    # Per-Programme control over apps.catalog.webhooks.notify_course_published
+    # — an explicit, admin-editable choice rather than a hardcoded list of
+    # "digital" slugs in Python, so which categories notify can change
+    # without a redeploy. Defaults True so new Programmes notify unless
+    # someone deliberately turns it off (e.g. Veterinary Continuing
+    # Education, if that audience isn't who the webhook's downstream
+    # campaign system is built for).
+    notify_on_publish = models.BooleanField(
+        default=True,
+        help_text="Fire the course-publish webhook (if configured) when a course in this Programme publishes.",
+    )
 
     class Meta:
         ordering = ["title"]
@@ -237,7 +248,7 @@ class Course(OrganizationOwnedModel):
 
         super().save(*args, **kwargs)
 
-        if just_published:
+        if just_published and self.programme.notify_on_publish:
             from .webhooks import notify_course_published
             notify_course_published(self)
 
