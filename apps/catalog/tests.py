@@ -328,6 +328,26 @@ class TestCoursePublishWebhook:
         course.refresh_from_db()
         assert course.is_published is True
 
+    def test_non_2xx_response_is_logged_not_silently_treated_as_success(self, org, settings, caplog):
+        """requests.post() only raises for network-level failures — a
+        401/404/500 comes back as a normal Response with no exception,
+        which would otherwise look identical to success. This is the
+        real bug that made a wrong-secret/wrong-path misconfiguration
+        completely invisible in practice."""
+        import logging as std_logging
+        from unittest.mock import Mock
+
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        course = self._draft_course(org)
+        fake_response = Mock(ok=False, status_code=401, text="Unauthorized")
+        with caplog.at_level(std_logging.ERROR):
+            with patch("apps.catalog.webhooks.requests.post", return_value=fake_response):
+                course.is_published = True
+                course.save()
+        assert "HTTP 401" in caplog.text
+        course.refresh_from_db()
+        assert course.is_published is True  # still must never break the save
+
     def test_does_not_fire_when_programme_webhook_line_is_none(self, org, settings):
         settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
         settings.VET_COURSE_PUBLISH_WEBHOOK_URL = "https://vetmarketplace.example.com/webhook"

@@ -65,6 +65,15 @@ def notify_course_published(course):
         "Content-Type": "application/json",
     }
     try:
-        requests.post(url, json=payload, headers=headers, timeout=WEBHOOK_TIMEOUT_SECONDS)
+        response = requests.post(url, json=payload, headers=headers, timeout=WEBHOOK_TIMEOUT_SECONDS)
+        # requests only raises for network-level failures (DNS, connection
+        # refused, timeout) — a 401/404/500 response comes back as a normal
+        # Response object with no exception, so it would otherwise look
+        # identical to success. Log it explicitly, still without raising.
+        if not response.ok:
+            logger.error(
+                "notify_course_published(%s) got HTTP %s for %s: %s",
+                line, response.status_code, course.slug, response.text[:500],
+            )
     except Exception as exc:  # noqa: BLE001 — a failed webhook must never break publishing a course
         logger.error("notify_course_published(%s) failed for %s: %s", line, course.slug, exc)
