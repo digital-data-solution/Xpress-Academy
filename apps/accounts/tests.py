@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 import pytest
+from django.contrib.auth.models import Group
 from django.test import Client
 
 from apps.catalog.models import Audience, Course, Programme
@@ -22,6 +23,67 @@ class TestAutoProfileSignal:
     def test_createsuperuser_path_also_gets_a_profile(self):
         user = User.objects.create_superuser(email="admin@example.com", password="testpass123")
         assert Profile.objects.filter(user=user).exists()
+
+
+@pytest.mark.django_db
+class TestCompulsoryTrainingAutoEnroll:
+    def _compulsory_course(self, org):
+        from apps.enrollment.models import Enrollment  # noqa: F401 — imported for clarity at call sites
+        programme = Programme.objects.create(organization=org, title="Staff Training", audience=Audience.GENERAL)
+        return Course.objects.create(
+            organization=org, programme=programme, title="General Onboarding", slug="general-onboarding",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED, is_staff_training=True, is_compulsory_staff_training=True,
+        )
+
+    def test_joining_a_group_enrolls_in_compulsory_course(self):
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        course = self._compulsory_course(org)
+        group = Group.objects.create(name="Course Manager")
+        user = User.objects.create_user(email="new-hire@example.com", password="testpass123")
+
+        user.groups.add(group)
+
+        from apps.enrollment.models import Enrollment
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+
+    def test_non_compulsory_staff_training_course_not_auto_enrolled(self):
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        programme = Programme.objects.create(organization=org, title="Staff Training", audience=Audience.GENERAL)
+        elective = Course.objects.create(
+            organization=org, programme=programme, title="Elective Course", slug="elective-course",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED, is_staff_training=True,
+            is_compulsory_staff_training=False,  # not the compulsory track
+        )
+        group = Group.objects.create(name="Course Manager")
+        user = User.objects.create_user(email="new-hire2@example.com", password="testpass123")
+
+        user.groups.add(group)
+
+        from apps.enrollment.models import Enrollment
+        assert not Enrollment.objects.filter(user=user, course=elective).exists()
+
+    def test_ordinary_signup_with_no_group_is_not_enrolled(self):
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        self._compulsory_course(org)
+        user = User.objects.create_user(email="plain-learner@example.com", password="testpass123")
+
+        from apps.enrollment.models import Enrollment
+        assert not Enrollment.objects.filter(user=user).exists()
+
+    def test_idempotent_if_group_membership_changes_again(self):
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        course = self._compulsory_course(org)
+        group = Group.objects.create(name="Course Manager")
+        user = User.objects.create_user(email="new-hire3@example.com", password="testpass123")
+
+        user.groups.add(group)
+        user.groups.remove(group)
+        user.groups.add(group)  # re-added — must not create a second Enrollment
+
+        from apps.enrollment.models import Enrollment
+        assert Enrollment.objects.filter(user=user, course=course).count() == 1
 
 
 @pytest.mark.django_db

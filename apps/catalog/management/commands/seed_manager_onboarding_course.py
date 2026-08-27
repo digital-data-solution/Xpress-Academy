@@ -127,6 +127,7 @@ class Command(BaseCommand):
                     "requires_final_assessment": True,
                     "estimated_hours": 1.5,
                     "is_staff_training": True,
+                    "is_compulsory_staff_training": True,
                     "review_status": Course.ReviewStatus.APPROVED,
                     "is_published": True,
                     "meta_description": "Internal onboarding for Xpress Digital Academy Course Managers.",
@@ -139,7 +140,8 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(f"Created course: {course}"))
                 for i, (title, body) in enumerate(MODULES, start=1):
                     module = Module.objects.create(
-                        course=course, order=i, title=title, unlock_rule=Module.UnlockRule.SEQUENTIAL,
+                        course=course, order=i, title=title,
+                        unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=(i - 1) * 7,  # weekly, from day 0
                     )
                     Lesson.objects.create(
                         module=module, order=1, title=f"Module {i}: {title}", type=Lesson.Type.TEXT,
@@ -165,6 +167,31 @@ class Command(BaseCommand):
                     max_attempts=0, time_limit_minutes=0,
                 )
                 self.stdout.write(self.style.SUCCESS("Created the final check."))
+
+            # Runs regardless of created/already-existed, so re-running
+            # this command against a course seeded before the
+            # compulsory/drip fields existed (as happened once in prod)
+            # brings it up to date rather than silently leaving it on
+            # the old sequential/opt-in shape. Never touches
+            # questions/quizzes — only the create branch above does that.
+            changed = []
+            if not course.is_compulsory_staff_training:
+                course.is_compulsory_staff_training = True
+                changed.append("is_compulsory_staff_training")
+            if changed:
+                course.save(update_fields=changed)
+                self.stdout.write(self.style.SUCCESS(f"  Updated course field(s): {', '.join(changed)}."))
+            existing_modules = list(course.modules.order_by("order"))
+            drip_updated = 0
+            for i, module in enumerate(existing_modules, start=1):
+                target_days = (i - 1) * 7
+                if module.unlock_rule != Module.UnlockRule.DRIP_DAYS or module.drip_days != target_days:
+                    module.unlock_rule = Module.UnlockRule.DRIP_DAYS
+                    module.drip_days = target_days
+                    module.save(update_fields=["unlock_rule", "drip_days"])
+                    drip_updated += 1
+            if drip_updated:
+                self.stdout.write(self.style.SUCCESS(f"  Set weekly drip pacing on {drip_updated} module(s)."))
 
         email = options["email"].strip()
         if email:

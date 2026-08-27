@@ -33,11 +33,23 @@ def _send_templated(*, to_email, template_key, subject, template_name, context, 
 
 @shared_task
 def unlock_dripped_modules():
-    """Hourly. A DRIP_DAYS module that just became unlocked in roughly
-    the last hour gets a "new module unlocked" email. dedupe_key makes
-    the "roughly" safe — a module can only ever trigger one email per
-    enrollment regardless of how many times this task's window
-    happens to re-cover it."""
+    """Designed to run hourly (see config/celery.py's beat_schedule),
+    but in production today only actually runs once a day, via the
+    free-tier run_scheduled_tasks cron (see the Render deploy notes —
+    no real worker/beat yet). Previously only sent when a module's
+    unlock moment fell inside a ±1-hour window around whenever this
+    happened to run — which meant most drip unlocks silently got no
+    email at all under a once-daily cron, since the window rarely
+    lines up. Fixed: no time window at all now — just "is this module
+    unlocked right now, for this active enrollment" — dedupe_key alone
+    (not a time window) is what prevents a resend, so this is correct
+    and safe whether it's called hourly or once a day.
+
+    Also pings ops (see apps.operations.services._ops_recipient, same
+    address as every other ops-facing notification) when the unlocked
+    module belongs to an is_compulsory_staff_training course — the
+    "remind me as admin too" half of the compulsory staff-training
+    track, so a real person notices alongside the automated email."""
     sent = 0
     modules = Module.objects.filter(unlock_rule=Module.UnlockRule.DRIP_DAYS).select_related("course")
     for module in modules:
@@ -45,22 +57,47 @@ def unlock_dripped_modules():
             course=module.course, status=Enrollment.Status.ACTIVE
         ).select_related("user", "course")
         for enrollment in enrollments:
-            available_from = enrollment.started_at + timezone.timedelta(days=module.drip_days)
-            just_unlocked = timezone.now() - timezone.timedelta(hours=1) <= available_from <= timezone.now()
-            if not just_unlocked or not is_module_unlocked(enrollment, module):
+            if not is_module_unlocked(enrollment, module):
                 continue
-            _send_templated(
-                to_email=enrollment.user.email, user=enrollment.user,
-                template_key="module_unlocked", subject=f"New module unlocked: {module.title}",
-                template_name="module_unlocked.html",
-                context={
-                    "first_name": enrollment.user.first_name or "there",
-                    "course_title": enrollment.course.title, "module_title": module.title,
-                    "course_slug": enrollment.course.slug,
-                },
-                dedupe_key=f"module_unlocked:{enrollment.id}:{module.id}",
-            )
-            sent += 1
+
+            # Check dedupe existence ourselves, rather than counting
+            # every call to _send_templated as "sent" — send_email()'s
+            # own dedupe silently returns the existing (already-SENT)
+            # log instead of sending again, which would otherwise make
+            # this function's return value count re-runs as new sends
+            # too.
+            learner_key = f"module_unlocked:{enrollment.id}:{module.id}"
+            if not EmailLog.objects.filter(dedupe_key=learner_key).exists():
+                _send_templated(
+                    to_email=enrollment.user.email, user=enrollment.user,
+                    template_key="module_unlocked", subject=f"New module unlocked: {module.title}",
+                    template_name="module_unlocked.html",
+                    context={
+                        "first_name": enrollment.user.first_name or "there",
+                        "course_title": enrollment.course.title, "module_title": module.title,
+                        "course_slug": enrollment.course.slug,
+                    },
+                    dedupe_key=learner_key,
+                )
+                sent += 1
+
+            if module.course.is_compulsory_staff_training:
+                ops_key = f"compulsory_training_unlocked:{enrollment.id}:{module.id}"
+                if not EmailLog.objects.filter(dedupe_key=ops_key).exists():
+                    from apps.operations.services import _ops_recipient
+
+                    ops_email = _ops_recipient(enrollment.course.organization)
+                    if ops_email:
+                        _send_templated(
+                            to_email=ops_email, template_key="compulsory_training_unlocked",
+                            subject=f"Reminder: {enrollment.user.email}'s next training module is ready",
+                            template_name="compulsory_training_unlocked.html",
+                            context={
+                                "staff_email": enrollment.user.email,
+                                "course_title": enrollment.course.title, "module_title": module.title,
+                            },
+                            dedupe_key=ops_key,
+                        )
     return sent
 
 

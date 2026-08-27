@@ -233,12 +233,58 @@ class TestUnlockDrippedModules:
         enrollment = Enrollment.objects.create(user=user, course=course)  # started_at = now
         assert unlock_dripped_modules() == 0
 
-    def test_no_send_when_unlocked_long_ago(self, course, user):
+    def test_still_sends_when_unlocked_long_ago(self, course, user):
+        """Real fix, not just a rename: previously this task only sent
+        inside a ±1-hour window around whenever it happened to run —
+        under the once-daily free-tier cron (no real hourly beat yet),
+        that meant a module unlocked hours before/after the daily run
+        silently never got an email at all. Now it's dedupe_key alone
+        guarding against a resend, not a time window, so "unlocked 30
+        days ago, never processed before" still sends on first run."""
         make_module(course, unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=7)
         enrollment = Enrollment.objects.create(user=user, course=course)
         enrollment.started_at = timezone.now() - timezone.timedelta(days=30)
         enrollment.save(update_fields=["started_at"])
-        assert unlock_dripped_modules() == 0
+        assert unlock_dripped_modules() == 1
+
+    def test_does_not_resend_on_a_later_run(self, course, user):
+        module = make_module(course, unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=7)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        enrollment.started_at = timezone.now() - timezone.timedelta(days=30)
+        enrollment.save(update_fields=["started_at"])
+
+        assert unlock_dripped_modules() == 1
+        assert unlock_dripped_modules() == 0  # already sent for this enrollment/module pair
+        assert EmailLog.objects.filter(dedupe_key=f"module_unlocked:{enrollment.id}:{module.id}").count() == 1
+
+    def test_pings_ops_for_compulsory_staff_training_course(self, course, settings):
+        settings.OPS_ALERT_EMAIL = "ops@example.com"
+        course.is_staff_training = True
+        course.is_compulsory_staff_training = True
+        course.save(update_fields=["is_staff_training", "is_compulsory_staff_training"])
+        module = make_module(course, unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=7)
+        u = User.objects.create_user(email="trainee@example.com", password="testpass123")
+        enrollment = Enrollment.objects.create(user=u, course=course)
+        enrollment.started_at = timezone.now() - timezone.timedelta(days=7, minutes=5)
+        enrollment.save(update_fields=["started_at"])
+
+        unlock_dripped_modules()
+
+        assert EmailLog.objects.filter(
+            to_email="ops@example.com", dedupe_key=f"compulsory_training_unlocked:{enrollment.id}:{module.id}"
+        ).exists()
+
+    def test_no_ops_ping_for_non_compulsory_course(self, settings, course, user):
+        settings.OPS_ALERT_EMAIL = "ops@example.com"
+        # course.is_compulsory_staff_training left False
+        make_module(course, unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=7)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        enrollment.started_at = timezone.now() - timezone.timedelta(days=7, minutes=5)
+        enrollment.save(update_fields=["started_at"])
+
+        unlock_dripped_modules()
+
+        assert EmailLog.objects.filter(to_email="ops@example.com").count() == 0
 
 
 @pytest.mark.django_db

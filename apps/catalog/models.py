@@ -137,6 +137,16 @@ class Course(OrganizationOwnedModel):
                    "someone via the Enrollment admin to grant access, same as any other course. Not "
                    "is_staff-based: a trainee needs no Django-admin login rights at all.",
     )
+    is_compulsory_staff_training = models.BooleanField(
+        default=False,
+        help_text="Only meaningful when is_staff_training is also set. Every user is auto-enrolled "
+                   "in this course the moment they're added to any Django Group (see "
+                   "apps.accounts.signal_receivers) — the personal, sequential 'everyone goes through "
+                   "this as they join' track. Pace modules with unlock_rule=DRIP_DAYS so each person's "
+                   "journey runs from their own enrollment date, not a shared calendar date. Leave "
+                   "unchecked for one-off department/personal/emergency training that's assigned "
+                   "manually instead.",
+    )
 
     # Sales-page copy (Phase 8) — not in the spec's original §4 model
     # list, added because the public sales page it asks for needs

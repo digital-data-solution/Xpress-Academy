@@ -47,7 +47,7 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     ]
     list_filter = [
         "programme", "instructor", "review_status", "audience", "level",
-        "is_published", "is_staff_training", "access_type",
+        "is_published", "is_staff_training", "is_compulsory_staff_training", "access_type",
     ]
     search_fields = ["title", "slug", "subtitle"]
     prepopulated_fields = {"slug": ("title",)}
@@ -106,11 +106,14 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
         }),
         ("Publishing", {"fields": ("is_published", "published_at")}),
         ("Staff training", {
-            "fields": ("is_staff_training",),
-            "description": "When checked, this course is hidden from the public catalog entirely. "
-                            "Grant access by enrolling someone in the Enrollment admin (no is_staff/admin "
-                            "login required) — they'll then see it at /staff/training/ and in the weekly "
-                            "staff-training email.",
+            "fields": ("is_staff_training", "is_compulsory_staff_training"),
+            "description": "is_staff_training: hidden from the public catalog entirely. Grant access by "
+                            "enrolling someone in the Enrollment admin (no is_staff/admin login required) "
+                            "— they'll then see it at /staff/training/ and in the weekly staff-training "
+                            "email. is_compulsory_staff_training (only meaningful alongside the above): "
+                            "everyone is auto-enrolled the moment they're added to any Group — pace its "
+                            "Modules with unlock_rule=DRIP_DAYS so each person's journey runs from their "
+                            "own join date.",
         }),
     )
 
