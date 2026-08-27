@@ -42,9 +42,13 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
         "level",
         "price_ngn",
         "is_published",
+        "is_staff_training",
         "module_count",
     ]
-    list_filter = ["programme", "instructor", "review_status", "audience", "level", "is_published", "access_type"]
+    list_filter = [
+        "programme", "instructor", "review_status", "audience", "level",
+        "is_published", "is_staff_training", "access_type",
+    ]
     search_fields = ["title", "slug", "subtitle"]
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ModuleInline, CourseFAQInline]
@@ -101,6 +105,13 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
                             "database constraint, not just this form.",
         }),
         ("Publishing", {"fields": ("is_published", "published_at")}),
+        ("Staff training", {
+            "fields": ("is_staff_training",),
+            "description": "When checked, this course is hidden from the public catalog entirely. "
+                            "Grant access by enrolling someone in the Enrollment admin (no is_staff/admin "
+                            "login required) — they'll then see it at /staff/training/ and in the weekly "
+                            "staff-training email.",
+        }),
     )
 
     def module_count(self, obj):

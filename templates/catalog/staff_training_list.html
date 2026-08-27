@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Staff Training — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Staff Training</h1>
+  <p style="color:var(--color-muted);">Internal courses for the team — pick one below and work through it at your own pace.</p>
+  {% if not courses %}
+    <div class="empty-state">
+      <p style="margin:0;">No training courses published yet.</p>
+    </div>
+  {% endif %}
+  <div class="course-grid">
+    {% for course in courses %}
+      <a class="course-card-link" href="{% url 'catalog:course_detail' slug=course.slug %}">
+        <div class="card course-card">
+          <div class="course-cover {% cycle 'cover-a' 'cover-b' 'cover-c' 'cover-d' 'cover-e' %}">
+            <span class="chip chip-light">{{ course.get_level_display }}</span>
+          </div>
+          <div class="course-card-body">
+            <p class="chip">Staff Training</p>
+            <p style="font-weight:600; margin:8px 0 4px;">{{ course.title }}</p>
+            {% if course.subtitle %}<p style="font-size:14px; color:var(--color-muted);">{{ course.subtitle }}</p>{% endif %}
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

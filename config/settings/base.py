@@ -133,6 +133,18 @@ COURSE_PUBLISH_WEBHOOK_SECRET = env("COURSE_PUBLISH_WEBHOOK_SECRET", default="")
 VET_COURSE_PUBLISH_WEBHOOK_URL = env("VET_COURSE_PUBLISH_WEBHOOK_URL", default="")
 VET_COURSE_PUBLISH_WEBHOOK_SECRET = env("VET_COURSE_PUBLISH_WEBHOOK_SECRET", default="")
 
+# --- Staff-training completion webhook ------------------------------------
+# Outbound-only, same discipline as the course-publish webhooks above:
+# fired once, the moment a staff member (is_staff=True) completes a
+# Course with is_staff_training=True (see
+# apps.enrollment.webhooks.notify_staff_training_completed, called from
+# apps.enrollment.services._mark_enrollment_completed_if_ready). Blank
+# by default — that destination (the HR/CRM system, currently a
+# separate Claude Code session's app) doesn't exist yet as a concrete
+# endpoint; this fires as a genuine no-op until it's configured.
+STAFF_TRAINING_WEBHOOK_URL = env("STAFF_TRAINING_WEBHOOK_URL", default="")
+STAFF_TRAINING_WEBHOOK_SECRET = env("STAFF_TRAINING_WEBHOOK_SECRET", default="")
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",

@@ -3,6 +3,8 @@
 "Access control — unenrolled user cannot obtain a video URL by any route."
 """
 
+from unittest.mock import patch
+
 import pytest
 from django.test import Client
 from django.utils import timezone
@@ -188,6 +190,59 @@ class TestProgressAndCompletion:
         mark_lesson_complete(enrollment, m1.lessons.first())
         enrollment.refresh_from_db()
         assert get_next_lesson(enrollment).id == m2.lessons.first().id
+
+
+@pytest.mark.django_db
+class TestStaffTrainingCompletionWebhook:
+    def test_fires_on_staff_training_course_for_plain_non_admin_account(self, course, user, settings):
+        """The core fix: fires purely off Course.is_staff_training —
+        the completing user has NO is_staff/is_superuser rights at
+        all, proving the webhook (like course access itself) isn't
+        gated on Django-admin login."""
+        settings.STAFF_TRAINING_WEBHOOK_URL = "https://example.com/staff-training-webhook"
+        settings.STAFF_TRAINING_WEBHOOK_SECRET = "shh"
+        course.is_staff_training = True
+        course.save(update_fields=["is_staff_training"])
+        assert user.is_staff is False and user.is_superuser is False
+        m1 = make_module(course, 1)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+
+        with patch("apps.enrollment.webhooks.requests.post") as mock_post:
+            mark_lesson_complete(enrollment, m1.lessons.first())
+
+        mock_post.assert_called_once()
+        args, kwargs = mock_post.call_args
+        assert args[0] == "https://example.com/staff-training-webhook"
+        payload = kwargs["json"]
+        assert payload["event"] == "staff_training.completed"
+        assert payload["staff_email"] == user.email
+        assert payload["course_slug"] == course.slug
+        assert payload["completed_at"] is not None
+        assert payload["passed"] is True
+        assert kwargs["headers"]["X-Webhook-Secret"] == "shh"
+
+    def test_does_not_fire_for_normal_course(self, course, user, settings):
+        settings.STAFF_TRAINING_WEBHOOK_URL = "https://example.com/staff-training-webhook"
+        # course.is_staff_training left False
+        m1 = make_module(course, 1)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+
+        with patch("apps.enrollment.webhooks.requests.post") as mock_post:
+            mark_lesson_complete(enrollment, m1.lessons.first())
+        mock_post.assert_not_called()
+
+    def test_no_op_when_url_not_configured(self, course, user, settings):
+        settings.STAFF_TRAINING_WEBHOOK_URL = ""
+        course.is_staff_training = True
+        course.save(update_fields=["is_staff_training"])
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
+        m1 = make_module(course, 1)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+
+        with patch("apps.enrollment.webhooks.requests.post") as mock_post:
+            mark_lesson_complete(enrollment, m1.lessons.first())
+        mock_post.assert_not_called()
 
 
 @pytest.mark.django_db

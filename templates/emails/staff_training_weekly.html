@@ -1,0 +1,11 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>This week's staff training courses are ready — pick whichever is most useful to you and work through it at your own pace.</p>
+  <ul>
+    {% for course in courses %}
+      <li><a href="{{ site_url }}{% url 'catalog:course_detail' slug=course.slug %}">{{ course.title }}</a></li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ site_url }}{% url 'catalog:staff_training_list' %}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">See all staff training</a></p>
+{% endblock %}

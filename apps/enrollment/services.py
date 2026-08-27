@@ -181,6 +181,18 @@ def _mark_enrollment_completed_if_ready(enrollment: Enrollment) -> None:
 
         issue_certificate(enrollment)
 
+        # Staff-training completions notify the HR/CRM side (see
+        # apps.enrollment.webhooks docstring) — never fires for a
+        # normal learner's course, only is_staff_training courses.
+        # Deliberately not gated on user.is_staff (Django-admin login
+        # rights) — see apps.catalog.views for why training access
+        # itself isn't is_staff-based either; anyone enrolled in one
+        # of these courses is, by definition, someone being trained.
+        if enrollment.course.is_staff_training:
+            from .webhooks import notify_staff_training_completed
+
+            notify_staff_training_completed(enrollment)
+
 
 def mark_lesson_complete(enrollment: Enrollment, lesson) -> LessonProgress:
     """Idempotent. Bumps last_activity_at, and marks the enrollment

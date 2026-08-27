@@ -238,3 +238,50 @@ def send_graduate_marketing_emails_task():
     wrapper only, same as reconcile_pending_payments_task above."""
     from apps.certificates.marketing import send_graduate_marketing_emails
     return send_graduate_marketing_emails()
+
+
+@shared_task
+def send_weekly_staff_training_email_task():
+    """Runs daily via run_scheduled_tasks (no real weekly cron slot on
+    the free tier — see the Render deploy notes), but only actually
+    sends on Mondays; every other day is a no-op, same "call it daily,
+    let it self-gate" shape as nothing else here needed until now.
+
+    Deliberately NOT is_staff-based (see apps.catalog.views for the
+    matching access-control note) — someone can be assigned training
+    with a plain, non-admin Academy account. Whoever is being trained
+    is defined entirely by Enrollment: an admin enrolls a user in an
+    is_staff_training Course (Enrollment admin, same as any course),
+    and this task emails everyone with at least one such enrollment
+    the specific course(s) *they're* enrolled in, not a global menu —
+    they can't view a course here they aren't enrolled in. dedupe_key
+    is scoped per-user per-ISO-week, so re-running this same Monday (a
+    retried GitHub Actions run, a redeploy) never double-sends."""
+    if timezone.localtime().weekday() != 0:  # Monday only
+        return "skipped (not Monday)"
+
+    from apps.accounts.models import User
+    from apps.catalog.models import Course
+    from apps.enrollment.models import Enrollment
+
+    recipient_ids = (
+        Enrollment.objects.filter(course__is_staff_training=True, course__is_published=True, user__is_active=True)
+        .values_list("user_id", flat=True).distinct()
+    )
+    if not recipient_ids:
+        return "skipped (no staff-training enrollments)"
+
+    monday = timezone.localdate()
+    sent = 0
+    for user in User.objects.filter(id__in=recipient_ids):
+        courses = Course.objects.filter(
+            is_staff_training=True, is_published=True, enrollments__user=user,
+        ).distinct().order_by("title")
+        _send_templated(
+            to_email=user.email, template_key="staff_training_weekly",
+            subject="This week's staff training", template_name="staff_training_weekly.html",
+            context={"first_name": user.first_name or "there", "courses": courses},
+            user=user, dedupe_key=f"staff-training-weekly:{user.id}:{monday.isoformat()}",
+        )
+        sent += 1
+    return f"sent {sent}"

@@ -130,6 +130,14 @@ class Course(OrganizationOwnedModel):
     is_published = models.BooleanField(default=False)
     published_at = models.DateTimeField(null=True, blank=True)
 
+    is_staff_training = models.BooleanField(
+        default=False,
+        help_text="Internal training course. Hidden from the public catalog entirely; the "
+                   "course-detail page 404s for anyone not enrolled (or not a superuser) — enroll "
+                   "someone via the Enrollment admin to grant access, same as any other course. Not "
+                   "is_staff-based: a trainee needs no Django-admin login rights at all.",
+    )
+
     # Sales-page copy (Phase 8) — not in the spec's original §4 model
     # list, added because the public sales page it asks for needs
     # somewhere to hold this content, and Django admin is the only

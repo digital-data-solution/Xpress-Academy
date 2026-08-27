@@ -4,6 +4,7 @@ wrong without a test — a stalled-learner nudge that fires every day
 instead of stopping at 3, or an expiry warning that double-sends, is a
 real user-facing annoyance, not a theoretical bug."""
 
+from datetime import datetime
 from unittest.mock import patch
 
 import pytest
@@ -22,6 +23,7 @@ from .tasks import (
     expire_enrollments,
     expire_stale_attempts,
     remind_live_session,
+    send_weekly_staff_training_email_task,
     unlock_dripped_modules,
     warn_expiring_access,
 )
@@ -289,6 +291,74 @@ class TestExpireStaleAttemptsTask:
         assert result == 1
         attempt.refresh_from_db()
         assert attempt.submitted_at is not None
+
+
+@pytest.mark.django_db
+class TestWeeklyStaffTrainingEmail:
+    """Recipients are defined entirely by Enrollment, not is_staff —
+    see apps.engagement.tasks.send_weekly_staff_training_email_task's
+    docstring and apps.catalog.views for why. A plain, non-admin
+    account enrolled in an is_staff_training course is a recipient; an
+    is_staff/is_superuser account with no such enrollment is not."""
+
+    MONDAY = datetime(2026, 8, 24, 9, 0)  # a real Monday
+    TUESDAY = datetime(2026, 8, 25, 9, 0)  # a real Tuesday
+
+    def _staff_training_course(self, course):
+        course.is_staff_training = True
+        course.is_published = True
+        course.review_status = Course.ReviewStatus.APPROVED
+        course.save(update_fields=["is_staff_training", "is_published", "review_status"])
+        return course
+
+    def test_skips_on_non_monday(self, org, course, user):
+        self._staff_training_course(course)
+        Enrollment.objects.create(user=user, course=course)
+        with patch("apps.engagement.tasks.timezone.localtime", return_value=self.TUESDAY):
+            result = send_weekly_staff_training_email_task()
+        assert result == "skipped (not Monday)"
+        assert EmailLog.objects.count() == 0
+
+    def test_skips_when_no_staff_training_enrollments(self, org, course, user):
+        self._staff_training_course(course)
+        # no Enrollment created — course is published but nobody's enrolled in it
+        with patch("apps.engagement.tasks.timezone.localtime", return_value=self.MONDAY), \
+             patch("apps.engagement.tasks.timezone.localdate", return_value=self.MONDAY.date()):
+            result = send_weekly_staff_training_email_task()
+        assert result == "skipped (no staff-training enrollments)"
+
+    def test_sends_only_to_enrolled_users(self, org, course):
+        self._staff_training_course(course)
+        trainee = User.objects.create_user(email="trainee@example.com", password="testpass123")
+        Enrollment.objects.create(user=trainee, course=course)
+        # An admin account with no enrollment in this course — must NOT receive it.
+        admin = User.objects.create_user(email="owner@example.com", password="testpass123")
+        admin.is_staff = True
+        admin.is_superuser = True
+        admin.save(update_fields=["is_staff", "is_superuser"])
+
+        with patch("apps.engagement.tasks.timezone.localtime", return_value=self.MONDAY), \
+             patch("apps.engagement.tasks.timezone.localdate", return_value=self.MONDAY.date()):
+            result = send_weekly_staff_training_email_task()
+
+        assert result == "sent 1"
+        assert EmailLog.objects.filter(
+            to_email="trainee@example.com", template_key="staff_training_weekly"
+        ).count() == 1
+        assert EmailLog.objects.filter(to_email="owner@example.com").count() == 0
+
+    def test_idempotent_same_monday(self, org, course, user):
+        self._staff_training_course(course)
+        Enrollment.objects.create(user=user, course=course)
+
+        with patch("apps.engagement.tasks.timezone.localtime", return_value=self.MONDAY), \
+             patch("apps.engagement.tasks.timezone.localdate", return_value=self.MONDAY.date()):
+            send_weekly_staff_training_email_task()
+            send_weekly_staff_training_email_task()
+
+        assert EmailLog.objects.filter(
+            to_email=user.email, template_key="staff_training_weekly"
+        ).count() == 1
 
 
 @pytest.mark.django_db(transaction=True)

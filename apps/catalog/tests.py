@@ -39,6 +39,35 @@ def unpublished_course(org):
     )
 
 
+@pytest.fixture
+def staff_training_course(org):
+    programme = Programme.objects.create(organization=org, title="Staff Training Programme", audience=Audience.GENERAL)
+    return Course.objects.create(
+        organization=org, programme=programme, title="Internal Onboarding", slug="internal-onboarding",
+        audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+        review_status=Course.ReviewStatus.APPROVED, is_staff_training=True,
+    )
+
+
+@pytest.fixture
+def superuser():
+    u = User.objects.create_user(email="owner@example.com", password="testpass123")
+    u.is_staff = True
+    u.is_superuser = True
+    u.save()
+    return u
+
+
+@pytest.fixture
+def trainee(staff_training_course):
+    """A plain, non-admin Academy account — enrolled in the training
+    course, nothing else. Deliberately is_staff=False: proves access
+    here doesn't require any Django-admin login rights."""
+    u = User.objects.create_user(email="trainee@example.com", password="testpass123")
+    Enrollment.objects.create(user=u, course=staff_training_course)
+    return u
+
+
 @pytest.mark.django_db
 class TestLandingPage:
     def test_loads(self, org):
@@ -104,6 +133,76 @@ class TestCourseDetail:
     def test_falls_back_to_title_when_no_sales_headline(self, published_course):
         resp = Client().get(f"/courses/{published_course.slug}/")
         assert published_course.title.encode() in resp.content
+
+
+@pytest.mark.django_db
+class TestStaffTrainingVisibility:
+    def test_hidden_from_public_catalog(self, published_course, staff_training_course):
+        resp = Client().get("/courses/")
+        assert published_course.title.encode() in resp.content
+        assert staff_training_course.title.encode() not in resp.content
+
+    def test_hidden_from_landing_page(self, staff_training_course):
+        resp = Client().get("/")
+        assert staff_training_course.title.encode() not in resp.content
+
+    def test_anonymous_gets_404_on_detail(self, staff_training_course):
+        resp = Client().get(f"/courses/{staff_training_course.slug}/")
+        assert resp.status_code == 404
+
+    def test_unenrolled_user_gets_404_on_detail(self, staff_training_course):
+        """No is_staff involved at all — a logged-in but unenrolled
+        user (staff or not) still can't see it."""
+        user = User.objects.create_user(email="learner2@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/courses/{staff_training_course.slug}/")
+        assert resp.status_code == 404
+
+    def test_enrolled_non_admin_user_can_view_detail(self, staff_training_course, trainee):
+        """The core fix: a plain account with zero admin rights,
+        granted access purely via Enrollment, can see its course."""
+        client = Client()
+        client.force_login(trainee)
+        resp = client.get(f"/courses/{staff_training_course.slug}/")
+        assert resp.status_code == 200
+        assert staff_training_course.title.encode() in resp.content
+
+    def test_superuser_can_preview_without_enrollment(self, staff_training_course, superuser):
+        client = Client()
+        client.force_login(superuser)
+        resp = client.get(f"/courses/{staff_training_course.slug}/")
+        assert resp.status_code == 200
+
+    def test_staff_training_list_requires_login(self, staff_training_course):
+        resp = Client().get("/staff/training/")
+        assert resp.status_code == 302  # redirected to login
+
+    def test_staff_training_list_shows_only_own_enrollment(self, org, staff_training_course, trainee):
+        other_course = Course.objects.create(
+            organization=org, programme=staff_training_course.programme, title="Other Training",
+            slug="other-training", audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE,
+            is_published=True, review_status=Course.ReviewStatus.APPROVED, is_staff_training=True,
+        )
+        client = Client()
+        client.force_login(trainee)
+        resp = client.get("/staff/training/")
+        assert resp.status_code == 200
+        assert staff_training_course.title.encode() in resp.content
+        assert other_course.title.encode() not in resp.content  # not enrolled in this one
+
+    def test_staff_training_list_excludes_public_courses(self, published_course, staff_training_course, trainee):
+        client = Client()
+        client.force_login(trainee)
+        resp = client.get("/staff/training/")
+        assert published_course.title.encode() not in resp.content
+
+    def test_superuser_sees_all_published_training_as_oversight(self, staff_training_course, superuser):
+        client = Client()
+        client.force_login(superuser)
+        resp = client.get("/staff/training/")
+        assert resp.status_code == 200
+        assert staff_training_course.title.encode() in resp.content
 
 
 @pytest.mark.django_db
