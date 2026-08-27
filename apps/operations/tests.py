@@ -47,9 +47,23 @@ def staff_user():
     return u
 
 
-def _raise(org, key="test.key", severity=Signal.Severity.ATTENTION, dedupe_key="test-dedupe"):
+@pytest.fixture
+def manager_user():
+    """A non-superuser staff account, like the 'Course Manager' Group —
+    is_staff=True but no financial access."""
+    u = User.objects.create_user(email="manager@example.com", password="testpass123")
+    u.is_staff = True
+    u.is_superuser = False
+    u.save()
+    return u
+
+
+def _raise(
+    org, key="test.key", severity=Signal.Severity.ATTENTION, dedupe_key="test-dedupe",
+    category=Signal.Category.QUALITY,
+):
     signal, is_new = raise_signal(
-        organization=org, key=key, category=Signal.Category.QUALITY, severity=severity,
+        organization=org, key=key, category=category, severity=severity,
         title="Test signal", detail="detail", recommended_action="do something", dedupe_key=dedupe_key,
     )
     return signal, is_new
@@ -318,6 +332,26 @@ class TestOpsQueueView:
         signal.refresh_from_db()
         assert signal.status == Signal.Status.RESOLVED
 
+    def test_non_superuser_does_not_see_money_signals(self, org, manager_user):
+        _raise(org, key="quality.one", dedupe_key="d1", category=Signal.Category.QUALITY)
+        money_signal, _ = _raise(org, key="payment.one", dedupe_key="d2", category=Signal.Category.MONEY)
+        client = Client()
+        client.force_login(manager_user)
+
+        resp = client.get("/ops/")
+        assert resp.status_code == 200
+        assert money_signal not in resp.context["signals"]
+
+    def test_non_superuser_cannot_act_on_money_signal(self, org, manager_user):
+        money_signal, _ = _raise(org, key="payment.one", dedupe_key="d2", category=Signal.Category.MONEY)
+        client = Client()
+        client.force_login(manager_user)
+
+        resp = client.post(f"/ops/{money_signal.id}/act/", {"action": "resolve"})
+        assert resp.status_code == 403
+        money_signal.refresh_from_db()
+        assert money_signal.status == Signal.Status.OPEN
+
 
 @pytest.mark.django_db
 class TestSimulateSignalsCommand:
@@ -332,6 +366,12 @@ class TestGrowthDashboard:
         client = Client()
         resp = client.get("/ops/growth/")
         assert resp.status_code == 302  # redirected to login
+
+    def test_non_superuser_staff_forbidden(self, org, manager_user):
+        client = Client()
+        client.force_login(manager_user)
+        resp = client.get("/ops/growth/")
+        assert resp.status_code == 403
 
     def test_staff_can_view_and_totals_reflect_real_data(self, org, staff_user, course):
         u = User.objects.create_user(email="growth-learner@example.com", password="pw12345!")
