@@ -140,8 +140,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(f"Created course: {course}"))
                 for i, (title, body) in enumerate(MODULES, start=1):
                     module = Module.objects.create(
-                        course=course, order=i, title=title,
-                        unlock_rule=Module.UnlockRule.DRIP_DAYS, drip_days=(i - 1) * 7,  # weekly, from day 0
+                        course=course, order=i, title=title, unlock_rule=Module.UnlockRule.IMMEDIATE,
                     )
                     Lesson.objects.create(
                         module=module, order=1, title=f"Module {i}: {title}", type=Lesson.Type.TEXT,
@@ -170,10 +169,19 @@ class Command(BaseCommand):
 
             # Runs regardless of created/already-existed, so re-running
             # this command against a course seeded before the
-            # compulsory/drip fields existed (as happened once in prod)
+            # compulsory field existed (as happened once in prod)
             # brings it up to date rather than silently leaving it on
-            # the old sequential/opt-in shape. Never touches
-            # questions/quizzes — only the create branch above does that.
+            # the old opt-in shape. Never touches questions/quizzes —
+            # only the create branch above does that.
+            #
+            # Modules are deliberately NOT time-gated (unlock_rule=
+            # IMMEDIATE, not DRIP_DAYS) — a brief earlier version of
+            # this command drip-locked them a week apart, which was a
+            # real misread of the ask: "staff get trained on a regular
+            # cadence" meant new courses being ADDED to the compulsory
+            # track over time, not existing content inside one course
+            # being time-locked from someone motivated to finish it
+            # sooner. This block un-drips anyone still on that shape.
             changed = []
             if not course.is_compulsory_staff_training:
                 course.is_compulsory_staff_training = True
@@ -182,16 +190,15 @@ class Command(BaseCommand):
                 course.save(update_fields=changed)
                 self.stdout.write(self.style.SUCCESS(f"  Updated course field(s): {', '.join(changed)}."))
             existing_modules = list(course.modules.order_by("order"))
-            drip_updated = 0
-            for i, module in enumerate(existing_modules, start=1):
-                target_days = (i - 1) * 7
-                if module.unlock_rule != Module.UnlockRule.DRIP_DAYS or module.drip_days != target_days:
-                    module.unlock_rule = Module.UnlockRule.DRIP_DAYS
-                    module.drip_days = target_days
+            unlocked = 0
+            for module in existing_modules:
+                if module.unlock_rule != Module.UnlockRule.IMMEDIATE or module.drip_days != 0:
+                    module.unlock_rule = Module.UnlockRule.IMMEDIATE
+                    module.drip_days = 0
                     module.save(update_fields=["unlock_rule", "drip_days"])
-                    drip_updated += 1
-            if drip_updated:
-                self.stdout.write(self.style.SUCCESS(f"  Set weekly drip pacing on {drip_updated} module(s)."))
+                    unlocked += 1
+            if unlocked:
+                self.stdout.write(self.style.SUCCESS(f"  Unlocked {unlocked} module(s) — no more time-gating."))
 
         email = options["email"].strip()
         if email:
