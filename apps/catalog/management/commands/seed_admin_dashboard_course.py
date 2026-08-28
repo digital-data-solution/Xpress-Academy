@@ -337,7 +337,9 @@ class Command(BaseCommand):
             else:
                 _, enrolled_now = Enrollment.objects.get_or_create(user=user, course=course)
                 if enrolled_now:
-                    self.stdout.write(self.style.SUCCESS(f"Enrolled {email}."))
+                    from apps.accounts.signal_receivers import _send_welcome_to_training_email
+                    _send_welcome_to_training_email(user, course)
+                    self.stdout.write(self.style.SUCCESS(f"Enrolled {email} and sent the welcome email."))
                 else:
                     self.stdout.write(self.style.WARNING(f"{email} was already enrolled."))
 
