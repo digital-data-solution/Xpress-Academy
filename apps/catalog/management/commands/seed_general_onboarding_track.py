@@ -521,6 +521,11 @@ class Command(BaseCommand):
             _, was_created = Enrollment.objects.get_or_create(user=user, course=course1)
             if was_created:
                 enrolled += 1
+                # Same immediate "your training is ready" email the
+                # group-join signal sends — a backfilled enrollment
+                # deserves the same notice, not silence until Monday.
+                from apps.accounts.signal_receivers import _send_welcome_to_training_email
+                _send_welcome_to_training_email(user, course1)
         self.stdout.write(self.style.SUCCESS(f"Backfilled {enrolled} existing staff member(s) into course 1."))
         self.stdout.write(self.style.SUCCESS(
             "Done. 15 courses seeded/verified, chained with a 7-day gap after each completion."

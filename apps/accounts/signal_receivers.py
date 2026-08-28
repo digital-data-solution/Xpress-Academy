@@ -42,7 +42,39 @@ def enroll_in_compulsory_training_on_group_join(sender, instance, action, pk_set
     if not courses:
         return
     for course in courses:
-        Enrollment.objects.get_or_create(user=instance, course=course)
+        enrollment, was_created = Enrollment.objects.get_or_create(user=instance, course=course)
+        if was_created:
+            _send_welcome_to_training_email(instance, course)
+
+
+def _send_welcome_to_training_email(user, course):
+    """Fires immediately on group-join (not on Monday's schedule) —
+    without this, a new hire's first automatic notice of their
+    compulsory training would be up to 6 days late, waiting on
+    apps.engagement.tasks.send_weekly_staff_training_email_task. Local
+    imports: apps.engagement isn't a dependency of apps.accounts
+    anywhere else, and importing at module level here would run at
+    Django app-loading time, before apps.engagement's own models are
+    necessarily ready. Reuses the chain_course_unlocked template and
+    dedupe_key shape (chain_unlocked:<user>:<course>) — same event,
+    conceptually, whether it's the first course on group-join or a
+    later one via advance_compulsory_training_chains_task."""
+    from django.conf import settings
+    from django.template.loader import render_to_string
+
+    from apps.engagement.services import send_email
+
+    context = {
+        "first_name": user.first_name or "there",
+        "course_title": course.title, "course_slug": course.slug,
+        "site_url": settings.SITE_URL,
+    }
+    html = render_to_string("emails/chain_course_unlocked.html", context)
+    send_email(
+        to_email=user.email, user=user, template_key="chain_course_unlocked",
+        subject=f"Your training is ready: {course.title}", html=html,
+        dedupe_key=f"chain_unlocked:{user.id}:{course.id}",
+    )
 
 
 def connect():

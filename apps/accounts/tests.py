@@ -47,6 +47,39 @@ class TestCompulsoryTrainingAutoEnroll:
         from apps.enrollment.models import Enrollment
         assert Enrollment.objects.filter(user=user, course=course).exists()
 
+    def test_joining_a_group_sends_immediate_welcome_email(self):
+        """Real fix, not just enrollment: without this, a new hire's
+        first automatic notice would be up to 6 days late, waiting on
+        the Monday weekly-reminder task. This must fire the moment
+        they're added to a group, not later."""
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        course = self._compulsory_course(org)
+        group = Group.objects.create(name="Course Manager")
+        user = User.objects.create_user(email="new-hire4@example.com", password="testpass123")
+
+        user.groups.add(group)
+
+        from apps.engagement.models import EmailLog
+        assert EmailLog.objects.filter(
+            to_email=user.email, template_key="chain_course_unlocked",
+            dedupe_key=f"chain_unlocked:{user.id}:{course.id}",
+        ).exists()
+
+    def test_re_adding_to_group_does_not_resend_welcome_email(self):
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        course = self._compulsory_course(org)
+        group = Group.objects.create(name="Course Manager")
+        user = User.objects.create_user(email="new-hire5@example.com", password="testpass123")
+
+        user.groups.add(group)
+        user.groups.remove(group)
+        user.groups.add(group)  # re-added — enrollment already existed, so no second email either
+
+        from apps.engagement.models import EmailLog
+        assert EmailLog.objects.filter(
+            to_email=user.email, template_key="chain_course_unlocked",
+        ).count() == 1
+
     def test_non_compulsory_staff_training_course_not_auto_enrolled(self):
         org = Organization.objects.create(name="Test Org", from_email="test@example.com")
         programme = Programme.objects.create(organization=org, title="Staff Training", audience=Audience.GENERAL)
