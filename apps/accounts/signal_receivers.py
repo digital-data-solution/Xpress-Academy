@@ -21,21 +21,24 @@ def create_profile_for_new_user(sender, instance, created, **kwargs):
 def enroll_in_compulsory_training_on_group_join(sender, instance, action, pk_set, **kwargs):
     """The moment someone is added to ANY Django Group — i.e. actually
     given a real operational role here, not just a public-learner
-    account — auto-enroll them in every published
-    is_compulsory_staff_training course. This is what makes the
-    'everyone's training journey starts the moment they're onboarded'
-    behavior real rather than a manual step someone has to remember.
-    Each person's pacing is still individual: Enrollment.started_at is
-    set at creation, and DRIP_DAYS modules unlock relative to that, so
-    two people onboarded weeks apart each get their own week-1/week-2/…
-    schedule from their own start date."""
+    account — auto-enroll them in every published, chain-HEAD
+    is_compulsory_staff_training course (prerequisite is null). This
+    is what makes 'everyone's training journey starts the moment
+    they're onboarded' real rather than a manual step someone has to
+    remember. Only chain heads enroll immediately — a course with a
+    prerequisite set (e.g. course 2 of a 15-course sequence) is
+    enrolled later by apps.engagement.tasks.
+    advance_compulsory_training_chains_task, once its prerequisite is
+    actually completed (+ unlock_delay_days), not on group-join."""
     if action != "post_add" or not pk_set or kwargs.get("reverse"):
         return  # reverse=True would mean `instance` is a Group, not a User — not our case here
 
     from apps.catalog.models import Course
     from apps.enrollment.models import Enrollment
 
-    courses = Course.objects.filter(is_staff_training=True, is_compulsory_staff_training=True, is_published=True)
+    courses = Course.objects.filter(
+        is_staff_training=True, is_compulsory_staff_training=True, is_published=True, prerequisite__isnull=True,
+    )
     if not courses:
         return
     for course in courses:

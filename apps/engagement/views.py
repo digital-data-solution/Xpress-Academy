@@ -36,6 +36,7 @@ def run_scheduled_tasks(request):
         return HttpResponseForbidden("Forbidden")
 
     from .tasks import (
+        advance_compulsory_training_chains_task,
         detect_stalled_learners,
         expire_enrollments,
         expire_stale_attempts,
@@ -60,6 +61,7 @@ def run_scheduled_tasks(request):
         ("sweep_paystack_transactions", sweep_paystack_transactions_task),
         ("send_graduate_marketing_emails", send_graduate_marketing_emails_task),
         ("send_weekly_staff_training_email", send_weekly_staff_training_email_task),
+        ("advance_compulsory_training_chains", advance_compulsory_training_chains_task),
     ]:
         try:
             results[name] = fn() or "ok"

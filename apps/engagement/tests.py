@@ -19,6 +19,7 @@ from .gateway import ResendError
 from .models import EmailLog, LiveSession
 from .services import send_email
 from .tasks import (
+    advance_compulsory_training_chains_task,
     detect_stalled_learners,
     expire_enrollments,
     expire_stale_attempts,
@@ -405,6 +406,82 @@ class TestWeeklyStaffTrainingEmail:
         assert EmailLog.objects.filter(
             to_email=user.email, template_key="staff_training_weekly"
         ).count() == 1
+
+
+@pytest.mark.django_db
+class TestCompulsoryTrainingChain:
+    """Course-to-course pacing (advance_compulsory_training_chains_task)
+    -- separate mechanism from module-level drip (TestUnlockDrippedModules
+    above). course2.prerequisite = course1, course2.unlock_delay_days = 7."""
+
+    def _chain(self, org, delay_days=7):
+        programme = Programme.objects.create(organization=org, title="Onboarding", audience=Audience.GENERAL)
+        course1 = Course.objects.create(
+            organization=org, programme=programme, title="Course 1", slug="chain-course-1",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED, is_staff_training=True, is_compulsory_staff_training=True,
+        )
+        course2 = Course.objects.create(
+            organization=org, programme=programme, title="Course 2", slug="chain-course-2",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED, is_staff_training=True, is_compulsory_staff_training=True,
+            prerequisite=course1, unlock_delay_days=delay_days,
+        )
+        return course1, course2
+
+    def test_enrolls_after_prerequisite_completed_and_delay_passed(self, org, user):
+        course1, course2 = self._chain(org)
+        e1 = Enrollment.objects.create(user=user, course=course1)
+        e1.status = Enrollment.Status.COMPLETED
+        e1.completed_at = timezone.now() - timezone.timedelta(days=8)
+        e1.save(update_fields=["status", "completed_at"])
+
+        result = advance_compulsory_training_chains_task()
+
+        assert result == "sent 1"
+        assert Enrollment.objects.filter(user=user, course=course2).exists()
+        assert EmailLog.objects.filter(to_email=user.email, template_key="chain_course_unlocked").exists()
+
+    def test_not_enrolled_before_delay_elapses(self, org, user):
+        course1, course2 = self._chain(org)
+        e1 = Enrollment.objects.create(user=user, course=course1)
+        e1.status = Enrollment.Status.COMPLETED
+        e1.completed_at = timezone.now() - timezone.timedelta(days=2)  # only 2 of 7 days
+        e1.save(update_fields=["status", "completed_at"])
+
+        assert advance_compulsory_training_chains_task() == "sent 0"
+        assert not Enrollment.objects.filter(user=user, course=course2).exists()
+
+    def test_not_enrolled_if_prerequisite_not_completed(self, org, user):
+        course1, course2 = self._chain(org)
+        Enrollment.objects.create(user=user, course=course1)  # still ACTIVE, never completed
+
+        assert advance_compulsory_training_chains_task() == "sent 0"
+        assert not Enrollment.objects.filter(user=user, course=course2).exists()
+
+    def test_idempotent_on_repeat_runs(self, org, user):
+        course1, course2 = self._chain(org)
+        e1 = Enrollment.objects.create(user=user, course=course1)
+        e1.status = Enrollment.Status.COMPLETED
+        e1.completed_at = timezone.now() - timezone.timedelta(days=8)
+        e1.save(update_fields=["status", "completed_at"])
+
+        advance_compulsory_training_chains_task()
+        assert advance_compulsory_training_chains_task() == "sent 0"
+        assert Enrollment.objects.filter(user=user, course=course2).count() == 1
+        assert EmailLog.objects.filter(to_email=user.email, template_key="chain_course_unlocked").count() == 1
+
+    def test_pings_ops(self, org, user, settings):
+        settings.OPS_ALERT_EMAIL = "ops@example.com"
+        course1, course2 = self._chain(org)
+        e1 = Enrollment.objects.create(user=user, course=course1)
+        e1.status = Enrollment.Status.COMPLETED
+        e1.completed_at = timezone.now() - timezone.timedelta(days=8)
+        e1.save(update_fields=["status", "completed_at"])
+
+        advance_compulsory_training_chains_task()
+
+        assert EmailLog.objects.filter(to_email="ops@example.com", template_key="chain_course_unlocked_ops").exists()
 
 
 @pytest.mark.django_db(transaction=True)

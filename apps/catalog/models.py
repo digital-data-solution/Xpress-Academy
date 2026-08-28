@@ -188,6 +188,14 @@ class Course(OrganizationOwnedModel):
         "self", on_delete=models.PROTECT, null=True, blank=True, related_name="unlocks",
         help_text="Learner must have COMPLETED this course before they can enroll in this one. Leave blank for no prerequisite.",
     )
+    unlock_delay_days = models.PositiveIntegerField(
+        default=0,
+        help_text="Only relevant when prerequisite is set AND is_compulsory_staff_training is True: how many "
+                   "days after completing the prerequisite before this course auto-enrolls (see "
+                   "apps.engagement.tasks.advance_compulsory_training_chains_task). Course-to-course pacing "
+                   "for a compulsory training sequence — separate from Module.drip_days, which paces content "
+                   "within a single course.",
+    )
     vertical = models.ForeignKey(
         "instructors.Vertical", on_delete=models.PROTECT, null=True, blank=True, related_name="courses"
     )

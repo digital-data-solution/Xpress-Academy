@@ -322,3 +322,68 @@ def send_weekly_staff_training_email_task():
         )
         sent += 1
     return f"sent {sent}"
+
+
+@shared_task
+def advance_compulsory_training_chains_task():
+    """Runs daily via run_scheduled_tasks. Course-to-course pacing for
+    a compulsory training sequence (e.g. the 15-course general
+    onboarding track) — separate from unlock_dripped_modules, which
+    paces content WITHIN one course. A course only enrolls here if it
+    has both is_compulsory_staff_training=True and a prerequisite set
+    (a chain head with no prerequisite is enrolled immediately on
+    group-join instead — see apps.accounts.signal_receivers).
+
+    For each such course: find every user who COMPLETED its
+    prerequisite at least unlock_delay_days ago and isn't already
+    enrolled in this course, enroll them, email them, and ping ops —
+    same "remind me as admin too" pattern as unlock_dripped_modules'
+    compulsory-course echo. get_or_create on the Enrollment plus a
+    dedupe_key'd email means running this daily is safe — a user
+    already enrolled/already emailed is a no-op."""
+    from apps.catalog.models import Course
+    from apps.enrollment.models import Enrollment
+    from apps.operations.services import _ops_recipient
+
+    sent = 0
+    chained_courses = Course.objects.filter(
+        is_staff_training=True, is_compulsory_staff_training=True, is_published=True, prerequisite__isnull=False,
+    ).select_related("prerequisite", "organization")
+
+    for course in chained_courses:
+        cutoff = timezone.now() - timezone.timedelta(days=course.unlock_delay_days)
+        eligible = Enrollment.objects.filter(
+            course=course.prerequisite, status=Enrollment.Status.COMPLETED, completed_at__lte=cutoff,
+        ).exclude(
+            user__enrollments__course=course,
+        ).select_related("user")
+
+        for prior_enrollment in eligible:
+            user = prior_enrollment.user
+            Enrollment.objects.get_or_create(user=user, course=course)
+            dedupe_key = f"chain_unlocked:{user.id}:{course.id}"
+            if not EmailLog.objects.filter(dedupe_key=dedupe_key).exists():
+                _send_templated(
+                    to_email=user.email, user=user,
+                    template_key="chain_course_unlocked", subject=f"Your next course is ready: {course.title}",
+                    template_name="chain_course_unlocked.html",
+                    context={
+                        "first_name": user.first_name or "there",
+                        "course_title": course.title, "course_slug": course.slug,
+                    },
+                    dedupe_key=dedupe_key,
+                )
+                sent += 1
+
+                ops_key = f"chain_unlocked_ops:{user.id}:{course.id}"
+                if not EmailLog.objects.filter(dedupe_key=ops_key).exists():
+                    ops_email = _ops_recipient(course.organization)
+                    if ops_email:
+                        _send_templated(
+                            to_email=ops_email, template_key="chain_course_unlocked_ops",
+                            subject=f"Reminder: {user.email}'s next training course is ready",
+                            template_name="chain_course_unlocked_ops.html",
+                            context={"staff_email": user.email, "course_title": course.title},
+                            dedupe_key=ops_key,
+                        )
+    return f"sent {sent}"

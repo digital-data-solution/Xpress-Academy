@@ -1,0 +1,6 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>Your next course in the onboarding track is ready: <strong>{{ course_title }}</strong>.</p>
+  <p><a href="{{ site_url }}{% url 'catalog:course_detail' slug=course_slug %}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Start this course</a></p>
+{% endblock %}
