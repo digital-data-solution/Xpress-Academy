@@ -348,3 +348,54 @@ class TestAccessControl:
         assert resp.status_code == 302
         resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
         assert b"Get your certificate" in resp.content
+
+
+@pytest.mark.django_db
+class TestEnrollmentAdminResendWelcomeEmailAction:
+    def test_resends_via_admin_action(self, course, user):
+        """The real fix for a local one-off command silently no-op'ing
+        (no RESEND_API_KEY on a developer's laptop) -- this action
+        runs server-side, inside the real deployed process, same
+        reason CertificateAdmin.regenerate_pdf exists."""
+        staff = User.objects.create_user(
+            email="staff-admin@example.com", password="testpass123", is_staff=True, is_superuser=True,
+        )
+        enrollment = Enrollment.objects.create(user=user, course=course)
+
+        client = Client()
+        client.force_login(staff)
+        with patch("apps.accounts.signal_receivers._send_welcome_to_training_email") as mock_send:
+            resp = client.post("/admin/enrollment/enrollment/", {
+                "action": "resend_training_welcome_email",
+                "_selected_action": [str(enrollment.pk)],
+            }, follow=True)
+
+        assert resp.status_code == 200
+        mock_send.assert_called_once_with(user, course)
+
+    def test_clears_existing_email_log_before_resending(self, course, user):
+        """Without clearing the dedupe_key'd log first, send_email()
+        would treat an already-SENT record as a no-op -- defeating the
+        whole point of a *resend* action."""
+        from apps.engagement.models import EmailLog
+
+        staff = User.objects.create_user(
+            email="staff-admin2@example.com", password="testpass123", is_staff=True, is_superuser=True,
+        )
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        dedupe_key = f"chain_unlocked:{user.id}:{course.id}"
+        EmailLog.objects.create(
+            user=user, to_email=user.email, template_key="chain_course_unlocked",
+            subject="stale", dedupe_key=dedupe_key, status=EmailLog.Status.SENT,
+        )
+
+        client = Client()
+        client.force_login(staff)
+        client.post("/admin/enrollment/enrollment/", {
+            "action": "resend_training_welcome_email",
+            "_selected_action": [str(enrollment.pk)],
+        }, follow=True)
+
+        # The stale log is gone and a fresh SENT log exists in its place.
+        assert EmailLog.objects.filter(dedupe_key=dedupe_key, subject="stale").count() == 0
+        assert EmailLog.objects.filter(dedupe_key=dedupe_key).exists()
