@@ -47,7 +47,7 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     ]
     list_filter = [
         "programme", "instructor", "review_status", "audience", "level",
-        "is_published", "is_staff_training", "is_compulsory_staff_training", "access_type",
+        "is_published", "is_staff_training", "is_compulsory_staff_training", "required_group", "access_type",
     ]
     search_fields = ["title", "slug", "subtitle"]
     prepopulated_fields = {"slug": ("title",)}
@@ -106,14 +106,19 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
         }),
         ("Publishing", {"fields": ("is_published", "published_at")}),
         ("Staff training", {
-            "fields": ("is_staff_training", "is_compulsory_staff_training"),
+            "fields": (
+                "is_staff_training", "is_compulsory_staff_training", "required_group",
+                "prerequisite", "unlock_delay_days",
+            ),
             "description": "is_staff_training: hidden from the public catalog entirely. Grant access by "
                             "enrolling someone in the Enrollment admin (no is_staff/admin login required) "
                             "— they'll then see it at /staff/training/ and in the weekly staff-training "
                             "email. is_compulsory_staff_training (only meaningful alongside the above): "
-                            "everyone is auto-enrolled the moment they're added to any Group — pace its "
-                            "Modules with unlock_rule=DRIP_DAYS so each person's journey runs from their "
-                            "own join date.",
+                            "auto-enrolled the moment someone is added to a Group — leave required_group "
+                            "blank for a track everyone goes through (e.g. General Onboarding), or set it "
+                            "to scope a role-specific course (e.g. Manager Onboarding) to just that "
+                            "Group's members. prerequisite + unlock_delay_days chain this course after "
+                            "another compulsory course, days after that one is completed.",
         }),
     )
 

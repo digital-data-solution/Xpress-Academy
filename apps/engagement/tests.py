@@ -483,6 +483,30 @@ class TestCompulsoryTrainingChain:
 
         assert EmailLog.objects.filter(to_email="ops@example.com", template_key="chain_course_unlocked_ops").exists()
 
+    def test_required_group_only_advances_that_groups_members(self, org, user):
+        """A chained course scoped via required_group (see
+        Course.required_group's docstring) must not advance someone
+        who completed the prerequisite but isn't in that group —
+        otherwise a role-specific chain would leak to everyone."""
+        from django.contrib.auth.models import Group
+
+        course1, course2 = self._chain(org)
+        group = Group.objects.create(name="Course Manager")
+        course2.required_group = group
+        course2.save(update_fields=["required_group"])
+
+        e1 = Enrollment.objects.create(user=user, course=course1)
+        e1.status = Enrollment.Status.COMPLETED
+        e1.completed_at = timezone.now() - timezone.timedelta(days=8)
+        e1.save(update_fields=["status", "completed_at"])
+
+        assert advance_compulsory_training_chains_task() == "sent 0"
+        assert not Enrollment.objects.filter(user=user, course=course2).exists()
+
+        user.groups.add(group)
+        assert advance_compulsory_training_chains_task() == "sent 1"
+        assert Enrollment.objects.filter(user=user, course=course2).exists()
+
 
 @pytest.mark.django_db(transaction=True)
 class TestEmailWiring:

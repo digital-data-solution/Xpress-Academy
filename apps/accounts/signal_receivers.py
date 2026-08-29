@@ -22,23 +22,34 @@ def enroll_in_compulsory_training_on_group_join(sender, instance, action, pk_set
     """The moment someone is added to ANY Django Group — i.e. actually
     given a real operational role here, not just a public-learner
     account — auto-enroll them in every published, chain-HEAD
-    is_compulsory_staff_training course (prerequisite is null). This
-    is what makes 'everyone's training journey starts the moment
-    they're onboarded' real rather than a manual step someone has to
-    remember. Only chain heads enroll immediately — a course with a
-    prerequisite set (e.g. course 2 of a 15-course sequence) is
-    enrolled later by apps.engagement.tasks.
+    is_compulsory_staff_training course (prerequisite is null) they
+    actually qualify for. This is what makes 'everyone's training
+    journey starts the moment they're onboarded' real rather than a
+    manual step someone has to remember. Only chain heads enroll
+    immediately — a course with a prerequisite set (e.g. course 2 of a
+    15-course sequence) is enrolled later by apps.engagement.tasks.
     advance_compulsory_training_chains_task, once its prerequisite is
-    actually completed (+ unlock_delay_days), not on group-join."""
+    actually completed (+ unlock_delay_days), not on group-join.
+
+    required_group scoping: a course with no required_group applies to
+    every staff member regardless of which group they just joined
+    (General Onboarding). A course WITH required_group only enrolls
+    when that specific group is one of the ones just added in this
+    event — otherwise a second role-specific compulsory course (e.g.
+    Instructor Onboarding alongside Manager Onboarding) would wrongly
+    force every staff member through every role's training, not just
+    their own."""
     if action != "post_add" or not pk_set or kwargs.get("reverse"):
         return  # reverse=True would mean `instance` is a Group, not a User — not our case here
+
+    from django.db.models import Q
 
     from apps.catalog.models import Course
     from apps.enrollment.models import Enrollment
 
     courses = Course.objects.filter(
         is_staff_training=True, is_compulsory_staff_training=True, is_published=True, prerequisite__isnull=True,
-    )
+    ).filter(Q(required_group__isnull=True) | Q(required_group_id__in=pk_set))
     if not courses:
         return
     for course in courses:

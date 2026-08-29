@@ -340,7 +340,13 @@ def advance_compulsory_training_chains_task():
     same "remind me as admin too" pattern as unlock_dripped_modules'
     compulsory-course echo. get_or_create on the Enrollment plus a
     dedupe_key'd email means running this daily is safe — a user
-    already enrolled/already emailed is a no-op."""
+    already enrolled/already emailed is a no-op.
+
+    required_group scoping (see apps.catalog.models.Course.required_group):
+    when a chained course has required_group set, only its own group's
+    members advance into it — someone who completed the prerequisite
+    but isn't in that group shouldn't be silently pulled into a
+    different role's training chain."""
     from apps.catalog.models import Course
     from apps.enrollment.models import Enrollment
     from apps.operations.services import _ops_recipient
@@ -348,7 +354,7 @@ def advance_compulsory_training_chains_task():
     sent = 0
     chained_courses = Course.objects.filter(
         is_staff_training=True, is_compulsory_staff_training=True, is_published=True, prerequisite__isnull=False,
-    ).select_related("prerequisite", "organization")
+    ).select_related("prerequisite", "organization", "required_group")
 
     for course in chained_courses:
         cutoff = timezone.now() - timezone.timedelta(days=course.unlock_delay_days)
@@ -357,6 +363,8 @@ def advance_compulsory_training_chains_task():
         ).exclude(
             user__enrollments__course=course,
         ).select_related("user")
+        if course.required_group_id:
+            eligible = eligible.filter(user__groups=course.required_group_id)
 
         for prior_enrollment in eligible:
             user = prior_enrollment.user

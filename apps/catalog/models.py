@@ -147,6 +147,15 @@ class Course(OrganizationOwnedModel):
                    "unchecked for one-off department/personal/emergency training that's assigned "
                    "manually instead.",
     )
+    required_group = models.ForeignKey(
+        "auth.Group", on_delete=models.SET_NULL, null=True, blank=True, related_name="scoped_compulsory_courses",
+        help_text="Only meaningful when is_compulsory_staff_training is also set. Leave blank for a "
+                   "track every staff member goes through regardless of role (e.g. General "
+                   "Onboarding). Set this to scope a role-specific compulsory course (e.g. Manager "
+                   "Onboarding, Instructor Onboarding) so only members of that one Group are "
+                   "auto-enrolled — without this, a second role-specific compulsory course would "
+                   "force every staff member through every role's training, not just their own.",
+    )
 
     # Sales-page copy (Phase 8) — not in the spec's original §4 model
     # list, added because the public sales page it asks for needs

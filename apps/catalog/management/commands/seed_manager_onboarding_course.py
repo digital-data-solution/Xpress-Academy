@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
@@ -114,6 +115,15 @@ class Command(BaseCommand):
             },
         )
 
+        # required_group scoping (see apps.catalog.models.Course.required_group's
+        # docstring): without this, is_compulsory_staff_training=True
+        # means EVERY staff member — Support, Instructors, anyone — is
+        # auto-enrolled the moment they join any group, not just actual
+        # Course Managers. Fetched via get_or_create rather than assumed
+        # to exist, since a fresh dev DB won't have run
+        # create_manager_group first.
+        manager_group, _ = Group.objects.get_or_create(name="Course Manager")
+
         with transaction.atomic():
             course, created = Course.objects.get_or_create(
                 organization=org, programme=programme, slug="manager-onboarding",
@@ -128,6 +138,7 @@ class Command(BaseCommand):
                     "estimated_hours": 1.5,
                     "is_staff_training": True,
                     "is_compulsory_staff_training": True,
+                    "required_group": manager_group,
                     "review_status": Course.ReviewStatus.APPROVED,
                     "is_published": True,
                     "meta_description": "Internal onboarding for Xpress Digital Academy Course Managers.",
@@ -186,6 +197,9 @@ class Command(BaseCommand):
             if not course.is_compulsory_staff_training:
                 course.is_compulsory_staff_training = True
                 changed.append("is_compulsory_staff_training")
+            if course.required_group_id != manager_group.id:
+                course.required_group = manager_group
+                changed.append("required_group")
             if changed:
                 course.save(update_fields=changed)
                 self.stdout.write(self.style.SUCCESS(f"  Updated course field(s): {', '.join(changed)}."))

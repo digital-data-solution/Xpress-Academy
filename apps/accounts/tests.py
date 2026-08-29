@@ -118,6 +118,47 @@ class TestCompulsoryTrainingAutoEnroll:
         from apps.enrollment.models import Enrollment
         assert Enrollment.objects.filter(user=user, course=course).count() == 1
 
+    def test_required_group_course_only_enrolls_that_groups_members(self):
+        """Real bug this closes: adding a second role-specific
+        compulsory course (e.g. Instructor Onboarding alongside
+        Manager Onboarding) without this scoping would force every
+        staff member through every role's training, not just their
+        own — see Course.required_group's docstring."""
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        programme = Programme.objects.create(organization=org, title="Staff Training", audience=Audience.GENERAL)
+        manager_group = Group.objects.create(name="Course Manager")
+        scoped_course = Course.objects.create(
+            organization=org, programme=programme, title="Manager Onboarding", slug="manager-onboarding-scoped",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_published=True,
+            review_status=Course.ReviewStatus.APPROVED, is_staff_training=True, is_compulsory_staff_training=True,
+            required_group=manager_group,
+        )
+
+        other_group = Group.objects.create(name="Support")
+        outsider = User.objects.create_user(email="support-hire@example.com", password="testpass123")
+        outsider.groups.add(other_group)
+
+        from apps.enrollment.models import Enrollment
+        assert not Enrollment.objects.filter(user=outsider, course=scoped_course).exists()
+
+        manager_hire = User.objects.create_user(email="manager-hire@example.com", password="testpass123")
+        manager_hire.groups.add(manager_group)
+        assert Enrollment.objects.filter(user=manager_hire, course=scoped_course).exists()
+
+    def test_unscoped_course_still_enrolls_regardless_of_which_group(self):
+        """The universal case (required_group left blank, e.g. General
+        Onboarding) must keep working exactly as before — scoping is
+        opt-in per course, not a behavior change for existing courses."""
+        org = Organization.objects.create(name="Test Org", from_email="test@example.com")
+        course = self._compulsory_course(org)  # required_group left blank
+        group = Group.objects.create(name="Support")
+        user = User.objects.create_user(email="any-hire@example.com", password="testpass123")
+
+        user.groups.add(group)
+
+        from apps.enrollment.models import Enrollment
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+
 
 @pytest.mark.django_db
 class TestSignup:
