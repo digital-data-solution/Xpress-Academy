@@ -82,8 +82,13 @@ class Command(BaseCommand):
     )
 
     def add_arguments(self, parser):
+        # Defaults to Dr. Omale's own email — standing policy: as team
+        # lead, he's auto-enrolled in every staff-training course by
+        # default. Pass --email explicitly to enroll someone else
+        # instead (e.g. the actual Ajo Manager hire).
         parser.add_argument(
-            "--email", default="", help="Email of a User to enroll in the course once seeded."
+            "--email", default="omalesamuel4god@gmail.com",
+            help="Email of a User to enroll in the course once seeded.",
         )
         parser.add_argument(
             "--unblock-share-feature", action="store_true",
