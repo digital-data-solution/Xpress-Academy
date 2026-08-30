@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Verify it's you — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Verify it's you</h1>
+      <p class="auth-sub">Enter the 6-digit code from your authenticator app, or one of your backup codes.</p>
+      {% if form.non_field_errors or form.token.errors %}
+        <div class="form-error-list">
+          {% for error in form.non_field_errors %}<p style="margin:0;">{{ error }}</p>{% endfor %}
+          {% for error in form.token.errors %}<p style="margin:0;">{{ error }}</p>{% endfor %}
+        </div>
+      {% endif %}
+      <form class="login-form" method="post" data-once>
+        {% csrf_token %}
+        <label for="id_token">Authentication code</label>
+        <input type="text" name="token" id="id_token" inputmode="numeric" autocomplete="one-time-code" required autofocus>
+        <button class="btn" type="submit" style="width:100%; margin-top:6px;">Verify</button>
+      </form>
+      <p class="auth-links"><a href="{% url 'accounts:login' %}">Back to login</a></p>
+    </div>
+  </div>
+{% endblock %}

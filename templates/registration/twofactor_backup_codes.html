@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Your backup codes — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Save your backup codes</h1>
+      <p class="auth-sub">
+        Two-factor authentication is on. Each of these codes works once, if you ever lose access to your
+        authenticator app. <strong>They're shown only this one time</strong> — save them somewhere safe now.
+      </p>
+      <div class="card" style="background:var(--surface-2, #f4f4f4); padding:16px; margin:16px 0;">
+        <div style="font-family:monospace; font-size:1.05em; line-height:1.9; text-align:center;">
+          {% for code in codes %}{{ code }}<br>{% endfor %}
+        </div>
+      </div>
+      <p class="auth-links"><a href="{% url 'enrollment:dashboard' %}">Done — back to dashboard</a></p>
+    </div>
+  </div>
+{% endblock %}

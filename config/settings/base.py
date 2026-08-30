@@ -157,6 +157,12 @@ INSTALLED_APPS = [
     # Third-party — admin authoring UX only, no learner-facing footprint
     "adminsortable2",
     "django_ckeditor_5",
+    # Real TOTP two-factor auth — opt-in per account (see
+    # apps.accounts.views.twofactor_setup), enforced at login only once
+    # a user has actually confirmed a device, never a surprise lockout.
+    "django_otp",
+    "django_otp.plugins.otp_totp",
+    "django_otp.plugins.otp_static",  # backup/recovery codes
     # Local apps
     "apps.common",
     "apps.organizations",
@@ -179,6 +185,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django_otp.middleware.OTPMiddleware",  # after auth — sets request.user.is_verified()
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "apps.payments.middleware.ReferralCaptureMiddleware",
@@ -205,6 +212,8 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 AUTH_USER_MODEL = "accounts.User"
+
+OTP_TOTP_ISSUER = "Xpress Digital Academy"
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},

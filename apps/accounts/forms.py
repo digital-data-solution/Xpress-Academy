@@ -47,6 +47,20 @@ class ForgotPasswordForm(forms.Form):
         return self.cleaned_data["email"].strip().lower()
 
 
+class TOTPTokenForm(forms.Form):
+    """Accepts either a live 6-digit TOTP code or an 8-character backup
+    code (see apps.accounts.views._match_otp_device) — same field
+    either way, since django-otp's own device throttling already
+    protects the TOTP side and StaticDevice.verify_token() handles the
+    backup-code side; no need for the form itself to know which kind
+    was entered."""
+
+    token = forms.CharField(max_length=8, label="Authentication code")
+
+    def clean_token(self):
+        return self.cleaned_data["token"].strip().replace(" ", "")
+
+
 LOGIN_LOCKOUT_THRESHOLD = 5
 LOGIN_LOCKOUT_WINDOW_MINUTES = 15
 

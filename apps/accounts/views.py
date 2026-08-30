@@ -1,12 +1,16 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, views as auth_views
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import SetPasswordForm
 from django.core.signing import BadSignature, SignatureExpired, TimestampSigner
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.views.decorators.http import require_POST
+from django_otp import login as otp_login
+from django_otp.plugins.otp_static.models import StaticDevice, StaticToken
+from django_otp.plugins.otp_totp.models import TOTPDevice
 
-from .forms import ForgotPasswordForm, SignupForm
+from .forms import ForgotPasswordForm, SignupForm, TOTPTokenForm
 from .models import User
 
 VERIFY_SALT = "accounts.email-verify"
@@ -187,3 +191,170 @@ def reset_password(request, token):
         form = SetPasswordForm(user)
 
     return render(request, "registration/reset_password.html", {"form": form})
+
+
+# --- Two-factor authentication (real TOTP, RFC 6238) -----------------
+#
+# Confirmed cross-portfolio decision, 2026-08-30 — the owner and every
+# staff account, not an interim control. Opt-in per account, never a
+# surprise lockout: 2FA is only required at login for a user who has
+# actually confirmed a device via twofactor_setup below. django-otp's
+# TOTPDevice/StaticDevice primitives are used directly (proven,
+# standard TOTP + backup-code implementations) rather than adopting
+# django-two-factor-auth's own login view/URL wizard, which assumes a
+# fairly vanilla auth setup — this codebase's login already runs
+# through a customized LoginView (RateLimitedAuthenticationForm), and
+# a lower-level integration fits that existing shape far better than
+# replacing it outright.
+
+PENDING_2FA_SESSION_KEY = "pending_2fa_user_id"
+PENDING_2FA_REDIRECT_KEY = "pending_2fa_redirect"
+PENDING_2FA_ATTEMPTS_KEY = "pending_2fa_attempts"
+TWOFACTOR_VERIFY_MAX_ATTEMPTS = 5
+BACKUP_CODE_COUNT = 10
+
+
+class TwoFactorLoginView(auth_views.LoginView):
+    """Same stock LoginView + RateLimitedAuthenticationForm as before —
+    only form_valid changes. A user with a confirmed TOTPDevice never
+    gets logged in here directly; the password check succeeding just
+    earns them a trip to twofactor_verify, which is what actually
+    calls login()."""
+
+    def form_valid(self, form):
+        user = form.get_user()
+        device = TOTPDevice.objects.filter(user=user, confirmed=True).first()
+        if device is not None:
+            self.request.session[PENDING_2FA_SESSION_KEY] = user.pk
+            self.request.session[PENDING_2FA_REDIRECT_KEY] = self.get_success_url()
+            return redirect("accounts:twofactor_verify")
+
+        response = super().form_valid(form)
+        if user.is_staff:
+            messages.info(
+                self.request,
+                "Two-factor authentication isn't set up on your account yet — "
+                "set it up now for stronger protection.",
+            )
+        return response
+
+
+def _match_otp_device(user, token):
+    """A live 6-digit TOTP code, or a single-use 8-character backup
+    code — either one logs the second factor in. StaticDevice.verify_token
+    deletes the matched StaticToken itself (django-otp's own behavior),
+    so a backup code can never be reused. django-otp's ThrottlingMixin
+    on TOTPDevice already rate-limits repeated wrong guesses against
+    the device itself, on top of the session-attempt cap below."""
+    totp = TOTPDevice.objects.filter(user=user, confirmed=True).first()
+    if totp and totp.verify_token(token):
+        return totp
+    static = StaticDevice.objects.filter(user=user, confirmed=True).first()
+    if static and static.verify_token(token):
+        return static
+    return None
+
+
+def twofactor_verify(request):
+    user_id = request.session.get(PENDING_2FA_SESSION_KEY)
+    if not user_id:
+        return redirect("accounts:login")
+    user = User.objects.filter(pk=user_id).first()
+    if not user:
+        request.session.pop(PENDING_2FA_SESSION_KEY, None)
+        return redirect("accounts:login")
+
+    if request.method == "POST":
+        form = TOTPTokenForm(request.POST)
+        if form.is_valid():
+            device = _match_otp_device(user, form.cleaned_data["token"])
+            if device is not None:
+                redirect_to = request.session.pop(PENDING_2FA_REDIRECT_KEY, None)
+                request.session.pop(PENDING_2FA_SESSION_KEY, None)
+                request.session.pop(PENDING_2FA_ATTEMPTS_KEY, None)
+                login(request, user)
+                otp_login(request, device)
+                return redirect(redirect_to or "enrollment:dashboard")
+
+            attempts = request.session.get(PENDING_2FA_ATTEMPTS_KEY, 0) + 1
+            request.session[PENDING_2FA_ATTEMPTS_KEY] = attempts
+            if attempts >= TWOFACTOR_VERIFY_MAX_ATTEMPTS:
+                request.session.pop(PENDING_2FA_SESSION_KEY, None)
+                request.session.pop(PENDING_2FA_REDIRECT_KEY, None)
+                request.session.pop(PENDING_2FA_ATTEMPTS_KEY, None)
+                messages.error(request, "Too many failed codes. Please log in again.")
+                return redirect("accounts:login")
+            form.add_error("token", "That code isn't valid. Try again.")
+    else:
+        form = TOTPTokenForm()
+
+    return render(request, "registration/twofactor_verify.html", {"form": form})
+
+
+@login_required
+def twofactor_setup(request):
+    existing = TOTPDevice.objects.filter(user=request.user, confirmed=True).first()
+    if existing:
+        return render(request, "registration/twofactor_setup.html", {"already_enabled": True})
+
+    # get_or_create so refreshing this page mid-setup doesn't mint a
+    # new secret/QR each time — the same unconfirmed device is reused
+    # until it's actually confirmed below.
+    device, _ = TOTPDevice.objects.get_or_create(
+        user=request.user, confirmed=False, defaults={"name": "default"}
+    )
+
+    if request.method == "POST":
+        form = TOTPTokenForm(request.POST)
+        if form.is_valid() and device.verify_token(form.cleaned_data["token"]):
+            device.confirmed = True
+            device.save(update_fields=["confirmed"])
+
+            # Backup codes: wipe any stale set from an earlier
+            # abandoned setup, then mint a fresh batch. Shown once,
+            # here — django-otp stores StaticToken.token in plaintext
+            # by design (they're meant to be written down/saved by the
+            # user, same as every other TOTP provider's recovery codes).
+            StaticDevice.objects.filter(user=request.user).delete()
+            static_device = StaticDevice.objects.create(user=request.user, name="backup codes", confirmed=True)
+            codes = [StaticToken.random_token() for _ in range(BACKUP_CODE_COUNT)]
+            StaticToken.objects.bulk_create(
+                StaticToken(device=static_device, token=code) for code in codes
+            )
+
+            messages.success(request, "Two-factor authentication is now enabled.")
+            return render(request, "registration/twofactor_backup_codes.html", {"codes": codes})
+        form.add_error("token", "That code isn't valid. Check the app and try again.")
+    else:
+        form = TOTPTokenForm()
+
+    return render(request, "registration/twofactor_setup.html", {
+        "form": form, "device": device, "qr_data_uri": _totp_qr_data_uri(device),
+        "secret": device.key,
+    })
+
+
+def _totp_qr_data_uri(device) -> str:
+    import base64
+    import io
+
+    import qrcode
+
+    img = qrcode.make(device.config_url)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+@require_POST
+@login_required
+def twofactor_disable(request):
+    password = request.POST.get("password", "")
+    if not request.user.check_password(password):
+        messages.error(request, "Incorrect password — two-factor authentication was NOT disabled.")
+        return redirect("accounts:twofactor_setup")
+
+    TOTPDevice.objects.filter(user=request.user).delete()
+    StaticDevice.objects.filter(user=request.user).delete()
+    messages.success(request, "Two-factor authentication has been disabled on your account.")
+    return redirect("accounts:twofactor_setup")

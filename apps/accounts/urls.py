@@ -7,10 +7,13 @@ from .forms import RateLimitedAuthenticationForm
 app_name = "accounts"
 
 urlpatterns = [
-    path("login/", auth_views.LoginView.as_view(
+    path("login/", views.TwoFactorLoginView.as_view(
         template_name="registration/login.html", authentication_form=RateLimitedAuthenticationForm,
     ), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("2fa/verify/", views.twofactor_verify, name="twofactor_verify"),
+    path("2fa/setup/", views.twofactor_setup, name="twofactor_setup"),
+    path("2fa/disable/", views.twofactor_disable, name="twofactor_disable"),
     path("signup/", views.signup, name="signup"),
     path("verify/<str:token>/", views.verify_email, name="verify_email"),
     path("resend-verification/", views.resend_verification, name="resend_verification"),

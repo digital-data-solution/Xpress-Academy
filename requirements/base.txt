@@ -14,6 +14,20 @@ redis==8.1.0
 
 django-storages==1.14.4
 boto3==1.35.36
+
+django-otp==1.6.1
+qrcode==8.2
+# Real two-factor auth (TOTP, RFC 6238 — Google Authenticator/Authy
+# compatible), confirmed cross-portfolio decision (2026-08-30): the
+# owner + every staff account, not an interim/half-measure control.
+# django-otp's primitives (TOTPDevice/StaticDevice) are used directly
+# rather than adopting django-two-factor-auth's full view/URL wizard —
+# this codebase's login already runs through Django's stock LoginView
+# with a custom RateLimitedAuthenticationForm (see apps.accounts.forms),
+# and a lower-level integration fits that existing shape far better
+# than replacing the whole login flow with a third-party package's own
+# opinionated one. qrcode (+ Pillow, already installed) renders the
+# TOTP enrollment QR code.
 # Real bug this closes: certificate PDFs (and any future course cover
 # uploads) were saved to local disk, which Render's free tier neither
 # serves in prod (DEBUG=False disables Django's media-serving view,

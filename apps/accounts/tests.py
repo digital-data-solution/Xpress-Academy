@@ -425,3 +425,204 @@ class TestLoginBruteForceProtection:
             "username": "bystander@example.com", "password": "bystander-password-456",
         })
         assert resp.status_code == 302  # unaffected by victim@example.com's lockout
+
+
+def _current_totp(device):
+    from django_otp.oath import totp
+    return "%06d" % totp(device.bin_key)
+
+
+@pytest.mark.django_db
+class TestTwoFactorSetup:
+    def test_get_shows_qr_and_secret_for_a_new_device(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-setup@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+
+        resp = client.get("/account/2fa/setup/")
+
+        assert resp.status_code == 200
+        assert TOTPDevice.objects.filter(user=user, confirmed=False).exists()
+        assert b"data:image/png;base64," in resp.content
+
+    def test_correct_code_confirms_device_and_shows_backup_codes(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+        from django_otp.plugins.otp_static.models import StaticDevice
+
+        user = User.objects.create_user(email="2fa-confirm@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        client.get("/account/2fa/setup/")  # creates the unconfirmed device
+        device = TOTPDevice.objects.get(user=user, confirmed=False)
+
+        resp = client.post("/account/2fa/setup/", {"token": _current_totp(device)})
+
+        device.refresh_from_db()
+        assert device.confirmed is True
+        assert resp.status_code == 200
+        assert b"Save your backup codes" in resp.content
+        static = StaticDevice.objects.get(user=user)
+        assert static.token_set.count() == 10
+
+    def test_wrong_code_does_not_confirm_the_device(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-wrong@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        client.get("/account/2fa/setup/")
+
+        client.post("/account/2fa/setup/", {"token": "000000"})
+
+        device = TOTPDevice.objects.get(user=user)
+        assert device.confirmed is False
+
+    def test_already_enabled_offers_disable_not_a_new_qr(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-already@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+        client.force_login(user)
+
+        resp = client.get("/account/2fa/setup/")
+
+        assert b"already enabled" in resp.content
+        assert b"data:image/png;base64," not in resp.content
+
+    def test_disable_requires_correct_password(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-disable@example.com", password="the-real-password")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+        client.force_login(user)
+
+        resp = client.post("/account/2fa/disable/", {"password": "wrong-password"}, follow=True)
+        assert TOTPDevice.objects.filter(user=user, confirmed=True).exists()
+        assert b"NOT disabled" in resp.content
+
+        client.post("/account/2fa/disable/", {"password": "the-real-password"})
+        assert not TOTPDevice.objects.filter(user=user).exists()
+
+    def test_a_non_staff_learner_can_still_opt_in(self):
+        """2FA enforcement at login is opt-in-driven, not is_staff-gated
+        — anyone who wants it can set it up, staff or not."""
+        user = User.objects.create_user(email="2fa-learner@example.com", password="testpass123", is_staff=False)
+        client = Client()
+        client.force_login(user)
+
+        resp = client.get("/account/2fa/setup/")
+        assert resp.status_code == 200
+
+
+@pytest.mark.django_db
+class TestTwoFactorLogin:
+    def test_user_without_a_device_logs_in_normally(self):
+        User.objects.create_user(email="no-2fa@example.com", password="testpass123")
+        client = Client()
+
+        resp = client.post("/account/login/", {"username": "no-2fa@example.com", "password": "testpass123"})
+
+        assert resp.status_code == 302
+        assert resp.wsgi_request.session.get("_auth_user_id")
+
+    def test_staff_without_a_device_gets_a_setup_nudge(self):
+        User.objects.create_user(email="staff-no-2fa@example.com", password="testpass123", is_staff=True)
+        client = Client()
+
+        resp = client.post("/account/login/", {
+            "username": "staff-no-2fa@example.com", "password": "testpass123",
+        }, follow=True)
+
+        assert b"set it up now" in resp.content
+
+    def test_user_with_confirmed_device_is_not_logged_in_until_verified(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-login@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+
+        resp = client.post("/account/login/", {"username": "2fa-login@example.com", "password": "testpass123"})
+
+        assert resp.status_code == 302
+        assert resp.url == "/account/2fa/verify/"
+        assert not resp.wsgi_request.session.get("_auth_user_id")
+        assert client.session.get("pending_2fa_user_id") == user.pk
+
+    def test_correct_totp_code_completes_login(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-verify@example.com", password="testpass123")
+        device = TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+        client.post("/account/login/", {"username": "2fa-verify@example.com", "password": "testpass123"})
+
+        resp = client.post("/account/2fa/verify/", {"token": _current_totp(device)})
+
+        assert resp.status_code == 302
+        assert client.session.get("_auth_user_id") == str(user.pk)
+
+    def test_wrong_totp_code_does_not_log_in(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-wrong-verify@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+        client.post("/account/login/", {"username": "2fa-wrong-verify@example.com", "password": "testpass123"})
+
+        resp = client.post("/account/2fa/verify/", {"token": "000000"})
+
+        assert resp.status_code == 200  # re-renders, no login
+        assert not client.session.get("_auth_user_id")
+
+    def test_backup_code_works_once_then_fails_the_second_time(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+        from django_otp.plugins.otp_static.models import StaticDevice, StaticToken
+
+        user = User.objects.create_user(email="2fa-backup@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        static = StaticDevice.objects.create(user=user, confirmed=True, name="backup codes")
+        StaticToken.objects.create(device=static, token="abcd1234")
+
+        client = Client()
+        client.post("/account/login/", {"username": "2fa-backup@example.com", "password": "testpass123"})
+        resp = client.post("/account/2fa/verify/", {"token": "abcd1234"})
+        assert client.session.get("_auth_user_id") == str(user.pk)
+
+        client.logout()
+        client.post("/account/login/", {"username": "2fa-backup@example.com", "password": "testpass123"})
+        resp = client.post("/account/2fa/verify/", {"token": "abcd1234"})  # already consumed
+        assert resp.status_code == 200
+        assert not client.session.get("_auth_user_id")
+
+    def test_locks_out_of_the_pending_challenge_after_too_many_wrong_codes(self):
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="2fa-lockout@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+        client = Client()
+        client.post("/account/login/", {"username": "2fa-lockout@example.com", "password": "testpass123"})
+
+        for _ in range(5):
+            client.post("/account/2fa/verify/", {"token": "000000"})
+
+        # The pending challenge is gone now — even hitting verify again
+        # bounces back to login instead of re-rendering the code form.
+        resp = client.get("/account/2fa/verify/")
+        assert resp.status_code == 302
+        assert resp.url == "/account/login/"
+
+    def test_admin_direct_login_routes_through_the_same_2fa_aware_view(self):
+        """Real gap this closes: Django admin has its own separate
+        built-in login form (AdminSite.login) — a staff member going
+        straight to the admin URL with an expired session would
+        otherwise authenticate through Django's stock form, bypassing
+        2FA entirely, even though it's fully wired on /account/login/."""
+        client = Client()
+        resp = client.get("/admin/login/?next=/admin/")
+        assert resp.status_code == 302
+        assert resp.url == "/account/login/?next=/admin/"
