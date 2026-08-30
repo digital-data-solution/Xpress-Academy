@@ -626,3 +626,64 @@ class TestTwoFactorLogin:
         resp = client.get("/admin/login/?next=/admin/")
         assert resp.status_code == 302
         assert resp.url == "/account/login/?next=/admin/"
+
+
+@pytest.mark.django_db
+class TestTwoFactorRecovery:
+    """Real gap: self-service disable (accounts:twofactor_disable) needs
+    an authenticated session — exactly what's unavailable to someone
+    stuck at the 2FA prompt with a lost authenticator and no backup
+    codes left. Two recovery paths, for two different situations."""
+
+    def test_admin_action_resets_a_staff_members_2fa(self):
+        """The common case: someone else with admin access resets a
+        locked-out staff member's 2FA for them."""
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+        from django_otp.plugins.otp_static.models import StaticDevice
+
+        owner = User.objects.create_superuser(email="owner@example.com", password="testpass123")
+        locked_out = User.objects.create_user(email="locked-out@example.com", password="testpass123", is_staff=True)
+        TOTPDevice.objects.create(user=locked_out, confirmed=True, name="default")
+        StaticDevice.objects.create(user=locked_out, confirmed=True, name="backup codes")
+
+        client = Client()
+        client.force_login(owner)
+        client.post("/admin/accounts/user/", {
+            "action": "reset_two_factor", "_selected_action": [str(locked_out.pk)],
+        })
+
+        assert not TOTPDevice.objects.filter(user=locked_out).exists()
+        assert not StaticDevice.objects.filter(user=locked_out).exists()
+
+        # And they can now log in with just the password again.
+        client2 = Client()
+        resp = client2.post("/account/login/", {
+            "username": "locked-out@example.com", "password": "testpass123",
+        })
+        assert resp.status_code == 302
+        assert resp.url != "/account/2fa/verify/"
+
+    def test_management_command_resets_2fa_without_any_web_session(self):
+        """The escape hatch for when the OWNER's own account is what's
+        locked out — no admin login needed at all, runs straight
+        against the database (same shape as every other one-off
+        production command this project)."""
+        from io import StringIO
+
+        from django.core.management import call_command
+        from django_otp.plugins.otp_totp.models import TOTPDevice
+
+        user = User.objects.create_user(email="owner-locked-out@example.com", password="testpass123")
+        TOTPDevice.objects.create(user=user, confirmed=True, name="default")
+
+        out = StringIO()
+        call_command("reset_2fa", "--email=owner-locked-out@example.com", stdout=out)
+
+        assert not TOTPDevice.objects.filter(user=user).exists()
+        assert "reset for owner-locked-out@example.com" in out.getvalue()
+
+    def test_management_command_errors_on_unknown_email(self):
+        from django.core.management import CommandError, call_command
+
+        with pytest.raises(CommandError):
+            call_command("reset_2fa", "--email=nobody@example.com")
