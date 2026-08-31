@@ -84,6 +84,15 @@ class Command(BaseCommand):
                                 "nutrition, vaccination timing, zoonotic risk, and parasite prevention. Distinct "
                                 "from the Veterinary Continuing Education programme, which assumes veterinary "
                                 "training.",
+                # Same VET destination as the Veterinary CE and Dog Breeding
+                # programmes — these are cross-promotion content too, sourced
+                # from the same Vet Marketplace blog collaboration. Left off
+                # the original get_or_create by oversight (defaulted to
+                # WebhookLine.NONE), which meant these 5 courses published
+                # without ever notifying Vet Marketplace's dashboard — see
+                # apps/catalog/management/commands/fix_pet_owner_education_webhook_line.py
+                # for the one-time retroactive fix.
+                "webhook_line": Programme.WebhookLine.VET,
             },
         )
         if prog_created:

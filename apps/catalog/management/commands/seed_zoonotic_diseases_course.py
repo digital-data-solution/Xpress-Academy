@@ -77,6 +77,10 @@ class Command(BaseCommand):
                                 "nutrition, vaccination timing, zoonotic risk, and parasite prevention. Distinct "
                                 "from the Veterinary Continuing Education programme, which assumes veterinary "
                                 "training.",
+                # Same VET destination as the Veterinary CE and Dog Breeding
+                # programmes — see seed_pet_nutrition_basics_course.py's own
+                # comment here for the oversight this corrects.
+                "webhook_line": Programme.WebhookLine.VET,
             },
         )
         if prog_created:
