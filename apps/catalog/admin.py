@@ -53,7 +53,40 @@ class CourseAdmin(SortableAdminMixin, admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ModuleInline, CourseFAQInline]
     autocomplete_fields = ["instructor", "vertical", "reviewed_by", "domain_reviewer"]
-    actions = ["resend_publish_webhook"]
+    actions = ["publish_selected_courses", "resend_publish_webhook"]
+
+    @admin.action(description="Publish selected courses (approve + set is_published)")
+    def publish_selected_courses(self, request, queryset):
+        """The real fix for 'publishing one by one' — select any number
+        of courses in the list view and approve+publish them all in one
+        action, instead of opening each course's change form individually.
+
+        Saves each instance individually (not queryset.update()) so
+        Course.save()'s own draft->published detection still fires the
+        course-publish webhook per course, exactly like publishing one
+        course by hand always has.
+
+        Deliberately sets review_status straight to APPROVED without
+        requiring a Vertical/domain_reviewer — matches how every
+        currently-published course on this platform actually got
+        published (none of them have a Vertical set either), not a new
+        shortcut introduced here. The Vertical/domain_reviewer system
+        exists for a future multi-instructor reality; this business is
+        still a single-operator one where Sam himself is the review."""
+        published, already = 0, 0
+        for course in queryset:
+            if course.is_published:
+                already += 1
+                continue
+            course.review_status = Course.ReviewStatus.APPROVED
+            course.is_published = True
+            course.save()
+            published += 1
+
+        msg = f"Published {published} course(s)."
+        if already:
+            msg += f" {already} were already published."
+        self.message_user(request, msg)
 
     @admin.action(description="Resend course-publish webhook for selected (published) courses")
     def resend_publish_webhook(self, request, queryset):
