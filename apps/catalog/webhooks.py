@@ -64,6 +64,36 @@ def notify_course_published(course):
         return None  # destination not configured in this environment — nothing to send
 
     course_url = f"{settings.SITE_URL}{reverse('catalog:course_detail', args=[course.slug])}"
+    is_localhost_url = "localhost" in settings.SITE_URL or "127.0.0.1" in settings.SITE_URL
+    is_prod_settings = settings.SETTINGS_MODULE == "config.settings.prod"
+    if is_localhost_url and is_prod_settings:
+        # Real incident (2026-09-02): a local one-time command run against
+        # the prod DB (DJANGO_SETTINGS_MODULE=config.settings.prod)
+        # inherited SITE_URL from this project's local .env (correctly
+        # "http://localhost:8000" for actual local dev) instead of
+        # Render's real value, because only DATABASE_URL and the webhook
+        # secret/URL were overridden for that run -- not SITE_URL. The
+        # resulting course_url landed in a webhook payload delivered to a
+        # real external system, and was later sent in a live email
+        # campaign to 28 real subscribers with a dead localhost link.
+        # Gated on settings.SETTINGS_MODULE, NOT settings.DEBUG -- Django's
+        # own test runner forces DEBUG=False for every test regardless of
+        # settings module, which would make a DEBUG-based check fire on the
+        # entire test suite. SETTINGS_MODULE has no such test-time override
+        # and is exactly the real signal: was this actually pointed at
+        # config.settings.prod. Delivering a payload with a guaranteed-
+        # broken URL to an external system is worse than not delivering at
+        # all, so this is the one deliberate exception to this function's
+        # normal fail-open discipline: refuse to send rather than ship
+        # known-bad data.
+        logger.error(
+            "notify_course_published(%s) refused to send for %s: SITE_URL is %r "
+            "under config.settings.prod -- course_url would be broken for an "
+            "external system. Set SITE_URL explicitly for this process, the "
+            "same way DATABASE_URL is.",
+            line, course.slug, settings.SITE_URL,
+        )
+        return False
     payload = {
         "event": "course.published",
         "line": line,

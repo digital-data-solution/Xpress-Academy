@@ -90,12 +90,32 @@ class Command(BaseCommand):
                 "tab — never hardcoded). Aborting without sending anything."
             )
 
+        if "localhost" in settings.SITE_URL or "127.0.0.1" in settings.SITE_URL:
+            # Real incident: this project's local .env correctly has
+            # SITE_URL=http://localhost:8000 for actual local dev, but
+            # nothing in the paste block that sets DATABASE_URL/the webhook
+            # vars for a "production" run also overrides SITE_URL -- so it
+            # silently fell through to the local .env value, and every
+            # course_url in this run's payloads pointed at localhost. One
+            # of those already reached 28 real subscribers as a dead link
+            # before this check existed. webhooks.py now also refuses to
+            # send with a localhost SITE_URL, but check it here too so this
+            # command fails loudly up front instead of quietly reporting
+            # "failed" 31 times.
+            raise CommandError(
+                f"SITE_URL is {settings.SITE_URL!r} — looks like a local/dev value, not "
+                "production. Set it explicitly for this run too, e.g.:\n"
+                '  $env:SITE_URL = "https://xpress-academy-web.onrender.com"\n'
+                "Aborting without sending anything."
+            )
+
         # Print exactly what this run will use — not a secret, but the two
         # previous runs both reported success while silently hitting the
         # wrong host, so print proof instead of trusting the return value
         # alone. The secret itself is never printed, only its length, as a
         # fingerprint to confirm the right one was pasted without exposing it.
         self.stdout.write(f"Target URL this run will POST to: {settings.VET_COURSE_PUBLISH_WEBHOOK_URL}")
+        self.stdout.write(f"course_url values in this run's payloads will use SITE_URL: {settings.SITE_URL}")
         self.stdout.write(f"Secret configured: {len(settings.VET_COURSE_PUBLISH_WEBHOOK_SECRET)} character(s).")
 
         courses = {c.slug: c for c in Course.objects.filter(slug__in=MISSING_SLUGS)}

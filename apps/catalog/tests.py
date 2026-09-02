@@ -408,7 +408,49 @@ class TestCoursePublishWebhook:
         with patch("apps.catalog.webhooks.requests.post") as mock_post:
             course.is_published = False
             course.save()
+
+    def test_refuses_to_send_localhost_course_url_under_prod_settings(self, org, settings):
+        """Real incident: a local one-off command run against the prod DB
+        with config.settings.prod sent 31 webhooks whose course_url was
+        built from the local .env's SITE_URL (localhost) because only
+        DATABASE_URL and the webhook secret/URL had been overridden for
+        that run. One of those already reached 28 real subscribers as a
+        dead link. This guard refuses to send rather than deliver a
+        payload with a known-broken URL -- but only under
+        config.settings.prod specifically, never during real local dev
+        or the test suite (which is why SETTINGS_MODULE is checked, not
+        DEBUG -- Django's test runner forces DEBUG=False for every test
+        regardless of settings module)."""
+        # SETTINGS_MODULE must be the LAST override set here, not just set
+        # somewhere in this test: pytest-django's `settings` fixture layers
+        # each assignment as its own django.test.override_settings, and
+        # Django's UserSettingsHolder declares SETTINGS_MODULE as a class
+        # attribute (= None) rather than delegating unset attributes to the
+        # wrapped layer below it for this one name specifically -- so only
+        # the OUTERMOST (most recent) override layer's own SETTINGS_MODULE
+        # is ever seen. Doesn't affect a real process (there's no
+        # override_settings layering there), only this test's setup order.
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        settings.SITE_URL = "http://localhost:8000"
+        settings.SETTINGS_MODULE = "config.settings.prod"
+        course = self._draft_course(org)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
         mock_post.assert_not_called()
+
+    def test_sends_normally_under_prod_settings_with_a_real_site_url(self, org, settings):
+        """Companion to the guard test above -- confirms the guard is
+        narrowly scoped to the localhost+prod-settings combination and
+        doesn't block a genuine production send."""
+        settings.COURSE_PUBLISH_WEBHOOK_URL = "https://example.com/webhook"
+        settings.SITE_URL = "https://xpress-academy-web.onrender.com"
+        settings.SETTINGS_MODULE = "config.settings.prod"
+        course = self._draft_course(org)
+        with patch("apps.catalog.webhooks.requests.post") as mock_post:
+            course.is_published = True
+            course.save()
+        mock_post.assert_called_once()
 
     def test_skipped_entirely_when_not_configured(self, org, settings):
         settings.COURSE_PUBLISH_WEBHOOK_URL = ""
