@@ -1,7 +1,12 @@
+import hmac
+import logging
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import redirect, render
-from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_GET, require_POST
 
 from .access import requires_active_enrollment
 from .models import Enrollment
@@ -13,6 +18,8 @@ from .services import (
     is_module_unlocked,
     mark_lesson_complete,
 )
+
+logger = logging.getLogger(__name__)
 
 
 @login_required
@@ -156,3 +163,106 @@ def mark_complete(request, course_slug, lesson_slug):
 
     mark_lesson_complete(enrollment, request.lesson)
     return redirect("enrollment:lesson", course_slug=course_slug, lesson_slug=lesson_slug)
+
+
+CALL_CANDIDATES_MAX_LIMIT = 500
+CALL_CANDIDATES_DEFAULT_LIMIT = 100
+
+
+@csrf_exempt
+@require_GET
+def call_candidates(request):
+    """Read-only, inbound, shared-secret-gated endpoint for the Xpress
+    Digital & Data Solutions "Call Assignment" system (built there, not
+    here) to pull real Academy learner/enrollment segments instead of
+    Sam pasting names in by hand — his own explicit ask, relayed then
+    confirmed directly with him before building. Same shared-secret
+    pattern as apps.engagement.views.run_scheduled_tasks, just GET
+    instead of POST since this only ever reads.
+
+    Deliberately conservative: GET only, no mutation; requires the
+    secret even to reveal that it's configured (blank config = 403,
+    same as CRON_SECRET); results capped at CALL_CANDIDATES_MAX_LIMIT
+    per call rather than allowing a single request to dump the entire
+    enrollment table; every access is logged (who/what filters/how
+    many rows) since this returns real contact info (name/email/phone)
+    -- deliberately NOT redacted the way apps.instructors' learner-
+    privacy rule redacts contact info from instructors, because the
+    caller here is Sam's own internal ops tool, same trust level as
+    Sam's own admin access, not an external instructor.
+
+    Query params (all optional):
+      course_slug     -- exact match on Course.slug
+      programme_slug  -- exact match on Course.programme.slug
+      status          -- comma-separated Enrollment.Status values
+                         (default: ACTIVE only, the most useful default
+                         for "who should we call" -- pass status=ALL
+                         for every status including REVOKED)
+      limit            -- default 100, capped at 500
+    """
+    token = request.headers.get("X-Call-Assignment-Secret", "")
+    if not settings.CALL_ASSIGNMENT_API_SECRET or not hmac.compare_digest(
+        token, settings.CALL_ASSIGNMENT_API_SECRET
+    ):
+        return HttpResponseForbidden("Forbidden")
+
+    qs = Enrollment.objects.select_related(
+        "user", "user__profile", "course", "course__programme"
+    ).order_by("-started_at")
+
+    course_slug = request.GET.get("course_slug", "").strip()
+    if course_slug:
+        qs = qs.filter(course__slug=course_slug)
+
+    programme_slug = request.GET.get("programme_slug", "").strip()
+    if programme_slug:
+        qs = qs.filter(course__programme__slug=programme_slug)
+
+    status_param = request.GET.get("status", "").strip()
+    if status_param and status_param.upper() != "ALL":
+        statuses = [s.strip().upper() for s in status_param.split(",") if s.strip()]
+        valid_statuses = {choice for choice, _ in Enrollment.Status.choices}
+        statuses = [s for s in statuses if s in valid_statuses]
+        if statuses:
+            qs = qs.filter(status__in=statuses)
+    elif not status_param:
+        qs = qs.filter(status=Enrollment.Status.ACTIVE)
+    # status=ALL (any case) -- no status filter, every status included.
+
+    try:
+        limit = int(request.GET.get("limit", CALL_CANDIDATES_DEFAULT_LIMIT))
+    except ValueError:
+        limit = CALL_CANDIDATES_DEFAULT_LIMIT
+    limit = max(1, min(limit, CALL_CANDIDATES_MAX_LIMIT))
+
+    total_matching = qs.count()
+    rows = []
+    for enrollment in qs[:limit]:
+        user = enrollment.user
+        profile = getattr(user, "profile", None)
+        rows.append({
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "phone": profile.phone if profile else "",
+            "whatsapp_number": profile.whatsapp_number if profile else "",
+            "course_title": enrollment.course.title,
+            "course_slug": enrollment.course.slug,
+            "programme": enrollment.course.programme.title if enrollment.course.programme_id else None,
+            "enrollment_status": enrollment.status,
+            "started_at": enrollment.started_at.isoformat() if enrollment.started_at else None,
+            "completed_at": enrollment.completed_at.isoformat() if enrollment.completed_at else None,
+            "last_activity_at": enrollment.last_activity_at.isoformat() if enrollment.last_activity_at else None,
+        })
+
+    logger.info(
+        "call_candidates accessed: course_slug=%r programme_slug=%r status=%r limit=%s "
+        "matched=%s returned=%s",
+        course_slug, programme_slug, status_param, limit, total_matching, len(rows),
+    )
+
+    return JsonResponse({
+        "count": len(rows),
+        "total_matching": total_matching,
+        "results": rows,
+    })

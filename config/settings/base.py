@@ -145,6 +145,22 @@ VET_COURSE_PUBLISH_WEBHOOK_SECRET = env("VET_COURSE_PUBLISH_WEBHOOK_SECRET", def
 STAFF_TRAINING_WEBHOOK_URL = env("STAFF_TRAINING_WEBHOOK_URL", default="")
 STAFF_TRAINING_WEBHOOK_SECRET = env("STAFF_TRAINING_WEBHOOK_SECRET", default="")
 
+# --- Call-assignment read-only integration --------------------------------
+# INBOUND, unlike every other integration setting above — authorizes
+# apps.enrollment.views.call_candidates, a small read-only endpoint the
+# Xpress Digital & Data Solutions "Call Assignment" system can query to
+# pull real Academy learner/enrollment segments (filtered by course/
+# programme/status) instead of Sam pasting names in by hand. Blank by
+# default — refuses every request rather than accepting an empty token
+# as valid, same discipline as CRON_SECRET/the webhook secrets above.
+# Read-only by construction (GET, no state changes); returns contact
+# info (name, email, phone) because the whole point is letting Sam's
+# own staff actually call these people — same trust level as Sam's own
+# admin access, not an instructor-facing view (contrast the deliberate
+# email/phone redaction in apps.instructors' learner-privacy rule,
+# which is about an external party, not Sam's own internal ops tool).
+CALL_ASSIGNMENT_API_SECRET = env("CALL_ASSIGNMENT_API_SECRET", default="")
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",

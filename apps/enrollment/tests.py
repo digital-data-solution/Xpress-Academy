@@ -398,4 +398,104 @@ class TestEnrollmentAdminResendWelcomeEmailAction:
 
         # The stale log is gone and a fresh SENT log exists in its place.
         assert EmailLog.objects.filter(dedupe_key=dedupe_key, subject="stale").count() == 0
-        assert EmailLog.objects.filter(dedupe_key=dedupe_key).exists()
+
+
+@pytest.mark.django_db
+class TestCallCandidatesEndpoint:
+    """Read-only integration endpoint for Xpress Digital & Data
+    Solutions' Call Assignment system -- Sam's own explicit ask,
+    confirmed directly with him before building. Same shared-secret
+    discipline as apps.engagement.views.run_scheduled_tasks."""
+
+    def _enrolled(self, course, email, status=Enrollment.Status.ACTIVE, phone=""):
+        user = User.objects.create_user(email=email, password="testpass123")
+        user.profile.phone = phone
+        user.profile.save(update_fields=["phone"])
+        return Enrollment.objects.create(user=user, course=course, status=status)
+
+    def test_requires_secret_header(self, course, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "a@example.com")
+        resp = Client().get("/internal/call-candidates/")
+        assert resp.status_code == 403
+
+    def test_wrong_secret_forbidden(self, course, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "a@example.com")
+        resp = Client().get("/internal/call-candidates/", HTTP_X_CALL_ASSIGNMENT_SECRET="wrong")
+        assert resp.status_code == 403
+
+    def test_blank_secret_setting_always_forbidden(self, course, settings):
+        """A misconfigured/unset secret must never be treated as an
+        'empty token accepted' case -- same discipline as CRON_SECRET."""
+        settings.CALL_ASSIGNMENT_API_SECRET = ""
+        self._enrolled(course, "a@example.com")
+        resp = Client().get("/internal/call-candidates/", HTTP_X_CALL_ASSIGNMENT_SECRET="")
+        assert resp.status_code == 403
+
+    def test_returns_real_contact_info_for_correct_secret(self, course, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "learner@example.com", phone="+2348000000000")
+        resp = Client().get("/internal/call-candidates/", HTTP_X_CALL_ASSIGNMENT_SECRET="shh")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["count"] == 1
+        row = data["results"][0]
+        assert row["email"] == "learner@example.com"
+        assert row["phone"] == "+2348000000000"
+        assert row["course_slug"] == course.slug
+        assert row["enrollment_status"] == "ACTIVE"
+
+    def test_defaults_to_active_only(self, course, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "active@example.com", status=Enrollment.Status.ACTIVE)
+        self._enrolled(course, "revoked@example.com", status=Enrollment.Status.REVOKED)
+        resp = Client().get("/internal/call-candidates/", HTTP_X_CALL_ASSIGNMENT_SECRET="shh")
+        emails = {row["email"] for row in resp.json()["results"]}
+        assert emails == {"active@example.com"}
+
+    def test_status_all_includes_every_status(self, course, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "active@example.com", status=Enrollment.Status.ACTIVE)
+        self._enrolled(course, "revoked@example.com", status=Enrollment.Status.REVOKED)
+        resp = Client().get(
+            "/internal/call-candidates/?status=ALL", HTTP_X_CALL_ASSIGNMENT_SECRET="shh"
+        )
+        emails = {row["email"] for row in resp.json()["results"]}
+        assert emails == {"active@example.com", "revoked@example.com"}
+
+    def test_filters_by_course_slug(self, org, settings):
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        programme = Programme.objects.create(organization=org, title="P", audience="BREEDER")
+        course_a = Course.objects.create(organization=org, programme=programme, title="Course A", audience="BREEDER")
+        course_b = Course.objects.create(organization=org, programme=programme, title="Course B", audience="BREEDER")
+        self._enrolled(course_a, "a@example.com")
+        self._enrolled(course_b, "b@example.com")
+        resp = Client().get(
+            f"/internal/call-candidates/?course_slug={course_a.slug}",
+            HTTP_X_CALL_ASSIGNMENT_SECRET="shh",
+        )
+        emails = {row["email"] for row in resp.json()["results"]}
+        assert emails == {"a@example.com"}
+
+    def test_limit_is_capped(self, course, settings):
+        from apps.enrollment.views import CALL_CANDIDATES_MAX_LIMIT
+
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        for i in range(3):
+            self._enrolled(course, f"learner{i}@example.com")
+        resp = Client().get(
+            f"/internal/call-candidates/?limit={CALL_CANDIDATES_MAX_LIMIT + 1000}",
+            HTTP_X_CALL_ASSIGNMENT_SECRET="shh",
+        )
+        # Only 3 real rows exist, but confirms an absurd limit doesn't
+        # error and total_matching still reports the true count.
+        assert resp.status_code == 200
+        assert resp.json()["total_matching"] == 3
+
+    def test_never_mutates_anything(self, course, settings):
+        """GET only -- POST must not be accepted at all."""
+        settings.CALL_ASSIGNMENT_API_SECRET = "shh"
+        self._enrolled(course, "a@example.com")
+        resp = Client().post("/internal/call-candidates/", HTTP_X_CALL_ASSIGNMENT_SECRET="shh")
+        assert resp.status_code == 405

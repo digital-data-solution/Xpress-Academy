@@ -1,0 +1,18 @@
+Add read-only call-candidates endpoint for cross-portfolio integration
+
+Sam's explicit ask, relayed by the Xpress Digital & Data Solutions
+session then confirmed directly with him: expose a small read-only
+segment endpoint so their new Call Assignment system can pull real
+Academy enrollment data instead of Sam pasting names in by hand.
+
+GET /internal/call-candidates/, gated by a shared secret header
+(X-Call-Assignment-Secret / CALL_ASSIGNMENT_API_SECRET, blank by
+default -- same discipline as CRON_SECRET and the webhook secrets).
+Filters: course_slug, programme_slug, status (defaults to ACTIVE only,
+status=ALL for everything). Capped at 500 rows/call, every access
+logged. Returns real contact info (name/email/phone) -- deliberately
+not redacted, since the caller is Sam's own internal ops tool, same
+trust level as his own admin access, not an external instructor.
+
+11 new tests (auth, filtering, status default/ALL, limit cap, GET-only).
+346 tests pass project-wide.
