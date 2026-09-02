@@ -1,13 +1,24 @@
+import hmac
+import logging
+
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import PermissionDenied
+from django.db.models import Sum
+from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_GET, require_POST
 
+from apps.enrollment.models import Enrollment
 from apps.organizations.models import Organization
+from apps.payments.models import Payment
 
 from .analytics import build_growth_context
 from .models import Signal
 from .services import dismiss_signal, get_open_signals, resolve_signal, snooze_signal
+
+logger = logging.getLogger(__name__)
 
 
 @staff_member_required
@@ -56,3 +67,45 @@ def ops_act(request, signal_id):
     elif action == "snooze":
         snooze_signal(signal, days=int(request.POST.get("days", 7)))
     return redirect("operations:queue")
+
+
+@csrf_exempt
+@require_GET
+def company_stats(request):
+    """Read-only, inbound, shared-secret-gated aggregate-only endpoint
+    for Xpress Digital & Data Solutions' cross-portfolio "Company
+    Overview" dashboard -- Sam's own explicit ask (via that session),
+    confirmed directly with him before building, same pattern as
+    apps.enrollment.views.call_candidates (built the same day for the
+    same dashboard's headcount side).
+
+    Deliberately aggregate-only -- no PII, no per-user rows, nothing an
+    instructor/learner-privacy rule would need to redact. Total revenue
+    uses the exact same computation as the superuser-only growth
+    dashboard (apps.operations.analytics.build_growth_context's
+    total_revenue_kobo: SUM(amount_kobo) over Payment.Status.SUCCESS
+    only -- a refund moves a Payment's status to REFUNDED, so it's
+    already excluded here, not double-subtracted).
+    """
+    token = request.headers.get("X-Company-Stats-Secret", "")
+    if not settings.COMPANY_STATS_API_SECRET or not hmac.compare_digest(
+        token, settings.COMPANY_STATS_API_SECRET
+    ):
+        return HttpResponseForbidden("Forbidden")
+
+    total_revenue_kobo = (
+        Payment.objects.filter(status=Payment.Status.SUCCESS).aggregate(s=Sum("amount_kobo"))["s"] or 0
+    )
+    active_enrollments = Enrollment.objects.filter(status=Enrollment.Status.ACTIVE).count()
+
+    logger.info(
+        "company_stats accessed: total_revenue_naira=%s active_enrollments=%s",
+        total_revenue_kobo / 100, active_enrollments,
+    )
+
+    return JsonResponse({
+        "totalRevenue": total_revenue_kobo / 100,
+        "currency": "NGN",
+        "activeEnrollments": active_enrollments,
+        "period": "all-time",
+    })

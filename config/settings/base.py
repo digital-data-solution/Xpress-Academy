@@ -161,6 +161,13 @@ STAFF_TRAINING_WEBHOOK_SECRET = env("STAFF_TRAINING_WEBHOOK_SECRET", default="")
 # which is about an external party, not Sam's own internal ops tool).
 CALL_ASSIGNMENT_API_SECRET = env("CALL_ASSIGNMENT_API_SECRET", default="")
 
+# Same shape as CALL_ASSIGNMENT_API_SECRET above, for
+# apps.operations.views.company_stats -- a separate, aggregate-only
+# (no PII at all) endpoint feeding the same "Company Overview"
+# dashboard's revenue side. Kept as its own secret, not reused, so
+# either integration can be rotated/revoked independently.
+COMPANY_STATS_API_SECRET = env("COMPANY_STATS_API_SECRET", default="")
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",

@@ -390,3 +390,74 @@ class TestGrowthDashboard:
         resp = client.get("/ops/growth/?days=9999")
         assert resp.status_code == 200
         assert resp.context["days"] == 30
+
+
+@pytest.mark.django_db
+class TestCompanyStatsEndpoint:
+    """Read-only, aggregate-only, no-PII endpoint for Xpress Digital &
+    Data Solutions' cross-portfolio Company Overview dashboard -- same
+    shared-secret discipline as apps.enrollment.views.call_candidates,
+    built the same day for the same dashboard."""
+
+    def _paid(self, course, amount_kobo, status="SUCCESS", email="payer@example.com"):
+        from apps.payments.models import Payment
+
+        user = User.objects.create_user(email=email, password="testpass123")
+        return Payment.objects.create(
+            user=user, course=course, reference=f"ref-{email}",
+            amount_kobo=amount_kobo, status=status,
+        )
+
+    def test_requires_secret_header(self, course):
+        resp = Client().get("/internal/company-stats/")
+        assert resp.status_code == 403
+
+    def test_wrong_secret_forbidden(self, course, settings):
+        settings.COMPANY_STATS_API_SECRET = "shh"
+        resp = Client().get("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="wrong")
+        assert resp.status_code == 403
+
+    def test_blank_secret_setting_always_forbidden(self, course, settings):
+        settings.COMPANY_STATS_API_SECRET = ""
+        resp = Client().get("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="")
+        assert resp.status_code == 403
+
+    def test_returns_aggregate_revenue_and_enrollment_counts(self, course, settings):
+        settings.COMPANY_STATS_API_SECRET = "shh"
+        self._paid(course, 500_000, status="SUCCESS", email="a@example.com")  # ₦5,000
+        self._paid(course, 300_000, status="SUCCESS", email="b@example.com")  # ₦3,000
+        # A failed/pending payment must not count toward revenue.
+        self._paid(course, 999_999, status="PENDING", email="c@example.com")
+        Enrollment.objects.create(user=User.objects.get(email="a@example.com"), course=course)
+        Enrollment.objects.create(
+            user=User.objects.get(email="b@example.com"), course=course, status=Enrollment.Status.EXPIRED,
+        )
+
+        resp = Client().get("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="shh")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["totalRevenue"] == 8000.0  # (500_000 + 300_000) / 100
+        assert data["currency"] == "NGN"
+        assert data["activeEnrollments"] == 1  # only the ACTIVE one counts
+        assert data["period"] == "all-time"
+
+    def test_refunded_payment_excluded_from_revenue(self, course, settings):
+        """A refund moves Payment.status away from SUCCESS to REFUNDED
+        -- confirms this endpoint doesn't double-count or need to
+        separately subtract refunds, same as the growth dashboard's
+        own total_revenue_kobo computation."""
+        settings.COMPANY_STATS_API_SECRET = "shh"
+        self._paid(course, 500_000, status="REFUNDED", email="refunded@example.com")
+        resp = Client().get("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="shh")
+        assert resp.json()["totalRevenue"] == 0
+
+    def test_no_pii_in_response(self, course, settings):
+        settings.COMPANY_STATS_API_SECRET = "shh"
+        self._paid(course, 500_000, status="SUCCESS", email="secret-payer@example.com")
+        resp = Client().get("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="shh")
+        assert b"secret-payer" not in resp.content
+
+    def test_never_mutates_anything(self, course, settings):
+        settings.COMPANY_STATS_API_SECRET = "shh"
+        resp = Client().post("/internal/company-stats/", HTTP_X_COMPANY_STATS_SECRET="shh")
+        assert resp.status_code == 405

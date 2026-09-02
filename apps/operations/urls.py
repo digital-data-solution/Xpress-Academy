@@ -8,4 +8,5 @@ urlpatterns = [
     path("ops/", views.ops_queue, name="queue"),
     path("ops/growth/", views.growth, name="growth"),
     path("ops/<int:signal_id>/act/", views.ops_act, name="act"),
+    path("internal/company-stats/", views.company_stats, name="company_stats"),
 ]
