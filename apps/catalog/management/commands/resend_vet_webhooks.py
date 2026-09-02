@@ -90,6 +90,14 @@ class Command(BaseCommand):
                 "tab — never hardcoded). Aborting without sending anything."
             )
 
+        # Print exactly what this run will use — not a secret, but the two
+        # previous runs both reported success while silently hitting the
+        # wrong host, so print proof instead of trusting the return value
+        # alone. The secret itself is never printed, only its length, as a
+        # fingerprint to confirm the right one was pasted without exposing it.
+        self.stdout.write(f"Target URL this run will POST to: {settings.VET_COURSE_PUBLISH_WEBHOOK_URL}")
+        self.stdout.write(f"Secret configured: {len(settings.VET_COURSE_PUBLISH_WEBHOOK_SECRET)} character(s).")
+
         courses = {c.slug: c for c in Course.objects.filter(slug__in=MISSING_SLUGS)}
         missing_locally = set(MISSING_SLUGS) - set(courses)
         if missing_locally:

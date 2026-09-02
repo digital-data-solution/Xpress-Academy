@@ -92,6 +92,14 @@ def notify_course_published(course):
                 line, response.status_code, course.slug, response.text[:500],
             )
             return False
+        # Log the 2xx too, not just failures — a "successful" response from
+        # the wrong host (misconfigured URL) is otherwise indistinguishable
+        # from a real success. Real incident: this happened for real, see
+        # resend_vet_webhooks.py's header comment.
+        logger.info(
+            "notify_course_published(%s) got HTTP %s for %s from %s: %s",
+            line, response.status_code, course.slug, url, response.text[:200],
+        )
         return True
     except Exception as exc:  # noqa: BLE001 — a failed webhook must never break publishing a course
         logger.error("notify_course_published(%s) failed for %s: %s", line, course.slug, exc)
