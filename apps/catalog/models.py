@@ -381,6 +381,66 @@ class Lesson(TimeStampedModel):
         super().save(*args, **kwargs)
 
 
+class VideoScene(TimeStampedModel):
+    """Structured, ordered scene script for the automated lecture-video
+    pipeline (see video/ at the repo root). Deliberately a real model
+    rather than parsed out of Lesson.body: body is freeform CKEditor
+    HTML written for reading, and mechanically splitting it into typed
+    scenes (titleCard, bulletReveal, ...) with per-scene narration text
+    would be a guess dressed up as a parser — wrong in ways that look
+    like success. This gives an author an explicit place to write the
+    video script instead, one row per scene, in the exact shape the
+    Remotion composition's input contract needs.
+
+    A Lesson with no VideoScene rows simply has no video script yet —
+    apps.catalog.management.commands.export_lesson_video_json refuses
+    to export an empty/fabricated one for it (see that command)."""
+
+    class SceneType(models.TextChoices):
+        # Values match the Remotion input contract's sceneType strings
+        # exactly (see video/src/types.ts) so the export command below
+        # can pass scene_type straight through with no translation
+        # table to keep in sync.
+        TITLE_CARD = "titleCard", "Title card"
+        BULLET_REVEAL = "bulletReveal", "Bullet reveal"
+        WHITEBOARD_DIAGRAM = "whiteboardDiagram", "Whiteboard diagram"
+        FULL_IMAGE = "fullImage", "Full image"
+        WORKED_EXAMPLE = "workedExample", "Worked example"
+        EVIDENCE_CARD = "evidenceCard", "Evidence card"
+        OUTRO_CARD = "outroCard", "Outro card"
+
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="video_scenes")
+    order = models.PositiveIntegerField(default=0)
+    scene_type = models.CharField(max_length=20, choices=SceneType.choices)
+    narration = models.TextField(
+        blank=True,
+        help_text="What the voiceover says during this scene. There is deliberately no "
+                   "duration field here — the video pipeline measures the actual generated "
+                   "audio (Kokoro while drafting, ElevenLabs for the final render) and times "
+                   "the scene to that, so this text is the only input that controls length.",
+    )
+    image = models.ImageField(
+        upload_to="lessons/video-scenes/", blank=True, null=True,
+        help_text="Source art for whiteboardDiagram (traced with potrace) or fullImage. "
+                   "Leave blank for scene types that don't use one.",
+    )
+    payload = models.JSONField(
+        default=dict, blank=True,
+        help_text="Scene-type-specific content, passed through to Remotion as-is: bullets "
+                   "(bulletReveal, workedExample steps), evidenceGrade + citation "
+                   "(evidenceCard), alt text (fullImage/whiteboardDiagram). One JSON field "
+                   "rather than a column per scene type's shape, so the visual side can "
+                   "iterate on exactly what a scene type needs without a migration here "
+                   "every time.",
+    )
+
+    class Meta:
+        ordering = ["lesson", "order"]
+
+    def __str__(self):
+        return f"{self.lesson.title} — scene {self.order} ({self.get_scene_type_display()})"
+
+
 class Resource(TimeStampedModel):
     """A downloadable one-pager attached to a Course or a Module —
     exactly one of the two must be set."""

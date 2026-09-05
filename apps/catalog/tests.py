@@ -3,6 +3,7 @@ before this (noted in README as thin, revisit when they grow real
 logic) — the public views are exactly that growth, so real coverage
 starts here."""
 
+import json
 from unittest.mock import patch
 
 import pytest
@@ -12,7 +13,7 @@ from apps.accounts.models import User
 from apps.enrollment.models import Enrollment
 from apps.organizations.models import Organization
 
-from .models import Audience, Course, CourseFAQ, Programme
+from .models import Audience, Course, CourseFAQ, Lesson, Module, Programme, VideoScene
 
 
 @pytest.fixture
@@ -598,3 +599,99 @@ class TestCourseAdminResendWebhookAction:
         assert resp.status_code == 200
         mock_post.assert_called_once()
         assert mock_post.call_args.args[0] == "https://example.com/webhook"
+
+
+def _make_lesson(org, audience=Audience.VET):
+    programme = Programme.objects.create(organization=org, title="Vet Programme", audience=audience)
+    course = Course.objects.create(
+        organization=org, programme=programme, title="What is Rabies", slug="what-is-rabies-course",
+        audience=audience, price_ngn=5000, is_published=True, review_status=Course.ReviewStatus.APPROVED,
+    )
+    module = Module.objects.create(course=course, order=1, title="Module 1")
+    return Lesson.objects.create(module=module, order=1, title="What is Rabies", slug="what-is-rabies")
+
+
+@pytest.mark.django_db
+class TestExportLessonVideoJsonCommand:
+    """apps.catalog.management.commands.export_lesson_video_json — reads
+    the video script from VideoScene rows, not from Lesson.body. See the
+    command's own docstring for why that split exists."""
+
+    def test_refuses_for_nonexistent_lesson(self, org):
+        from django.core.management import call_command
+        from django.core.management.base import CommandError
+
+        with pytest.raises(CommandError, match="No Lesson"):
+            call_command("export_lesson_video_json", 999999)
+
+    def test_refuses_when_lesson_has_no_scenes_yet(self, org):
+        from django.core.management import call_command
+        from django.core.management.base import CommandError
+
+        lesson = _make_lesson(org)
+        with pytest.raises(CommandError, match="no VideoScene rows"):
+            call_command("export_lesson_video_json", lesson.pk)
+
+    def test_exports_scenes_in_order_with_the_contract_shape(self, org, settings):
+        from io import StringIO
+
+        from django.core.management import call_command
+
+        settings.SITE_URL = "https://xpress-academy-web.onrender.com"
+        lesson = _make_lesson(org, audience=Audience.VET)
+        # Created out of order on purpose — export must sort by `order`,
+        # not creation order.
+        VideoScene.objects.create(
+            lesson=lesson, order=2, scene_type=VideoScene.SceneType.OUTRO_CARD,
+            narration="Thanks for watching.",
+        )
+        VideoScene.objects.create(
+            lesson=lesson, order=1, scene_type=VideoScene.SceneType.TITLE_CARD,
+            narration="Welcome to What is Rabies.", payload={"heading": "What is Rabies"},
+        )
+
+        out = StringIO()
+        call_command("export_lesson_video_json", lesson.pk, stdout=out)
+        data = json.loads(out.getvalue())
+
+        assert data["title"] == "What is Rabies"
+        assert data["track"] == Audience.VET
+        assert data["courseSlug"] == "what-is-rabies-course"
+        assert data["lessonSlug"] == "what-is-rabies"
+        assert data["instructor"] == ""
+        assert [s["type"] for s in data["scenes"]] == ["titleCard", "outroCard"]
+        assert data["scenes"][0]["narration"] == "Welcome to What is Rabies."
+        assert data["scenes"][0]["payload"] == {"heading": "What is Rabies"}
+
+    def test_out_option_writes_to_a_file_instead_of_stdout(self, org, tmp_path):
+        from django.core.management import call_command
+
+        lesson = _make_lesson(org)
+        VideoScene.objects.create(
+            lesson=lesson, order=1, scene_type=VideoScene.SceneType.TITLE_CARD, narration="Hi.",
+        )
+        out_path = tmp_path / "lesson.json"
+
+        call_command("export_lesson_video_json", lesson.pk, out=str(out_path))
+
+        data = json.loads(out_path.read_text())
+        assert data["lessonSlug"] == lesson.slug
+
+    def test_image_url_is_absolute_using_site_url(self, org, settings):
+        from io import StringIO
+
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        from django.core.management import call_command
+
+        settings.SITE_URL = "https://xpress-academy-web.onrender.com"
+        lesson = _make_lesson(org)
+        scene = VideoScene.objects.create(
+            lesson=lesson, order=1, scene_type=VideoScene.SceneType.FULL_IMAGE, narration="See this.",
+        )
+        scene.image.save("diagram.png", SimpleUploadedFile("diagram.png", b"fake-bytes"), save=True)
+
+        out = StringIO()
+        call_command("export_lesson_video_json", lesson.pk, stdout=out)
+        data = json.loads(out.getvalue())
+
+        assert data["scenes"][0]["image"].startswith("https://xpress-academy-web.onrender.com/media/")

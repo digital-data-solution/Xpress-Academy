@@ -1,0 +1,32 @@
+{
+  "name": "xpress-academy-video",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Automated lecture-video pipeline for Xpress Digital Academy. Standalone Remotion project — deliberately not entangled with the Django app (see ../ARCHITECTURE.md and this folder's README.md). Consumes JSON produced by `manage.py export_lesson_video_json <lesson_id>` on the Django side.",
+  "scripts": {
+    "studio": "remotion studio src/Root.tsx",
+    "typecheck": "tsc --noEmit",
+    "render:sample": "node scripts/render-lesson.mjs --props=samples/what-is-rabies.json --voice=kokoro",
+    "render:lesson": "node scripts/render-lesson.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.521",
+    "@remotion/captions": "4.0.521",
+    "@remotion/cli": "4.0.521",
+    "@remotion/install-whisper-cpp": "4.0.521",
+    "@remotion/media-utils": "4.0.521",
+    "@remotion/renderer": "4.0.521",
+    "dotenv": "17.4.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.521",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "26.4.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "typescript": "7.0.2"
+  }
+}
