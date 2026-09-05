@@ -1,0 +1,7 @@
+node_modules/
+out/
+.cache/
+# Generated narration audio — regenerable from samples/*.json via
+# npm run render:sample; not source, and can get large.
+public/audio/
+.env

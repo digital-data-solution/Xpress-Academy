@@ -2,7 +2,7 @@ from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Course, CourseFAQ, Lesson, Module, Programme, Resource
+from .models import Course, CourseFAQ, Lesson, Module, Programme, Resource, VideoScene
 
 
 @admin.register(Programme)
@@ -181,12 +181,19 @@ class ModuleAdmin(SortableAdminMixin, admin.ModelAdmin):
     lesson_count.short_description = "Lessons"
 
 
+class VideoSceneInline(SortableInlineAdminMixin, admin.TabularInline):
+    model = VideoScene
+    extra = 0
+    fields = ["order", "scene_type", "narration", "image", "payload"]
+
+
 @admin.register(Lesson)
 class LessonAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ["title", "module", "type", "order", "is_preview", "has_video"]
+    list_display = ["title", "module", "type", "order", "is_preview", "has_video", "scene_count"]
     list_filter = ["type", "is_preview", "module__course"]
     search_fields = ["title", "module__title", "module__course__title"]
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [VideoSceneInline]
     fieldsets = (
         (None, {"fields": ("module", "order", "title", "slug", "type", "is_preview")}),
         ("Video", {"fields": ("video_provider", "video_id", "duration_seconds")}),
@@ -197,6 +204,11 @@ class LessonAdmin(SortableAdminMixin, admin.ModelAdmin):
         return bool(obj.video_id)
 
     has_video.boolean = True
+
+    def scene_count(self, obj):
+        return obj.video_scenes.count()
+
+    scene_count.short_description = "Video scenes"
 
 
 @admin.register(Resource)
