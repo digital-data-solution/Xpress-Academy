@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import type {Caption} from '@remotion/captions';
 
 // Mirrors apps.catalog.models.VideoScene.SceneType and the JSON emitted by
 // `manage.py export_lesson_video_json <lesson_id>` (see that command's
@@ -37,8 +38,27 @@ export const sceneSchema = z.object({
 	// it isn't (see that file's comment on why this can't be generated
 	// in-line during rendering).
 	audioRelPath: z.string().optional(),
+	// Also NOT part of what Django exports — stamped on by
+	// scripts/render-lesson.mjs after transcribing this scene's own
+	// generated audio with real word-level timestamps (whisper.cpp).
+	// Untyped z.array(z.unknown()) here rather than a real Caption
+	// schema: @remotion/captions' Caption type is already the source of
+	// truth (imported below for the actual runtime type), and
+	// duplicating its shape into a zod schema would just be a second
+	// place for the two to drift.
+	captions: z.array(z.unknown()).optional(),
+	// Also NOT part of what Django exports — stamped on by
+	// scripts/render-lesson.mjs when the lesson author didn't supply a
+	// real `image` and a Pexels search for this scene's topic found one
+	// (see src/images/pexels.ts). Relative to public/, same convention
+	// as audioRelPath — resolve with src/scenes/resolveImage.ts, never
+	// use this directly. `image` (the Django-authored one, already an
+	// absolute URL) always wins when both are present.
+	imageRelPath: z.string().optional(),
 });
-export type Scene = z.infer<typeof sceneSchema>;
+export type Scene = Omit<z.infer<typeof sceneSchema>, 'captions'> & {
+	captions?: Caption[];
+};
 
 // "Track" is Programme.audience on the Django side (Audience.BREEDER /
 // Audience.VET / Audience.GENERAL) — it's what drives tone: Prompt 1 is
@@ -58,7 +78,9 @@ export const lessonVideoPropsSchema = z.object({
 	lessonSlug: z.string(),
 	scenes: z.array(sceneSchema).min(1),
 });
-export type LessonVideoProps = z.infer<typeof lessonVideoPropsSchema>;
+export type LessonVideoProps = Omit<z.infer<typeof lessonVideoPropsSchema>, 'scenes'> & {
+	scenes: Scene[];
+};
 
 // Academy only ever needs these two (Prompt 1 item 2) — AjoApp's separate
 // pipeline is the one with a third `manual` provider for hand-recorded
@@ -76,7 +98,9 @@ export const compositionPropsSchema = lessonVideoPropsSchema.extend({
 	voiceProvider: voiceProviderSchema.default('kokoro'),
 	voiceId: z.string().default(''),
 });
-export type CompositionProps = z.infer<typeof compositionPropsSchema>;
+export type CompositionProps = Omit<z.infer<typeof compositionPropsSchema>, 'scenes'> & {
+	scenes: Scene[];
+};
 
 // What calculateMetadata hands each scene component after resolving
 // audio (see Composition.tsx) — the authored Scene plus what only
@@ -87,4 +111,9 @@ export type CompositionProps = z.infer<typeof compositionPropsSchema>;
 export type ResolvedScene = Scene & {
 	audioRelPath: string;
 	durationInFrames: number;
+	// Empty array (not undefined) when transcription wasn't available for
+	// this scene — captions are additive, so a scene that couldn't be
+	// transcribed still renders, just without a caption bar, rather than
+	// failing the whole render over one scene's transcription hiccup.
+	captions: Caption[];
 };

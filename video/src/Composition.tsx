@@ -3,6 +3,7 @@ import {AbsoluteFill, Audio, Series, staticFile} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import {getAudioDurationInSeconds} from '@remotion/media-utils';
 
+import {CaptionOverlay} from './scenes/CaptionOverlay';
 import {SCENE_COMPONENTS} from './scenes';
 import {themeForTrack} from './theme';
 import type {CompositionProps, ResolvedScene} from './types';
@@ -56,6 +57,7 @@ export const calculateMetadata: CalculateMetadataFunction<CompositionProps> = as
 			...scene,
 			audioRelPath: scene.audioRelPath as string,
 			durationInFrames: Math.max(1, Math.round(durationInSeconds * FPS)),
+			captions: scene.captions ?? [],
 		});
 	}
 
@@ -87,7 +89,12 @@ export const calculateTeaserMetadata: CalculateMetadataFunction<CompositionProps
 		const durationInSeconds = await durationOf(scene);
 		const durationInFrames = Math.max(1, Math.round(durationInSeconds * FPS));
 		if (resolvedScenes.length > 0 && total + durationInFrames > capFrames) break;
-		resolvedScenes.push({...scene, audioRelPath: scene.audioRelPath as string, durationInFrames});
+		resolvedScenes.push({
+			...scene,
+			audioRelPath: scene.audioRelPath as string,
+			durationInFrames,
+			captions: scene.captions ?? [],
+		});
 		total += durationInFrames;
 	}
 
@@ -110,6 +117,7 @@ export const LessonVideo: React.FC<CompositionProps> = ({scenes, track}) => {
 					return (
 						<Series.Sequence key={`${scene.type}-${i}`} durationInFrames={scene.durationInFrames}>
 							<SceneComponent scene={scene} track={track} theme={theme} />
+							<CaptionOverlay captions={scene.captions} />
 							<Audio src={staticFile(scene.audioRelPath)} />
 						</Series.Sequence>
 					);

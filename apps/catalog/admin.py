@@ -196,7 +196,7 @@ class LessonAdmin(SortableAdminMixin, admin.ModelAdmin):
     inlines = [VideoSceneInline]
     fieldsets = (
         (None, {"fields": ("module", "order", "title", "slug", "type", "is_preview")}),
-        ("Video", {"fields": ("video_provider", "video_id", "duration_seconds")}),
+        ("Video", {"fields": ("video_provider", "video_id", "duration_seconds", "generated_video")}),
         ("Content", {"fields": ("body", "attachment", "transcript")}),
     )
 

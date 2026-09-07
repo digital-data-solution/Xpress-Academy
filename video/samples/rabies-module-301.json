@@ -1,0 +1,77 @@
+{
+  "title": "Module 1: Etiology and Epidemiology",
+  "track": "VET",
+  "instructor": "",
+  "courseSlug": "canine-rabies-prevention-exposure-protocol",
+  "lessonSlug": "module-1-etiology-and-epidemiology-15",
+  "scenes": [
+    {
+      "type": "titleCard",
+      "narration": "Welcome to Canine Rabies: Prevention, Exposure Protocol, and the Law. I'm glad you're here — this is a four-module continuing education course, and this first module covers etiology and epidemiology: what rabies actually is, and why it's treated as one of the most serious diseases in veterinary practice.",
+      "image": null,
+      "payload": {
+        "heading": "Module 1: Etiology and Epidemiology",
+        "subheading": "Canine Rabies — Xpress Vet Marketplace"
+      }
+    },
+    {
+      "type": "bulletReveal",
+      "narration": "By the end of this module, you'll be able to do four things. Explain what causes rabies and how it's classified. Describe how it actually spreads, from animal to animal and from animal to human. Explain why dog-mediated rabies is treated as a human public health priority, especially here in Nigeria. And understand why, for this particular disease, prevention matters so much more than treatment.",
+      "image": null,
+      "payload": {
+        "heading": "What you'll learn in this module",
+        "bullets": [
+          "What causes rabies, and how it's classified",
+          "How it spreads — animal to animal, and animal to human",
+          "Why dog-mediated rabies is a human public health priority in Nigeria",
+          "Why prevention matters more here than almost anywhere else in practice"
+        ]
+      }
+    },
+    {
+      "type": "bulletReveal",
+      "narration": "Let's start with what causes it. Rabies is caused by rabies virus, a lyssavirus, transmitted via bite or saliva contact. It is fatal and essentially untreatable once signs appear — and that single fact is exactly why prevention and knowing the exposure protocol matter more here than almost anything else you'll learn on this platform.",
+      "image": null,
+      "payload": {
+        "heading": "What causes it, and why it matters this much",
+        "bullets": [
+          "Caused by rabies virus, a lyssavirus",
+          "Transmitted via bite or saliva contact",
+          "Fatal and essentially untreatable once signs appear",
+          "Prevention and the exposure protocol are what actually save a life"
+        ]
+      }
+    },
+    {
+      "type": "evidenceCard",
+      "narration": "Now, the epidemiology, and why this is bigger than any one animal. Dogs remain a major rabies vector in many parts of the world, including Nigeria. The overwhelming majority of human rabies deaths worldwide trace back to dog bites — which makes this one of the clearest points in your whole career where veterinary practice directly protects human life.",
+      "image": null,
+      "payload": {
+        "claim": "Dog-mediated rabies is a human public health priority — most human rabies deaths worldwide trace back to dog bites.",
+        "evidenceGrade": "WHO Grade A",
+        "citation": "WHO Rabies Fact Sheet"
+      }
+    },
+    {
+      "type": "bulletReveal",
+      "narration": "Before we move on, let's recap. Rabies is caused by a lyssavirus spread through bite or saliva contact. Once signs appear, it's essentially untreatable, which is why prevention is everything. And dog-mediated spread makes this a human public health issue, not just an animal health one — particularly here in Nigeria.",
+      "image": null,
+      "payload": {
+        "heading": "Key takeaways",
+        "bullets": [
+          "A lyssavirus, spread by bite or saliva contact",
+          "Essentially untreatable once signs appear — prevention is everything",
+          "Dog-mediated spread makes this a human public health issue too"
+        ]
+      }
+    },
+    {
+      "type": "outroCard",
+      "narration": "That's etiology and epidemiology covered. In the next module, we'll look at clinical findings — including the paralytic form that's easy to miss on a first exam. See you there.",
+      "image": null,
+      "payload": {
+        "ctaText": "Next: Clinical Findings"
+      }
+    }
+  ]
+}

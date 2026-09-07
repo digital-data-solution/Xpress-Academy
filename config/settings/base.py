@@ -71,6 +71,16 @@ CELERY_TASK_ALWAYS_EAGER = env.bool("CELERY_TASK_ALWAYS_EAGER", default=False)
 
 # --- Email / Resend (Phase 7) ------------------------------------------
 RESEND_API_KEY = env("RESEND_API_KEY", default="")
+
+# Automated lecture video hosting (see video/ + apps.catalog.cloudinary_upload)
+# — Supabase's free-tier 1GB storage is shared with certificates, so
+# generated lesson videos go to Cloudinary instead once this is set.
+# Leave unset and attach_generated_videos --cloudinary just refuses with
+# a clear error, same fail-closed discipline as every other opt-in
+# integration here.
+CLOUDINARY_CLOUD_NAME = env("CLOUDINARY_CLOUD_NAME", default="")
+CLOUDINARY_API_KEY = env("CLOUDINARY_API_KEY", default="")
+CLOUDINARY_API_SECRET = env("CLOUDINARY_API_SECRET", default="")
 # Sent-from address falls back to the Organization's own from_email
 # (set per-org in admin) when not overridden here — see
 # apps/engagement/services.py.

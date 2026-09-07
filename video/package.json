@@ -7,7 +7,8 @@
   "scripts": {
     "studio": "remotion studio src/Root.tsx",
     "typecheck": "tsc --noEmit",
-    "render:sample": "node scripts/render-lesson.mjs --props=samples/what-is-rabies.json --voice=kokoro",
+    "test": "vitest run",
+    "render:sample": "node scripts/render-lesson.mjs --props=samples/rabies-module-301.json --voice=kokoro",
     "render:lesson": "node scripts/render-lesson.mjs"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "@types/node": "26.4.1",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.7",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "vitest": "5.0.0"
   }
 }

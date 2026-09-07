@@ -1,6 +1,7 @@
 import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 
+import {resolveImageSrc} from './resolveImage';
 import type {SceneComponentProps} from './types';
 import {Shell} from './Shell';
 
@@ -21,6 +22,7 @@ import {Shell} from './Shell';
 export const WhiteboardDiagram: React.FC<SceneComponentProps> = ({scene, theme}) => {
 	const frame = useCurrentFrame();
 	const reveal = interpolate(frame, [0, 45], [0, 100], {extrapolateRight: 'clamp'});
+	const imageSrc = resolveImageSrc(scene);
 
 	return (
 		<Shell theme={theme}>
@@ -34,9 +36,9 @@ export const WhiteboardDiagram: React.FC<SceneComponentProps> = ({scene, theme})
 					border: `4px solid ${theme.accent}`,
 				}}
 			>
-				{scene.image ? (
+				{imageSrc ? (
 					<img
-						src={scene.image}
+						src={imageSrc}
 						alt={typeof scene.payload.alt === 'string' ? scene.payload.alt : ''}
 						style={{
 							width: '100%',

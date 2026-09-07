@@ -358,6 +358,35 @@ class Lesson(TimeStampedModel):
     )
     attachment = models.FileField(upload_to="lessons/attachments/", blank=True, null=True)
 
+    # Automated lecture video (see video/ at the repo root) — a real
+    # uploaded file through Django's own storage (S3 in prod, same
+    # bucket as certificates/cover_image; local in dev), NOT a
+    # video_provider/video_id reference. Deliberately a separate field:
+    # video_provider/video_id model an externally-hosted streaming
+    # provider (Bunny/Cloudinary) that was never actually wired up to
+    # playback (see templates/enrollment/lesson_player.html before this
+    # field existed — it was a placeholder), so there's no live
+    # behavior this could collide with. Captions are burnt into the
+    # video itself by the pipeline; no separate subtitle track needed.
+    generated_video = models.FileField(
+        upload_to="lessons/generated-video/", blank=True, null=True,
+        help_text="Uploaded by manage.py attach_generated_videos from video/out/ — the automated "
+                   "lecture-video pipeline's finished render for this lesson, via Django's own "
+                   "storage (Supabase S3 in prod). Legacy path: Supabase's free tier is only 1GB, "
+                   "shared with certificates, so new uploads go through generated_video_url "
+                   "(Cloudinary) instead — see that field. Existing values here are left as-is, "
+                   "not migrated.",
+    )
+    generated_video_url = models.URLField(
+        max_length=500, blank=True,
+        help_text="Same as generated_video (automated lecture-video pipeline output) but hosted on "
+                   "Cloudinary instead of Supabase — uploaded by manage.py attach_generated_videos "
+                   "--cloudinary, a direct API call (see apps.catalog.cloudinary_upload), not "
+                   "through Django's storage abstraction, since this is an external URL, not a file "
+                   "Django itself stores. Checked BEFORE generated_video on the lesson player, so a "
+                   "lesson with both (shouldn't normally happen) prefers this one.",
+    )
+
     is_preview = models.BooleanField(
         default=False, help_text="Viewable without enrollment, for the sales page."
     )

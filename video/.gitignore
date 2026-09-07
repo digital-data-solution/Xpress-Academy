@@ -4,4 +4,15 @@ out/
 # Generated narration audio — regenerable from samples/*.json via
 # npm run render:sample; not source, and can get large.
 public/audio/
+# Same — auto-fetched Pexels photos, regenerable from a Pexels search,
+# not source.
+public/images/
+whisper.cpp/
+kokoro-venv/
 .env
+# Exported lesson JSON — regenerable any time via
+# `manage.py export_lesson_video_json <lesson_id>`, not source. Except
+# rabies-module-301.json, which Root.tsx imports as its real
+# defaultProps — that one IS source, kept tracked on purpose.
+samples/*.json
+!samples/rabies-module-301.json

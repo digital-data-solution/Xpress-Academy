@@ -2,15 +2,27 @@ import React from 'react';
 import {Composition, registerRoot} from 'remotion';
 
 import {calculateMetadata, calculateTeaserMetadata, LessonVideo} from './Composition';
-import {compositionPropsSchema} from './types';
-import sampleLesson from '../samples/what-is-rabies.json';
+import {compositionPropsSchema, type CompositionProps} from './types';
+import sampleLesson from '../samples/rabies-module-301.json';
 
-// Real defaultProps, not placeholders — this is what
-// `manage.py export_lesson_video_json <lesson_id>` actually emits for a
-// real lesson (see video/samples/what-is-rabies.json and its own
-// comment), so Remotion Studio opens showing real content per Prompt
-// 1's deliverables, not an empty frame.
-const defaultProps = compositionPropsSchema.parse({...sampleLesson, voiceProvider: 'kokoro', voiceId: ''});
+// Real defaultProps, not placeholders — this is exactly what
+// `manage.py export_lesson_video_json 301` emitted for the real
+// authored "Etiology and Epidemiology" lesson (see
+// video/samples/rabies-module-301.json), so Remotion Studio opens
+// showing real content per Prompt 1's deliverables, not an empty frame.
+//
+// Cast, not assert-free: compositionPropsSchema.parse()'s own inferred
+// return type has `captions?: unknown[]` (zod can't know we want that
+// narrowed to @remotion/captions' Caption[] — see the comment on Scene
+// in src/types.ts for why that narrowing lives outside the zod schema).
+// The cast is safe here because defaultProps never carries real
+// captions anyway (Studio's sample has none until render-lesson.mjs's
+// prepare step runs against it).
+const defaultProps = compositionPropsSchema.parse({
+	...sampleLesson,
+	voiceProvider: 'kokoro',
+	voiceId: '',
+}) as CompositionProps;
 
 const Root: React.FC = () => (
 	<>
