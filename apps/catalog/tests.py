@@ -697,6 +697,102 @@ class TestExportLessonVideoJsonCommand:
         assert data["scenes"][0]["image"].startswith("https://xpress-academy-web.onrender.com/media/")
 
 
+def _make_lesson_for_youtube(org, *, pricing_model, is_staff_training=False, slug_suffix=""):
+    programme = Programme.objects.create(
+        organization=org, title=f"Programme {slug_suffix}", audience=Audience.GENERAL,
+    )
+    course = Course.objects.create(
+        organization=org, programme=programme, title=f"Course {slug_suffix}",
+        slug=f"course-{slug_suffix}", audience=Audience.GENERAL, price_ngn=3000 if pricing_model != "FREE" else 0,
+        pricing_model=pricing_model, is_staff_training=is_staff_training,
+    )
+    module = Module.objects.create(course=course, order=1, title="Module 1")
+    lesson = Lesson.objects.create(
+        module=module, order=1, title=f"Lesson {slug_suffix}", slug=f"lesson-{slug_suffix}",
+    )
+    return lesson, course
+
+
+@pytest.mark.django_db
+class TestGatherYouTubeCandidates:
+    """apps.catalog.management.commands.attach_to_youtube.gather_candidates
+    — the DB-driven replacement for the old filesystem-globbing version.
+    Real bug this design change fixed: the old version could only ever
+    find videos on the SAME machine that rendered them, so it could
+    never run anywhere else (like a GitHub Actions runner)."""
+
+    def test_free_course_with_a_cloudinary_url_is_a_full_candidate(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(org, pricing_model=Course.PricingModel.FREE, slug_suffix="free1")
+        lesson.generated_video_url = "https://res.cloudinary.com/x/free1.mp4"
+        lesson.save()
+
+        candidates = gather_candidates()
+        matches = [c for c in candidates if c[0].pk == lesson.pk]
+        assert len(matches) == 1
+        _, _, url, is_teaser = matches[0]
+        assert url == "https://res.cloudinary.com/x/free1.mp4"
+        assert is_teaser is False
+
+    def test_paid_course_with_a_teaser_url_is_a_teaser_candidate(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(org, pricing_model=Course.PricingModel.PAID, slug_suffix="paid1")
+        lesson.generated_teaser_url = "https://res.cloudinary.com/x/paid1-teaser.mp4"
+        lesson.save()
+
+        candidates = gather_candidates()
+        matches = [c for c in candidates if c[0].pk == lesson.pk]
+        assert len(matches) == 1
+        _, _, url, is_teaser = matches[0]
+        assert url == "https://res.cloudinary.com/x/paid1-teaser.mp4"
+        assert is_teaser is True
+
+    def test_paid_course_with_only_a_full_video_is_not_a_candidate_at_all(self, org):
+        """The real substitution risk this guards against: a paid
+        course's FULL video existing must never get uploaded just
+        because no teaser exists yet."""
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(org, pricing_model=Course.PricingModel.PAID, slug_suffix="paid2")
+        lesson.generated_video_url = "https://res.cloudinary.com/x/paid2-full.mp4"
+        lesson.save()
+
+        candidates = gather_candidates()
+        assert lesson.pk not in [c[0].pk for c in candidates]
+
+    def test_staff_training_is_never_a_candidate_even_with_urls_set(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(
+            org, pricing_model=Course.PricingModel.FREE, is_staff_training=True, slug_suffix="staff1",
+        )
+        lesson.generated_video_url = "https://res.cloudinary.com/x/staff1.mp4"
+        lesson.save()
+
+        candidates = gather_candidates()
+        assert lesson.pk not in [c[0].pk for c in candidates]
+
+    def test_already_uploaded_lesson_is_excluded(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(org, pricing_model=Course.PricingModel.FREE, slug_suffix="done1")
+        lesson.generated_video_url = "https://res.cloudinary.com/x/done1.mp4"
+        lesson.youtube_video_id = "alreadyThere12"
+        lesson.save()
+
+        candidates = gather_candidates()
+        assert lesson.pk not in [c[0].pk for c in candidates]
+
+    def test_lesson_with_no_video_at_all_is_not_a_candidate(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import gather_candidates
+
+        lesson, course = _make_lesson_for_youtube(org, pricing_model=Course.PricingModel.FREE, slug_suffix="empty1")
+        candidates = gather_candidates()
+        assert lesson.pk not in [c[0].pk for c in candidates]
+
+
 @pytest.mark.django_db
 class TestYouTubeEligibility:
     """apps.catalog.management.commands.attach_to_youtube.eligible_upload_kind

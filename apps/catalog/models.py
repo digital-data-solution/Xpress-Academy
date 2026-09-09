@@ -393,6 +393,15 @@ class Lesson(TimeStampedModel):
                    "Django itself stores. Checked BEFORE generated_video on the lesson player, so a "
                    "lesson with both (shouldn't normally happen) prefers this one.",
     )
+    generated_teaser_url = models.URLField(
+        max_length=500, blank=True,
+        help_text="The 30s vertical teaser (video/out/teasers/<track>/<slug>.mp4), hosted on "
+                   "Cloudinary — uploaded by manage.py attach_generated_videos --cloudinary "
+                   "--teasers. Only ever used for PAID courses (see attach_to_youtube's "
+                   "eligible_upload_kind): the full generated_video/generated_video_url is what a "
+                   "FREE course's lesson page shows, but only the teaser ever leaves the platform "
+                   "publicly for a paid course.",
+    )
 
     youtube_video_id = models.CharField(
         max_length=32, blank=True,

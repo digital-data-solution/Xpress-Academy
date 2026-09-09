@@ -13,23 +13,31 @@ MAX_ATTEMPTS = 3
 RETRY_DELAY_SECONDS = 5
 
 # The video/ pipeline writes finished renders to
-# video/out/<track>/<lesson-slug>/LessonVideo.mp4 (see
-# scripts/render-lesson.mjs's default output path). This command walks
-# that tree and uploads each one to the matching Lesson — either through
-# Django's own storage (S3 in prod, the default) or straight to
-# Cloudinary with --cloudinary, writing generated_video_url instead.
-# See Lesson.generated_video_url's comment for why there are two paths:
-# Supabase's free tier is only 1GB, shared with certificates.
+# video/out/<track>/<lesson-slug>/LessonVideo.mp4 (full lessons) and
+# video/out/teasers/<track>/<lesson-slug>.mp4 (teasers — a flat layout,
+# not nested, since scripts/render-lesson.mjs writes those directly to
+# --out with no per-lesson subfolder). This command walks whichever
+# tree --teasers selects and uploads each file to the matching Lesson
+# — either through Django's own storage (S3 in prod, the default, full
+# lessons only) or straight to Cloudinary with --cloudinary, writing
+# generated_video_url / generated_teaser_url instead. See those
+# fields' own comments on why there are two hosting paths for full
+# lessons (Supabase's free tier is only 1GB, shared with certificates)
+# and why teasers only ever go to Cloudinary (there was never a reason
+# to add a second storage path for something that didn't exist before
+# Cloudinary was already the default).
 VIDEO_OUT_DIR = Path(settings.BASE_DIR) / "video" / "out"
+TEASER_DIR = VIDEO_OUT_DIR / "teasers"
 
 
 class Command(BaseCommand):
     help = (
-        "Uploads finished renders from video/out/<track>/<slug>/LessonVideo.mp4 to the matching "
-        "Lesson — Django storage (generated_video) by default, or --cloudinary for "
-        "generated_video_url. Run against prod the same way as any other prod-touching command "
-        "here: DJANGO_SETTINGS_MODULE=config.settings.prod + DATABASE_URL (+ the real AWS_S3_* or "
-        "CLOUDINARY_* vars), all pasted into your OWN terminal."
+        "Uploads finished renders to the matching Lesson. Full lessons (video/out/<track>/<slug>/"
+        "LessonVideo.mp4): Django storage (generated_video) by default, or --cloudinary for "
+        "generated_video_url. Teasers (video/out/teasers/<track>/<slug>.mp4, --teasers): always "
+        "Cloudinary, generated_teaser_url — --teasers requires --cloudinary. Run against prod the "
+        "same way as any other prod-touching command here: DJANGO_SETTINGS_MODULE=config.settings.prod "
+        "+ DATABASE_URL (+ the real AWS_S3_* or CLOUDINARY_* vars), all pasted into your OWN terminal."
     )
 
     def add_arguments(self, parser):
@@ -38,25 +46,43 @@ class Command(BaseCommand):
             "--cloudinary", action="store_true",
             help="Upload to Cloudinary (generated_video_url) instead of Django/S3 storage (generated_video).",
         )
+        parser.add_argument(
+            "--teasers", action="store_true",
+            help="Upload teasers (video/out/teasers/) instead of full lessons. Requires --cloudinary.",
+        )
 
     def handle(self, *args, **options):
-        if not VIDEO_OUT_DIR.exists():
-            raise CommandError(f"{VIDEO_OUT_DIR} doesn't exist — nothing rendered yet?")
-
         use_cloudinary = options["cloudinary"]
+        use_teasers = options["teasers"]
+
+        if use_teasers and not use_cloudinary:
+            raise CommandError("--teasers requires --cloudinary — there is no non-Cloudinary teaser storage path.")
         if use_cloudinary and not (settings.CLOUDINARY_CLOUD_NAME and settings.CLOUDINARY_API_KEY and settings.CLOUDINARY_API_SECRET):
             raise CommandError(
                 "--cloudinary needs CLOUDINARY_CLOUD_NAME / CLOUDINARY_API_KEY / CLOUDINARY_API_SECRET set."
             )
 
-        found = sorted(VIDEO_OUT_DIR.glob("*/*/LessonVideo.mp4"))
+        if use_teasers:
+            source_dir = TEASER_DIR
+            if not source_dir.exists():
+                raise CommandError(f"{source_dir} doesn't exist — no teasers rendered yet?")
+            # Flat layout: video/out/teasers/<track>/<slug>.mp4 — the
+            # slug IS the filename (minus extension), not a parent dir.
+            found = sorted(source_dir.glob("*/*.mp4"))
+            slug_of = lambda p: p.stem  # noqa: E731
+        else:
+            if not VIDEO_OUT_DIR.exists():
+                raise CommandError(f"{VIDEO_OUT_DIR} doesn't exist — nothing rendered yet?")
+            found = sorted(VIDEO_OUT_DIR.glob("*/*/LessonVideo.mp4"))
+            slug_of = lambda p: p.parent.name  # noqa: E731
+
         if not found:
-            self.stdout.write(self.style.WARNING(f"No LessonVideo.mp4 files under {VIDEO_OUT_DIR}."))
+            self.stdout.write(self.style.WARNING("Nothing found to upload."))
             return
 
         uploaded, not_found, skipped, failed = 0, [], [], []
         for mp4_path in found:
-            slug = mp4_path.parent.name
+            slug = slug_of(mp4_path)
             lesson = Lesson.objects.filter(slug=slug).first()
             if not lesson:
                 not_found.append(slug)
@@ -64,19 +90,26 @@ class Command(BaseCommand):
 
             # Safe to re-run after a partial failure (e.g. a network/SSL
             # hiccup mid-upload — that never reaches this point since
-            # neither path below sets its field until the upload actually
-            # succeeds) — already-uploaded lessons are skipped rather than
-            # re-uploaded. Checks BOTH fields regardless of which mode
-            # this run is in, so a lesson already on Cloudinary doesn't
-            # also get pushed to S3 (or vice versa) by a later run.
-            if lesson.generated_video_url or lesson.generated_video:
+            # none of the three paths below sets its field until the
+            # upload actually succeeds) — already-uploaded lessons are
+            # skipped rather than re-uploaded. Full-lesson runs check
+            # BOTH generated_video fields regardless of which mode this
+            # run is in, so a lesson already on Cloudinary doesn't also
+            # get pushed to S3 (or vice versa) by a later run. Teasers
+            # have their own separate field, checked independently.
+            if use_teasers:
+                already_done = bool(lesson.generated_teaser_url)
+            else:
+                already_done = bool(lesson.generated_video_url or lesson.generated_video)
+            if already_done:
                 skipped.append(slug)
                 continue
 
             size_mb = mp4_path.stat().st_size / (1024 * 1024)
             if options["dry_run"]:
                 dest = "Cloudinary" if use_cloudinary else "S3"
-                self.stdout.write(f"Would upload to {dest}: {mp4_path} ({size_mb:.1f} MB) -> lesson {lesson.pk} ({lesson.title})")
+                kind = "teaser" if use_teasers else "full lesson"
+                self.stdout.write(f"Would upload {kind} to {dest}: {mp4_path} ({size_mb:.1f} MB) -> lesson {lesson.pk} ({lesson.title})")
                 continue
 
             # Real network flakiness hit this in practice — an S3 SSL error
@@ -85,7 +118,11 @@ class Command(BaseCommand):
             # retry rather than reusing one Django already knows is dead.
             for attempt in range(1, MAX_ATTEMPTS + 1):
                 try:
-                    if use_cloudinary:
+                    if use_teasers:
+                        url = upload_video(str(mp4_path), public_id=slug, folder="lessons/generated-teaser")
+                        lesson.generated_teaser_url = url
+                        lesson.save(update_fields=["generated_teaser_url"])
+                    elif use_cloudinary:
                         url = upload_video(str(mp4_path), public_id=slug)
                         lesson.generated_video_url = url
                         lesson.save(update_fields=["generated_video_url"])

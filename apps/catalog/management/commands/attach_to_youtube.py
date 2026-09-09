@@ -5,14 +5,23 @@ oversight: most courses on this platform are PAID (₦3,000+). Uploading
 a full lecture video to a public YouTube channel would give away paid
 content for free — the exact reasoning that made Vet Marketplace's
 public distribution teasers-only earlier in this project. So:
-  - Course.pricing_model == FREE  -> the FULL rendered lesson goes up.
-    Nothing to protect; a full free lesson on YouTube is pure reach and
-    funnels toward the paid catalog.
+  - Course.pricing_model == FREE  -> the FULL rendered lesson goes up
+    (Lesson.generated_video_url, falling back to generated_video —
+    see those fields' comments). Nothing to protect; a full free
+    lesson on YouTube is pure reach and funnels toward the paid
+    catalog.
   - Anything else (PAID, PAY_WHAT_YOU_WANT, CERTIFICATE_PAID)  ->
-    only the 30s TEASER goes up (video/out/teasers/<track>/<slug>.mp4,
-    from video/scripts/render-lesson.mjs --composition=LessonVideoTeaser).
-    A lesson with no teaser rendered yet is skipped, not silently
+    only the 30s TEASER goes up (Lesson.generated_teaser_url). A
+    lesson with no teaser uploaded to Cloudinary yet (see
+    attach_generated_videos --teasers) is skipped, not silently
     substituted with the full paid video.
+
+Reads Cloudinary URLs from the database and downloads each video to a
+temp file before handing it to YouTube — NOT the local filesystem
+(video/out/ never exists where this actually needs to run: GitHub
+Actions' hosted runner). This is why attach_generated_videos --cloudinary
+(and --teasers) has to run FIRST, from wherever the video was actually
+rendered, before this command has anything to find.
 
 ONE-TIME SETUP for YOUTUBE_CLIENT_ID / YOUTUBE_CLIENT_SECRET /
 YOUTUBE_REFRESH_TOKEN (do this once, then never again — the refresh
@@ -26,8 +35,9 @@ token doesn't expire from use):
      Client ID and Client Secret.
   4. One-time authorization (run once, locally, never in this command):
      open this URL in a browser, signed into the SAME Google account
-     that owns the YouTube channel:
-       https://accounts.google.com/o/oauth2/v2/auth?client_id=<CLIENT_ID>&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=https://www.googleapis.com/auth/youtube.upload&access_type=offline&prompt=consent
+     that owns the YouTube channel — note BOTH scopes, upload alone
+     isn't enough for the playlist calls below:
+       https://accounts.google.com/o/oauth2/v2/auth?client_id=<CLIENT_ID>&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=https://www.googleapis.com/auth/youtube%20https://www.googleapis.com/auth/youtube.upload&access_type=offline&prompt=consent
      Approve it, copy the code Google shows you, then exchange it:
        curl -X POST https://oauth2.googleapis.com/token \\
          -d client_id=<CLIENT_ID> -d client_secret=<CLIENT_SECRET> \\
@@ -36,12 +46,16 @@ token doesn't expire from use):
      The response's "refresh_token" is YOUTUBE_REFRESH_TOKEN.
 
 Real quota limit: 6 uploads/day on the default YouTube Data API quota
-(10,000 units/day ÷ 1,600 per upload). --limit defaults to 6 for
-exactly this reason — raise it only if the quota has actually been
-increased in Google Cloud Console.
+(10,000 units/day ÷ 1,600 per upload). --limit defaults to 1, not 6 —
+a deliberate content-strategy choice (a steady daily drip reads as an
+active channel; a burst upload floods subscribers once and goes
+quiet), not the quota ceiling itself. Raise it if you actually want
+more than one upload in a single run.
 """
+import tempfile
 from pathlib import Path
 
+import requests
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
@@ -60,7 +74,7 @@ def eligible_upload_kind(course: Course) -> str | None:
     """Returns 'full', 'teaser', or None (not eligible at all) for a
     course — the one place the free/paid/staff-training decision from
     this file's module docstring actually lives, kept separate from
-    the filesystem-globbing loop below so it's directly unit-testable.
+    the candidate-gathering query below so it's directly unit-testable.
 
     is_staff_training: real internal content (onboarding, admin
     dashboards, CRM training) that's FREE only in the sense of "not
@@ -72,9 +86,8 @@ def eligible_upload_kind(course: Course) -> str | None:
         return None
     return "full" if course.pricing_model == Course.PricingModel.FREE else "teaser"
 
-VIDEO_OUT_DIR = Path(settings.BASE_DIR) / "video" / "out"
-TEASER_DIR = VIDEO_OUT_DIR / "teasers"
-DEFAULT_DAILY_LIMIT = 6
+
+DEFAULT_RUN_LIMIT = 1
 
 ENROLL_URL_TEMPLATE = "{site_url}/courses/{course_slug}/"
 
@@ -88,11 +101,13 @@ THUMBNAIL_TIMESTAMP = "00:00:01.2"
 
 def extract_thumbnail(video_path: Path, out_path: Path) -> bool:
     """Grabs one frame from `video_path` at THUMBNAIL_TIMESTAMP and
-    writes it to `out_path` as a JPEG, via ffmpeg (already a hard
-    dependency of this pipeline — src/captions/transcribe.ts resamples
-    audio with it). Returns False (not raises) on any failure —
-    ffmpeg missing, a corrupt video file — since a missing thumbnail
-    should never block the video upload itself."""
+    writes it to `out_path` as a JPEG, via ffmpeg (present on GitHub's
+    hosted ubuntu-latest runners by default — no extra setup needed —
+    and already a hard dependency of this pipeline locally, since
+    video/src/captions/transcribe.ts resamples audio with it too).
+    Returns False (not raises) on any failure — ffmpeg missing, a
+    corrupt video file — since a missing thumbnail should never block
+    the video upload itself."""
     import os
     import subprocess
 
@@ -106,6 +121,17 @@ def extract_thumbnail(video_path: Path, out_path: Path) -> bool:
         return result.returncode == 0 and out_path.exists()
     except (OSError, subprocess.SubprocessError):
         return False
+
+
+def download_to(url: str, dest: Path) -> None:
+    """Streams `url` (a Cloudinary video URL) to `dest`. Raises
+    requests.HTTPError on a real failure — caller's retry-per-lesson
+    loop handles it the same as any other upload-step failure."""
+    with requests.get(url, stream=True, timeout=120) as resp:
+        resp.raise_for_status()
+        with open(dest, "wb") as f:
+            for chunk in resp.iter_content(chunk_size=1024 * 1024):
+                f.write(chunk)
 
 
 YOUTUBE_TITLE_MAX = 100  # real YouTube hard limit
@@ -153,13 +179,56 @@ def build_metadata(lesson: Lesson, course: Course, is_teaser: bool) -> dict:
     return {"title": title, "description": description, "tags": tags}
 
 
+def gather_candidates():
+    """Real DB query, not a filesystem walk — see this file's module
+    docstring for why. Returns a list of (lesson, course, video_url,
+    is_teaser), ordered by pk so a run is deterministic (matters for
+    --limit picking the "same" next batch across retries after a
+    partial failure)."""
+    candidates = []
+
+    # Not pre-filtered at the DB level by generated_video_url/
+    # generated_video — a FileField's "empty" state is null-or-blank,
+    # not just blank, which makes a clean exclude() awkward for an "OR
+    # either is set" check. The lesson counts here are in the
+    # hundreds, not millions, so filtering in Python below (the `if
+    # url` guard) is simpler and just as correct.
+    full_lessons = (
+        Lesson.objects.filter(youtube_video_id="")
+        .select_related("module__course__programme")
+        .order_by("pk")
+    )
+    for lesson in full_lessons:
+        course = lesson.module.course
+        if eligible_upload_kind(course) != "full":
+            continue
+        url = lesson.generated_video_url or (lesson.generated_video.url if lesson.generated_video else "")
+        if url:
+            candidates.append((lesson, course, url, False))
+
+    teaser_lessons = (
+        Lesson.objects.filter(youtube_video_id="")
+        .exclude(generated_teaser_url="")
+        .select_related("module__course__programme")
+        .order_by("pk")
+    )
+    for lesson in teaser_lessons:
+        course = lesson.module.course
+        if eligible_upload_kind(course) != "teaser":
+            continue
+        candidates.append((lesson, course, lesson.generated_teaser_url, True))
+
+    return candidates
+
+
 class Command(BaseCommand):
     help = "Uploads lesson videos to YouTube — full video for FREE courses, teaser-only for paid ones."
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--limit", type=int, default=DEFAULT_DAILY_LIMIT,
-            help=f"Max uploads this run (default {DEFAULT_DAILY_LIMIT} — the real daily quota ceiling).",
+            "--limit", type=int, default=DEFAULT_RUN_LIMIT,
+            help=f"Max uploads this run (default {DEFAULT_RUN_LIMIT} — a deliberate daily-drip pace, "
+                 "not the API's own 6/day quota ceiling).",
         )
         parser.add_argument("--dry-run", action="store_true", help="List what would be uploaded, upload nothing.")
 
@@ -170,25 +239,7 @@ class Command(BaseCommand):
                 "See this command's own docstring for the one-time setup."
             )
 
-        candidates = []  # (lesson, course, file_path, is_teaser)
-        for full_mp4 in sorted(VIDEO_OUT_DIR.glob("*/*/LessonVideo.mp4")):
-            slug = full_mp4.parent.name
-            lesson = Lesson.objects.filter(slug=slug).select_related("module__course__programme").first()
-            if not lesson or lesson.youtube_video_id:
-                continue
-            course = lesson.module.course
-            if eligible_upload_kind(course) == "full":
-                candidates.append((lesson, course, full_mp4, False))
-
-        for teaser_mp4 in sorted(TEASER_DIR.glob("*/*.mp4")):
-            slug = teaser_mp4.stem
-            lesson = Lesson.objects.filter(slug=slug).select_related("module__course__programme").first()
-            if not lesson or lesson.youtube_video_id:
-                continue
-            course = lesson.module.course
-            if eligible_upload_kind(course) == "teaser":
-                candidates.append((lesson, course, teaser_mp4, True))
-
+        candidates = gather_candidates()
         if not candidates:
             self.stdout.write(self.style.WARNING("Nothing new to upload (either none rendered, or all done)."))
             return
@@ -198,7 +249,7 @@ class Command(BaseCommand):
         self.stdout.write(f"{len(candidates)} eligible, uploading {len(batch)} (--limit={limit}).")
 
         uploaded = 0
-        for lesson, course, file_path, is_teaser in batch:
+        for lesson, course, video_url, is_teaser in batch:
             kind = "teaser" if is_teaser else "full video"
             metadata = build_metadata(lesson, course, is_teaser)
 
@@ -206,64 +257,71 @@ class Command(BaseCommand):
                 self.stdout.write(f"Would upload ({kind}): {metadata['title']}")
                 continue
 
-            try:
-                video_id = upload_video(
-                    str(file_path),
-                    title=metadata["title"],
-                    description=metadata["description"],
-                    tags=metadata["tags"],
-                )
-                lesson.youtube_video_id = video_id
-                lesson.save(update_fields=["youtube_video_id"])
-                uploaded += 1
-                self.stdout.write(self.style.SUCCESS(
-                    f"Uploaded ({kind}): {metadata['title']} -> https://youtu.be/{video_id}"
-                ))
-
-                # Real title-card frame instead of YouTube's own
-                # auto-picked one — see extract_thumbnail's comment.
-                # Non-fatal on any failure: a channel without phone
-                # verification (a real YouTube requirement, not
-                # something this code controls) gets a 403 here, and
-                # the video itself has already uploaded successfully.
-                thumb_path = file_path.parent / f"{lesson.slug}-thumb.jpg"
-                if extract_thumbnail(file_path, thumb_path):
-                    try:
-                        set_thumbnail(video_id, str(thumb_path))
-                        self.stdout.write("  custom thumbnail set")
-                    except Exception as e:
-                        self.stdout.write(self.style.WARNING(
-                            f"  thumbnail upload failed (video is still live): {e}"
-                        ))
-                    finally:
-                        thumb_path.unlink(missing_ok=True)
-
-                # One playlist per Course — created the first time any
-                # of its lessons uploads, every later lesson (including
-                # ones added to the catalog after) just appends to the
-                # same playlist. Non-fatal on failure: the video is
-                # already live either way.
+            with tempfile.TemporaryDirectory() as tmp:
+                tmp_path = Path(tmp)
+                video_path = tmp_path / f"{lesson.slug}.mp4"
                 try:
-                    if not course.youtube_playlist_id:
-                        course.youtube_playlist_id = create_playlist(
-                            title=f"{course.title} | Xpress Digital Academy",
-                            description=course.subtitle or course.title,
-                        )
-                        course.save(update_fields=["youtube_playlist_id"])
-                        self.stdout.write(f"  created playlist for {course.title}")
-                    add_video_to_playlist(course.youtube_playlist_id, video_id)
-                    self.stdout.write("  added to playlist")
+                    download_to(video_url, video_path)
                 except Exception as e:
-                    self.stdout.write(self.style.WARNING(f"  playlist step failed (video is still live): {e}"))
-            except YouTubeQuotaExceeded:
-                self.stdout.write(self.style.ERROR(
-                    "Daily YouTube upload quota reached — stopping here. Re-run tomorrow to continue."
-                ))
-                break
-            except YouTubeConfigError:
-                raise
-            except Exception as e:
-                self.stdout.write(self.style.ERROR(f"FAILED for lesson {lesson.pk} ({file_path.name}): {e}"))
+                    self.stdout.write(self.style.ERROR(f"FAILED to download for lesson {lesson.pk}: {e}"))
+                    continue
+
+                try:
+                    video_id = upload_video(
+                        str(video_path),
+                        title=metadata["title"],
+                        description=metadata["description"],
+                        tags=metadata["tags"],
+                    )
+                    lesson.youtube_video_id = video_id
+                    lesson.save(update_fields=["youtube_video_id"])
+                    uploaded += 1
+                    self.stdout.write(self.style.SUCCESS(
+                        f"Uploaded ({kind}): {metadata['title']} -> https://youtu.be/{video_id}"
+                    ))
+
+                    # Real title-card frame instead of YouTube's own
+                    # auto-picked one — see extract_thumbnail's comment.
+                    # Non-fatal on any failure: a channel without phone
+                    # verification (a real YouTube requirement, not
+                    # something this code controls) gets a 403 here, and
+                    # the video itself has already uploaded successfully.
+                    thumb_path = tmp_path / f"{lesson.slug}-thumb.jpg"
+                    if extract_thumbnail(video_path, thumb_path):
+                        try:
+                            set_thumbnail(video_id, str(thumb_path))
+                            self.stdout.write("  custom thumbnail set")
+                        except Exception as e:
+                            self.stdout.write(self.style.WARNING(
+                                f"  thumbnail upload failed (video is still live): {e}"
+                            ))
+
+                    # One playlist per Course — created the first time any
+                    # of its lessons uploads, every later lesson (including
+                    # ones added to the catalog after) just appends to the
+                    # same playlist. Non-fatal on failure: the video is
+                    # already live either way.
+                    try:
+                        if not course.youtube_playlist_id:
+                            course.youtube_playlist_id = create_playlist(
+                                title=f"{course.title} | Xpress Digital Academy",
+                                description=course.subtitle or course.title,
+                            )
+                            course.save(update_fields=["youtube_playlist_id"])
+                            self.stdout.write(f"  created playlist for {course.title}")
+                        add_video_to_playlist(course.youtube_playlist_id, video_id)
+                        self.stdout.write("  added to playlist")
+                    except Exception as e:
+                        self.stdout.write(self.style.WARNING(f"  playlist step failed (video is still live): {e}"))
+                except YouTubeQuotaExceeded:
+                    self.stdout.write(self.style.ERROR(
+                        "Daily YouTube upload quota reached — stopping here. Re-run tomorrow to continue."
+                    ))
+                    break
+                except YouTubeConfigError:
+                    raise
+                except Exception as e:
+                    self.stdout.write(self.style.ERROR(f"FAILED for lesson {lesson.pk}: {e}"))
 
         if not options["dry_run"]:
             self.stdout.write(self.style.SUCCESS(f"\nDone — {uploaded} video(s) uploaded this run."))

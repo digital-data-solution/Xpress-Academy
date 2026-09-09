@@ -25,13 +25,15 @@ def _signature(params: dict, api_secret: str) -> str:
     return hashlib.sha1(f"{to_sign}{api_secret}".encode()).hexdigest()
 
 
-def upload_video(file_path: str, public_id: str) -> str:
+def upload_video(file_path: str, public_id: str, folder: str = "lessons/generated-video") -> str:
     """Uploads the file at `file_path` to Cloudinary under `public_id`
-    (e.g. a lesson's slug) and returns the real `secure_url`. Raises
-    CloudinaryConfigError if the three settings aren't all set, or
-    requests.RequestException (uncaught — callers handle/retry, same as
-    the S3 upload path in attach_generated_videos) on a real HTTP
-    failure."""
+    (e.g. a lesson's slug) and returns the real `secure_url`. `folder`
+    defaults to the full-lesson path; attach_generated_videos --teasers
+    passes "lessons/generated-teaser" to keep the two kinds visually
+    separated in the Cloudinary dashboard. Raises CloudinaryConfigError
+    if the three settings aren't all set, or requests.RequestException
+    (uncaught — callers handle/retry, same as the S3 upload path in
+    attach_generated_videos) on a real HTTP failure."""
     cloud_name = settings.CLOUDINARY_CLOUD_NAME
     api_key = settings.CLOUDINARY_API_KEY
     api_secret = settings.CLOUDINARY_API_SECRET
@@ -41,7 +43,7 @@ def upload_video(file_path: str, public_id: str) -> str:
         )
 
     timestamp = int(time.time())
-    params_to_sign = {"timestamp": timestamp, "public_id": public_id, "folder": "lessons/generated-video"}
+    params_to_sign = {"timestamp": timestamp, "public_id": public_id, "folder": folder}
     signature = _signature(params_to_sign, api_secret)
 
     with open(file_path, "rb") as f:
@@ -52,7 +54,7 @@ def upload_video(file_path: str, public_id: str) -> str:
                 "timestamp": timestamp,
                 "signature": signature,
                 "public_id": public_id,
-                "folder": "lessons/generated-video",
+                "folder": folder,
             },
             files={"file": f},
             timeout=120,  # video uploads are large; the default timeout is too short

@@ -1,0 +1,56 @@
+name: Daily YouTube upload
+
+# Uploads ONE lesson/day to the Xpress Digital Academy YouTube channel
+# (apps.catalog.management.commands.attach_to_youtube --limit=1) — a
+# deliberate content-strategy pace, not the API's own 6/day quota
+# ceiling. Runs entirely on GitHub's runner: pulls the next eligible
+# lesson's video from wherever it's already hosted (Cloudinary — see
+# Lesson.generated_video_url / generated_teaser_url), so it has no
+# dependency on any local machine being on. Source videos have to get
+# to Cloudinary FIRST via `attach_generated_videos --cloudinary`
+# (full lessons) / `--teasers` (paid-course teasers), run from
+# wherever video/ actually rendered them — this workflow only handles
+# the YouTube side.
+#
+# Replaces an earlier Windows Task Scheduler version of this same
+# automation, which depended on a specific laptop being on and awake
+# at 9am — see git history if that context is ever needed again.
+
+on:
+  schedule:
+    # 8am UTC = 9am WAT (Nigeria, UTC+1 year-round, no DST) — same
+    # time the original local scheduled task used. GitHub's own docs
+    # note scheduled runs can be delayed by a few minutes during high
+    # platform load; nothing here depends on exact timing.
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Max uploads this run (default 1 — see the workflow's own comment on why)"
+        required: false
+        default: "1"
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.4" # matches runtime.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements/prod.txt
+
+      - name: Upload next lesson to YouTube
+        env:
+          DJANGO_SETTINGS_MODULE: config.settings.prod
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DJANGO_ALLOWED_HOSTS: xpress-academy-web.onrender.com
+          SITE_URL: https://xpress-academy-web.onrender.com
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python manage.py attach_to_youtube --limit=${{ github.event.inputs.limit || '1' }}
