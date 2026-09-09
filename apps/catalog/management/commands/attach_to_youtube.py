@@ -46,7 +46,14 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from apps.catalog.models import Course, Lesson
-from apps.catalog.youtube_upload import YouTubeConfigError, YouTubeQuotaExceeded, upload_video
+from apps.catalog.youtube_upload import (
+    YouTubeConfigError,
+    YouTubeQuotaExceeded,
+    add_video_to_playlist,
+    create_playlist,
+    set_thumbnail,
+    upload_video,
+)
 
 
 def eligible_upload_kind(course: Course) -> str | None:
@@ -70,6 +77,35 @@ TEASER_DIR = VIDEO_OUT_DIR / "teasers"
 DEFAULT_DAILY_LIMIT = 6
 
 ENROLL_URL_TEMPLATE = "{site_url}/courses/{course_slug}/"
+
+# Every lesson opens on a real titleCard scene (see video/src/scenes/
+# TitleCard.tsx) — its fade-in finishes well before this timestamp, so
+# grabbing a frame here reliably captures the lesson title, course
+# name, and track-themed colors cleanly, rather than YouTube's own
+# auto-picked frame (which could land mid-caption on a content scene).
+THUMBNAIL_TIMESTAMP = "00:00:01.2"
+
+
+def extract_thumbnail(video_path: Path, out_path: Path) -> bool:
+    """Grabs one frame from `video_path` at THUMBNAIL_TIMESTAMP and
+    writes it to `out_path` as a JPEG, via ffmpeg (already a hard
+    dependency of this pipeline — src/captions/transcribe.ts resamples
+    audio with it). Returns False (not raises) on any failure —
+    ffmpeg missing, a corrupt video file — since a missing thumbnail
+    should never block the video upload itself."""
+    import os
+    import subprocess
+
+    ffmpeg_bin = os.environ.get("FFMPEG_PATH", "ffmpeg")  # same env var convention as video/src/captions/transcribe.ts
+    try:
+        result = subprocess.run(
+            [ffmpeg_bin, "-y", "-ss", THUMBNAIL_TIMESTAMP, "-i", str(video_path),
+             "-vframes", "1", "-q:v", "2", str(out_path)],
+            capture_output=True, timeout=30,
+        )
+        return result.returncode == 0 and out_path.exists()
+    except (OSError, subprocess.SubprocessError):
+        return False
 
 
 YOUTUBE_TITLE_MAX = 100  # real YouTube hard limit
@@ -183,6 +219,42 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(
                     f"Uploaded ({kind}): {metadata['title']} -> https://youtu.be/{video_id}"
                 ))
+
+                # Real title-card frame instead of YouTube's own
+                # auto-picked one — see extract_thumbnail's comment.
+                # Non-fatal on any failure: a channel without phone
+                # verification (a real YouTube requirement, not
+                # something this code controls) gets a 403 here, and
+                # the video itself has already uploaded successfully.
+                thumb_path = file_path.parent / f"{lesson.slug}-thumb.jpg"
+                if extract_thumbnail(file_path, thumb_path):
+                    try:
+                        set_thumbnail(video_id, str(thumb_path))
+                        self.stdout.write("  custom thumbnail set")
+                    except Exception as e:
+                        self.stdout.write(self.style.WARNING(
+                            f"  thumbnail upload failed (video is still live): {e}"
+                        ))
+                    finally:
+                        thumb_path.unlink(missing_ok=True)
+
+                # One playlist per Course — created the first time any
+                # of its lessons uploads, every later lesson (including
+                # ones added to the catalog after) just appends to the
+                # same playlist. Non-fatal on failure: the video is
+                # already live either way.
+                try:
+                    if not course.youtube_playlist_id:
+                        course.youtube_playlist_id = create_playlist(
+                            title=f"{course.title} | Xpress Digital Academy",
+                            description=course.subtitle or course.title,
+                        )
+                        course.save(update_fields=["youtube_playlist_id"])
+                        self.stdout.write(f"  created playlist for {course.title}")
+                    add_video_to_playlist(course.youtube_playlist_id, video_id)
+                    self.stdout.write("  added to playlist")
+                except Exception as e:
+                    self.stdout.write(self.style.WARNING(f"  playlist step failed (video is still live): {e}"))
             except YouTubeQuotaExceeded:
                 self.stdout.write(self.style.ERROR(
                     "Daily YouTube upload quota reached — stopping here. Re-run tomorrow to continue."

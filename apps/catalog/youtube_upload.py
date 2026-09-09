@@ -25,6 +25,8 @@ from django.conf import settings
 
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 UPLOAD_URL = "https://www.googleapis.com/upload/youtube/v3/videos"
+PLAYLISTS_URL = "https://www.googleapis.com/youtube/v3/playlists"
+PLAYLIST_ITEMS_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
 
 
 class YouTubeConfigError(Exception):
@@ -127,3 +129,62 @@ def upload_video(
         raise YouTubeQuotaExceeded(resp.text)
     resp.raise_for_status()
     return resp.json()["id"]
+
+
+THUMBNAIL_SET_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
+
+
+def set_thumbnail(video_id: str, image_path: str) -> None:
+    """Uploads a custom thumbnail for an already-uploaded video.
+
+    Real constraint, not something this code can work around: YouTube
+    only allows custom thumbnails on channels that have completed phone
+    verification (YouTube Studio -> Settings -> Channel -> Feature
+    eligibility). Without it, this raises requests.HTTPError with a
+    403 — caller (attach_to_youtube) treats that as non-fatal: the
+    video itself already uploaded fine, a missing custom thumbnail
+    just means YouTube's own auto-picked frame is used instead."""
+    access_token = _access_token()
+    content_type = mimetypes.guess_type(image_path)[0] or "image/jpeg"
+    with open(image_path, "rb") as f:
+        image_bytes = f.read()
+
+    resp = requests.post(
+        f"{THUMBNAIL_SET_URL}?videoId={video_id}",
+        headers={"Authorization": f"Bearer {access_token}", "Content-Type": content_type},
+        data=image_bytes,
+        timeout=60,
+    )
+    resp.raise_for_status()
+
+
+def create_playlist(title: str, description: str) -> str:
+    """Creates a new (public) playlist, returns its real YouTube
+    playlist ID. One playlist per Course (see Course.youtube_playlist_id)
+    — called once, the first time any lesson from that course uploads."""
+    access_token = _access_token()
+    resp = requests.post(
+        f"{PLAYLISTS_URL}?part=snippet,status",
+        headers={"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"},
+        json={
+            "snippet": {"title": title[:150], "description": description[:5000]},  # real YouTube limits
+            "status": {"privacyStatus": "public"},
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    return resp.json()["id"]
+
+
+def add_video_to_playlist(playlist_id: str, video_id: str) -> None:
+    """Appends `video_id` to the end of `playlist_id` — called after
+    every successful video upload for a course that already has (or
+    just got) a playlist."""
+    access_token = _access_token()
+    resp = requests.post(
+        f"{PLAYLIST_ITEMS_URL}?part=snippet",
+        headers={"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"},
+        json={"snippet": {"playlistId": playlist_id, "resourceId": {"kind": "youtube#video", "videoId": video_id}}},
+        timeout=30,
+    )
+    resp.raise_for_status()

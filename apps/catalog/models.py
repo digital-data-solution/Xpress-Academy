@@ -127,6 +127,13 @@ class Course(OrganizationOwnedModel):
 
     estimated_hours = models.DecimalField(max_digits=5, decimal_places=1, default=0)
 
+    youtube_playlist_id = models.CharField(
+        max_length=34, blank=True,
+        help_text="Set by manage.py attach_to_youtube the first time one of this course's lessons "
+                   "uploads — every subsequent upload for this course is added to the same "
+                   "playlist, so a viewer can watch the whole course in order on YouTube.",
+    )
+
     is_published = models.BooleanField(default=False)
     published_at = models.DateTimeField(null=True, blank=True)
 
