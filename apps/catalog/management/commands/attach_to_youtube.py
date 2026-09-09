@@ -48,6 +48,23 @@ from django.core.management.base import BaseCommand, CommandError
 from apps.catalog.models import Course, Lesson
 from apps.catalog.youtube_upload import YouTubeConfigError, YouTubeQuotaExceeded, upload_video
 
+
+def eligible_upload_kind(course: Course) -> str | None:
+    """Returns 'full', 'teaser', or None (not eligible at all) for a
+    course — the one place the free/paid/staff-training decision from
+    this file's module docstring actually lives, kept separate from
+    the filesystem-globbing loop below so it's directly unit-testable.
+
+    is_staff_training: real internal content (onboarding, admin
+    dashboards, CRM training) that's FREE only in the sense of "not
+    sold" — not public-facing. Caught in practice testing this command
+    locally: without this check, "Admin: Xpress CRM Dashboard" would
+    have gone straight to a public YouTube channel. Checked first, so
+    it excludes a staff-training course regardless of pricing_model."""
+    if course.is_staff_training:
+        return None
+    return "full" if course.pricing_model == Course.PricingModel.FREE else "teaser"
+
 VIDEO_OUT_DIR = Path(settings.BASE_DIR) / "video" / "out"
 TEASER_DIR = VIDEO_OUT_DIR / "teasers"
 DEFAULT_DAILY_LIMIT = 6
@@ -124,7 +141,7 @@ class Command(BaseCommand):
             if not lesson or lesson.youtube_video_id:
                 continue
             course = lesson.module.course
-            if course.pricing_model == Course.PricingModel.FREE:
+            if eligible_upload_kind(course) == "full":
                 candidates.append((lesson, course, full_mp4, False))
 
         for teaser_mp4 in sorted(TEASER_DIR.glob("*/*.mp4")):
@@ -133,7 +150,7 @@ class Command(BaseCommand):
             if not lesson or lesson.youtube_video_id:
                 continue
             course = lesson.module.course
-            if course.pricing_model != Course.PricingModel.FREE:
+            if eligible_upload_kind(course) == "teaser":
                 candidates.append((lesson, course, teaser_mp4, True))
 
         if not candidates:

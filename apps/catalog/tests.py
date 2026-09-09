@@ -697,6 +697,55 @@ class TestExportLessonVideoJsonCommand:
         assert data["scenes"][0]["image"].startswith("https://xpress-academy-web.onrender.com/media/")
 
 
+@pytest.mark.django_db
+class TestYouTubeEligibility:
+    """apps.catalog.management.commands.attach_to_youtube.eligible_upload_kind
+    — real bug caught while testing this command against live local data:
+    'Admin: Xpress CRM Dashboard' (is_staff_training=True, pricing_model
+    FREE only because it's not sold) would have gone straight to a
+    public YouTube channel without this check."""
+
+    def test_public_free_course_gets_the_full_video(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import eligible_upload_kind
+
+        programme = Programme.objects.create(organization=org, title="Pet Owner Education", audience=Audience.GENERAL)
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Nutrition Basics", slug="nutrition-basics",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_staff_training=False,
+        )
+        assert eligible_upload_kind(course) == "full"
+
+    def test_paid_course_gets_teaser_only(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import eligible_upload_kind
+
+        programme = Programme.objects.create(organization=org, title="Vet CE", audience=Audience.VET)
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Canine Rabies", slug="canine-rabies-elig",
+            audience=Audience.VET, price_ngn=3000, pricing_model=Course.PricingModel.PAID, is_staff_training=False,
+        )
+        assert eligible_upload_kind(course) == "teaser"
+
+    def test_staff_training_is_never_eligible_even_when_pricing_model_is_free(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import eligible_upload_kind
+
+        programme = Programme.objects.create(organization=org, title="Admin Training", audience=Audience.GENERAL)
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Admin: Xpress CRM Dashboard", slug="admin-crm-elig",
+            audience=Audience.GENERAL, pricing_model=Course.PricingModel.FREE, is_staff_training=True,
+        )
+        assert eligible_upload_kind(course) is None
+
+    def test_staff_training_is_never_eligible_even_when_paid(self, org):
+        from apps.catalog.management.commands.attach_to_youtube import eligible_upload_kind
+
+        programme = Programme.objects.create(organization=org, title="Staff Training", audience=Audience.GENERAL)
+        course = Course.objects.create(
+            organization=org, programme=programme, title="Internal Paid-Looking Course", slug="internal-paid-elig",
+            audience=Audience.GENERAL, price_ngn=3000, pricing_model=Course.PricingModel.PAID, is_staff_training=True,
+        )
+        assert eligible_upload_kind(course) is None
+
+
 class TestYouTubeTitleFitting:
     """apps.catalog.management.commands.attach_to_youtube._fit_title —
     YouTube's real 100-char title cap, and NOT truncating mid-word,
