@@ -81,6 +81,16 @@ RESEND_API_KEY = env("RESEND_API_KEY", default="")
 CLOUDINARY_CLOUD_NAME = env("CLOUDINARY_CLOUD_NAME", default="")
 CLOUDINARY_API_KEY = env("CLOUDINARY_API_KEY", default="")
 CLOUDINARY_API_SECRET = env("CLOUDINARY_API_SECRET", default="")
+
+# YouTube (see apps.catalog.youtube_upload + attach_to_youtube) — a
+# one-time OAuth authorization against the Xpress Digital Academy
+# channel produces YOUTUBE_REFRESH_TOKEN; CLIENT_ID/SECRET come from
+# that same Google Cloud OAuth client. Leave any of the three unset and
+# attach_to_youtube refuses with a clear error, same fail-closed
+# discipline as the Cloudinary integration above.
+YOUTUBE_CLIENT_ID = env("YOUTUBE_CLIENT_ID", default="")
+YOUTUBE_CLIENT_SECRET = env("YOUTUBE_CLIENT_SECRET", default="")
+YOUTUBE_REFRESH_TOKEN = env("YOUTUBE_REFRESH_TOKEN", default="")
 # Sent-from address falls back to the Organization's own from_email
 # (set per-org in admin) when not overridden here — see
 # apps/engagement/services.py.

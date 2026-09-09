@@ -387,6 +387,14 @@ class Lesson(TimeStampedModel):
                    "lesson with both (shouldn't normally happen) prefers this one.",
     )
 
+    youtube_video_id = models.CharField(
+        max_length=32, blank=True,
+        help_text="Set by manage.py attach_to_youtube once this lesson's video (full for FREE "
+                   "courses, teaser only for PAID ones — see that command's own comment on why) is "
+                   "live on the Xpress Digital Academy YouTube channel. Blank means not yet "
+                   "uploaded; presence alone marks it done, so the command never re-uploads it.",
+    )
+
     is_preview = models.BooleanField(
         default=False, help_text="Viewable without enrollment, for the sales page."
     )

@@ -695,3 +695,42 @@ class TestExportLessonVideoJsonCommand:
         data = json.loads(out.getvalue())
 
         assert data["scenes"][0]["image"].startswith("https://xpress-academy-web.onrender.com/media/")
+
+
+class TestYouTubeTitleFitting:
+    """apps.catalog.management.commands.attach_to_youtube._fit_title —
+    YouTube's real 100-char title cap, and NOT truncating mid-word,
+    which is a real quality bug this was written to catch."""
+
+    def test_short_title_keeps_the_full_branded_form(self):
+        from apps.catalog.management.commands.attach_to_youtube import _fit_title
+
+        title = _fit_title("What is Rabies", "Canine Rabies")
+        assert title == "What is Rabies — Canine Rabies | Xpress Digital Academy"
+
+    def test_drops_the_branding_suffix_before_truncating_anything_real(self):
+        from apps.catalog.management.commands.attach_to_youtube import _fit_title
+
+        lesson_title = "A" * 40
+        course_title = "B" * 55  # branded form would exceed 100, unbranded fits
+        title = _fit_title(lesson_title, course_title)
+        assert title == f"{lesson_title} — {course_title}"
+        assert "Xpress Digital Academy" not in title
+
+    def test_never_cuts_mid_word(self):
+        from apps.catalog.management.commands.attach_to_youtube import _fit_title
+
+        lesson_title = "Module 1: Life-Stage Feeding and Why Cats Aren't Small Dogs"
+        course_title = "Nutrition Basics: Feeding Puppies, Kittens, and Adult Pets Correctly"
+        title = _fit_title(lesson_title, course_title)
+        assert len(title) <= 100
+        assert title == lesson_title  # falls all the way back to just the lesson title
+        # the bug this guards against: a blind [:100] slice would have
+        # ended mid-word inside "Puppies, K..."
+        assert not title.endswith(("K", "Kit"))
+
+    def test_result_is_always_under_the_real_youtube_limit(self):
+        from apps.catalog.management.commands.attach_to_youtube import YOUTUBE_TITLE_MAX, _fit_title
+
+        title = _fit_title("A" * 200, "B" * 200)
+        assert len(title) <= YOUTUBE_TITLE_MAX
