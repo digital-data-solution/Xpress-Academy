@@ -127,9 +127,18 @@ def upload_video(
         timeout=300,  # a multi-MB video upload over a home connection needs real headroom
     )
 
+    # requests.HTTPError's default str() is just "400 Client Error: Bad
+    # Request for url: ..." -- the actual reason Google gives lives in
+    # the response BODY, which raise_for_status() never surfaces.
+    # Confirmed live (2026-09-10): a real batch of 400s gave zero
+    # diagnostic value until a raw call captured resp.text directly.
+    # Raising with the body included here means the next real failure
+    # is diagnosable from the caller's own error message, not another
+    # ad-hoc diagnostic script.
     if resp.status_code == 403 and "quotaExceeded" in resp.text:
         raise YouTubeQuotaExceeded(resp.text)
-    resp.raise_for_status()
+    if not resp.ok:
+        raise requests.HTTPError(f"{resp.status_code} {resp.reason} for {file_path}: {resp.text[:1000]}", response=resp)
     return resp.json()["id"]
 
 
