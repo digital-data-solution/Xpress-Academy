@@ -1,9 +1,11 @@
 name: Daily YouTube upload
 
-# Uploads ONE lesson/day to the Xpress Digital Academy YouTube channel
-# (apps.catalog.management.commands.attach_to_youtube --limit=1) — a
-# deliberate content-strategy pace, not the API's own 6/day quota
-# ceiling. Runs entirely on GitHub's runner: pulls the next eligible
+# Uploads up to SIX lessons/day to the Xpress Digital Academy YouTube
+# channel (apps.catalog.management.commands.attach_to_youtube
+# --limit=6) — the real hard ceiling of the YouTube Data API's default
+# quota (10,000 units/day ÷ 1,600 units/upload), raised from the
+# original --limit=1 content-strategy pace to clear the render backlog
+# faster. Runs entirely on GitHub's runner: pulls the next eligible
 # lesson's video from wherever it's already hosted (Cloudinary — see
 # Lesson.generated_video_url / generated_teaser_url), so it has no
 # dependency on any local machine being on. Source videos have to get
@@ -26,9 +28,9 @@ on:
   workflow_dispatch:
     inputs:
       limit:
-        description: "Max uploads this run (default 1 — see the workflow's own comment on why)"
+        description: "Max uploads this run (default 6 — the real API quota ceiling, see the workflow's own comment)"
         required: false
-        default: "1"
+        default: "6"
 
 jobs:
   upload:
@@ -53,4 +55,4 @@ jobs:
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
-          python manage.py attach_to_youtube --limit=${{ github.event.inputs.limit || '1' }}
+          python manage.py attach_to_youtube --limit=${{ github.event.inputs.limit || '6' }}
