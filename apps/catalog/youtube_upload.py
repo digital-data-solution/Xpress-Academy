@@ -18,6 +18,7 @@ reason; it does not try to upload everything in one run.
 """
 import json
 import mimetypes
+import time
 import uuid
 
 import requests
@@ -170,28 +171,44 @@ def update_video_description(video_id: str, title: str, description: str) -> Non
 THUMBNAIL_SET_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
 
 
+THUMBNAIL_MAX_RETRIES = 5
+
+
 def set_thumbnail(video_id: str, image_path: str) -> None:
     """Uploads a custom thumbnail for an already-uploaded video.
 
-    Real constraint, not something this code can work around: YouTube
-    only allows custom thumbnails on channels that have completed phone
-    verification (YouTube Studio -> Settings -> Channel -> Feature
-    eligibility). Without it, this raises requests.HTTPError with a
-    403 — caller (attach_to_youtube) treats that as non-fatal: the
-    video itself already uploaded fine, a missing custom thumbnail
-    just means YouTube's own auto-picked frame is used instead."""
+    Real constraint this code CAN'T work around: YouTube only allows
+    custom thumbnails on channels that have completed phone verification
+    (YouTube Studio -> Settings -> Channel -> Feature eligibility).
+    Without it, this raises requests.HTTPError with a 403 — caller
+    (attach_to_youtube / backfill_youtube_thumbnails) treats that as
+    non-fatal: the video itself already uploaded fine, a missing custom
+    thumbnail just means YouTube's own auto-picked frame is used instead.
+
+    Real constraint this code CAN work around, and does: thumbnails.set
+    has its own tighter rate limit, separate from the 10,000-unit daily
+    quota — confirmed live (2026-09-10) when backfill_youtube_thumbnails
+    called this in a tight loop across ~25 videos and got a real 429
+    after the 3rd call. Retries a 429 with exponential backoff
+    (1s, 2s, 4s, 8s, 16s); any other status still raises immediately via
+    raise_for_status(), same as before."""
     access_token = _access_token()
     content_type = mimetypes.guess_type(image_path)[0] or "image/jpeg"
     with open(image_path, "rb") as f:
         image_bytes = f.read()
 
-    resp = requests.post(
-        f"{THUMBNAIL_SET_URL}?videoId={video_id}",
-        headers={"Authorization": f"Bearer {access_token}", "Content-Type": content_type},
-        data=image_bytes,
-        timeout=60,
-    )
-    resp.raise_for_status()
+    for attempt in range(THUMBNAIL_MAX_RETRIES):
+        resp = requests.post(
+            f"{THUMBNAIL_SET_URL}?videoId={video_id}",
+            headers={"Authorization": f"Bearer {access_token}", "Content-Type": content_type},
+            data=image_bytes,
+            timeout=60,
+        )
+        if resp.status_code == 429 and attempt < THUMBNAIL_MAX_RETRIES - 1:
+            time.sleep(2**attempt)
+            continue
+        resp.raise_for_status()
+        return
 
 
 def create_playlist(title: str, description: str) -> str:

@@ -13,7 +13,14 @@ thumbnail just gets the same image re-applied, a no-op in substance.
 Only fixes what CAN be fixed from here -- a channel without YouTube's
 phone verification would still 403 on every one of these the same way
 it would 403 at upload time; this can't work around that, only confirm
-whether it's happening."""
+whether it's happening.
+
+A small delay between calls (THUMBNAIL_PACE_SECONDS) is deliberate,
+not incidental -- confirmed live that firing thumbnails.set in a tight
+loop across ~25 videos hits a real 429 after the 3rd call. set_thumbnail
+itself now also retries a 429 with backoff, but pacing calls up front
+means most runs never need to."""
+import time
 from pathlib import Path
 
 from django.conf import settings
@@ -25,6 +32,7 @@ from apps.catalog.youtube_upload import set_thumbnail
 
 VIDEO_OUT_DIR = Path(settings.BASE_DIR) / "video" / "out"
 TEASER_DIR = VIDEO_OUT_DIR / "teasers"
+THUMBNAIL_PACE_SECONDS = 1.5
 
 
 class Command(BaseCommand):
@@ -83,6 +91,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"FAILED: {lesson.youtube_video_id} ({lesson.title}): {e}"))
             finally:
                 thumb_path.unlink(missing_ok=True)
+                time.sleep(THUMBNAIL_PACE_SECONDS)
 
         if not options["dry_run"]:
             self.stdout.write(self.style.SUCCESS(f"Done — {ok} thumbnail(s) set."))
