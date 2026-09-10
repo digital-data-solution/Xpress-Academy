@@ -28,7 +28,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from apps.catalog.management.commands.attach_to_youtube import eligible_upload_kind, extract_thumbnail
 from apps.catalog.models import Lesson
-from apps.catalog.youtube_upload import set_thumbnail
+from apps.catalog.youtube_upload import YouTubeThumbnailRateLimited, set_thumbnail
 
 VIDEO_OUT_DIR = Path(settings.BASE_DIR) / "video" / "out"
 TEASER_DIR = VIDEO_OUT_DIR / "teasers"
@@ -86,6 +86,14 @@ class Command(BaseCommand):
                 set_thumbnail(lesson.youtube_video_id, str(thumb_path))
                 self.stdout.write(f"OK: {lesson.youtube_video_id} ({lesson.title})")
                 ok += 1
+            except YouTubeThumbnailRateLimited:
+                self.stdout.write(self.style.ERROR(
+                    f"Stopping — hit YouTube's uploadRateLimitExceeded after {ok} thumbnail(s) this run "
+                    f"({len(lessons) - ok} not yet attempted). This is a longer sliding-window limit, not "
+                    "the short burst 429 -- retrying more videos right now won't help. Try again later "
+                    "(the window isn't published by Google; an hour or more is a reasonable first wait)."
+                ))
+                break
             except Exception as e:
                 failed.append((lesson.slug, str(e)))
                 self.stdout.write(self.style.WARNING(f"FAILED: {lesson.youtube_video_id} ({lesson.title}): {e}"))

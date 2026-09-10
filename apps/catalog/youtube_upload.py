@@ -174,6 +174,21 @@ THUMBNAIL_SET_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set
 THUMBNAIL_MAX_RETRIES = 5
 
 
+class YouTubeThumbnailRateLimited(Exception):
+    """The real, distinct error Google returns for this (confirmed live,
+    2026-09-10, via a raw diagnostic call that captured the actual JSON
+    body instead of just the HTTP status): domain "youtube.thumbnail",
+    reason "uploadRateLimitExceeded", message "The user has uploaded too
+    many thumbnails recently." This is a SEPARATE, longer sliding-window
+    limit from both the 10,000-unit daily quota (reason would be
+    "quotaExceeded") and an ordinary short burst 429 -- no published
+    reset window, but empirically longer than seconds: a 5-attempt
+    exponential backoff (up to ~31s total) did NOT clear it. Retrying
+    per-video here would just keep re-triggering it on every remaining
+    video in a batch; callers should catch this and stop the whole run,
+    not continue to the next video."""
+
+
 def set_thumbnail(video_id: str, image_path: str) -> None:
     """Uploads a custom thumbnail for an already-uploaded video.
 
@@ -185,13 +200,13 @@ def set_thumbnail(video_id: str, image_path: str) -> None:
     non-fatal: the video itself already uploaded fine, a missing custom
     thumbnail just means YouTube's own auto-picked frame is used instead.
 
-    Real constraint this code CAN work around, and does: thumbnails.set
-    has its own tighter rate limit, separate from the 10,000-unit daily
-    quota — confirmed live (2026-09-10) when backfill_youtube_thumbnails
-    called this in a tight loop across ~25 videos and got a real 429
-    after the 3rd call. Retries a 429 with exponential backoff
-    (1s, 2s, 4s, 8s, 16s); any other status still raises immediately via
-    raise_for_status(), same as before."""
+    Real constraint this code CAN partially work around: an ordinary
+    short-burst 429 (no specific reason, or a reason other than
+    uploadRateLimitExceeded) gets exponential backoff (1s, 2s, 4s, 8s,
+    16s) since that class of 429 does clear within seconds. A 429 that
+    IS specifically uploadRateLimitExceeded raises YouTubeThumbnailRateLimited
+    immediately instead of burning through the retry budget on a limit
+    backoff can't clear in time."""
     access_token = _access_token()
     content_type = mimetypes.guess_type(image_path)[0] or "image/jpeg"
     with open(image_path, "rb") as f:
@@ -204,9 +219,17 @@ def set_thumbnail(video_id: str, image_path: str) -> None:
             data=image_bytes,
             timeout=60,
         )
-        if resp.status_code == 429 and attempt < THUMBNAIL_MAX_RETRIES - 1:
-            time.sleep(2**attempt)
-            continue
+        if resp.status_code == 429:
+            reason = None
+            try:
+                reason = resp.json()["error"]["errors"][0]["reason"]
+            except (ValueError, KeyError, IndexError):
+                pass
+            if reason == "uploadRateLimitExceeded":
+                raise YouTubeThumbnailRateLimited(resp.text)
+            if attempt < THUMBNAIL_MAX_RETRIES - 1:
+                time.sleep(2**attempt)
+                continue
         resp.raise_for_status()
         return
 
