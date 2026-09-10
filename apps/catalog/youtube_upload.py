@@ -25,6 +25,7 @@ from django.conf import settings
 
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 UPLOAD_URL = "https://www.googleapis.com/upload/youtube/v3/videos"
+VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 PLAYLISTS_URL = "https://www.googleapis.com/youtube/v3/playlists"
 PLAYLIST_ITEMS_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
 
@@ -129,6 +130,41 @@ def upload_video(
         raise YouTubeQuotaExceeded(resp.text)
     resp.raise_for_status()
     return resp.json()["id"]
+
+
+def update_video_description(video_id: str, title: str, description: str) -> None:
+    """Rewrites an already-uploaded video's title/description via
+    videos.update. YouTube's videos.update replaces the entire `snippet`
+    part it's given -- it is NOT a partial patch -- so this fetches the
+    current snippet first (to preserve tags/categoryId untouched) and
+    only overwrites title/description, rather than reconstructing a
+    snippet from scratch and risking silently dropping a field a caller
+    didn't think to pass. Built specifically to repair the localhost-
+    enroll-link incident (see attach_to_youtube's SITE_URL guard and
+    fix_youtube_localhost_links) but generically reusable for any future
+    metadata correction on an already-public video."""
+    access_token = _access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    get_resp = requests.get(
+        VIDEOS_URL, params={"part": "snippet", "id": video_id}, headers=headers, timeout=30,
+    )
+    get_resp.raise_for_status()
+    items = get_resp.json().get("items", [])
+    if not items:
+        raise ValueError(f"No YouTube video found for id {video_id!r}")
+
+    snippet = items[0]["snippet"]
+    snippet["title"] = title[:100]
+    snippet["description"] = description[:5000]
+
+    put_resp = requests.put(
+        f"{VIDEOS_URL}?part=snippet",
+        headers={**headers, "Content-Type": "application/json"},
+        json={"id": video_id, "snippet": snippet},
+        timeout=30,
+    )
+    put_resp.raise_for_status()
 
 
 THUMBNAIL_SET_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"

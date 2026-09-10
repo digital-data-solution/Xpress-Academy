@@ -239,6 +239,30 @@ class Command(BaseCommand):
                 "See this command's own docstring for the one-time setup."
             )
 
+        # Same incident class documented in apps.catalog.webhooks and
+        # resend_vet_webhooks: a local one-off run against
+        # config.settings.prod (DATABASE_URL + the YOUTUBE_* secrets set,
+        # but SITE_URL left unset) silently inherits SITE_URL from this
+        # project's local .env ("http://localhost:8000") instead of
+        # Render's real value. Unlike those two, this command had no
+        # guard at all -- it actually happened here: 6 real, public
+        # YouTube uploads (2026-09-10) shipped with a dead localhost
+        # enroll link baked into the description, permanently (YouTube
+        # descriptions are still fixable after the fact via videos.update,
+        # see fix_youtube_localhost_links, but the upload itself already
+        # went out). Gated on SETTINGS_MODULE, not DEBUG, for the same
+        # reason as webhooks.py: Django's test runner forces DEBUG=False
+        # for every test regardless of settings module.
+        is_localhost_url = "localhost" in settings.SITE_URL or "127.0.0.1" in settings.SITE_URL
+        is_prod_settings = settings.SETTINGS_MODULE == "config.settings.prod"
+        if is_localhost_url and is_prod_settings:
+            raise CommandError(
+                f"SITE_URL is {settings.SITE_URL!r} under config.settings.prod -- every video's "
+                "description would ship a dead localhost enroll link to real, public YouTube "
+                "uploads. Set SITE_URL explicitly for this process, the same way DATABASE_URL is:\n"
+                '  $env:SITE_URL = "https://xpress-academy-web.onrender.com"'
+            )
+
         candidates = gather_candidates()
         if not candidates:
             self.stdout.write(self.style.WARNING("Nothing new to upload (either none rendered, or all done)."))
