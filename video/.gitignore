@@ -9,6 +9,7 @@ public/audio/
 public/images/
 whisper.cpp/
 kokoro-venv/
+tts-venv/
 .env
 # Exported lesson JSON — regenerable any time via
 # `manage.py export_lesson_video_json <lesson_id>`, not source. Except
