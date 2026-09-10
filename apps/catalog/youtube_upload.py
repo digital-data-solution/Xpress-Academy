@@ -36,9 +36,18 @@ class YouTubeConfigError(Exception):
 
 
 class YouTubeQuotaExceeded(Exception):
-    """The daily upload quota (a real Google-side limit, not this
-    codebase's own invention) has been used up — stop the run, don't
-    retry."""
+    """Either of two real, distinct Google-side daily limits, not this
+    codebase's own invention -- both mean the same thing to a caller
+    (stop the run, don't retry, come back tomorrow), so both raise this
+    one exception:
+    - 403 quotaExceeded: the 10,000-unit API quota itself.
+    - 400 uploadLimitExceeded (confirmed live, 2026-09-10, via a batch
+      of 6 real 400s whose body — only visible after upload_video
+      started including it — read "The user has exceeded the number of
+      videos they may upload", domain youtube.video): a SEPARATE cap on
+      the raw count of videos uploaded per day, hit that day after ~23
+      real uploads across several runs. Nothing here can raise the
+      limit; the only real fix is spacing uploads out over more days."""
 
 
 def _access_token() -> str:
@@ -135,7 +144,9 @@ def upload_video(
     # Raising with the body included here means the next real failure
     # is diagnosable from the caller's own error message, not another
     # ad-hoc diagnostic script.
-    if resp.status_code == 403 and "quotaExceeded" in resp.text:
+    if (resp.status_code == 403 and "quotaExceeded" in resp.text) or (
+        resp.status_code == 400 and "uploadLimitExceeded" in resp.text
+    ):
         raise YouTubeQuotaExceeded(resp.text)
     if not resp.ok:
         raise requests.HTTPError(f"{resp.status_code} {resp.reason} for {file_path}: {resp.text[:1000]}", response=resp)

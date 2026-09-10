@@ -339,7 +339,9 @@ class Command(BaseCommand):
                         self.stdout.write(self.style.WARNING(f"  playlist step failed (video is still live): {e}"))
                 except YouTubeQuotaExceeded:
                     self.stdout.write(self.style.ERROR(
-                        "Daily YouTube upload quota reached — stopping here. Re-run tomorrow to continue."
+                        "Hit a real daily YouTube limit (API quota or the separate per-day upload-count "
+                        "cap — see YouTubeQuotaExceeded's own docstring) — stopping here. Re-run tomorrow "
+                        "to continue."
                     ))
                     break
                 except YouTubeConfigError:
