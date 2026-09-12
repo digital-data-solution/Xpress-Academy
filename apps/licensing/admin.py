@@ -16,9 +16,18 @@ class InstitutionAdmin(admin.ModelAdmin):
     search_fields = ["name", "proprietor__email"]
     prepopulated_fields = {"slug": ("name",)}
     autocomplete_fields = ["proprietor"]
+    readonly_fields = ["dashboard_link_display"]
 
     def license_count(self, obj):
         return obj.licenses.count()
+
+    def dashboard_link_display(self, obj):
+        # The proprietor isn't platform staff and has no admin access —
+        # this is how a staff member finds the URL to actually hand
+        # them (email, WhatsApp, wherever the sale happens).
+        return f"/school/{obj.slug}/" if obj.pk else "(save first)"
+
+    dashboard_link_display.short_description = "Proprietor dashboard link"
 
     license_count.short_description = "Licences"
 

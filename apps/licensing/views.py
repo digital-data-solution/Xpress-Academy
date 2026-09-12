@@ -1,6 +1,7 @@
 import json
 
-from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
@@ -12,7 +13,7 @@ from .diagnostics import (
     serialize_snapshot_for_display,
     start_diagnostic_attempt,
 )
-from .models import DiagnosticAttempt, DiagnosticMockTest
+from .models import DiagnosticAttempt, DiagnosticMockTest, Institution, InstitutionalLicense
 
 
 def _get_test(test_slug):
@@ -120,4 +121,77 @@ def diagnostic_results_view(request, test_slug, attempt_uuid):
 
     return render(request, "licensing/diagnostic_results.html", {
         "test": test, "attempt": attempt, "rows": rows,
+    })
+
+
+@login_required
+def school_dashboard(request, institution_slug):
+    """The per-school performance dashboard — build spec §B: "this is
+    the renewal argument, so build it as a sales artefact, not an
+    admin page." Real access control, not just UI hiding: only the
+    institution's own proprietor (or platform staff, for support) can
+    view it — a 404, not a 403, so a logged-in stranger can't even
+    confirm another school's dashboard exists by guessing slugs (same
+    reasoning as apps.assessment.access's course/quiz mismatch check)."""
+    institution = get_object_or_404(Institution, slug=institution_slug)
+    if institution.proprietor_id != request.user.id and not request.user.is_staff:
+        raise Http404("No institution matches the given query.")
+
+    from apps.enrollment.models import Enrollment
+    from apps.enrollment.services import get_progress_percent
+
+    licenses = institution.licenses.filter(status=InstitutionalLicense.Status.ACTIVE)
+    enrollments = (
+        Enrollment.objects.filter(institutional_license__in=licenses)
+        .select_related("user", "course")
+        .order_by("user__email", "course__title")
+    )
+
+    # One row per student, aggregated across every course their seat(s)
+    # under this institution's active licence(s) actually grant —
+    # scores/attempts pulled the same way assessment.Attempt already
+    # records them, not re-derived.
+    students: dict[int, dict] = {}
+    for e in enrollments:
+        row = students.setdefault(e.user_id, {"user": e.user, "courses": [], "progress_values": []})
+        progress = get_progress_percent(e)
+        row["courses"].append({"course": e.course, "progress": progress, "status": e.get_status_display()})
+        row["progress_values"].append(progress)
+
+    from apps.assessment.models import Attempt
+
+    scores_by_user: dict[int, list[int]] = {}
+    attempts = Attempt.objects.filter(
+        enrollment__institutional_license__in=licenses, submitted_at__isnull=False
+    ).values_list("enrollment__user_id", "score_percent")
+    for user_id, score in attempts:
+        scores_by_user.setdefault(user_id, []).append(score)
+
+    rows = []
+    for user_id, data in students.items():
+        avg_progress = round(sum(data["progress_values"]) / len(data["progress_values"]))
+        scores = scores_by_user.get(user_id, [])
+        rows.append({
+            "user": data["user"],
+            "courses": data["courses"],
+            "avg_progress": avg_progress,
+            "avg_quiz_score": round(sum(scores) / len(scores)) if scores else None,
+            "quiz_attempts": len(scores),
+        })
+    rows.sort(key=lambda r: -r["avg_progress"])
+
+    total_seats = sum(lic.seats for lic in licenses)
+    seats_used = sum(lic.seats_used for lic in licenses)
+    cohort_avg_progress = round(sum(r["avg_progress"] for r in rows) / len(rows)) if rows else 0
+    scored_rows = [r["avg_quiz_score"] for r in rows if r["avg_quiz_score"] is not None]
+    cohort_avg_score = round(sum(scored_rows) / len(scored_rows)) if scored_rows else None
+
+    return render(request, "licensing/school_dashboard.html", {
+        "institution": institution,
+        "licenses": licenses,
+        "rows": rows,
+        "total_seats": total_seats,
+        "seats_used": seats_used,
+        "cohort_avg_progress": cohort_avg_progress,
+        "cohort_avg_score": cohort_avg_score,
     })

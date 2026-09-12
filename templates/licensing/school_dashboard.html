@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ institution.name }} — Performance Dashboard{% endblock %}
+{% block content %}
+  <h1>{{ institution.name }}</h1>
+  <p style="color:var(--color-muted);">Performance dashboard — {{ rows|length }} student{{ rows|length|pluralize }} enrolled.</p>
+
+  <div class="card" style="display:flex; flex-wrap:wrap; gap:32px;">
+    <div>
+      <p style="font-size:13px; color:var(--color-muted); margin:0;">Seats used</p>
+      <p style="font-size:28px; font-weight:700; margin:0;">{{ seats_used }} / {{ total_seats }}</p>
+    </div>
+    <div>
+      <p style="font-size:13px; color:var(--color-muted); margin:0;">Average course progress</p>
+      <p style="font-size:28px; font-weight:700; margin:0;">{{ cohort_avg_progress }}%</p>
+    </div>
+    <div>
+      <p style="font-size:13px; color:var(--color-muted); margin:0;">Average quiz score</p>
+      <p style="font-size:28px; font-weight:700; margin:0;">{% if cohort_avg_score is not None %}{{ cohort_avg_score }}%{% else %}—{% endif %}</p>
+    </div>
+    {% for license in licenses %}
+      <div>
+        <p style="font-size:13px; color:var(--color-muted); margin:0;">Licence term</p>
+        <p style="font-size:14px; font-weight:600; margin:0;">{{ license.term_starts_at|date:"j M Y" }} – {{ license.term_ends_at|date:"j M Y" }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if rows %}
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; margin-top:16px;">
+        <thead>
+          <tr style="text-align:left; border-bottom:2px solid #e5e7eb;">
+            <th style="padding:8px;">Student</th>
+            <th style="padding:8px;">Courses</th>
+            <th style="padding:8px;">Progress</th>
+            <th style="padding:8px;">Quiz average</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr style="border-bottom:1px solid #f0f0f0;">
+              <td style="padding:8px;">
+                {{ row.user.get_full_name|default:row.user.email }}
+                {% if row.user.get_full_name %}<br><span style="font-size:12px; color:var(--color-muted);">{{ row.user.email }}</span>{% endif %}
+              </td>
+              <td style="padding:8px; font-size:13px;">
+                {% for c in row.courses %}
+                  {{ c.course.title }} — {{ c.progress }}%{% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+              </td>
+              <td style="padding:8px; font-weight:600;">{{ row.avg_progress }}%</td>
+              <td style="padding:8px;">
+                {% if row.avg_quiz_score is not None %}
+                  {{ row.avg_quiz_score }}% <span style="font-size:12px; color:var(--color-muted);">({{ row.quiz_attempts }} attempt{{ row.quiz_attempts|pluralize }})</span>
+                {% else %}
+                  <span style="color:var(--color-muted);">No attempts yet</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p style="color:var(--color-muted); margin-top:16px;">No students seated yet — import students from a licence to see them here.</p>
+  {% endif %}
+{% endblock %}

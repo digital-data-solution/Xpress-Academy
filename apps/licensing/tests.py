@@ -293,3 +293,69 @@ class TestDiagnosticHTTPFlow:
         client = Client()
         resp = client.get(reverse("licensing:diagnostic_intro", kwargs={"test_slug": diagnostic_test.slug}))
         assert resp.status_code == 404
+
+
+@pytest.mark.django_db
+class TestSchoolDashboard:
+    """Build spec §B: "a sales artefact, not an admin page" — real
+    access control (only the institution's own proprietor, or staff,
+    can view it) and correct aggregation across every student seated
+    under the institution's active licence(s)."""
+
+    def test_requires_login(self, license):
+        client = Client()
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": license.institution.slug}))
+        assert resp.status_code == 302
+        assert "/account/login/" in resp.url
+
+    def test_stranger_gets_404_not_403(self, license):
+        stranger = User.objects.create_user(email="stranger@example.com", password="testpass123")
+        client = Client()
+        client.force_login(stranger)
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": license.institution.slug}))
+        assert resp.status_code == 404
+
+    def test_proprietor_sees_their_own_dashboard(self, license, proprietor):
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": license.institution.slug}))
+        assert resp.status_code == 200
+
+    def test_staff_can_view_any_school_for_support(self, license):
+        staff = User.objects.create_user(email="staff@example.com", password="testpass123", is_staff=True)
+        client = Client()
+        client.force_login(staff)
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": license.institution.slug}))
+        assert resp.status_code == 200
+
+    def test_aggregates_progress_and_quiz_scores_across_seated_students(self, license, proprietor, course):
+        with patch("apps.engagement.services.ResendGateway.send"):
+            bulk_enroll_students_from_csv(
+                license, csv_file("email,first_name\nada@example.com,Ada\nbayo@example.com,Bayo\n"),
+            )
+        ada = User.objects.get(email="ada@example.com")
+        ada_enrollment = Enrollment.objects.get(user=ada, course=course)
+
+        from apps.assessment.models import Choice, Question, QuestionBank, Quiz
+        from apps.assessment.services import finalize_attempt, save_answer, start_attempt
+
+        bank = QuestionBank.objects.create(organization=license.institution.organization, name="Dash Bank")
+        q = Question.objects.create(bank=bank, type=Question.Type.MCQ, stem="Q", explanation="")
+        Choice.objects.create(question=q, text="Right", is_correct=True, order=1)
+        Choice.objects.create(question=q, text="Wrong", is_correct=False, order=2)
+        quiz = Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, title="Final", bank=bank, question_count=1)
+
+        attempt = start_attempt(ada_enrollment, quiz)
+        correct_id = next(c["choice_id"] for c in attempt.question_snapshot[0]["choices"] if c["is_correct"])
+        save_answer(attempt, q.id, [correct_id])
+        finalize_attempt(attempt)  # 100%
+
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": license.institution.slug}))
+        assert resp.status_code == 200
+        assert resp.context["seats_used"] == 2
+        assert resp.context["total_seats"] == 2
+        rows_by_email = {r["user"].email: r for r in resp.context["rows"]}
+        assert rows_by_email["ada@example.com"]["avg_quiz_score"] == 100
+        assert rows_by_email["bayo@example.com"]["avg_quiz_score"] is None  # no attempts yet — not a crash

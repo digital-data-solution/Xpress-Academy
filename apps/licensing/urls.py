@@ -5,6 +5,7 @@ from . import views
 app_name = "licensing"
 
 urlpatterns = [
+    path("school/<slug:institution_slug>/", views.school_dashboard, name="school_dashboard"),
     path("diagnostic/<slug:test_slug>/", views.diagnostic_intro, name="diagnostic_intro"),
     path(
         "diagnostic/<slug:test_slug>/attempt/<uuid:attempt_uuid>/",
