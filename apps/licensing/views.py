@@ -18,6 +18,16 @@ from .models import DiagnosticAttempt, DiagnosticMockTest, Institution, Institut
 from .ranking import rank_by_score
 
 
+def diagnostic_list(request):
+    """The real gap this closes: every diagnostic built so far
+    (JAMB/WAEC Biology, Civil Service GK, ...) was only reachable by a
+    direct link handed out manually — nothing on the actual site
+    pointed at any of it. This is the discoverable, public landing
+    page for all of them, linked from the main nav."""
+    tests = DiagnosticMockTest.objects.filter(is_active=True).select_related("bank").order_by("title")
+    return render(request, "licensing/diagnostic_list.html", {"tests": tests})
+
+
 def _get_test(test_slug):
     return get_object_or_404(DiagnosticMockTest, slug=test_slug, is_active=True)
 

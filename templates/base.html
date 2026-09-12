@@ -25,6 +25,7 @@
       </label>
       <nav>
         <a href="{% url 'catalog:course_catalog' %}">Courses</a>
+        <a href="{% url 'licensing:diagnostic_list' %}">Free Diagnostics</a>
         {% if user.is_authenticated %}
           <a href="{% url 'enrollment:dashboard' %}">Dashboard</a>
           <a href="{% url 'support:inbox' %}">Support</a>
@@ -66,6 +67,7 @@
         <div class="footer-col">
           <h4>Learn</h4>
           <a href="{% url 'catalog:course_catalog' %}">Browse courses</a>
+          <a href="{% url 'licensing:diagnostic_list' %}">Free diagnostics</a>
           {% if user.is_authenticated %}
             <a href="{% url 'enrollment:dashboard' %}">Your dashboard</a>
           {% else %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Free Diagnostics{% endblock %}
+{% block content %}
+  <h1>Free Diagnostics</h1>
+  <p style="color:var(--color-muted);">Free, timed practice tests — see where you stand, get a PDF report at the end. No account needed.</p>
+
+  {% if tests %}
+    <div style="display:grid; gap:16px; margin-top:16px;">
+      {% for test in tests %}
+        <div class="card">
+          <h3 style="margin:0 0 4px;">{{ test.title }}</h3>
+          <p style="color:var(--color-muted); font-size:14px; margin:0 0 12px;">
+            {{ test.question_count }} question{{ test.question_count|pluralize }}
+            {% if test.time_limit_minutes %} · {{ test.time_limit_minutes }} minutes{% endif %}
+          </p>
+          <a class="btn" href="{% url 'licensing:diagnostic_intro' test_slug=test.slug %}">Start free diagnostic</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:var(--color-muted);">No diagnostics available right now — check back soon.</p>
+  {% endif %}
+{% endblock %}

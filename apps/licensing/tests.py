@@ -263,6 +263,26 @@ class TestDiagnosticPDF:
 
 
 @pytest.mark.django_db
+class TestDiagnosticList:
+    """The public discoverability page — every diagnostic built so far
+    had no page or nav link pointing at it before this; a visitor had
+    no way to find one without being handed a direct URL."""
+
+    def test_lists_active_diagnostics_without_login(self, diagnostic_test):
+        client = Client()
+        resp = client.get(reverse("licensing:diagnostic_list"))
+        assert resp.status_code == 200
+        assert diagnostic_test.title.encode() in resp.content
+
+    def test_inactive_diagnostics_are_not_listed(self, diagnostic_test):
+        diagnostic_test.is_active = False
+        diagnostic_test.save(update_fields=["is_active"])
+        client = Client()
+        resp = client.get(reverse("licensing:diagnostic_list"))
+        assert diagnostic_test.title.encode() not in resp.content
+
+
+@pytest.mark.django_db
 class TestDiagnosticHTTPFlow:
     """The public, unauthenticated flow end to end — no login, no
     enrollment, exactly as a prospect clicking a shared link would
