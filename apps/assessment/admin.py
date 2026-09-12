@@ -4,7 +4,9 @@ from django.shortcuts import redirect, render
 from django.urls import path, reverse
 
 from .csv_import import import_questions_from_csv
-from .models import Attempt, AttemptAnswer, Choice, Question, QuestionBank, Quiz, Topic
+from .models import (
+    Attempt, AttemptAnswer, Choice, Question, QuestionBank, Quiz, SourceExam, SyllabusTopic, Topic,
+)
 
 
 @admin.register(Topic)
@@ -12,6 +14,35 @@ class TopicAdmin(admin.ModelAdmin):
     list_display = ["name", "slug", "question_count"]
     search_fields = ["name"]
     prepopulated_fields = {"slug": ("name",)}
+
+    def question_count(self, obj):
+        return obj.questions.count()
+
+    question_count.short_description = "Questions"
+
+
+@admin.register(SourceExam)
+class SourceExamAdmin(admin.ModelAdmin):
+    list_display = ["name", "code", "syllabus_topic_count", "question_count"]
+    search_fields = ["name", "code"]
+    prepopulated_fields = {"code": ("name",)}
+
+    def syllabus_topic_count(self, obj):
+        return obj.syllabus_topics.count()
+
+    syllabus_topic_count.short_description = "Syllabus topics"
+
+    def question_count(self, obj):
+        return obj.questions.count()
+
+    question_count.short_description = "Questions"
+
+
+@admin.register(SyllabusTopic)
+class SyllabusTopicAdmin(admin.ModelAdmin):
+    list_display = ["name", "source_exam", "subject", "section", "order", "question_count"]
+    list_filter = ["source_exam", "subject"]
+    search_fields = ["name", "section"]
 
     def question_count(self, obj):
         return obj.questions.count()
@@ -91,10 +122,13 @@ class ChoiceInline(admin.TabularInline):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ["stem_short", "bank", "type", "difficulty", "is_active", "well_formed_display"]
-    list_filter = ["bank", "type", "difficulty", "is_active", "topics"]
+    list_display = [
+        "stem_short", "bank", "source_exam", "verification_status", "type", "difficulty",
+        "is_active", "well_formed_display",
+    ]
+    list_filter = ["bank", "source_exam", "verification_status", "type", "difficulty", "is_active", "topics"]
     search_fields = ["stem", "explanation"]
-    filter_horizontal = ["topics"]
+    filter_horizontal = ["topics", "syllabus_topics"]
     inlines = [ChoiceInline]
 
     def stem_short(self, obj):
@@ -114,7 +148,7 @@ class QuizAdmin(admin.ModelAdmin):
     list_display = ["title", "scope", "module", "course", "bank", "question_count", "pass_mark", "max_attempts"]
     list_filter = ["scope", "bank"]
     search_fields = ["title"]
-    filter_horizontal = ["topic_filter"]
+    filter_horizontal = ["topic_filter", "syllabus_topic_filter"]
 
 
 class AttemptAnswerInline(admin.TabularInline):

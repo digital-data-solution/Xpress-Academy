@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h1>Import students into "{{ license.institution.name }}" ({{ license.seats_used }}/{{ license.seats }} seats used)</h1>
+  <p>CSV columns: <code>email, first_name, last_name</code></p>
+  <ul>
+    <li>One row per student. <code>email</code> is required.</li>
+    <li>A new account is created (with a "set your password" email) if the email isn't already registered.</li>
+    <li>Each seated student gets access to every course on this licence, without disturbing any course access they already have some other way.</li>
+    <li>Stops once the licence's seat cap is reached — remaining rows are reported, not silently dropped.</li>
+  </ul>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Import" class="default">
+  </form>
+{% endblock %}

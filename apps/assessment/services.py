@@ -36,8 +36,10 @@ def _build_question_snapshot(quiz: Quiz) -> list[dict]:
     pool = quiz.bank.questions.filter(is_active=True).prefetch_related("choices")
     if quiz.topic_filter.exists():
         pool = pool.filter(topics__in=quiz.topic_filter.all()).distinct()
+    if quiz.syllabus_topic_filter.exists():
+        pool = pool.filter(syllabus_topics__in=quiz.syllabus_topic_filter.all()).distinct()
 
-    candidates = [q for q in pool if q.is_well_formed]
+    candidates = [q for q in pool if q.is_publishable]
     random.shuffle(candidates)
     selected = candidates[: quiz.question_count]
 

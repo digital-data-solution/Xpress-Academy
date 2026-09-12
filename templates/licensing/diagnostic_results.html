@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Your results — {{ test.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>{{ attempt.score_percent }}%</h1>
+  <p style="color:var(--color-muted);">{{ attempt.student_name }}{% if attempt.school_name %} · {{ attempt.school_name }}{% endif %}</p>
+
+  {% if attempt.report_pdf %}
+    <p><a class="btn" href="{{ attempt.report_pdf.url }}">Download your PDF report</a></p>
+  {% endif %}
+
+  {% for row in rows %}
+    <div class="card">
+      <p style="font-weight:600;">{{ forloop.counter }}. {{ row.stem }}
+        {% if row.topic %}<span style="font-weight:400; font-size:12px; color:var(--color-muted);"> — {{ row.topic }}</span>{% endif %}
+      </p>
+      {% for c in row.choices %}
+        <p style="margin:4px 0;
+          {% if c.is_correct %}color:var(--color-success-text); font-weight:600;{% endif %}
+          {% if c.was_selected and not c.is_correct %}color:#b91c1c; text-decoration:line-through;{% endif %}">
+          {% if c.was_selected %}☑{% else %}☐{% endif %} {{ c.text }}
+          {% if c.is_correct %} — correct{% endif %}
+        </p>
+      {% endfor %}
+      {% if not row.answered %}<p style="color:var(--color-muted); font-size:13px;">Not answered.</p>{% endif %}
+      {% if row.explanation %}<p style="font-size:14px; color:var(--color-muted); margin-top:8px;">{{ row.explanation }}</p>{% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

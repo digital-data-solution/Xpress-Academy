@@ -14,7 +14,7 @@ from apps.enrollment.services import is_module_unlocked, mark_lesson_complete
 from apps.organizations.models import Organization
 
 from .csv_import import import_questions_from_csv
-from .models import Attempt, AttemptAnswer, Choice, Question, QuestionBank, Quiz, Topic
+from .models import Attempt, AttemptAnswer, Choice, Question, QuestionBank, Quiz, SourceExam, SyllabusTopic, Topic
 from .services import (
     can_start_new_attempt,
     expire_attempt_if_stale,
@@ -233,6 +233,51 @@ class TestAttemptLimitsAndTimer:
         )
         attempt = start_attempt(enrollment, quiz)
         assert attempt.is_expired is False
+
+
+@pytest.mark.django_db
+class TestQuestionPoolFiltering:
+    """Question-bank-engine additions: is_publishable gating and
+    syllabus_topic_filter scoping (services.py::_build_question_snapshot).
+    Neither had coverage before — added alongside the fix for the real
+    gap where syllabus_topic_filter existed as a field but was never
+    actually applied when building a quiz's question pool."""
+
+    def test_disputed_question_never_enters_a_snapshot(self, bank, enrollment):
+        good = make_mcq(bank, correct_text="Good")
+        disputed = make_mcq(bank, correct_text="Disputed")
+        disputed.verification_status = "DISPUTED"
+        disputed.save(update_fields=["verification_status"])
+
+        quiz = Quiz.objects.create(
+            scope=Quiz.Scope.FINAL, course=enrollment.course, title="Final", bank=bank,
+            question_count=10,  # ask for more than the pool has
+        )
+        attempt = start_attempt(enrollment, quiz)
+        snapshot_ids = {q["question_id"] for q in attempt.question_snapshot}
+        assert snapshot_ids == {good.id}
+        assert disputed.id not in snapshot_ids
+
+    def test_syllabus_topic_filter_scopes_the_pool(self, bank, enrollment):
+        exam = SourceExam.objects.create(code="jamb", name="JAMB UTME")
+        ecology = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Ecology")
+        genetics = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Genetics")
+
+        ecology_q = make_mcq(bank, correct_text="Ecology answer")
+        ecology_q.syllabus_topics.set([ecology])
+        genetics_q = make_mcq(bank, correct_text="Genetics answer")
+        genetics_q.syllabus_topics.set([genetics])
+
+        quiz = Quiz.objects.create(
+            scope=Quiz.Scope.FINAL, course=enrollment.course, title="Ecology mock", bank=bank,
+            question_count=10,
+        )
+        quiz.syllabus_topic_filter.set([ecology])
+
+        attempt = start_attempt(enrollment, quiz)
+        snapshot_ids = {q["question_id"] for q in attempt.question_snapshot}
+        assert snapshot_ids == {ecology_q.id}
+        assert genetics_q.id not in snapshot_ids
 
 
 @pytest.mark.django_db

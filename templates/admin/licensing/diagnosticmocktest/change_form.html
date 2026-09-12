@@ -1,0 +1,9 @@
+{% extends "admin/change_form.html" %}
+{% block object-tools-items %}
+  {% if original %}
+    <li>
+      <a href="{% url 'admin:licensing_diagnosticmocktest_summary_pdf' original.pk %}" class="button" target="_blank">Download school summary (PDF)</a>
+    </li>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}

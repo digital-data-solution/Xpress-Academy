@@ -213,6 +213,7 @@ INSTALLED_APPS = [
     "apps.catalog",
     "apps.enrollment",
     "apps.assessment",
+    "apps.licensing",
     "apps.certificates",
     "apps.operations",
     "apps.instructors",

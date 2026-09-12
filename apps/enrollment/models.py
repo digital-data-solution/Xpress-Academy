@@ -40,6 +40,7 @@ class Enrollment(TimeStampedModel):
         MANUAL = "MANUAL", "Manual"
         COUPON = "COUPON", "Coupon"
         PARTNER = "PARTNER", "Partner referral"
+        INSTITUTIONAL = "INSTITUTIONAL", "Institutional licence seat"
 
     # PROTECT on both — per build spec §10, enrollment records must
     # never be lost to a careless admin delete of the course, and the
@@ -56,6 +57,14 @@ class Enrollment(TimeStampedModel):
 
     partner = models.ForeignKey(
         "payments.Partner", on_delete=models.PROTECT, related_name="enrollments", null=True, blank=True
+    )
+    # PROTECT: an institutional licence expiring/canceling must not
+    # silently delete the enrollment history it produced — same
+    # discipline as every other FK on this model. Nullable: only set
+    # for source=INSTITUTIONAL rows.
+    institutional_license = models.ForeignKey(
+        "licensing.InstitutionalLicense", on_delete=models.PROTECT, related_name="enrollments",
+        null=True, blank=True,
     )
 
     content_version_at_enrollment = models.PositiveIntegerField(

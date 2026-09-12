@@ -1,0 +1,1702 @@
+[
+  {
+    "id": 1,
+    "section": "A. Variety of Organisms",
+    "topic": "Living Organisms — Cell Structure",
+    "difficulty": "EASY",
+    "stem": "Which of the following structures is found in a plant cell but absent in an animal cell?",
+    "options": {
+      "A": "Mitochondrion",
+      "B": "Cell wall",
+      "C": "Nucleus",
+      "D": "Cell membrane"
+    },
+    "correct": "B",
+    "explanation": "The cell wall, made of cellulose, surrounds the cell membrane in plant cells and provides structural support and shape. Animal cells lack a cell wall and are bounded only by the cell membrane. Mitochondria, nuclei, and cell membranes are present in both plant and animal cells.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 2,
+    "section": "A. Variety of Organisms",
+    "topic": "Evolution Among Organisms — Classification",
+    "difficulty": "MEDIUM",
+    "stem": "Amoeba and Euglena are both classified under which kingdom?",
+    "options": {
+      "A": "Monera",
+      "B": "Fungi",
+      "C": "Protista",
+      "D": "Plantae"
+    },
+    "correct": "C",
+    "explanation": "Amoeba and Euglena are single-celled eukaryotic organisms classified under kingdom Protista. Monera contains prokaryotes such as bacteria; Fungi includes organisms like mushrooms and Rhizopus; Plantae includes multicellular photosynthetic organisms.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 3,
+    "section": "A. Variety of Organisms",
+    "topic": "Classification — Arthropoda",
+    "difficulty": "MEDIUM",
+    "stem": "Mosquitoes, cockroaches, and bees belong to which phylum?",
+    "options": {
+      "A": "Mollusca",
+      "B": "Annelida",
+      "C": "Arthropoda",
+      "D": "Platyhelminthes"
+    },
+    "correct": "C",
+    "explanation": "Arthropoda is the phylum characterized by jointed appendages and a chitinous exoskeleton, and includes insects such as mosquitoes, cockroaches, and bees. Mollusca includes snails; Annelida includes earthworms; Platyhelminthes includes flatworms like Taenia.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 4,
+    "section": "A. Variety of Organisms",
+    "topic": "Adaptations",
+    "difficulty": "EASY",
+    "stem": "The white coat of a polar bear that helps it blend into a snowy environment is an example of which type of adaptation?",
+    "options": {
+      "A": "Behavioural adaptation",
+      "B": "Structural (colour) adaptation",
+      "C": "Physiological adaptation",
+      "D": "Nutritional adaptation"
+    },
+    "correct": "B",
+    "explanation": "Adaptive colouration, such as a polar bear's white coat, is a structural adaptation that provides camouflage. Behavioural adaptations refer to actions or habits (e.g. migration), not body coloration.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 5,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Food Tests",
+    "difficulty": "MEDIUM",
+    "stem": "Which reagent is used to test for the presence of starch in a food sample?",
+    "options": {
+      "A": "Benedict's solution",
+      "B": "Iodine solution",
+      "C": "Biuret solution",
+      "D": "Sudan III solution"
+    },
+    "correct": "B",
+    "explanation": "Iodine solution turns blue-black in the presence of starch. Benedict's solution tests for reducing sugars (turns brick-red on heating), Biuret solution tests for proteins (turns violet/purple), and Sudan III tests for lipids/fats.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 6,
+    "section": "B. Form and Functions",
+    "topic": "Transport — Plant Vascular Tissue",
+    "difficulty": "EASY",
+    "stem": "Which plant tissue is primarily responsible for the transport of water and mineral salts from the root to the leaves?",
+    "options": {
+      "A": "Phloem",
+      "B": "Xylem",
+      "C": "Collenchyma",
+      "D": "Epidermis"
+    },
+    "correct": "B",
+    "explanation": "Xylem tissue transports water and dissolved mineral salts upward from the roots to the rest of the plant. Phloem transports manufactured food (mainly sucrose) from the leaves to other parts of the plant.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 7,
+    "section": "B. Form and Functions",
+    "topic": "Respiration — Aerobic Respiration",
+    "difficulty": "HARD",
+    "stem": "During aerobic respiration, the Krebs cycle takes place in which part of the cell?",
+    "options": {
+      "A": "Cytoplasm",
+      "B": "Nucleus",
+      "C": "Mitochondrial matrix",
+      "D": "Cell membrane"
+    },
+    "correct": "C",
+    "explanation": "The Krebs cycle (citric acid cycle) occurs in the mitochondrial matrix. Glycolysis, the first stage of aerobic respiration, occurs in the cytoplasm before pyruvate is transported into the mitochondrion for the Krebs cycle.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 8,
+    "section": "B. Form and Functions",
+    "topic": "Excretion — Excretory Structures",
+    "difficulty": "MEDIUM",
+    "stem": "The contractile vacuole found in organisms such as Amoeba functions mainly to",
+    "options": {
+      "A": "digest food particles",
+      "B": "expel excess water from the cell",
+      "C": "store genetic material",
+      "D": "produce energy for the cell"
+    },
+    "correct": "B",
+    "explanation": "The contractile vacuole regulates water balance by collecting and expelling excess water that enters the cell by osmosis, preventing the cell from bursting. This is especially important for freshwater protists like Amoeba.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 9,
+    "section": "B. Form and Functions",
+    "topic": "Support and Movement — Skeleton",
+    "difficulty": "EASY",
+    "stem": "Which of the following is an example of an exoskeleton?",
+    "options": {
+      "A": "The vertebral column of a fish",
+      "B": "The chitinous covering of a cockroach",
+      "C": "The femur of a mammal",
+      "D": "The cartilage in a shark"
+    },
+    "correct": "B",
+    "explanation": "An exoskeleton is a rigid external covering that supports and protects the body, as seen in arthropods like the cockroach, made of chitin. Vertebral columns, femurs, and cartilage are all internal skeletal structures (endoskeletons).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 10,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Hormones",
+    "difficulty": "MEDIUM",
+    "stem": "Which endocrine gland is often referred to as the 'master gland' because it regulates the activities of other endocrine glands?",
+    "options": {
+      "A": "Thyroid gland",
+      "B": "Adrenal gland",
+      "C": "Pituitary gland",
+      "D": "Pancreas"
+    },
+    "correct": "C",
+    "explanation": "The pituitary gland is called the 'master gland' because it secretes hormones that control the activity of most other endocrine glands, including the thyroid and adrenal glands.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 11,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions",
+    "difficulty": "MEDIUM",
+    "stem": "The relationship between a tapeworm and the human it lives in, where the tapeworm benefits and the human is harmed, is an example of",
+    "options": {
+      "A": "commensalism",
+      "B": "mutualism",
+      "C": "parasitism",
+      "D": "predation"
+    },
+    "correct": "C",
+    "explanation": "Parasitism is a relationship where one organism (the parasite, e.g. tapeworm) benefits at the expense of the other (the host, e.g. human), which is harmed. Commensalism benefits one without harming the other; mutualism benefits both.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 12,
+    "section": "C. Ecology",
+    "topic": "Local Nigerian Biomes",
+    "difficulty": "MEDIUM",
+    "stem": "Which of the following Nigerian biomes is characterized by tall grasses with scattered trees and experiences a distinct wet and dry season?",
+    "options": {
+      "A": "Tropical rainforest",
+      "B": "Guinea savanna",
+      "C": "Mangrove swamp",
+      "D": "Montane forest"
+    },
+    "correct": "B",
+    "explanation": "The Guinea savanna is characterized by tall grasses interspersed with scattered trees and a clear wet and dry season, distinguishing it from the tropical rainforest (dense trees, high year-round rainfall) and mangrove swamp (coastal, saline).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 13,
+    "section": "C. Ecology",
+    "topic": "Ecology of Populations",
+    "difficulty": "HARD",
+    "stem": "In a population of organisms, competition for the same limited resource between members of the same species is termed",
+    "options": {
+      "A": "inter-specific competition",
+      "B": "predation",
+      "C": "intra-specific competition",
+      "D": "commensalism"
+    },
+    "correct": "C",
+    "explanation": "Intra-specific competition occurs between organisms of the same species competing for the same limited resources such as food, space, or mates. Inter-specific competition occurs between organisms of different species.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 14,
+    "section": "C. Ecology",
+    "topic": "Humans and Environment — Diseases",
+    "difficulty": "EASY",
+    "stem": "Malaria, a disease endemic in many parts of Nigeria, is caused by a parasite transmitted through the bite of which vector?",
+    "options": {
+      "A": "Tsetse fly",
+      "B": "Female Anopheles mosquito",
+      "C": "Housefly",
+      "D": "Black fly"
+    },
+    "correct": "B",
+    "explanation": "Malaria is caused by Plasmodium parasites transmitted to humans through the bite of an infected female Anopheles mosquito. The tsetse fly transmits trypanosomiasis (sleeping sickness), not malaria.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 15,
+    "section": "D. Heredity and Variations",
+    "topic": "Variation in Population",
+    "difficulty": "MEDIUM",
+    "stem": "Human height and body weight are examples of which type of variation?",
+    "options": {
+      "A": "Discontinuous variation",
+      "B": "Continuous variation",
+      "C": "Sex-linked variation",
+      "D": "Mutational variation"
+    },
+    "correct": "B",
+    "explanation": "Height and weight show continuous variation — they range smoothly across a spectrum of values influenced by both genetic and environmental factors. Discontinuous variation refers to traits with distinct, non-overlapping categories, such as blood group.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 16,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Sex-linked Characters",
+    "difficulty": "HARD",
+    "stem": "Haemophilia and red-green colour blindness in humans are both examples of",
+    "options": {
+      "A": "autosomal dominant traits",
+      "B": "sex-linked recessive traits",
+      "C": "cytoplasmic inheritance",
+      "D": "polygenic traits"
+    },
+    "correct": "B",
+    "explanation": "Haemophilia and red-green colour blindness are both caused by recessive alleles carried on the X chromosome, making them sex-linked recessive traits — this is why they occur more frequently in males, who have only one X chromosome.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 17,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — DNA and Genes",
+    "difficulty": "MEDIUM",
+    "stem": "The molecule that carries hereditary information and is located in the chromosomes of a cell is",
+    "options": {
+      "A": "RNA",
+      "B": "ATP",
+      "C": "DNA",
+      "D": "Glucose"
+    },
+    "correct": "C",
+    "explanation": "DNA (deoxyribonucleic acid) is the molecule that carries hereditary (genetic) information, organized into genes located along chromosomes within the nucleus of a cell.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 18,
+    "section": "E. Evolution",
+    "topic": "Theories of Evolution",
+    "difficulty": "MEDIUM",
+    "stem": "Charles Darwin's theory of evolution is primarily based on the concept of",
+    "options": {
+      "A": "inheritance of acquired characteristics",
+      "B": "natural selection",
+      "C": "use and disuse of organs",
+      "D": "spontaneous generation"
+    },
+    "correct": "B",
+    "explanation": "Darwin's theory of evolution is centred on natural selection — organisms with favourable variations are more likely to survive and reproduce, passing those traits to offspring. 'Inheritance of acquired characteristics' and 'use and disuse' are associated with Lamarck's theory instead.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 19,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution",
+    "difficulty": "MEDIUM",
+    "stem": "The similarity in the basic bone structure of a human arm, a bird's wing, and a whale's flipper, despite their different functions, is evidence of evolution from",
+    "options": {
+      "A": "fossil records",
+      "B": "comparative anatomy",
+      "C": "genetic studies",
+      "D": "embryology"
+    },
+    "correct": "B",
+    "explanation": "This is an example of homologous structures, studied under comparative anatomy — structures with a similar underlying skeletal arrangement inherited from a common ancestor, even though they now serve different functions across species.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 20,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution — Fossils",
+    "difficulty": "EASY",
+    "stem": "Preserved remains or traces of organisms from the geological past, which provide direct evidence of evolutionary change over time, are known as",
+    "options": {
+      "A": "hormones",
+      "B": "fossils",
+      "C": "enzymes",
+      "D": "chromosomes"
+    },
+    "correct": "B",
+    "explanation": "Fossils are the preserved remains, impressions, or traces of organisms from past geological ages, found mainly in sedimentary rock, and provide direct physical evidence of how organisms have changed over long periods of time.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 21,
+    "section": "A. Variety of Organisms",
+    "topic": "Living Organisms — Characteristics",
+    "difficulty": "EASY",
+    "stem": "Which of the following is a characteristic shared by all living organisms?",
+    "options": {
+      "A": "Ability to fly",
+      "B": "Ability to respire",
+      "C": "Presence of chlorophyll",
+      "D": "Presence of a backbone"
+    },
+    "correct": "B",
+    "explanation": "Respiration (the release of energy from food) is a characteristic common to all living organisms, whether plant or animal. Flight, chlorophyll, and backbones are only present in some organisms, not all.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 22,
+    "section": "A. Variety of Organisms",
+    "topic": "Living Organisms — Levels of Organization",
+    "difficulty": "MEDIUM",
+    "stem": "Hydra is an example of an organism at which level of biological organization?",
+    "options": {
+      "A": "Cell level",
+      "B": "Tissue level",
+      "C": "Organ level",
+      "D": "System level"
+    },
+    "correct": "B",
+    "explanation": "Hydra is a simple multicellular organism whose body is organized at the tissue level, with cells grouped into tissues (e.g. epidermis and gastrodermis) but without distinct organs.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 23,
+    "section": "A. Variety of Organisms",
+    "topic": "Evolution Among Organisms — Fungi",
+    "difficulty": "EASY",
+    "stem": "Mushroom and Rhizopus (bread mould) both belong to which kingdom?",
+    "options": {
+      "A": "Plantae",
+      "B": "Protista",
+      "C": "Fungi",
+      "D": "Monera"
+    },
+    "correct": "C",
+    "explanation": "Mushroom and Rhizopus are both classified under kingdom Fungi, characterized by chitin cell walls and heterotrophic (absorptive) nutrition, unlike plants which photosynthesize.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 24,
+    "section": "A. Variety of Organisms",
+    "topic": "Evolution Among Organisms — Plantae",
+    "difficulty": "MEDIUM",
+    "stem": "Maize is classified as which type of plant?",
+    "options": {
+      "A": "Dicotyledonous angiosperm",
+      "B": "Monocotyledonous angiosperm",
+      "C": "Gymnosperm",
+      "D": "Pteridophyte"
+    },
+    "correct": "B",
+    "explanation": "Maize (corn) is a monocotyledonous angiosperm — it produces seeds with a single cotyledon (seed leaf), and typically has parallel-veined leaves and fibrous roots.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 25,
+    "section": "A. Variety of Organisms",
+    "topic": "Evolution Among Organisms — Vertebrates",
+    "difficulty": "EASY",
+    "stem": "Frogs and toads belong to which class of vertebrates?",
+    "options": {
+      "A": "Pisces",
+      "B": "Amphibia",
+      "C": "Reptilia",
+      "D": "Aves"
+    },
+    "correct": "B",
+    "explanation": "Frogs and toads are classified under class Amphibia, characterized by a life cycle that typically includes an aquatic larval stage (tadpole) and a terrestrial adult stage, and moist, permeable skin.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 26,
+    "section": "A. Variety of Organisms",
+    "topic": "Adaptations — Food Acquisition",
+    "difficulty": "MEDIUM",
+    "stem": "The long, sharp beak of a woodpecker is a structural adaptation primarily suited for",
+    "options": {
+      "A": "attracting a mate",
+      "B": "extracting insects from tree bark",
+      "C": "regulating body temperature",
+      "D": "defending against predators"
+    },
+    "correct": "B",
+    "explanation": "A woodpecker's long, chisel-like beak is structurally adapted for drilling into tree bark and extracting insects, its primary food source.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 27,
+    "section": "A. Variety of Organisms",
+    "topic": "Adaptations — Behavioural",
+    "difficulty": "MEDIUM",
+    "stem": "The seasonal, long-distance movement of certain bird species to warmer regions to escape cold weather is known as",
+    "options": {
+      "A": "hibernation",
+      "B": "migration",
+      "C": "aestivation",
+      "D": "metamorphosis"
+    },
+    "correct": "B",
+    "explanation": "Migration is a behavioural adaptation in which animals move seasonally, often over long distances, typically to find better climate or food conditions, as seen in many bird species.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 28,
+    "section": "A. Variety of Organisms",
+    "topic": "Classification — Mollusca",
+    "difficulty": "EASY",
+    "stem": "The snail belongs to which phylum?",
+    "options": {
+      "A": "Arthropoda",
+      "B": "Annelida",
+      "C": "Mollusca",
+      "D": "Nematoda"
+    },
+    "correct": "C",
+    "explanation": "Snails belong to phylum Mollusca, characterized by a soft, unsegmented body, often protected by a hard calcium carbonate shell.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 29,
+    "section": "A. Variety of Organisms",
+    "topic": "Classification — Annelida",
+    "difficulty": "EASY",
+    "stem": "The earthworm's body is divided into distinct segments, a characteristic of which phylum?",
+    "options": {
+      "A": "Platyhelminthes",
+      "B": "Annelida",
+      "C": "Nematoda",
+      "D": "Coelenterata"
+    },
+    "correct": "B",
+    "explanation": "The earthworm belongs to phylum Annelida, which is defined by a body divided into repeating segments (metameres), each usually bearing similar internal and external structures.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 30,
+    "section": "B. Form and Functions",
+    "topic": "Internal Structure — Flowering Plants",
+    "difficulty": "MEDIUM",
+    "stem": "In a dicotyledonous stem, the vascular bundles are typically arranged",
+    "options": {
+      "A": "scattered randomly throughout the stem",
+      "B": "in a ring around the periphery of the stem",
+      "C": "only at the centre of the stem",
+      "D": "only in the epidermis"
+    },
+    "correct": "B",
+    "explanation": "In dicotyledonous stems, vascular bundles (xylem and phloem) are arranged in a distinct ring around the periphery, unlike monocot stems where they are scattered throughout the ground tissue.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 31,
+    "section": "B. Form and Functions",
+    "topic": "Internal Structure — Mammal",
+    "difficulty": "EASY",
+    "stem": "Which organ in the mammalian body is primarily responsible for pumping blood throughout the circulatory system?",
+    "options": {
+      "A": "Liver",
+      "B": "Heart",
+      "C": "Kidney",
+      "D": "Lung"
+    },
+    "correct": "B",
+    "explanation": "The heart is a muscular organ that pumps blood through the blood vessels of the circulatory system by rhythmic contraction, supplying oxygen and nutrients to the body's tissues.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 32,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Modes of Nutrition",
+    "difficulty": "EASY",
+    "stem": "An organism that manufactures its own food from simple inorganic substances using light energy is described as",
+    "options": {
+      "A": "heterotrophic",
+      "B": "saprophytic",
+      "C": "autotrophic",
+      "D": "parasitic"
+    },
+    "correct": "C",
+    "explanation": "Autotrophic organisms, such as green plants, manufacture their own organic food from simple inorganic substances (carbon dioxide and water) using light energy through photosynthesis.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 33,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Photosynthesis",
+    "difficulty": "MEDIUM",
+    "stem": "During photosynthesis, the light-dependent reactions take place in which part of the chloroplast?",
+    "options": {
+      "A": "Stroma",
+      "B": "Thylakoid membrane",
+      "C": "Outer membrane",
+      "D": "Cell wall"
+    },
+    "correct": "B",
+    "explanation": "The light-dependent reactions of photosynthesis occur on the thylakoid membranes within the chloroplast, where light energy is captured by chlorophyll and converted into chemical energy (ATP and NADPH).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 34,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Food Tests",
+    "difficulty": "MEDIUM",
+    "stem": "Which reagent, when added to a food sample and heated, produces a brick-red precipitate in the presence of a reducing sugar?",
+    "options": {
+      "A": "Iodine solution",
+      "B": "Biuret solution",
+      "C": "Benedict's solution",
+      "D": "Sudan III solution"
+    },
+    "correct": "C",
+    "explanation": "Benedict's solution, when added to a food sample containing a reducing sugar and heated, produces a colour change progressing to a brick-red precipitate, confirming the presence of reducing sugars.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 35,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Mammalian Teeth",
+    "difficulty": "MEDIUM",
+    "stem": "Which type of mammalian tooth is primarily adapted for tearing flesh?",
+    "options": {
+      "A": "Incisor",
+      "B": "Canine",
+      "C": "Premolar",
+      "D": "Molar"
+    },
+    "correct": "B",
+    "explanation": "Canine teeth are pointed and adapted for gripping and tearing flesh, especially prominent in carnivorous mammals. Incisors are for cutting/biting, while premolars and molars are for grinding/crushing food.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 36,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Digestion Process",
+    "difficulty": "EASY",
+    "stem": "The process by which digested food substances pass through the wall of the alimentary canal into the bloodstream is called",
+    "options": {
+      "A": "ingestion",
+      "B": "egestion",
+      "C": "absorption",
+      "D": "assimilation"
+    },
+    "correct": "C",
+    "explanation": "Absorption is the process by which digested food molecules pass through the walls of the small intestine into the bloodstream or lymphatic system, to be transported to body cells.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 37,
+    "section": "B. Form and Functions",
+    "topic": "Transport — Materials Transported",
+    "difficulty": "MEDIUM",
+    "stem": "In mammals, oxygen is mainly transported in the blood bound to which substance?",
+    "options": {
+      "A": "Plasma proteins",
+      "B": "Haemoglobin",
+      "C": "Glucose",
+      "D": "Fibrinogen"
+    },
+    "correct": "B",
+    "explanation": "Oxygen is mainly transported in the blood bound to haemoglobin, a protein found in red blood cells, forming oxyhaemoglobin, which releases oxygen to tissues that need it.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 38,
+    "section": "B. Form and Functions",
+    "topic": "Transport — Mechanisms",
+    "difficulty": "HARD",
+    "stem": "The movement of water molecules from a region of higher water potential to a region of lower water potential across a semi-permeable membrane is known as",
+    "options": {
+      "A": "diffusion",
+      "B": "active transport",
+      "C": "osmosis",
+      "D": "plasmolysis"
+    },
+    "correct": "C",
+    "explanation": "Osmosis is the net movement of water molecules from a region of higher water potential to a region of lower water potential through a semi-permeable membrane. Diffusion refers to the movement of any particles down a concentration gradient, not specifically water across a membrane.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 39,
+    "section": "B. Form and Functions",
+    "topic": "Transport — Plasmolysis",
+    "difficulty": "HARD",
+    "stem": "When a plant cell is placed in a strongly hypertonic (concentrated salt) solution, the cell membrane shrinks away from the cell wall in a process known as",
+    "options": {
+      "A": "turgidity",
+      "B": "osmosis",
+      "C": "plasmolysis",
+      "D": "transpiration"
+    },
+    "correct": "C",
+    "explanation": "Plasmolysis occurs when a plant cell loses water by osmosis in a hypertonic solution, causing the cell membrane and cytoplasm to shrink away from the rigid cell wall.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 40,
+    "section": "B. Form and Functions",
+    "topic": "Transport — Mammalian Circulatory System",
+    "difficulty": "MEDIUM",
+    "stem": "Blood vessels that carry blood away from the heart under high pressure, usually with thick, elastic, muscular walls, are called",
+    "options": {
+      "A": "veins",
+      "B": "capillaries",
+      "C": "arteries",
+      "D": "venules"
+    },
+    "correct": "C",
+    "explanation": "Arteries carry blood away from the heart and have thick, elastic, muscular walls to withstand the high pressure of blood being pumped from the heart. Veins carry blood back to the heart at lower pressure.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 41,
+    "section": "B. Form and Functions",
+    "topic": "Respiration — Respiratory Organs",
+    "difficulty": "EASY",
+    "stem": "Which structure serves as the main respiratory organ in fish?",
+    "options": {
+      "A": "Lungs",
+      "B": "Trachea",
+      "C": "Gills",
+      "D": "Skin"
+    },
+    "correct": "C",
+    "explanation": "Fish respire primarily through gills, thin, feathery structures richly supplied with blood vessels that extract dissolved oxygen from water as it passes over them.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 42,
+    "section": "B. Form and Functions",
+    "topic": "Respiration — Gaseous Exchange in Plants",
+    "difficulty": "MEDIUM",
+    "stem": "Gaseous exchange in the leaves of a flowering plant mainly occurs through small pores called",
+    "options": {
+      "A": "lenticels",
+      "B": "stomata",
+      "C": "xylem vessels",
+      "D": "root hairs"
+    },
+    "correct": "B",
+    "explanation": "Stomata are small pores, mainly on the leaf surface, through which gaseous exchange (carbon dioxide in, oxygen out during photosynthesis, and the reverse during respiration) occurs. Lenticels serve a similar role but on woody stems.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 43,
+    "section": "B. Form and Functions",
+    "topic": "Respiration — Anaerobic Respiration",
+    "difficulty": "MEDIUM",
+    "stem": "The anaerobic breakdown of glucose by yeast, producing ethanol and carbon dioxide, is known as",
+    "options": {
+      "A": "glycolysis",
+      "B": "fermentation",
+      "C": "the Krebs cycle",
+      "D": "oxidative phosphorylation"
+    },
+    "correct": "B",
+    "explanation": "Fermentation is the anaerobic (oxygen-independent) process by which yeast breaks down glucose to produce ethanol and carbon dioxide, releasing a small amount of energy — a process used industrially in brewing and baking.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 44,
+    "section": "B. Form and Functions",
+    "topic": "Excretion — Plant Excretory Products",
+    "difficulty": "MEDIUM",
+    "stem": "Which of the following is a waste product excreted by plants during photosynthesis (in daylight)?",
+    "options": {
+      "A": "Carbon dioxide",
+      "B": "Oxygen",
+      "C": "Nitrogen",
+      "D": "Water vapour only"
+    },
+    "correct": "B",
+    "explanation": "During photosynthesis, plants take in carbon dioxide and release oxygen as a by-product/waste gas. At night, without photosynthesis, plants instead release carbon dioxide from respiration.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 45,
+    "section": "B. Form and Functions",
+    "topic": "Excretion — Mammalian Excretion",
+    "difficulty": "EASY",
+    "stem": "The main nitrogenous waste product excreted by the human kidney is",
+    "options": {
+      "A": "glucose",
+      "B": "urea",
+      "C": "bile",
+      "D": "amino acids"
+    },
+    "correct": "B",
+    "explanation": "Urea is the main nitrogenous waste product formed from the breakdown of excess amino acids in the liver, and is filtered out of the blood and excreted by the kidneys in urine.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 46,
+    "section": "B. Form and Functions",
+    "topic": "Support and Movement — Plant Movements",
+    "difficulty": "HARD",
+    "stem": "The growth movement of a plant shoot towards a source of light is an example of",
+    "options": {
+      "A": "negative geotropism only, unrelated to light",
+      "B": "positive phototropism",
+      "C": "nastic movement",
+      "D": "tactic movement"
+    },
+    "correct": "B",
+    "explanation": "Positive phototropism is the directional growth of a plant part (such as a shoot) towards the source of light, a tropic (directional, growth-based) response, distinct from nastic movements which are non-directional responses to stimuli.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 47,
+    "section": "B. Form and Functions",
+    "topic": "Support and Movement — Supporting Tissues",
+    "difficulty": "MEDIUM",
+    "stem": "Which plant tissue provides mechanical support through cells with unevenly thickened, non-lignified cell walls, common in young, growing stems?",
+    "options": {
+      "A": "Sclerenchyma",
+      "B": "Xylem",
+      "C": "Collenchyma",
+      "D": "Phloem"
+    },
+    "correct": "C",
+    "explanation": "Collenchyma tissue provides flexible mechanical support in young, actively growing plant parts, with cells that have unevenly thickened, non-lignified (not woody) walls, unlike sclerenchyma which has thick, lignified walls.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 48,
+    "section": "B. Form and Functions",
+    "topic": "Support and Movement — Joints",
+    "difficulty": "MEDIUM",
+    "stem": "The knee joint, which allows movement in one plane (like a door hinge), is classified as a",
+    "options": {
+      "A": "ball-and-socket joint",
+      "B": "hinge joint",
+      "C": "pivot joint",
+      "D": "gliding joint"
+    },
+    "correct": "B",
+    "explanation": "The knee joint is a hinge joint, permitting movement primarily in one plane (flexion and extension), similar to the motion of a door hinge. Ball-and-socket joints (like the hip) allow movement in multiple directions.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 49,
+    "section": "B. Form and Functions",
+    "topic": "Reproduction — Asexual",
+    "difficulty": "MEDIUM",
+    "stem": "The asexual reproduction process in Paramecium, in which the organism splits into two genetically identical daughter cells, is called",
+    "options": {
+      "A": "budding",
+      "B": "binary fission",
+      "C": "spore formation",
+      "D": "vegetative propagation"
+    },
+    "correct": "B",
+    "explanation": "Binary fission is the asexual reproductive process in Paramecium and similar single-celled organisms, where the parent cell divides into two genetically identical daughter cells of roughly equal size.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 50,
+    "section": "B. Form and Functions",
+    "topic": "Reproduction — Sexual in Flowering Plants",
+    "difficulty": "MEDIUM",
+    "stem": "The transfer of pollen grains from the anther to the stigma of a flower is known as",
+    "options": {
+      "A": "fertilization",
+      "B": "germination",
+      "C": "pollination",
+      "D": "dispersal"
+    },
+    "correct": "C",
+    "explanation": "Pollination is the transfer of pollen grains from the anther (male part) to the stigma (female part) of a flower, a necessary step before fertilization can occur.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 51,
+    "section": "B. Form and Functions",
+    "topic": "Reproduction — Mammalian Reproduction",
+    "difficulty": "EASY",
+    "stem": "In mammals, fertilization — the fusion of sperm and egg — normally takes place in which part of the female reproductive system?",
+    "options": {
+      "A": "Uterus",
+      "B": "Vagina",
+      "C": "Oviduct (fallopian tube)",
+      "D": "Ovary"
+    },
+    "correct": "C",
+    "explanation": "In mammals, fertilization typically occurs in the oviduct (fallopian tube), where the sperm meets and fuses with the released egg, before the resulting embryo travels to the uterus to implant.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 52,
+    "section": "B. Form and Functions",
+    "topic": "Growth — Seed Germination",
+    "difficulty": "MEDIUM",
+    "stem": "Which of the following is NOT one of the basic conditions required for seed germination?",
+    "options": {
+      "A": "Adequate water",
+      "B": "Suitable temperature",
+      "C": "Oxygen",
+      "D": "Light, in all cases"
+    },
+    "correct": "D",
+    "explanation": "Water, suitable temperature, and oxygen are essential conditions for seed germination in general. Light is not universally required — many seeds germinate perfectly well in darkness (e.g. below soil), while only some species are light-sensitive.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 53,
+    "section": "B. Form and Functions",
+    "topic": "Growth — Types of Germination",
+    "difficulty": "HARD",
+    "stem": "Germination in which the cotyledons are pushed above the soil surface, as seen in the bean plant, is called",
+    "options": {
+      "A": "hypogeal germination",
+      "B": "epigeal germination",
+      "C": "vegetative germination",
+      "D": "asexual germination"
+    },
+    "correct": "B",
+    "explanation": "Epigeal germination is characterized by the cotyledons being pushed above the soil surface by elongation of the hypocotyl, as seen in bean seedlings. Hypogeal germination, by contrast, keeps the cotyledons below the soil (e.g. maize).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 54,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Nervous System",
+    "difficulty": "MEDIUM",
+    "stem": "A quick, automatic response to a stimulus, such as withdrawing a hand from a hot object, that does not require conscious thought, is called a",
+    "options": {
+      "A": "voluntary action",
+      "B": "reflex action",
+      "C": "habitual action",
+      "D": "learned response"
+    },
+    "correct": "B",
+    "explanation": "A reflex action is a rapid, automatic, involuntary response to a stimulus, controlled by a reflex arc that bypasses conscious brain processing to allow a fast protective response.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 55,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Sense Organs",
+    "difficulty": "EASY",
+    "stem": "Which sense organ contains receptors responsible for the sense of smell (olfaction)?",
+    "options": {
+      "A": "Eye",
+      "B": "Nose",
+      "C": "Tongue",
+      "D": "Skin"
+    },
+    "correct": "B",
+    "explanation": "The nose contains olfactory receptors located in the nasal cavity that detect airborne chemical particles, giving rise to the sense of smell.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 56,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Phytohormones",
+    "difficulty": "HARD",
+    "stem": "Which plant hormone is primarily responsible for promoting cell elongation and phototropic/geotropic growth responses?",
+    "options": {
+      "A": "Cytokinin",
+      "B": "Ethylene",
+      "C": "Auxin",
+      "D": "Abscisic acid"
+    },
+    "correct": "C",
+    "explanation": "Auxin is the plant hormone chiefly responsible for promoting cell elongation, and is central to tropic responses such as phototropism (growth towards light) and geotropism (growth response to gravity).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 57,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Homeostasis",
+    "difficulty": "MEDIUM",
+    "stem": "The process by which the human body maintains a relatively constant internal body temperature despite changes in the external environment is an example of",
+    "options": {
+      "A": "metabolism",
+      "B": "homeostasis",
+      "C": "osmoregulation only",
+      "D": "respiration"
+    },
+    "correct": "B",
+    "explanation": "Homeostasis is the maintenance of a stable internal environment (including body temperature, water balance, and blood glucose levels) despite fluctuations in external conditions. Thermoregulation is one specific example of homeostasis.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 58,
+    "section": "B. Form and Functions",
+    "topic": "Coordination and Control — Endocrine Glands",
+    "difficulty": "MEDIUM",
+    "stem": "The pancreas secretes insulin, which primarily functions to",
+    "options": {
+      "A": "increase blood glucose levels",
+      "B": "lower blood glucose levels",
+      "C": "regulate calcium levels in the blood",
+      "D": "stimulate growth of long bones"
+    },
+    "correct": "B",
+    "explanation": "Insulin, secreted by the pancreas, lowers blood glucose levels by stimulating body cells to absorb glucose from the blood and promoting its storage as glycogen in the liver and muscles.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 59,
+    "section": "B. Form and Functions",
+    "topic": "Internal Structure — Leaf",
+    "difficulty": "MEDIUM",
+    "stem": "The tissue in a leaf primarily responsible for the bulk of photosynthesis, containing numerous chloroplasts, is the",
+    "options": {
+      "A": "epidermis",
+      "B": "palisade mesophyll",
+      "C": "xylem",
+      "D": "phloem"
+    },
+    "correct": "B",
+    "explanation": "The palisade mesophyll, located just beneath the upper epidermis of a leaf, contains densely packed, chloroplast-rich cells and is the primary site of photosynthesis in most leaves.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 60,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Deficiency Symptoms",
+    "difficulty": "MEDIUM",
+    "stem": "A deficiency of nitrogen in plants typically results in",
+    "options": {
+      "A": "purple leaf discolouration only",
+      "B": "stunted growth and yellowing (chlorosis) of leaves",
+      "C": "increased flower production",
+      "D": "thickened, woody stems"
+    },
+    "correct": "B",
+    "explanation": "Nitrogen is essential for chlorophyll and protein synthesis; a deficiency typically causes stunted growth and chlorosis (yellowing) of leaves, especially older leaves, as nitrogen is mobilized to newer growth.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 61,
+    "section": "B. Form and Functions",
+    "topic": "Respiration — Respiratory Movements",
+    "difficulty": "MEDIUM",
+    "stem": "During inhalation in humans, the diaphragm",
+    "options": {
+      "A": "relaxes and moves upward",
+      "B": "contracts and moves downward",
+      "C": "remains completely stationary",
+      "D": "contracts and moves upward"
+    },
+    "correct": "B",
+    "explanation": "During inhalation, the diaphragm contracts and moves downward, increasing the volume of the thoracic cavity and decreasing internal pressure, which draws air into the lungs.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 62,
+    "section": "C. Ecology",
+    "topic": "Factors Affecting Distribution — Abiotic",
+    "difficulty": "EASY",
+    "stem": "Which of the following is an abiotic factor that can affect the distribution of organisms in an ecosystem?",
+    "options": {
+      "A": "Predation by other animals",
+      "B": "Competition with other species",
+      "C": "Rainfall",
+      "D": "Human farming activities"
+    },
+    "correct": "C",
+    "explanation": "Rainfall is an abiotic (non-living, physical) factor affecting where organisms can live and thrive. Predation, competition, and human activity are biotic factors, involving interactions with other living organisms.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 63,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions — Food Chains",
+    "difficulty": "MEDIUM",
+    "stem": "In a typical grassland food chain: grass → grasshopper → frog → snake, the grasshopper occupies which trophic level?",
+    "options": {
+      "A": "Producer",
+      "B": "Primary consumer",
+      "C": "Secondary consumer",
+      "D": "Tertiary consumer"
+    },
+    "correct": "B",
+    "explanation": "The grasshopper, which feeds directly on the grass (a producer), occupies the primary consumer (first trophic consumer) level. The frog, which eats the grasshopper, is the secondary consumer, and the snake is the tertiary consumer.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 64,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions — Nutrient Cycling",
+    "difficulty": "HARD",
+    "stem": "Nitrogen-fixing bacteria found in the root nodules of leguminous plants convert atmospheric nitrogen gas into",
+    "options": {
+      "A": "nitrates directly usable in protein synthesis by all organisms",
+      "B": "ammonium compounds that plants can use",
+      "C": "oxygen",
+      "D": "carbon dioxide"
+    },
+    "correct": "B",
+    "explanation": "Nitrogen-fixing bacteria (such as Rhizobium) convert atmospheric nitrogen gas (N2) into ammonium compounds, which can then be further converted (by other bacteria) into nitrates usable by plants — a key step in the nitrogen cycle.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 65,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions — Relationships",
+    "difficulty": "MEDIUM",
+    "stem": "The relationship between a Rhizobium bacterium and a leguminous plant, in which both organisms benefit, is an example of",
+    "options": {
+      "A": "parasitism",
+      "B": "commensalism",
+      "C": "mutualism",
+      "D": "predation"
+    },
+    "correct": "C",
+    "explanation": "Mutualism is a relationship in which both organisms benefit — the Rhizobium bacteria gain nutrients and shelter from the plant, while the plant receives usable nitrogen compounds fixed by the bacteria.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 66,
+    "section": "C. Ecology",
+    "topic": "Natural Habitats — Aquatic",
+    "difficulty": "EASY",
+    "stem": "A mangrove swamp is best described as which type of habitat?",
+    "options": {
+      "A": "Freshwater terrestrial habitat",
+      "B": "Coastal, saline aquatic habitat",
+      "C": "Desert habitat",
+      "D": "Montane (highland) habitat"
+    },
+    "correct": "B",
+    "explanation": "Mangrove swamps are coastal habitats found where fresh and salt water mix (estuaries), characterized by salt-tolerant trees adapted to periodically flooded, saline conditions.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 67,
+    "section": "C. Ecology",
+    "topic": "Natural Habitats — Terrestrial",
+    "difficulty": "MEDIUM",
+    "stem": "Organisms adapted to living in the canopy or tree-tops of a forest are described as occupying which type of habitat?",
+    "options": {
+      "A": "Fossorial (burrowing)",
+      "B": "Aquatic",
+      "C": "Arboreal",
+      "D": "Littoral"
+    },
+    "correct": "C",
+    "explanation": "Arboreal habitats refer to tree-dwelling environments, such as tree-tops or canopies, home to organisms specially adapted for climbing and living among branches.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 68,
+    "section": "C. Ecology",
+    "topic": "Local Nigerian Biomes",
+    "difficulty": "MEDIUM",
+    "stem": "The Nigerian biome characterized by dense, multi-layered evergreen trees, high rainfall throughout the year, and the least seasonal variation is the",
+    "options": {
+      "A": "Sudan savanna",
+      "B": "Tropical rainforest",
+      "C": "Desert",
+      "D": "Guinea savanna"
+    },
+    "correct": "B",
+    "explanation": "The tropical rainforest biome, found in southern Nigeria, is characterized by dense, multi-layered evergreen vegetation and consistently high rainfall with minimal seasonal variation, unlike the drier savanna biomes further north.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 69,
+    "section": "C. Ecology",
+    "topic": "Local Nigerian Biomes — Highlands",
+    "difficulty": "HARD",
+    "stem": "Which of the following is a notable highland/montane biome location in Nigeria?",
+    "options": {
+      "A": "Niger Delta",
+      "B": "Lake Chad",
+      "C": "Jos Plateau",
+      "D": "Lagos Lagoon"
+    },
+    "correct": "C",
+    "explanation": "The Jos Plateau is a notable highland/montane region in Nigeria, along with the Obudu and Mambilla Plateaux, characterized by cooler temperatures and distinct vegetation compared to surrounding lowland biomes.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 70,
+    "section": "C. Ecology",
+    "topic": "Ecology of Populations — Population Size Factors",
+    "difficulty": "MEDIUM",
+    "stem": "Which of the following is a biotic factor that can limit the size of an animal population?",
+    "options": {
+      "A": "Rainfall",
+      "B": "Temperature",
+      "C": "Availability of food",
+      "D": "Soil pH"
+    },
+    "correct": "C",
+    "explanation": "Availability of food is a biotic factor (arising from living organisms and their interactions) that directly limits population size, as insufficient food restricts survival and reproduction. Rainfall, temperature, and soil pH are abiotic factors.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 71,
+    "section": "C. Ecology",
+    "topic": "Ecology of Populations — Ecological Succession",
+    "difficulty": "HARD",
+    "stem": "The gradual, sequential change in the species composition of a community over time, starting from bare rock with no prior soil or vegetation, is known as",
+    "options": {
+      "A": "secondary succession",
+      "B": "primary succession",
+      "C": "population density change",
+      "D": "climax community formation only"
+    },
+    "correct": "B",
+    "explanation": "Primary succession is the gradual establishment and change of a community starting from a lifeless substrate (such as bare rock or newly formed volcanic land) with no pre-existing soil, distinct from secondary succession which begins on previously vegetated, disturbed land.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 72,
+    "section": "C. Ecology",
+    "topic": "Soil — Soil Types",
+    "difficulty": "MEDIUM",
+    "stem": "A soil type characterized by fine particles, good water retention, and poor drainage/aeration is described as",
+    "options": {
+      "A": "sandy soil",
+      "B": "loamy soil",
+      "C": "clayey soil",
+      "D": "gravelly soil"
+    },
+    "correct": "C",
+    "explanation": "Clayey soil consists of very fine particles that pack tightly together, resulting in good water retention but poor drainage and aeration, unlike sandy soil which drains quickly and holds little water.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 73,
+    "section": "C. Ecology",
+    "topic": "Soil — Conservation Practices",
+    "difficulty": "MEDIUM",
+    "stem": "Planting crops in rows that follow the natural contours of sloped land, to reduce soil erosion, is a practice known as",
+    "options": {
+      "A": "crop rotation",
+      "B": "mulching",
+      "C": "contour ridging",
+      "D": "mono-cropping"
+    },
+    "correct": "C",
+    "explanation": "Contour ridging (or contour ploughing) involves planting along the natural contours of a slope rather than up and down it, slowing water runoff and significantly reducing soil erosion on sloped farmland.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 74,
+    "section": "C. Ecology",
+    "topic": "Soil — Conservation, Crop Rotation",
+    "difficulty": "MEDIUM",
+    "stem": "Growing different types of crops in a planned sequence on the same land across different seasons, partly to help restore soil nutrients, is called",
+    "options": {
+      "A": "contour ridging",
+      "B": "crop rotation",
+      "C": "terracing",
+      "D": "poly-cropping"
+    },
+    "correct": "B",
+    "explanation": "Crop rotation involves systematically growing different crops (e.g. alternating nitrogen-depleting crops with nitrogen-fixing legumes) on the same land over successive seasons, helping to maintain soil fertility and reduce pest/disease build-up.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 75,
+    "section": "C. Ecology",
+    "topic": "Humans and Environment — Pollution",
+    "difficulty": "EASY",
+    "stem": "The release of untreated industrial waste and sewage into rivers, harming aquatic life, is an example of",
+    "options": {
+      "A": "air pollution",
+      "B": "water pollution",
+      "C": "noise pollution",
+      "D": "soil erosion"
+    },
+    "correct": "B",
+    "explanation": "Water pollution refers to the contamination of water bodies (rivers, lakes, oceans) typically by human activities such as the discharge of untreated industrial waste or sewage, which can harm aquatic organisms and ecosystems.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 76,
+    "section": "C. Ecology",
+    "topic": "Humans and Environment — Sanitation",
+    "difficulty": "MEDIUM",
+    "stem": "Proper disposal of household waste and provision of clean drinking water are examples of practices aimed at improving",
+    "options": {
+      "A": "soil fertility",
+      "B": "public sanitation and hygiene",
+      "C": "crop yield",
+      "D": "animal husbandry"
+    },
+    "correct": "B",
+    "explanation": "Proper waste disposal and provision of clean water are key public sanitation and hygiene practices, essential for preventing the spread of disease within human communities.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 77,
+    "section": "C. Ecology",
+    "topic": "Humans and Environment — Conservation Bodies",
+    "difficulty": "HARD",
+    "stem": "Which international organization is primarily concerned with the conservation of wildlife and their natural habitats worldwide?",
+    "options": {
+      "A": "World Health Organization (WHO)",
+      "B": "World Wide Fund for Nature (WWF)",
+      "C": "International Labour Organization (ILO)",
+      "D": "United Nations Educational, Scientific and Cultural Organization (UNESCO)"
+    },
+    "correct": "B",
+    "explanation": "The World Wide Fund for Nature (WWF) is a leading international organization primarily focused on wildlife conservation and habitat protection, distinct from WHO (health), ILO (labour), and UNESCO (education/culture/heritage).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 78,
+    "section": "C. Ecology",
+    "topic": "Humans and Environment — Diseases (Transmissible)",
+    "difficulty": "MEDIUM",
+    "stem": "Cholera, a disease that spreads mainly through contaminated water and poor sanitation, is classified as a",
+    "options": {
+      "A": "non-communicable disease",
+      "B": "genetic disorder",
+      "C": "transmissible (communicable) disease",
+      "D": "nutritional deficiency disease"
+    },
+    "correct": "C",
+    "explanation": "Cholera is a transmissible (communicable) disease caused by a bacterium and spread mainly through water or food contaminated with the bacterium, typically due to poor sanitation.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 79,
+    "section": "C. Ecology",
+    "topic": "Ecology of Populations — Population Density",
+    "difficulty": "MEDIUM",
+    "stem": "An increase in population density beyond the carrying capacity of an environment often leads to",
+    "options": {
+      "A": "unlimited resource availability for all individuals",
+      "B": "increased intra-specific competition and resource scarcity",
+      "C": "a permanent decrease in predators only",
+      "D": "no effect on the population"
+    },
+    "correct": "B",
+    "explanation": "When population density exceeds an environment's carrying capacity, resources such as food, water, and space become scarce relative to demand, intensifying intra-specific competition among individuals of the same species.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 80,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions — Predation",
+    "difficulty": "EASY",
+    "stem": "A lion hunting and feeding on a zebra is an example of which ecological relationship?",
+    "options": {
+      "A": "Mutualism",
+      "B": "Commensalism",
+      "C": "Predation",
+      "D": "Parasitism"
+    },
+    "correct": "C",
+    "explanation": "Predation is the relationship in which one organism (the predator, e.g. lion) hunts, kills, and feeds on another organism (the prey, e.g. zebra).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 81,
+    "section": "D. Heredity and Variations",
+    "topic": "Variation — Discontinuous Variation",
+    "difficulty": "MEDIUM",
+    "stem": "Human blood group (A, B, AB, or O) is an example of which type of variation?",
+    "options": {
+      "A": "Continuous variation",
+      "B": "Discontinuous variation",
+      "C": "Environmental variation only",
+      "D": "Somatic variation"
+    },
+    "correct": "B",
+    "explanation": "Blood group is an example of discontinuous variation — individuals fall into distinct, non-overlapping categories (A, B, AB, O) with no intermediate forms, unlike continuous traits such as height.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 82,
+    "section": "D. Heredity and Variations",
+    "topic": "Variation — Physiological",
+    "difficulty": "HARD",
+    "stem": "The ability of some individuals to taste the chemical PTC (phenylthiocarbamide) while others cannot is an example of which type of variation?",
+    "options": {
+      "A": "Morphological variation",
+      "B": "Physiological variation",
+      "C": "Geographic variation",
+      "D": "Behavioural variation"
+    },
+    "correct": "B",
+    "explanation": "PTC tasting ability is a genetically determined physiological variation — it relates to a functional/biochemical trait (taste perception) rather than an observable physical/structural difference (morphological variation).",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 83,
+    "section": "D. Heredity and Variations",
+    "topic": "Variation — Applications",
+    "difficulty": "MEDIUM",
+    "stem": "Fingerprint patterns, which are unique to each individual, are particularly useful in which practical application?",
+    "options": {
+      "A": "Blood transfusion matching",
+      "B": "Crime detection and personal identification",
+      "C": "Determining blood group inheritance",
+      "D": "Diagnosing genetic diseases directly"
+    },
+    "correct": "B",
+    "explanation": "Because fingerprint patterns are unique to each individual and remain unchanged throughout life, they are widely used in crime detection and personal identification, rather than for blood matching or diagnosing genetic conditions.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 84,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Chromosomes",
+    "difficulty": "MEDIUM",
+    "stem": "The normal number of chromosomes found in a typical human somatic (body) cell is",
+    "options": {
+      "A": "23",
+      "B": "44",
+      "C": "46",
+      "D": "48"
+    },
+    "correct": "C",
+    "explanation": "A typical human somatic (body) cell contains 46 chromosomes, arranged in 23 homologous pairs. Human gametes (sperm and egg) each contain 23 chromosomes (half the somatic number), which combine at fertilization to restore 46.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 85,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Gene Recombination",
+    "difficulty": "HARD",
+    "stem": "New combinations of genetic characteristics in offspring, arising from the fusion of gametes from two different parents, mainly result from",
+    "options": {
+      "A": "mitosis only",
+      "B": "gene recombination at fertilization",
+      "C": "asexual reproduction",
+      "D": "binary fission"
+    },
+    "correct": "B",
+    "explanation": "Gene recombination at fertilization — the fusion of genetically distinct gametes from two parents — is a major source of new genetic combinations in offspring, contributing to genetic variation within a population.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 86,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Applications in Medicine",
+    "difficulty": "MEDIUM",
+    "stem": "Sickle-cell anaemia is a genetic condition that primarily affects which component of the blood?",
+    "options": {
+      "A": "White blood cells",
+      "B": "Red blood cells (haemoglobin structure)",
+      "C": "Blood platelets",
+      "D": "Plasma proteins"
+    },
+    "correct": "B",
+    "explanation": "Sickle-cell anaemia is a genetic condition caused by an abnormal form of haemoglobin, which distorts red blood cells into a rigid, sickle shape, affecting their ability to carry oxygen efficiently and to flow smoothly through blood vessels.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 87,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Applications in Agriculture",
+    "difficulty": "MEDIUM",
+    "stem": "Deliberately breeding two genetically different, unrelated varieties of a crop or livestock to combine desirable traits is called",
+    "options": {
+      "A": "in-breeding",
+      "B": "out-breeding (cross-breeding)",
+      "C": "cloning",
+      "D": "self-pollination"
+    },
+    "correct": "B",
+    "explanation": "Out-breeding (cross-breeding) involves mating genetically unrelated or dissimilar individuals/varieties, often to combine desirable traits or increase genetic diversity and vigour in offspring — in contrast to in-breeding, which involves closely related individuals.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 88,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Recombinant DNA",
+    "difficulty": "HARD",
+    "stem": "The use of recombinant DNA technology to insert the human insulin gene into bacteria, enabling them to produce human insulin, is an application of genetics in",
+    "options": {
+      "A": "crime detection",
+      "B": "agriculture only",
+      "C": "medicine",
+      "D": "evolution studies"
+    },
+    "correct": "C",
+    "explanation": "Producing human insulin using genetically modified bacteria via recombinant DNA technology is a medical application of genetics, allowing mass production of insulin for treating diabetes.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 89,
+    "section": "E. Evolution",
+    "topic": "Theories of Evolution — Lamarck",
+    "difficulty": "MEDIUM",
+    "stem": "Lamarck's theory of evolution proposed that acquired characteristics developed by an organism during its lifetime",
+    "options": {
+      "A": "could never influence offspring",
+      "B": "could be passed on to its offspring",
+      "C": "only apply to plants, not animals",
+      "D": "result solely from random mutation"
+    },
+    "correct": "B",
+    "explanation": "Lamarck's theory (inheritance of acquired characteristics) proposed that traits an organism develops or strengthens during its lifetime, through use, could be passed on to its offspring — an idea since disproven by modern genetics, but historically significant.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 90,
+    "section": "E. Evolution",
+    "topic": "Theories of Evolution — Darwin vs Lamarck",
+    "difficulty": "HARD",
+    "stem": "A key difference between Darwin's and Lamarck's theories of evolution is that Darwin's theory relies on",
+    "options": {
+      "A": "the inheritance of characteristics acquired during an individual's lifetime",
+      "B": "pre-existing heritable variation and differential survival/reproduction",
+      "C": "the complete absence of variation within a population",
+      "D": "spontaneous generation of new species"
+    },
+    "correct": "B",
+    "explanation": "Darwin's theory of natural selection relies on pre-existing heritable variation within a population, with individuals possessing favourable variations more likely to survive and reproduce — unlike Lamarck's theory, which proposed that new traits are acquired during an individual's life and then inherited.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 91,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution — Fossil Records",
+    "difficulty": "MEDIUM",
+    "stem": "Fossils of simpler organisms are generally found in which type of rock layer, relative to more complex, recent organisms?",
+    "options": {
+      "A": "Deeper (older) rock layers",
+      "B": "Shallower (more recent) rock layers, always",
+      "C": "Exactly the same layer as complex organisms",
+      "D": "Fossils show no pattern related to rock layers"
+    },
+    "correct": "A",
+    "explanation": "As a general pattern in the fossil record, simpler and more ancient organisms are typically found in deeper, older rock layers, with progressively more complex organisms appearing in more recent, shallower layers — supporting the concept of evolutionary change over geological time.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 92,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution — Comparative Embryology",
+    "difficulty": "HARD",
+    "stem": "The observation that the early embryos of many different vertebrate species (e.g. fish, birds, mammals) show striking similarities to one another is used as evidence for evolution from",
+    "options": {
+      "A": "comparative anatomy",
+      "B": "comparative embryology",
+      "C": "fossil records",
+      "D": "genetic studies"
+    },
+    "correct": "B",
+    "explanation": "Comparative embryology provides evidence for evolution through the observation that early embryonic stages of diverse vertebrate species often show remarkable similarities, suggesting a shared evolutionary ancestry, even though the adult forms differ greatly.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 93,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution — Mutation",
+    "difficulty": "HARD",
+    "stem": "A sudden, heritable change in the genetic material (DNA) of an organism, which can introduce new variation into a population, is known as a",
+    "options": {
+      "A": "mutation",
+      "B": "recombination event only",
+      "C": "hybridization",
+      "D": "acquired characteristic"
+    },
+    "correct": "A",
+    "explanation": "A mutation is a sudden, heritable change in an organism's DNA sequence. Mutations are a fundamental source of new genetic variation, upon which natural selection can act, driving evolutionary change over time.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 94,
+    "section": "E. Evolution",
+    "topic": "Evidence of Evolution — Genetic Studies",
+    "difficulty": "HARD",
+    "stem": "Comparing the degree of similarity in DNA or protein sequences between different species is a modern method used to provide evidence for evolutionary relationships, known as",
+    "options": {
+      "A": "comparative anatomy",
+      "B": "molecular/genetic evidence",
+      "C": "fossil dating",
+      "D": "embryological comparison"
+    },
+    "correct": "B",
+    "explanation": "Molecular (genetic) evidence involves comparing DNA or protein sequences across species — species with more similar sequences are generally considered more closely related evolutionarily, providing a modern, quantitative complement to anatomical and fossil evidence.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 95,
+    "section": "E. Evolution",
+    "topic": "Evolutionary Trends",
+    "difficulty": "MEDIUM",
+    "stem": "The gradual evolutionary trend observed in the horse lineage, showing an increase in body size and a reduction in the number of toes over millions of years, is primarily documented through",
+    "options": {
+      "A": "behavioural observation of living horses only",
+      "B": "fossil evidence",
+      "C": "embryological comparison only",
+      "D": "current DNA sequencing alone"
+    },
+    "correct": "B",
+    "explanation": "The well-documented evolutionary trend in horse lineage (increasing size, reduction of toes from multiple to a single hoof) is primarily evidenced through a rich fossil record spanning millions of years, showing gradual anatomical change over time.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 96,
+    "section": "A. Variety of Organisms",
+    "topic": "Adaptations — Water Conservation",
+    "difficulty": "MEDIUM",
+    "stem": "Cacti and other desert plants often have small, spine-like leaves and thick, water-storing stems. These are structural adaptations primarily for",
+    "options": {
+      "A": "attracting pollinators",
+      "B": "conserving water in a dry environment",
+      "C": "increasing the rate of photosynthesis",
+      "D": "defending against extreme cold"
+    },
+    "correct": "B",
+    "explanation": "Small, spine-like leaves reduce surface area for water loss through transpiration, while thick, fleshy stems store water — both structural adaptations that help desert plants conserve water in an arid environment.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 97,
+    "section": "B. Form and Functions",
+    "topic": "Nutrition — Vitamins",
+    "difficulty": "MEDIUM",
+    "stem": "A deficiency of Vitamin C in the human diet is primarily associated with which condition?",
+    "options": {
+      "A": "Rickets",
+      "B": "Scurvy",
+      "C": "Night blindness",
+      "D": "Beriberi"
+    },
+    "correct": "B",
+    "explanation": "A deficiency of Vitamin C (ascorbic acid) causes scurvy, characterized by symptoms such as bleeding gums and poor wound healing. Rickets is linked to Vitamin D deficiency, night blindness to Vitamin A deficiency, and beriberi to Vitamin B1 deficiency.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 98,
+    "section": "C. Ecology",
+    "topic": "Symbiotic Interactions — Saprophytism",
+    "difficulty": "MEDIUM",
+    "stem": "Fungi such as Rhizopus, which feed on dead and decaying organic matter, exhibit which mode of nutrition/interaction?",
+    "options": {
+      "A": "Parasitism",
+      "B": "Saprophytism",
+      "C": "Mutualism",
+      "D": "Predation"
+    },
+    "correct": "B",
+    "explanation": "Saprophytism is a mode of nutrition in which an organism, such as many fungi, feeds on dead and decaying organic matter, releasing digestive enzymes externally and absorbing the resulting nutrients.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 99,
+    "section": "D. Heredity and Variations",
+    "topic": "Heredity — Probability in Genetics",
+    "difficulty": "HARD",
+    "stem": "In a simple monohybrid cross between two heterozygous (Aa x Aa) parents for a completely dominant trait, what fraction of the offspring is expected to show the recessive phenotype?",
+    "options": {
+      "A": "1/2",
+      "B": "1/4",
+      "C": "3/4",
+      "D": "0"
+    },
+    "correct": "B",
+    "explanation": "In a monohybrid cross of two heterozygotes (Aa x Aa), the expected genotype ratio is 1 AA : 2 Aa : 1 aa. Since only the homozygous recessive genotype (aa) shows the recessive phenotype, this represents 1 out of 4, or 1/4, of the offspring.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  },
+  {
+    "id": 100,
+    "section": "E. Evolution",
+    "topic": "Theories of Evolution — Organic Evolution",
+    "difficulty": "MEDIUM",
+    "stem": "The concept that present-day species have descended, with gradual modification, from earlier, different species over long periods of time is generally referred to as",
+    "options": {
+      "A": "spontaneous generation",
+      "B": "organic evolution",
+      "C": "special creation",
+      "D": "genetic drift only"
+    },
+    "correct": "B",
+    "explanation": "Organic evolution is the concept that all present-day species have descended from earlier, ancestral species through a gradual process of heritable modification over long periods of geological time.",
+    "verified": true,
+    "verification_note": "Independently re-solved blind (stem+options only, no answer key) by a fresh, separate agent process; answer matched."
+  }
+]

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ test.title }} — Free Diagnostic{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>{{ test.title }}</h1>
+  <p>A free diagnostic — {{ test.question_count }} question{{ test.question_count|pluralize }}
+    {% if test.time_limit_minutes %} · {{ test.time_limit_minutes }} minute time limit{% endif %}.
+    You'll get a topic-by-topic breakdown at the end, as a PDF you can keep.</p>
+
+  <div class="card">
+    {% if error %}<p style="color:#b91c1c;">{{ error }}</p>{% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <p><label>Your name<br><input type="text" name="student_name" required style="width:100%;"></label></p>
+      <p><label>Email (optional)<br><input type="email" name="student_email" style="width:100%;"></label></p>
+      <p><label>School (optional)<br><input type="text" name="school_name" style="width:100%;"></label></p>
+      <button class="btn" type="submit">Start diagnostic</button>
+    </form>
+  </div>
+{% endblock %}

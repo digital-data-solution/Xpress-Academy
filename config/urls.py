@@ -35,6 +35,7 @@ urlpatterns = [
     path("account/", include("apps.accounts.urls")),
     path("", include("apps.enrollment.urls")),
     path("", include("apps.assessment.urls")),
+    path("", include("apps.licensing.urls")),
     path("", include("apps.certificates.urls")),
     path("", include("apps.payments.urls")),
     path("", include("apps.engagement.urls")),

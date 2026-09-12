@@ -32,6 +32,69 @@ class Topic(models.Model):
         super().save(*args, **kwargs)
 
 
+class SourceExam(models.Model):
+    """Which real, external exam a question was written for — JAMB, WAEC,
+    TRCN PQE, a civil service exam, etc. Global, not per-tenant, same
+    reasoning as Topic: "JAMB" means the same thing platform-wide.
+
+    First-class per the question-bank-engine spec's explicit instruction
+    ("Make SourceExam a first-class dimension... Do not fork") — this
+    model, plus SyllabusTopic and Question.source_exam below, is the
+    whole of what that requires. Adding a new exam type later (WAEC,
+    TRCN, civil service) is one new row here plus new SyllabusTopic rows
+    under it — the generation, verification, and delivery code (Quiz/
+    Attempt, already built) doesn't change at all."""
+
+    code = models.SlugField(max_length=30, unique=True, help_text="Short code, e.g. 'jamb', 'waec', 'trcn-pqe'.")
+    name = models.CharField(max_length=255, help_text="Full name, e.g. 'JAMB UTME'.")
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
+class SyllabusTopic(models.Model):
+    """A real, hierarchical syllabus position — Subject > Section > Topic
+    — for one SourceExam, distinct from the existing Topic model above.
+
+    Deliberately NOT reusing Topic directly: Topic is a flat, single-level
+    tag shared across the whole platform's existing course quizzes (see
+    its own docstring — the point is aggregated cross-tenant item-quality
+    reporting, e.g. "Ovulation Timing" meaning the same thing everywhere).
+    Retrofitting a real exam syllabus's actual hierarchy (JAMB Biology's
+    5 sections, each with several named sub-topics) onto that flat,
+    general-purpose tag would either break Topic's existing semantics or
+    force a hierarchy onto every other course's quiz tagging that never
+    needed one. A Question can (and should) still carry both: SyllabusTopic
+    for exam-specific reporting/syllabus-coverage, and the existing Topic
+    M2M for the platform-wide item-quality signal to keep working
+    unchanged.
+
+    subject is a plain string, not its own model, deliberately — JAMB's
+    "Biology" and a future WAEC "Biology" are the same subject name but
+    different syllabuses (different SourceExam), so subject only needs
+    to be unique within one SourceExam, not globally; a full Subject
+    model would be one more join for no real benefit at this scale."""
+
+    source_exam = models.ForeignKey(SourceExam, on_delete=models.CASCADE, related_name="syllabus_topics")
+    subject = models.CharField(max_length=100, help_text="e.g. 'Biology', 'Chemistry', 'Mathematics'.")
+    section = models.CharField(max_length=255, blank=True, help_text="e.g. 'A. Variety of Organisms' — the syllabus's own top-level grouping, if it has one.")
+    name = models.CharField(max_length=255, help_text="The specific topic, e.g. 'Nutrition' or 'Heredity — Sex-linked Characters'.")
+    order = models.PositiveIntegerField(default=0, help_text="Display order within the syllabus, roughly matching the official document's own sequence.")
+
+    class Meta:
+        ordering = ["source_exam", "order", "name"]
+        constraints = [
+            models.UniqueConstraint(fields=["source_exam", "subject", "name"], name="unique_syllabus_topic_per_exam_subject"),
+        ]
+
+    def __str__(self):
+        return f"{self.source_exam.code}/{self.subject}: {self.name}"
+
+
 class QuestionBank(OrganizationOwnedModel):
     """Top-level owned entity — carries the tenant FK directly, same
     as Programme/Course (see catalog's Multi-tenancy note)."""
@@ -73,6 +136,34 @@ class Question(TimeStampedModel):
     is_active = models.BooleanField(default=True)
     source_note = models.CharField(max_length=255, blank=True)
 
+    # --- Question bank engine: SourceExam as a first-class dimension ---
+    # Both null/blank so every existing Question (ordinary course quizzes,
+    # not tied to any external exam) is unaffected — this is purely
+    # additive. A Question with source_exam set is exam-bank content
+    # (JAMB, WAEC, ...); one without it is regular course-quiz content,
+    # same model, same Quiz/Attempt delivery either way.
+    source_exam = models.ForeignKey(
+        SourceExam, on_delete=models.PROTECT, related_name="questions", null=True, blank=True,
+        help_text="Which real exam this question targets, if any (JAMB, WAEC, ...). Blank for ordinary course-quiz questions.",
+    )
+    syllabus_topics = models.ManyToManyField(
+        SyllabusTopic, blank=True, related_name="questions",
+        help_text="Real syllabus position(s) within source_exam — only meaningful when source_exam is set.",
+    )
+    # Mandatory-verification-pass tracking (spec: "every generated
+    # question is independently re-solved in a separate pass that does
+    # not see the stored answer key... never published" if it disagrees).
+    # Only relevant to AI-generated exam-bank questions; True by default
+    # so hand-authored course-quiz questions (the overwhelming existing
+    # majority) aren't retroactively treated as unverified.
+    is_ai_generated = models.BooleanField(default=False)
+    verification_status = models.CharField(
+        max_length=20,
+        choices=[("N_A", "Not applicable"), ("VERIFIED", "Verified — independent pass agreed"),
+                  ("DISPUTED", "Disputed — independent pass disagreed, needs human review")],
+        default="N_A",
+    )
+
     class Meta:
         ordering = ["-created_at"]
 
@@ -93,6 +184,17 @@ class Question(TimeStampedModel):
         if self.type == self.Type.MULTI_SELECT:
             return len(choices) >= 2 and correct_count >= 1
         return False
+
+    @property
+    def is_publishable(self):
+        """The real gate services._build_question_snapshot filters on —
+        is_well_formed alone isn't enough for AI-generated exam-bank
+        content: the spec is explicit that a DISPUTED question (the
+        independent verification pass disagreed with the stored answer)
+        must "never [be] published," not just flagged. Hand-authored
+        course-quiz questions are unaffected (verification_status
+        defaults to N_A, not DISPUTED)."""
+        return self.is_well_formed and self.verification_status != "DISPUTED"
 
 
 class Choice(models.Model):
@@ -133,6 +235,18 @@ class Quiz(models.Model):
     bank = models.ForeignKey(QuestionBank, on_delete=models.PROTECT, related_name="quizzes")
     question_count = models.PositiveIntegerField(default=10)
     topic_filter = models.ManyToManyField(Topic, blank=True, related_name="quizzes")
+    # Separate from topic_filter deliberately: topic_filter scopes an
+    # ordinary course/module quiz against the platform-wide flat Topic
+    # taxonomy; this scopes a question-bank-engine mock exam (JAMB/WAEC/
+    # etc.) against the exam-specific, hierarchical SyllabusTopic tree
+    # instead — e.g. "JAMB Biology, Ecology section only". Additive, not
+    # a replacement of topic_filter, so existing course/module quizzes
+    # are untouched. Both filters apply (AND) when both are set on the
+    # same quiz, though in practice a quiz uses one or the other.
+    syllabus_topic_filter = models.ManyToManyField(
+        SyllabusTopic, blank=True, related_name="quizzes",
+        help_text="Scope this quiz to specific syllabus topics (question-bank-engine mock exams only).",
+    )
 
     pass_mark = models.PositiveIntegerField(default=70)
     max_attempts = models.PositiveIntegerField(default=0, help_text="0 = unlimited.")
