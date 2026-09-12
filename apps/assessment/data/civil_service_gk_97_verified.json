@@ -1,0 +1,1554 @@
+[
+  {
+    "stem": "Nigeria gained independence from British colonial rule on",
+    "options": {
+      "A": "15 January 1966",
+      "B": "1 October 1960",
+      "C": "1 October 1963",
+      "D": "29 May 1999"
+    },
+    "correct": "B",
+    "explanation": "Nigeria became an independent nation on 1 October 1960, though it remained a Commonwealth realm under the British monarch until it became a republic in 1963.",
+    "section": "History",
+    "topic": "Independence and Nationhood",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria became a republic, with a Nigerian Head of State replacing the British monarch, on",
+    "options": {
+      "A": "12 June 1993",
+      "B": "15 January 1966",
+      "C": "1 October 1960",
+      "D": "1 October 1963"
+    },
+    "correct": "D",
+    "explanation": "On 1 October 1963, Nigeria became a republic, adopting a new constitution and replacing the British monarch as Head of State with a Nigerian President.",
+    "section": "History",
+    "topic": "Independence and Nationhood",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's first Prime Minister after independence in 1960 was",
+    "options": {
+      "A": "Abubakar Tafawa Balewa",
+      "B": "Ahmadu Bello",
+      "C": "Nnamdi Azikiwe",
+      "D": "Obafemi Awolowo"
+    },
+    "correct": "A",
+    "explanation": "Sir Abubakar Tafawa Balewa served as Nigeria's first (and only) Prime Minister from independence in 1960 until his death in the January 1966 coup.",
+    "section": "History",
+    "topic": "National Leadership",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's first President (a largely ceremonial Head of State under the 1963 republican constitution) was",
+    "options": {
+      "A": "Nnamdi Azikiwe",
+      "B": "Abubakar Tafawa Balewa",
+      "C": "Yakubu Gowon",
+      "D": "Shehu Shagari"
+    },
+    "correct": "A",
+    "explanation": "Nnamdi Azikiwe became Nigeria's first President in 1963 when the country became a republic, while Balewa remained Prime Minister (the head of government) until 1966.",
+    "section": "History",
+    "topic": "National Leadership",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian Civil War was fought between the Federal Government and the secessionist state of",
+    "options": {
+      "A": "Oduduwa Republic",
+      "B": "Niger Delta Republic",
+      "C": "Biafra",
+      "D": "Arewa Republic"
+    },
+    "correct": "C",
+    "explanation": "The Nigerian Civil War (1967-1970) was fought between the Nigerian federal government and the Republic of Biafra, which had declared secession from the Eastern Region.",
+    "section": "History",
+    "topic": "The Civil War",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria returned to civilian democratic rule after prolonged military governance on",
+    "options": {
+      "A": "12 June 1993",
+      "B": "1 October 1979",
+      "C": "25 June 1998",
+      "D": "29 May 1999"
+    },
+    "correct": "D",
+    "explanation": "29 May 1999 marked the start of Nigeria's Fourth Republic, when Olusegun Obasanjo was inaugurated as President, ending over a decade of continuous military rule.",
+    "section": "History",
+    "topic": "Return to Democracy",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "12 June is officially observed in Nigeria as",
+    "options": {
+      "A": "Workers' Day",
+      "B": "Unity Day",
+      "C": "Independence Day",
+      "D": "Democracy Day"
+    },
+    "correct": "D",
+    "explanation": "Since 2018, 12 June has been officially observed as Democracy Day, honouring the 12 June 1993 election — moved from the earlier 29 May date, which had marked the anniversary of the 1999 return to civilian rule.",
+    "section": "Civics",
+    "topic": "National Days",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Original draft asked about 29 May and was factually outdated (Democracy Day moved to 12 June in 2018) — caught by the verifier, corrected, and re-verified fresh."
+  },
+  {
+    "stem": "Nigeria's Independence Day is celebrated annually on",
+    "options": {
+      "A": "12 June",
+      "B": "1 January",
+      "C": "1 October",
+      "D": "29 May"
+    },
+    "correct": "C",
+    "explanation": "1 October is celebrated every year as Nigeria's Independence Day, marking the end of British colonial rule in 1960.",
+    "section": "Civics",
+    "topic": "National Days",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The 12 June 1993 date, now also officially commemorated, refers to",
+    "options": {
+      "A": "the day of a widely acclaimed but annulled presidential election",
+      "B": "the formal signing ceremony of the 1999 Constitution by the outgoing military government",
+      "C": "the declaration that formally started the Nigerian Civil War",
+      "D": "the day Nigeria formally gained independence from British colonial rule"
+    },
+    "correct": "A",
+    "explanation": "12 June 1993 was the date of a presidential election widely believed to have been won by Chief M.K.O. Abiola, which was annulled by the military government — now officially recognised alongside Democracy Day.",
+    "section": "History",
+    "topic": "Return to Democracy",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria practices a system of government best described as a",
+    "options": {
+      "A": "unitary system",
+      "B": "confederal system",
+      "C": "federal system",
+      "D": "monarchy"
+    },
+    "correct": "C",
+    "explanation": "Nigeria operates a federal system of government, with power constitutionally shared between a central (federal) government and constituent state governments.",
+    "section": "Civics",
+    "topic": "System of Government",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The three arms of the Nigerian Federal Government are the Executive, the Legislature, and the",
+    "options": {
+      "A": "Military",
+      "B": "Police",
+      "C": "Civil Service",
+      "D": "Judiciary"
+    },
+    "correct": "D",
+    "explanation": "Nigeria's government is structured on the classic separation-of-powers model into three arms: the Executive, the Legislature, and the Judiciary.",
+    "section": "Civics",
+    "topic": "Structure of Government",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian National Assembly (the federal legislature) is made up of the Senate and the",
+    "options": {
+      "A": "House of Assembly",
+      "B": "House of Representatives",
+      "C": "House of Chiefs",
+      "D": "House of Lords"
+    },
+    "correct": "B",
+    "explanation": "Nigeria's National Assembly is bicameral, comprising the Senate (upper chamber) and the House of Representatives (lower chamber).",
+    "section": "Civics",
+    "topic": "The Legislature",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian Senate consists of how many Senators, based on 3 per state plus 1 for the Federal Capital Territory?",
+    "options": {
+      "A": "360",
+      "B": "774",
+      "C": "109",
+      "D": "36"
+    },
+    "correct": "C",
+    "explanation": "The Senate has 109 members: 3 Senators from each of the 36 states, plus 1 from the Federal Capital Territory, Abuja.",
+    "section": "Civics",
+    "topic": "The Legislature",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "As of the current constitutional structure, Nigeria is made up of 36 states and the",
+    "options": {
+      "A": "Eastern Protectorate",
+      "B": "Federal Capital Territory",
+      "C": "Northern Region",
+      "D": "Lagos Colony"
+    },
+    "correct": "B",
+    "explanation": "Nigeria comprises 36 states plus the Federal Capital Territory (FCT), Abuja, which serves as the seat of the federal government.",
+    "section": "Civics",
+    "topic": "Federal Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's current Federal Capital city (seat of government) is",
+    "options": {
+      "A": "Port Harcourt",
+      "B": "Abuja",
+      "C": "Lagos",
+      "D": "Kaduna"
+    },
+    "correct": "B",
+    "explanation": "Abuja became Nigeria's Federal Capital Territory in 1991, replacing Lagos, which remains the country's largest city and commercial hub.",
+    "section": "Civics",
+    "topic": "Federal Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Before Abuja, Nigeria's capital city was",
+    "options": {
+      "A": "Ibadan",
+      "B": "Lagos",
+      "C": "Kano",
+      "D": "Enugu"
+    },
+    "correct": "B",
+    "explanation": "Lagos served as Nigeria's capital from independence until the seat of government officially moved to Abuja in 1991.",
+    "section": "History",
+    "topic": "Federal Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The current Nigerian Constitution, still substantially in force today, was promulgated in",
+    "options": {
+      "A": "2011",
+      "B": "1999",
+      "C": "1960",
+      "D": "1979"
+    },
+    "correct": "B",
+    "explanation": "The 1999 Constitution of the Federal Republic of Nigeria, which came into effect with the return to civilian rule, remains the country's governing constitution (with subsequent amendments).",
+    "section": "Civics",
+    "topic": "The Constitution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is divided, for administrative and cultural reference, into how many geopolitical zones?",
+    "options": {
+      "A": "8",
+      "B": "6",
+      "C": "36",
+      "D": "4"
+    },
+    "correct": "B",
+    "explanation": "Nigeria is commonly grouped into 6 geopolitical zones: North-Central, North-East, North-West, South-East, South-South, and South-West.",
+    "section": "Civics",
+    "topic": "Geopolitical Zones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Lagos State is located in which geopolitical zone of Nigeria?",
+    "options": {
+      "A": "South-East",
+      "B": "South-South",
+      "C": "South-West",
+      "D": "North-Central"
+    },
+    "correct": "C",
+    "explanation": "Lagos State lies in the South-West geopolitical zone, alongside states such as Ogun, Oyo, Osun, Ondo, and Ekiti.",
+    "section": "Geography",
+    "topic": "Geopolitical Zones",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Rivers State and Bayelsa State are both located in which geopolitical zone?",
+    "options": {
+      "A": "South-West",
+      "B": "South-South",
+      "C": "North-East",
+      "D": "South-East"
+    },
+    "correct": "B",
+    "explanation": "Rivers and Bayelsa States, part of the Niger Delta region, lie in the South-South geopolitical zone.",
+    "section": "Geography",
+    "topic": "Geopolitical Zones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The longest river in Nigeria (and one of the longest in Africa), after which the country's currency is not named but which gives the country its name, is the",
+    "options": {
+      "A": "Sokoto River",
+      "B": "Cross River",
+      "C": "Niger River",
+      "D": "Benue River"
+    },
+    "correct": "C",
+    "explanation": "The Niger River, the country's namesake, is Nigeria's longest river, flowing through the country before emptying into the Gulf of Guinea via the Niger Delta.",
+    "section": "Geography",
+    "topic": "Physical Geography",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Niger and Benue Rivers, Nigeria's two major rivers, meet (confluence) at the city of",
+    "options": {
+      "A": "Onitsha",
+      "B": "Jebba",
+      "C": "Yola",
+      "D": "Lokoja"
+    },
+    "correct": "D",
+    "explanation": "Lokoja, in Kogi State, sits at the confluence of the Niger and Benue Rivers and is historically significant as an early administrative centre of colonial Nigeria.",
+    "section": "Geography",
+    "topic": "Physical Geography",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria shares an international land border with all of the following countries EXCEPT",
+    "options": {
+      "A": "Ghana",
+      "B": "Chad",
+      "C": "Benin Republic",
+      "D": "Niger Republic"
+    },
+    "correct": "A",
+    "explanation": "Nigeria's land borders are with Benin (west), Niger (north), Chad (north-east), and Cameroon (east); Ghana is further west along the coast and does not share a border with Nigeria.",
+    "section": "Geography",
+    "topic": "International Borders",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian national anthem currently in official use is titled",
+    "options": {
+      "A": "Arise, O Compatriots",
+      "B": "God Bless Our Nation",
+      "C": "Nigeria We Hail Thee",
+      "D": "Nigeria, My Beloved Country"
+    },
+    "correct": "C",
+    "explanation": "\"Nigeria, We Hail Thee\" — the original anthem used from independence in 1960 until 1978 — was readopted as Nigeria's official national anthem on 29 May 2024, replacing \"Arise, O Compatriots\" (which had been in use from 1978 to 2024).",
+    "section": "Civics",
+    "topic": "National Symbols",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Original draft named the pre-2024 anthem and was factually outdated (anthem reverted to 'Nigeria, We Hail Thee' on 29 May 2024) — caught by the verifier, corrected, and re-verified fresh."
+  },
+  {
+    "stem": "The colours of the Nigerian national flag are",
+    "options": {
+      "A": "red, white and green",
+      "B": "black, white and green",
+      "C": "green, gold and green",
+      "D": "green, white and green"
+    },
+    "correct": "D",
+    "explanation": "Nigeria's flag has three vertical stripes: green, white, and green — green representing agriculture/natural wealth and white representing peace and unity.",
+    "section": "Civics",
+    "topic": "National Symbols",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's official currency, issued by the Central Bank of Nigeria, is the",
+    "options": {
+      "A": "Naira",
+      "B": "Franc",
+      "C": "Shilling",
+      "D": "Cedi"
+    },
+    "correct": "A",
+    "explanation": "The Naira is Nigeria's official currency, introduced in 1973 to replace the Nigerian pound, and is issued and regulated by the Central Bank of Nigeria (CBN).",
+    "section": "Civics",
+    "topic": "National Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The apex regulatory institution responsible for Nigeria's monetary policy and currency issuance is the",
+    "options": {
+      "A": "Nigerian Stock Exchange",
+      "B": "Central Bank of Nigeria",
+      "C": "Federal Ministry of Finance",
+      "D": "Nigeria Deposit Insurance Corporation"
+    },
+    "correct": "B",
+    "explanation": "The Central Bank of Nigeria (CBN) is the apex monetary authority responsible for monetary policy, currency issuance, and regulating the banking sector.",
+    "section": "Civics",
+    "topic": "National Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The body constitutionally responsible for organizing and supervising elections in Nigeria is the",
+    "options": {
+      "A": "Nigeria Police Force",
+      "B": "Independent National Electoral Commission (INEC)",
+      "C": "Code of Conduct Bureau",
+      "D": "National Assembly"
+    },
+    "correct": "B",
+    "explanation": "The Independent National Electoral Commission (INEC) is the body constitutionally empowered to organize, undertake, and supervise elections in Nigeria.",
+    "section": "Civics",
+    "topic": "National Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The minimum age a person must attain to be eligible to run for President of Nigeria, under current constitutional provisions, is",
+    "options": {
+      "A": "35 years",
+      "B": "40 years",
+      "C": "18 years",
+      "D": "25 years"
+    },
+    "correct": "A",
+    "explanation": "Under the amended 1999 Constitution, a candidate must be at least 35 years old to be eligible to contest for the office of President.",
+    "section": "Civics",
+    "topic": "Elections and Eligibility",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "The verifier itself disagreed here (said 40); resolved via an authoritative web source confirming 35 (the 2018 Not Too Young To Run Act lowered it from 40) — the original key was correct."
+  },
+  {
+    "stem": "The minimum voting age in Nigeria, at which a citizen becomes eligible to register and vote, is",
+    "options": {
+      "A": "21 years",
+      "B": "25 years",
+      "C": "16 years",
+      "D": "18 years"
+    },
+    "correct": "D",
+    "explanation": "The Nigerian Constitution sets the minimum voting age at 18 years, at which a citizen becomes eligible to register with INEC and vote in elections.",
+    "section": "Civics",
+    "topic": "Elections and Eligibility",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The maximum number of terms a President of Nigeria may serve, under the current Constitution, is",
+    "options": {
+      "A": "three terms of 4 years each",
+      "B": "two terms of 4 years each",
+      "C": "one term of 4 years",
+      "D": "unlimited terms"
+    },
+    "correct": "B",
+    "explanation": "The 1999 Constitution limits a President to a maximum of two terms of four years each, whether served consecutively or not.",
+    "section": "Civics",
+    "topic": "Elections and Eligibility",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The head of the Judiciary in Nigeria, presiding over the Supreme Court, holds the title",
+    "options": {
+      "A": "Solicitor-General",
+      "B": "Chief Registrar",
+      "C": "Chief Justice of Nigeria",
+      "D": "Attorney-General of the Federation"
+    },
+    "correct": "C",
+    "explanation": "The Chief Justice of Nigeria (CJN) is the head of the Nigerian judiciary and presides over the Supreme Court, the highest court in the land.",
+    "section": "Civics",
+    "topic": "The Judiciary",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The highest court in Nigeria's judicial hierarchy, whose decisions are final, is the",
+    "options": {
+      "A": "National Industrial Court",
+      "B": "Federal High Court",
+      "C": "Supreme Court",
+      "D": "Court of Appeal"
+    },
+    "correct": "C",
+    "explanation": "The Supreme Court of Nigeria is the apex court in the country's judicial system; its decisions are final and binding on all other courts.",
+    "section": "Civics",
+    "topic": "The Judiciary",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The civil service body responsible for advising on appointments, promotions, and discipline of federal civil servants is the",
+    "options": {
+      "A": "Independent National Electoral Commission",
+      "B": "National Population Commission",
+      "C": "Code of Conduct Bureau",
+      "D": "Federal Civil Service Commission"
+    },
+    "correct": "D",
+    "explanation": "The Federal Civil Service Commission (FCSC) is responsible for the appointment, promotion, and discipline of officers in the federal civil service.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The body responsible for enforcing rules of conduct for public officers and monitoring their assets in Nigeria is the",
+    "options": {
+      "A": "Nigeria Extractive Industries Transparency Initiative",
+      "B": "Code of Conduct Bureau",
+      "C": "Economic and Financial Crimes Commission",
+      "D": "Independent Corrupt Practices Commission"
+    },
+    "correct": "B",
+    "explanation": "The Code of Conduct Bureau (CCB) monitors the assets and conduct of public officers, ensuring compliance with the Code of Conduct for Public Officers under the Constitution.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian agency primarily responsible for investigating and prosecuting financial crimes such as fraud and money laundering is the",
+    "options": {
+      "A": "Nigeria Police Force",
+      "B": "Department of State Services",
+      "C": "Economic and Financial Crimes Commission (EFCC)",
+      "D": "Nigeria Immigration Service"
+    },
+    "correct": "C",
+    "explanation": "The EFCC is Nigeria's principal law enforcement agency for investigating and prosecuting financial crimes, including fraud, corruption, and money laundering.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian body responsible for anti-corruption enforcement focused on bribery and abuse of office among public officials, distinct from the EFCC's financial-crime focus, is the",
+    "options": {
+      "A": "Independent Corrupt Practices Commission (ICPC)",
+      "B": "Nigerian Communications Commission",
+      "C": "National Agency for Food and Drug Administration",
+      "D": "Bureau of Public Procurement"
+    },
+    "correct": "A",
+    "explanation": "The Independent Corrupt Practices and Other Related Offences Commission (ICPC) tackles corruption and abuse of office, complementing the EFCC's focus on financial and economic crimes.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "National identity registration and issuance of the National Identification Number (NIN) in Nigeria falls under the",
+    "options": {
+      "A": "National Identity Management Commission (NIMC)",
+      "B": "Nigeria Immigration Service",
+      "C": "Independent National Electoral Commission",
+      "D": "National Population Commission"
+    },
+    "correct": "A",
+    "explanation": "The National Identity Management Commission (NIMC) is responsible for issuing the National Identification Number (NIN) and managing Nigeria's national identity database.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian institution constitutionally responsible for conducting the national census is the",
+    "options": {
+      "A": "National Bureau of Statistics",
+      "B": "National Population Commission (NPC)",
+      "C": "National Planning Commission",
+      "D": "Federal Ministry of Interior"
+    },
+    "correct": "B",
+    "explanation": "The National Population Commission (NPC) is the body constitutionally charged with conducting population censuses and compiling demographic data in Nigeria.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's national honours system, awarding titles such as GCFR and CFR to distinguished citizens, is governed by the",
+    "options": {
+      "A": "Freedom of Information Act",
+      "B": "Public Service Rules",
+      "C": "National Honours Act",
+      "D": "Electoral Act"
+    },
+    "correct": "C",
+    "explanation": "The National Honours Act provides the legal framework for Nigeria's national honours and awards, such as the GCFR (Grand Commander of the Federal Republic) and CFR (Commander of the Federal Republic).",
+    "section": "Civics",
+    "topic": "National Honours",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A civil servant's official record of service, promotions, and conduct throughout their career is generally referred to as their",
+    "options": {
+      "A": "service record / personal file",
+      "B": "exit interview form",
+      "C": "letter of appointment only",
+      "D": "pay slip"
+    },
+    "correct": "A",
+    "explanation": "A civil servant's service record (personal file) documents their appointment, postings, promotions, training, and conduct throughout their career in the service.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "In the Nigerian civil service hierarchy, the officer who serves as the professional (non-political) administrative head of a federal ministry is the",
+    "options": {
+      "A": "Special Adviser",
+      "B": "Permanent Secretary",
+      "C": "Director-General of the Bureau of Public Service Reforms",
+      "D": "Minister"
+    },
+    "correct": "B",
+    "explanation": "The Permanent Secretary is the top career civil servant in a ministry, providing administrative continuity and professional advice, distinct from the Minister, who is a political appointee.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The political head of a federal ministry in Nigeria, typically appointed by the President and confirmed by the Senate, is the",
+    "options": {
+      "A": "Chief of Staff",
+      "B": "Permanent Secretary",
+      "C": "Director",
+      "D": "Minister"
+    },
+    "correct": "D",
+    "explanation": "A Minister is the political head of a federal ministry, appointed by the President (subject to Senate confirmation), and is politically accountable, unlike the career civil servants who serve under them.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The general retirement age for civil servants in the Nigerian public service, based on whichever comes first between age and years of service, is commonly set at 60 years or",
+    "options": {
+      "A": "20 years of service",
+      "B": "35 years of service",
+      "C": "30 years of service",
+      "D": "40 years of service"
+    },
+    "correct": "B",
+    "explanation": "Nigerian civil servants generally retire at age 60 or after 35 years of pensionable service, whichever comes first, under standard public service rules.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The document that sets out the rules governing the conduct, discipline, appointment, and welfare of Nigerian federal civil servants is the",
+    "options": {
+      "A": "Freedom of Information Act",
+      "B": "Electoral Act",
+      "C": "National Honours Act",
+      "D": "Public Service Rules"
+    },
+    "correct": "D",
+    "explanation": "The Public Service Rules (PSR) is the official document that governs the conduct, appointment, discipline, promotion, and welfare of officers in the Nigerian federal civil service.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The law that gives Nigerian citizens the right to request and access records held by public institutions is the",
+    "options": {
+      "A": "Public Procurement Act",
+      "B": "Freedom of Information Act",
+      "C": "Public Service Rules",
+      "D": "Fiscal Responsibility Act"
+    },
+    "correct": "B",
+    "explanation": "The Freedom of Information (FOI) Act, signed into law in 2011, gives citizens the legal right to access records and information held by public institutions, subject to certain exemptions.",
+    "section": "Civics",
+    "topic": "Public Accountability",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The law that regulates how Nigerian government ministries, departments, and agencies procure goods, works, and services is the",
+    "options": {
+      "A": "Companies and Allied Matters Act",
+      "B": "Public Procurement Act",
+      "C": "Fiscal Responsibility Act",
+      "D": "Freedom of Information Act"
+    },
+    "correct": "B",
+    "explanation": "The Public Procurement Act (2007) establishes the framework and rules that federal ministries, departments, and agencies must follow when procuring goods, works, and services, aimed at ensuring transparency.",
+    "section": "Civics",
+    "topic": "Public Accountability",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian document that sets out a formal, government-wide multi-year economic and development strategy is generally known as a",
+    "options": {
+      "A": "National Development Plan",
+      "B": "Federal Gazette",
+      "C": "Service Charter",
+      "D": "Annual Budget Speech only"
+    },
+    "correct": "A",
+    "explanation": "Nigeria periodically produces a formal, government-wide National Development Plan (e.g. the Medium-Term National Development Plan) setting out economic and development strategy for a period of years — distinct from the annual budget, the Gazette (which publishes laws/notices), or a service charter (which sets service standards for a single agency).",
+    "section": "Civics",
+    "topic": "National Development Planning",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Original question named a specific commission whose functions have since moved under a differently-named ministry — replaced with a more durable fact and re-verified fresh."
+  },
+  {
+    "stem": "The Nigerian agency responsible for compiling and publishing official economic and demographic statistics, such as inflation and unemployment figures, is the",
+    "options": {
+      "A": "Central Bank of Nigeria",
+      "B": "National Bureau of Statistics",
+      "C": "Debt Management Office",
+      "D": "Federal Inland Revenue Service"
+    },
+    "correct": "B",
+    "explanation": "The National Bureau of Statistics (NBS) is Nigeria's official agency for compiling and publishing statistics on the economy, population, and social conditions, including inflation and unemployment data.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian tax authority responsible for assessing and collecting taxes on behalf of the federal government is the",
+    "options": {
+      "A": "Federal Inland Revenue Service (FIRS)",
+      "B": "Debt Management Office",
+      "C": "Central Bank of Nigeria",
+      "D": "Nigerian Customs Service"
+    },
+    "correct": "A",
+    "explanation": "The Federal Inland Revenue Service (FIRS) is responsible for assessing, collecting, and accounting for taxes and other revenues accruing to the federal government.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The agency responsible for controlling the movement of goods across Nigeria's borders and collecting import/export duties is the",
+    "options": {
+      "A": "Nigeria Immigration Service",
+      "B": "Nigeria Ports Authority",
+      "C": "Nigerian Maritime Administration and Safety Agency",
+      "D": "Nigerian Customs Service"
+    },
+    "correct": "D",
+    "explanation": "The Nigerian Customs Service (NCS) controls the movement of goods across Nigeria's borders and is responsible for collecting import and export duties.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The agency responsible for regulating entry and exit of persons across Nigeria's borders and issuing passports is the",
+    "options": {
+      "A": "Nigeria Police Force",
+      "B": "Nigeria Immigration Service",
+      "C": "Department of State Services",
+      "D": "Nigerian Customs Service"
+    },
+    "correct": "B",
+    "explanation": "The Nigeria Immigration Service (NIS) controls the movement of persons into and out of Nigeria and is responsible for issuing Nigerian passports.",
+    "section": "Civics",
+    "topic": "Public Service Institutions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is a founding member of a regional economic community of West African states known by the acronym",
+    "options": {
+      "A": "ECOWAS",
+      "B": "SADC",
+      "C": "COMESA",
+      "D": "EAC"
+    },
+    "correct": "A",
+    "explanation": "Nigeria was a founding member of ECOWAS (Economic Community of West African States), established in 1975 to promote economic integration among West African nations.",
+    "section": "Civics",
+    "topic": "International Relations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is a member of the African Union, headquartered in",
+    "options": {
+      "A": "Cairo, Egypt",
+      "B": "Addis Ababa, Ethiopia",
+      "C": "Nairobi, Kenya",
+      "D": "Abuja, Nigeria"
+    },
+    "correct": "B",
+    "explanation": "The African Union (AU), which Nigeria belongs to, has its headquarters in Addis Ababa, Ethiopia.",
+    "section": "Civics",
+    "topic": "International Relations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is a permanent member of the United Nations General Assembly and has historically contributed troops to UN peacekeeping missions, but does NOT hold a permanent seat on the",
+    "options": {
+      "A": "UN General Assembly",
+      "B": "UN Security Council",
+      "C": "ECOWAS",
+      "D": "African Union"
+    },
+    "correct": "B",
+    "explanation": "While Nigeria is an active member of the UN and has contributed to peacekeeping, it does not hold one of the five permanent seats on the UN Security Council (held by the US, UK, France, Russia, and China).",
+    "section": "Civics",
+    "topic": "International Relations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is a major producer and exporter of crude oil, and is a member of the international cartel of oil-exporting countries known as",
+    "options": {
+      "A": "OPEC",
+      "B": "G7",
+      "C": "WTO",
+      "D": "NATO"
+    },
+    "correct": "A",
+    "explanation": "Nigeria is a member of OPEC (Organization of the Petroleum Exporting Countries), reflecting its status as one of Africa's largest crude oil producers and exporters.",
+    "section": "Civics",
+    "topic": "Economy",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian government agency responsible for regulating operations in the upstream oil and gas sector is the",
+    "options": {
+      "A": "Nigerian National Petroleum Company Limited",
+      "B": "Central Bank of Nigeria",
+      "C": "Nigerian Upstream Petroleum Regulatory Commission (NUPRC)",
+      "D": "Federal Ministry of Power"
+    },
+    "correct": "C",
+    "explanation": "The Nigerian Upstream Petroleum Regulatory Commission (NUPRC), established under the Petroleum Industry Act, regulates upstream oil and gas operations in Nigeria.",
+    "section": "Civics",
+    "topic": "Economy",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's national oil company, restructured into a commercially oriented limited liability company under the Petroleum Industry Act, is called the",
+    "options": {
+      "A": "Shell Petroleum Development Company",
+      "B": "Nigeria LNG Limited",
+      "C": "Nigerian National Petroleum Company Limited (NNPC Ltd)",
+      "D": "Nigerian Agip Oil Company"
+    },
+    "correct": "C",
+    "explanation": "Following the Petroleum Industry Act, the former NNPC was incorporated as the Nigerian National Petroleum Company Limited (NNPC Ltd), a commercially run entity.",
+    "section": "Civics",
+    "topic": "Economy",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The largest ethnic groups in Nigeria are generally identified as the Hausa-Fulani, the Yoruba, and the",
+    "options": {
+      "A": "Igbo",
+      "B": "Ijaw",
+      "C": "Kanuri",
+      "D": "Tiv"
+    },
+    "correct": "A",
+    "explanation": "The Hausa-Fulani, Yoruba, and Igbo are widely recognised as Nigeria's three largest ethnic groups, though the country is home to over 250 distinct ethnic groups overall.",
+    "section": "Civics",
+    "topic": "Culture and Society",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "According to Nigeria's National Policy on Education, the country's official language of instruction and government business at the federal level is",
+    "options": {
+      "A": "English",
+      "B": "Yoruba",
+      "C": "Pidgin English",
+      "D": "Hausa"
+    },
+    "correct": "A",
+    "explanation": "English is Nigeria's official language, used in government business, the National Assembly, courts, and as the medium of instruction in most schools beyond the early primary years.",
+    "section": "Civics",
+    "topic": "Culture and Society",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian coat of arms features a black shield crossed by a white wavy band, supported on either side by a",
+    "options": {
+      "A": "lion",
+      "B": "eagle",
+      "C": "horse",
+      "D": "leopard"
+    },
+    "correct": "C",
+    "explanation": "Nigeria's coat of arms is supported by two white horses, representing dignity, and is topped by a red eagle, symbolising strength.",
+    "section": "Civics",
+    "topic": "National Symbols",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's National Assembly complex and the Presidential Villa (Aso Rock) are both located in",
+    "options": {
+      "A": "Port Harcourt",
+      "B": "Lagos",
+      "C": "Kaduna",
+      "D": "Abuja"
+    },
+    "correct": "D",
+    "explanation": "Both the National Assembly Complex and the Presidential Villa, Aso Rock, are located in Abuja, Nigeria's Federal Capital Territory.",
+    "section": "Civics",
+    "topic": "Federal Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A Nigerian state's chief executive, elected to head the state government, holds the title of",
+    "options": {
+      "A": "Emir",
+      "B": "Chairman",
+      "C": "Governor",
+      "D": "Premier"
+    },
+    "correct": "C",
+    "explanation": "Each of Nigeria's 36 states is headed by an elected Governor, who serves as the chief executive of the state government, similar to the President at the federal level.",
+    "section": "Civics",
+    "topic": "State Government",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The head of a Local Government Area (LGA) in Nigeria, the third tier of government, typically holds the title of",
+    "options": {
+      "A": "Senator",
+      "B": "Chairman",
+      "C": "Minister",
+      "D": "Governor"
+    },
+    "correct": "B",
+    "explanation": "Local Government Areas, Nigeria's third tier of government, are typically headed by an elected Chairman, supported by councillors representing electoral wards.",
+    "section": "Civics",
+    "topic": "Local Government",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's three tiers of government, as recognised under the Constitution, are Federal, State, and",
+    "options": {
+      "A": "Regional",
+      "B": "Traditional",
+      "C": "Local Government",
+      "D": "Zonal"
+    },
+    "correct": "C",
+    "explanation": "The 1999 Constitution recognises three tiers of government in Nigeria: Federal, State, and Local Government, each with defined functions and revenue allocations.",
+    "section": "Civics",
+    "topic": "Federal Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The traditional Nigerian institution led by an Emir is most closely associated with which region's traditional rulership system?",
+    "options": {
+      "A": "The Igbo autonomous community system of the South-East",
+      "B": "The Ijaw kingship system of the South-South",
+      "C": "The core Hausa/Fulani emirates of Northern Nigeria",
+      "D": "The Yoruba obaship system of the South-West"
+    },
+    "correct": "C",
+    "explanation": "The Emirate system, with rulers holding the title of Emir, is the traditional institution most closely associated with the Hausa/Fulani-dominated emirates of Northern Nigeria.",
+    "section": "Civics",
+    "topic": "Culture and Society",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The traditional Yoruba ruler's title, held by monarchs such as the Ooni of Ife and the Alaafin of Oyo, is generally referred to as",
+    "options": {
+      "A": "Obi",
+      "B": "Oba",
+      "C": "Emir",
+      "D": "Eze"
+    },
+    "correct": "B",
+    "explanation": "\"Oba\" is the general Yoruba title for a traditional monarch, with specific rulers holding further distinct titles such as Ooni (of Ife) or Alaafin (of Oyo).",
+    "section": "Civics",
+    "topic": "Culture and Society",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Effective and ethical service delivery in the Nigerian civil service is commonly guided by core values including transparency, accountability, and",
+    "options": {
+      "A": "secrecy",
+      "B": "favouritism",
+      "C": "impartiality/neutrality",
+      "D": "nepotism"
+    },
+    "correct": "C",
+    "explanation": "Impartiality (political neutrality) is a core value expected of civil servants, alongside transparency and accountability, ensuring service is rendered fairly regardless of the government of the day.",
+    "section": "Civics",
+    "topic": "Civil Service Ethics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "When a civil servant discloses wrongdoing such as corruption or abuse of office within their organisation, this act is generally known as",
+    "options": {
+      "A": "whistleblowing",
+      "B": "filibustering",
+      "C": "impeachment",
+      "D": "lobbying"
+    },
+    "correct": "A",
+    "explanation": "Whistleblowing refers to the act of exposing wrongdoing, such as corruption or malpractice, within an organisation — Nigeria operates a Whistleblower Policy to encourage such reporting.",
+    "section": "Civics",
+    "topic": "Civil Service Ethics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A conflict of interest occurs in the public service mainly when",
+    "options": {
+      "A": "a public officer's personal interest could improperly influence their official duties",
+      "B": "an officer proceeds on their routine annual leave entitlement",
+      "C": "a ministry publishes its routine annual report to the public",
+      "D": "a civil servant is promoted after passing a routine qualifying exam"
+    },
+    "correct": "A",
+    "explanation": "A conflict of interest arises when a public officer's private interests (financial or personal) could improperly influence, or appear to influence, the impartial performance of their official duties.",
+    "section": "Civics",
+    "topic": "Civil Service Ethics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The removal of a sitting President or Governor from office by the legislature, following a set constitutional process for gross misconduct, is called",
+    "options": {
+      "A": "veto",
+      "B": "impeachment",
+      "C": "prorogation",
+      "D": "ratification"
+    },
+    "correct": "B",
+    "explanation": "Impeachment is the constitutional process by which the legislature (National or State Assembly) may remove a President, Governor, or their deputy from office for gross misconduct.",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "When the President declines to sign a bill passed by the National Assembly into law, this action is known as exercising a",
+    "options": {
+      "A": "veto",
+      "B": "amendment",
+      "C": "quorum",
+      "D": "filibuster"
+    },
+    "correct": "A",
+    "explanation": "A veto is the President's constitutional power to withhold assent from a bill passed by the National Assembly; the Assembly can override it with a two-thirds majority vote in both chambers.",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A formal proposal introduced in the National Assembly, which becomes law once passed and signed, is referred to before enactment as a",
+    "options": {
+      "A": "bill",
+      "B": "decree",
+      "C": "communique",
+      "D": "gazette"
+    },
+    "correct": "A",
+    "explanation": "A bill is a draft piece of legislation introduced in the National Assembly; once passed by both chambers and signed by the President, it becomes an Act of the National Assembly (law).",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "An official government publication used to formally publish new laws, regulations, and public notices in Nigeria is called the",
+    "options": {
+      "A": "Green Book",
+      "B": "White Paper",
+      "C": "Federal Gazette",
+      "D": "Hansard"
+    },
+    "correct": "C",
+    "explanation": "The Federal Government Gazette is the official publication where new laws, statutory instruments, and public notices are formally published in Nigeria.",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The official verbatim record of proceedings and debates in the Nigerian National Assembly is known as the",
+    "options": {
+      "A": "Hansard",
+      "B": "Gazette",
+      "C": "White Paper",
+      "D": "Communique"
+    },
+    "correct": "A",
+    "explanation": "The Hansard is the official transcript of debates and proceedings in a legislative chamber, including Nigeria's National Assembly.",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The minimum number of members that must be present for a legislative chamber, such as the Senate, to validly conduct business is called a",
+    "options": {
+      "A": "motion",
+      "B": "plenary",
+      "C": "quorum",
+      "D": "caucus"
+    },
+    "correct": "C",
+    "explanation": "A quorum is the minimum number of members required to be present for a legislative body to validly transact business and take decisions.",
+    "section": "Civics",
+    "topic": "Governance Processes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's fiscal year (budget year), which the annual national budget covers, currently runs from",
+    "options": {
+      "A": "July to June",
+      "B": "October to September",
+      "C": "April to March",
+      "D": "January to December"
+    },
+    "correct": "D",
+    "explanation": "Nigeria's fiscal year runs from 1 January to 31 December, aligning the national budget cycle with the calendar year.",
+    "section": "Civics",
+    "topic": "Public Finance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian government office responsible for managing the country's public debt portfolio is the",
+    "options": {
+      "A": "Budget Office of the Federation",
+      "B": "Debt Management Office (DMO)",
+      "C": "Revenue Mobilisation Allocation and Fiscal Commission",
+      "D": "Office of the Accountant-General"
+    },
+    "correct": "B",
+    "explanation": "The Debt Management Office (DMO) is responsible for managing Nigeria's domestic and external public debt in a coordinated and sustainable manner.",
+    "section": "Civics",
+    "topic": "Public Finance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian body constitutionally responsible for determining the formula for sharing federally collected revenue among the three tiers of government is the",
+    "options": {
+      "A": "Revenue Mobilisation, Allocation and Fiscal Commission (RMAFC)",
+      "B": "Federal Inland Revenue Service",
+      "C": "Central Bank of Nigeria",
+      "D": "National Assembly Budget and Research Office"
+    },
+    "correct": "A",
+    "explanation": "RMAFC is constitutionally charged with monitoring revenue accruals and recommending the formula for allocating federally collected revenue among the Federal, State, and Local Governments.",
+    "section": "Civics",
+    "topic": "Public Finance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The account into which all revenues collected by the Federal Government of Nigeria are required by the Constitution to be paid is the",
+    "options": {
+      "A": "Sovereign Wealth Fund",
+      "B": "Excess Crude Account",
+      "C": "Federation Account",
+      "D": "Consolidated Revenue Fund only"
+    },
+    "correct": "C",
+    "explanation": "The Constitution requires that all revenues collected by the Federal Government be paid into the Federation Account, from which allocations are then shared among the three tiers of government.",
+    "section": "Civics",
+    "topic": "Public Finance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's sovereign wealth fund, set up to save and invest a portion of oil revenue for future generations, is managed by the",
+    "options": {
+      "A": "Debt Management Office",
+      "B": "Pension Commission (PenCom)",
+      "C": "Nigeria Sovereign Investment Authority (NSIA)",
+      "D": "Asset Management Corporation of Nigeria"
+    },
+    "correct": "C",
+    "explanation": "The Nigeria Sovereign Investment Authority (NSIA) manages the Nigeria Sovereign Wealth Fund, investing savings from oil revenue for the benefit of future generations.",
+    "section": "Civics",
+    "topic": "Public Finance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Nigerian regulatory body overseeing pension administration and ensuring compliance with the Contributory Pension Scheme is",
+    "options": {
+      "A": "National Health Insurance Authority",
+      "B": "National Pension Commission (PenCom)",
+      "C": "Federal Inland Revenue Service",
+      "D": "Nigeria Social Insurance Trust Fund"
+    },
+    "correct": "B",
+    "explanation": "The National Pension Commission (PenCom) regulates and supervises Nigeria's Contributory Pension Scheme, ensuring pension funds are properly managed.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A civil servant's basic entitlement to paid time off work each year, distinct from sick leave or study leave, is known as",
+    "options": {
+      "A": "terminal leave only",
+      "B": "leave of absence without pay",
+      "C": "annual leave",
+      "D": "study leave"
+    },
+    "correct": "C",
+    "explanation": "Annual leave is the standard, paid yearly entitlement civil servants are granted for rest and recreation, separate from other categories such as sick or study leave.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "When a civil servant is temporarily moved from one post or department to another within the service, this is generally referred to as a",
+    "options": {
+      "A": "secondment to a private company only",
+      "B": "dismissal",
+      "C": "resignation",
+      "D": "transfer/posting"
+    },
+    "correct": "D",
+    "explanation": "A transfer or posting is the reassignment of a civil servant from one post, department, or location to another within the public service, a routine part of career management.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "An arrangement where a civil servant is temporarily released to serve in another organisation or agency while retaining their substantive appointment is called",
+    "options": {
+      "A": "suspension",
+      "B": "retirement",
+      "C": "secondment",
+      "D": "dismissal"
+    },
+    "correct": "C",
+    "explanation": "Secondment is the temporary transfer of an officer to serve in another organisation or role, while their substantive position and conditions of service in the parent organisation are preserved.",
+    "section": "Civics",
+    "topic": "Civil Service Practice",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's official language of record for government correspondence and its multiplicity of over 250 ethnic groups makes it one of the most",
+    "options": {
+      "A": "religiously homogeneous countries in the world",
+      "B": "linguistically and ethnically diverse countries in Africa",
+      "C": "linguistically homogeneous countries in Africa",
+      "D": "sparsely populated countries in Africa"
+    },
+    "correct": "B",
+    "explanation": "With over 250 ethnic groups and several hundred languages spoken, Nigeria is widely recognised as one of the most linguistically and ethnically diverse countries in Africa.",
+    "section": "Civics",
+    "topic": "Culture and Society",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria is widely reported to be the most populous country in Africa, with its population predominantly concentrated in which broad category of settlement?",
+    "options": {
+      "A": "Entirely rural, with no major cities",
+      "B": "A mix of large urban centres and rural areas",
+      "C": "Uninhabited desert regions only",
+      "D": "Entirely urban, with no rural population"
+    },
+    "correct": "B",
+    "explanation": "Nigeria's population, the largest in Africa, is distributed across a mix of large urban centres (such as Lagos and Kano) and extensive rural areas engaged mainly in agriculture.",
+    "section": "Geography",
+    "topic": "Population and Settlement",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Kano, one of Nigeria's oldest and most historically significant cities, is located in which geopolitical zone?",
+    "options": {
+      "A": "North-East",
+      "B": "South-West",
+      "C": "North-Central",
+      "D": "North-West"
+    },
+    "correct": "D",
+    "explanation": "Kano State, home to the ancient city of Kano, lies in the North-West geopolitical zone of Nigeria.",
+    "section": "Geography",
+    "topic": "Geopolitical Zones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The Federal Capital Territory, Abuja, is located within which geopolitical zone?",
+    "options": {
+      "A": "North-Central",
+      "B": "South-East",
+      "C": "South-West",
+      "D": "North-West"
+    },
+    "correct": "A",
+    "explanation": "The Federal Capital Territory sits within the North-Central geopolitical zone, chosen partly for its relatively central location within the country.",
+    "section": "Geography",
+    "topic": "Geopolitical Zones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's coastline lies along which body of water?",
+    "options": {
+      "A": "The Red Sea",
+      "B": "The Mediterranean Sea",
+      "C": "The Indian Ocean",
+      "D": "The Gulf of Guinea (Atlantic Ocean)"
+    },
+    "correct": "D",
+    "explanation": "Nigeria's southern coastline borders the Gulf of Guinea, part of the Atlantic Ocean, giving it significant maritime and port access.",
+    "section": "Geography",
+    "topic": "Physical Geography",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria's principal seaport and busiest maritime trade hub is located in",
+    "options": {
+      "A": "Sokoto",
+      "B": "Kaduna",
+      "C": "Lagos",
+      "D": "Kano"
+    },
+    "correct": "C",
+    "explanation": "Lagos, with its Apapa and Tin Can Island ports, is Nigeria's busiest maritime trade hub and principal gateway for the country's import and export trade.",
+    "section": "Geography",
+    "topic": "Economy",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A public officer's declaration of their assets and liabilities on assumption and leaving office, required under Nigerian law, is submitted to the",
+    "options": {
+      "A": "National Assembly Library",
+      "B": "Nigeria Police Force",
+      "C": "Federal Ministry of Justice only",
+      "D": "Code of Conduct Bureau"
+    },
+    "correct": "D",
+    "explanation": "Public officers in Nigeria are required by the Constitution to declare their assets to the Code of Conduct Bureau upon assuming and leaving public office.",
+    "section": "Civics",
+    "topic": "Public Accountability",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The special tribunal established to try public officers accused of violating the Code of Conduct for Public Officers is the",
+    "options": {
+      "A": "National Industrial Court",
+      "B": "Code of Conduct Tribunal",
+      "C": "Sharia Court of Appeal",
+      "D": "Federal High Court only"
+    },
+    "correct": "B",
+    "explanation": "The Code of Conduct Tribunal is a special tribunal empowered to try public officers accused of contravening the Code of Conduct for Public Officers, including asset-declaration breaches.",
+    "section": "Civics",
+    "topic": "Public Accountability",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "Nigeria practices a multi-party democratic system, meaning that",
+    "options": {
+      "A": "political parties are banned entirely",
+      "B": "only one political party is legally allowed to exist",
+      "C": "the military appoints all political office holders",
+      "D": "more than one political party may legally register, campaign, and contest elections"
+    },
+    "correct": "D",
+    "explanation": "Nigeria operates a multi-party system, in which multiple political parties may register with INEC, campaign, and field candidates to contest elections at various levels.",
+    "section": "Civics",
+    "topic": "System of Government",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A government formed after an election, made up of the winning party (or a coalition), is generally required to be checked and balanced primarily by",
+    "options": {
+      "A": "the independent Legislature and Judiciary",
+      "B": "the ruling party's own internal caucus alone",
+      "C": "the civil service alone",
+      "D": "foreign governments"
+    },
+    "correct": "A",
+    "explanation": "Under the separation-of-powers principle, the Legislature and Judiciary act as independent checks on the Executive, preventing excessive concentration of power in one arm of government.",
+    "section": "Civics",
+    "topic": "Structure of Government",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "The 1999 Nigerian Constitution guarantees citizens certain basic rights, known collectively as",
+    "options": {
+      "A": "National Honours",
+      "B": "Fundamental Human Rights",
+      "C": "Civil Service Regulations",
+      "D": "Public Service Rules"
+    },
+    "correct": "B",
+    "explanation": "Chapter IV of the 1999 Constitution guarantees citizens Fundamental Human Rights, including rights to life, dignity, personal liberty, fair hearing, and freedom of expression, among others.",
+    "section": "Civics",
+    "topic": "The Constitution",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  },
+  {
+    "stem": "A change to the wording of the Nigerian Constitution itself, requiring a special majority in the National Assembly and State Houses of Assembly, is called a constitutional",
+    "options": {
+      "A": "communique",
+      "B": "gazette",
+      "C": "decree",
+      "D": "amendment"
+    },
+    "correct": "D",
+    "explanation": "A constitutional amendment is a formal change to the Constitution's text, requiring a special legislative majority (typically two-thirds) in the National Assembly and a majority of State Houses of Assembly.",
+    "section": "Civics",
+    "topic": "The Constitution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed."
+  }
+]
