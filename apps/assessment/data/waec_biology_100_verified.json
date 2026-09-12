@@ -1,0 +1,1602 @@
+[
+  {
+    "stem": "Which of the following structures is present in a plant cell but absent in an animal cell?",
+    "options": {
+      "A": "Nucleus",
+      "B": "Cell wall",
+      "C": "Cytoplasm",
+      "D": "Mitochondrion"
+    },
+    "correct": "B",
+    "explanation": "The cell wall, made of cellulose, surrounds and supports plant cells; animal cells have no cell wall, only a cell membrane.",
+    "section": "Section A",
+    "topic": "Concept of Living — Cell Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Organisms are classified into the animal kingdom rather than the plant kingdom mainly because they",
+    "options": {
+      "A": "can only respire using oxygen, never anaerobically",
+      "B": "always reproduce by sexual means only",
+      "C": "are surrounded by a rigid cellulose cell wall",
+      "D": "are unable to manufacture their own food"
+    },
+    "correct": "D",
+    "explanation": "Animals are heterotrophic — they cannot photosynthesise and must obtain food by consuming other organisms, unlike autotrophic (food-manufacturing) green plants.",
+    "section": "Section A",
+    "topic": "Concept of Living — Classification",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The type of skeleton found in an insect is best described as",
+    "options": {
+      "A": "a hydrostatic skeleton",
+      "B": "cartilage",
+      "C": "an exoskeleton made of chitin",
+      "D": "an endoskeleton made of bone"
+    },
+    "correct": "C",
+    "explanation": "Insects have a hard external exoskeleton made of chitin, which supports and protects the body from outside.",
+    "section": "Section A",
+    "topic": "Tissues and Supporting Systems",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Which blood vessel carries oxygenated blood away from the heart to the rest of the body?",
+    "options": {
+      "A": "Pulmonary artery",
+      "B": "Aorta",
+      "C": "Vena cava",
+      "D": "Pulmonary vein"
+    },
+    "correct": "B",
+    "explanation": "The aorta is the main artery leaving the left ventricle, carrying oxygenated blood to the body; the pulmonary artery instead carries deoxygenated blood to the lungs.",
+    "section": "Section A",
+    "topic": "Transport System",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The loss of water vapour from the aerial parts of a plant, mainly through the stomata, is called",
+    "options": {
+      "A": "guttation",
+      "B": "transpiration",
+      "C": "osmosis",
+      "D": "translocation"
+    },
+    "correct": "B",
+    "explanation": "Transpiration is the evaporation and loss of water vapour from leaves and stems, chiefly through the stomata, and it helps drive water movement up the plant.",
+    "section": "Section A",
+    "topic": "Transport System",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a bony fish, gaseous exchange takes place across the",
+    "options": {
+      "A": "lungs",
+      "B": "trachea",
+      "C": "gill filaments",
+      "D": "skin"
+    },
+    "correct": "C",
+    "explanation": "Fish gills are made up of thin gill filaments richly supplied with blood capillaries, providing a large surface area for oxygen to diffuse from water into the blood.",
+    "section": "Section A",
+    "topic": "Respiratory System",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The functional and structural unit of the kidney responsible for filtering blood is the",
+    "options": {
+      "A": "bladder",
+      "B": "ureter",
+      "C": "nephron",
+      "D": "renal artery"
+    },
+    "correct": "C",
+    "explanation": "Each kidney contains about a million nephrons, the microscopic tubules where blood filtration and selective reabsorption take place to form urine.",
+    "section": "Section A",
+    "topic": "Excretory Systems",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "One of the following is NOT a function of the mammalian liver.",
+    "options": {
+      "A": "Storage of glycogen",
+      "B": "Detoxification of poisonous substances",
+      "C": "Deamination of excess amino acids",
+      "D": "Production of insulin"
+    },
+    "correct": "D",
+    "explanation": "Insulin is produced by the islets of Langerhans in the pancreas, not the liver. The liver deaminates excess amino acids, stores glycogen, and detoxifies harmful substances.",
+    "section": "Section A",
+    "topic": "Homeostasis — Liver",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A hormone that lowers the level of glucose in the blood is",
+    "options": {
+      "A": "adrenaline",
+      "B": "glucagon",
+      "C": "insulin",
+      "D": "thyroxine"
+    },
+    "correct": "C",
+    "explanation": "Insulin, secreted by the pancreas, lowers blood glucose by promoting its uptake into cells and its conversion to glycogen; glucagon does the opposite.",
+    "section": "Section A",
+    "topic": "Hormonal Coordination",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The automatic, rapid response of the body to a stimulus, such as withdrawing a hand from a hot object, is controlled by a",
+    "options": {
+      "A": "voluntary action",
+      "B": "hormonal response",
+      "C": "conditioned reflex",
+      "D": "reflex arc"
+    },
+    "correct": "D",
+    "explanation": "A reflex arc is the nerve pathway (receptor, sensory neurone, spinal cord, motor neurone, effector) that produces a fast, involuntary response without needing conscious thought from the brain.",
+    "section": "Section A",
+    "topic": "Nervous Coordination",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The part of the human eye that controls the amount of light entering the eye is the",
+    "options": {
+      "A": "iris",
+      "B": "cornea",
+      "C": "optic nerve",
+      "D": "retina"
+    },
+    "correct": "A",
+    "explanation": "The iris, the coloured muscular ring around the pupil, contracts or relaxes to widen or narrow the pupil, controlling how much light enters the eye.",
+    "section": "Section A",
+    "topic": "Sense Organs — Eye",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a typical insect-pollinated flower, the structure that produces pollen grains is the",
+    "options": {
+      "A": "sepal",
+      "B": "ovary",
+      "C": "anther",
+      "D": "stigma"
+    },
+    "correct": "C",
+    "explanation": "The anther, borne at the tip of the stamen (the male part of the flower), produces and releases pollen grains.",
+    "section": "Section A",
+    "topic": "Reproductive System — Flowering Plants",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Which of the following is required as a raw material for photosynthesis?",
+    "options": {
+      "A": "Nitrogen and oxygen",
+      "B": "Carbon (IV) oxide and water",
+      "C": "Oxygen and glucose",
+      "D": "Water and glucose"
+    },
+    "correct": "B",
+    "explanation": "Photosynthesis uses carbon (IV) oxide (carbon dioxide) absorbed from the air and water absorbed by roots, combined using light energy, to produce glucose and oxygen.",
+    "section": "Section A",
+    "topic": "Plant Nutrition — Photosynthesis",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The enzyme found in saliva that begins the digestion of starch in the mouth is",
+    "options": {
+      "A": "lipase",
+      "B": "trypsin",
+      "C": "amylase",
+      "D": "pepsin"
+    },
+    "correct": "C",
+    "explanation": "Salivary amylase (ptyalin) breaks down starch into maltose in the mouth; pepsin and trypsin digest proteins, and lipase digests fats, elsewhere in the alimentary canal.",
+    "section": "Section A",
+    "topic": "Animal Nutrition — Digestive Enzymes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a food chain: grass → grasshopper → toad → snake, the grasshopper occupies the position of a",
+    "options": {
+      "A": "producer",
+      "B": "primary consumer",
+      "C": "decomposer",
+      "D": "secondary consumer"
+    },
+    "correct": "B",
+    "explanation": "The grasshopper feeds directly on grass (the producer), making it the primary consumer — the first consumer level in the food chain.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Food Chains",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Organisms such as bacteria and fungi that break down dead organic matter and release nutrients back into the soil are called",
+    "options": {
+      "A": "parasites",
+      "B": "producers",
+      "C": "decomposers",
+      "D": "predators"
+    },
+    "correct": "C",
+    "explanation": "Decomposers (mainly bacteria and fungi) break down dead plant and animal matter, releasing minerals and nutrients back into the soil for reuse by producers.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Decomposition",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a monohybrid cross between two heterozygous tall pea plants (Tt x Tt), where tallness is dominant, the expected phenotypic ratio of the offspring is",
+    "options": {
+      "A": "3 tall : 1 short",
+      "B": "all tall",
+      "C": "1 tall : 3 short",
+      "D": "1 tall : 1 short"
+    },
+    "correct": "A",
+    "explanation": "Crossing two heterozygotes (Tt x Tt) gives genotypes 1 TT : 2 Tt : 1 tt; since T is dominant, TT and Tt are both tall, giving a 3:1 tall-to-short phenotypic ratio, as Mendel found.",
+    "section": "Section A",
+    "topic": "Biology of Heredity — Genetics",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An inherited structural feature that improves an organism's chances of survival in its particular environment is best described as an example of",
+    "options": {
+      "A": "mutation",
+      "B": "classification",
+      "C": "variation",
+      "D": "adaptation"
+    },
+    "correct": "D",
+    "explanation": "Adaptation refers to inherited structural, physiological, or behavioural features that help an organism survive and reproduce successfully in its particular environment.",
+    "section": "Section A",
+    "topic": "Adaptation for Survival and Evolution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The process by which atmospheric nitrogen is converted into nitrogen compounds that plants can absorb and use is called",
+    "options": {
+      "A": "respiration",
+      "B": "transpiration",
+      "C": "nitrogen fixation",
+      "D": "photosynthesis"
+    },
+    "correct": "C",
+    "explanation": "Nitrogen fixation, carried out by nitrogen-fixing bacteria (free-living or in root nodules of legumes), converts inert atmospheric nitrogen gas into compounds such as nitrates that plants can absorb.",
+    "section": "Section C",
+    "topic": "Plant and Animal Nutrition — Nitrogen Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Which of the following habitats is correctly described as terrestrial?",
+    "options": {
+      "A": "Estuary",
+      "B": "Freshwater pond",
+      "C": "Grassland",
+      "D": "Marine reef"
+    },
+    "correct": "C",
+    "explanation": "Grassland is a land-based (terrestrial) habitat; estuaries, freshwater ponds, and marine reefs are all aquatic habitats.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Habitats",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The movement of water molecules from a region of higher water concentration to a region of lower water concentration across a partially permeable membrane is called",
+    "options": {
+      "A": "diffusion",
+      "B": "active transport",
+      "C": "plasmolysis",
+      "D": "osmosis"
+    },
+    "correct": "D",
+    "explanation": "Osmosis is specifically the diffusion of water (the solvent) across a selectively/partially permeable membrane from a region of its higher concentration to lower concentration.",
+    "section": "Section A",
+    "topic": "Concept of Living — Cell Environment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The movement of substances from a region of lower concentration to a region of higher concentration, using energy from respiration, is called",
+    "options": {
+      "A": "diffusion",
+      "B": "transpiration",
+      "C": "active transport",
+      "D": "osmosis"
+    },
+    "correct": "C",
+    "explanation": "Active transport moves substances against their concentration gradient (low to high) and, unlike diffusion and osmosis, requires metabolic energy (ATP) from respiration.",
+    "section": "Section A",
+    "topic": "Concept of Living — Cell Environment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Respiration that occurs in the absence of oxygen is termed",
+    "options": {
+      "A": "anaerobic respiration",
+      "B": "transpiration",
+      "C": "photosynthesis",
+      "D": "aerobic respiration"
+    },
+    "correct": "A",
+    "explanation": "Anaerobic respiration breaks down food (e.g. glucose to alcohol or lactic acid) without using oxygen, releasing far less energy than aerobic respiration.",
+    "section": "Section A",
+    "topic": "Concept of Living — Respiration",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The type of cell division responsible for growth and repair of body tissues, producing two genetically identical daughter cells, is",
+    "options": {
+      "A": "fertilization",
+      "B": "binary fission",
+      "C": "meiosis",
+      "D": "mitosis"
+    },
+    "correct": "D",
+    "explanation": "Mitosis produces two daughter cells genetically identical to the parent cell and to each other, and is the basis of growth, repair, and asexual reproduction in many organisms.",
+    "section": "Section A",
+    "topic": "Concept of Living — Growth",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In Amoeba, locomotion is achieved by means of",
+    "options": {
+      "A": "pseudopodia",
+      "B": "cilia",
+      "C": "flagella",
+      "D": "contractile vacuoles"
+    },
+    "correct": "A",
+    "explanation": "Amoeba moves by extending temporary finger-like projections of cytoplasm called pseudopodia, a process known as amoeboid movement.",
+    "section": "Section A",
+    "topic": "Concept of Living — Movement",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Which of the following best describes a feature that gives plant supporting tissue flexibility while resisting breakage?",
+    "options": {
+      "A": "A combination of strength and elasticity in the tissue",
+      "B": "Very high water content with no structural fibres at all",
+      "C": "Rigidity from lignified xylem with no elastic component at all",
+      "D": "Complete absence of cell walls in the supporting tissue"
+    },
+    "correct": "A",
+    "explanation": "Effective plant supporting tissue combines strength (to bear weight/resist forces) with elasticity/resilience, allowing it to bend under stress such as wind without snapping.",
+    "section": "Section A",
+    "topic": "Tissues and Supporting Systems — Plants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "One major function of the vertebral column in vertebrates is to",
+    "options": {
+      "A": "aid digestion",
+      "B": "filter the blood",
+      "C": "protect the spinal cord",
+      "D": "produce hormones"
+    },
+    "correct": "C",
+    "explanation": "The vertebral column (backbone) encases and protects the delicate spinal cord, in addition to supporting the body and providing attachment points for muscles.",
+    "section": "Section A",
+    "topic": "Tissues and Supporting Systems — Animal Skeleton",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Blood plasma from which the clotting factors (e.g. fibrinogen) have also been removed is called",
+    "options": {
+      "A": "tissue fluid",
+      "B": "lymph",
+      "C": "serum",
+      "D": "plasma"
+    },
+    "correct": "C",
+    "explanation": "Serum is plasma with the clotting factors removed (what remains after blood clots); plasma itself still contains fibrinogen and other clotting factors.",
+    "section": "Section A",
+    "topic": "Transport System — Blood",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In flowering plants, water and dissolved mineral salts are conducted upward from the root mainly through the",
+    "options": {
+      "A": "epidermis",
+      "B": "xylem",
+      "C": "phloem",
+      "D": "cambium"
+    },
+    "correct": "B",
+    "explanation": "Xylem vessels form a continuous pathway of dead, lignified cells that conduct water and dissolved minerals from the roots up to the leaves and other parts.",
+    "section": "Section A",
+    "topic": "Transport System — Plants",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The transport of manufactured food (mainly sucrose) from the leaves to other parts of a plant is called",
+    "options": {
+      "A": "transpiration",
+      "B": "translocation",
+      "C": "osmosis",
+      "D": "guttation"
+    },
+    "correct": "B",
+    "explanation": "Translocation is the movement of organic food substances, chiefly sucrose, through the phloem from the leaves (source) to other parts of the plant (sinks).",
+    "section": "Section A",
+    "topic": "Transport System — Plants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a mammal, the exchange of gases between air and blood takes place across the walls of the",
+    "options": {
+      "A": "alveoli",
+      "B": "bronchi",
+      "C": "larynx",
+      "D": "trachea"
+    },
+    "correct": "A",
+    "explanation": "The alveoli are tiny, thin-walled air sacs in the lungs with a large surface area and rich blood supply, where oxygen and carbon (IV) oxide are exchanged with the blood.",
+    "section": "Section A",
+    "topic": "Respiratory System — Mammals",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In plants, gaseous exchange occurs mainly through tiny pores on the leaf surface called",
+    "options": {
+      "A": "lenticels",
+      "B": "spiracles",
+      "C": "nephridia",
+      "D": "stomata"
+    },
+    "correct": "D",
+    "explanation": "Stomata are minute pores, mainly on leaves, that open and close (via guard cells) to allow gaseous exchange and also permit water vapour loss during transpiration.",
+    "section": "Section A",
+    "topic": "Respiratory System — Plants",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In woody stems, small raised pores that allow gaseous exchange through the bark are called",
+    "options": {
+      "A": "stomata",
+      "B": "lenticels",
+      "C": "nephrons",
+      "D": "spiracles"
+    },
+    "correct": "B",
+    "explanation": "Lenticels are small pores in the bark of woody stems that permit gaseous exchange between the internal tissues and the atmosphere, since the bark itself is impermeable.",
+    "section": "Section A",
+    "topic": "Excretory Systems — Plants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Excess amino acids that cannot be stored in the mammalian body are broken down by a liver process called",
+    "options": {
+      "A": "deamination",
+      "B": "assimilation",
+      "C": "osmoregulation",
+      "D": "transpiration"
+    },
+    "correct": "A",
+    "explanation": "Deamination is the removal of the amino group from excess amino acids in the liver, producing urea (excreted by the kidneys) and other compounds usable for energy.",
+    "section": "Section A",
+    "topic": "Excretory Systems — Kidney and Liver",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "One of the following is a disease associated with kidney malfunction.",
+    "options": {
+      "A": "Nephritis",
+      "B": "Bronchitis",
+      "C": "Hepatitis",
+      "D": "Gastritis"
+    },
+    "correct": "A",
+    "explanation": "Nephritis is inflammation of the nephrons/kidney, impairing its filtering function; hepatitis is a liver disease, bronchitis affects the airways, and gastritis affects the stomach.",
+    "section": "Section C",
+    "topic": "Excretory Systems — Kidney Diseases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Inflammation of the liver, often caused by a virus, is known as",
+    "options": {
+      "A": "cirrhosis",
+      "B": "hepatitis",
+      "C": "gastritis",
+      "D": "nephritis"
+    },
+    "correct": "B",
+    "explanation": "Hepatitis is inflammation of the liver, commonly caused by viral infection, and can impair the liver's normal functions such as detoxification and bile production.",
+    "section": "Section C",
+    "topic": "Excretory Systems — Liver Diseases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The skin regulates body temperature partly by",
+    "options": {
+      "A": "sweating to promote evaporative cooling",
+      "B": "secreting bile",
+      "C": "filtering nitrogenous waste from blood",
+      "D": "producing insulin"
+    },
+    "correct": "A",
+    "explanation": "Sweat glands in the skin secrete sweat, which evaporates from the skin surface and cools the body — one of the skin's key roles in temperature homeostasis.",
+    "section": "Section A",
+    "topic": "Homeostasis — Skin",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A hormone secreted in plants that promotes cell elongation and is associated with phototropism is",
+    "options": {
+      "A": "insulin",
+      "B": "adrenaline",
+      "C": "auxin",
+      "D": "thyroxine"
+    },
+    "correct": "C",
+    "explanation": "Auxin is a plant growth hormone that stimulates cell elongation; its unequal distribution towards the shaded side of a shoot causes bending towards light (phototropism).",
+    "section": "Section A",
+    "topic": "Hormonal Coordination — Plants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Under-secretion of thyroxine by the thyroid gland in a child can lead to a condition of stunted growth and mental retardation known as",
+    "options": {
+      "A": "cretinism",
+      "B": "diabetes",
+      "C": "gigantism",
+      "D": "goitre"
+    },
+    "correct": "A",
+    "explanation": "Cretinism results from thyroxine deficiency in infancy/childhood, causing stunted physical growth and impaired mental development; goitre is thyroid gland enlargement, often from iodine deficiency.",
+    "section": "Section A",
+    "topic": "Hormonal Coordination — Over/Under-secretion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The part of the human brain mainly responsible for coordinating balance and muscular movement is the",
+    "options": {
+      "A": "hypothalamus",
+      "B": "cerebellum",
+      "C": "medulla oblongata",
+      "D": "cerebrum"
+    },
+    "correct": "B",
+    "explanation": "The cerebellum coordinates fine muscular movement, posture, and balance; the cerebrum handles higher mental functions, and the medulla oblongata controls involuntary functions like breathing and heartbeat.",
+    "section": "Section A",
+    "topic": "Nervous Coordination — Central Nervous System",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The part of the brain that controls involuntary activities such as heartbeat and breathing rate is the",
+    "options": {
+      "A": "hypothalamus",
+      "B": "cerebellum",
+      "C": "cerebrum",
+      "D": "medulla oblongata"
+    },
+    "correct": "D",
+    "explanation": "The medulla oblongata, at the base of the brain connecting to the spinal cord, regulates vital involuntary activities including heart rate, breathing, and blood pressure.",
+    "section": "Section A",
+    "topic": "Nervous Coordination — Central Nervous System",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The division of the nervous system that controls involuntary activities of internal organs, such as the heart and gut, is the",
+    "options": {
+      "A": "central nervous system only",
+      "B": "autonomic nervous system",
+      "C": "somatic nervous system",
+      "D": "reflex nervous system"
+    },
+    "correct": "B",
+    "explanation": "The autonomic nervous system, part of the peripheral nervous system, regulates involuntary functions of internal organs, unlike the somatic system which controls voluntary skeletal muscle.",
+    "section": "Section A",
+    "topic": "Nervous Coordination — Peripheral Nervous System",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The part of the ear primarily responsible for maintaining balance is the",
+    "options": {
+      "A": "auditory nerve",
+      "B": "eardrum",
+      "C": "semicircular canals",
+      "D": "cochlea"
+    },
+    "correct": "C",
+    "explanation": "The semicircular canals in the inner ear detect changes in head position and movement, helping the body maintain balance; the cochlea, by contrast, is responsible for hearing.",
+    "section": "Section A",
+    "topic": "Sense Organs — Ear",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Sound vibrations are converted into nerve impulses in the ear mainly within the",
+    "options": {
+      "A": "eustachian tube",
+      "B": "pinna",
+      "C": "eardrum",
+      "D": "cochlea"
+    },
+    "correct": "D",
+    "explanation": "The cochlea, a coiled fluid-filled structure in the inner ear, contains sensory hair cells that convert sound vibrations into nerve impulses sent to the brain via the auditory nerve.",
+    "section": "Section A",
+    "topic": "Sense Organs — Ear",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In humans, fertilization normally takes place in the",
+    "options": {
+      "A": "vagina, at the entrance of the reproductive tract",
+      "B": "uterus, where the embryo also implants",
+      "C": "ovary, where the egg cell first develops",
+      "D": "oviduct (fallopian tube)"
+    },
+    "correct": "D",
+    "explanation": "Fertilization — the fusion of sperm and egg nuclei — normally occurs in the oviduct (fallopian tube), after which the resulting zygote travels to the uterus to implant.",
+    "section": "Section A",
+    "topic": "Reproductive System — Mammals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A contraceptive method that works by physically preventing sperm from reaching the egg is the",
+    "options": {
+      "A": "intrauterine device only",
+      "B": "contraceptive pill",
+      "C": "rhythm method",
+      "D": "condom"
+    },
+    "correct": "D",
+    "explanation": "A condom is a barrier method that physically prevents sperm from entering the vagina/reaching the egg, unlike the pill, which works hormonally to prevent ovulation.",
+    "section": "Section A",
+    "topic": "Reproductive System — Contraception",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The larval stage of a butterfly, which feeds actively before pupation, is called a",
+    "options": {
+      "A": "imago",
+      "B": "caterpillar (larva)",
+      "C": "pupa",
+      "D": "nymph"
+    },
+    "correct": "B",
+    "explanation": "In complete metamorphosis (as in butterflies), the egg hatches into a larva (caterpillar), which feeds and grows before becoming a pupa and then the adult (imago).",
+    "section": "Section A",
+    "topic": "Reproductive System — Insect Metamorphosis",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Unlike the butterfly, the cockroach undergoes a type of development called",
+    "options": {
+      "A": "incomplete metamorphosis",
+      "B": "no metamorphosis",
+      "C": "complete metamorphosis",
+      "D": "binary fission"
+    },
+    "correct": "A",
+    "explanation": "The cockroach undergoes incomplete (gradual) metamorphosis — egg, nymph, adult — with no distinct pupal stage, unlike the butterfly's complete metamorphosis.",
+    "section": "Section A",
+    "topic": "Reproductive System — Insect Metamorphosis",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Among vertebrates, the group whose eggs are typically fertilized and develop outside the mother's body in water is the",
+    "options": {
+      "A": "birds",
+      "B": "mammals",
+      "C": "reptiles",
+      "D": "fish"
+    },
+    "correct": "D",
+    "explanation": "Most fish practise external fertilization, releasing eggs and sperm into water where fertilization and development occur outside the body, unlike mammals and most reptiles/birds.",
+    "section": "Section A",
+    "topic": "Reproductive System — Vertebrate Comparison",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A flower that relies on insects to transfer pollen typically has",
+    "options": {
+      "A": "large, brightly coloured petals and nectar/scent to attract pollinators",
+      "B": "a very long, feathery stigma exposed outside the flower",
+      "C": "light, dry pollen grains produced in huge quantities",
+      "D": "small, dull petals and no scent"
+    },
+    "correct": "A",
+    "explanation": "Insect-pollinated flowers typically have large, brightly coloured, scented petals and nectar to attract insects, whereas wind-pollinated flowers have small, dull flowers and produce large amounts of light pollen instead.",
+    "section": "Section A",
+    "topic": "Reproductive System — Pollination",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The transfer of pollen grains from the anther of one flower to the stigma of a different flower on another plant of the same species is called",
+    "options": {
+      "A": "germination",
+      "B": "cross-pollination",
+      "C": "fertilization",
+      "D": "self-pollination"
+    },
+    "correct": "B",
+    "explanation": "Cross-pollination is pollen transfer between flowers on genetically different plants of the same species, increasing genetic variation, unlike self-pollination within the same flower/plant.",
+    "section": "Section A",
+    "topic": "Reproductive System — Pollination",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Fruits and seeds dispersed by animals eating them and later excreting the seeds elsewhere are an example of dispersal by",
+    "options": {
+      "A": "water",
+      "B": "explosive mechanism",
+      "C": "animals",
+      "D": "wind"
+    },
+    "correct": "C",
+    "explanation": "Animal dispersal occurs when fleshy, edible fruits are eaten and their undigested seeds later deposited elsewhere in the animal's droppings, spreading the plant to new locations.",
+    "section": "Section A",
+    "topic": "Reproductive System — Seed Dispersal",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Courtship behaviours such as displays and territoriality in animals mainly function to",
+    "options": {
+      "A": "aid digestion of food",
+      "B": "assist in gaseous exchange",
+      "C": "regulate body temperature",
+      "D": "attract and select a suitable mate"
+    },
+    "correct": "D",
+    "explanation": "Courtship behaviours — displays, calls, territoriality — help animals attract, recognize, and select suitable mates of the same species, improving reproductive success.",
+    "section": "Section C",
+    "topic": "Reproduction — Courtship Behaviour",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The larval stage of a housefly, which is legless and worm-like, is called a",
+    "options": {
+      "A": "nymph",
+      "B": "pupa",
+      "C": "imago",
+      "D": "maggot"
+    },
+    "correct": "D",
+    "explanation": "The housefly undergoes complete metamorphosis, and its larval stage — a soft, legless, worm-like form — is commonly called a maggot.",
+    "section": "Section C",
+    "topic": "Reproduction — Housefly Metamorphosis",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A condition essential for the germination of a typical seed is",
+    "options": {
+      "A": "absence of oxygen",
+      "B": "darkness only, with no water",
+      "C": "high salt concentration in the soil",
+      "D": "adequate water, oxygen, and a suitable temperature"
+    },
+    "correct": "D",
+    "explanation": "Seed germination generally requires adequate water (to activate enzymes and swell the seed), oxygen (for respiration), and a suitable temperature; most seeds do not need light to begin germinating.",
+    "section": "Section C",
+    "topic": "Reproduction — Seed Germination",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Green plants obtain the mineral nutrient nitrogen mainly in the form of",
+    "options": {
+      "A": "nitrogen gas absorbed through leaves",
+      "B": "proteins absorbed directly from soil",
+      "C": "nitrates absorbed from the soil by roots",
+      "D": "ammonia absorbed through stomata"
+    },
+    "correct": "C",
+    "explanation": "Plants cannot use atmospheric nitrogen gas directly; they absorb nitrogen mainly as nitrate ions dissolved in soil water, taken up through their roots.",
+    "section": "Section A",
+    "topic": "Plant Nutrition — Mineral Nutrition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A food substance needed by the body in only very small (trace) amounts for healthy growth, such as iodine or iron, is called a",
+    "options": {
+      "A": "macronutrient",
+      "B": "micronutrient",
+      "C": "carbohydrate",
+      "D": "vitamin only"
+    },
+    "correct": "B",
+    "explanation": "Micronutrients (including many mineral elements and vitamins) are required only in small/trace amounts, unlike macronutrients (carbohydrates, proteins, fats) needed in much larger quantities.",
+    "section": "Section A",
+    "topic": "Plant Nutrition — Mineral Nutrition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A diet that contains all the necessary nutrients — carbohydrates, proteins, fats, vitamins, minerals, and water — in the correct proportions is called a",
+    "options": {
+      "A": "protein-only diet",
+      "B": "carbohydrate diet",
+      "C": "restricted diet",
+      "D": "balanced diet"
+    },
+    "correct": "D",
+    "explanation": "A balanced diet supplies all essential nutrient classes in the right proportions needed for good health, growth, and repair of body tissues.",
+    "section": "Section A",
+    "topic": "Animal Nutrition — Balanced Diet",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Benedict's solution is used in food tests to detect the presence of",
+    "options": {
+      "A": "proteins",
+      "B": "fats",
+      "C": "reducing sugars",
+      "D": "starch"
+    },
+    "correct": "C",
+    "explanation": "Benedict's solution turns from blue to green/yellow/brick-red on heating with a reducing sugar (such as glucose), indicating its presence; iodine solution instead tests for starch.",
+    "section": "Section A",
+    "topic": "Animal Nutrition — Food Tests",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The dental formula of an animal gives information about the",
+    "options": {
+      "A": "type of respiration used",
+      "B": "number and types of each kind of tooth present",
+      "C": "length of the alimentary canal only",
+      "D": "number of stomach chambers"
+    },
+    "correct": "B",
+    "explanation": "A dental formula records the number of each tooth type (incisors, canines, premolars, molars) in half of the upper and lower jaws, reflecting an animal's feeding habits.",
+    "section": "Section A",
+    "topic": "Animal Nutrition — Dental Formula",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Green plants that also obtain some nutrients by trapping and digesting small animals, such as the Venus flytrap, are described as",
+    "options": {
+      "A": "parasitic",
+      "B": "carnivorous (insectivorous)",
+      "C": "chemosynthetic",
+      "D": "saprophytic"
+    },
+    "correct": "B",
+    "explanation": "Carnivorous (insectivorous) plants like the Venus flytrap photosynthesise but also trap and digest small animals to supplement nutrients, especially nitrogen, often in nutrient-poor soils.",
+    "section": "Section C",
+    "topic": "Nutrition Modes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Organisms that obtain energy by oxidizing inorganic chemical substances rather than by photosynthesis are described as",
+    "options": {
+      "A": "parasitic",
+      "B": "saprophytic",
+      "C": "heterotrophic",
+      "D": "chemosynthetic"
+    },
+    "correct": "D",
+    "explanation": "Chemosynthetic organisms (mainly certain bacteria) manufacture their own food using energy released from the oxidation of inorganic substances, rather than from sunlight as in photosynthesis.",
+    "section": "Section C",
+    "topic": "Nutrition Modes",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An animal that feeds mainly on plant material, such as a cow, is best described as",
+    "options": {
+      "A": "herbivorous",
+      "B": "saprophytic",
+      "C": "carnivorous",
+      "D": "omnivorous"
+    },
+    "correct": "A",
+    "explanation": "Herbivorous animals feed mainly on plant material; carnivores feed on other animals, and omnivores feed on both plant and animal matter.",
+    "section": "Section C",
+    "topic": "Feeding Habits and Adaptations",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An animal that obtains food by filtering small particles suspended in water, such as certain bivalve molluscs, has a feeding adaptation described as",
+    "options": {
+      "A": "filter feeding",
+      "B": "fluid feeding",
+      "C": "parasitic feeding",
+      "D": "saprophytic feeding"
+    },
+    "correct": "A",
+    "explanation": "Filter feeders strain small food particles suspended in water using specialized structures (such as gills or cilia), a feeding adaptation seen in many aquatic invertebrates.",
+    "section": "Section C",
+    "topic": "Feeding Habits and Adaptations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The living organisms in an ecosystem, together with the physical (non-living) environment they interact with, make up the",
+    "options": {
+      "A": "biosphere only",
+      "B": "population",
+      "C": "ecosystem",
+      "D": "community"
+    },
+    "correct": "C",
+    "explanation": "An ecosystem consists of a community of living organisms interacting with each other and with the non-living (abiotic) components of their physical environment.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Ecosystem",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "All the individuals of a single species living in a particular area at a given time constitute a",
+    "options": {
+      "A": "habitat",
+      "B": "population",
+      "C": "community",
+      "D": "ecosystem"
+    },
+    "correct": "B",
+    "explanation": "A population is made up of individuals of the same species occupying a given area at a particular time, capable of interbreeding.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Ecosystem",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Soil-related factors such as texture, pH, and mineral content, which affect the organisms living in or on the soil, are called",
+    "options": {
+      "A": "edaphic factors",
+      "B": "topographic factors",
+      "C": "climatic factors",
+      "D": "biotic factors"
+    },
+    "correct": "A",
+    "explanation": "Edaphic factors are soil-related ecological factors (texture, pH, water content, minerals) that influence which organisms can live in a habitat, distinct from climatic (e.g. rainfall) or topographic factors.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Ecological Factors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In a pyramid of numbers/energy for a typical grassland food chain, the greatest quantity of energy is usually found at the level of the",
+    "options": {
+      "A": "tertiary consumers",
+      "B": "secondary consumers",
+      "C": "producers",
+      "D": "primary consumers"
+    },
+    "correct": "C",
+    "explanation": "Producers (green plants) capture the most energy from sunlight and occupy the base of the pyramid; energy decreases at each successive trophic level due to losses as heat and in respiration.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Energy Pyramids",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An increase in a population's size due to the birth of new individuals is measured by its",
+    "options": {
+      "A": "mortality rate",
+      "B": "immigration rate",
+      "C": "natality (birth) rate",
+      "D": "emigration rate"
+    },
+    "correct": "C",
+    "explanation": "Natality (birth rate) is the rate at which new individuals are added to a population through reproduction, one of the key factors, alongside mortality, migration, that determine population size.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Population Factors",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A close relationship between two different species in which one benefits and the other is harmed is called",
+    "options": {
+      "A": "mutualism",
+      "B": "commensalism",
+      "C": "parasitism",
+      "D": "saprophytism"
+    },
+    "correct": "C",
+    "explanation": "In parasitism, the parasite benefits (often at the host's expense, causing harm), unlike mutualism (both benefit) or commensalism (one benefits, the other is unaffected).",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Ecological Management",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A relationship in which one organism benefits and the other is neither helped nor harmed is called",
+    "options": {
+      "A": "commensalism",
+      "B": "mutualism",
+      "C": "competition",
+      "D": "parasitism"
+    },
+    "correct": "A",
+    "explanation": "Commensalism is a relationship where one species benefits while the other is not significantly affected, positively or negatively.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Ecological Management",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The excessive use of chemical fertilizers that run off into rivers, causing excessive algal growth and later oxygen depletion, is an example of",
+    "options": {
+      "A": "water pollution (eutrophication)",
+      "B": "noise pollution, from machinery used to apply the fertilizer",
+      "C": "soil erosion, caused by heavy rainfall washing topsoil away",
+      "D": "air pollution, from gases released during fertilizer manufacture"
+    },
+    "correct": "A",
+    "explanation": "Nutrient-rich runoff (e.g. from fertilizers) into water bodies causes eutrophication — excessive algal/plant growth followed by oxygen depletion as the algae die and decompose, a form of water pollution.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Pollution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Storing grains in airtight containers helps to preserve them mainly by",
+    "options": {
+      "A": "increasing the moisture content of the stored grain over time",
+      "B": "attracting more insects with the smell of the sealed container",
+      "C": "increasing the oxygen and moisture available to pests, helping them survive",
+      "D": "depriving pests such as weevils of the oxygen and moisture needed to survive and reproduce"
+    },
+    "correct": "D",
+    "explanation": "Airtight storage limits oxygen and moisture, conditions pests like grain weevils need to survive and multiply, helping to preserve stored grain from infestation and spoilage.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Pest Control",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Microorganisms that are beneficial to humans include those used in the",
+    "options": {
+      "A": "organisms responsible for the transmission and spread of malaria",
+      "B": "organisms responsible for the production and spread of cholera",
+      "C": "organisms that are the causative agent of tuberculosis",
+      "D": "fermentation of yoghurt and other foods"
+    },
+    "correct": "D",
+    "explanation": "Certain beneficial bacteria (e.g. Lactobacillus) are used in fermenting foods such as yoghurt, illustrating a helpful role for microorganisms, unlike disease-causing organisms such as cholera or TB bacteria.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Microorganisms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Vaccination protects an individual against a disease mainly by",
+    "options": {
+      "A": "removing white blood cells",
+      "B": "killing the individual's own healthy cells",
+      "C": "stimulating the body to produce antibodies against a specific pathogen",
+      "D": "directly destroying all bacteria in the body"
+    },
+    "correct": "C",
+    "explanation": "A vaccine contains a weakened, dead, or partial form of a pathogen that stimulates the immune system to produce antibodies, giving future protection (immunity) against that disease.",
+    "section": "Section A",
+    "topic": "Basic Ecological Concepts — Immunization",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The general term for the solid part of the earth's surface, including rocks and soil, that provides a habitat for many organisms is the",
+    "options": {
+      "A": "lithosphere",
+      "B": "biosphere",
+      "C": "atmosphere",
+      "D": "hydrosphere"
+    },
+    "correct": "A",
+    "explanation": "The lithosphere is the solid outer layer of the Earth (rocks and soil); the hydrosphere is the water component and the atmosphere the gaseous envelope, together making up parts of the biosphere.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Ecological Components",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A method used by ecologists to estimate the size of a plant population within a study area by counting organisms within randomly placed square frames is the use of",
+    "options": {
+      "A": "quadrats",
+      "B": "sweep nets",
+      "C": "pitfall traps",
+      "D": "pooters"
+    },
+    "correct": "A",
+    "explanation": "Quadrats are square sampling frames placed randomly within a study area to count and estimate the density and distribution of plant (or slow-moving animal) populations.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Population Sampling",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The natural cycling of carbon between the atmosphere and living organisms occurs mainly through the processes of",
+    "options": {
+      "A": "photosynthesis and respiration",
+      "B": "excretion and egestion",
+      "C": "pollination and fertilization",
+      "D": "transpiration and osmosis"
+    },
+    "correct": "A",
+    "explanation": "Photosynthesis removes carbon (IV) oxide from the atmosphere to build organic compounds, while respiration (by plants, animals, and decomposers) releases it back — the core of the carbon cycle.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Nutrient Cycling",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Continuous cultivation of the same crop on a piece of land without allowing it to rest tends to",
+    "options": {
+      "A": "increase soil fertility indefinitely",
+      "B": "prevent soil erosion completely",
+      "C": "deplete soil nutrients and reduce fertility over time",
+      "D": "have no effect on the soil"
+    },
+    "correct": "C",
+    "explanation": "Continuous cropping without fallow periods, crop rotation, or replenishment progressively removes soil nutrients, reducing fertility and crop yield over time.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Agricultural Practices",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Bush burning as an agricultural practice tends to negatively affect the soil mainly by",
+    "options": {
+      "A": "increasing soil moisture content permanently",
+      "B": "increasing organic matter and beneficial microorganisms",
+      "C": "improving soil structure permanently",
+      "D": "destroying organic matter, soil microorganisms, and exposing soil to erosion"
+    },
+    "correct": "D",
+    "explanation": "Bush burning destroys organic matter and kills beneficial soil microorganisms, and leaves bare soil exposed to erosion by wind and water, harming long-term soil fertility.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Agricultural Practices",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Thoroughly cooking food and washing hands before eating are practices that mainly promote",
+    "options": {
+      "A": "water pollution, contaminating rivers with waste",
+      "B": "soil conservation, protecting farmland from erosion",
+      "C": "genetic variation, producing new inherited traits in a population",
+      "D": "food/public hygiene, reducing microbial contamination"
+    },
+    "correct": "D",
+    "explanation": "Proper cooking and handwashing reduce the risk of harmful microorganisms contaminating food, an important aspect of food and public hygiene in preventing disease.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Public Health",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A major method of conserving soil on sloped farmland to reduce erosion is",
+    "options": {
+      "A": "bush burning",
+      "B": "deforestation",
+      "C": "terracing/contour ploughing",
+      "D": "overgrazing"
+    },
+    "correct": "C",
+    "explanation": "Terracing and contour ploughing break up the slope into smaller, level sections, slowing water runoff and reducing soil erosion on hilly farmland.",
+    "section": "Section A",
+    "topic": "Conservation of Natural Resources — Soil",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Setting aside protected areas such as national parks and game reserves is a conservation method aimed mainly at protecting",
+    "options": {
+      "A": "soil fertility",
+      "B": "mineral resources",
+      "C": "wildlife",
+      "D": "water resources"
+    },
+    "correct": "C",
+    "explanation": "National parks and game reserves protect wildlife and their habitats from hunting, poaching, and habitat destruction, helping to conserve animal (and plant) species.",
+    "section": "Section A",
+    "topic": "Conservation of Natural Resources — Wildlife",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Afforestation (planting new trees/forests) is important mainly because it helps to",
+    "options": {
+      "A": "reduce the amount of rainfall an area receives",
+      "B": "completely eliminate the need for farmland in a region",
+      "C": "increase soil erosion by removing existing ground cover",
+      "D": "replace depleted forest resources and reduce erosion"
+    },
+    "correct": "D",
+    "explanation": "Afforestation replaces trees lost to logging or clearing, helps bind soil (reducing erosion), and restores forest resources and habitats, alongside other environmental benefits.",
+    "section": "Section A",
+    "topic": "Conservation of Natural Resources — Forest",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A variation among individuals that can be measured on a continuous scale, such as height or body weight, is described as",
+    "options": {
+      "A": "acquired characteristic",
+      "B": "genetic mutation only",
+      "C": "discontinuous variation",
+      "D": "continuous (morphological) variation"
+    },
+    "correct": "D",
+    "explanation": "Continuous variation shows a smooth, graded range between two extremes (e.g. a full range of heights), typically influenced by multiple genes and environment, unlike discontinuous variation (distinct categories, e.g. blood group).",
+    "section": "Section A",
+    "topic": "Variation in Population — Morphological",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The ability or inability to taste the chemical phenylthiocarbamide (PTC) is an example of",
+    "options": {
+      "A": "physiological variation",
+      "B": "environmental variation only",
+      "C": "morphological variation",
+      "D": "acquired variation"
+    },
+    "correct": "A",
+    "explanation": "PTC-tasting ability is a physiological (functional) variation controlled genetically — some individuals can taste it as bitter while others (non-tasters) cannot, unrelated to outward physical appearance.",
+    "section": "Section A",
+    "topic": "Variation in Population — Physiological",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In humans, the ABO blood group system is an example of variation that is",
+    "options": {
+      "A": "genetically inherited",
+      "B": "caused entirely by environmental factors",
+      "C": "acquired during an individual's lifetime",
+      "D": "identical in every human"
+    },
+    "correct": "A",
+    "explanation": "ABO blood groups (A, B, AB, O) are determined by inherited genes from parents and are a classic example of genetically controlled physiological variation in humans.",
+    "section": "Section A",
+    "topic": "Variation in Population — Physiological",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In criminal investigations, DNA fingerprinting is applied mainly for the purpose of",
+    "options": {
+      "A": "crime detection and identifying individuals",
+      "B": "increasing crop yield",
+      "C": "producing vaccines",
+      "D": "treating infectious disease"
+    },
+    "correct": "A",
+    "explanation": "DNA fingerprinting exploits the fact that every individual's DNA pattern (except identical twins) is unique, making it valuable for crime detection, identification, and paternity testing.",
+    "section": "Section C",
+    "topic": "Application of Variations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Before a blood transfusion is given, blood group compatibility between donor and recipient must be checked mainly to avoid",
+    "options": {
+      "A": "lowering the recipient's body temperature during the procedure",
+      "B": "increasing the donor's own blood pressure during donation",
+      "C": "wasting blood that could otherwise be stored for later use",
+      "D": "a dangerous clumping (agglutination) reaction of red blood cells"
+    },
+    "correct": "D",
+    "explanation": "Transfusing incompatible blood groups can cause the recipient's antibodies to react with donor red blood cell antigens, causing agglutination (clumping) that can be life-threatening.",
+    "section": "Section C",
+    "topic": "Application of Variations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The structures within the nucleus that carry hereditary information (genes) from parents to offspring are called",
+    "options": {
+      "A": "mitochondria",
+      "B": "ribosomes",
+      "C": "vacuoles",
+      "D": "chromosomes"
+    },
+    "correct": "D",
+    "explanation": "Chromosomes, made of DNA and protein, carry the genes that transmit hereditary characteristics from parents to offspring during reproduction.",
+    "section": "Section A",
+    "topic": "Biology of Heredity — Chromosomes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "In humans, the sex of a child is determined by the combination of sex chromosomes contributed mainly by the",
+    "options": {
+      "A": "environment during pregnancy",
+      "B": "mother's egg, which always carries a Y chromosome",
+      "C": "mother's egg only, since it can carry either X or Y",
+      "D": "father's sperm, which may carry an X or a Y chromosome"
+    },
+    "correct": "D",
+    "explanation": "In humans, the egg always carries an X chromosome, but the sperm can carry either an X or a Y chromosome; a Y-carrying sperm fertilizing the egg produces a male (XY), an X-carrying sperm a female (XX).",
+    "section": "Section A",
+    "topic": "Biology of Heredity — Sex Determination",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A characteristic, such as red-green colour blindness in humans, that is carried on the X chromosome and shows a different pattern of inheritance in males and females is called a",
+    "options": {
+      "A": "acquired characteristic",
+      "B": "recessive autosomal trait only",
+      "C": "sex-linked characteristic",
+      "D": "dominant autosomal trait"
+    },
+    "correct": "C",
+    "explanation": "Sex-linked characteristics (like colour blindness or haemophilia) are carried on the X chromosome, so their inheritance pattern differs between males (XY) and females (XX).",
+    "section": "Section A",
+    "topic": "Biology of Heredity — Sex-linked Characters",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Knowledge of genetics is applied in agriculture mainly to",
+    "options": {
+      "A": "prevent every possible plant disease from ever occurring",
+      "B": "selectively breed crops and livestock with desirable traits",
+      "C": "deliberately reduce crop yields to control overproduction",
+      "D": "completely eliminate the need for fertilizer application"
+    },
+    "correct": "B",
+    "explanation": "Genetic principles are applied in selective breeding programmes to develop crop varieties and livestock breeds with desirable traits such as higher yield, disease resistance, or faster growth.",
+    "section": "Section A",
+    "topic": "Biology of Heredity — Applications",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Social insects such as termites and bees show behavioural adaptation through",
+    "options": {
+      "A": "living solitary lives, with each individual foraging and nesting alone",
+      "B": "a complete absence of any nest or colony structure",
+      "C": "random, uncoordinated movement with no colony-wide organisation",
+      "D": "organized division of labour within a colony (e.g. workers, soldiers, queen)"
+    },
+    "correct": "D",
+    "explanation": "Termites and bees live in highly organized colonies with division of labour among castes (queen, workers, soldiers), a behavioural adaptation that improves the colony's chances of survival.",
+    "section": "Section A",
+    "topic": "Adaptation for Survival and Evolution — Behavioural",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "Fossils, which provide evidence of organisms that existed in the past, are considered important evidence supporting the theory of",
+    "options": {
+      "A": "osmosis",
+      "B": "fermentation",
+      "C": "homeostasis",
+      "D": "evolution"
+    },
+    "correct": "D",
+    "explanation": "Fossils show a record of organisms from past geological ages, including transitional forms, and are one of the strongest lines of evidence used to support the theory of evolution.",
+    "section": "Section A",
+    "topic": "Adaptation for Survival and Evolution — Evidence for Evolution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "When two species require the same limited resource, such as food or space, in the same habitat, the resulting interaction is called",
+    "options": {
+      "A": "commensalism",
+      "B": "mutualism",
+      "C": "competition",
+      "D": "symbiosis"
+    },
+    "correct": "C",
+    "explanation": "Competition occurs when organisms (of the same or different species) require the same limited resource, and the struggle for that resource can influence survival and, over time, natural selection.",
+    "section": "Section C",
+    "topic": "Adaptation for Survival — Competition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "A cactus plant's thick, water-storing stem and reduced leaves (spines) are structural adaptations mainly for",
+    "options": {
+      "A": "increasing gaseous exchange",
+      "B": "seed dispersal",
+      "C": "water conservation in a dry environment",
+      "D": "attracting pollinators"
+    },
+    "correct": "C",
+    "explanation": "Cacti store water in thick stems and have reduced leaves (often spines) to minimize water loss through transpiration, structural adaptations suited to their arid habitat.",
+    "section": "Section C",
+    "topic": "Adaptation for Survival — Structural Adaptations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "The green colouration of many caterpillars, which closely matches the colour of the leaves they live on, is an adaptive feature that mainly serves to",
+    "options": {
+      "A": "camouflage them from predators",
+      "B": "increase their body temperature",
+      "C": "aid digestion",
+      "D": "attract mates"
+    },
+    "correct": "A",
+    "explanation": "Protective (cryptic) colouration, such as a caterpillar's green colour matching its leafy background, helps camouflage the animal from predators, improving its chances of survival.",
+    "section": "Section C",
+    "topic": "Adaptation for Survival — Adaptive Coloration",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An aquatic habitat where fresh river water meets and mixes with salty sea water is called a(n)",
+    "options": {
+      "A": "grassland",
+      "B": "estuary",
+      "C": "freshwater pond",
+      "D": "desert"
+    },
+    "correct": "B",
+    "explanation": "An estuary is a partly enclosed coastal body of water where freshwater from rivers mixes with salty seawater, creating a distinctive brackish-water habitat with its own species adaptations.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Aquatic Habitats",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  },
+  {
+    "stem": "An arid (desert) terrestrial habitat is mainly characterized by",
+    "options": {
+      "A": "permanent standing water",
+      "B": "very low rainfall and scarce water availability",
+      "C": "thick, continuous forest cover",
+      "D": "very high, constant rainfall"
+    },
+    "correct": "B",
+    "explanation": "Arid habitats are defined by very low, unreliable rainfall and limited water availability, which shapes the drought-adapted plants and animals that can survive there.",
+    "section": "Section C",
+    "topic": "Basic Ecological Concepts — Terrestrial Habitats",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed (100/100 across the full set)."
+  }
+]
