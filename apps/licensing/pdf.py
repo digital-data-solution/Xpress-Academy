@@ -16,6 +16,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import cm
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
+from .ranking import rank_by_score
+
 styles = getSampleStyleSheet()
 
 
@@ -108,12 +110,12 @@ def build_school_summary_pdf(test, attempts) -> bytes:
     ))
     story.append(Spacer(1, 0.5 * cm))
 
-    story.append(Paragraph("Per-student results", styles["Heading3"]))
+    story.append(Paragraph("Per-student results (ranked)", styles["Heading3"]))
     story.append(Spacer(1, 0.2 * cm))
-    rows = [["Student", "Score", "Date"]]
-    for a in sorted(attempts, key=lambda a: -a.score_percent):
-        rows.append([a.student_name, f"{a.score_percent}%", a.submitted_at.strftime("%d %b %Y")])
-    student_table = Table(rows, colWidths=[8 * cm, 3 * cm, 5 * cm])
+    rows = [["Rank", "Student", "Score", "Date"]]
+    for a, rank in rank_by_score(attempts, lambda a: a.score_percent):
+        rows.append([f"#{rank}", a.student_name, f"{a.score_percent}%", a.submitted_at.strftime("%d %b %Y")])
+    student_table = Table(rows, colWidths=[1.5 * cm, 7 * cm, 3 * cm, 4.5 * cm])
     student_table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1A2E5C")),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),

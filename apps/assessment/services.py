@@ -32,16 +32,78 @@ from django.utils import timezone
 from .models import Attempt, AttemptAnswer, Choice, Question, Quiz
 
 
+def stratified_sample_by_syllabus_topic(candidates: list, count: int) -> list:
+    """Question-bank-engine build spec §C: a mock paper should reflect
+    the real syllabus's own topic weighting, not whatever a single
+    flat random.shuffle over the whole pool happens to draw. The
+    verified JAMB Biology bank isn't evenly split across its 5 topics
+    (Form and Functions is ~39% of it, Evolution ~11%) — for a large
+    draw that washes out by the law of large numbers, but a small mock
+    (say 20 questions) can easily land 12 Form-and-Functions questions
+    and 1 Evolution question purely by luck, which doesn't look or
+    feel like a real JAMB paper. This groups by each question's first
+    syllabus topic (same one-bucket-per-question simplification
+    licensing.diagnostics's own topic_breakdown already uses),
+    allocates `count` across groups proportionally to group size via
+    the largest-remainder (Hamilton) apportionment method — guarantees
+    the allocations sum to exactly `count`, never drift from rounding
+    — then samples randomly within each group.
+
+    Shared by _build_question_snapshot (real quizzes) and
+    licensing.diagnostics._build_diagnostic_snapshot (the free
+    diagnostic) rather than duplicated — both need the same real-
+    weighting behaviour, and this is the one already-shared home
+    (apps.assessment owns Question/SyllabusTopic).
+
+    Backward compatible by construction: a pool with no
+    SyllabusTopic-tagged questions at all (the common case — every
+    ordinary course/module quiz, none of which use the question-bank-
+    engine's syllabus taxonomy) collapses to a single "General" group,
+    which is exactly the old flat-random behaviour. Nothing changes
+    for any quiz that predates this."""
+    if not candidates or count <= 0:
+        return []
+    count = min(count, len(candidates))
+
+    groups: dict[str, list] = {}
+    for q in candidates:
+        topics = list(q.syllabus_topics.all())
+        key = topics[0].name if topics else "General"
+        groups.setdefault(key, []).append(q)
+
+    if len(groups) == 1:
+        # No real stratification to do — skip the apportionment
+        # machinery entirely rather than run it for a single group.
+        candidates = list(candidates)
+        random.shuffle(candidates)
+        return candidates[:count]
+
+    total = len(candidates)
+    exact_shares = {key: count * len(qs) / total for key, qs in groups.items()}
+    allocation = {key: int(share) for key, share in exact_shares.items()}
+    remaining = count - sum(allocation.values())
+    by_remainder = sorted(groups.keys(), key=lambda k: exact_shares[k] - allocation[k], reverse=True)
+    for key in by_remainder[:remaining]:
+        allocation[key] += 1
+
+    selected = []
+    for key, qs in groups.items():
+        pool = list(qs)
+        random.shuffle(pool)
+        selected.extend(pool[: allocation[key]])
+    random.shuffle(selected)
+    return selected
+
+
 def _build_question_snapshot(quiz: Quiz) -> list[dict]:
-    pool = quiz.bank.questions.filter(is_active=True).prefetch_related("choices")
+    pool = quiz.bank.questions.filter(is_active=True).prefetch_related("choices", "syllabus_topics")
     if quiz.topic_filter.exists():
         pool = pool.filter(topics__in=quiz.topic_filter.all()).distinct()
     if quiz.syllabus_topic_filter.exists():
         pool = pool.filter(syllabus_topics__in=quiz.syllabus_topic_filter.all()).distinct()
 
     candidates = [q for q in pool if q.is_publishable]
-    random.shuffle(candidates)
-    selected = candidates[: quiz.question_count]
+    selected = stratified_sample_by_syllabus_topic(candidates, quiz.question_count)
 
     snapshot = []
     for q in selected:

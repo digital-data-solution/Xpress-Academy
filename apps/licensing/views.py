@@ -15,6 +15,7 @@ from .diagnostics import (
     start_diagnostic_attempt,
 )
 from .models import DiagnosticAttempt, DiagnosticMockTest, Institution, InstitutionalLicense
+from .ranking import rank_by_score
 
 
 def _get_test(test_slug):
@@ -180,6 +181,16 @@ def school_dashboard(request, institution_slug):
             "quiz_attempts": len(scores),
         })
     rows.sort(key=lambda r: -r["avg_progress"])
+
+    # Cohort ranking (build spec §C) — by quiz performance specifically,
+    # not progress: progress just means "how far in," quiz score is
+    # what a proprietor actually wants to show as "who's doing well."
+    # Only students with at least one submitted attempt get a rank.
+    scored_rows_for_ranking = [r for r in rows if r["avg_quiz_score"] is not None]
+    for r, rank in rank_by_score(scored_rows_for_ranking, lambda r: r["avg_quiz_score"]):
+        r["quiz_rank"] = rank
+    for r in rows:
+        r.setdefault("quiz_rank", None)
 
     total_seats = sum(lic.seats for lic in licenses)
     seats_used = sum(lic.seats_used for lic in licenses)

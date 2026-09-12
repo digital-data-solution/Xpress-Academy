@@ -13,6 +13,8 @@ import random
 from django.db import transaction
 from django.utils import timezone
 
+from apps.assessment.services import stratified_sample_by_syllabus_topic
+
 from .models import DiagnosticAnswer, DiagnosticAttempt, DiagnosticMockTest
 
 
@@ -22,8 +24,11 @@ def _build_diagnostic_snapshot(test: DiagnosticMockTest) -> list[dict]:
         pool = pool.filter(syllabus_topics__in=test.syllabus_topic_filter.all()).distinct()
 
     candidates = [q for q in pool if q.is_publishable]
-    random.shuffle(candidates)
-    selected = candidates[: test.question_count]
+    # Same real-syllabus-weighting reasoning as the real quiz engine —
+    # see stratified_sample_by_syllabus_topic's own docstring. A
+    # diagnostic is the very first thing a prospect sees; it should
+    # look like a real JAMB paper's balance, not a lucky/unlucky draw.
+    selected = stratified_sample_by_syllabus_topic(candidates, test.question_count)
 
     snapshot = []
     for q in selected:

@@ -281,6 +281,85 @@ class TestQuestionPoolFiltering:
 
 
 @pytest.mark.django_db
+class TestStratifiedSampling:
+    """Question-bank-engine build spec §C: a mock's topic mix should
+    reflect the real syllabus's own weighting, not a lucky/unlucky flat
+    draw. stratified_sample_by_syllabus_topic is the shared function
+    behind both _build_question_snapshot and licensing.diagnostics
+    ._build_diagnostic_snapshot."""
+
+    def test_allocates_proportionally_to_group_size(self, bank):
+        from apps.assessment.services import stratified_sample_by_syllabus_topic
+
+        exam = SourceExam.objects.create(code="jamb", name="JAMB UTME")
+        big = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Big Topic")
+        small = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Small Topic")
+
+        big_questions = []
+        for i in range(39):
+            q = make_mcq(bank, correct_text=f"Big {i}")
+            q.syllabus_topics.set([big])
+            big_questions.append(q)
+        small_questions = []
+        for i in range(11):
+            q = make_mcq(bank, correct_text=f"Small {i}")
+            q.syllabus_topics.set([small])
+            small_questions.append(q)
+
+        all_questions = list(Question.objects.filter(bank=bank).prefetch_related("syllabus_topics"))
+        selected = stratified_sample_by_syllabus_topic(all_questions, 20)
+
+        assert len(selected) == 20
+        big_ids = {q.id for q in big_questions}
+        small_ids = {q.id for q in small_questions}
+        picked_big = sum(1 for q in selected if q.id in big_ids)
+        picked_small = sum(1 for q in selected if q.id in small_ids)
+        # 39:11 of 50 total, scaled to 20 -> 15.6:4.4 -> 16:4 by
+        # largest-remainder. Never a flat-random freak draw like 20:0.
+        assert picked_big == 16
+        assert picked_small == 4
+
+    def test_never_exceeds_available_candidates(self, bank):
+        from apps.assessment.services import stratified_sample_by_syllabus_topic
+
+        make_mcq(bank, correct_text="Only one")
+        selected = stratified_sample_by_syllabus_topic(
+            list(Question.objects.filter(bank=bank)), 50,
+        )
+        assert len(selected) == 1
+
+    def test_no_syllabus_topics_at_all_still_returns_exactly_count(self, bank):
+        """Backward compatibility: an ordinary course/module quiz with
+        no SyllabusTopic tagging at all must behave exactly like the
+        old flat-random selection — single "General" bucket."""
+        from apps.assessment.services import stratified_sample_by_syllabus_topic
+
+        for i in range(10):
+            make_mcq(bank, correct_text=f"Plain {i}")
+        selected = stratified_sample_by_syllabus_topic(
+            list(Question.objects.filter(bank=bank).prefetch_related("syllabus_topics")), 5,
+        )
+        assert len(selected) == 5
+
+    def test_real_quiz_snapshot_respects_topic_proportions(self, bank, enrollment):
+        """Integration check through the actual quiz-delivery path, not
+        just the pure function in isolation."""
+        exam = SourceExam.objects.create(code="jamb", name="JAMB UTME")
+        big = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Big")
+        small = SyllabusTopic.objects.create(source_exam=exam, subject="Biology", name="Small")
+        for i in range(16):
+            make_mcq(bank, correct_text=f"Big {i}").syllabus_topics.set([big])
+        for i in range(4):
+            make_mcq(bank, correct_text=f"Small {i}").syllabus_topics.set([small])
+
+        quiz = Quiz.objects.create(
+            scope=Quiz.Scope.FINAL, course=enrollment.course, title="Weighted", bank=bank, question_count=10,
+        )
+        attempt = start_attempt(enrollment, quiz)
+        assert len(attempt.question_snapshot) == 10  # 16:4 of 20, scaled to 10 -> exactly 8:2
+
+
+@pytest.mark.django_db
 class TestCSVImport:
     def test_valid_csv_creates_questions(self, bank):
         csv_content = (

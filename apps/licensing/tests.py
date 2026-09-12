@@ -24,7 +24,30 @@ from .diagnostics import (
     start_diagnostic_attempt,
 )
 from .models import DiagnosticAttempt, DiagnosticMockTest, Institution, InstitutionalLicense
+from .ranking import rank_by_score
 from .services import bulk_enroll_students_from_csv
+
+
+class TestRankByScore:
+    """Pure-function coverage for the shared ranking helper — direct
+    and precise, unlike asserting on rendered PDF bytes."""
+
+    def test_standard_competition_ranking_with_a_tie(self):
+        items = [("Chidi", 0), ("Ada", 100), ("Bayo", 100)]
+        ranked = rank_by_score(items, lambda x: x[1])
+        assert [(name, rank) for (name, _score), rank in ranked] == [
+            ("Ada", 1), ("Bayo", 1), ("Chidi", 3),
+        ]
+
+    def test_no_ties_is_plain_sequential_ranking(self):
+        items = [("C", 10), ("A", 30), ("B", 20)]
+        ranked = rank_by_score(items, lambda x: x[1])
+        assert [(name, rank) for (name, _score), rank in ranked] == [
+            ("A", 1), ("B", 2), ("C", 3),
+        ]
+
+    def test_empty_input(self):
+        assert rank_by_score([], lambda x: x) == []
 
 
 @pytest.fixture
@@ -359,6 +382,50 @@ class TestSchoolDashboard:
         rows_by_email = {r["user"].email: r for r in resp.context["rows"]}
         assert rows_by_email["ada@example.com"]["avg_quiz_score"] == 100
         assert rows_by_email["bayo@example.com"]["avg_quiz_score"] is None  # no attempts yet — not a crash
+
+    def test_quiz_rank_uses_standard_competition_ranking(self, institution, course, proprietor):
+        """Build spec §C's cohort ranking. A tied pair must share a
+        rank (1, 2, 2, 4) rather than being silently split apart by
+        list order (which would falsely imply one beat the other), and
+        a student with no attempts at all must never get a rank."""
+        lic = InstitutionalLicense.objects.create(
+            institution=institution, seats=3, status=InstitutionalLicense.Status.ACTIVE,
+            term_starts_at=timezone.now(), term_ends_at=timezone.now() + timezone.timedelta(days=90),
+        )
+        lic.courses.set([course])
+        with patch("apps.engagement.services.ResendGateway.send"):
+            bulk_enroll_students_from_csv(
+                lic, csv_file("email\nada@example.com\nbayo@example.com\nchidi@example.com\n"),
+            )
+
+        from apps.assessment.models import Choice, Question, QuestionBank, Quiz
+        from apps.assessment.services import finalize_attempt, save_answer, start_attempt
+
+        bank = QuestionBank.objects.create(organization=institution.organization, name="Rank Bank")
+        q = Question.objects.create(bank=bank, type=Question.Type.MCQ, stem="Q", explanation="")
+        right = Choice.objects.create(question=q, text="Right", is_correct=True, order=1)
+        wrong = Choice.objects.create(question=q, text="Wrong", is_correct=False, order=2)
+        quiz = Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, title="Final", bank=bank, question_count=1)
+
+        # Ada and Bayo both score 100% (tie for #1); Chidi scores 0%
+        # (#3, not #2 — standard competition ranking skips the number
+        # the tied pair would have pushed someone into).
+        for email, choice_id in [
+            ("ada@example.com", right.id), ("bayo@example.com", right.id), ("chidi@example.com", wrong.id),
+        ]:
+            user = User.objects.get(email=email)
+            enrollment = Enrollment.objects.get(user=user, course=course)
+            attempt = start_attempt(enrollment, quiz)
+            save_answer(attempt, q.id, [choice_id])
+            finalize_attempt(attempt)
+
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:school_dashboard", kwargs={"institution_slug": institution.slug}))
+        ranks = {r["user"].email: r["quiz_rank"] for r in resp.context["rows"]}
+        assert ranks["ada@example.com"] == 1
+        assert ranks["bayo@example.com"] == 1
+        assert ranks["chidi@example.com"] == 3
 
 
 @pytest.fixture
