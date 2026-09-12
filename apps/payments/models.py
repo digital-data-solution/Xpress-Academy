@@ -111,14 +111,25 @@ class Payment(TimeStampedModel):
         # already complete — course access itself was never gated.
         COURSE_ACCESS = "COURSE_ACCESS", "Course access"
         CERTIFICATE = "CERTIFICATE", "Certificate"
+        # Institutional licensing (question-bank-engine build spec §B).
+        # No course at all — a licence can cover several courses at
+        # once (InstitutionalLicense.courses) — see institutional_license
+        # below and grant_access()'s third branch.
+        INSTITUTIONAL_LICENSE = "INSTITUTIONAL_LICENSE", "Institutional licence"
 
     # PROTECT on user/course — same "never lose payment history"
     # discipline as Enrollment. A Payment is the only record of what
-    # someone actually paid, kept or not.
+    # someone actually paid, kept or not. course is nullable ONLY for
+    # purpose=INSTITUTIONAL_LICENSE (see clean() below) — every other
+    # purpose still requires it, unchanged.
     user = models.ForeignKey("accounts.User", on_delete=models.PROTECT, related_name="payments")
-    course = models.ForeignKey(Course, on_delete=models.PROTECT, related_name="payments")
+    course = models.ForeignKey(Course, on_delete=models.PROTECT, related_name="payments", null=True, blank=True)
     cohort = models.ForeignKey(
         "enrollment.Cohort", on_delete=models.PROTECT, related_name="payments", null=True, blank=True
+    )
+    institutional_license = models.ForeignKey(
+        "licensing.InstitutionalLicense", on_delete=models.PROTECT, related_name="payments",
+        null=True, blank=True,
     )
 
     provider = models.CharField(max_length=20, default="PAYSTACK")
@@ -126,7 +137,7 @@ class Payment(TimeStampedModel):
     amount_kobo = models.PositiveIntegerField()
     currency = models.CharField(max_length=3, default="NGN")
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
-    purpose = models.CharField(max_length=20, choices=Purpose.choices, default=Purpose.COURSE_ACCESS)
+    purpose = models.CharField(max_length=30, choices=Purpose.choices, default=Purpose.COURSE_ACCESS)
 
     coupon = models.ForeignKey(Coupon, on_delete=models.PROTECT, related_name="payments", null=True, blank=True)
     partner = models.ForeignKey(
@@ -167,6 +178,25 @@ class Payment(TimeStampedModel):
 
     def __str__(self):
         return f"{self.reference} — {self.user.email} — {self.status}"
+
+    def clean(self):
+        # Not enforced at the DB level (services.py's own
+        # initialize_payment/initialize_license_payment are the real
+        # gatekeepers — see grant_access's branch-per-purpose
+        # discipline) — this just catches a wrong admin edit or a
+        # future bug in either init path early, in the same way
+        # Quiz.clean()/InstitutionalLicense.clean() already do for
+        # their own exactly-one-of invariants.
+        if self.purpose == self.Purpose.INSTITUTIONAL_LICENSE:
+            if self.course_id:
+                raise ValidationError({"course": "Must be blank for an institutional-licence payment."})
+            if not self.institutional_license_id:
+                raise ValidationError({"institutional_license": "Required for an institutional-licence payment."})
+        else:
+            if not self.course_id:
+                raise ValidationError({"course": "Required for this payment purpose."})
+            if self.institutional_license_id:
+                raise ValidationError({"institutional_license": "Only set for an institutional-licence payment."})
 
 
 class ReconciliationFlag(TimeStampedModel):

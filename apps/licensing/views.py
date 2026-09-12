@@ -1,5 +1,6 @@
 import json
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -194,4 +195,48 @@ def school_dashboard(request, institution_slug):
         "seats_used": seats_used,
         "cohort_avg_progress": cohort_avg_progress,
         "cohort_avg_score": cohort_avg_score,
+    })
+
+
+@login_required
+def pay_license_view(request, license_id):
+    """Where a proprietor actually pays for a quoted licence — staff
+    creates the Institution + a PENDING InstitutionalLicense (seats,
+    courses, term, amount_kobo) via admin first; this is the one page
+    a non-staff proprietor needs to complete the sale themselves,
+    same self-serve-checkout shape as every other purchase on this
+    platform (apps.payments.views.checkout). Same access control as
+    school_dashboard: only that licence's own proprietor, or staff."""
+    license = get_object_or_404(InstitutionalLicense, pk=license_id)
+    institution = license.institution
+    if institution.proprietor_id != request.user.id and not request.user.is_staff:
+        raise Http404("No licence matches the given query.")
+
+    if license.status != InstitutionalLicense.Status.PENDING:
+        messages.info(request, "This licence isn't awaiting payment.")
+        return redirect("licensing:school_dashboard", institution_slug=institution.slug)
+
+    if not license.amount_kobo:
+        return render(request, "licensing/pay_license.html", {
+            "license": license, "institution": institution,
+            "error": "This licence doesn't have a price set yet — contact support.",
+        })
+
+    amount_ngn = license.amount_kobo // 100
+
+    if request.method == "POST":
+        from apps.payments.services import PaymentInitError, initialize_license_payment
+
+        try:
+            _payment, authorization_url = initialize_license_payment(
+                user=request.user, institutional_license=license,
+            )
+        except PaymentInitError as exc:
+            return render(request, "licensing/pay_license.html", {
+                "license": license, "institution": institution, "amount_ngn": amount_ngn, "error": str(exc),
+            })
+        return redirect(authorization_url)
+
+    return render(request, "licensing/pay_license.html", {
+        "license": license, "institution": institution, "amount_ngn": amount_ngn,
     })

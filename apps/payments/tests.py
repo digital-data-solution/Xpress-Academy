@@ -22,6 +22,7 @@ from .services import (
     PaymentInitError,
     compute_amount_kobo,
     grant_access,
+    initialize_license_payment,
     initialize_payment,
     reconcile_pending_payments,
     sweep_paystack_transactions,
@@ -284,6 +285,116 @@ class TestGrantAccessIdempotency:
         assert Payment.objects.get(pk=payment.pk).status == Payment.Status.SUCCESS
 
 
+@pytest.fixture
+def proprietor():
+    return User.objects.create_user(email="proprietor@example.com", password="testpass123")
+
+
+@pytest.fixture
+def pending_license(org, course, proprietor):
+    from apps.licensing.models import Institution, InstitutionalLicense
+
+    institution = Institution.objects.create(organization=org, name="Test Academy", proprietor=proprietor)
+    license = InstitutionalLicense.objects.create(
+        institution=institution, seats=20, status=InstitutionalLicense.Status.PENDING,
+        term_starts_at=timezone.now(), term_ends_at=timezone.now() + timezone.timedelta(days=90),
+        amount_kobo=500_000_00,
+    )
+    license.courses.set([course])
+    return license
+
+
+@pytest.mark.django_db
+class TestInstitutionalLicensePayment:
+    """Question-bank-engine build spec §B's Paystack invoicing piece —
+    same verify-on-return discipline as course purchases, deliberately
+    NOT a new call to the gateway (still only initialize_transaction/
+    verify_transaction, per the payments addendum's "no requests.post
+    to Paystack anywhere else" rule)."""
+
+    def test_includes_callback_url_and_metadata(self, proprietor, pending_license):
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            initialize_license_payment(user=proprietor, institutional_license=pending_license)
+
+        _args, kwargs = mock_init.call_args
+        assert kwargs["callback_url"].endswith("/checkout/return/")
+        assert kwargs["metadata"]["product"] == "xpress_academy"
+        assert kwargs["metadata"]["institutional_license_id"] == pending_license.id
+        assert kwargs["amount_kobo"] == pending_license.amount_kobo
+
+    def test_reference_uses_xda_prefix_for_reconciliation(self, proprietor, pending_license):
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
+        assert payment.reference.startswith("XDA-")
+
+    def test_refuses_non_pending_license(self, proprietor, pending_license):
+        pending_license.status = pending_license.Status.ACTIVE
+        pending_license.save(update_fields=["status"])
+        with pytest.raises(PaymentInitError):
+            initialize_license_payment(user=proprietor, institutional_license=pending_license)
+
+    def test_refuses_unquoted_license(self, proprietor, pending_license):
+        pending_license.amount_kobo = None
+        pending_license.save(update_fields=["amount_kobo"])
+        with pytest.raises(PaymentInitError):
+            initialize_license_payment(user=proprietor, institutional_license=pending_license)
+
+    def test_paystack_failure_marks_payment_failed_not_lost(self, proprietor, pending_license):
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.side_effect = PaystackError("simulated network failure")
+            with pytest.raises(PaymentInitError):
+                initialize_license_payment(user=proprietor, institutional_license=pending_license)
+        payment = Payment.objects.get(institutional_license=pending_license)
+        assert payment.status == Payment.Status.FAILED
+
+    def test_valid_success_activates_the_license(self, proprietor, pending_license):
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
+
+        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
+            result_payment, error = verify_and_grant(payment.reference)
+
+        assert error is None
+        assert result_payment.status == Payment.Status.SUCCESS
+        pending_license.refresh_from_db()
+        assert pending_license.status == pending_license.Status.ACTIVE
+        assert pending_license.paid_at is not None
+
+    def test_grant_access_institutional_branch_is_idempotent(self, proprietor, pending_license):
+        from .services import generate_license_reference
+
+        payment = Payment.objects.create(
+            user=proprietor, institutional_license=pending_license,
+            reference=generate_license_reference(pending_license, proprietor),
+            amount_kobo=pending_license.amount_kobo, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
+        )
+        verify_data = verify_response(reference=payment.reference, amount=payment.amount_kobo)["data"]
+
+        first = grant_access(payment, verify_data)
+        second = grant_access(payment, verify_data)  # must not error or double-write
+
+        assert first is None
+        assert second is None
+        pending_license.refresh_from_db()
+        assert pending_license.status == pending_license.Status.ACTIVE
+
+    def test_course_based_payment_unaffected_by_null_course_support(self, user, course):
+        """Regression check: making Payment.course nullable must not
+        change behaviour for the ordinary, still-required-course
+        purposes."""
+        payment = make_payment(user, course)
+        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
+            result_payment, error = verify_and_grant(payment.reference)
+        assert error is None
+        assert result_payment.course_id == course.id
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+
+
 @pytest.mark.django_db
 class TestReconciliation:
     def test_stale_pending_that_succeeded_is_picked_up_and_granted(self, user, course):
@@ -393,6 +504,40 @@ class TestRefund:
         payment.refresh_from_db()
         assert payment.status == Payment.Status.REFUNDED
         assert payment.refunded_at is not None
+
+
+@pytest.mark.django_db
+class TestPaymentCleanInvariant:
+    """Payment.clean()'s exactly-one-of-course-or-institutional_license
+    check — admin-form-only (services.py's init paths are the real
+    gatekeepers), but worth its own coverage since it's the one place
+    that would catch a future bug in either path."""
+
+    def test_institutional_purpose_rejects_a_course(self, user, course, pending_license):
+        payment = Payment(
+            user=user, course=course, institutional_license=pending_license,
+            reference="XDA-bad-1", amount_kobo=1000, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
+        )
+        with pytest.raises(Exception):
+            payment.full_clean()
+
+    def test_course_purpose_requires_a_course(self, user):
+        payment = Payment(
+            user=user, course=None, reference="XDA-bad-2", amount_kobo=1000,
+            purpose=Payment.Purpose.COURSE_ACCESS,
+        )
+        with pytest.raises(Exception):
+            payment.full_clean()
+
+    def test_valid_institutional_payment_passes_clean(self, proprietor, pending_license):
+        from .services import generate_license_reference
+
+        payment = Payment(
+            user=proprietor, institutional_license=pending_license,
+            reference=generate_license_reference(pending_license, proprietor),
+            amount_kobo=1000, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
+        )
+        payment.full_clean()  # must not raise
 
 
 @pytest.mark.django_db

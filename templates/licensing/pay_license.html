@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Pay — {{ institution.name }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>{{ institution.name }} — Institutional Licence</h1>
+
+  <div class="card">
+    <p><b>Seats:</b> {{ license.seats }}</p>
+    <p><b>Courses:</b> {% for c in license.courses.all %}{{ c.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p><b>Term:</b> {{ license.term_starts_at|date:"j M Y" }} – {{ license.term_ends_at|date:"j M Y" }}</p>
+    {% if amount_ngn %}
+      <p style="font-size:24px; font-weight:700;">₦{{ amount_ngn }}</p>
+    {% endif %}
+
+    {% if error %}
+      <p style="color:#b91c1c;">{{ error }}</p>
+    {% elif amount_ngn %}
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Pay now</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

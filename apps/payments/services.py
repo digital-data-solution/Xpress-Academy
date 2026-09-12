@@ -63,6 +63,15 @@ def generate_reference(course, user) -> str:
     return f"XDA-{course.id}-{user.id}-{uuid.uuid4().hex[:12]}"
 
 
+def generate_license_reference(institutional_license, user) -> str:
+    # Same XDA- prefix, deliberately -- sweep_paystack_transactions's
+    # is_academy check keys off this prefix (or metadata.product,
+    # which initialize_license_payment also sets), so an institutional
+    # payment gets the exact same reconciliation safety net as a
+    # course purchase for free, with zero changes to that function.
+    return f"XDA-LIC-{institutional_license.id}-{user.id}-{uuid.uuid4().hex[:12]}"
+
+
 def validate_coupon(coupon: Coupon, course) -> None:
     """Raises CouponInvalid with a human-readable reason, or returns None."""
     if not coupon.is_active:
@@ -160,6 +169,57 @@ def initialize_payment(
 
     authorization_url = response["data"]["authorization_url"]
     return payment, authorization_url
+
+
+def initialize_license_payment(*, user, institutional_license) -> tuple[Payment, str]:
+    """Institutional-licence equivalent of initialize_payment — much
+    simpler (no coupon/partner/attribution, no per-course price
+    computation): the amount is whatever staff already quoted onto
+    InstitutionalLicense.amount_kobo, since institutional pricing is
+    negotiated per deal, not a fixed SKU. Same "Payment exists before
+    the Paystack call, never the reverse" discipline, same single
+    global callback_url as every other payment (checkout_return
+    branches on payment.purpose, same as it already does for
+    CERTIFICATE)."""
+    from apps.licensing.models import InstitutionalLicense  # local import — avoids a load-order cycle
+
+    if institutional_license.status != InstitutionalLicense.Status.PENDING:
+        raise PaymentInitError("This licence isn't awaiting payment.")
+    if not institutional_license.amount_kobo:
+        raise PaymentInitError("This licence doesn't have a price set yet — contact support.")
+
+    amount_kobo = max(institutional_license.amount_kobo, MIN_CHARGE_KOBO)
+    reference = generate_license_reference(institutional_license, user)
+
+    payment = Payment.objects.create(
+        user=user, course=None, institutional_license=institutional_license,
+        reference=reference, amount_kobo=amount_kobo, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
+    )
+
+    callback_url = f"{_site_url()}/checkout/return/"
+    metadata = {
+        "product": PRODUCT_TAG,
+        "institutional_license_id": institutional_license.id,
+        "institution_id": institutional_license.institution_id,
+        "user_id": user.id,
+        "purpose": Payment.Purpose.INSTITUTIONAL_LICENSE,
+    }
+
+    try:
+        response = PaystackGateway().initialize_transaction(
+            email=user.email, amount_kobo=amount_kobo, reference=reference,
+            callback_url=callback_url, metadata=metadata,
+        )
+    except PaystackError as exc:
+        payment.status = Payment.Status.FAILED
+        payment.raw_init_response = {"error": str(exc)}
+        payment.save(update_fields=["status", "raw_init_response", "updated_at"])
+        raise PaymentInitError(str(exc)) from exc
+
+    payment.raw_init_response = response
+    payment.save(update_fields=["raw_init_response", "updated_at"])
+
+    return payment, response["data"]["authorization_url"]
 
 
 def _site_url():
@@ -272,8 +332,16 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment | None:
       which issue_certificate() otherwise withholds for that pricing
       model. Returns the Enrollment either way so callers have
       somewhere to redirect to.
+    - INSTITUTIONAL_LICENSE: no course, no Enrollment at all — see
+      _grant_institutional_license below. Peeled off first, before the
+      idempotent-SUCCESS check right below, since that check touches
+      payment.course unconditionally and this purpose never has one.
     """
     payment = Payment.objects.select_for_update().get(pk=payment.pk)
+
+    if payment.purpose == Payment.Purpose.INSTITUTIONAL_LICENSE:
+        return _grant_institutional_license(payment, verify_data)
+
     if payment.status == Payment.Status.SUCCESS:
         return payment.course.enrollments.get(user=payment.user)  # already done, no side effects
 
@@ -332,6 +400,34 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment | None:
     transaction.on_commit(_send_welcome)
 
     return enrollment
+
+
+def _grant_institutional_license(payment: Payment, verify_data: dict) -> None:
+    """The INSTITUTIONAL_LICENSE branch of grant_access — marks the
+    licence ACTIVE, same idempotency contract as the rest of
+    grant_access (a licence already ACTIVE via this same payment is a
+    no-op) but self-contained since there's no Enrollment to return or
+    course-touching code shared with the other two purposes. Returns
+    None — checkout_return redirects to the school dashboard instead,
+    where the now-ACTIVE licence itself is the confirmation."""
+    if payment.status == Payment.Status.SUCCESS:
+        return None
+
+    payment.status = Payment.Status.SUCCESS
+    payment.paid_at = timezone.now()
+    payment.raw_verify_response = verify_data
+    payment.save(update_fields=["status", "paid_at", "raw_verify_response", "updated_at"])
+
+    license = payment.institutional_license
+    license.status = license.Status.ACTIVE
+    license.paid_at = timezone.now()
+    license.save(update_fields=["status", "paid_at"])
+
+    logger.info(
+        "grant_access: institutional licence %s (%s) activated via payment %s",
+        license.pk, license.institution.name, payment.reference,
+    )
+    return None
 
 
 # --- Reconciliation (the safety net — addendum §2.4) -------------------

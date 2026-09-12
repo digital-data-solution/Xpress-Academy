@@ -45,11 +45,23 @@ class InstitutionalLicenseAdmin(admin.ModelAdmin):
     search_fields = ["institution__name"]
     filter_horizontal = ["courses"]
     change_form_template = "admin/licensing/institutionallicense/change_form.html"
+    readonly_fields = ["payment_link_display"]
 
     def seats_used_display(self, obj):
         return f"{obj.seats_used} / {obj.seats}"
 
     seats_used_display.short_description = "Seats used"
+
+    def payment_link_display(self, obj):
+        if not obj.pk:
+            return "(save first)"
+        if obj.status != obj.Status.PENDING:
+            return f"({obj.get_status_display()} — not awaiting payment)"
+        if not obj.amount_kobo:
+            return "(set amount_kobo first)"
+        return f"/licence/{obj.pk}/pay/"
+
+    payment_link_display.short_description = "Proprietor payment link"
 
     def get_urls(self):
         urls = super().get_urls()

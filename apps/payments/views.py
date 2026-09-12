@@ -179,5 +179,11 @@ def checkout_return(request):
             return redirect("certificates:mine", serial=certificate.serial)
         return redirect("enrollment:curriculum", course_slug=payment.course.slug)
 
+    if payment.purpose == Payment.Purpose.INSTITUTIONAL_LICENSE:
+        messages.success(request, "Payment received — the licence is now active.")
+        return redirect(
+            "licensing:school_dashboard", institution_slug=payment.institutional_license.institution.slug
+        )
+
     messages.success(request, f"You're enrolled in {payment.course.title}.")
     return redirect("enrollment:curriculum", course_slug=payment.course.slug)

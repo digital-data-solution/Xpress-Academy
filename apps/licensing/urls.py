@@ -6,6 +6,7 @@ app_name = "licensing"
 
 urlpatterns = [
     path("school/<slug:institution_slug>/", views.school_dashboard, name="school_dashboard"),
+    path("licence/<int:license_id>/pay/", views.pay_license_view, name="pay_license"),
     path("diagnostic/<slug:test_slug>/", views.diagnostic_intro, name="diagnostic_intro"),
     path(
         "diagnostic/<slug:test_slug>/attempt/<uuid:attempt_uuid>/",

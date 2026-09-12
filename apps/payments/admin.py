@@ -29,10 +29,10 @@ class CouponAdmin(admin.ModelAdmin):
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ["reference", "user", "course", "amount_kobo", "status", "initialized_at", "paid_at"]
-    list_filter = ["status", "provider"]
-    search_fields = ["reference", "user__email", "course__title"]
-    autocomplete_fields = ["user", "course"]
+    list_display = ["reference", "user", "course", "purpose", "amount_kobo", "status", "initialized_at", "paid_at"]
+    list_filter = ["status", "purpose", "provider"]
+    search_fields = ["reference", "user__email", "course__title", "institutional_license__institution__name"]
+    autocomplete_fields = ["user", "course", "institutional_license"]
     readonly_fields = [
         "reference", "amount_kobo", "currency", "initialized_at", "paid_at",
         "raw_init_response", "raw_verify_response",

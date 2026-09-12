@@ -359,3 +359,99 @@ class TestSchoolDashboard:
         rows_by_email = {r["user"].email: r for r in resp.context["rows"]}
         assert rows_by_email["ada@example.com"]["avg_quiz_score"] == 100
         assert rows_by_email["bayo@example.com"]["avg_quiz_score"] is None  # no attempts yet — not a crash
+
+
+@pytest.fixture
+def pending_license(institution, course):
+    lic = InstitutionalLicense.objects.create(
+        institution=institution, seats=20, status=InstitutionalLicense.Status.PENDING,
+        term_starts_at=timezone.now(), term_ends_at=timezone.now() + timezone.timedelta(days=90),
+        amount_kobo=500_000_00,
+    )
+    lic.courses.set([course])
+    return lic
+
+
+@pytest.mark.django_db
+class TestPayLicenseView:
+    """The proprietor-facing self-serve checkout page — same access
+    control shape as school_dashboard (only that licence's own
+    proprietor, or staff)."""
+
+    def test_requires_login(self, pending_license):
+        client = Client()
+        resp = client.get(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 302
+        assert "/account/login/" in resp.url
+
+    def test_stranger_gets_404(self, pending_license):
+        stranger = User.objects.create_user(email="stranger2@example.com", password="testpass123")
+        client = Client()
+        client.force_login(stranger)
+        resp = client.get(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 404
+
+    def test_proprietor_sees_the_pay_page(self, pending_license, proprietor):
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 200
+        assert resp.context["amount_ngn"] == 500_000
+
+    def test_posting_redirects_to_paystack(self, pending_license, proprietor):
+        client = Client()
+        client.force_login(proprietor)
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/xyz"}}
+            resp = client.post(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 302
+        assert resp.url == "https://paystack.test/pay/xyz"
+
+    def test_already_active_license_redirects_to_dashboard(self, pending_license, proprietor):
+        pending_license.status = InstitutionalLicense.Status.ACTIVE
+        pending_license.save(update_fields=["status"])
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 302
+        assert resp.url == reverse(
+            "licensing:school_dashboard", kwargs={"institution_slug": pending_license.institution.slug}
+        )
+
+    def test_unquoted_license_shows_error_not_a_pay_button(self, pending_license, proprietor):
+        pending_license.amount_kobo = None
+        pending_license.save(update_fields=["amount_kobo"])
+        client = Client()
+        client.force_login(proprietor)
+        resp = client.get(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
+        assert resp.status_code == 200
+        assert b"price set yet" in resp.content
+
+    def test_full_flow_ends_on_school_dashboard_with_active_license(self, pending_license, proprietor):
+        """checkout_return's new INSTITUTIONAL_LICENSE branch, exercised
+        through the real global return URL — not just grant_access
+        directly."""
+        from apps.payments.services import initialize_license_payment
+
+        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+            payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
+
+        client = Client()
+        client.force_login(proprietor)
+        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = {
+                "status": True,
+                "data": {
+                    "status": "success", "amount": payment.amount_kobo, "currency": "NGN",
+                    "reference": payment.reference, "metadata": {"product": "xpress_academy"},
+                },
+            }
+            resp = client.get(f"/checkout/return/?reference={payment.reference}", follow=True)
+
+        assert resp.status_code == 200
+        pending_license.refresh_from_db()
+        assert pending_license.status == InstitutionalLicense.Status.ACTIVE
+        assert resp.redirect_chain[-1][0] == reverse(
+            "licensing:school_dashboard", kwargs={"institution_slug": pending_license.institution.slug}
+        )
