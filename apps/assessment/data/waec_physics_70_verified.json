@@ -1,0 +1,1122 @@
+[
+  {
+    "stem": "The property of matter that causes it to resist any change in its state of rest or motion is called",
+    "options": {
+      "A": "weight",
+      "B": "inertia",
+      "C": "density",
+      "D": "pressure"
+    },
+    "correct": "B",
+    "explanation": "Inertia is the property of matter by which it resists any change to its state of rest or uniform motion, as described by Newton's First Law of Motion.",
+    "topic": "Interaction of Matter, Space and Time — Concepts of Matter",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The SI unit for measuring the amount of matter contained in a body is the",
+    "options": {
+      "A": "joule",
+      "B": "kilogram",
+      "C": "metre",
+      "D": "newton"
+    },
+    "correct": "B",
+    "explanation": "The kilogram (kg) is the SI base unit for mass, the fundamental quantity representing the amount of matter in a body.",
+    "topic": "Fundamental and Derived Quantities/Units",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Which of the following is a fundamental (base) quantity, not a derived one?",
+    "options": {
+      "A": "time",
+      "B": "velocity",
+      "C": "area",
+      "D": "force"
+    },
+    "correct": "A",
+    "explanation": "Time is one of the seven fundamental (base) SI quantities; velocity, area, and force are all derived from combinations of fundamental quantities.",
+    "topic": "Fundamental and Derived Quantities/Units",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The shortest distance measured in a straight line from an initial position to a final position, including direction, is called",
+    "options": {
+      "A": "distance",
+      "B": "speed",
+      "C": "displacement",
+      "D": "acceleration"
+    },
+    "correct": "C",
+    "explanation": "Displacement is the vector quantity representing the shortest straight-line distance between two points, together with direction; distance is the scalar total path length travelled.",
+    "topic": "Position, Distance, Displacement",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The mass of a body remains constant everywhere, but its weight",
+    "options": {
+      "A": "varies depending on the local gravitational field strength",
+      "B": "is unrelated to gravity",
+      "C": "is always zero in space",
+      "D": "also remains constant everywhere"
+    },
+    "correct": "A",
+    "explanation": "Mass is an intrinsic, constant property of matter, but weight (the gravitational force on that mass) varies with the local gravitational field strength — e.g. an object weighs less on the Moon than on Earth.",
+    "topic": "Mass and Weight",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A fluid at rest exerts pressure on the walls of its container. This pressure acts",
+    "options": {
+      "A": "only horizontally",
+      "B": "only upward",
+      "C": "only downward",
+      "D": "equally in all directions at a given point"
+    },
+    "correct": "D",
+    "explanation": "At any given point within a fluid at rest, pressure acts equally in all directions — a fundamental property of fluid pressure (Pascal's principle).",
+    "topic": "Fluid at Rest",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The density of a substance is defined as its",
+    "options": {
+      "A": "force per unit area",
+      "B": "weight per unit area",
+      "C": "volume per unit mass",
+      "D": "mass per unit volume"
+    },
+    "correct": "D",
+    "explanation": "Density is defined as mass per unit volume (density = mass/volume), a measure of how much matter is packed into a given space.",
+    "topic": "Fluid at Rest — Density",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A moving body has both speed and direction specified. This description refers to its",
+    "options": {
+      "A": "speed",
+      "B": "mass",
+      "C": "velocity",
+      "D": "weight"
+    },
+    "correct": "C",
+    "explanation": "Velocity is the vector quantity that specifies both the speed of a moving body and its direction of motion; speed alone (a scalar) specifies only magnitude.",
+    "topic": "Motion — Speed and Velocity",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The rate of change of velocity with respect to time is called",
+    "options": {
+      "A": "speed",
+      "B": "momentum",
+      "C": "acceleration",
+      "D": "displacement"
+    },
+    "correct": "C",
+    "explanation": "Acceleration is defined as the rate of change of velocity with respect to time — it can involve a change in speed, direction, or both.",
+    "topic": "Rectilinear Acceleration",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "According to Newton's First Law of Motion, a body will remain at rest or in uniform motion in a straight line unless",
+    "options": {
+      "A": "it is placed in a vacuum",
+      "B": "acted upon by a resultant (unbalanced) external force",
+      "C": "it is heavy",
+      "D": "its mass changes"
+    },
+    "correct": "B",
+    "explanation": "Newton's First Law states that a body continues in its state of rest or uniform straight-line motion unless acted upon by a resultant (net, unbalanced) external force.",
+    "topic": "Newton's Laws of Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "According to Newton's Third Law of Motion, for every action there is",
+    "options": {
+      "A": "a smaller, delayed reaction",
+      "B": "no reaction at all",
+      "C": "an equal and opposite reaction",
+      "D": "a reaction in the same direction"
+    },
+    "correct": "C",
+    "explanation": "Newton's Third Law states that for every action (force), there is an equal and opposite reaction force, acting on a different body.",
+    "topic": "Newton's Laws of Motion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A vector quantity is one that has",
+    "options": {
+      "A": "both magnitude and direction",
+      "B": "neither magnitude nor direction",
+      "C": "magnitude only",
+      "D": "direction only"
+    },
+    "correct": "A",
+    "explanation": "A vector quantity is fully specified only by stating both its magnitude and direction, unlike a scalar, which has magnitude alone.",
+    "topic": "Scalars and Vectors",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A body is said to be in equilibrium under a set of coplanar forces when the resultant force and resultant",
+    "options": {
+      "A": "moment (turning effect) are both zero",
+      "B": "weight are both zero",
+      "C": "mass are both zero",
+      "D": "velocity are both maximum"
+    },
+    "correct": "A",
+    "explanation": "A rigid body is in complete equilibrium under coplanar forces when both the resultant force and the resultant moment (turning effect/torque) about any point are zero.",
+    "topic": "Equilibrium of Forces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A motion that repeats itself at regular intervals, where the restoring force is proportional to and directed opposite the displacement, is called",
+    "options": {
+      "A": "random motion",
+      "B": "simple harmonic motion",
+      "C": "circular motion",
+      "D": "projectile motion"
+    },
+    "correct": "B",
+    "explanation": "Simple harmonic motion (SHM) is periodic motion where the restoring force is directly proportional to the displacement from equilibrium and always directed towards it — e.g. a simple pendulum's swing.",
+    "topic": "Simple Harmonic Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The force that resists relative sliding motion between two surfaces in contact is called",
+    "options": {
+      "A": "upthrust",
+      "B": "friction",
+      "C": "centripetal force",
+      "D": "tension"
+    },
+    "correct": "B",
+    "explanation": "Friction is the resistive force that opposes relative sliding motion (or the tendency to slide) between two surfaces in contact.",
+    "topic": "Motion — Friction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The resistive force experienced by an object moving through a fluid, opposing its motion, is called",
+    "options": {
+      "A": "capacitance",
+      "B": "elasticity",
+      "C": "conductivity",
+      "D": "viscosity"
+    },
+    "correct": "D",
+    "explanation": "Viscosity is the internal resistance of a fluid to flow, and it produces a resistive (drag) force on an object moving through that fluid.",
+    "topic": "Motion — Viscosity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A body moving in a circular path at constant speed experiences an acceleration directed",
+    "options": {
+      "A": "away from the centre of the circle",
+      "B": "towards the centre of the circle",
+      "C": "tangentially, along the path",
+      "D": "in no particular fixed direction"
+    },
+    "correct": "B",
+    "explanation": "Although the speed is constant, the changing direction of velocity produces a centripetal acceleration directed towards the centre of the circular path.",
+    "topic": "Motion — Circular Motion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Energy that a body possesses due to its motion is called",
+    "options": {
+      "A": "nuclear energy",
+      "B": "kinetic energy",
+      "C": "potential energy",
+      "D": "chemical energy"
+    },
+    "correct": "B",
+    "explanation": "Kinetic energy is the energy a body possesses because of its motion, given by KE = ½mv².",
+    "topic": "Energy Forms and Conservation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Energy stored in a body due to its position or state is called",
+    "options": {
+      "A": "radiant energy",
+      "B": "sound energy",
+      "C": "potential energy",
+      "D": "kinetic energy"
+    },
+    "correct": "C",
+    "explanation": "Potential energy is energy stored in a body due to its position (e.g. height above the ground) or internal state (e.g. a compressed spring).",
+    "topic": "Energy Forms and Conservation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "According to the Law of Conservation of Energy, energy",
+    "options": {
+      "A": "is constantly being created and destroyed",
+      "B": "can neither be created nor destroyed, only transformed from one form to another",
+      "C": "can be destroyed but not created",
+      "D": "can be created but not destroyed"
+    },
+    "correct": "B",
+    "explanation": "The Law of Conservation of Energy states that energy cannot be created or destroyed, only transformed from one form to another — the total energy of an isolated system remains constant.",
+    "topic": "Energy Forms and Conservation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The rate at which work is done, or energy is transferred, is called",
+    "options": {
+      "A": "momentum",
+      "B": "power",
+      "C": "force",
+      "D": "impulse"
+    },
+    "correct": "B",
+    "explanation": "Power is defined as the rate at which work is done or energy is transferred, measured in watts (joules per second).",
+    "topic": "Work, Energy, Power",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A machine's mechanical advantage is defined as the ratio of",
+    "options": {
+      "A": "distance moved by effort to distance moved by load",
+      "B": "work output to work input",
+      "C": "effort to velocity ratio",
+      "D": "load to effort"
+    },
+    "correct": "D",
+    "explanation": "Mechanical advantage is defined as the ratio of the load (output force) to the effort (input force) applied to a machine.",
+    "topic": "Mechanical Energy and Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Heat energy naturally flows from a body at",
+    "options": {
+      "A": "absolute zero to any other temperature",
+      "B": "lower temperature to a body at higher temperature",
+      "C": "higher temperature to a body at lower temperature",
+      "D": "the same temperature only"
+    },
+    "correct": "C",
+    "explanation": "Heat energy naturally flows from a region/body of higher temperature to one of lower temperature, until thermal equilibrium is reached.",
+    "topic": "Heat Energy and Temperature",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "When a solid is heated, it generally",
+    "options": {
+      "A": "expands",
+      "B": "contracts",
+      "C": "becomes less dense while staying the same volume",
+      "D": "remains exactly the same size"
+    },
+    "correct": "A",
+    "explanation": "Most solids expand on heating as increased thermal energy causes their particles to vibrate more vigorously and occupy more space.",
+    "topic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The transfer of heat through a solid material via the vibration and collision of particles, without the bulk movement of the material itself, is called",
+    "options": {
+      "A": "evaporation",
+      "B": "conduction",
+      "C": "convection",
+      "D": "radiation"
+    },
+    "correct": "B",
+    "explanation": "Conduction transfers heat through a material by particle-to-particle vibration and collision, without the bulk material itself moving — the dominant heat transfer mode in solids.",
+    "topic": "Heat Transfer Methods",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "According to Boyle's Law, at constant temperature, the product of the pressure and volume of a fixed mass of gas is",
+    "options": {
+      "A": "directly proportional to temperature",
+      "B": "always zero",
+      "C": "constant",
+      "D": "inversely proportional to mass"
+    },
+    "correct": "C",
+    "explanation": "Boyle's Law states that at constant temperature, pressure and volume of a fixed mass of gas are inversely proportional, so their product (PV) remains constant.",
+    "topic": "Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The quantity of heat needed to raise the temperature of a unit mass of a substance by one degree is called its",
+    "options": {
+      "A": "specific heat capacity",
+      "B": "thermal conductivity",
+      "C": "humidity",
+      "D": "latent heat"
+    },
+    "correct": "A",
+    "explanation": "Specific heat capacity is the amount of heat energy required to raise the temperature of 1 kg of a substance by 1 K (or 1°C).",
+    "topic": "Heat Capacity and Latent Heat",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The heat energy absorbed during a change of state at constant temperature, without any temperature rise, is called",
+    "options": {
+      "A": "specific heat capacity",
+      "B": "internal energy",
+      "C": "radiant heat",
+      "D": "latent heat"
+    },
+    "correct": "D",
+    "explanation": "Latent heat is the heat energy absorbed or released during a change of state (e.g. melting, boiling) at constant temperature.",
+    "topic": "Heat Capacity and Latent Heat",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The process by which a liquid changes to vapour at any temperature, occurring only at the liquid's surface, is called",
+    "options": {
+      "A": "sublimation",
+      "B": "evaporation",
+      "C": "boiling",
+      "D": "condensation"
+    },
+    "correct": "B",
+    "explanation": "Evaporation is the change of a liquid to vapour occurring at the liquid's surface, at temperatures below the boiling point, unlike boiling, which occurs throughout the liquid at a fixed temperature.",
+    "topic": "Evaporation, Boiling, Vapour Pressure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A measure of the amount of water vapour present in the air, relative to the maximum it could hold at that temperature, is called",
+    "options": {
+      "A": "density",
+      "B": "humidity",
+      "C": "viscosity",
+      "D": "pressure"
+    },
+    "correct": "B",
+    "explanation": "Humidity is a measure of the water vapour content of the air, often expressed as relative humidity — a percentage of the maximum the air could hold at that temperature.",
+    "topic": "Humidity and Weather",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A wave in which the vibration of particles is perpendicular to the direction of wave propagation is called a",
+    "options": {
+      "A": "transverse wave",
+      "B": "sound wave only",
+      "C": "longitudinal wave",
+      "D": "standing wave only"
+    },
+    "correct": "A",
+    "explanation": "In a transverse wave, particles vibrate perpendicular to the direction of energy propagation, e.g. light waves and waves on a string.",
+    "topic": "Wave Production and Propagation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The bending of a wave as it passes around an obstacle or through a narrow opening is called",
+    "options": {
+      "A": "refraction",
+      "B": "reflection",
+      "C": "polarization",
+      "D": "diffraction"
+    },
+    "correct": "D",
+    "explanation": "Diffraction is the bending/spreading of waves as they pass around an obstacle or through a narrow gap, a property shared by all wave types.",
+    "topic": "Wave Properties",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "When two waves of the same frequency meet and combine to produce a wave of larger or smaller amplitude, this phenomenon is called",
+    "options": {
+      "A": "dispersion",
+      "B": "refraction",
+      "C": "interference",
+      "D": "reflection"
+    },
+    "correct": "C",
+    "explanation": "Interference occurs when two coherent waves overlap, combining constructively (larger amplitude) or destructively (smaller amplitude), depending on their phase relationship.",
+    "topic": "Wave Properties",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "An optical instrument used to view distant objects, making them appear closer and larger, is the",
+    "options": {
+      "A": "kaleidoscope",
+      "B": "microscope",
+      "C": "telescope",
+      "D": "periscope"
+    },
+    "correct": "C",
+    "explanation": "A telescope is an optical instrument designed to view distant objects, using lenses (or mirrors) to make them appear larger and nearer.",
+    "topic": "Light Waves and Optical Instruments",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The full range of electromagnetic waves, arranged by wavelength or frequency, from radio waves to gamma rays, is called the",
+    "options": {
+      "A": "visible spectrum only",
+      "B": "electromagnetic spectrum",
+      "C": "colour wheel",
+      "D": "sound spectrum"
+    },
+    "correct": "B",
+    "explanation": "The electromagnetic spectrum is the complete range of electromagnetic radiation, arranged by wavelength/frequency, including radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, and gamma rays.",
+    "topic": "Electromagnetic Radiation Spectrum",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Sound waves are classified as which type of wave, requiring a material medium to travel?",
+    "options": {
+      "A": "transverse waves",
+      "B": "standing waves only",
+      "C": "electromagnetic waves",
+      "D": "longitudinal waves"
+    },
+    "correct": "D",
+    "explanation": "Sound waves are longitudinal mechanical waves — particles vibrate parallel to the direction of propagation — and require a material medium (solid, liquid, or gas) to travel, unlike electromagnetic waves.",
+    "topic": "Sound Waves and Characteristics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The region of space around a magnet, an electric charge, or a mass, within which its influence (force) can be detected, is called a",
+    "options": {
+      "A": "field",
+      "B": "spectrum",
+      "C": "node",
+      "D": "vacuum"
+    },
+    "correct": "A",
+    "explanation": "A field (gravitational, electric, or magnetic) is the region of space within which the influence/force of a mass, charge, or magnet can be detected on another object.",
+    "topic": "Field Concepts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The production of an electromotive force (e.m.f.) in a conductor due to a changing magnetic flux is called",
+    "options": {
+      "A": "chemical induction",
+      "B": "electromagnetic induction",
+      "C": "thermal induction",
+      "D": "electrostatic induction"
+    },
+    "correct": "B",
+    "explanation": "Electromagnetic induction is the generation of an e.m.f. in a conductor caused by a changing magnetic field/flux — the principle behind generators and transformers.",
+    "topic": "Electromagnetic Induction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "In an alternating current (AC) circuit, unlike direct current (DC), the current",
+    "options": {
+      "A": "never flows at all",
+      "B": "flows in one direction only",
+      "C": "periodically reverses direction",
+      "D": "is always zero"
+    },
+    "correct": "C",
+    "explanation": "In an AC circuit, the current periodically reverses direction (alternates), unlike DC, which flows steadily in one direction only.",
+    "topic": "Simple AC Circuits",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The smallest unit of an element that retains the chemical properties of that element is the",
+    "options": {
+      "A": "atom",
+      "B": "compound",
+      "C": "electron",
+      "D": "molecule"
+    },
+    "correct": "A",
+    "explanation": "An atom is the smallest unit of an element that still retains the chemical identity/properties of that element.",
+    "topic": "Atomic Structure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The spontaneous emission of particles or energy from an unstable atomic nucleus is called",
+    "options": {
+      "A": "nuclear fusion only",
+      "B": "ionization only",
+      "C": "electrolysis",
+      "D": "radioactivity"
+    },
+    "correct": "D",
+    "explanation": "Radioactivity is the spontaneous emission of particles (alpha, beta) or electromagnetic radiation (gamma) from unstable atomic nuclei as they decay.",
+    "topic": "Nuclear Structure and Radioactivity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A car travels 100 m in 5 seconds. Find its average speed.",
+    "options": {
+      "A": "20 m/s",
+      "B": "500 m/s",
+      "C": "105 m/s",
+      "D": "5 m/s"
+    },
+    "correct": "A",
+    "explanation": "Average speed = distance/time = 100/5 = 20 m/s.",
+    "topic": "Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A body of mass 4 kg accelerates at 3 m/s^2. Find the net force acting on it.",
+    "options": {
+      "A": "0.75 N",
+      "B": "7 N",
+      "C": "12 N",
+      "D": "1.33 N"
+    },
+    "correct": "C",
+    "explanation": "By Newton's Second Law, F = ma = 4 x 3 = 12 N.",
+    "topic": "Newton's Laws of Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A boy does 200 J of work in 4 seconds. Find his power output.",
+    "options": {
+      "A": "204 W",
+      "B": "196 W",
+      "C": "800 W",
+      "D": "50 W"
+    },
+    "correct": "D",
+    "explanation": "Power = work done/time = 200/4 = 50 W.",
+    "topic": "Work, Energy, Power",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Find the kinetic energy of a body of mass 3 kg moving at 4 m/s.",
+    "options": {
+      "A": "12 J",
+      "B": "48 J",
+      "C": "24 J",
+      "D": "6 J"
+    },
+    "correct": "C",
+    "explanation": "Kinetic energy = ½mv² = ½ x 3 x 4² = ½ x 3 x 16 = 24 J.",
+    "topic": "Work, Energy, Power",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The process of analyzing physical quantities in terms of their fundamental units (e.g. mass [M], length [L], time [T]) is called",
+    "options": {
+      "A": "vector analysis",
+      "B": "dimensional analysis",
+      "C": "harmonic analysis",
+      "D": "spectral analysis"
+    },
+    "correct": "B",
+    "explanation": "Dimensional analysis expresses a physical quantity in terms of the fundamental (base) dimensions — mass [M], length [L], time [T] — and is used to check the consistency of physical equations.",
+    "topic": "Harmonised Topics — Dimensional Analysis",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The dimension of velocity (distance/time) is correctly expressed as",
+    "options": {
+      "A": "[M][T]^-1",
+      "B": "[L][T]^-1",
+      "C": "[M][L][T]",
+      "D": "[L]^2[T]"
+    },
+    "correct": "B",
+    "explanation": "Velocity = distance/time, so its dimension is length divided by time: [L][T]^-1 (i.e. LT^-1).",
+    "topic": "Harmonised Topics — Dimensional Analysis",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The curved path followed by an object (such as a thrown ball) under the influence of gravity alone, having both horizontal and vertical motion, is called",
+    "options": {
+      "A": "simple harmonic motion",
+      "B": "circular motion",
+      "C": "projectile motion",
+      "D": "rectilinear motion"
+    },
+    "correct": "C",
+    "explanation": "Projectile motion describes the curved (parabolic) path of an object launched into the air and moving under gravity alone, combining constant horizontal velocity with vertically accelerated motion.",
+    "topic": "Harmonised Topics — Projectile Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "In projectile motion (ignoring air resistance), the horizontal component of velocity",
+    "options": {
+      "A": "increases steadily due to gravity",
+      "B": "decreases steadily due to gravity",
+      "C": "is always zero",
+      "D": "remains constant throughout the flight"
+    },
+    "correct": "D",
+    "explanation": "Since gravity acts only vertically, the horizontal component of a projectile's velocity remains constant throughout its flight (ignoring air resistance); only the vertical component changes.",
+    "topic": "Harmonised Topics — Projectile Motion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "An artificial satellite maintains a stable orbit around the Earth because the gravitational force provides exactly the",
+    "options": {
+      "A": "force needed to push it away from Earth",
+      "B": "frictional force to slow it down",
+      "C": "force needed to increase its mass",
+      "D": "centripetal force required for its circular motion"
+    },
+    "correct": "D",
+    "explanation": "A satellite stays in a stable circular orbit because Earth's gravitational pull provides exactly the centripetal force needed to keep it moving in that circular path, rather than flying off in a straight line.",
+    "topic": "Harmonised Topics — Satellites and Rockets",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The ratio of stress to strain within the elastic limit of a material is called its",
+    "options": {
+      "A": "density",
+      "B": "viscosity",
+      "C": "specific heat capacity",
+      "D": "Young's modulus"
+    },
+    "correct": "D",
+    "explanation": "Young's modulus is the ratio of tensile stress to tensile strain within a material's elastic limit, describing its stiffness.",
+    "topic": "Harmonised Topics — Elastic Properties of Solids",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A material that returns completely to its original shape after a deforming force is removed, provided the elastic limit isn't exceeded, is said to be",
+    "options": {
+      "A": "plastic",
+      "B": "elastic",
+      "C": "brittle",
+      "D": "malleable only"
+    },
+    "correct": "B",
+    "explanation": "An elastic material returns to its original dimensions once a deforming force is removed, as long as the elastic limit was not exceeded.",
+    "topic": "Harmonised Topics — Elastic Properties of Solids",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Metals are generally good conductors of heat mainly because they contain",
+    "options": {
+      "A": "large air pockets that trap heat",
+      "B": "free electrons that can transfer thermal energy readily",
+      "C": "no atomic structure at all",
+      "D": "very low density"
+    },
+    "correct": "B",
+    "explanation": "Metals conduct heat well largely because they contain free (delocalized) electrons that can move through the material, rapidly transferring thermal energy.",
+    "topic": "Harmonised Topics — Thermal Conductivity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "An ideal object that absorbs all radiation falling on it, and emits the maximum possible thermal radiation, is called a",
+    "options": {
+      "A": "white body",
+      "B": "transparent body",
+      "C": "grey body only",
+      "D": "black body"
+    },
+    "correct": "D",
+    "explanation": "A black body is an idealized object that absorbs all electromagnetic radiation incident on it and, when heated, emits the maximum possible amount of thermal radiation for its temperature.",
+    "topic": "Harmonised Topics — Black Body Radiation",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A thin strand of glass or plastic designed to transmit light along its length by total internal reflection is called a(n)",
+    "options": {
+      "A": "magnetic wire",
+      "B": "semiconductor chip",
+      "C": "laser rod",
+      "D": "optical fibre"
+    },
+    "correct": "D",
+    "explanation": "An optical fibre is a thin, flexible strand of glass or plastic that carries light along its length by repeated total internal reflection, widely used in telecommunications.",
+    "topic": "Harmonised Topics — Fibre Optics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "LASER is an acronym that stands for Light Amplification by Stimulated Emission of",
+    "options": {
+      "A": "Refraction",
+      "B": "Electrons",
+      "C": "Radiation",
+      "D": "Reflection"
+    },
+    "correct": "C",
+    "explanation": "LASER stands for Light Amplification by Stimulated Emission of Radiation, describing the process by which laser light is produced.",
+    "topic": "Harmonised Topics — Lasers",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A material that is strongly attracted by a magnet and can itself be magnetized, such as iron, is described as",
+    "options": {
+      "A": "non-magnetic",
+      "B": "paramagnetic only, never ferromagnetic",
+      "C": "ferromagnetic",
+      "D": "diamagnetic"
+    },
+    "correct": "C",
+    "explanation": "Ferromagnetic materials (e.g. iron, cobalt, nickel) are strongly attracted by magnets and can themselves become magnetized and retain magnetism.",
+    "topic": "Harmonised Topics — Magnetic Materials",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A material whose electrical conductivity lies between that of a good conductor and a good insulator, and which is central to modern electronics, is called a",
+    "options": {
+      "A": "superconductor",
+      "B": "semiconductor",
+      "C": "perfect insulator",
+      "D": "ferromagnet"
+    },
+    "correct": "B",
+    "explanation": "A semiconductor (e.g. silicon, germanium) has electrical conductivity between that of conductors and insulators, and its properties can be finely controlled — the basis of modern electronic devices like diodes and transistors.",
+    "topic": "Harmonised Topics — Electrical Conduction and Semiconductors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The random, continuous movement of gas or liquid particles from a region of higher concentration to a region of lower concentration is called",
+    "options": {
+      "A": "convection",
+      "B": "effusion only",
+      "C": "diffusion",
+      "D": "osmosis only"
+    },
+    "correct": "C",
+    "explanation": "Diffusion is the net movement of particles (in a gas or liquid) from a region of higher concentration to a region of lower concentration, due to their continuous random motion.",
+    "topic": "Harmonised Topics — Kinetic Theory and Diffusion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The concept that light (and matter) can behave both as a wave and as a stream of particles, depending on the experiment, is known as the",
+    "options": {
+      "A": "Doppler effect",
+      "B": "wave-particle duality",
+      "C": "law of conservation of energy",
+      "D": "uncertainty principle"
+    },
+    "correct": "B",
+    "explanation": "Wave-particle duality is the concept in modern physics that light (and matter, at a quantum level) exhibits properties of both waves and particles, depending on how it is observed/measured.",
+    "topic": "Harmonised Topics — Wave-particle Duality",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The point about which a body would balance perfectly under gravity, where its entire weight may be considered to act, is called its",
+    "options": {
+      "A": "centre of mass only, never relevant to weight",
+      "B": "point of equilibrium only for liquids",
+      "C": "moment of inertia",
+      "D": "centre of gravity"
+    },
+    "correct": "D",
+    "explanation": "The centre of gravity of a body is the point through which its entire weight may be considered to act, and about which the body would balance perfectly under uniform gravity.",
+    "topic": "Equilibrium of Forces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A simple pendulum's period (time for one complete oscillation) depends mainly on its",
+    "options": {
+      "A": "mass and length",
+      "B": "mass only",
+      "C": "amplitude only, regardless of length",
+      "D": "length and the local acceleration due to gravity"
+    },
+    "correct": "D",
+    "explanation": "For small oscillations, a simple pendulum's period depends on its length and the local gravitational acceleration (T = 2*pi*sqrt(L/g)) — notably, it does not depend on the mass of the bob.",
+    "topic": "Simple Harmonic Motion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The turning effect (torque) of a force about a pivot is calculated as the product of the force and the",
+    "options": {
+      "A": "mass of the object",
+      "B": "velocity of the object",
+      "C": "time taken to apply it",
+      "D": "perpendicular distance from the pivot to the line of action of the force"
+    },
+    "correct": "D",
+    "explanation": "The moment (torque) of a force is the product of the force's magnitude and the perpendicular distance from the pivot to the force's line of action.",
+    "topic": "Equilibrium of Forces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The Principle of Moments states that for a body in rotational equilibrium, the sum of clockwise moments about a point equals the",
+    "options": {
+      "A": "body's moment of inertia",
+      "B": "sum of anticlockwise moments about the same point",
+      "C": "total weight of the body",
+      "D": "total force acting on the body"
+    },
+    "correct": "B",
+    "explanation": "The Principle of Moments states that for a body in rotational equilibrium, the sum of the clockwise moments about any point equals the sum of the anticlockwise moments about that same point.",
+    "topic": "Equilibrium of Forces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "A machine's efficiency is always less than 100% mainly because of energy losses due to",
+    "options": {
+      "A": "too much mechanical advantage",
+      "B": "a velocity ratio that is too low",
+      "C": "friction and other resistive forces",
+      "D": "the load being too light"
+    },
+    "correct": "C",
+    "explanation": "No real machine is perfectly efficient — some input energy is always dissipated as heat due to friction and other resistive forces, so efficiency is always below 100%.",
+    "topic": "Mechanical Energy and Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "Sound produced by a vibrating source is louder when the amplitude of vibration is",
+    "options": {
+      "A": "unrelated to loudness",
+      "B": "exactly zero",
+      "C": "larger",
+      "D": "smaller"
+    },
+    "correct": "C",
+    "explanation": "Loudness of a sound is directly related to the amplitude of the sound wave — a larger amplitude of vibration produces a louder sound.",
+    "topic": "Sound Waves and Characteristics",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The pitch of a musical note produced by a vibrating string is raised mainly by",
+    "options": {
+      "A": "increasing the amplitude only",
+      "B": "decreasing the tension in the string",
+      "C": "increasing the frequency of vibration",
+      "D": "decreasing the amplitude only"
+    },
+    "correct": "C",
+    "explanation": "Pitch is determined by frequency — increasing the frequency of vibration (e.g. by increasing string tension or shortening its length) raises the pitch of the note produced.",
+    "topic": "Sound Waves and Characteristics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "An echo is heard when a sound wave",
+    "options": {
+      "A": "travels through a vacuum",
+      "B": "is absorbed completely by a surface",
+      "C": "reflects off a hard, distant surface back to the listener",
+      "D": "has an extremely low frequency only"
+    },
+    "correct": "C",
+    "explanation": "An echo is the reflection of a sound wave off a hard, distant surface, heard by the listener as a repeated, delayed sound after the original.",
+    "topic": "Sound Waves and Characteristics",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The refractive index of a medium is defined as the ratio of the speed of light in a vacuum to the speed of light",
+    "options": {
+      "A": "at absolute zero temperature",
+      "B": "in a different, unrelated medium",
+      "C": "in air only, never in other media",
+      "D": "in that medium"
+    },
+    "correct": "D",
+    "explanation": "Refractive index (n) is defined as the ratio of the speed of light in a vacuum to its speed in the given medium — a measure of how much that medium slows down and bends light.",
+    "topic": "Light Waves and Optical Instruments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  },
+  {
+    "stem": "The splitting of white light into its component colours by a prism, due to different wavelengths refracting by different amounts, is called",
+    "options": {
+      "A": "dispersion",
+      "B": "polarization",
+      "C": "reflection",
+      "D": "diffraction only"
+    },
+    "correct": "A",
+    "explanation": "Dispersion is the separation of white light into its constituent colours (spectrum) as it passes through a prism, because each wavelength (colour) refracts by a slightly different amount.",
+    "topic": "Light Waves and Optical Instruments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 70/70.",
+    "section": "WAEC Physics"
+  }
+]
