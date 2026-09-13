@@ -1,0 +1,802 @@
+[
+  {
+    "stem": "Choose the word nearest in meaning to \"irrevocable\" in: The manager's decision was final and irrevocable.",
+    "options": {
+      "A": "temporary",
+      "B": "changeable",
+      "C": "unquestionable",
+      "D": "unchangeable"
+    },
+    "correct": "D",
+    "explanation": "Irrevocable means unable to be changed, undone, or reversed — closest in meaning to \"unchangeable.\"",
+    "topic": "Lexis — Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"sagacious\" in: The old man gave the children some sagacious advice.",
+    "options": {
+      "A": "foolish",
+      "B": "wise",
+      "C": "harsh",
+      "D": "lengthy"
+    },
+    "correct": "B",
+    "explanation": "Sagacious means having or showing keen mental discernment and good judgement; \"wise\" is the closest synonym.",
+    "topic": "Lexis — Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"ambiguous\" in: The politician's speech was full of ambiguous statements.",
+    "options": {
+      "A": "clear",
+      "B": "vague",
+      "C": "boring",
+      "D": "lengthy"
+    },
+    "correct": "A",
+    "explanation": "Ambiguous means open to more than one interpretation, i.e. unclear; its opposite is \"clear.\"",
+    "topic": "Lexis — Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"generous\" in: She is known for her generous nature.",
+    "options": {
+      "A": "kind",
+      "B": "wealthy",
+      "C": "stingy",
+      "D": "friendly"
+    },
+    "correct": "C",
+    "explanation": "Generous means willing to give freely; its opposite is \"stingy\" (unwilling to spend or give).",
+    "topic": "Lexis — Antonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: Neither the teacher nor the students ___ happy with the result.",
+    "options": {
+      "A": "were",
+      "B": "is",
+      "C": "was",
+      "D": "has been"
+    },
+    "correct": "A",
+    "explanation": "With \"neither...nor,\" the verb agrees with the noun nearer to it; \"students\" (plural) is nearer, so the plural verb \"were\" is correct.",
+    "topic": "Structure — Subject-Verb Agreement",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: Each of the candidates ___ required to submit a written application.",
+    "options": {
+      "A": "have been",
+      "B": "are",
+      "C": "is",
+      "D": "were"
+    },
+    "correct": "C",
+    "explanation": "\"Each\" is a singular pronoun and takes a singular verb, regardless of the plural noun that follows it in the prepositional phrase.",
+    "topic": "Structure — Subject-Verb Agreement",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the correct form of the verb to complete the sentence: By the time we arrived, the meeting ___ already.",
+    "options": {
+      "A": "had started",
+      "B": "has started",
+      "C": "starts",
+      "D": "will start"
+    },
+    "correct": "A",
+    "explanation": "The past perfect tense (\"had started\") is used to show an action completed before another past action (\"we arrived\").",
+    "topic": "Structure — Tenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: If I ___ you, I would accept the offer.",
+    "options": {
+      "A": "will be",
+      "B": "were",
+      "C": "am",
+      "D": "was"
+    },
+    "correct": "B",
+    "explanation": "In a hypothetical/unreal conditional (\"if I were you\"), the subjunctive mood requires \"were\" for all persons, not \"was.\"",
+    "topic": "Structure — Conditionals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct plural form: The plural of \"child\" is",
+    "options": {
+      "A": "childs",
+      "B": "children",
+      "C": "childrens",
+      "D": "childes"
+    },
+    "correct": "B",
+    "explanation": "\"Child\" has an irregular plural form: \"children,\" not formed by simply adding -s or -es.",
+    "topic": "Structure — Nouns",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct plural form: The plural of \"analysis\" is",
+    "options": {
+      "A": "analysi",
+      "B": "analyses",
+      "C": "analysises",
+      "D": "analysis's"
+    },
+    "correct": "B",
+    "explanation": "\"Analysis,\" derived from Greek, forms its plural as \"analyses,\" following the -is to -es pattern of similar words like \"crisis/crises.\"",
+    "topic": "Structure — Nouns",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence with the appropriate preposition: She is good ___ mathematics.",
+    "options": {
+      "A": "in",
+      "B": "at",
+      "C": "on",
+      "D": "for"
+    },
+    "correct": "B",
+    "explanation": "The idiomatic preposition following \"good\" when referring to a skill or subject is \"at\" — \"good at mathematics.\"",
+    "topic": "Structure — Prepositions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence with the appropriate preposition: He arrived ___ the airport late.",
+    "options": {
+      "A": "in",
+      "B": "on",
+      "C": "at",
+      "D": "to"
+    },
+    "correct": "C",
+    "explanation": "The idiomatic preposition for arriving at a specific point/building (like an airport) is \"at\" — \"arrived at the airport.\"",
+    "topic": "Structure — Prepositions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence with the correct comparative form: This road is ___ than that one.",
+    "options": {
+      "A": "most wide",
+      "B": "more wide",
+      "C": "widest",
+      "D": "wider"
+    },
+    "correct": "D",
+    "explanation": "For short (one-syllable) adjectives like \"wide,\" the comparative is formed by adding -er: \"wider,\" not \"more wide.\"",
+    "topic": "Structure — Adjectives",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"beautifully\" in: She sang beautifully.",
+    "options": {
+      "A": "preposition",
+      "B": "adverb",
+      "C": "adjective",
+      "D": "noun"
+    },
+    "correct": "B",
+    "explanation": "\"Beautifully\" describes how she sang (modifying the verb \"sang\"), making it an adverb.",
+    "topic": "Word Classes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"quick\" in: The quick fox jumped over the lazy dog.",
+    "options": {
+      "A": "noun",
+      "B": "adverb",
+      "C": "conjunction",
+      "D": "adjective"
+    },
+    "correct": "D",
+    "explanation": "\"Quick\" describes the noun \"fox,\" making it an adjective.",
+    "topic": "Word Classes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correctly punctuated sentence (direct question in quotation marks).",
+    "options": {
+      "A": "\"Where are you going,\" she asked.",
+      "B": "\"Where are you going?\" she asked.",
+      "C": "Where are you going? she asked.",
+      "D": "\"Where are you going\" she asked?"
+    },
+    "correct": "B",
+    "explanation": "A direct question inside quotation marks takes its own question mark before the closing quotation mark, and the sentence overall ends with a full stop implied by the reporting clause.",
+    "topic": "Punctuation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correctly punctuated sentence (apostrophe/contraction).",
+    "options": {
+      "A": "Its' a beautiful day.",
+      "B": "Its a beautiful day.",
+      "C": "It's a beautiful day.",
+      "D": "Its a beautiful, day."
+    },
+    "correct": "C",
+    "explanation": "\"It's\" is the correct contraction of \"it is\"; \"its\" (no apostrophe) is the possessive form, a common confusion point in English usage.",
+    "topic": "Punctuation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"to let the cat out of the bag\"",
+    "options": {
+      "A": "to clean a house",
+      "B": "to start a fight",
+      "C": "to lose a pet",
+      "D": "to reveal a secret accidentally"
+    },
+    "correct": "D",
+    "explanation": "\"To let the cat out of the bag\" is an idiom meaning to accidentally reveal a secret or piece of information that was meant to be kept hidden.",
+    "topic": "Lexis — Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"to bite the bullet\"",
+    "options": {
+      "A": "to eat quickly",
+      "B": "to face a difficult situation with courage",
+      "C": "to avoid a problem entirely",
+      "D": "to injure oneself accidentally"
+    },
+    "correct": "B",
+    "explanation": "\"To bite the bullet\" means to face a painful or difficult situation with courage and get it over with, rather than avoiding it.",
+    "topic": "Lexis — Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option nearest in meaning to \"accurate\" in: The doctor's diagnosis was accurate.",
+    "options": {
+      "A": "confusing",
+      "B": "delayed",
+      "C": "precise",
+      "D": "guess"
+    },
+    "correct": "C",
+    "explanation": "Accurate means correct and exact in every detail; \"precise\" is the closest synonym.",
+    "topic": "Lexis — Synonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option opposite in meaning to \"bravery\" in: The soldiers showed remarkable bravery in battle.",
+    "options": {
+      "A": "discipline",
+      "B": "courage",
+      "C": "strength",
+      "D": "cowardice"
+    },
+    "correct": "D",
+    "explanation": "Bravery means courage; its opposite is \"cowardice\" (lack of courage).",
+    "topic": "Lexis — Antonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: The committee ___ its decision yesterday.",
+    "options": {
+      "A": "announcing",
+      "B": "announces",
+      "C": "announced",
+      "D": "announce"
+    },
+    "correct": "C",
+    "explanation": "\"Yesterday\" signals the simple past tense, so \"announced\" is the correct verb form.",
+    "topic": "Structure — Tenses",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct relative pronoun: The man ___ car was stolen reported it to the police.",
+    "options": {
+      "A": "who",
+      "B": "whom",
+      "C": "whose",
+      "D": "which"
+    },
+    "correct": "C",
+    "explanation": "\"Whose\" is the possessive relative pronoun, used here to show that the car belongs to the man.",
+    "topic": "Structure — Relative Pronouns",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct relative pronoun: This is the book ___ I told you about.",
+    "options": {
+      "A": "who",
+      "B": "which",
+      "C": "whose",
+      "D": "whom"
+    },
+    "correct": "B",
+    "explanation": "\"Which\" is used as a relative pronoun to refer to things (the book), not people.",
+    "topic": "Structure — Relative Pronouns",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence in reported (indirect) speech: He said, \"I am tired.\" -> He said that ___.",
+    "options": {
+      "A": "he has been tired",
+      "B": "he is tired",
+      "C": "he was tired",
+      "D": "he will be tired"
+    },
+    "correct": "C",
+    "explanation": "In reported speech, when the reporting verb is in the past tense (\"said\"), the present tense in the direct speech (\"am\") shifts back to the past tense (\"was\").",
+    "topic": "Structure — Reported Speech",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"lucid\" in: The professor's explanation was very lucid.",
+    "options": {
+      "A": "confusing",
+      "B": "clear",
+      "C": "boring",
+      "D": "lengthy"
+    },
+    "correct": "B",
+    "explanation": "Lucid means expressed clearly and easily understood; \"clear\" is the closest synonym.",
+    "topic": "Lexis — Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"opulent\" in: The city was known for its opulent buildings.",
+    "options": {
+      "A": "modern",
+      "B": "tall",
+      "C": "shabby",
+      "D": "luxurious"
+    },
+    "correct": "C",
+    "explanation": "Opulent means ostentatiously rich and luxurious; its opposite is \"shabby\" (worn out, poor in appearance).",
+    "topic": "Lexis — Antonyms",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: I would rather you ___ here tomorrow.",
+    "options": {
+      "A": "come",
+      "B": "will come",
+      "C": "came",
+      "D": "comes"
+    },
+    "correct": "C",
+    "explanation": "After \"would rather you,\" the past subjunctive form (\"came\") is used to express a present/future wish, even though the meaning is not past.",
+    "topic": "Structure — Subjunctive",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: Hardly ___ the meeting begun when the fire alarm went off.",
+    "options": {
+      "A": "has",
+      "B": "did",
+      "C": "was",
+      "D": "had"
+    },
+    "correct": "D",
+    "explanation": "\"Hardly\" at the start of a sentence triggers inversion, and with a past-perfect meaning (an action just completed before another), \"had\" is the correct auxiliary — \"Hardly had the meeting begun...\"",
+    "topic": "Structure — Inversion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct article: She is ___ honest woman.",
+    "options": {
+      "A": "no article needed",
+      "B": "a",
+      "C": "the",
+      "D": "an"
+    },
+    "correct": "D",
+    "explanation": "\"Honest\" begins with a silent 'h', so the sound that follows is a vowel sound, requiring \"an\" rather than \"a.\"",
+    "topic": "Structure — Articles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correct article: He is ___ university student.",
+    "options": {
+      "A": "no article needed",
+      "B": "an",
+      "C": "a",
+      "D": "the"
+    },
+    "correct": "C",
+    "explanation": "\"University\" begins with a consonant sound (\"yoo-\"), even though it starts with the vowel letter 'u', so \"a\" is used, not \"an.\"",
+    "topic": "Structure — Articles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence: The number of applicants ___ increasing every year.",
+    "options": {
+      "A": "were",
+      "B": "have been",
+      "C": "is",
+      "D": "are"
+    },
+    "correct": "C",
+    "explanation": "\"The number of\" is treated as singular (it refers to one number), so it takes a singular verb \"is\" — unlike \"a number of,\" which is treated as plural.",
+    "topic": "Structure — Subject-Verb Agreement",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: She is used to ___ up early.",
+    "options": {
+      "A": "wake",
+      "B": "wakes",
+      "C": "woke",
+      "D": "waking"
+    },
+    "correct": "D",
+    "explanation": "\"Used to\" (meaning accustomed to) is followed by a gerund (-ing form), so \"waking\" is correct, distinct from \"used to wake\" (a past habit).",
+    "topic": "Structure — Gerunds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: I look forward to ___ from you soon.",
+    "options": {
+      "A": "heard",
+      "B": "hearing",
+      "C": "hears",
+      "D": "hear"
+    },
+    "correct": "B",
+    "explanation": "\"Look forward to\" is followed by a gerund (-ing form) since \"to\" here functions as a preposition, not part of an infinitive.",
+    "topic": "Structure — Gerunds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"Wow\" in: Wow, that was an amazing performance!",
+    "options": {
+      "A": "pronoun",
+      "B": "adverb",
+      "C": "interjection",
+      "D": "noun"
+    },
+    "correct": "C",
+    "explanation": "\"Wow\" is an interjection — a word used to express sudden emotion, standing independently from the grammatical structure of the sentence.",
+    "topic": "Word Classes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"but\" in: He works quickly but carefully.",
+    "options": {
+      "A": "adjective",
+      "B": "preposition",
+      "C": "conjunction",
+      "D": "noun"
+    },
+    "correct": "C",
+    "explanation": "\"But\" here joins two adverbs (quickly, carefully) within the sentence, functioning as a conjunction.",
+    "topic": "Word Classes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option with the correctly punctuated sentence (a list introduced after an independent clause).",
+    "options": {
+      "A": "The following items are needed pen, paper, and ruler.",
+      "B": "The following items are needed; pen, paper, and ruler.",
+      "C": "The following items are needed: pen, paper, and ruler.",
+      "D": "The following items are needed, pen, paper, and ruler."
+    },
+    "correct": "C",
+    "explanation": "A colon is correctly used to introduce a list after a complete independent clause (\"The following items are needed\").",
+    "topic": "Punctuation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"to add insult to injury\"",
+    "options": {
+      "A": "to celebrate a victory",
+      "B": "to help someone in need",
+      "C": "to make a bad situation even worse",
+      "D": "to apologize sincerely"
+    },
+    "correct": "C",
+    "explanation": "\"To add insult to injury\" means to make a bad situation worse, especially by doing something else offensive or harmful on top of it.",
+    "topic": "Lexis — Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"once in a blue moon\"",
+    "options": {
+      "A": "very frequently",
+      "B": "never",
+      "C": "rarely",
+      "D": "every night"
+    },
+    "correct": "C",
+    "explanation": "\"Once in a blue moon\" is an idiom meaning something that happens very rarely or infrequently.",
+    "topic": "Lexis — Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"compelling\" in: The evidence presented was quite compelling.",
+    "options": {
+      "A": "confusing",
+      "B": "weak",
+      "C": "convincing",
+      "D": "irrelevant"
+    },
+    "correct": "C",
+    "explanation": "Compelling means evoking interest or admiration in a powerfully irresistible way; here it means \"convincing.\"",
+    "topic": "Lexis — Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"transparent\" in: The negotiations were conducted in a transparent manner.",
+    "options": {
+      "A": "formal",
+      "B": "lengthy",
+      "C": "open",
+      "D": "secretive"
+    },
+    "correct": "D",
+    "explanation": "Transparent (in this context) means open and easy to see through/understand; its opposite is \"secretive\" (deliberately hidden).",
+    "topic": "Lexis — Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word in which the letters 'ea' are pronounced the same way as in the word \"SEAT.\"",
+    "options": {
+      "A": "MEAT",
+      "B": "BREAD",
+      "C": "DEAD",
+      "D": "HEAD"
+    },
+    "correct": "A",
+    "explanation": "In \"SEAT\" and \"MEAT,\" the letters 'ea' represent the long vowel sound /iː/; in \"BREAD,\" \"HEAD,\" and \"DEAD,\" the 'ea' instead represents the short vowel sound /e/.",
+    "topic": "Oral English — Vowel Sounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word in which the letters 'oo' are pronounced the same way as in the word \"BOOK.\"",
+    "options": {
+      "A": "FOOD",
+      "B": "GOOD",
+      "C": "POOL",
+      "D": "MOON"
+    },
+    "correct": "B",
+    "explanation": "In \"BOOK\" and \"GOOD,\" the letters 'oo' represent the short vowel sound /ʊ/; in \"MOON,\" \"FOOD,\" and \"POOL,\" the 'oo' instead represents the long vowel sound /uː/.",
+    "topic": "Oral English — Vowel Sounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word with a silent letter, unlike the others.",
+    "options": {
+      "A": "KNIT",
+      "B": "NOTE",
+      "C": "KNOW",
+      "D": "KNIFE"
+    },
+    "correct": "B",
+    "explanation": "In \"KNOW,\" \"KNIT,\" and \"KNIFE,\" the initial letter 'K' is silent; \"NOTE\" has no silent initial letter, making it the odd one out.",
+    "topic": "Oral English — Silent Letters",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word that rhymes with \"LIGHT.\"",
+    "options": {
+      "A": "NIGHT",
+      "B": "LEFT",
+      "C": "LET",
+      "D": "LOT"
+    },
+    "correct": "A",
+    "explanation": "\"LIGHT\" and \"NIGHT\" both end with the sound /aɪt/, making them rhyme; the other options have different vowel/consonant endings.",
+    "topic": "Oral English — Rhymes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word that rhymes with \"CHAIR.\"",
+    "options": {
+      "A": "CHEER",
+      "B": "CAR",
+      "C": "CHURCH",
+      "D": "CARE"
+    },
+    "correct": "D",
+    "explanation": "\"CHAIR\" and \"CARE\" both end with the same sound /eə/, making them rhyme.",
+    "topic": "Oral English — Rhymes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "In the word \"PRESENT\" (used as a noun, meaning a gift), the stress falls on which syllable?",
+    "options": {
+      "A": "The first syllable (PRE-sent)",
+      "B": "Neither syllable is stressed",
+      "C": "Both syllables equally",
+      "D": "The second syllable (pre-SENT)"
+    },
+    "correct": "A",
+    "explanation": "As a noun (a gift), \"PRESENT\" is stressed on the first syllable; as a verb (to present something), the stress shifts to the second syllable (pre-SENT) — a classic English noun/verb stress-shift pair.",
+    "topic": "Oral English — Word Stress",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "In the word \"RECORD\" (used as a verb, meaning to capture sound/video), the stress falls on which syllable?",
+    "options": {
+      "A": "The first syllable (RE-cord)",
+      "B": "Neither syllable is stressed",
+      "C": "The second syllable (re-CORD)",
+      "D": "Both syllables equally"
+    },
+    "correct": "C",
+    "explanation": "As a verb, \"reCORD\" is stressed on the second syllable; as a noun (a record/album), the stress shifts to the first syllable (REcord) — the same noun/verb stress-shift pattern as PRESENT/preSENT.",
+    "topic": "Oral English — Word Stress",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word that has two syllables, unlike the others.",
+    "options": {
+      "A": "DOG",
+      "B": "RUN",
+      "C": "HAPPY",
+      "D": "CAT"
+    },
+    "correct": "C",
+    "explanation": "\"HAPPY\" (HAP-py) has two syllables; \"CAT,\" \"DOG,\" and \"RUN\" are each single-syllable words.",
+    "topic": "Oral English — Syllables",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  },
+  {
+    "stem": "From the options, choose the word whose final 's' sound is pronounced differently from the others.",
+    "options": {
+      "A": "CATS",
+      "B": "BOOKS",
+      "C": "CUPS",
+      "D": "DOGS"
+    },
+    "correct": "D",
+    "explanation": "In \"CATS,\" \"BOOKS,\" and \"CUPS,\" the final 's' is pronounced /s/ (voiceless, following a voiceless consonant sound); in \"DOGS,\" it is pronounced /z/ (voiced, following a voiced consonant sound).",
+    "topic": "Oral English — Consonant Sounds",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved by a separate agent process with no access to the stored answer key — agreed, 50/50.",
+    "section": "JAMB English (Lexis & Structure, Oral English — Comprehension/Summary excluded, see load command scope note)"
+  }
+]
