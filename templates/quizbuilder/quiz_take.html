@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ quiz.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>{{ quiz.title }}</h1>
+  {% if quiz.description %}<p>{{ quiz.description }}</p>{% endif %}
+  <p style="font-size:14px; color:var(--color-muted);">
+    {{ questions|length }} question{{ questions|length|pluralize }}
+    {% if quiz.time_limit_minutes %} · Suggested time: {{ quiz.time_limit_minutes }} minutes{% endif %}
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="card">
+      {% for field in respondent_form %}
+        <p><label>{{ field.label }}<br>{{ field }}</label>
+          {% for error in field.errors %}<br><span style="color:#b91c1c; font-size:13px;">{{ error }}</span>{% endfor %}
+        </p>
+      {% endfor %}
+    </div>
+
+    {% for q in questions %}
+      <div class="card">
+        <p style="font-weight:600;">{{ forloop.counter }}. {{ q.stem }}</p>
+        {% for c in q.choices.all %}
+          <label style="display:block; margin-bottom:6px; font-weight:400;">
+            <input type="radio" name="question_{{ q.id }}" value="{{ c.id }}" required>
+            {{ c.text }}
+          </label>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button class="btn" type="submit">Submit</button>
+  </form>
+
+  <p style="margin-top:24px; font-size:12px; color:var(--color-muted); text-align:center;">
+    Powered by <a href="{% url 'catalog:landing' %}">Xpress Digital Academy</a>
+  </p>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}My Quizzes — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>My Quizzes</h1>
+  <p style="color:var(--color-muted);">
+    Build free pre-test/post-test quizzes for your own training sessions.
+    <a href="{% url 'quizbuilder:session_list' %}">Training Sessions (pre/post pairing)</a> lets you compare
+    scores before and after.
+  </p>
+  <p><a class="btn" href="{% url 'quizbuilder:quiz_create' %}">+ Create a quiz</a></p>
+
+  {% if quizzes %}
+    <div style="display:grid; gap:16px; margin-top:16px;">
+      {% for quiz in quizzes %}
+        <div class="card">
+          <h3 style="margin:0 0 4px;">{{ quiz.title }}</h3>
+          <p style="color:var(--color-muted); font-size:14px; margin:0 0 12px;">
+            {{ quiz.question_count }} question{{ quiz.question_count|pluralize }}
+            · {{ quiz.response_count }} response{{ quiz.response_count|pluralize }}
+            · {% if quiz.is_active %}<span style="color:#166534;">Accepting responses</span>{% else %}<span style="color:var(--color-muted);">Closed</span>{% endif %}
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="{% url 'quizbuilder:quiz_take' slug=quiz.slug %}">View link</a>
+            <a href="{% url 'quizbuilder:quiz_responses' slug=quiz.slug %}">Responses &amp; export</a>
+            <a href="{% url 'quizbuilder:quiz_edit' slug=quiz.slug %}">Edit</a>
+            <form method="post" action="{% url 'quizbuilder:quiz_toggle_active' slug=quiz.slug %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" style="background:none; border:none; color:inherit; text-decoration:underline; cursor:pointer; padding:0; font-size:14px;">
+                {% if quiz.is_active %}Close to new responses{% else %}Reopen{% endif %}
+              </button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:var(--color-muted);">You haven't created any quizzes yet.</p>
+  {% endif %}
+{% endblock %}

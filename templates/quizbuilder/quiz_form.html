@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}{% if is_edit %}Edit Quiz{% else %}Create a Quiz{% endif %} — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>{% if is_edit %}Edit "{{ quiz.title }}"{% else %}Create a Quiz{% endif %}</h1>
+  <p style="color:var(--color-muted);">
+    Build a free, multiple-choice quiz — perfect for a training pre-test/post-test. Share the link when you're
+    done; results and a CSV export show up under <a href="{% url 'quizbuilder:my_quizzes' %}">My Quizzes</a>.
+  </p>
+
+  {% if is_edit and not editable_questions %}
+    <div class="card" style="border-color:#f59e0b;">
+      <p style="margin:0;">This quiz already has responses, so its questions are locked to keep those responses
+        accurate — delete the responses first (via your <a href="{% url 'quizbuilder:quiz_responses' slug=quiz.slug %}">responses page</a>, coming soon) if you really need to change them.
+        You can still update the title, description, and settings below.</p>
+    </div>
+  {% endif %}
+
+  <form method="post" id="quiz-form">
+    {% csrf_token %}
+    <div class="card">
+      <h3 style="margin-top:0;">Quiz details</h3>
+      {% for field in quiz_form %}
+        <p>
+          <label>{{ field.label }}{% if field.field.required %} *{% endif %}<br>
+            {{ field }}
+          </label>
+          {% if field.help_text %}<br><span style="font-size:12px; color:var(--color-muted);">{{ field.help_text }}</span>{% endif %}
+          {% for error in field.errors %}<br><span style="color:#b91c1c; font-size:13px;">{{ error }}</span>{% endfor %}
+        </p>
+      {% endfor %}
+    </div>
+
+    {% if formset %}
+      <h3>Questions</h3>
+      {{ formset.management_form }}
+      <div id="question-forms">
+        {% for qform in formset %}
+          <div class="card question-form-row" data-form-index="{{ forloop.counter0 }}">
+            {% for error in qform.non_field_errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}
+            <p><label>Question<br>{{ qform.stem }}</label></p>
+            <div style="display:grid; gap:8px;">
+              {% for field in qform %}
+                {% if "option_" in field.name %}
+                  <label style="display:flex; align-items:center; gap:8px; font-weight:400;">
+                    <span style="width:24px; font-weight:600;">{{ field.label|slice:"-1:" }}</span>
+                    {{ field }}
+                  </label>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <p style="margin-bottom:0;"><label style="font-weight:400;">Correct answer:
+              {% for radio in qform.correct_option %}
+                <label style="margin-right:12px; font-weight:400;">{{ radio.tag }} {{ radio.choice_label }}</label>
+              {% endfor %}
+            </label></p>
+            {% for error in qform.correct_option.errors %}<p style="color:#b91c1c; font-size:13px;">{{ error }}</p>{% endfor %}
+            {% if formset.can_delete %}
+              <p style="margin-bottom:0;"><label style="font-weight:400; font-size:13px;">{{ qform.DELETE }} Remove this question</label></p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="btn" id="add-question-btn" style="background:transparent; border:1px solid var(--color-border); color:inherit;">+ Add another question</button>
+
+      <template id="empty-form-template">
+        <div class="card question-form-row" data-form-index="__prefix__">
+          <p><label>Question<br>{{ formset.empty_form.stem }}</label></p>
+          <div style="display:grid; gap:8px;">
+            {% for field in formset.empty_form %}
+              {% if "option_" in field.name %}
+                <label style="display:flex; align-items:center; gap:8px; font-weight:400;">
+                  <span style="width:24px; font-weight:600;">{{ field.label|slice:"-1:" }}</span>
+                  {{ field }}
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <p style="margin-bottom:0;"><label style="font-weight:400;">Correct answer:
+            {% for radio in formset.empty_form.correct_option %}
+              <label style="margin-right:12px; font-weight:400;">{{ radio.tag }} {{ radio.choice_label }}</label>
+            {% endfor %}
+          </label></p>
+        </div>
+      </template>
+    {% endif %}
+
+    <p style="margin-top:20px;"><button class="btn" type="submit">{% if is_edit %}Save changes{% else %}Create quiz{% endif %}</button></p>
+  </form>
+
+  <script>
+    (function () {
+      var addBtn = document.getElementById('add-question-btn');
+      if (!addBtn) return;
+      var container = document.getElementById('question-forms');
+      var totalFormsInput = document.querySelector('#id_q-TOTAL_FORMS');
+      var templateHtml = document.getElementById('empty-form-template').innerHTML;
+
+      addBtn.addEventListener('click', function () {
+        var newIndex = parseInt(totalFormsInput.value, 10);
+        var html = templateHtml.split('__prefix__').join(newIndex);
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = html.trim();
+        container.appendChild(wrapper.firstElementChild);
+        totalFormsInput.value = newIndex + 1;
+      });
+    })();
+  </script>
+{% endblock %}

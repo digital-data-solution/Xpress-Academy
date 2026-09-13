@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}New Training Session — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>New Training Session</h1>
+  <p style="color:var(--color-muted);">Pick the two quizzes to pair — usually the same quiz used twice (once before training, once after), or two different quizzes if you want.</p>
+
+  {% if not quizzes %}
+    <div class="card">
+      <p>You need at least one quiz first. <a href="{% url 'quizbuilder:quiz_create' %}">Create one</a>.</p>
+    </div>
+  {% else %}
+    <form method="post" class="card">
+      {% csrf_token %}
+      <p><label>Session title<br><input type="text" name="title" required style="width:100%;" placeholder="e.g. Fire Safety Training — Jan 2027"></label></p>
+      <p><label>Pre-test quiz<br>
+        <select name="pre_quiz" style="width:100%;">
+          <option value="">— None —</option>
+          {% for quiz in quizzes %}<option value="{{ quiz.pk }}">{{ quiz.title }}</option>{% endfor %}
+        </select>
+      </label></p>
+      <p><label>Post-test quiz<br>
+        <select name="post_quiz" style="width:100%;">
+          <option value="">— None —</option>
+          {% for quiz in quizzes %}<option value="{{ quiz.pk }}">{{ quiz.title }}</option>{% endfor %}
+        </select>
+      </label></p>
+      <button class="btn" type="submit">Create session</button>
+    </form>
+  {% endif %}
+{% endblock %}

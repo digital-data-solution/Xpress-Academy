@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Training Sessions — Xpress Digital Academy{% endblock %}
+{% block content %}
+  <h1>Training Sessions</h1>
+  <p style="color:var(--color-muted);">
+    Pair a Pre-Test quiz with a Post-Test quiz to see each participant's before/after score, matched by email.
+    <a href="{% url 'quizbuilder:my_quizzes' %}">My Quizzes</a>
+  </p>
+  <p><a class="btn" href="{% url 'quizbuilder:session_create' %}">+ New training session</a></p>
+
+  {% if sessions %}
+    <div style="display:grid; gap:16px; margin-top:16px;">
+      {% for session in sessions %}
+        <div class="card">
+          <h3 style="margin:0 0 4px;">{{ session.title }}</h3>
+          <p style="color:var(--color-muted); font-size:14px; margin:0 0 12px;">
+            Pre: {{ session.pre_quiz.title|default:"—" }} · Post: {{ session.post_quiz.title|default:"—" }}
+          </p>
+          <a href="{% url 'quizbuilder:session_report' pk=session.pk %}">View report</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:var(--color-muted);">No training sessions yet.</p>
+  {% endif %}
+{% endblock %}

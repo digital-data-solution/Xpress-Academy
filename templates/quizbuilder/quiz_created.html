@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Quiz created — {{ quiz.title }}{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <h1>Your quiz is ready 🎉</h1>
+  <div class="card">
+    <h3 style="margin-top:0;">{{ quiz.title }}</h3>
+    <p style="color:var(--color-muted);">Share this link with anyone you want to take it — no account needed on their end.</p>
+    <p style="font-family:monospace; background:var(--color-surface-alt, #f3f4f6); padding:10px; border-radius:6px; word-break:break-all;">
+      {{ request.scheme }}://{{ request.get_host }}{% url 'quizbuilder:quiz_take' slug=quiz.slug %}
+    </p>
+    <a class="btn" href="{% url 'quizbuilder:my_quizzes' %}">Go to My Quizzes</a>
+  </div>
+{% endblock %}
