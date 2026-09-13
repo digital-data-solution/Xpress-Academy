@@ -229,6 +229,47 @@ class TestEmailVerification:
 
 
 @pytest.mark.django_db
+class TestPlatformWelcomeEmail:
+    """The lead-capture fix: verification previously ended with just
+    the bare 'you're verified' transactional email — nobody was ever
+    told what's actually on the platform unless already mid-checkout
+    for a specific course."""
+
+    def test_verifying_sends_the_platform_welcome_email(self):
+        from apps.engagement.models import EmailLog
+
+        user = User.objects.create_user(email="welcome@example.com", password="testpass123")
+        token = _make_verify_token(user)
+        client = Client()
+        client.get(f"/account/verify/{token}/")
+
+        log = EmailLog.objects.get(dedupe_key=f"platform_welcome:{user.id}")
+        assert log.to_email == "welcome@example.com"
+        assert log.status == EmailLog.Status.SENT
+
+    def test_invalid_token_sends_no_welcome_email(self):
+        from apps.engagement.models import EmailLog
+
+        client = Client()
+        client.get("/account/verify/not-a-real-token/")
+        assert not EmailLog.objects.filter(template_key="platform_welcome").exists()
+
+    def test_visiting_a_valid_link_twice_does_not_double_send(self):
+        """A verification link stays valid until it expires (the token
+        isn't single-use), so a user could legitimately click an old
+        email link twice — dedupe_key must hold regardless."""
+        from apps.engagement.models import EmailLog
+
+        user = User.objects.create_user(email="twice@example.com", password="testpass123")
+        token = _make_verify_token(user)
+        client = Client()
+        client.get(f"/account/verify/{token}/")
+        client.get(f"/account/verify/{token}/")
+
+        assert EmailLog.objects.filter(dedupe_key=f"platform_welcome:{user.id}").count() == 1
+
+
+@pytest.mark.django_db
 class TestResendVerificationRateLimit:
     def test_rapid_repeated_clicks_only_send_once(self):
         """The real incident this guards against: a logged-in user

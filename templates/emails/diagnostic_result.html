@@ -1,0 +1,17 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ student_name }},</p>
+  <p>You scored <strong>{{ score_percent }}%</strong> on the free {{ test_title }}.</p>
+  <p><a href="{{ results_url }}" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">See your full results</a></p>
+
+  {% if course %}
+    <p>That was just a {{ diagnostic_question_count }}-question preview. The full <strong>{{ course.title }}</strong> gives you the entire independently-verified question bank — all {{ bank_question_count }} questions, a fresh timed exam sampled every attempt, unlimited retakes.</p>
+    <p><a href="{{ site_url }}/courses/{{ course.slug }}/" style="display:inline-block; background:#166534; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none;">Get the full {{ course.title }} — &#8358;{{ course.price_ngn }}</a></p>
+  {% else %}
+    <p>Want to keep practicing? Browse all our free diagnostics and exam-prep courses:</p>
+    <p><a href="{{ site_url }}/diagnostics/">{{ site_url }}/diagnostics/</a></p>
+  {% endif %}
+
+  <p>— Xpress Digital Academy</p>
+  <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you gave your email to receive your {{ test_title }} results.</p>
+{% endblock %}

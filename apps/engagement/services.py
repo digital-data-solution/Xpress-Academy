@@ -168,3 +168,69 @@ def send_certificate_issued_email(certificate):
         }),
         dedupe_key=f"certificate_issued:{certificate.id}",
     )
+
+
+def send_platform_welcome_email(user):
+    """The second half of the lead-capture fix: account verification
+    only ever sent a bare 'you're verified' transactional email —
+    nothing ever introduced what's actually on the platform unless
+    someone happened to already be mid-checkout for a specific course.
+    That left every quiz-builder-only signup (and anyone else who
+    verified without an immediate purchase in mind) with zero
+    awareness of courses, diagnostics, or institutional licensing.
+
+    Deliberately unconditional (fires once per user, right after
+    verification, not gated on 'still has zero enrollments N days
+    later') to keep this a simple one-time introduction rather than a
+    new scheduled-task surface — see apps.engagement.tasks for the
+    existing stalled-learner/expiring-access pattern if a delayed,
+    still-inactive-after-N-days version is wanted later. Distinct from
+    send_welcome_email(enrollment), which is course-specific and still
+    fires normally on top of this when/if they do enroll."""
+    return send_email(
+        to_email=user.email,
+        user=user,
+        template_key="platform_welcome",
+        subject="Welcome to Xpress Digital Academy",
+        html=render_to_string("emails/platform_welcome.html", {
+            "first_name": user.first_name or "there",
+            "site_url": settings.SITE_URL,
+        }),
+        dedupe_key=f"platform_welcome:{user.id}",
+    )
+
+
+def send_diagnostic_result_email(attempt):
+    """The actual lead-capture fix: a diagnostic-taker's email was
+    being collected and saved (DiagnosticAttempt.student_email) but
+    never used anywhere — this is the only place that email is ever
+    read. Called once, right after a diagnostic is finalized, only
+    when the attempt has an email at all (it's optional on the form).
+    Not tied to a User (a diagnostic-taker usually has no account),
+    so `user=None` — EmailLog still records the send via to_email."""
+    from django.urls import reverse
+
+    from apps.licensing.diagnostics import find_matching_exam_prep_course
+
+    test = attempt.test
+    course = find_matching_exam_prep_course(test)
+    bank_question_count = sum(1 for q in test.bank.questions.filter(is_active=True) if q.is_publishable)
+    results_path = reverse("licensing:diagnostic_results", kwargs={"test_slug": test.slug, "attempt_uuid": attempt.uuid})
+
+    context = {
+        "student_name": attempt.student_name or "there",
+        "test_title": test.title,
+        "score_percent": attempt.score_percent,
+        "results_url": f"{settings.SITE_URL}{results_path}",
+        "diagnostic_question_count": test.question_count,
+        "bank_question_count": bank_question_count,
+        "course": course,
+        "site_url": settings.SITE_URL,
+    }
+    return send_email(
+        to_email=attempt.student_email,
+        template_key="diagnostic_result",
+        subject=f"Your {test.title} result: {attempt.score_percent}%",
+        html=render_to_string("emails/diagnostic_result.html", context),
+        dedupe_key=f"diagnostic_result:{attempt.id}",
+    )

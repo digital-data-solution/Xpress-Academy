@@ -95,6 +95,14 @@ def verify_email(request, token):
 
     user.profile.email_verified = True
     user.profile.save(update_fields=["email_verified"])
+
+    # The lead-capture fix: verification previously ended here, with
+    # nobody ever told what's actually on the platform unless they
+    # happened to already be mid-checkout for a specific course. See
+    # send_platform_welcome_email's own docstring.
+    from apps.engagement.services import send_platform_welcome_email
+    send_platform_welcome_email(user)
+
     messages.success(request, "Email verified — you're all set.")
     return redirect("enrollment:dashboard" if request.user.is_authenticated else "accounts:login")
 

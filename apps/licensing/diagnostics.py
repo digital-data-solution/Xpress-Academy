@@ -72,6 +72,26 @@ def start_diagnostic_attempt(
     )
 
 
+def find_matching_exam_prep_course(test: DiagnosticMockTest):
+    """The upsell target for a diagnostic's result email — the paid
+    exam-prep Course wrapping the SAME QuestionBank this diagnostic
+    samples from. Located via the FINAL Quiz that create_exam_prep_course
+    creates (it carries both bank and course FKs on one row), not by
+    guessing from title/slug text. Returns None if no such course
+    exists yet, or if one exists but isn't published (nothing to sell
+    if there's nowhere to buy it from)."""
+    from apps.assessment.models import Quiz
+
+    quiz = (
+        Quiz.objects.filter(bank=test.bank, scope=Quiz.Scope.FINAL, course__isnull=False)
+        .select_related("course")
+        .first()
+    )
+    if quiz and quiz.course.is_published:
+        return quiz.course
+    return None
+
+
 def serialize_snapshot_for_display(attempt: DiagnosticAttempt) -> list[dict]:
     """Question/choice text only — is_correct stripped. Same rule as
     assessment.services.serialize_snapshot_for_display: this is the
@@ -136,6 +156,20 @@ def finalize_diagnostic_attempt(attempt: DiagnosticAttempt) -> DiagnosticAttempt
     attempt.topic_breakdown = topic_stats
     attempt.submitted_at = timezone.now()
     attempt.save(update_fields=["score_percent", "topic_breakdown", "submitted_at"])
+
+    # Both side effects live HERE, not at the view's POST handler,
+    # deliberately: this is the one choke point both finalization
+    # paths (an explicit submit, and expire_diagnostic_attempt_if_stale
+    # picking up a timed-out attempt on a later GET) actually go
+    # through. Putting them at the view level would silently skip
+    # anyone who ran out of time and never re-submitted — previously a
+    # real gap: the PDF was only ever generated from the view's POST
+    # branch, so a timed-out attempt never got one at all.
+    generate_and_save_report_pdf(attempt)
+    if attempt.student_email:
+        from apps.engagement.services import send_diagnostic_result_email
+        send_diagnostic_result_email(attempt)
+
     return attempt
 
 

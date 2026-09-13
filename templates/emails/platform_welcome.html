@@ -1,0 +1,16 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi {{ first_name }},</p>
+  <p>Your email's verified — you're all set. Here's what's actually on Xpress Digital Academy, in case you came for just one thing and missed the rest:</p>
+
+  <p><strong>Courses</strong> — practical, Nigeria-specific courses across veterinary practice, business, digital skills, and more, many with a free tier plus a paid certificate.<br>
+  <a href="{{ site_url }}/courses/">Browse courses</a></p>
+
+  <p><strong>Free exam-prep diagnostics</strong> — JAMB, WAEC, and Nigerian Civil Service practice tests, independently verified, with a free instant score report.<br>
+  <a href="{{ site_url }}/diagnostics/">Try a free diagnostic</a></p>
+
+  <p><strong>Free quiz builder</strong> — build your own pre-test/post-test quizzes for workplace training, with a before/after report when you pair two together.<br>
+  <a href="{{ site_url }}/quizzes/">Build a quiz</a></p>
+
+  <p>— Xpress Digital Academy</p>
+{% endblock %}

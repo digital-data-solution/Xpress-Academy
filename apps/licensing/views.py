@@ -9,7 +9,6 @@ from django.views.decorators.http import require_POST
 from .diagnostics import (
     expire_diagnostic_attempt_if_stale,
     finalize_diagnostic_attempt,
-    generate_and_save_report_pdf,
     save_diagnostic_answer,
     serialize_snapshot_for_display,
     start_diagnostic_attempt,
@@ -71,8 +70,10 @@ def diagnostic_attempt_view(request, test_slug, attempt_uuid):
             raw_ids = request.POST.getlist(f"q_{sq['question_id']}")
             if raw_ids:
                 save_diagnostic_answer(attempt, sq["question_id"], [int(c) for c in raw_ids])
+        # PDF generation and the result email both happen inside
+        # finalize_diagnostic_attempt itself now — see its own
+        # docstring for why that's the right choke point, not here.
         finalize_diagnostic_attempt(attempt)
-        generate_and_save_report_pdf(attempt)
         return redirect("licensing:diagnostic_results", test_slug=test.slug, attempt_uuid=attempt.uuid)
 
     existing_answers = {a.question_id: a.selected_choice_ids for a in attempt.answers.all()}

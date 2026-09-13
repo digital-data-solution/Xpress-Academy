@@ -286,6 +286,125 @@ class TestDiagnosticPDF:
         assert len(pdf_bytes) > 500
 
 
+@pytest.fixture
+def exam_prep_course(org, bank):
+    """A published exam-prep Course + FINAL Quiz wrapping the same
+    `bank` the diagnostic_test fixture samples from — the real link
+    find_matching_exam_prep_course follows."""
+    from apps.assessment.models import Quiz
+    from apps.catalog.models import Audience
+
+    programme = Programme.objects.create(organization=org, title="Exam Preparation")
+    course = Course.objects.create(
+        organization=org, programme=programme, title="JAMB UTME Biology Exam Prep",
+        slug="jamb-biology-exam-prep", audience=Audience.GENERAL,
+        pricing_model=Course.PricingModel.PAID, price_ngn=5000,
+        review_status=Course.ReviewStatus.APPROVED, is_published=True,
+    )
+    Quiz.objects.create(scope=Quiz.Scope.FINAL, course=course, bank=bank, title=course.title, question_count=40)
+    return course
+
+
+@pytest.mark.django_db
+class TestFindMatchingExamPrepCourse:
+    def test_returns_the_published_course_for_the_same_bank(self, diagnostic_test, exam_prep_course):
+        from .diagnostics import find_matching_exam_prep_course
+
+        assert find_matching_exam_prep_course(diagnostic_test) == exam_prep_course
+
+    def test_returns_none_when_no_course_exists(self, diagnostic_test):
+        from .diagnostics import find_matching_exam_prep_course
+
+        assert find_matching_exam_prep_course(diagnostic_test) is None
+
+    def test_returns_none_when_the_course_is_not_published(self, diagnostic_test, exam_prep_course):
+        from .diagnostics import find_matching_exam_prep_course
+
+        exam_prep_course.is_published = False
+        exam_prep_course.save(update_fields=["is_published"])
+        assert find_matching_exam_prep_course(diagnostic_test) is None
+
+
+@pytest.mark.django_db
+class TestDiagnosticResultEmail:
+    """The actual lead-capture fix: a diagnostic-taker's email was
+    being collected and saved but never read anywhere else in the
+    codebase — see send_diagnostic_result_email's own docstring."""
+
+    def test_finalize_sends_an_email_when_attempt_has_one(self, diagnostic_test):
+        from apps.engagement.models import EmailLog
+
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada", student_email="ada@example.com")
+        finalize_diagnostic_attempt(attempt)
+
+        log = EmailLog.objects.get(dedupe_key=f"diagnostic_result:{attempt.id}")
+        assert log.to_email == "ada@example.com"
+        assert log.template_key == "diagnostic_result"
+        assert log.status == EmailLog.Status.SENT
+
+    def test_finalize_sends_nothing_when_attempt_has_no_email(self, diagnostic_test):
+        from apps.engagement.models import EmailLog
+
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada")
+        finalize_diagnostic_attempt(attempt)
+
+        assert not EmailLog.objects.filter(dedupe_key=f"diagnostic_result:{attempt.id}").exists()
+
+    def test_stale_expiry_path_also_sends_the_email(self, diagnostic_test):
+        """Closes the real gap this was built against: before this
+        change, a timed-out attempt (picked up on a later GET via
+        expire_diagnostic_attempt_if_stale) never got a PDF or an
+        email at all — only an explicit POST submit did."""
+        from .diagnostics import expire_diagnostic_attempt_if_stale
+        from apps.engagement.models import EmailLog
+
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada", student_email="ada@example.com")
+        attempt.expires_at = timezone.now() - timezone.timedelta(minutes=1)
+        attempt.save(update_fields=["expires_at"])
+
+        result = expire_diagnostic_attempt_if_stale(attempt)
+
+        assert result.report_pdf.name
+        assert EmailLog.objects.filter(dedupe_key=f"diagnostic_result:{attempt.id}").exists()
+
+    def test_finalizing_twice_does_not_double_send(self, diagnostic_test):
+        from apps.engagement.models import EmailLog
+
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada", student_email="ada@example.com")
+        finalize_diagnostic_attempt(attempt)
+        finalize_diagnostic_attempt(attempt)  # already submitted — early-returns, no-op
+
+        assert EmailLog.objects.filter(dedupe_key=f"diagnostic_result:{attempt.id}").count() == 1
+
+    def test_email_links_to_the_matching_exam_prep_course_when_one_exists(self, diagnostic_test, exam_prep_course):
+        from apps.engagement.models import EmailLog
+
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada", student_email="ada@example.com")
+        finalize_diagnostic_attempt(attempt)
+
+        # dev-noop path doesn't store the rendered HTML, so re-render
+        # the same way send_diagnostic_result_email does and check the
+        # course link/price actually made it into the context/output.
+        from apps.engagement.services import send_diagnostic_result_email
+
+        with patch("apps.engagement.services.send_email") as mock_send:
+            send_diagnostic_result_email(attempt)
+        html = mock_send.call_args.kwargs["html"]
+        assert "jamb-biology-exam-prep" in html
+        assert "5000" in html
+
+    def test_email_falls_back_to_diagnostics_page_when_no_course_exists(self, diagnostic_test):
+        attempt = start_diagnostic_attempt(diagnostic_test, student_name="Ada", student_email="ada@example.com")
+        finalize_diagnostic_attempt(attempt)
+
+        from apps.engagement.services import send_diagnostic_result_email
+
+        with patch("apps.engagement.services.send_email") as mock_send:
+            send_diagnostic_result_email(attempt)
+        html = mock_send.call_args.kwargs["html"]
+        assert "/diagnostics/" in html
+
+
 @pytest.mark.django_db
 class TestDiagnosticList:
     """The public discoverability page — every diagnostic built so far
