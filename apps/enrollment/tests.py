@@ -280,6 +280,28 @@ class TestAccessControl:
         resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
         assert resp.status_code == 403
 
+    def test_no_access_page_links_straight_to_the_course_not_a_dead_end(self, course, user):
+        """The real bug this guards against: a shared /learn/ or quiz
+        link, opened by someone logged in but not enrolled, landed on
+        a page with the right course NAME but only a 'Back to my
+        courses' link — no way back to the actual course to enroll,
+        so they had to search for it again from scratch."""
+        from apps.catalog.models import Course as CourseModel
+
+        course.review_status = CourseModel.ReviewStatus.APPROVED
+        course.is_published = True
+        course.pricing_model = CourseModel.PricingModel.PAID
+        course.price_ngn = 5000
+        course.save(update_fields=["review_status", "is_published", "pricing_model", "price_ngn"])
+        m1 = make_module(course, 1)
+        client = Client()
+        client.force_login(user)
+
+        resp = client.get(f"/learn/{course.slug}/{m1.lessons.first().slug}/")
+        assert resp.status_code == 403
+        assert f"/courses/{course.slug}/".encode() in resp.content
+        assert course.title.encode() in resp.content
+
     def test_preview_lesson_viewable_without_enrollment(self, course, user):
         m1 = make_module(course, 1)
         lesson = m1.lessons.first()

@@ -6,6 +6,9 @@
     <h1 style="margin-bottom:8px;">You don't have access to this course</h1>
     <p style="margin:0 0 4px;">{{ course.title }} isn't in your account, or your access to it has ended.</p>
     <p style="margin:0 0 18px;">If you've paid for this course and think this is a mistake, contact support.</p>
-    <a class="btn" href="{% url 'enrollment:dashboard' %}">Back to my courses</a>
+    <p>
+      <a class="btn" href="{% url 'catalog:course_detail' slug=course.slug %}">View "{{ course.title }}" &amp; enroll</a>
+      <a href="{% url 'enrollment:dashboard' %}" style="margin-left:16px;">Back to my courses</a>
+    </p>
   </div>
 {% endblock %}

@@ -5,6 +5,7 @@ from django.contrib.auth.forms import SetPasswordForm
 from django.core.signing import BadSignature, SignatureExpired, TimestampSigner
 from django.shortcuts import redirect, render
 from django.utils import timezone
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
 from django_otp import login as otp_login
 from django_otp.plugins.otp_static.models import StaticDevice, StaticToken
@@ -59,9 +60,26 @@ def _send_verification_email(user: User):
     )
 
 
+def _safe_redirect_target(request, candidate: str) -> str | None:
+    # Real bug this closes: someone clicking a shared course/quiz link
+    # while logged out gets bounced to login (?next=<that page>), but
+    # signup silently dropped `next` entirely and always sent a brand
+    # new account to the generic dashboard — they'd then hit
+    # enrollment/no_access.html (fixed separately) or just have to
+    # search for the course again. `next` is attacker-influenceable
+    # (a crafted link), so it's validated the same way the lead-capture
+    # widget's redirect is — never trust it unchecked.
+    if candidate and url_has_allowed_host_and_scheme(
+        candidate, allowed_hosts={request.get_host()}, require_https=request.is_secure()
+    ):
+        return candidate
+    return None
+
+
 def signup(request):
+    next_url = request.POST.get("next") or request.GET.get("next") or ""
     if request.user.is_authenticated:
-        return redirect("enrollment:dashboard")
+        return redirect(_safe_redirect_target(request, next_url) or "enrollment:dashboard")
 
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -70,11 +88,11 @@ def signup(request):
             _send_verification_email(user)
             login(request, user)
             messages.success(request, "Welcome! Check your email to verify your account before enrolling in a course.")
-            return redirect("enrollment:dashboard")
+            return redirect(_safe_redirect_target(request, next_url) or "enrollment:dashboard")
     else:
         form = SignupForm()
 
-    return render(request, "registration/signup.html", {"form": form})
+    return render(request, "registration/signup.html", {"form": form, "next": next_url})
 
 
 def verify_email(request, token):

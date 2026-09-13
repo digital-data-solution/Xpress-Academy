@@ -201,6 +201,42 @@ class TestSignup:
         assert resp.status_code == 200
         assert not User.objects.filter(email="weak@example.com").exists()
 
+    def test_signup_honours_next_redirect(self):
+        """The actual bug this closes: someone clicking a shared course
+        link while logged out, then signing up (not just logging in),
+        previously always landed on the generic dashboard regardless
+        of what page sent them to signup — losing their place and
+        having to search for the course again from scratch."""
+        client = Client()
+        with patch("apps.engagement.services.ResendGateway.send"):
+            resp = client.post(
+                "/account/signup/?next=/courses/some-course/",
+                {
+                    "first_name": "Ada", "email": "nextada@example.com",
+                    "password": "a-genuinely-long-passphrase-123", "next": "/courses/some-course/",
+                },
+            )
+        assert resp.status_code == 302
+        assert resp.url == "/courses/some-course/"
+
+    def test_signup_rejects_an_unsafe_next(self):
+        client = Client()
+        with patch("apps.engagement.services.ResendGateway.send"):
+            resp = client.post(
+                "/account/signup/",
+                {
+                    "first_name": "Ada", "email": "unsafeada@example.com",
+                    "password": "a-genuinely-long-passphrase-123", "next": "https://evil.example.com/phish",
+                },
+            )
+        assert resp.status_code == 302
+        assert resp.url == "/dashboard/"
+
+    def test_login_page_carries_next_forward_to_the_signup_link(self):
+        client = Client()
+        resp = client.get("/account/login/?next=/courses/some-course/")
+        assert b'href="/account/signup/?next=/courses/some-course/"' in resp.content
+
 
 @pytest.mark.django_db
 class TestEmailVerification:

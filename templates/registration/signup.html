@@ -26,9 +26,10 @@
         <label style="font-weight:400; display:flex; align-items:center; gap:8px;">
           <input type="checkbox" name="marketing_opt_in" style="width:auto; margin:0;"> Send me course updates
         </label>
+        <input type="hidden" name="next" value="{{ next }}">
         <button class="btn" type="submit" style="width:100%; margin-top:16px;">Create account</button>
       </form>
-      <p class="auth-links">Already have an account? <a href="{% url 'accounts:login' %}">Log in</a></p>
+      <p class="auth-links">Already have an account? <a href="{% url 'accounts:login' %}{% if next %}?next={{ next|urlencode }}{% endif %}">Log in</a></p>
     </div>
   </div>
 {% endblock %}
