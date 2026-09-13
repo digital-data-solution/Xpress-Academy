@@ -64,6 +64,18 @@
         <div>
           <p class="footer-brand">Xpress Digital Academy</p>
           <p style="font-size:14px; color:var(--color-muted); max-width:320px;">Practical, Nigeria-specific online courses — sequential lessons, real quizzes, verifiable certificates.</p>
+          {% if not user.is_authenticated %}
+            <form action="{% url 'engagement:capture_lead' %}" method="post" style="margin-top:12px; max-width:320px;">
+              {% csrf_token %}
+              <input type="hidden" name="source" value="footer">
+              <input type="hidden" name="next" value="{{ request.path }}">
+              <label style="display:block; font-size:13px; color:var(--color-muted); margin-bottom:6px;">Get notified about new courses &amp; free exam prep</label>
+              <div style="display:flex; gap:8px;">
+                <input type="email" name="email" placeholder="you@example.com" required style="flex:1; min-width:0; padding:8px 10px; border:1px solid var(--color-border); border-radius:6px;">
+                <button class="btn" type="submit" style="padding:8px 14px; font-size:14px;">Sign up</button>
+              </div>
+            </form>
+          {% endif %}
         </div>
         <div class="footer-col">
           <h4>Learn</h4>

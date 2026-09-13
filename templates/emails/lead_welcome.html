@@ -1,0 +1,17 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hi there,</p>
+  <p>Thanks for signing up — you'll hear from us when there's something new worth knowing about. In the meantime, here's what's already live:</p>
+
+  <p><strong>Courses</strong> — practical, Nigeria-specific courses across veterinary practice, business, digital skills, and more, many with a free tier plus a paid certificate.<br>
+  <a href="{{ site_url }}/courses/">Browse courses</a></p>
+
+  <p><strong>Free exam-prep diagnostics</strong> — JAMB, WAEC, and Nigerian Civil Service practice tests, independently verified, with a free instant score report.<br>
+  <a href="{{ site_url }}/diagnostics/">Try a free diagnostic</a></p>
+
+  <p><strong>Free quiz builder</strong> — build your own pre-test/post-test quizzes for workplace training.<br>
+  <a href="{{ site_url }}/quizzes/">Build a quiz</a></p>
+
+  <p>— Xpress Digital Academy</p>
+  <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you signed up for updates on our site. Reply to this email any time to stop receiving these.</p>
+{% endblock %}

@@ -43,6 +43,31 @@ class EmailLog(TimeStampedModel):
         return f"{self.template_key} → {self.to_email} ({self.status})"
 
 
+class Lead(TimeStampedModel):
+    """An anonymous site visitor's email, captured before they're
+    ready to create a full account — the gap identified after
+    checking the Growth dashboard: diagnostics and quiz-builder both
+    capture leads from people already engaging with specific content,
+    but someone just browsing the course catalog or landing page had
+    no way to leave contact info at all. Deliberately its own
+    lightweight model, not a User: signup requires a password and
+    creates real platform access, which is exactly the commitment a
+    footer email-capture widget should NOT require."""
+
+    email = models.EmailField(unique=True)
+    source = models.CharField(
+        max_length=100, blank=True,
+        help_text="Where this lead was captured, e.g. 'footer', 'catalog' — free text, not a choice list, "
+                   "so a new capture point never needs a migration to add its own label.",
+    )
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.email
+
+
 class LiveSession(TimeStampedModel):
     # PROTECT: scheduling data (date, join link) with real business
     # value, same discipline as Cohort — see apps.enrollment.models.

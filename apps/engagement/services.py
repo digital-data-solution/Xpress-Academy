@@ -200,6 +200,19 @@ def send_platform_welcome_email(user):
     )
 
 
+def send_lead_welcome_email(lead):
+    """Confirmation sent right after a footer/catalog email capture —
+    see engagement.models.Lead for why this exists as its own
+    lightweight path rather than routing through account signup."""
+    return send_email(
+        to_email=lead.email,
+        template_key="lead_welcome",
+        subject="You're on the list — Xpress Digital Academy",
+        html=render_to_string("emails/lead_welcome.html", {"site_url": settings.SITE_URL}),
+        dedupe_key=f"lead_welcome:{lead.id}",
+    )
+
+
 def send_diagnostic_result_email(attempt):
     """The actual lead-capture fix: a diagnostic-taker's email was
     being collected and saved (DiagnosticAttempt.student_email) but

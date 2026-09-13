@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import EmailLog, LiveSession
+from .models import EmailLog, Lead, LiveSession
+
+
+@admin.register(Lead)
+class LeadAdmin(admin.ModelAdmin):
+    list_display = ["email", "source", "created_at"]
+    list_filter = ["source"]
+    search_fields = ["email"]
 
 
 @admin.register(EmailLog)

@@ -16,7 +16,7 @@ from apps.enrollment.models import Enrollment
 from apps.organizations.models import Organization
 
 from .gateway import ResendError
-from .models import EmailLog, LiveSession
+from .models import EmailLog, Lead, LiveSession
 from .services import send_email
 from .tasks import (
     advance_compulsory_training_chains_task,
@@ -567,3 +567,59 @@ class TestRunScheduledTasksEndpoint:
         assert resp.status_code == 200
         body = resp.json()
         assert "detect_stalled_learners" in body["ran"]
+
+
+@pytest.mark.django_db
+class TestCaptureLead:
+    """The anonymous-visitor lead-capture widget — see
+    engagement.models.Lead for why it's a separate model from User."""
+
+    def test_new_email_creates_lead_and_sends_welcome(self, client):
+        resp = client.post("/leads/capture/", {"email": "prospect@example.com", "source": "footer"})
+        assert resp.status_code == 302
+        lead = Lead.objects.get(email="prospect@example.com")
+        assert lead.source == "footer"
+        assert EmailLog.objects.filter(dedupe_key=f"lead_welcome:{lead.id}", status=EmailLog.Status.SENT).exists()
+
+    def test_duplicate_email_does_not_create_second_lead_or_resend(self, client):
+        client.post("/leads/capture/", {"email": "again@example.com"})
+        client.post("/leads/capture/", {"email": "again@example.com"})
+        assert Lead.objects.filter(email="again@example.com").count() == 1
+        assert EmailLog.objects.filter(template_key="lead_welcome", to_email="again@example.com").count() == 1
+
+    def test_invalid_email_creates_no_lead(self, client):
+        resp = client.post("/leads/capture/", {"email": "not-an-email"})
+        assert resp.status_code == 302
+        assert not Lead.objects.exists()
+
+    def test_get_not_allowed(self, client):
+        resp = client.get("/leads/capture/")
+        assert resp.status_code == 405
+
+    def test_redirect_stays_on_site_even_with_a_crafted_next(self, client):
+        """The real vulnerability class this guards against: `next`
+        and HTTP_REFERER are both attacker-influenceable — redirecting
+        straight to either without validation is an open redirect."""
+        resp = client.post(
+            "/leads/capture/", {"email": "safe@example.com", "next": "https://evil.example.com/phish"}
+        )
+        assert resp.status_code == 302
+        assert resp.url == "/"
+
+    def test_redirect_honours_a_same_site_next(self, client):
+        resp = client.post("/leads/capture/", {"email": "backhome@example.com", "next": "/courses/"})
+        assert resp.status_code == 302
+        assert resp.url == "/courses/"
+
+
+@pytest.mark.django_db
+class TestLeadCaptureFooterWidget:
+    def test_shown_to_anonymous_visitors(self, client):
+        resp = client.get("/courses/")
+        assert b'action="/leads/capture/"' in resp.content
+
+    def test_hidden_from_authenticated_users(self, client):
+        user = User.objects.create_user(email="loggedin@example.com", password="testpass123")
+        client.force_login(user)
+        resp = client.get("/courses/")
+        assert b'action="/leads/capture/"' not in resp.content

@@ -2,11 +2,56 @@ import hmac
 import logging
 
 from django.conf import settings
+from django.contrib import messages
 from django.http import HttpResponseForbidden, JsonResponse
+from django.shortcuts import redirect
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
+from .forms import LeadCaptureForm
+
 logger = logging.getLogger(__name__)
+
+
+def _safe_next(request, candidate: str) -> str:
+    # HTTP_REFERER (and a "next" field) are attacker-influenceable —
+    # never redirect() straight to either without this check, or a
+    # crafted link becomes an open redirect off this domain.
+    if candidate and url_has_allowed_host_and_scheme(
+        candidate, allowed_hosts={request.get_host()}, require_https=request.is_secure()
+    ):
+        return candidate
+    return "/"
+
+
+@require_POST
+def capture_lead(request):
+    """The footer/catalog email-capture widget's target — see
+    engagement.models.Lead for the reasoning. Redirects back to
+    wherever the form was submitted from (HTTP_REFERER), same
+    single-page-with-a-flash-message pattern as
+    quizbuilder.views.quiz_toggle_active, so this works from any page
+    without needing its own dedicated template."""
+    form = LeadCaptureForm(request.POST)
+    next_url = _safe_next(request, request.POST.get("next") or request.META.get("HTTP_REFERER", ""))
+
+    if not form.is_valid():
+        messages.error(request, "That doesn't look like a valid email address.")
+        return redirect(next_url)
+
+    email = form.cleaned_data["email"]
+    source = (request.POST.get("source") or "")[:100]
+
+    from .models import Lead
+
+    lead, created = Lead.objects.get_or_create(email=email, defaults={"source": source})
+    if created:
+        from .services import send_lead_welcome_email
+        send_lead_welcome_email(lead)
+
+    messages.success(request, "You're on the list — check your inbox for a confirmation.")
+    return redirect(next_url)
 
 
 @csrf_exempt
