@@ -1,0 +1,1410 @@
+[
+  {
+    "stem": "The technique used to separate a mixture of an insoluble solid from a liquid is",
+    "options": {
+      "A": "filtration",
+      "B": "chromatography",
+      "C": "distillation",
+      "D": "crystallization"
+    },
+    "correct": "A",
+    "explanation": "Filtration separates an insoluble solid from a liquid by passing the mixture through a filter medium (e.g. filter paper) that retains the solid while the liquid (filtrate) passes through.",
+    "topic": "Separation of Mixtures",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The technique most suitable for separating two miscible liquids with different boiling points is",
+    "options": {
+      "A": "simple distillation or fractional distillation",
+      "B": "filtration",
+      "C": "decantation",
+      "D": "sublimation"
+    },
+    "correct": "A",
+    "explanation": "Distillation (fractional, for close boiling points) separates miscible liquids based on differences in their boiling points, vaporizing and then condensing each component separately.",
+    "topic": "Separation of Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A solid substance that changes directly from solid to gas on heating, without passing through the liquid state, is said to",
+    "options": {
+      "A": "condense",
+      "B": "evaporate",
+      "C": "sublime",
+      "D": "melt"
+    },
+    "correct": "C",
+    "explanation": "Sublimation is the direct change of a substance from the solid state to the gaseous state (and back) without passing through the liquid state, e.g. solid carbon (IV) oxide (dry ice) or iodine.",
+    "topic": "Separation of Mixtures",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "According to the Law of Conservation of Mass, in a chemical reaction, the total mass of the reactants",
+    "options": {
+      "A": "is equal to the total mass of the products",
+      "B": "is always less than the total mass of products",
+      "C": "has no relationship to the mass of products",
+      "D": "is always greater than the total mass of products"
+    },
+    "correct": "A",
+    "explanation": "The Law of Conservation of Mass states that mass is neither created nor destroyed in a chemical reaction — the total mass of reactants equals the total mass of products.",
+    "topic": "Chemical Combination",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "One mole of any gas at standard temperature and pressure (s.t.p.) occupies a volume of approximately",
+    "options": {
+      "A": "22.4 dm³",
+      "B": "11.2 dm³",
+      "C": "1 dm³",
+      "D": "44.8 dm³"
+    },
+    "correct": "A",
+    "explanation": "By Avogadro's Law, one mole of any gas occupies 22.4 dm³ (22,400 cm³) at standard temperature and pressure, a widely used constant in gas calculations.",
+    "topic": "Chemical Combination — Mole Concept",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The number of moles in 36 g of water (H2O), given that the molar mass of water is 18 g/mol, is",
+    "options": {
+      "A": "18 mol",
+      "B": "2 mol",
+      "C": "0.5 mol",
+      "D": "1 mol"
+    },
+    "correct": "B",
+    "explanation": "Number of moles = mass / molar mass = 36/18 = 2 mol.",
+    "topic": "Chemical Combination — Mole Concept",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "According to Boyle's Law, at constant temperature, the volume of a fixed mass of gas is",
+    "options": {
+      "A": "directly proportional to its pressure",
+      "B": "proportional to the square of its pressure",
+      "C": "independent of pressure",
+      "D": "inversely proportional to its pressure"
+    },
+    "correct": "D",
+    "explanation": "Boyle's Law states that at constant temperature, the volume of a fixed mass of gas is inversely proportional to its pressure (PV = constant).",
+    "topic": "Kinetic Theory of Matter and Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The kinetic theory of gases assumes that gas molecules",
+    "options": {
+      "A": "strongly attract one another at all times",
+      "B": "are in constant, random motion with negligible volume compared to the container",
+      "C": "are stationary and tightly packed",
+      "D": "only move in one fixed direction"
+    },
+    "correct": "B",
+    "explanation": "The kinetic theory assumes gas molecules are in continuous, random motion, have negligible volume compared to the container, and experience negligible intermolecular forces except during collisions.",
+    "topic": "Kinetic Theory of Matter and Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "An atom of an element has atomic number 11 and mass number 23. The number of neutrons in the atom is",
+    "options": {
+      "A": "34",
+      "B": "23",
+      "C": "12",
+      "D": "11"
+    },
+    "correct": "C",
+    "explanation": "Number of neutrons = mass number - atomic number = 23 - 11 = 12.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Atoms of the same element having the same atomic number but different mass numbers are called",
+    "options": {
+      "A": "isobars",
+      "B": "isomers",
+      "C": "isotopes",
+      "D": "allotropes"
+    },
+    "correct": "C",
+    "explanation": "Isotopes are atoms of the same element (same number of protons/atomic number) with different numbers of neutrons, and hence different mass numbers.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A chemical bond formed by the complete transfer of electrons from one atom to another is called a(n)",
+    "options": {
+      "A": "metallic bond",
+      "B": "hydrogen bond",
+      "C": "covalent bond",
+      "D": "ionic (electrovalent) bond"
+    },
+    "correct": "D",
+    "explanation": "An ionic (electrovalent) bond forms when electrons are completely transferred from a metal atom to a non-metal atom, forming oppositely charged ions held together by electrostatic attraction.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A chemical bond formed by the mutual sharing of electrons between two atoms is called a(n)",
+    "options": {
+      "A": "ionic bond",
+      "B": "electrovalent bond",
+      "C": "metallic bond",
+      "D": "covalent bond"
+    },
+    "correct": "D",
+    "explanation": "A covalent bond forms when two atoms (typically non-metals) share one or more pairs of electrons, achieving a stable electron configuration for both.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Going across a period of the periodic table from left to right, atomic radius generally",
+    "options": {
+      "A": "increases then decreases randomly",
+      "B": "decreases",
+      "C": "increases",
+      "D": "remains constant"
+    },
+    "correct": "B",
+    "explanation": "Across a period, increasing nuclear charge pulls the electron cloud in more tightly (with electrons added to the same shell), so atomic radius generally decreases from left to right.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A reaction that releases heat energy to the surroundings is described as",
+    "options": {
+      "A": "adiabatic",
+      "B": "exothermic",
+      "C": "endothermic",
+      "D": "isothermic"
+    },
+    "correct": "B",
+    "explanation": "An exothermic reaction releases heat energy to the surroundings, resulting in a temperature rise; an endothermic reaction, by contrast, absorbs heat from the surroundings.",
+    "topic": "Energy Changes (Thermochemistry)",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A reaction that absorbs heat energy from the surroundings is described as",
+    "options": {
+      "A": "catalytic",
+      "B": "spontaneous only",
+      "C": "endothermic",
+      "D": "exothermic"
+    },
+    "correct": "C",
+    "explanation": "An endothermic reaction absorbs heat energy from the surroundings, often resulting in a temperature drop in the immediate environment.",
+    "topic": "Energy Changes (Thermochemistry)",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A substance that increases the rate of a chemical reaction without itself being permanently changed is called a",
+    "options": {
+      "A": "catalyst",
+      "B": "reactant",
+      "C": "product",
+      "D": "solvent"
+    },
+    "correct": "A",
+    "explanation": "A catalyst speeds up a chemical reaction by providing an alternative pathway with lower activation energy, without being permanently consumed or chemically changed in the process.",
+    "topic": "Rates of Chemical Reactions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Increasing the temperature of a reaction mixture generally increases the rate of reaction mainly because",
+    "options": {
+      "A": "it decreases the pressure of the system",
+      "B": "more molecules gain enough energy to overcome the activation energy barrier",
+      "C": "it decreases the concentration of reactants",
+      "D": "it removes the catalyst from the reaction"
+    },
+    "correct": "B",
+    "explanation": "Raising the temperature increases the kinetic energy of molecules, so a greater proportion collide with energy equal to or greater than the activation energy, increasing the reaction rate.",
+    "topic": "Rates of Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "In a reversible reaction at equilibrium, the rate of the forward reaction is",
+    "options": {
+      "A": "less than the rate of the reverse reaction",
+      "B": "equal to the rate of the reverse reaction",
+      "C": "zero",
+      "D": "greater than the rate of the reverse reaction"
+    },
+    "correct": "B",
+    "explanation": "At chemical equilibrium, the forward and reverse reaction rates are equal, so the concentrations of reactants and products remain constant over time (a dynamic, not static, balance).",
+    "topic": "Chemical Equilibrium",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "According to Le Chatelier's Principle, if a system at equilibrium is subjected to a change in conditions, the system will",
+    "options": {
+      "A": "always shift towards the reactants",
+      "B": "shift in the direction that opposes/counteracts the change",
+      "C": "remain completely unaffected",
+      "D": "always shift towards the products"
+    },
+    "correct": "B",
+    "explanation": "Le Chatelier's Principle states that a system at equilibrium, when disturbed by a change (e.g. concentration, pressure, temperature), will shift in the direction that tends to counteract that change.",
+    "topic": "Chemical Equilibrium",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The two main gases making up the greatest proportion of the Earth's atmosphere are",
+    "options": {
+      "A": "oxygen and carbon (IV) oxide",
+      "B": "nitrogen and hydrogen",
+      "C": "hydrogen and helium",
+      "D": "nitrogen and oxygen"
+    },
+    "correct": "D",
+    "explanation": "Air is composed mainly of nitrogen (about 78%) and oxygen (about 21%), with smaller amounts of other gases such as argon and carbon (IV) oxide.",
+    "topic": "Air and Water",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Water that does not readily form lather with soap, due to dissolved calcium and magnesium salts, is described as",
+    "options": {
+      "A": "deionized water",
+      "B": "soft water",
+      "C": "distilled water",
+      "D": "hard water"
+    },
+    "correct": "D",
+    "explanation": "Hard water contains dissolved calcium and/or magnesium salts, which react with soap to form an insoluble scum rather than lather.",
+    "topic": "Air and Water",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A solution that contains the maximum amount of solute that can dissolve in a given solvent at a particular temperature is called a",
+    "options": {
+      "A": "dilute solution",
+      "B": "unsaturated solution",
+      "C": "supersaturated solution only",
+      "D": "saturated solution"
+    },
+    "correct": "D",
+    "explanation": "A saturated solution contains the maximum amount of dissolved solute possible at a given temperature; any additional solute added will not dissolve and remains undissolved.",
+    "topic": "Solubility",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The excessive release of gases such as sulphur (IV) oxide and nitrogen oxides into the atmosphere is a major cause of",
+    "options": {
+      "A": "acid rain",
+      "B": "eutrophication only",
+      "C": "global cooling",
+      "D": "ozone layer thickening"
+    },
+    "correct": "A",
+    "explanation": "Sulphur (IV) oxide and nitrogen oxides released from burning fossil fuels react with atmospheric moisture to form acids, which fall as acid rain, damaging buildings, water bodies, and vegetation.",
+    "topic": "Environmental Pollution",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A substance that turns blue litmus paper red is classified as",
+    "options": {
+      "A": "an acid",
+      "B": "a neutral salt",
+      "C": "a pure solvent",
+      "D": "a base"
+    },
+    "correct": "A",
+    "explanation": "Acids turn blue litmus paper red, while bases turn red litmus paper blue — one of the classic simple tests to distinguish acids from bases.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A solution with a pH value less than 7 is classified as",
+    "options": {
+      "A": "a pure solvent only",
+      "B": "alkaline (basic)",
+      "C": "acidic",
+      "D": "neutral"
+    },
+    "correct": "C",
+    "explanation": "On the pH scale, values below 7 indicate an acidic solution, exactly 7 is neutral, and values above 7 indicate an alkaline (basic) solution.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The salt formed when a strong acid completely neutralizes a strong base, leaving no excess of either, is described as a",
+    "options": {
+      "A": "double salt",
+      "B": "normal (neutral) salt",
+      "C": "basic salt",
+      "D": "acid salt"
+    },
+    "correct": "B",
+    "explanation": "A normal (neutral) salt results from the complete neutralization of an acid by a base, where all the replaceable hydrogen ions of the acid have been replaced.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "In a redox reaction, the substance that loses electrons is said to undergo",
+    "options": {
+      "A": "neutralization",
+      "B": "reduction",
+      "C": "oxidation",
+      "D": "hydrolysis"
+    },
+    "correct": "C",
+    "explanation": "Oxidation is defined as the loss of electrons by a substance (or an increase in oxidation number); reduction is the corresponding gain of electrons.",
+    "topic": "Oxidation and Reduction (Redox)",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "In a redox reaction, the substance that gains electrons is said to undergo",
+    "options": {
+      "A": "esterification",
+      "B": "combustion",
+      "C": "reduction",
+      "D": "oxidation"
+    },
+    "correct": "C",
+    "explanation": "Reduction is defined as the gain of electrons by a substance (or a decrease in oxidation number), the counterpart process to oxidation in any redox reaction.",
+    "topic": "Oxidation and Reduction (Redox)",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "During the electrolysis of molten lead (II) bromide, lead metal is deposited at the",
+    "options": {
+      "A": "anode, since lead ions are positively charged",
+      "B": "anode, since lead ions are negatively charged",
+      "C": "cathode, since lead ions are negatively charged",
+      "D": "cathode, since lead ions are positively charged"
+    },
+    "correct": "D",
+    "explanation": "Lead (II) ions (Pb2+) are positively charged cations, so they migrate to and are discharged (reduced, gaining electrons) at the cathode, the negative electrode, depositing lead metal there.",
+    "topic": "Electrolysis and Electrochemical Cells",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "According to Faraday's First Law of Electrolysis, the mass of a substance deposited or liberated at an electrode is directly proportional to the",
+    "options": {
+      "A": "quantity of electricity (charge) passed through the electrolyte",
+      "B": "colour of the electrolyte",
+      "C": "temperature of the electrolyte only",
+      "D": "volume of the electrolyte only"
+    },
+    "correct": "A",
+    "explanation": "Faraday's First Law states that the mass of a substance liberated or deposited at an electrode during electrolysis is directly proportional to the quantity of electricity (charge) passed through the electrolyte.",
+    "topic": "Electrolysis and Electrochemical Cells",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The most electronegative and most reactive element among the halogens (Group VII) is",
+    "options": {
+      "A": "fluorine",
+      "B": "chlorine",
+      "C": "bromine",
+      "D": "iodine"
+    },
+    "correct": "A",
+    "explanation": "Fluorine, at the top of Group VII (the halogens), is the smallest atom in the group and has the highest electronegativity, making it the most reactive halogen.",
+    "topic": "Non-metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The alkali metals (Group I elements) are generally stored under oil mainly because they",
+    "options": {
+      "A": "react vigorously with air and moisture",
+      "B": "are unusually dense",
+      "C": "are radioactive",
+      "D": "have very high melting points"
+    },
+    "correct": "A",
+    "explanation": "Alkali metals (e.g. sodium, potassium) are highly reactive, reacting vigorously with oxygen and moisture in the air, so they are stored under oil to exclude air and prevent unwanted reactions.",
+    "topic": "Metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A mixture of two or more metals (or a metal and another element) with metallic properties is called a(n)",
+    "options": {
+      "A": "alloy",
+      "B": "ore",
+      "C": "isomer",
+      "D": "isotope"
+    },
+    "correct": "A",
+    "explanation": "An alloy is a mixture (usually a solid solution) of two or more metals, or a metal with a non-metal, combined to produce a material with improved properties, e.g. brass or steel.",
+    "topic": "Metals and their Compounds",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Carbon's unique ability to form long chains and rings of covalently bonded carbon atoms, enabling the vast diversity of organic compounds, is called",
+    "options": {
+      "A": "polymerization",
+      "B": "isomerism",
+      "C": "hybridization",
+      "D": "catenation"
+    },
+    "correct": "D",
+    "explanation": "Catenation is the ability of carbon atoms to form strong, stable covalent bonds with other carbon atoms, creating long chains and rings — the structural basis of organic chemistry's diversity.",
+    "topic": "Introduction to Organic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A series of organic compounds with the same general formula, similar chemical properties, and differing by a constant CH2 unit between successive members is called a(n)",
+    "options": {
+      "A": "isotope series",
+      "B": "homologous series",
+      "C": "isomer series",
+      "D": "polymer chain"
+    },
+    "correct": "B",
+    "explanation": "A homologous series is a family of organic compounds with the same general formula and similar chemical properties, each successive member differing by a -CH2- unit.",
+    "topic": "Introduction to Organic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Hydrocarbons containing only single covalent bonds between carbon atoms are called",
+    "options": {
+      "A": "alkanes",
+      "B": "alkenes",
+      "C": "alkynes",
+      "D": "aromatics"
+    },
+    "correct": "A",
+    "explanation": "Alkanes are saturated hydrocarbons containing only single (sigma) covalent bonds between carbon atoms, with the general formula CnH2n+2.",
+    "topic": "Aliphatic Hydrocarbons",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Hydrocarbons that contain at least one carbon-to-carbon double bond are called",
+    "options": {
+      "A": "alkanes",
+      "B": "alkynes",
+      "C": "cycloalkanes only",
+      "D": "alkenes"
+    },
+    "correct": "D",
+    "explanation": "Alkenes are unsaturated hydrocarbons containing at least one carbon-to-carbon double bond, with the general formula CnH2n.",
+    "topic": "Aliphatic Hydrocarbons",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Benzene, the simplest aromatic hydrocarbon, has the molecular formula",
+    "options": {
+      "A": "C5H5",
+      "B": "C6H12",
+      "C": "C6H14",
+      "D": "C6H6"
+    },
+    "correct": "D",
+    "explanation": "Benzene has the molecular formula C6H6, a ring of six carbon atoms with delocalized electrons giving it special aromatic stability.",
+    "topic": "Aromatic Hydrocarbons",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The functional group -OH, characteristic of alkanols (alcohols), is called the",
+    "options": {
+      "A": "hydroxyl group",
+      "B": "amino group",
+      "C": "carbonyl group",
+      "D": "carboxyl group"
+    },
+    "correct": "A",
+    "explanation": "The hydroxyl group (-OH) is the characteristic functional group of alkanols (alcohols), such as ethanol (C2H5OH).",
+    "topic": "Alkanols, Alkanals, and Alkanones",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The functional group -COOH, characteristic of alkanoic acids (carboxylic acids), is called the",
+    "options": {
+      "A": "amino group",
+      "B": "carboxyl group",
+      "C": "carbonyl group",
+      "D": "hydroxyl group"
+    },
+    "correct": "B",
+    "explanation": "The carboxyl group (-COOH) is the characteristic functional group of alkanoic acids (carboxylic acids), such as ethanoic acid (CH3COOH).",
+    "topic": "Alkanoic Acids and Esters",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The reaction between an alkanoic acid and an alkanol, producing an ester and water, is called",
+    "options": {
+      "A": "esterification",
+      "B": "hydrolysis",
+      "C": "saponification only",
+      "D": "polymerization"
+    },
+    "correct": "A",
+    "explanation": "Esterification is the reaction between a carboxylic acid (alkanoic acid) and an alcohol (alkanol), usually with an acid catalyst, producing an ester and water.",
+    "topic": "Alkanoic Acids and Esters",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Organic compounds that can be regarded as derivatives of ammonia (NH3), with one or more hydrogen atoms replaced by hydrocarbon groups, are called",
+    "options": {
+      "A": "amines",
+      "B": "aldehydes",
+      "C": "ketones",
+      "D": "esters"
+    },
+    "correct": "A",
+    "explanation": "Amines are organic derivatives of ammonia in which one, two, or three hydrogen atoms are replaced by alkyl or aryl (hydrocarbon) groups.",
+    "topic": "Amines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Simple sugars such as glucose, which cannot be broken down into simpler sugars by hydrolysis, are classified as",
+    "options": {
+      "A": "proteins",
+      "B": "monosaccharides",
+      "C": "disaccharides",
+      "D": "polysaccharides"
+    },
+    "correct": "B",
+    "explanation": "Monosaccharides (e.g. glucose, fructose) are the simplest carbohydrates — single sugar units that cannot be hydrolysed into simpler sugar molecules.",
+    "topic": "Carbohydrates",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Proteins are large biological molecules made up of many repeating units called",
+    "options": {
+      "A": "fatty acids",
+      "B": "nucleotides",
+      "C": "monosaccharides",
+      "D": "amino acids"
+    },
+    "correct": "D",
+    "explanation": "Proteins are polymers made up of long chains of amino acid units linked together by peptide bonds.",
+    "topic": "Proteins and Enzymes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Biological catalysts that speed up specific biochemical reactions in living organisms are called",
+    "options": {
+      "A": "vitamins",
+      "B": "hormones only",
+      "C": "enzymes",
+      "D": "antibodies"
+    },
+    "correct": "C",
+    "explanation": "Enzymes are biological catalysts, usually proteins, that speed up specific biochemical reactions in living organisms without being consumed themselves.",
+    "topic": "Proteins and Enzymes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Large molecules formed by the repeated joining together of many small, identical (or similar) repeating units are called",
+    "options": {
+      "A": "monomers",
+      "B": "polymers",
+      "C": "isomers",
+      "D": "isotopes"
+    },
+    "correct": "B",
+    "explanation": "Polymers are large molecules built up from many repeated smaller units (monomers) joined together by covalent bonds, e.g. polythene from ethene monomers.",
+    "topic": "Polymers",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Petroleum (crude oil), a major raw material for the chemical industry, is mainly a mixture of",
+    "options": {
+      "A": "hydrocarbons",
+      "B": "metal oxides",
+      "C": "inorganic salts",
+      "D": "proteins and carbohydrates"
+    },
+    "correct": "A",
+    "explanation": "Petroleum (crude oil) is mainly a complex mixture of hydrocarbons of varying chain lengths, separated by fractional distillation into fractions such as petrol, kerosene, and diesel.",
+    "topic": "Chemistry and Industry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The technique used to separate the coloured components of a mixture such as plant pigments, based on differing solubility/adsorption, is called",
+    "options": {
+      "A": "chromatography",
+      "B": "magnetization",
+      "C": "evaporation",
+      "D": "decantation"
+    },
+    "correct": "A",
+    "explanation": "Chromatography separates the different components of a mixture based on their differing rates of movement through a stationary medium, commonly used to separate pigments or dyes.",
+    "topic": "Separation of Mixtures",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A pure substance is one that",
+    "options": {
+      "A": "cannot be broken down by any chemical means",
+      "B": "has a variable, non-fixed melting and boiling point",
+      "C": "has a fixed, sharp melting and boiling point and consists of only one kind of substance",
+      "D": "is always a mixture of two elements"
+    },
+    "correct": "C",
+    "explanation": "A pure substance consists of only one kind of matter (element or compound) and has a definite, sharp melting and boiling point, unlike a mixture, which melts/boils over a range.",
+    "topic": "Separation of Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "12 g of carbon (molar mass 12 g/mol) reacts completely with oxygen to form carbon (IV) oxide. The number of moles of carbon reacted is",
+    "options": {
+      "A": "2 mol",
+      "B": "12 mol",
+      "C": "1 mol",
+      "D": "0.5 mol"
+    },
+    "correct": "C",
+    "explanation": "Number of moles = mass/molar mass = 12/12 = 1 mol.",
+    "topic": "Chemical Combination — Mole Concept",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The empirical formula of a compound shows the",
+    "options": {
+      "A": "simplest whole-number ratio of atoms of each element present",
+      "B": "arrangement of atoms in three-dimensional space",
+      "C": "total number of moles present in a sample",
+      "D": "exact number of atoms of each element in one molecule"
+    },
+    "correct": "A",
+    "explanation": "The empirical formula shows the simplest whole-number ratio of the different atoms present in a compound, which may or may not be the same as the actual (molecular) formula.",
+    "topic": "Chemical Combination — Mole Concept",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A compound has the molecular formula C2H4O2 and empirical formula CH2O. The molecular formula is how many times the empirical formula?",
+    "options": {
+      "A": "2 times",
+      "B": "1 time",
+      "C": "3 times",
+      "D": "4 times"
+    },
+    "correct": "A",
+    "explanation": "C2H4O2 has twice the number of each atom as CH2O (2x C, 4x H, 2x O compared to 1x C, 2x H, 1x O), so the molecular formula is 2 times the empirical formula.",
+    "topic": "Chemical Combination — Mole Concept",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Increasing the pressure on a fixed mass of gas at constant temperature causes its volume to",
+    "options": {
+      "A": "become infinite",
+      "B": "increase",
+      "C": "remain unchanged",
+      "D": "decrease"
+    },
+    "correct": "D",
+    "explanation": "By Boyle's Law, at constant temperature, pressure and volume are inversely related — increasing the pressure on a gas causes its volume to decrease.",
+    "topic": "Kinetic Theory of Matter and Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "According to Charles' Law, at constant pressure, the volume of a fixed mass of gas is",
+    "options": {
+      "A": "inversely proportional to its absolute temperature",
+      "B": "inversely proportional to pressure",
+      "C": "independent of temperature",
+      "D": "directly proportional to its absolute temperature"
+    },
+    "correct": "D",
+    "explanation": "Charles' Law states that at constant pressure, the volume of a fixed mass of gas is directly proportional to its absolute (Kelvin) temperature.",
+    "topic": "Kinetic Theory of Matter and Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The maximum number of electrons that can occupy the first (innermost) electron shell of an atom is",
+    "options": {
+      "A": "8",
+      "B": "18",
+      "C": "2",
+      "D": "32"
+    },
+    "correct": "C",
+    "explanation": "The first electron shell (K shell, n=1) can hold a maximum of 2 electrons, following the 2n² rule for maximum shell occupancy.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The maximum number of electrons that can occupy the second electron shell of an atom is",
+    "options": {
+      "A": "8",
+      "B": "2",
+      "C": "18",
+      "D": "6"
+    },
+    "correct": "A",
+    "explanation": "The second electron shell (L shell, n=2) can hold a maximum of 8 electrons, following the 2n² rule.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "An atom that has lost or gained one or more electrons, becoming electrically charged, is called a(n)",
+    "options": {
+      "A": "molecule",
+      "B": "isomer",
+      "C": "isotope",
+      "D": "ion"
+    },
+    "correct": "D",
+    "explanation": "An ion is an atom (or group of atoms) that has lost electrons (becoming a positively charged cation) or gained electrons (becoming a negatively charged anion).",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Going down a group of the periodic table, the reactivity of the alkali metals (Group I) generally",
+    "options": {
+      "A": "decreases",
+      "B": "remains constant",
+      "C": "increases",
+      "D": "first increases then decreases"
+    },
+    "correct": "C",
+    "explanation": "Down Group I, the outermost electron is further from the nucleus and more shielded, so it is lost more easily, making the alkali metals progressively more reactive down the group.",
+    "topic": "Atomic Structure and Chemical Bonding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The heat energy change that occurs when one mole of a substance is completely burnt in oxygen is called the",
+    "options": {
+      "A": "heat (enthalpy) of combustion",
+      "B": "heat of neutralization",
+      "C": "heat of solution",
+      "D": "heat of formation only"
+    },
+    "correct": "A",
+    "explanation": "The heat (enthalpy) of combustion is the heat energy released when one mole of a substance is completely burnt in excess oxygen under standard conditions.",
+    "topic": "Energy Changes (Thermochemistry)",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Increasing the concentration of reactants in a solution generally increases the rate of reaction mainly because it",
+    "options": {
+      "A": "decreases the temperature of the mixture",
+      "B": "increases the frequency of collisions between reacting particles",
+      "C": "decreases the number of collisions between particles",
+      "D": "lowers the activation energy of the reaction"
+    },
+    "correct": "B",
+    "explanation": "A higher concentration means more reactant particles in a given volume, increasing the frequency of effective collisions between them and so increasing the reaction rate.",
+    "topic": "Rates of Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Increasing the pressure on a gaseous equilibrium system shifts the position of equilibrium towards the side with",
+    "options": {
+      "A": "fewer gas molecules",
+      "B": "only solid products",
+      "C": "more gas molecules, always",
+      "D": "no effect on gaseous equilibria"
+    },
+    "correct": "A",
+    "explanation": "By Le Chatelier's Principle, increasing pressure shifts a gaseous equilibrium towards the side with fewer moles of gas, reducing the total number of gas particles and partially countering the pressure increase.",
+    "topic": "Chemical Equilibrium",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The process by which green plants use sunlight to convert carbon (IV) oxide and water into glucose and oxygen is called",
+    "options": {
+      "A": "fermentation",
+      "B": "photosynthesis",
+      "C": "combustion",
+      "D": "respiration"
+    },
+    "correct": "B",
+    "explanation": "Photosynthesis is the process by which green plants use light energy to convert carbon (IV) oxide and water into glucose (food) and oxygen, a key part of the carbon cycle.",
+    "topic": "Air and Water",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Water that readily forms lather with soap, containing few or no dissolved calcium/magnesium salts, is described as",
+    "options": {
+      "A": "brine",
+      "B": "soft water",
+      "C": "hard water",
+      "D": "brackish water"
+    },
+    "correct": "B",
+    "explanation": "Soft water contains little or no dissolved calcium and magnesium salts, so it readily forms a lasting lather with soap, unlike hard water.",
+    "topic": "Air and Water",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The process of adding a solvent to a concentrated solution to reduce its concentration is called",
+    "options": {
+      "A": "filtration",
+      "B": "dilution",
+      "C": "crystallization",
+      "D": "saturation"
+    },
+    "correct": "B",
+    "explanation": "Dilution is the process of adding more solvent to a solution to reduce the concentration of the dissolved solute.",
+    "topic": "Solubility",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Untreated industrial and domestic waste discharged into rivers and lakes is a major cause of",
+    "options": {
+      "A": "global warming exclusively",
+      "B": "ozone layer depletion only",
+      "C": "water pollution",
+      "D": "acid rain only"
+    },
+    "correct": "C",
+    "explanation": "Discharging untreated waste (industrial or domestic) into water bodies introduces harmful chemicals and pathogens, a major cause of water pollution and threat to aquatic life.",
+    "topic": "Environmental Pollution",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A substance that turns red litmus paper blue is classified as",
+    "options": {
+      "A": "a neutral salt",
+      "B": "an acid",
+      "C": "a base (alkali)",
+      "D": "a pure solvent"
+    },
+    "correct": "C",
+    "explanation": "Bases (alkalis) turn red litmus paper blue, the opposite effect to acids, which turn blue litmus paper red.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The reaction between an acid and a base, producing a salt and water, is called",
+    "options": {
+      "A": "polymerization",
+      "B": "electrolysis",
+      "C": "neutralization",
+      "D": "oxidation"
+    },
+    "correct": "C",
+    "explanation": "Neutralization is the reaction between an acid and a base, in which the acidic and basic properties cancel out to produce a salt and water.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "In the reaction Zn + CuSO4 -> ZnSO4 + Cu, the zinc metal is",
+    "options": {
+      "A": "reduced, since it gains electrons",
+      "B": "neither oxidized nor reduced",
+      "C": "oxidized, since it loses electrons to form Zn2+",
+      "D": "acting as an oxidizing agent"
+    },
+    "correct": "C",
+    "explanation": "Zinc loses electrons (Zn -> Zn2+ + 2e-) as it displaces copper from solution, so zinc is oxidized; correspondingly, copper (II) ions are reduced to copper metal.",
+    "topic": "Oxidation and Reduction (Redox)",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "A substance that brings about the reduction of another substance, and is itself oxidized in the process, is called a(n)",
+    "options": {
+      "A": "oxidizing agent",
+      "B": "reducing agent",
+      "C": "indicator",
+      "D": "catalyst"
+    },
+    "correct": "B",
+    "explanation": "A reducing agent causes another substance to be reduced (by donating electrons to it) and is itself oxidized in the process.",
+    "topic": "Oxidation and Reduction (Redox)",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "During the electrolysis of acidified water, the gas liberated at the cathode is",
+    "options": {
+      "A": "chlorine",
+      "B": "carbon (IV) oxide",
+      "C": "hydrogen",
+      "D": "oxygen"
+    },
+    "correct": "C",
+    "explanation": "During electrolysis of acidified water, hydrogen ions (H+) migrate to and are discharged at the cathode as hydrogen gas, while oxygen is liberated at the anode.",
+    "topic": "Electrolysis and Electrochemical Cells",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The gradual destruction of metals, especially iron, by chemical or electrochemical reaction with their environment (e.g. rusting) is called",
+    "options": {
+      "A": "corrosion",
+      "B": "catenation",
+      "C": "electrolysis",
+      "D": "neutralization"
+    },
+    "correct": "A",
+    "explanation": "Corrosion is the gradual deterioration of a metal (e.g. rusting of iron) caused by chemical or electrochemical reaction with substances in its environment, such as oxygen and moisture.",
+    "topic": "Electrolysis and Electrochemical Cells",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The Group 0 (VIII) elements of the periodic table, such as helium and neon, are generally characterized by their",
+    "options": {
+      "A": "chemical inertness (very low reactivity)",
+      "B": "strong tendency to form ionic compounds",
+      "C": "high electrical conductivity as gases",
+      "D": "high reactivity with water"
+    },
+    "correct": "A",
+    "explanation": "The noble gases (Group 0/VIII) have a full outer electron shell, making them chemically inert (very unreactive) under normal conditions.",
+    "topic": "Non-metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Nitrogen gas is relatively unreactive at room temperature mainly because of its",
+    "options": {
+      "A": "high electrical conductivity",
+      "B": "large atomic radius",
+      "C": "strong triple covalent bond between the two nitrogen atoms",
+      "D": "low atomic mass"
+    },
+    "correct": "C",
+    "explanation": "Nitrogen exists as N2 with a very strong triple covalent bond between the two atoms, requiring a large amount of energy to break, making N2 relatively unreactive at room temperature.",
+    "topic": "Non-metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The alkaline-earth metals (Group II) are generally",
+    "options": {
+      "A": "less reactive than the alkali metals (Group I)",
+      "B": "more reactive than the alkali metals (Group I)",
+      "C": "non-metals",
+      "D": "exactly as reactive as the noble gases"
+    },
+    "correct": "A",
+    "explanation": "Group II (alkaline-earth) metals are generally less reactive than the Group I alkali metals, since they have two outer electrons to lose rather than one, requiring more energy overall.",
+    "topic": "Metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Transition metals, unlike Group I and II metals, are generally characterized by their ability to",
+    "options": {
+      "A": "form only one type of ion (fixed oxidation state)",
+      "B": "be extremely low in density",
+      "C": "form coloured compounds and multiple oxidation states",
+      "D": "react violently with cold water"
+    },
+    "correct": "C",
+    "explanation": "Transition metals are generally characterized by forming coloured compounds/ions and exhibiting variable (multiple) oxidation states, unlike the fixed, single oxidation states typical of Group I/II metals.",
+    "topic": "Metals and their Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Compounds that have the same molecular formula but different structural arrangements of atoms are called",
+    "options": {
+      "A": "polymers",
+      "B": "homologues",
+      "C": "isotopes",
+      "D": "isomers"
+    },
+    "correct": "D",
+    "explanation": "Isomers are compounds with the identical molecular formula but different arrangements of atoms in space (structural or stereoisomers), giving them different physical/chemical properties.",
+    "topic": "Introduction to Organic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "An unsaturated hydrocarbon reacts with bromine water by",
+    "options": {
+      "A": "forming a white precipitate only",
+      "B": "decolourizing the bromine water via an addition reaction",
+      "C": "leaving the bromine water's orange/brown colour completely unchanged",
+      "D": "producing an audible explosion"
+    },
+    "correct": "B",
+    "explanation": "Unsaturated hydrocarbons (alkenes, alkynes) decolourize orange/brown bromine water rapidly via an addition reaction across the double/triple bond — a standard test distinguishing them from saturated alkanes.",
+    "topic": "Aliphatic Hydrocarbons",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Hydrocarbons containing at least one carbon-to-carbon triple bond are called",
+    "options": {
+      "A": "alkanes",
+      "B": "cycloalkanes",
+      "C": "alkynes",
+      "D": "alkenes"
+    },
+    "correct": "C",
+    "explanation": "Alkynes are unsaturated hydrocarbons containing at least one carbon-to-carbon triple bond, with the general formula CnH2n-2, e.g. ethyne (acetylene).",
+    "topic": "Aliphatic Hydrocarbons",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Unlike typical alkenes, benzene does not readily undergo addition reactions mainly because of its",
+    "options": {
+      "A": "very high boiling point",
+      "B": "lack of any carbon-carbon bonds",
+      "C": "delocalized, unusually stable ring of electrons",
+      "D": "extremely low molecular mass"
+    },
+    "correct": "C",
+    "explanation": "Benzene's ring of six delocalized electrons gives it special aromatic stability, so it tends to undergo substitution reactions (preserving the ring) rather than the addition reactions typical of alkenes.",
+    "topic": "Aromatic Hydrocarbons",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The functional group C=O, found in aldehydes and ketones (alkanals and alkanones), is called the",
+    "options": {
+      "A": "hydroxyl group",
+      "B": "carbonyl group",
+      "C": "amino group",
+      "D": "carboxyl group"
+    },
+    "correct": "B",
+    "explanation": "The carbonyl group (C=O) is the characteristic functional group shared by aldehydes (alkanals) and ketones (alkanones).",
+    "topic": "Alkanols, Alkanals, and Alkanones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Ethanol (an alkanol) can be produced industrially by the fermentation of",
+    "options": {
+      "A": "sugars, using yeast enzymes",
+      "B": "proteins, using bacteria",
+      "C": "metal oxides",
+      "D": "petroleum only"
+    },
+    "correct": "A",
+    "explanation": "Ethanol is produced by the fermentation of sugars (e.g. from cassava, sugarcane, or grains) using yeast, whose enzymes convert the sugar into ethanol and carbon (IV) oxide.",
+    "topic": "Alkanols, Alkanals, and Alkanones",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Esters are commonly recognised by their characteristic",
+    "options": {
+      "A": "complete lack of any odour",
+      "B": "pleasant, fruity smell",
+      "C": "strong acidic taste",
+      "D": "foul, unpleasant smell in all cases"
+    },
+    "correct": "B",
+    "explanation": "Esters are widely known for their characteristic pleasant, fruity smells, which is why many are used as flavourings and in perfumes.",
+    "topic": "Alkanoic Acids and Esters",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Amines are generally characterized as being",
+    "options": {
+      "A": "weakly basic, due to the lone pair of electrons on nitrogen",
+      "B": "completely neutral and unreactive",
+      "C": "strongly acidic",
+      "D": "insoluble in all solvents"
+    },
+    "correct": "A",
+    "explanation": "Amines are weakly basic because the nitrogen atom's lone pair of electrons can accept a proton (H+), similarly to ammonia, from which amines are structurally derived.",
+    "topic": "Amines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Starch and cellulose, both made of many linked glucose units, are examples of",
+    "options": {
+      "A": "disaccharides",
+      "B": "monosaccharides",
+      "C": "polysaccharides",
+      "D": "amino acids"
+    },
+    "correct": "C",
+    "explanation": "Starch and cellulose are polysaccharides — large carbohydrate polymers made of many monosaccharide (glucose) units joined together.",
+    "topic": "Carbohydrates",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The breakdown of large protein molecules into simpler amino acids, for example during digestion, is achieved through",
+    "options": {
+      "A": "polymerization",
+      "B": "hydrolysis",
+      "C": "oxidation only",
+      "D": "esterification"
+    },
+    "correct": "B",
+    "explanation": "Hydrolysis (reaction with water, often enzyme-catalysed) breaks the peptide bonds in proteins, splitting them down into their constituent amino acids.",
+    "topic": "Proteins and Enzymes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Plastics such as polythene, formed by joining together many ethene monomer units, are examples of",
+    "options": {
+      "A": "monosaccharides",
+      "B": "natural polymers",
+      "C": "synthetic (man-made) polymers",
+      "D": "proteins"
+    },
+    "correct": "C",
+    "explanation": "Polythene is a synthetic (man-made) polymer, produced industrially by the addition polymerization of many ethene (monomer) molecules, unlike natural polymers such as starch or protein.",
+    "topic": "Polymers",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "The chemical industry uses petroleum as a major raw material mainly to produce",
+    "options": {
+      "A": "only metal ores",
+      "B": "only table salt",
+      "C": "fuels, plastics, and other petrochemicals",
+      "D": "only drinking water"
+    },
+    "correct": "C",
+    "explanation": "Petroleum, separated into fractions by distillation, is a major raw material for producing fuels (petrol, diesel), plastics, and a wide range of other petrochemical products.",
+    "topic": "Chemistry and Industry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  },
+  {
+    "stem": "Which of the following processes is classified as a physical change, not a chemical change?",
+    "options": {
+      "A": "Burning of wood",
+      "B": "Digestion of food",
+      "C": "Rusting of iron",
+      "D": "Melting of ice"
+    },
+    "correct": "D",
+    "explanation": "Melting of ice is a physical change — water changes state (solid to liquid) without any new substance being formed; burning, rusting, and digestion are all chemical changes producing new substances.",
+    "topic": "Chemical Combination",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 88/88.",
+    "section": "JAMB Chemistry"
+  }
+]
