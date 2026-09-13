@@ -72,10 +72,21 @@ def all_lessons_completed(enrollment: Enrollment) -> bool:
     apps.assessment.access can gate FINAL-scope quiz access on it
     directly, without needing is_course_complete() (which would be
     circular — that function itself needs to know whether the final
-    quiz was passed, not just attempted)."""
+    quiz was passed, not just attempted).
+
+    A course with zero lessons returns True (vacuously — there's
+    nothing left to finish), not False. Never exercised until the
+    question-bank-engine's exam-prep courses (apps.assessment
+    .management.commands.create_exam_prep_course): a Course that's
+    just a wrapper around a QuestionBank's FINAL quiz, with no lesson
+    content at all, needs its exam immediately accessible on
+    enrollment — the same as any other course whose lessons are all
+    already done. Every real course up to now has had real lessons, so
+    this branch's behaviour was previously untested and unreachable in
+    practice, not deliberately chosen as False for a reason."""
     all_lessons = [l for m in enrollment.course.modules.all() for l in m.lessons.all()]
     if not all_lessons:
-        return False
+        return True
     return all(
         LessonProgress.objects.filter(
             enrollment=enrollment, lesson=l, completed_at__isnull=False

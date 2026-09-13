@@ -15,6 +15,7 @@ from apps.organizations.models import Organization
 
 from .models import Enrollment, LessonProgress
 from .services import (
+    all_lessons_completed,
     get_next_lesson,
     get_progress_percent,
     is_enrollment_currently_active,
@@ -190,6 +191,22 @@ class TestProgressAndCompletion:
         mark_lesson_complete(enrollment, m1.lessons.first())
         enrollment.refresh_from_db()
         assert get_next_lesson(enrollment).id == m2.lessons.first().id
+
+    def test_all_lessons_completed_is_vacuously_true_for_a_zero_lesson_course(self, course, user):
+        """A course with no modules/lessons at all (question-bank-engine
+        exam-prep courses: apps.assessment.management.commands
+        .create_exam_prep_course) has nothing left to finish, so its
+        FINAL quiz must be immediately accessible on enrollment.
+        Previously returned False here — never exercised until this
+        use case existed, since every real course had lessons."""
+        assert course.modules.count() == 0
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        assert all_lessons_completed(enrollment) is True
+
+    def test_all_lessons_completed_is_false_with_incomplete_lessons(self, course, user):
+        make_module(course, 1)
+        enrollment = Enrollment.objects.create(user=user, course=course)
+        assert all_lessons_completed(enrollment) is False
 
 
 @pytest.mark.django_db

@@ -109,7 +109,19 @@ class InstitutionalLicense(TimeStampedModel):
 
     @property
     def seats_used(self) -> int:
-        return self.enrollments.exclude(status="REVOKED").count()
+        # DISTINCT students, not total Enrollment rows. Real bug this
+        # fixes: a licence can cover several courses at once (a "full
+        # JAMB prep" bundle -- Biology, Physics, Chemistry, Maths,
+        # English), and bulk_enroll_students_from_csv creates one
+        # Enrollment row per course per student. Counting rows meant
+        # one student on a 5-course bundle consumed 5 seats, not 1 --
+        # a school buying "20 seats" could only actually seat 4
+        # students. A "seat" is a student's access to the licence's
+        # whole course bundle, matching bulk_enroll_students_from_csv's
+        # own seat-counting semantics (its already_seated check is
+        # per user, not per course) -- this property just hadn't
+        # matched that until now.
+        return self.enrollments.exclude(status="REVOKED").values("user_id").distinct().count()
 
     @property
     def seats_remaining(self) -> int:

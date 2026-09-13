@@ -136,6 +136,30 @@ class TestBulkEnroll:
         assert result.already_seated == 1
         assert license.seats_used == 1  # not double-counted
 
+    def test_seats_used_counts_distinct_students_not_enrollment_rows(self, institution, course, org):
+        """Real bug: a licence covering multiple courses at once (a
+        "full exam prep" bundle) must consume one seat per student,
+        not one seat per (student, course) enrollment row."""
+        from apps.catalog.models import Programme
+
+        programme2 = Programme.objects.create(organization=org, title="Second Programme", audience="BREEDER")
+        course2 = Course.objects.create(
+            organization=org, programme=programme2, title="Second Course", audience="BREEDER",
+        )
+        bundle = InstitutionalLicense.objects.create(
+            institution=institution, seats=2, status=InstitutionalLicense.Status.ACTIVE,
+            term_starts_at=timezone.now(), term_ends_at=timezone.now() + timezone.timedelta(days=90),
+        )
+        bundle.courses.set([course, course2])
+
+        with patch("apps.engagement.services.ResendGateway.send"):
+            result = bulk_enroll_students_from_csv(bundle, csv_file("email\nada@example.com\n"))
+
+        assert result.created == 1
+        assert Enrollment.objects.filter(institutional_license=bundle).count() == 2  # one per course
+        assert bundle.seats_used == 1, "one student on a 2-course bundle must use exactly one seat"
+        assert bundle.seats_remaining == 1
+
     def test_pending_license_refuses_import(self, institution, course):
         pending = InstitutionalLicense.objects.create(
             institution=institution, seats=5, status=InstitutionalLicense.Status.PENDING,

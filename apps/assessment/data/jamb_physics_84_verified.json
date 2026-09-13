@@ -1,0 +1,1346 @@
+[
+  {
+    "stem": "The SI unit of force is the",
+    "options": {
+      "A": "watt",
+      "B": "pascal",
+      "C": "newton",
+      "D": "joule"
+    },
+    "correct": "C",
+    "explanation": "The newton (N) is the SI unit of force, defined as the force that gives a mass of 1 kg an acceleration of 1 m/s².",
+    "topic": "Measurements and Units",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Which of the following is a vector quantity?",
+    "options": {
+      "A": "displacement",
+      "B": "mass",
+      "C": "speed",
+      "D": "energy"
+    },
+    "correct": "A",
+    "explanation": "Displacement has both magnitude and direction, making it a vector quantity, unlike mass, speed, and energy, which are scalars.",
+    "topic": "Scalars and Vectors",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A car accelerates uniformly from rest to a velocity of 20 m/s in 5 seconds. Its acceleration is",
+    "options": {
+      "A": "100 m/s²",
+      "B": "5 m/s²",
+      "C": "4 m/s²",
+      "D": "2 m/s²"
+    },
+    "correct": "C",
+    "explanation": "Acceleration = (v - u)/t = (20 - 0)/5 = 4 m/s², using the definition of uniform acceleration.",
+    "topic": "Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The force that opposes relative motion between two surfaces in contact is called",
+    "options": {
+      "A": "friction",
+      "B": "upthrust",
+      "C": "tension",
+      "D": "gravity"
+    },
+    "correct": "A",
+    "explanation": "Friction is the force that opposes the relative sliding or tendency to slide between two surfaces in contact.",
+    "topic": "Friction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A body is in equilibrium under the action of coplanar forces when",
+    "options": {
+      "A": "the resultant force and resultant moment are both zero",
+      "B": "only the resultant moment is zero",
+      "C": "the body must be stationary",
+      "D": "only the resultant force is zero"
+    },
+    "correct": "A",
+    "explanation": "For complete equilibrium under coplanar forces, both the resultant force and the resultant moment (torque) about any point must be zero.",
+    "topic": "Equilibrium of Forces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Work is said to be done when",
+    "options": {
+      "A": "a force is applied but no movement occurs",
+      "B": "an object is held stationary against gravity",
+      "C": "a force is applied to an object",
+      "D": "a force causes an object to move through a distance in the direction of the force"
+    },
+    "correct": "D",
+    "explanation": "Work is done only when a force causes displacement of its point of application in the direction of the force; holding a weight stationary does no work in the physics sense.",
+    "topic": "Work, Energy and Power",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A machine that uses a single fixed pulley to lift a load mainly serves to",
+    "options": {
+      "A": "increase the distance moved by the load",
+      "B": "change the direction of the applied force",
+      "C": "multiply the force applied",
+      "D": "reduce the work done"
+    },
+    "correct": "B",
+    "explanation": "A single fixed pulley has a velocity ratio of 1 and does not multiply force; its main advantage is changing the direction of the applied effort, e.g. pulling down to lift up.",
+    "topic": "Simple Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The ratio of stress to strain, within the elastic limit of a material, is called its",
+    "options": {
+      "A": "specific heat capacity",
+      "B": "density",
+      "C": "viscosity",
+      "D": "Young's modulus"
+    },
+    "correct": "D",
+    "explanation": "Young's modulus is defined as the ratio of tensile stress to tensile strain within the elastic limit of a material, describing its stiffness.",
+    "topic": "Elasticity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The pressure exerted by a liquid at a point depends on the",
+    "options": {
+      "A": "depth of the point, density of the liquid, and gravitational field strength",
+      "B": "total volume of the liquid only",
+      "C": "shape of the container only",
+      "D": "surface area of the container"
+    },
+    "correct": "A",
+    "explanation": "Liquid pressure at a point is given by P = hρg, depending only on the depth (h), the liquid's density (ρ), and gravitational field strength (g) — not on the container's shape or volume.",
+    "topic": "Liquids At Rest",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The temperature at which the volume of a fixed mass of gas theoretically becomes zero, according to Charles' Law, is called",
+    "options": {
+      "A": "the melting point",
+      "B": "room temperature",
+      "C": "absolute zero",
+      "D": "the boiling point"
+    },
+    "correct": "C",
+    "explanation": "Absolute zero (-273°C, or 0 K) is the theoretical temperature at which the volume (and kinetic energy) of an ideal gas would become zero.",
+    "topic": "Temperature and Its Measurement",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "When a metal rod is heated, it generally",
+    "options": {
+      "A": "remains the same length",
+      "B": "becomes lighter",
+      "C": "contracts",
+      "D": "expands"
+    },
+    "correct": "D",
+    "explanation": "Most solids, including metal rods, expand on heating because increased thermal energy causes their particles to vibrate more and occupy more space.",
+    "topic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "According to Boyle's Law, at constant temperature, the pressure of a fixed mass of gas is",
+    "options": {
+      "A": "directly proportional to its volume",
+      "B": "inversely proportional to its volume",
+      "C": "independent of its volume",
+      "D": "directly proportional to the square of its volume"
+    },
+    "correct": "B",
+    "explanation": "Boyle's Law states that at constant temperature, the pressure of a fixed mass of gas is inversely proportional to its volume (PV = constant).",
+    "topic": "Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The quantity of heat required to raise the temperature of a unit mass of a substance by one degree is called its",
+    "options": {
+      "A": "heat capacity of the container",
+      "B": "latent heat",
+      "C": "specific heat capacity",
+      "D": "thermal conductivity"
+    },
+    "correct": "C",
+    "explanation": "Specific heat capacity is defined as the quantity of heat needed to raise the temperature of 1 kg of a substance by 1 K (or 1°C).",
+    "topic": "Quantity of Heat",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The heat energy absorbed or released during a change of state, without a change in temperature, is called",
+    "options": {
+      "A": "specific heat capacity",
+      "B": "internal energy",
+      "C": "latent heat",
+      "D": "radiant heat"
+    },
+    "correct": "C",
+    "explanation": "Latent heat is the heat energy absorbed or given out during a change of state (e.g. melting or boiling) at constant temperature.",
+    "topic": "Change of State",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The process by which a liquid changes to vapour at a temperature below its boiling point is called",
+    "options": {
+      "A": "boiling",
+      "B": "sublimation",
+      "C": "condensation",
+      "D": "evaporation"
+    },
+    "correct": "D",
+    "explanation": "Evaporation is the change of a liquid to vapour at the liquid's surface, occurring at temperatures below the boiling point.",
+    "topic": "Vapours",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The kinetic theory of matter explains that the particles of a gas are",
+    "options": {
+      "A": "stationary but vibrating in place",
+      "B": "arranged in a regular, fixed lattice",
+      "C": "in continuous, random motion with negligible forces between them",
+      "D": "tightly packed and fixed in position"
+    },
+    "correct": "C",
+    "explanation": "The kinetic theory describes gas particles as being in continuous, random motion, widely spaced, with negligible intermolecular forces except during collisions.",
+    "topic": "Structure of Matter and Kinetic Theory",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Heat transfer through a vacuum, such as from the Sun to the Earth, occurs mainly by",
+    "options": {
+      "A": "conduction",
+      "B": "convection",
+      "C": "radiation",
+      "D": "evaporation"
+    },
+    "correct": "C",
+    "explanation": "Radiation is the transfer of heat energy by electromagnetic waves and, unlike conduction and convection, can occur through a vacuum, such as space between the Sun and Earth.",
+    "topic": "Heat Transfer",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A wave in which the particles of the medium vibrate parallel to the direction of energy propagation is called a",
+    "options": {
+      "A": "longitudinal wave",
+      "B": "transverse wave",
+      "C": "electromagnetic wave",
+      "D": "standing wave"
+    },
+    "correct": "A",
+    "explanation": "In a longitudinal wave, particle vibration is parallel (along the same line) to the direction of wave travel, as in sound waves; a transverse wave vibrates perpendicular to this direction.",
+    "topic": "Waves",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Sound waves cannot travel through",
+    "options": {
+      "A": "a vacuum",
+      "B": "solids",
+      "C": "gases",
+      "D": "liquids"
+    },
+    "correct": "A",
+    "explanation": "Sound is a mechanical wave requiring a material medium (solid, liquid, or gas) to travel; it cannot propagate through a vacuum, unlike light.",
+    "topic": "Propagation of Sound Waves",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The loudness of a sound is most closely related to the",
+    "options": {
+      "A": "frequency of the wave",
+      "B": "amplitude of the wave",
+      "C": "wavelength of the wave",
+      "D": "speed of the wave"
+    },
+    "correct": "B",
+    "explanation": "Loudness of a sound depends mainly on the amplitude of the sound wave — a larger amplitude means a louder sound; pitch, not loudness, depends on frequency.",
+    "topic": "Characteristics of Sound Waves",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Light is an example of a wave that",
+    "options": {
+      "A": "requires a material medium to travel",
+      "B": "is a longitudinal wave",
+      "C": "has no measurable speed",
+      "D": "can travel through a vacuum"
+    },
+    "correct": "D",
+    "explanation": "Light is an electromagnetic (transverse) wave and, unlike sound, does not require a material medium — it can travel through a vacuum, as it does from the Sun to Earth.",
+    "topic": "Light Energy",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "When light reflects off a plane mirror, the angle of incidence is",
+    "options": {
+      "A": "always equal to the angle of reflection",
+      "B": "always less than the angle of reflection",
+      "C": "always greater than the angle of reflection",
+      "D": "unrelated to the angle of reflection"
+    },
+    "correct": "A",
+    "explanation": "The law of reflection states that the angle of incidence always equals the angle of reflection, measured from the normal to the reflecting surface.",
+    "topic": "Reflection of Light at Plane and Curved Surfaces",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The bending of light as it passes from one transparent medium into another of different optical density is called",
+    "options": {
+      "A": "reflection",
+      "B": "refraction",
+      "C": "diffraction",
+      "D": "dispersion"
+    },
+    "correct": "B",
+    "explanation": "Refraction is the change in direction (bending) of light as it passes from one transparent medium to another with a different refractive index, due to a change in speed.",
+    "topic": "Refraction of Light Through Plane and Curved Surfaces",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A simple optical instrument used to produce a magnified image of small nearby objects is the",
+    "options": {
+      "A": "periscope",
+      "B": "magnifying glass (simple microscope)",
+      "C": "pinhole camera",
+      "D": "telescope"
+    },
+    "correct": "B",
+    "explanation": "A magnifying glass (simple microscope), a single converging lens, produces an enlarged, virtual image of small objects placed within its focal length.",
+    "topic": "Optical Instruments",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The splitting of white light into its constituent colours by a prism is called",
+    "options": {
+      "A": "polarization",
+      "B": "dispersion",
+      "C": "reflection",
+      "D": "total internal reflection"
+    },
+    "correct": "B",
+    "explanation": "Dispersion is the splitting of white light into its component colours (a spectrum) because each colour (wavelength) is refracted by a different amount passing through a prism.",
+    "topic": "Dispersion of Light and Colours",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Like electric charges placed near each other will",
+    "options": {
+      "A": "have no effect on each other",
+      "B": "attract each other",
+      "C": "neutralize each other instantly",
+      "D": "repel each other"
+    },
+    "correct": "D",
+    "explanation": "Like charges (both positive or both negative) repel each other, while unlike charges attract — a fundamental law of electrostatics.",
+    "topic": "Electrostatics",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The main function of a capacitor in an electrical circuit is to",
+    "options": {
+      "A": "measure current directly",
+      "B": "generate electrical energy",
+      "C": "store electrical charge/energy",
+      "D": "convert electrical energy to mechanical energy"
+    },
+    "correct": "C",
+    "explanation": "A capacitor's primary function is to store electrical charge (and hence energy) in the electric field between its plates.",
+    "topic": "Capacitors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A device that converts chemical energy directly into electrical energy is a(n)",
+    "options": {
+      "A": "electric cell (battery)",
+      "B": "transformer",
+      "C": "electric motor",
+      "D": "generator"
+    },
+    "correct": "A",
+    "explanation": "An electric cell (battery) converts stored chemical energy directly into electrical energy through internal chemical reactions.",
+    "topic": "Electric Cells",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "According to Ohm's Law, if the voltage across a resistor is 12 V and its resistance is 4 Ω, the current flowing through it is",
+    "options": {
+      "A": "3 A",
+      "B": "16 A",
+      "C": "8 A",
+      "D": "48 A"
+    },
+    "correct": "A",
+    "explanation": "By Ohm's Law, I = V/R = 12/4 = 3 A.",
+    "topic": "Current Electricity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Electrical power dissipated in a resistor can be calculated using the formula",
+    "options": {
+      "A": "P = VI",
+      "B": "P = ½mv²",
+      "C": "P = Fd",
+      "D": "P = mgh"
+    },
+    "correct": "A",
+    "explanation": "Electrical power is given by P = VI (voltage multiplied by current), or equivalently P = I²R or P = V²/R.",
+    "topic": "Electrical Energy and Power",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A freely suspended bar magnet will always come to rest pointing approximately in the",
+    "options": {
+      "A": "north-south direction",
+      "B": "vertical direction",
+      "C": "east-west direction",
+      "D": "any random direction"
+    },
+    "correct": "A",
+    "explanation": "A freely suspended magnet aligns itself with the Earth's magnetic field, coming to rest approximately in the north-south direction.",
+    "topic": "Magnets and Magnetic Fields",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A current-carrying conductor placed in a magnetic field experiences a force whose direction can be predicted using",
+    "options": {
+      "A": "Ohm's Law",
+      "B": "Boyle's Law",
+      "C": "Fleming's Left-Hand Rule",
+      "D": "Newton's Third Law"
+    },
+    "correct": "C",
+    "explanation": "Fleming's Left-Hand Rule is used to predict the direction of the force (motor effect) on a current-carrying conductor placed in a magnetic field.",
+    "topic": "Force on a Current-Carrying Conductor in a Magnetic Field",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The generation of an electromotive force (e.m.f.) in a conductor due to a changing magnetic field is called",
+    "options": {
+      "A": "electrostatic induction",
+      "B": "electromagnetic induction",
+      "C": "thermal induction",
+      "D": "chemical induction"
+    },
+    "correct": "B",
+    "explanation": "Electromagnetic induction is the production of an e.m.f. in a conductor caused by a changing magnetic flux, the principle behind generators and transformers.",
+    "topic": "Electromagnetic Induction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "In a simple a.c. circuit, the current and voltage continuously",
+    "options": {
+      "A": "reverse direction periodically",
+      "B": "flow in one direction only",
+      "C": "decrease to zero and stay there",
+      "D": "remain constant in magnitude and direction"
+    },
+    "correct": "A",
+    "explanation": "In an alternating current (a.c.) circuit, the current and voltage periodically reverse direction, unlike direct current (d.c.), which flows in one direction only.",
+    "topic": "Simple A.C. Circuits",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Electrolysis is the process by which",
+    "options": {
+      "A": "an electric current passing through an electrolyte causes a chemical change",
+      "B": "a chemical reaction produces an electric current",
+      "C": "a magnetic field induces an electric current",
+      "D": "heat is converted directly into electrical energy"
+    },
+    "correct": "A",
+    "explanation": "Electrolysis is the decomposition of an electrolyte by passing an electric current through it, causing chemical changes at the electrodes.",
+    "topic": "Conduction of Electricity Through Liquids and Gases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The process in which an unstable atomic nucleus spontaneously emits particles or energy is called",
+    "options": {
+      "A": "electrolysis",
+      "B": "photosynthesis",
+      "C": "radioactivity",
+      "D": "nuclear fusion only"
+    },
+    "correct": "C",
+    "explanation": "Radioactivity is the spontaneous emission of particles (alpha, beta) or energy (gamma rays) from unstable atomic nuclei as they decay towards stability.",
+    "topic": "Elementary Modern Physics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A semiconductor device that allows current to flow in only one direction is called a",
+    "options": {
+      "A": "capacitor",
+      "B": "diode",
+      "C": "resistor",
+      "D": "transformer"
+    },
+    "correct": "B",
+    "explanation": "A diode is a semiconductor device that permits current flow in only one direction, commonly used for rectification (converting a.c. to d.c.).",
+    "topic": "Introductory Electronics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The weight of an object is best defined as the",
+    "options": {
+      "A": "resistance it offers to a change in motion",
+      "B": "volume it occupies",
+      "C": "gravitational force acting on it",
+      "D": "amount of matter it contains"
+    },
+    "correct": "C",
+    "explanation": "Weight is the force of gravity acting on an object's mass (W = mg), and unlike mass, it varies depending on the local gravitational field strength.",
+    "topic": "Gravitational Field",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A ball is dropped from rest and falls freely under gravity for 2 seconds (taking g = 10 m/s²). Its velocity just before landing is",
+    "options": {
+      "A": "20 m/s",
+      "B": "10 m/s",
+      "C": "5 m/s",
+      "D": "40 m/s"
+    },
+    "correct": "A",
+    "explanation": "Using v = u + gt = 0 + (10)(2) = 20 m/s for an object falling freely from rest.",
+    "topic": "Gravitational Field",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A force of 10 N acts on a mass of 2 kg. According to Newton's Second Law, the resulting acceleration is",
+    "options": {
+      "A": "12 m/s²",
+      "B": "2 m/s²",
+      "C": "5 m/s²",
+      "D": "20 m/s²"
+    },
+    "correct": "C",
+    "explanation": "By Newton's Second Law, F = ma, so a = F/m = 10/2 = 5 m/s².",
+    "topic": "Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The pressure exerted on a surface is defined as",
+    "options": {
+      "A": "mass divided by volume",
+      "B": "force multiplied by area",
+      "C": "work done per unit time",
+      "D": "force divided by area"
+    },
+    "correct": "D",
+    "explanation": "Pressure is defined as force per unit area (P = F/A), measured in pascals (Pa) in SI units.",
+    "topic": "Pressure",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Which of the following is a derived, not a fundamental, physical quantity?",
+    "options": {
+      "A": "velocity",
+      "B": "mass",
+      "C": "time",
+      "D": "length"
+    },
+    "correct": "A",
+    "explanation": "Velocity is a derived quantity, obtained by combining the fundamental quantities length and time (velocity = distance/time); mass, length, and time are themselves fundamental quantities.",
+    "topic": "Measurements and Units",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A vector quantity is completely specified by its",
+    "options": {
+      "A": "direction only",
+      "B": "unit only",
+      "C": "magnitude and direction",
+      "D": "magnitude only"
+    },
+    "correct": "C",
+    "explanation": "A vector quantity requires both a magnitude (size) and a direction to be fully specified, unlike a scalar, which needs only magnitude.",
+    "topic": "Scalars and Vectors",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A body moving with constant speed in a circular path has an acceleration that is",
+    "options": {
+      "A": "zero, since the speed does not change",
+      "B": "directed towards the centre of the circle",
+      "C": "directed away from the centre of the circle",
+      "D": "directed along the path of motion"
+    },
+    "correct": "B",
+    "explanation": "Even though the speed is constant, the direction of velocity is continuously changing, producing a centripetal acceleration directed towards the centre of the circular path.",
+    "topic": "Motion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "An object at rest on a rough horizontal surface will begin to move only when the applied force exceeds the",
+    "options": {
+      "A": "limiting (maximum static) frictional force",
+      "B": "kinetic energy of the object",
+      "C": "normal reaction only",
+      "D": "weight of the object"
+    },
+    "correct": "A",
+    "explanation": "An object remains stationary as long as the applied force is balanced by static friction; motion begins only once the applied force exceeds the limiting (maximum) static frictional force.",
+    "topic": "Friction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A simple machine that consists of an inclined plane wrapped around a cylindrical shaft is the",
+    "options": {
+      "A": "screw",
+      "B": "lever",
+      "C": "wheel and axle",
+      "D": "pulley"
+    },
+    "correct": "A",
+    "explanation": "A screw is essentially an inclined plane wound helically around a cylindrical shaft, converting rotational motion into linear motion with a mechanical advantage.",
+    "topic": "Simple Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A material that returns to its original shape and size after a deforming force is removed is said to be",
+    "options": {
+      "A": "elastic",
+      "B": "plastic",
+      "C": "ductile",
+      "D": "brittle"
+    },
+    "correct": "A",
+    "explanation": "An elastic material returns to its original dimensions once a deforming force is removed, provided the elastic limit was not exceeded; a plastic material remains permanently deformed.",
+    "topic": "Elasticity",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Atmospheric pressure is commonly measured using a",
+    "options": {
+      "A": "thermometer",
+      "B": "ammeter",
+      "C": "hygrometer",
+      "D": "barometer"
+    },
+    "correct": "D",
+    "explanation": "A barometer is the instrument used to measure atmospheric (air) pressure, commonly a mercury barometer in physics laboratories.",
+    "topic": "Liquids At Rest",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "On the Celsius scale, pure water at standard atmospheric pressure freezes at",
+    "options": {
+      "A": "0°C",
+      "B": "32°C",
+      "C": "-273°C",
+      "D": "100°C"
+    },
+    "correct": "A",
+    "explanation": "On the Celsius scale, pure water freezes at 0°C and boils at 100°C, at standard atmospheric pressure.",
+    "topic": "Temperature and Its Measurement",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The linear expansivity of a material is defined as the",
+    "options": {
+      "A": "total increase in length on heating",
+      "B": "increase in length per unit original length per degree rise in temperature",
+      "C": "increase in volume per unit original volume",
+      "D": "heat absorbed per unit mass"
+    },
+    "correct": "B",
+    "explanation": "Linear expansivity is the fractional increase in length per unit original length, for each degree rise in temperature, characteristic of a given material.",
+    "topic": "Thermal Expansion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "According to the Pressure Law (Gay-Lussac's Law), at constant volume, the pressure of a fixed mass of gas is",
+    "options": {
+      "A": "directly proportional to its absolute temperature",
+      "B": "inversely proportional to its volume",
+      "C": "inversely proportional to its absolute temperature",
+      "D": "independent of temperature"
+    },
+    "correct": "A",
+    "explanation": "The Pressure Law states that at constant volume, the pressure of a fixed mass of gas is directly proportional to its absolute (Kelvin) temperature.",
+    "topic": "Gas Laws",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The specific latent heat of fusion of a substance is the heat energy required to",
+    "options": {
+      "A": "raise the temperature of a unit mass to its boiling point",
+      "B": "raise the temperature of a unit mass by one degree",
+      "C": "change a unit mass from solid to liquid at constant temperature",
+      "D": "change a unit mass from liquid to gas at constant temperature"
+    },
+    "correct": "C",
+    "explanation": "The specific latent heat of fusion is the heat energy needed to change a unit mass of a substance from solid to liquid, at its melting point, without a change in temperature.",
+    "topic": "Change of State",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The vapour pressure of a liquid increases with",
+    "options": {
+      "A": "decreasing temperature",
+      "B": "increasing atmospheric pressure only",
+      "C": "decreasing surface area only",
+      "D": "increasing temperature"
+    },
+    "correct": "D",
+    "explanation": "As temperature increases, more molecules gain enough energy to escape the liquid surface, increasing the vapour pressure of the liquid.",
+    "topic": "Vapours",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "According to the kinetic theory, the temperature of a gas is a measure of the",
+    "options": {
+      "A": "total mass of its molecules",
+      "B": "total volume of its molecules",
+      "C": "pressure exerted by the container",
+      "D": "average kinetic energy of its molecules"
+    },
+    "correct": "D",
+    "explanation": "The kinetic theory relates the absolute temperature of a gas directly to the average kinetic energy of its constantly moving molecules.",
+    "topic": "Structure of Matter and Kinetic Theory",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Convection, as a mode of heat transfer, occurs mainly in",
+    "options": {
+      "A": "solids and vacuums",
+      "B": "a vacuum only",
+      "C": "solids only",
+      "D": "liquids and gases (fluids)"
+    },
+    "correct": "D",
+    "explanation": "Convection transfers heat through the bulk movement of a fluid (liquid or gas) as warmer, less dense regions rise and cooler regions sink — it does not occur in solids or a vacuum.",
+    "topic": "Heat Transfer",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The distance between two successive crests (or troughs) of a wave is called its",
+    "options": {
+      "A": "wavelength",
+      "B": "period",
+      "C": "frequency",
+      "D": "amplitude"
+    },
+    "correct": "A",
+    "explanation": "Wavelength is the distance between two consecutive points on a wave that are in phase, such as successive crests or troughs.",
+    "topic": "Waves",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The speed of sound in air is approximately",
+    "options": {
+      "A": "330 m/s",
+      "B": "1500 m/s",
+      "C": "30 m/s",
+      "D": "3 x 10^8 m/s"
+    },
+    "correct": "A",
+    "explanation": "The speed of sound in air at room temperature is approximately 330-340 m/s, far slower than the speed of light (3 x 10^8 m/s).",
+    "topic": "Propagation of Sound Waves",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The pitch of a musical note is determined mainly by the",
+    "options": {
+      "A": "frequency of the sound wave",
+      "B": "speed of the sound wave",
+      "C": "amplitude of the sound wave",
+      "D": "loudness of the sound wave"
+    },
+    "correct": "A",
+    "explanation": "Pitch is determined by the frequency of a sound wave — a higher frequency produces a higher pitch; amplitude instead determines loudness.",
+    "topic": "Characteristics of Sound Waves",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The approximate speed of light in a vacuum is",
+    "options": {
+      "A": "3 x 10^10 m/s",
+      "B": "3 x 10^5 m/s",
+      "C": "3 x 10^8 m/s",
+      "D": "3 x 10^6 m/s"
+    },
+    "correct": "C",
+    "explanation": "The speed of light in a vacuum is approximately 3 x 10^8 m/s (300,000,000 metres per second), a fundamental physical constant.",
+    "topic": "Light Energy",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "An image formed by a plane mirror is",
+    "options": {
+      "A": "real, upright, and magnified",
+      "B": "virtual, upright, and the same size as the object",
+      "C": "virtual, inverted, and diminished",
+      "D": "real, inverted, and the same size as the object"
+    },
+    "correct": "B",
+    "explanation": "A plane mirror always forms a virtual (cannot be projected on a screen), upright image, the same size as the object, located as far behind the mirror as the object is in front.",
+    "topic": "Reflection of Light at Plane and Curved Surfaces",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Total internal reflection of light can occur only when light travels from a",
+    "options": {
+      "A": "vacuum into any medium",
+      "B": "denser medium to a less dense medium, at any angle",
+      "C": "less dense to a denser medium",
+      "D": "denser to a less dense medium, at an angle greater than the critical angle"
+    },
+    "correct": "D",
+    "explanation": "Total internal reflection occurs when light travels from a denser (optically) to a less dense medium and strikes the boundary at an angle of incidence greater than the critical angle.",
+    "topic": "Refraction of Light Through Plane and Curved Surfaces",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A refracting astronomical telescope is mainly used to",
+    "options": {
+      "A": "split white light into its component colours",
+      "B": "measure the intensity of light",
+      "C": "view distant objects, making them appear larger and closer",
+      "D": "magnify very small nearby objects"
+    },
+    "correct": "C",
+    "explanation": "A refracting telescope uses two converging lenses (objective and eyepiece) to view distant objects, such as celestial bodies, making them appear larger and nearer.",
+    "topic": "Optical Instruments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The colour of light with the longest wavelength in the visible spectrum is",
+    "options": {
+      "A": "violet",
+      "B": "green",
+      "C": "red",
+      "D": "blue"
+    },
+    "correct": "C",
+    "explanation": "In the visible spectrum, red light has the longest wavelength, while violet light has the shortest, as seen in the order of colours produced by dispersion through a prism.",
+    "topic": "Dispersion of Light and Colours",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The process by which an uncharged object acquires a charge without direct contact with a charged body is called charging by",
+    "options": {
+      "A": "friction",
+      "B": "induction",
+      "C": "conduction",
+      "D": "convection"
+    },
+    "correct": "B",
+    "explanation": "Charging by induction occurs when a charged object is brought near (but not touching) a neutral object, causing a redistribution of charge without direct contact.",
+    "topic": "Electrostatics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Connecting two capacitors in parallel, compared to connecting them in series, results in a",
+    "options": {
+      "A": "smaller total (effective) capacitance",
+      "B": "the same total capacitance either way",
+      "C": "larger total (effective) capacitance",
+      "D": "total capacitance of zero"
+    },
+    "correct": "C",
+    "explanation": "Capacitors in parallel add directly (C_total = C1 + C2), giving a larger effective capacitance than the same capacitors in series, where the reciprocals add instead.",
+    "topic": "Capacitors",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Connecting several electric cells in series mainly increases the",
+    "options": {
+      "A": "total charge stored permanently",
+      "B": "total current capacity only",
+      "C": "internal resistance to zero",
+      "D": "total electromotive force (e.m.f.) of the combination"
+    },
+    "correct": "D",
+    "explanation": "Connecting cells in series adds their individual e.m.f.s together, increasing the total electromotive force available from the combination.",
+    "topic": "Electric Cells",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Three resistors of 2 Ω, 3 Ω, and 5 Ω are connected in series. Their combined (total) resistance is",
+    "options": {
+      "A": "30 Ω",
+      "B": "3.3 Ω",
+      "C": "10 Ω",
+      "D": "0.97 Ω"
+    },
+    "correct": "C",
+    "explanation": "For resistors in series, total resistance is simply the sum: 2 + 3 + 5 = 10 Ω.",
+    "topic": "Current Electricity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "An electrical appliance rated 1000 W operating at 220 V draws a current of approximately",
+    "options": {
+      "A": "4.5 A",
+      "B": "0.22 A",
+      "C": "220000 A",
+      "D": "22 A"
+    },
+    "correct": "A",
+    "explanation": "Using P = VI, I = P/V = 1000/220 ≈ 4.5 A.",
+    "topic": "Electrical Energy and Power",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The region around a magnet within which its magnetic influence can be detected is called the",
+    "options": {
+      "A": "neutral point",
+      "B": "magnetic field",
+      "C": "gravitational field",
+      "D": "electric field"
+    },
+    "correct": "B",
+    "explanation": "A magnetic field is the region of space around a magnet (or current-carrying conductor) within which a magnetic force can be detected on another magnet or moving charge.",
+    "topic": "Magnets and Magnetic Fields",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The turning effect (torque) produced on a current-carrying coil placed in a magnetic field is the basic operating principle of the",
+    "options": {
+      "A": "electric motor",
+      "B": "resistor",
+      "C": "diode",
+      "D": "capacitor"
+    },
+    "correct": "A",
+    "explanation": "An electric motor works on the principle that a current-carrying coil in a magnetic field experiences a turning force (torque), causing it to rotate continuously.",
+    "topic": "Force on a Current-Carrying Conductor in a Magnetic Field",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "According to Faraday's Law of electromagnetic induction, the magnitude of the induced e.m.f. is proportional to the",
+    "options": {
+      "A": "temperature of the coil",
+      "B": "resistance of the coil",
+      "C": "rate of change of magnetic flux linkage",
+      "D": "total length of the wire only"
+    },
+    "correct": "C",
+    "explanation": "Faraday's Law states that the magnitude of the induced e.m.f. is directly proportional to the rate of change of magnetic flux linkage through the circuit.",
+    "topic": "Electromagnetic Induction",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A transformer that increases the voltage from the primary to the secondary coil is called a",
+    "options": {
+      "A": "isolation transformer only",
+      "B": "step-down transformer",
+      "C": "step-up transformer",
+      "D": "rectifier"
+    },
+    "correct": "C",
+    "explanation": "A step-up transformer has more turns on its secondary coil than its primary, increasing the output voltage relative to the input voltage.",
+    "topic": "Simple A.C. Circuits",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "During electrolysis, positive ions in the electrolyte migrate towards the",
+    "options": {
+      "A": "neither electrode",
+      "B": "anode (positive electrode)",
+      "C": "both electrodes equally",
+      "D": "cathode (negative electrode)"
+    },
+    "correct": "D",
+    "explanation": "During electrolysis, positively charged ions (cations) are attracted to and migrate towards the cathode, the negative electrode.",
+    "topic": "Conduction of Electricity Through Liquids and Gases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Alpha particles emitted during radioactive decay are essentially",
+    "options": {
+      "A": "high-energy electrons",
+      "B": "electromagnetic waves",
+      "C": "helium nuclei (2 protons and 2 neutrons)",
+      "D": "neutrons only"
+    },
+    "correct": "C",
+    "explanation": "An alpha particle consists of 2 protons and 2 neutrons — essentially the nucleus of a helium atom — emitted from certain unstable radioactive nuclei.",
+    "topic": "Elementary Modern Physics",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "In a semiconductor, increasing the temperature generally causes its electrical resistance to",
+    "options": {
+      "A": "increase",
+      "B": "become infinite",
+      "C": "remain unchanged",
+      "D": "decrease"
+    },
+    "correct": "D",
+    "explanation": "Unlike most metals, a semiconductor's resistance generally decreases as temperature increases, since more charge carriers become available for conduction.",
+    "topic": "Introductory Electronics",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "An object of mass 5 kg resting on a table exerts a weight of approximately (take g = 10 m/s²)",
+    "options": {
+      "A": "500 N",
+      "B": "5 N",
+      "C": "0.5 N",
+      "D": "50 N"
+    },
+    "correct": "D",
+    "explanation": "Weight = mg = 5 x 10 = 50 N.",
+    "topic": "Gravitational Field",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The tendency of a body to resist any change in its state of rest or uniform motion is called its",
+    "options": {
+      "A": "velocity",
+      "B": "momentum",
+      "C": "inertia",
+      "D": "weight"
+    },
+    "correct": "C",
+    "explanation": "Inertia is the natural tendency of a body to resist any change in its state of rest or uniform motion in a straight line, as described by Newton's First Law.",
+    "topic": "Motion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The product of the mass of a body and its velocity is called its",
+    "options": {
+      "A": "kinetic energy",
+      "B": "acceleration",
+      "C": "momentum",
+      "D": "weight"
+    },
+    "correct": "C",
+    "explanation": "Momentum is defined as the product of an object's mass and its velocity (p = mv), a vector quantity in the same direction as the velocity.",
+    "topic": "Motion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "A stone is thrown vertically upward. At the highest point of its path, its velocity is",
+    "options": {
+      "A": "equal to its initial velocity",
+      "B": "maximum",
+      "C": "zero",
+      "D": "negative and maximum"
+    },
+    "correct": "C",
+    "explanation": "At the highest point of vertical motion under gravity, the object momentarily comes to rest before falling back down, so its instantaneous velocity is zero at that point.",
+    "topic": "Motion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The unit of energy in the SI system is the",
+    "options": {
+      "A": "newton",
+      "B": "watt",
+      "C": "joule",
+      "D": "pascal"
+    },
+    "correct": "C",
+    "explanation": "The joule (J) is the SI unit of energy (and work), equal to the work done when a force of 1 newton moves an object 1 metre in the direction of the force.",
+    "topic": "Work, Energy and Power",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "Power is defined as the",
+    "options": {
+      "A": "total work done, regardless of time",
+      "B": "energy stored in a body",
+      "C": "force applied per unit area",
+      "D": "rate at which work is done"
+    },
+    "correct": "D",
+    "explanation": "Power is the rate at which work is done (or energy is transferred), given by P = W/t, measured in watts (joules per second).",
+    "topic": "Work, Energy and Power",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The kinetic energy of an object of mass 2 kg moving at a velocity of 3 m/s is",
+    "options": {
+      "A": "3 J",
+      "B": "18 J",
+      "C": "6 J",
+      "D": "9 J"
+    },
+    "correct": "D",
+    "explanation": "Kinetic energy = ½mv² = ½ x 2 x 3² = ½ x 2 x 9 = 9 J.",
+    "topic": "Work, Energy and Power",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The velocity ratio of a simple machine is defined as the",
+    "options": {
+      "A": "ratio of load to effort",
+      "B": "ratio of effort to load",
+      "C": "ratio of work output to work input",
+      "D": "ratio of distance moved by the effort to distance moved by the load"
+    },
+    "correct": "D",
+    "explanation": "Velocity ratio is defined as the distance moved by the effort divided by the distance moved by the load, a purely geometric property of the machine.",
+    "topic": "Simple Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  },
+  {
+    "stem": "The efficiency of a simple machine is always less than 100% mainly because of",
+    "options": {
+      "A": "the velocity ratio being too low",
+      "B": "the mechanical advantage being too high",
+      "C": "energy losses due to friction and other factors",
+      "D": "the load being too heavy"
+    },
+    "correct": "C",
+    "explanation": "No real machine is perfectly efficient — some input energy is always lost as heat due to friction and other resistive forces, so efficiency is always below 100%.",
+    "topic": "Simple Machines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 84/84.",
+    "section": "JAMB Physics"
+  }
+]

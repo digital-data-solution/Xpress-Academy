@@ -360,6 +360,67 @@ class TestStratifiedSampling:
 
 
 @pytest.mark.django_db
+class TestCreateExamPrepCourse:
+    """create_exam_prep_course — the missing link between a verified
+    QuestionBank and actual institutional-licensing revenue (see
+    apps/licensing). Real access-control regression coverage lives in
+    apps.enrollment.tests (the all_lessons_completed vacuous-truth
+    fix this command depends on); this covers the command's own
+    Course/Quiz wiring and its publication-gate compliance."""
+
+    def test_creates_an_unpublished_course_and_final_quiz(self, org, bank):
+        from django.core.management import call_command
+
+        call_command(
+            "create_exam_prep_course",
+            bank_name=bank.name, slug="test-exam-prep", title="Test Exam Prep",
+            question_count=10, org_slug=org.slug,
+        )
+        course = Course.objects.get(slug="test-exam-prep")
+        assert course.is_published is False
+        assert course.review_status == Course.ReviewStatus.DRAFT
+        assert course.modules.count() == 0
+
+        quiz = Quiz.objects.get(course=course, scope=Quiz.Scope.FINAL)
+        assert quiz.bank_id == bank.id
+        assert quiz.question_count == 10
+
+    def test_idempotent_rerun_does_not_duplicate(self, org, bank):
+        from django.core.management import call_command
+
+        for _ in range(2):
+            call_command(
+                "create_exam_prep_course",
+                bank_name=bank.name, slug="test-exam-prep-2", title="Test Exam Prep 2",
+                org_slug=org.slug,
+            )
+        assert Course.objects.filter(slug="test-exam-prep-2").count() == 1
+        assert Quiz.objects.filter(course__slug="test-exam-prep-2").count() == 1
+
+    def test_real_learner_can_take_the_final_exam_immediately(self, org, bank, user):
+        """End-to-end: a zero-lesson exam-prep course's FINAL quiz must
+        be accessible right after enrollment, not gated behind lessons
+        that don't exist."""
+        from django.core.management import call_command
+
+        make_mcq(bank)
+        call_command(
+            "create_exam_prep_course",
+            bank_name=bank.name, slug="test-exam-prep-3", title="Test Exam Prep 3",
+            question_count=1, org_slug=org.slug,
+        )
+        course = Course.objects.get(slug="test-exam-prep-3")
+        enrollment = Enrollment.objects.create(user=user, course=course)
+
+        from apps.enrollment.services import all_lessons_completed
+        assert all_lessons_completed(enrollment) is True
+
+        quiz = Quiz.objects.get(course=course, scope=Quiz.Scope.FINAL)
+        attempt = start_attempt(enrollment, quiz)
+        assert len(attempt.question_snapshot) == 1
+
+
+@pytest.mark.django_db
 class TestCSVImport:
     def test_valid_csv_creates_questions(self, bank):
         csv_content = (
