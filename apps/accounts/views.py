@@ -42,18 +42,29 @@ def _make_verify_token(user: User) -> str:
     return TimestampSigner(salt=VERIFY_SALT).sign(str(user.pk))
 
 
-def _send_verification_email(user: User):
+def _send_verification_email(user: User, next_url: str = ""):
     from django.conf import settings
     from django.template.loader import render_to_string
+    from urllib.parse import quote
 
     from apps.engagement.services import send_email
 
     token = _make_verify_token(user)
+    verify_url = f"{settings.SITE_URL}/account/verify/{token}/"
+    if next_url:
+        # Plain query param, not baked into the signed token — the
+        # email link is a complete URL, so this survives the round
+        # trip through an inbox exactly like it does for login/signup.
+        # See verify_email's own use of _safe_redirect_target: this
+        # value is attacker-influenceable the same way `next` always
+        # is, so it's validated again on the way IN, not trusted just
+        # because it round-tripped through an email we sent.
+        verify_url += f"?next={quote(next_url, safe='')}"
     send_email(
         to_email=user.email, user=user, template_key="verify_email", subject="Verify your email — Xpress Digital Academy",
         html=render_to_string("emails/verify_email.html", {
             "first_name": user.first_name or "there",
-            "verify_url": f"{settings.SITE_URL}/account/verify/{token}/",
+            "verify_url": verify_url,
             "site_url": settings.SITE_URL,
         }),
         dedupe_key=f"verify_email:{user.id}:{token[-12:]}",  # a fresh token each send, so a resend isn't blocked
@@ -85,7 +96,7 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
-            _send_verification_email(user)
+            _send_verification_email(user, next_url=next_url)
             login(request, user)
             messages.success(request, "Welcome! Check your email to verify your account before enrolling in a course.")
             return redirect(_safe_redirect_target(request, next_url) or "enrollment:dashboard")
@@ -96,6 +107,12 @@ def signup(request):
 
 
 def verify_email(request, token):
+    # Same shape of dead end as the shared-course-link bug: someone
+    # verifying mid-checkout (e.g. from payments/verify_required.html)
+    # previously always landed on the generic dashboard afterward,
+    # losing the course they were trying to buy.
+    next_url = request.GET.get("next") or ""
+
     signer = TimestampSigner(salt=VERIFY_SALT)
     try:
         user_id = signer.unsign(token, max_age=VERIFY_MAX_AGE_SECONDS)
@@ -122,11 +139,15 @@ def verify_email(request, token):
     send_platform_welcome_email(user)
 
     messages.success(request, "Email verified — you're all set.")
+    target = _safe_redirect_target(request, next_url)
+    if target:
+        return redirect(target)
     return redirect("enrollment:dashboard" if request.user.is_authenticated else "accounts:login")
 
 
 @require_POST
 def resend_verification(request):
+    next_url = request.POST.get("next") or ""
     if not request.user.is_authenticated:
         return redirect("accounts:login")
     if request.user.profile.email_verified:
@@ -134,9 +155,9 @@ def resend_verification(request):
     elif _recently_sent(request.user, "verify_email"):
         messages.info(request, "We just sent that — check your inbox (and spam folder) before requesting another.")
     else:
-        _send_verification_email(request.user)
+        _send_verification_email(request.user, next_url=next_url)
         messages.success(request, "Verification email sent.")
-    return redirect("enrollment:dashboard")
+    return redirect(_safe_redirect_target(request, next_url) or "enrollment:dashboard")
 
 
 def _make_reset_token(user: User) -> str:

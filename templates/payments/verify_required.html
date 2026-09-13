@@ -8,6 +8,7 @@
     <p>Check your inbox for the verification link, or:</p>
     <form method="post" action="{% url 'accounts:resend_verification' %}">
       {% csrf_token %}
+      <input type="hidden" name="next" value="{% url 'payments:checkout' course_slug=course.slug %}">
       <button class="btn" type="submit">Resend verification email</button>
     </form>
   </div>

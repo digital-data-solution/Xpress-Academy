@@ -368,6 +368,90 @@ class TestCheckoutRequiresVerification:
 
 
 @pytest.mark.django_db
+class TestVerifyMidCheckoutRedirect:
+    """The other half of the same dead-end bug class as the shared
+    course-link fix: someone mid-checkout who needs to verify their
+    email first (payments.views.checkout's verify_required.html) was
+    always dumped on the generic dashboard afterward, losing the
+    course they were trying to buy — whether they verified via the
+    resend button's fresh email, or the ORIGINAL email sent at signup."""
+
+    def _make_course(self):
+        org = Organization.objects.create(name="Verify Mid Checkout Org", from_email="vmc@example.com")
+        programme = Programme.objects.create(organization=org, title="P", audience=Audience.BREEDER)
+        return Course.objects.create(
+            organization=org, programme=programme, title="Mid-Checkout Course",
+            audience=Audience.BREEDER, price_ngn=10000,
+        )
+
+    def test_verify_required_page_embeds_the_checkout_url_as_next(self):
+        course = self._make_course()
+        user = User.objects.create_user(email="midcheckout@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/checkout/{course.slug}/")
+        assert f'name="next" value="/checkout/{course.slug}/"'.encode() in resp.content
+
+    def test_resend_verification_carries_next_into_the_new_email_link(self):
+        course = self._make_course()
+        user = User.objects.create_user(email="resendmid@example.com", password="testpass123")
+        client = Client()
+        client.force_login(user)
+        with patch("apps.accounts.views._send_verification_email") as mock_send:
+            client.post("/account/resend-verification/", {"next": f"/checkout/{course.slug}/"})
+        mock_send.assert_called_once()
+        assert mock_send.call_args.kwargs["next_url"] == f"/checkout/{course.slug}/"
+
+    def test_verifying_via_a_next_carrying_link_lands_back_at_checkout(self):
+        course = self._make_course()
+        user = User.objects.create_user(email="landback@example.com", password="testpass123")
+        token = _make_verify_token(user)
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/account/verify/{token}/?next=/checkout/{course.slug}/")
+        assert resp.status_code == 302
+        assert resp.url == f"/checkout/{course.slug}/"
+
+    def test_verifying_without_next_still_falls_back_to_dashboard(self):
+        """Backward compatible: a plain verification link (no next,
+        e.g. someone who just signed up with nowhere specific in
+        mind) behaves exactly as before."""
+        user = User.objects.create_user(email="plainverify@example.com", password="testpass123")
+        token = _make_verify_token(user)
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/account/verify/{token}/")
+        assert resp.status_code == 302
+        assert resp.url == "/dashboard/"
+
+    def test_an_unsafe_next_on_the_verify_link_is_rejected(self):
+        user = User.objects.create_user(email="unsafeverify@example.com", password="testpass123")
+        token = _make_verify_token(user)
+        client = Client()
+        client.force_login(user)
+        resp = client.get(f"/account/verify/{token}/?next=https://evil.example.com/phish")
+        assert resp.status_code == 302
+        assert resp.url == "/dashboard/"
+
+    def test_original_signup_verification_email_also_carries_next(self):
+        """Covers the OTHER real path: someone who clicks the very
+        first verification email (sent at signup, not a resend) must
+        also land back at checkout, not just the resend path."""
+        course = self._make_course()
+        client = Client()
+        with patch("apps.accounts.views._send_verification_email") as mock_send:
+            client.post(
+                f"/account/signup/?next=/checkout/{course.slug}/",
+                {
+                    "first_name": "Ada", "email": "signupmid@example.com",
+                    "password": "a-genuinely-long-passphrase-123", "next": f"/checkout/{course.slug}/",
+                },
+            )
+        mock_send.assert_called_once()
+        assert mock_send.call_args.kwargs["next_url"] == f"/checkout/{course.slug}/"
+
+
+@pytest.mark.django_db
 class TestForgotPassword:
     def test_existing_email_sends_reset_and_shows_generic_message(self):
         User.objects.create_user(email="hasaccount@example.com", password="oldpassword123")
