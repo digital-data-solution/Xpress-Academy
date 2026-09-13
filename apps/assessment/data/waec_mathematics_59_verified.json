@@ -1,0 +1,946 @@
+[
+  {
+    "stem": "Convert 23 (base 10) to base 2.",
+    "options": {
+      "A": "10011",
+      "B": "11011",
+      "C": "10111",
+      "D": "11101"
+    },
+    "correct": "C",
+    "explanation": "23 = 16+4+2+1 = 10111 in base 2 (16=2^4, 4=2^2, 2=2^1, 1=2^0).",
+    "topic": "Number Bases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Convert 101102 (base 2) to base 10.",
+    "options": {
+      "A": "26",
+      "B": "20",
+      "C": "24",
+      "D": "22"
+    },
+    "correct": "D",
+    "explanation": "10110(base 2) = 1x16 + 0x8 + 1x4 + 1x2 + 0x1 = 16+0+4+2+0 = 22.",
+    "topic": "Number Bases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Evaluate 15 mod 4 (in modular arithmetic).",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "1",
+      "D": "2"
+    },
+    "correct": "A",
+    "explanation": "15 divided by 4 gives quotient 3, remainder 3 (4x3=12, 15-12=3), so 15 mod 4 = 3.",
+    "topic": "Modular Arithmetic",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Express 0.625 as a fraction in its lowest terms.",
+    "options": {
+      "A": "5/9",
+      "B": "3/5",
+      "C": "5/8",
+      "D": "25/40"
+    },
+    "correct": "C",
+    "explanation": "0.625 = 625/1000 = 5/8 after dividing numerator and denominator by 125.",
+    "topic": "Fractions, Decimals, Approximations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Evaluate 2/3 - 1/4, giving your answer as a single fraction.",
+    "options": {
+      "A": "1/7",
+      "B": "5/12",
+      "C": "1/12",
+      "D": "3/12"
+    },
+    "correct": "B",
+    "explanation": "LCM of 3 and 4 is 12. 2/3 = 8/12, 1/4 = 3/12. 8/12 - 3/12 = 5/12.",
+    "topic": "Fractions, Decimals, Approximations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Simplify 3^2 x 3^5.",
+    "options": {
+      "A": "3^7",
+      "B": "3^10",
+      "C": "9^7",
+      "D": "3^3"
+    },
+    "correct": "A",
+    "explanation": "When multiplying powers of the same base, add the indices: 3^2 x 3^5 = 3^(2+5) = 3^7.",
+    "topic": "Indices",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Simplify (2^3)^2.",
+    "options": {
+      "A": "2^5",
+      "B": "2^6",
+      "C": "2^8",
+      "D": "2^9"
+    },
+    "correct": "B",
+    "explanation": "When raising a power to a power, multiply the indices: (2^3)^2 = 2^(3x2) = 2^6.",
+    "topic": "Indices",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Given that log 2 = 0.3010, find log 8 (using log 8 = log 2^3).",
+    "options": {
+      "A": "0.6020",
+      "B": "0.3010",
+      "C": "0.9030",
+      "D": "2.4080"
+    },
+    "correct": "C",
+    "explanation": "log 8 = log(2^3) = 3 log 2 = 3 x 0.3010 = 0.9030.",
+    "topic": "Logarithms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Simplify sqrt(18), giving your answer in the form a*sqrt(2).",
+    "options": {
+      "A": "3sqrt(2)",
+      "B": "9sqrt(2)",
+      "C": "2sqrt(3)",
+      "D": "6sqrt(2)"
+    },
+    "correct": "A",
+    "explanation": "sqrt(18) = sqrt(9 x 2) = sqrt(9) x sqrt(2) = 3sqrt(2).",
+    "topic": "Surds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "If P = {2,3,5,7} and Q = {1,3,5,7,9}, find P intersection Q.",
+    "options": {
+      "A": "{1,2,9}",
+      "B": "{3,5,7}",
+      "C": "{1,2,3,5,7,9}",
+      "D": "empty set"
+    },
+    "correct": "B",
+    "explanation": "The intersection contains elements present in both sets: 3, 5, and 7 appear in both P and Q.",
+    "topic": "Sets",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A statement 'p AND q' (a conjunction) is true only when",
+    "options": {
+      "A": "q is true, regardless of p",
+      "B": "at least one of p or q is true",
+      "C": "both p and q are true",
+      "D": "p is true, regardless of q"
+    },
+    "correct": "C",
+    "explanation": "A conjunction ('p and q') in logical reasoning is true only when both individual statements p and q are true.",
+    "topic": "Logical Reasoning",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Given a set of rational numbers, which of the following best describes a rational number?",
+    "options": {
+      "A": "a number that only includes whole numbers",
+      "B": "a number that cannot be expressed as a fraction",
+      "C": "a number that can be expressed as a ratio of two integers (with non-zero denominator)",
+      "D": "a number that is always negative"
+    },
+    "correct": "C",
+    "explanation": "A rational number is any number that can be expressed as a fraction p/q, where p and q are integers and q is not zero.",
+    "topic": "Rational Numbers",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Divide N9000 in the ratio 2:3:4.",
+    "options": {
+      "A": "N1000, N3000, N5000",
+      "B": "N2000, N3000, N4000",
+      "C": "N3000, N3000, N3000",
+      "D": "N1800, N2700, N3600"
+    },
+    "correct": "B",
+    "explanation": "Total parts = 2+3+4 = 9. Each part = 9000/9 = 1000. Shares are 2x1000=2000, 3x1000=3000, 4x1000=4000.",
+    "topic": "Ratio, Proportions, Rates",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find 20% of N3500.",
+    "options": {
+      "A": "N350",
+      "B": "N70",
+      "C": "N1750",
+      "D": "N700"
+    },
+    "correct": "D",
+    "explanation": "20% of 3500 = (20/100) x 3500 = 700.",
+    "topic": "Percentages",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A trader buys goods for N4000 and sells them for N4800. Find the percentage profit.",
+    "options": {
+      "A": "20%",
+      "B": "16.7%",
+      "C": "25%",
+      "D": "80%"
+    },
+    "correct": "A",
+    "explanation": "Profit = 4800-4000 = 800. Percentage profit = (800/4000) x 100% = 20%.",
+    "topic": "Percentages",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Expand and simplify (x-4)(x+2).",
+    "options": {
+      "A": "x^2+2x-8",
+      "B": "x^2-2x+8",
+      "C": "x^2-6x-8",
+      "D": "x^2-2x-8"
+    },
+    "correct": "D",
+    "explanation": "(x-4)(x+2) = x^2+2x-4x-8 = x^2-2x-8.",
+    "topic": "Algebraic Expressions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Factorize x^2 - 16.",
+    "options": {
+      "A": "(x+4)(x-4)",
+      "B": "(x-4)(x-4)",
+      "C": "(x+16)(x-1)",
+      "D": "(x-16)(x+1)"
+    },
+    "correct": "A",
+    "explanation": "x^2 - 16 is a difference of two squares: x^2 - 4^2 = (x+4)(x-4).",
+    "topic": "Algebraic Processes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Solve for x: 4x - 7 = 13.",
+    "options": {
+      "A": "x = 4",
+      "B": "x = 1.5",
+      "C": "x = 20",
+      "D": "x = 5"
+    },
+    "correct": "D",
+    "explanation": "4x = 13+7 = 20, so x = 20/4 = 5.",
+    "topic": "Linear Equations",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Solve the simultaneous equations 2x + y = 8 and x - y = 1.",
+    "options": {
+      "A": "x=4, y=0",
+      "B": "x=1, y=6",
+      "C": "x=2, y=4",
+      "D": "x=3, y=2"
+    },
+    "correct": "D",
+    "explanation": "Adding both equations: 3x = 9, so x = 3. Substituting: 3-y=1, so y=2. Check: 2(3)+2=8 correct.",
+    "topic": "Linear Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Solve the quadratic equation x^2 - 7x + 12 = 0.",
+    "options": {
+      "A": "x = 3 or x = 4",
+      "B": "x = 1 or x = 12",
+      "C": "x = -3 or x = -4",
+      "D": "x = 3 or x = -4"
+    },
+    "correct": "A",
+    "explanation": "x^2-7x+12 = (x-3)(x-4) = 0 (since 3x4=12 and 3+4=7), so x = 3 or x = 4.",
+    "topic": "Quadratic Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Make t the subject of the formula v = u + at.",
+    "options": {
+      "A": "t = (v+u)/a",
+      "B": "t = v-u-a",
+      "C": "t = a(v-u)",
+      "D": "t = (v-u)/a"
+    },
+    "correct": "D",
+    "explanation": "v = u + at. Subtracting u from both sides: v-u = at. Dividing both sides by a: t = (v-u)/a.",
+    "topic": "Change of Subject",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Solve the inequality 3x + 2 < 14.",
+    "options": {
+      "A": "x > 4",
+      "B": "x < 4",
+      "C": "x < 12",
+      "D": "x < 5"
+    },
+    "correct": "B",
+    "explanation": "3x < 14-2 = 12, so x < 12/3 = 4.",
+    "topic": "Linear Inequalities",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "If y varies directly as the square of x, and y = 18 when x = 3, find y when x = 4.",
+    "options": {
+      "A": "16",
+      "B": "36",
+      "C": "32",
+      "D": "24"
+    },
+    "correct": "C",
+    "explanation": "Direct variation with square: y = kx^2. 18 = k(9), so k = 2. When x=4, y = 2(16) = 32.",
+    "topic": "Variation",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the perimeter of a rectangle with length 12 cm and width 7 cm.",
+    "options": {
+      "A": "25 cm",
+      "B": "38 cm",
+      "C": "19 cm",
+      "D": "84 cm"
+    },
+    "correct": "B",
+    "explanation": "Perimeter = 2(length+width) = 2(12+7) = 2(19) = 38 cm.",
+    "topic": "Mensuration — Perimeter",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the area of a triangle with base 14 cm and height 8 cm.",
+    "options": {
+      "A": "112 cm²",
+      "B": "56 cm²",
+      "C": "44 cm²",
+      "D": "22 cm²"
+    },
+    "correct": "B",
+    "explanation": "Area of a triangle = ½ x base x height = ½ x 14 x 8 = 56 cm².",
+    "topic": "Mensuration — Area",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the area of a circle of radius 14 cm (take pi = 22/7).",
+    "options": {
+      "A": "196 cm²",
+      "B": "88 cm²",
+      "C": "44 cm²",
+      "D": "616 cm²"
+    },
+    "correct": "D",
+    "explanation": "Area = pi*r^2 = (22/7) x 14 x 14 = 22 x 2 x 14 = 616 cm².",
+    "topic": "Mensuration — Circles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the volume of a cuboid with length 5 cm, width 4 cm, and height 3 cm.",
+    "options": {
+      "A": "24 cm³",
+      "B": "60 cm³",
+      "C": "35 cm³",
+      "D": "12 cm³"
+    },
+    "correct": "B",
+    "explanation": "Volume of a cuboid = length x width x height = 5 x 4 x 3 = 60 cm³.",
+    "topic": "Mensuration — Volume",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A right-angled triangle has legs of 6 cm and 8 cm. Find the hypotenuse.",
+    "options": {
+      "A": "14 cm",
+      "B": "48 cm",
+      "C": "10 cm",
+      "D": "100 cm"
+    },
+    "correct": "C",
+    "explanation": "By Pythagoras' theorem, hypotenuse² = 6² + 8² = 36+64 = 100, so hypotenuse = sqrt(100) = 10 cm.",
+    "topic": "Mensuration — Pythagoras",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Two angles are complementary. If one angle is 35°, find the other.",
+    "options": {
+      "A": "65°",
+      "B": "145°",
+      "C": "325°",
+      "D": "55°"
+    },
+    "correct": "D",
+    "explanation": "Complementary angles sum to 90°, so the other angle = 90 - 35 = 55°.",
+    "topic": "Plane Geometry — Angles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "When two parallel lines are cut by a transversal, alternate angles are",
+    "options": {
+      "A": "supplementary (sum to 180°)",
+      "B": "equal",
+      "C": "always 90° each",
+      "D": "complementary (sum to 90°)"
+    },
+    "correct": "B",
+    "explanation": "When a transversal cuts two parallel lines, alternate angles (on opposite sides of the transversal, between the parallel lines) are always equal.",
+    "topic": "Plane Geometry — Angles on Parallel Lines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "In a triangle, if two sides and the included angle are known, the triangle's properties can be found using congruence rules. Two triangles are congruent if they have exactly the same",
+    "options": {
+      "A": "shape and size",
+      "B": "orientation only",
+      "C": "colour",
+      "D": "perimeter only, regardless of shape"
+    },
+    "correct": "A",
+    "explanation": "Congruent triangles are identical in both shape and size — one can be superimposed exactly onto the other.",
+    "topic": "Plane Geometry — Congruence",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "The sum of the interior angles of a hexagon (6-sided polygon) is",
+    "options": {
+      "A": "720°",
+      "B": "900°",
+      "C": "360°",
+      "D": "540°"
+    },
+    "correct": "A",
+    "explanation": "Sum of interior angles of a polygon = (n-2) x 180°. For a hexagon, n=6: (6-2) x 180° = 4 x 180° = 720°.",
+    "topic": "Plane Geometry — Polygons",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A chord divides a circle into two regions. The angle subtended by an arc at the centre of a circle is how many times the angle subtended by the same arc at the circumference?",
+    "options": {
+      "A": "Half",
+      "B": "The same",
+      "C": "Three times",
+      "D": "Twice"
+    },
+    "correct": "D",
+    "explanation": "By a standard circle theorem, the angle subtended by an arc at the centre is twice the angle it subtends at any point on the remaining circumference.",
+    "topic": "Plane Geometry — Circles",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "The locus of points equidistant from two fixed points A and B is",
+    "options": {
+      "A": "the perpendicular bisector of the line segment AB",
+      "B": "a straight line through A and B",
+      "C": "a circle centred at A",
+      "D": "a circle centred at B"
+    },
+    "correct": "A",
+    "explanation": "The locus of all points equidistant from two fixed points is the perpendicular bisector of the line segment joining those two points.",
+    "topic": "Plane Geometry — Loci",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the coordinates of the midpoint of the line segment joining the points (2,4) and (6,8).",
+    "options": {
+      "A": "(2,4)",
+      "B": "(3,5)",
+      "C": "(4,6)",
+      "D": "(8,12)"
+    },
+    "correct": "C",
+    "explanation": "Midpoint = ((x1+x2)/2, (y1+y2)/2) = ((2+6)/2, (4+8)/2) = (4,6).",
+    "topic": "Coordinate Geometry of Straight Lines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the equation of the line with gradient 2 passing through the point (0,3) (in the form y=mx+c).",
+    "options": {
+      "A": "y = 3x + 2",
+      "B": "y = 2x - 3",
+      "C": "y = 2x + 3",
+      "D": "y = x + 3"
+    },
+    "correct": "C",
+    "explanation": "Using y = mx + c, where m (gradient) = 2 and the line passes through (0,3), so c = 3: y = 2x + 3.",
+    "topic": "Coordinate Geometry of Straight Lines",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Given a right-angled triangle where the angle theta has opposite side 5, adjacent side 12, and hypotenuse 13, find tan(theta).",
+    "options": {
+      "A": "12/5",
+      "B": "5/12",
+      "C": "12/13",
+      "D": "5/13"
+    },
+    "correct": "B",
+    "explanation": "tan(theta) = opposite/adjacent = 5/12.",
+    "topic": "Trigonometry — Ratios",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Evaluate tan 45°.",
+    "options": {
+      "A": "1/2",
+      "B": "1",
+      "C": "0",
+      "D": "sqrt(3)"
+    },
+    "correct": "B",
+    "explanation": "tan 45° = 1, a standard special-angle trigonometric value (since sin45=cos45).",
+    "topic": "Trigonometry — Special Angles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "From the top of a vertical cliff 40 m high, the angle of depression of a boat at sea is 30°. Given tan 30° = 1/sqrt(3), find the horizontal distance of the boat from the base of the cliff.",
+    "options": {
+      "A": "40 m",
+      "B": "40sqrt(3) m",
+      "C": "20 m",
+      "D": "40/sqrt(3) m"
+    },
+    "correct": "B",
+    "explanation": "The angle of depression equals the angle of elevation from the boat. tan(30°) = opposite/adjacent = 40/distance, so distance = 40/tan(30°) = 40/(1/sqrt(3)) = 40sqrt(3) m.",
+    "topic": "Trigonometry — Angles of Depression",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A ship sails on a bearing of N40°E. This bearing, expressed as a three-figure bearing, is",
+    "options": {
+      "A": "140°",
+      "B": "310°",
+      "C": "040°",
+      "D": "050°"
+    },
+    "correct": "C",
+    "explanation": "N40°E means 40° measured from North towards East, which as a three-figure bearing (measured clockwise from North) is simply 040°.",
+    "topic": "Trigonometry — Bearings",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find dy/dx if y = 4x^3 - 2x.",
+    "options": {
+      "A": "12x^2 - 2",
+      "B": "4x^2 - 2x",
+      "C": "4x^2 - 2",
+      "D": "12x^2"
+    },
+    "correct": "A",
+    "explanation": "Differentiating term by term: d/dx(4x^3) = 12x^2, d/dx(-2x) = -2. So dy/dx = 12x^2 - 2.",
+    "topic": "Introductory Calculus — Differentiation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the integral of 3x^2 with respect to x.",
+    "options": {
+      "A": "6x + C",
+      "B": "x^3 + C",
+      "C": "x^3/3 + C",
+      "D": "3x^3 + C"
+    },
+    "correct": "B",
+    "explanation": "Integral of 3x^2 dx = 3 * (x^3/3) + C = x^3 + C.",
+    "topic": "Introductory Calculus — Integration",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A set of data is represented on a chart using bars whose heights are proportional to frequency, with gaps between the bars representing distinct categories. This chart is called a",
+    "options": {
+      "A": "histogram",
+      "B": "bar chart",
+      "C": "frequency polygon",
+      "D": "pie chart"
+    },
+    "correct": "B",
+    "explanation": "A bar chart uses separated bars (with gaps, since categories are discrete) whose heights represent frequency; a histogram, by contrast, has no gaps since it represents continuous data.",
+    "topic": "Statistics — Frequency Distribution and Charts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the mean of the numbers 10, 15, 20, 25, 30.",
+    "options": {
+      "A": "18",
+      "B": "25",
+      "C": "20",
+      "D": "15"
+    },
+    "correct": "C",
+    "explanation": "Mean = sum/count = (10+15+20+25+30)/5 = 100/5 = 20.",
+    "topic": "Statistics — Central Tendency",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the mode of the data set: 3, 5, 5, 7, 8, 5, 9.",
+    "options": {
+      "A": "5",
+      "B": "7",
+      "C": "3",
+      "D": "8"
+    },
+    "correct": "A",
+    "explanation": "The mode is the value that occurs most frequently; 5 appears three times, more than any other value in the set.",
+    "topic": "Statistics — Central Tendency",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the range of the data set: 12, 45, 23, 8, 34.",
+    "options": {
+      "A": "8",
+      "B": "53",
+      "C": "45",
+      "D": "37"
+    },
+    "correct": "D",
+    "explanation": "Range = highest value - lowest value = 45 - 8 = 37.",
+    "topic": "Statistics — Dispersion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Two fair dice are rolled together. Find the probability of obtaining a total score of 7.",
+    "options": {
+      "A": "1/12",
+      "B": "1/6",
+      "C": "1/36",
+      "D": "5/36"
+    },
+    "correct": "B",
+    "explanation": "Out of 36 equally likely outcomes, the combinations summing to 7 are (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) -- 6 outcomes. Probability = 6/36 = 1/6.",
+    "topic": "Probability",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Original draft had two options with the same numeric value (1/6 and '6/36 (=1/6)') — a real duplicate-answer defect caught by the verifier. Fixed by replacing the duplicate with a genuine distinct distractor (5/36) and re-verified fresh.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A bag contains 5 red and 3 white balls. Find the probability of picking a white ball at random.",
+    "options": {
+      "A": "5/8",
+      "B": "3/5",
+      "C": "3/8",
+      "D": "1/3"
+    },
+    "correct": "C",
+    "explanation": "Total balls = 5+3 = 8. Probability of white = 3/8.",
+    "topic": "Probability",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A vector is represented by the column (6,8). Find its magnitude.",
+    "options": {
+      "A": "100",
+      "B": "10",
+      "C": "14",
+      "D": "48"
+    },
+    "correct": "B",
+    "explanation": "Magnitude = sqrt(6^2+8^2) = sqrt(36+64) = sqrt(100) = 10.",
+    "topic": "Vectors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Given vectors a=(2,3) and b=(1,-1), find a+b.",
+    "options": {
+      "A": "(2,-3)",
+      "B": "(1,4)",
+      "C": "(3,2)",
+      "D": "(3,4)"
+    },
+    "correct": "C",
+    "explanation": "Vector addition adds corresponding components: (2+1, 3+(-1)) = (3,2).",
+    "topic": "Vectors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A shape undergoes an enlargement with scale factor 2, centred at the origin. A point originally at (3,4) moves to",
+    "options": {
+      "A": "(1.5,2)",
+      "B": "(5,6)",
+      "C": "(3,4)",
+      "D": "(6,8)"
+    },
+    "correct": "D",
+    "explanation": "An enlargement with scale factor k, centred at the origin, maps (x,y) to (kx,ky): (3,4) -> (2x3, 2x4) = (6,8).",
+    "topic": "Transformations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A shape is rotated 180° about the origin. A point originally at (2,5) moves to",
+    "options": {
+      "A": "(2,-5)",
+      "B": "(5,2)",
+      "C": "(-2,5)",
+      "D": "(-2,-5)"
+    },
+    "correct": "D",
+    "explanation": "A 180° rotation about the origin maps (x,y) to (-x,-y): (2,5) -> (-2,-5).",
+    "topic": "Transformations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "1 kilometre is equal to how many metres?",
+    "options": {
+      "A": "100",
+      "B": "10000",
+      "C": "1000",
+      "D": "10"
+    },
+    "correct": "C",
+    "explanation": "1 kilometre = 1000 metres, a standard metric length conversion.",
+    "topic": "Units — Length",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "1 litre is equal to how many cubic centimetres (cm³)?",
+    "options": {
+      "A": "100",
+      "B": "1000",
+      "C": "10",
+      "D": "10000"
+    },
+    "correct": "B",
+    "explanation": "1 litre = 1000 cm³ (or 1000 millilitres), a standard capacity/volume conversion.",
+    "topic": "Units — Capacity",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "1 kilogram is equal to how many grams?",
+    "options": {
+      "A": "10",
+      "B": "1000",
+      "C": "100",
+      "D": "10000"
+    },
+    "correct": "B",
+    "explanation": "1 kilogram = 1000 grams, a standard metric mass conversion.",
+    "topic": "Units — Mass",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the sum of the first 5 terms of the Arithmetic Progression with first term 2 and common difference 3.",
+    "options": {
+      "A": "50",
+      "B": "35",
+      "C": "45",
+      "D": "40"
+    },
+    "correct": "D",
+    "explanation": "Terms: 2,5,8,11,14. Sum = 2+5+8+11+14 = 40. (Or using Sn = n/2[2a+(n-1)d] = 5/2[4+12] = 5/2 x 16 = 40.)",
+    "topic": "Sequence and Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the 6th term of the Geometric Progression 3, 6, 12, 24, ...",
+    "options": {
+      "A": "72",
+      "B": "48",
+      "C": "96",
+      "D": "192"
+    },
+    "correct": "C",
+    "explanation": "Common ratio r=2. nth term = a*r^(n-1) = 3 x 2^5 = 3 x 32 = 96.",
+    "topic": "Sequence and Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "Find the determinant of the matrix [[3,1],[2,5]].",
+    "options": {
+      "A": "13",
+      "B": "11",
+      "C": "7",
+      "D": "17"
+    },
+    "correct": "A",
+    "explanation": "For a 2x2 matrix [[a,b],[c,d]], determinant = ad-bc = (3x5)-(1x2) = 15-2 = 13.",
+    "topic": "Matrices",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  },
+  {
+    "stem": "A binary operation * is defined by a*b = a^2 - b. Evaluate 3*2.",
+    "options": {
+      "A": "11",
+      "B": "7",
+      "C": "-1",
+      "D": "1"
+    },
+    "correct": "B",
+    "explanation": "3*2 = 3^2 - 2 = 9 - 2 = 7.",
+    "topic": "Binary Operations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Mathematics"
+  }
+]
