@@ -177,7 +177,7 @@ class QuizCreateFormTests(TestCase):
         self.user = User.objects.create_user(email="creator@example.com", password="x")
         self.client.force_login(self.user)
 
-    def _formset_payload(self, count=2, **overrides):
+    def _formset_payload(self, count=2, accept_responsibility=True, **overrides):
         data = {
             "title": "New Hire Orientation",
             "description": "",
@@ -188,9 +188,12 @@ class QuizCreateFormTests(TestCase):
             "q-MIN_NUM_FORMS": "1",
             "q-MAX_NUM_FORMS": "1000",
         }
+        if accept_responsibility:
+            data["accept_responsibility"] = "on"
         for i in range(count):
             data.update({
                 f"q-{i}-stem": f"Question {i}?",
+                f"q-{i}-points": "1",
                 f"q-{i}-option_a": "Right",
                 f"q-{i}-option_b": "Wrong 1",
                 f"q-{i}-option_c": "Wrong 2",
@@ -223,7 +226,9 @@ class QuizCreateFormTests(TestCase):
         self.assertEqual(resp.status_code, 200)  # re-rendered with errors, not redirected
         self.assertFalse(Quiz.objects.filter(title="New Hire Orientation").exists())
 
-    def test_edit_locked_once_quiz_has_a_response(self):
+    def test_edit_with_responses_shows_warning_but_still_allows_editing(self):
+        """Ownership philosophy: editing is a creator choice, not a
+        platform-imposed block — see the model module's docstring."""
         quiz, q = make_quiz_with_one_question(self.user)
         Response.objects.create(
             quiz=quiz, respondent_name="X", respondent_email="x@example.com",
@@ -231,16 +236,114 @@ class QuizCreateFormTests(TestCase):
         )
         resp = self.client.get(reverse("quizbuilder:quiz_edit", kwargs={"slug": quiz.slug}))
         self.assertEqual(resp.status_code, 200)
-        self.assertFalse(resp.context["editable_questions"])
-        self.assertIsNone(resp.context["formset"])
+        self.assertTrue(resp.context["has_responses"])
+        self.assertIsNotNone(resp.context["formset"])
+
+    def test_edit_with_responses_can_actually_save_new_questions(self):
+        quiz, q = make_quiz_with_one_question(self.user)
+        Response.objects.create(
+            quiz=quiz, respondent_name="X", respondent_email="x@example.com",
+            submitted_at=quiz.created_at,
+        )
+        payload = {
+            "title": quiz.title, "description": "", "time_limit_minutes": "0", "show_score_immediately": "on",
+            "q-TOTAL_FORMS": "1", "q-INITIAL_FORMS": "0", "q-MIN_NUM_FORMS": "1", "q-MAX_NUM_FORMS": "1000",
+            "q-0-stem": "Edited question?", "q-0-points": "2",
+            "q-0-option_a": "Yes", "q-0-option_b": "No", "q-0-option_c": "", "q-0-option_d": "",
+            "q-0-correct_option": "a",
+        }
+        resp = self.client.post(reverse("quizbuilder:quiz_edit", kwargs={"slug": quiz.slug}), data=payload)
+        self.assertRedirects(resp, reverse("quizbuilder:my_quizzes"))
+        quiz.refresh_from_db()
+        new_question = quiz.questions.get()
+        self.assertEqual(new_question.stem, "Edited question?")
+        self.assertEqual(new_question.points, 2)
 
     def test_edit_unlocked_with_no_responses_prefills_formset(self):
         quiz, q = make_quiz_with_one_question(self.user)
         resp = self.client.get(reverse("quizbuilder:quiz_edit", kwargs={"slug": quiz.slug}))
         self.assertEqual(resp.status_code, 200)
-        self.assertTrue(resp.context["editable_questions"])
+        self.assertFalse(resp.context["has_responses"])
         self.assertEqual(resp.context["formset"].initial[0]["stem"], "Capital of France?")
         self.assertEqual(resp.context["formset"].initial[0]["correct_option"], "a")
+        self.assertEqual(resp.context["formset"].initial[0]["points"], 1)
+
+    def test_first_quiz_requires_accepting_responsibility(self):
+        resp = self.client.post(
+            reverse("quizbuilder:quiz_create"), data=self._formset_payload(count=1, accept_responsibility=False)
+        )
+        self.assertEqual(resp.status_code, 200)  # re-rendered, not redirected
+        self.assertFalse(Quiz.objects.filter(title="New Hire Orientation").exists())
+
+    def test_second_quiz_does_not_require_accepting_responsibility_again(self):
+        make_quiz_with_one_question(self.user)  # user's first quiz already exists
+        resp = self.client.post(
+            reverse("quizbuilder:quiz_create"), data=self._formset_payload(count=1, accept_responsibility=False)
+        )
+        self.assertEqual(resp.status_code, 302)  # not blocked — already accepted on their first quiz
+        self.assertTrue(Quiz.objects.filter(title="New Hire Orientation").exists())
+
+    def test_points_weight_the_score(self):
+        quiz = Quiz.objects.create(created_by=self.user, title="Weighted")
+        q1 = Question.objects.create(quiz=quiz, order=0, stem="Worth 1", points=1)
+        Choice.objects.create(question=q1, order=0, text="Right", is_correct=True)
+        Choice.objects.create(question=q1, order=1, text="Wrong", is_correct=False)
+        q2 = Question.objects.create(quiz=quiz, order=1, stem="Worth 3", points=3)
+        Choice.objects.create(question=q2, order=0, text="Right", is_correct=True)
+        Choice.objects.create(question=q2, order=1, text="Wrong", is_correct=False)
+
+        correct_choice_q2 = q2.choices.get(is_correct=True)
+        wrong_choice_q1 = q1.choices.get(is_correct=False)
+        resp = self.client.post(
+            reverse("quizbuilder:quiz_take", kwargs={"slug": quiz.slug}),
+            data={
+                "respondent_name": "Z", "respondent_email": "z@example.com",
+                f"question_{q1.id}": str(wrong_choice_q1.id),
+                f"question_{q2.id}": str(correct_choice_q2.id),
+            },
+        )
+        self.assertEqual(resp.status_code, 302)
+        response = Response.objects.get(quiz=quiz, respondent_email="z@example.com")
+        # 3 of 4 total points earned (the 3-point question, not the 1-point one) = 75%, not 50%
+        self.assertEqual(response.score_percent, 75)
+
+    def test_duplicate_quiz_copies_questions_and_resets_responses(self):
+        quiz, q = make_quiz_with_one_question(self.user)
+        Response.objects.create(
+            quiz=quiz, respondent_name="X", respondent_email="x@example.com", submitted_at=quiz.created_at,
+        )
+        resp = self.client.post(reverse("quizbuilder:quiz_duplicate", kwargs={"slug": quiz.slug}))
+        self.assertEqual(resp.status_code, 302)
+        new_quiz = Quiz.objects.exclude(pk=quiz.pk).get(created_by=self.user)
+        self.assertEqual(new_quiz.title, f"{quiz.title} (copy)")
+        self.assertEqual(new_quiz.question_count, 1)
+        self.assertEqual(new_quiz.response_count, 0)
+        self.assertEqual(new_quiz.questions.get().choices.count(), q.choices.count())
+
+    def test_delete_quiz_removes_it(self):
+        quiz, q = make_quiz_with_one_question(self.user)
+        resp = self.client.post(reverse("quizbuilder:quiz_delete", kwargs={"slug": quiz.slug}))
+        self.assertEqual(resp.status_code, 302)
+        self.assertFalse(Quiz.objects.filter(pk=quiz.pk).exists())
+
+    def test_only_owner_can_delete_a_quiz(self):
+        quiz, q = make_quiz_with_one_question(self.user)
+        other = User.objects.create_user(email="other2@example.com", password="x")
+        self.client.force_login(other)
+        resp = self.client.post(reverse("quizbuilder:quiz_delete", kwargs={"slug": quiz.slug}))
+        self.assertEqual(resp.status_code, 404)
+        self.assertTrue(Quiz.objects.filter(pk=quiz.pk).exists())
+
+    def test_delete_a_response(self):
+        quiz, q = make_quiz_with_one_question(self.user)
+        response = Response.objects.create(
+            quiz=quiz, respondent_name="X", respondent_email="x@example.com", submitted_at=quiz.created_at,
+        )
+        resp = self.client.post(
+            reverse("quizbuilder:response_delete", kwargs={"slug": quiz.slug, "response_uuid": response.uuid})
+        )
+        self.assertEqual(resp.status_code, 302)
+        self.assertFalse(Response.objects.filter(pk=response.pk).exists())
 
 
 class TemplateSmokeTests(TestCase):

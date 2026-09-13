@@ -19,13 +19,43 @@ def create_quiz_with_questions(*, user, quiz_form, question_forms) -> Quiz:
 
 
 def replace_quiz_questions(*, quiz: Quiz, question_forms) -> None:
-    """Used by quiz_edit — simplest-correct approach for a quiz with no
-    responses yet: drop and recreate every question. NOT called once a
-    quiz has responses (the view blocks editing questions at that
-    point, since existing Response.answers reference these Question/
-    Choice ids directly — see the model's "No snapshotting" note)."""
+    """Used by quiz_edit. Drops and recreates every question — the
+    simplest-correct approach, but NOT consequence-free once a quiz
+    already has responses: their Response.answers dict references the
+    old Question/Choice ids directly (see the model's "No snapshotting"
+    note), so replacing the question set can leave old responses'
+    recorded answers pointing at ids that no longer exist. The view
+    warns about this explicitly rather than blocking the edit outright
+    — see the module docstring's "Ownership philosophy" note. Existing
+    responses' `answers`/`score_percent` are never touched here, only
+    display of the old answers against the NEW questions degrades
+    gracefully (shows blank instead of crashing — see
+    response_rows_for_export/quiz_result's `if chosen else ""` pattern)."""
     quiz.questions.all().delete()
     _save_questions(quiz, question_forms)
+
+
+def duplicate_quiz(*, quiz: Quiz, user) -> Quiz:
+    """The fast path from a pre-test to a post-test: copies title
+    (with a ' (copy)' suffix so it doesn't collide), description, and
+    settings, plus every question and choice, into a brand new Quiz
+    with zero responses. Ownership always goes to `user` (the person
+    clicking Duplicate), not necessarily the original creator, so
+    duplicating someone else's... except quiz_duplicate the view only
+    ever exposes this for a user's own quizzes — kept as a plain
+    parameter here so the function itself doesn't need to know that."""
+    new_quiz = Quiz.objects.create(
+        created_by=user,
+        title=f"{quiz.title} (copy)",
+        description=quiz.description,
+        time_limit_minutes=quiz.time_limit_minutes,
+        show_score_immediately=quiz.show_score_immediately,
+    )
+    for q in quiz.questions.prefetch_related("choices").all():
+        new_q = Question.objects.create(quiz=new_quiz, order=q.order, stem=q.stem, points=q.points)
+        for c in q.choices.all():
+            Choice.objects.create(question=new_q, order=c.order, text=c.text, is_correct=c.is_correct)
+    return new_quiz
 
 
 def _save_questions(quiz: Quiz, question_forms) -> None:
@@ -36,7 +66,8 @@ def _save_questions(quiz: Quiz, question_forms) -> None:
         stem = qf.cleaned_data.get("stem")
         if not stem:
             continue
-        question = Question.objects.create(quiz=quiz, order=order, stem=stem)
+        points = qf.cleaned_data.get("points") or 1
+        question = Question.objects.create(quiz=quiz, order=order, stem=stem, points=points)
         order += 1
         correct_letter = qf.cleaned_data["correct_option"]
         choice_order = 0
@@ -53,10 +84,12 @@ def _save_questions(quiz: Quiz, question_forms) -> None:
 def score_and_submit_response(*, response: Response, posted_answers: dict) -> Response:
     """posted_answers: {"<question_id>": "<choice_id>", ...} straight
     from request.POST. Grades against the live Question/Choice rows —
-    safe per the model's "No snapshotting" note."""
+    safe per the model's "No snapshotting" note. Points-weighted: a
+    3-point question contributes 3x as much to score_percent as a
+    1-point one, not just a flat 1/N share."""
     questions = list(response.quiz.questions.prefetch_related("choices"))
-    total = len(questions)
-    correct = 0
+    total_points = sum(q.points for q in questions)
+    earned_points = 0
     clean_answers = {}
     for q in questions:
         chosen_id = posted_answers.get(str(q.id))
@@ -65,10 +98,10 @@ def score_and_submit_response(*, response: Response, posted_answers: dict) -> Re
         clean_answers[str(q.id)] = chosen_id
         chosen = next((c for c in q.choices.all() if str(c.id) == str(chosen_id)), None)
         if chosen and chosen.is_correct:
-            correct += 1
+            earned_points += q.points
 
     response.answers = clean_answers
-    response.score_percent = round((correct / total) * 100) if total else 0
+    response.score_percent = round((earned_points / total_points) * 100) if total_points else 0
     response.submitted_at = timezone.now()
     response.save()
     return response
@@ -82,6 +115,7 @@ def response_rows_for_export(quiz: Quiz):
     responses = quiz.responses.filter(submitted_at__isnull=False).order_by("submitted_at")
     for r in responses:
         row = {
+            "uuid": r.uuid,  # not a CSV column (write_csv ignores extras) — used by the responses-page template only
             "name": r.respondent_name,
             "email": r.respondent_email,
             "score_percent": r.score_percent,
@@ -96,7 +130,7 @@ def response_rows_for_export(quiz: Quiz):
 
 def write_csv(rows, fieldnames) -> str:
     buf = io.StringIO()
-    writer = csv.DictWriter(buf, fieldnames=fieldnames)
+    writer = csv.DictWriter(buf, fieldnames=fieldnames, extrasaction="ignore")
     writer.writeheader()
     for row in rows:
         writer.writerow(row)
@@ -116,7 +150,7 @@ def question_to_formset_initial(question: Question) -> dict:
     2-option one) just leaves option_c/option_d blank."""
     choices_by_order = {c.order: c for c in question.choices.all()}
     letters = ["a", "b", "c", "d"]
-    data = {"stem": question.stem}
+    data = {"stem": question.stem, "points": question.points}
     correct_letter = "a"
     for i, letter in enumerate(letters):
         choice = choices_by_order.get(i)

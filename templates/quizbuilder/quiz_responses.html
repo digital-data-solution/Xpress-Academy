@@ -14,6 +14,7 @@
             <th style="padding:8px;">Email</th>
             <th style="padding:8px;">Score</th>
             <th style="padding:8px;">Submitted</th>
+            <th style="padding:8px;"></th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,12 @@
               <td style="padding:8px;">{{ row.email }}</td>
               <td style="padding:8px;">{{ row.score_percent }}%</td>
               <td style="padding:8px;">{{ row.submitted_at|date:"d M Y, H:i" }}</td>
+              <td style="padding:8px;">
+                <form method="post" action="{% url 'quizbuilder:response_delete' slug=quiz.slug response_uuid=row.uuid %}" onsubmit="return confirm('Delete this response?');">
+                  {% csrf_token %}
+                  <button type="submit" style="background:none; border:none; color:#b91c1c; text-decoration:underline; cursor:pointer; padding:0; font-size:13px;">Delete</button>
+                </form>
+              </td>
             </tr>
           {% endfor %}
         </tbody>

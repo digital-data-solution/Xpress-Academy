@@ -24,6 +24,7 @@ class QuizForm(forms.ModelForm):
 
 class QuestionForm(forms.Form):
     stem = forms.CharField(widget=forms.Textarea(attrs={"rows": 2, "placeholder": "Question text"}))
+    points = forms.IntegerField(min_value=1, initial=1, label="Points", widget=forms.NumberInput(attrs={"style": "width:70px;"}))
     option_a = forms.CharField(max_length=500, label="Option A")
     option_b = forms.CharField(max_length=500, label="Option B")
     option_c = forms.CharField(max_length=500, label="Option C", required=False)
@@ -46,7 +47,12 @@ class QuestionForm(forms.Form):
         return [(letter, f"option_{letter}") for letter in OPTION_LETTERS]
 
 
-QuestionFormSet = formset_factory(QuestionForm, extra=1, min_num=1, validate_min=True, can_delete=True)
+# extra=0, not 1: min_num=1 already renders one blank form on its own
+# (confirmed empirically — a real bug in the original MVP rendered 2
+# blank question slots on a fresh quiz because extra=1 stacked on top
+# of the one min_num=1 already contributes). Leave extra at 0 unless
+# a specific reason needs more starting slots.
+QuestionFormSet = formset_factory(QuestionForm, extra=0, min_num=1, validate_min=True, can_delete=True)
 
 
 class RespondentForm(forms.Form):

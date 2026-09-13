@@ -35,6 +35,6 @@
   </form>
 
   <p style="margin-top:24px; font-size:12px; color:var(--color-muted); text-align:center;">
-    Powered by <a href="{% url 'catalog:landing' %}">Xpress Digital Academy</a>
+    Content by {{ quiz.created_by.first_name }} · Powered by <a href="{% url 'catalog:landing' %}">Xpress Digital Academy</a>
   </p>
 {% endblock %}

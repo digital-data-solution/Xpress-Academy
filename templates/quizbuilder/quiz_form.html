@@ -8,11 +8,12 @@
     done; results and a CSV export show up under <a href="{% url 'quizbuilder:my_quizzes' %}">My Quizzes</a>.
   </p>
 
-  {% if is_edit and not editable_questions %}
+  {% if is_edit and has_responses %}
     <div class="card" style="border-color:#f59e0b;">
-      <p style="margin:0;">This quiz already has responses, so its questions are locked to keep those responses
-        accurate — delete the responses first (via your <a href="{% url 'quizbuilder:quiz_responses' slug=quiz.slug %}">responses page</a>, coming soon) if you really need to change them.
-        You can still update the title, description, and settings below.</p>
+      <p style="margin:0;">This quiz already has responses. You can still edit its questions below, but a heads-up:
+        past responses' recorded answers were matched against the questions as they existed at the time — if you
+        change wording, options, or the correct answer now, older responses may no longer line up cleanly when you
+        review them. That's your call to make, not something we block.</p>
     </div>
   {% endif %}
 
@@ -31,43 +32,18 @@
       {% endfor %}
     </div>
 
-    {% if formset %}
-      <h3>Questions</h3>
-      {{ formset.management_form }}
-      <div id="question-forms">
-        {% for qform in formset %}
-          <div class="card question-form-row" data-form-index="{{ forloop.counter0 }}">
-            {% for error in qform.non_field_errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}
-            <p><label>Question<br>{{ qform.stem }}</label></p>
-            <div style="display:grid; gap:8px;">
-              {% for field in qform %}
-                {% if "option_" in field.name %}
-                  <label style="display:flex; align-items:center; gap:8px; font-weight:400;">
-                    <span style="width:24px; font-weight:600;">{{ field.label|slice:"-1:" }}</span>
-                    {{ field }}
-                  </label>
-                {% endif %}
-              {% endfor %}
-            </div>
-            <p style="margin-bottom:0;"><label style="font-weight:400;">Correct answer:
-              {% for radio in qform.correct_option %}
-                <label style="margin-right:12px; font-weight:400;">{{ radio.tag }} {{ radio.choice_label }}</label>
-              {% endfor %}
-            </label></p>
-            {% for error in qform.correct_option.errors %}<p style="color:#b91c1c; font-size:13px;">{{ error }}</p>{% endfor %}
-            {% if formset.can_delete %}
-              <p style="margin-bottom:0;"><label style="font-weight:400; font-size:13px;">{{ qform.DELETE }} Remove this question</label></p>
-            {% endif %}
+    <h3>Questions</h3>
+    {{ formset.management_form }}
+    <div id="question-forms">
+      {% for qform in formset %}
+        <div class="card question-form-row" data-form-index="{{ forloop.counter0 }}">
+          {% for error in qform.non_field_errors %}<p style="color:#b91c1c;">{{ error }}</p>{% endfor %}
+          <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start;">
+            <label style="flex:1;">Question<br>{{ qform.stem }}</label>
+            <label style="text-align:center;">Points<br>{{ qform.points }}</label>
           </div>
-        {% endfor %}
-      </div>
-      <button type="button" class="btn" id="add-question-btn" style="background:transparent; border:1px solid var(--color-border); color:inherit;">+ Add another question</button>
-
-      <template id="empty-form-template">
-        <div class="card question-form-row" data-form-index="__prefix__">
-          <p><label>Question<br>{{ formset.empty_form.stem }}</label></p>
-          <div style="display:grid; gap:8px;">
-            {% for field in formset.empty_form %}
+          <div style="display:grid; gap:8px; margin-top:8px;">
+            {% for field in qform %}
               {% if "option_" in field.name %}
                 <label style="display:flex; align-items:center; gap:8px; font-weight:400;">
                   <span style="width:24px; font-weight:600;">{{ field.label|slice:"-1:" }}</span>
@@ -77,16 +53,64 @@
             {% endfor %}
           </div>
           <p style="margin-bottom:0;"><label style="font-weight:400;">Correct answer:
-            {% for radio in formset.empty_form.correct_option %}
+            {% for radio in qform.correct_option %}
               <label style="margin-right:12px; font-weight:400;">{{ radio.tag }} {{ radio.choice_label }}</label>
             {% endfor %}
           </label></p>
+          {% for error in qform.correct_option.errors %}<p style="color:#b91c1c; font-size:13px;">{{ error }}</p>{% endfor %}
+          {% if formset.can_delete %}
+            <p style="margin-bottom:0;"><label style="font-weight:400; font-size:13px;">{{ qform.DELETE }} Remove this question</label></p>
+          {% endif %}
         </div>
-      </template>
+      {% endfor %}
+    </div>
+    <button type="button" class="btn" id="add-question-btn" style="background:transparent; border:1px solid var(--color-border); color:inherit;">+ Add another question</button>
+
+    <template id="empty-form-template">
+      <div class="card question-form-row" data-form-index="__prefix__">
+        <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start;">
+          <label style="flex:1;">Question<br>{{ formset.empty_form.stem }}</label>
+          <label style="text-align:center;">Points<br>{{ formset.empty_form.points }}</label>
+        </div>
+        <div style="display:grid; gap:8px; margin-top:8px;">
+          {% for field in formset.empty_form %}
+            {% if "option_" in field.name %}
+              <label style="display:flex; align-items:center; gap:8px; font-weight:400;">
+                <span style="width:24px; font-weight:600;">{{ field.label|slice:"-1:" }}</span>
+                {{ field }}
+              </label>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <p style="margin-bottom:0;"><label style="font-weight:400;">Correct answer:
+          {% for radio in formset.empty_form.correct_option %}
+            <label style="margin-right:12px; font-weight:400;">{{ radio.tag }} {{ radio.choice_label }}</label>
+          {% endfor %}
+        </label></p>
+      </div>
+    </template>
+
+    {% if is_first_quiz %}
+      <div class="card" style="margin-top:20px;">
+        <label style="font-weight:400; display:flex; gap:8px; align-items:flex-start;">
+          <input type="checkbox" name="accept_responsibility" required style="margin-top:3px;">
+          <span>I understand this quiz's content is written by me, not reviewed or verified by Xpress Digital Academy, and I'm responsible for its accuracy.</span>
+        </label>
+      </div>
     {% endif %}
 
     <p style="margin-top:20px;"><button class="btn" type="submit">{% if is_edit %}Save changes{% else %}Create quiz{% endif %}</button></p>
   </form>
+
+  {% if is_edit %}
+    <div class="card" style="border-color:#b91c1c; margin-top:24px;">
+      <h4 style="margin-top:0;">Danger zone</h4>
+      <form method="post" action="{% url 'quizbuilder:quiz_delete' slug=quiz.slug %}" onsubmit="return confirm('Delete this quiz and all its responses? This can\'t be undone.');">
+        {% csrf_token %}
+        <button type="submit" style="background:#b91c1c; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">Delete this quiz</button>
+      </form>
+    </div>
+  {% endif %}
 
   <script>
     (function () {

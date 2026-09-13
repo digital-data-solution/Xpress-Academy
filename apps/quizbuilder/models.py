@@ -39,6 +39,21 @@ doesn't wonder why something "obvious" is missing):
   about the non-removable branding on quiz-taking and export pages,
   not usage limits. A future paid tier removing that branding can
   read/write this same schema with no migration needed.
+
+Ownership philosophy (v2, added after the MVP proved out): since this
+content is never verified the way the exam-bank engine's is, the
+platform's job is to get out of the creator's way, not gatekeep them.
+Concretely: a creator can edit a quiz's questions even after it has
+responses (a warning explains the tradeoff -- old responses' recorded
+answers may no longer line up with the edited question set -- but the
+choice is theirs, not blocked outright), can delete a quiz or any
+individual response entirely, and can duplicate a quiz wholesale (the
+fast path to turning a pre-test into a post-test). In exchange, a
+first-time creator has to explicitly acknowledge they're responsible
+for their own quiz's accuracy before their first quiz goes live --
+see views.quiz_create's is_first_quiz check -- and every public quiz
+page credits "Content by <creator>" alongside the platform's own
+"Powered by" branding, so it's never ambiguous whose content it is.
 """
 from django.conf import settings
 from django.db import models
@@ -95,6 +110,7 @@ class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="questions")
     order = models.PositiveIntegerField(default=0)
     stem = models.TextField()
+    points = models.PositiveIntegerField(default=1, help_text="How much this question is worth toward the total score.")
 
     class Meta:
         ordering = ["order", "id"]

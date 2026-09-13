@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
 
 from . import services
 from .forms import QuestionFormSet, QuizForm, RespondentForm
@@ -15,10 +17,20 @@ def my_quizzes(request):
 
 @login_required
 def quiz_create(request):
+    # Asked once, ever, per creator — not on every quiz. See the
+    # model module's "Ownership philosophy" note for why this exists
+    # at all: unlike the exam-bank engine, nobody at Xpress Academy
+    # verifies a creator's own quiz content, so the creator has to
+    # explicitly accept that's on them before their first one goes live.
+    is_first_quiz = not Quiz.objects.filter(created_by=request.user).exists()
+
     if request.method == "POST":
         quiz_form = QuizForm(request.POST)
         formset = QuestionFormSet(request.POST, prefix="q")
-        if quiz_form.is_valid() and formset.is_valid():
+        terms_ok = (not is_first_quiz) or request.POST.get("accept_responsibility") == "on"
+        if not terms_ok:
+            messages.error(request, "Please confirm you understand you're responsible for this quiz's content.")
+        elif quiz_form.is_valid() and formset.is_valid():
             quiz = services.create_quiz_with_questions(
                 user=request.user, quiz_form=quiz_form, question_forms=formset
             )
@@ -27,7 +39,7 @@ def quiz_create(request):
         quiz_form = QuizForm()
         formset = QuestionFormSet(prefix="q")
     return render(request, "quizbuilder/quiz_form.html", {
-        "quiz_form": quiz_form, "formset": formset, "is_edit": False,
+        "quiz_form": quiz_form, "formset": formset, "is_edit": False, "is_first_quiz": is_first_quiz,
     })
 
 
@@ -41,16 +53,12 @@ def quiz_created(request, slug):
 
 @login_required
 def quiz_edit(request, slug):
+    """Editing questions is always allowed now, even with existing
+    responses — see the model module's "Ownership philosophy" note.
+    A warning banner (not a hard block) tells the creator what that
+    tradeoff actually is; the choice is theirs."""
     quiz = get_object_or_404(Quiz, slug=slug, created_by=request.user)
-    if quiz.response_count:
-        # Editing questions out from under existing graded responses
-        # would silently corrupt their recorded answers/scores (see
-        # the model's "No snapshotting" note) — block it outright
-        # rather than build snapshot infrastructure for an MVP.
-        # Title/description/settings can still change any time.
-        editable_questions = False
-    else:
-        editable_questions = True
+    has_responses = quiz.response_count > 0
 
     initial = [
         services.question_to_formset_initial(q)
@@ -59,22 +67,19 @@ def quiz_edit(request, slug):
 
     if request.method == "POST":
         quiz_form = QuizForm(request.POST, instance=quiz)
-        formset = QuestionFormSet(request.POST, prefix="q") if editable_questions else None
-        forms_valid = quiz_form.is_valid() and (not editable_questions or formset.is_valid())
-        if forms_valid:
+        formset = QuestionFormSet(request.POST, prefix="q")
+        if quiz_form.is_valid() and formset.is_valid():
             quiz_form.save()
-            if editable_questions:
-                services.replace_quiz_questions(quiz=quiz, question_forms=formset)
+            services.replace_quiz_questions(quiz=quiz, question_forms=formset)
+            messages.success(request, "Quiz updated.")
             return redirect("quizbuilder:my_quizzes")
     else:
         quiz_form = QuizForm(instance=quiz)
-        formset = QuestionFormSet(prefix="q", initial=initial) if editable_questions else None
-        if formset is not None:
-            formset.extra = 0
+        formset = QuestionFormSet(prefix="q", initial=initial)
 
     return render(request, "quizbuilder/quiz_form.html", {
         "quiz_form": quiz_form, "formset": formset, "is_edit": True, "quiz": quiz,
-        "editable_questions": editable_questions,
+        "has_responses": has_responses,
     })
 
 
@@ -88,10 +93,38 @@ def quiz_toggle_active(request, slug):
 
 
 @login_required
+@require_POST
+def quiz_delete(request, slug):
+    quiz = get_object_or_404(Quiz, slug=slug, created_by=request.user)
+    quiz.delete()
+    messages.success(request, "Quiz deleted.")
+    return redirect("quizbuilder:my_quizzes")
+
+
+@login_required
+@require_POST
+def quiz_duplicate(request, slug):
+    quiz = get_object_or_404(Quiz, slug=slug, created_by=request.user)
+    new_quiz = services.duplicate_quiz(quiz=quiz, user=request.user)
+    messages.success(request, f'Duplicated as "{new_quiz.title}".')
+    return redirect("quizbuilder:quiz_edit", slug=new_quiz.slug)
+
+
+@login_required
 def quiz_responses(request, slug):
     quiz = get_object_or_404(Quiz, slug=slug, created_by=request.user)
     rows = list(services.response_rows_for_export(quiz))
     return render(request, "quizbuilder/quiz_responses.html", {"quiz": quiz, "rows": rows})
+
+
+@login_required
+@require_POST
+def response_delete(request, slug, response_uuid):
+    quiz = get_object_or_404(Quiz, slug=slug, created_by=request.user)
+    response = get_object_or_404(Response, uuid=response_uuid, quiz=quiz)
+    response.delete()
+    messages.success(request, "Response deleted.")
+    return redirect("quizbuilder:quiz_responses", slug=quiz.slug)
 
 
 @login_required
