@@ -1,0 +1,1234 @@
+[
+  {
+    "stem": "Convert 110112 (base 2) to base 10.",
+    "options": {
+      "A": "21",
+      "B": "19",
+      "C": "27",
+      "D": "23"
+    },
+    "correct": "C",
+    "explanation": "11011(base 2) = 1x16 + 1x8 + 0x4 + 1x2 + 1x1 = 16+8+0+2+1 = 27.",
+    "topic": "Number Bases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Convert 25 (base 10) to base 2.",
+    "options": {
+      "A": "10101",
+      "B": "11010",
+      "C": "11001",
+      "D": "11100"
+    },
+    "correct": "C",
+    "explanation": "25 = 16+8+1 = 11001 in base 2 (16=2^4, 8=2^3, 1=2^0).",
+    "topic": "Number Bases",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the Highest Common Factor (HCF) of 24 and 36.",
+    "options": {
+      "A": "6",
+      "B": "12",
+      "C": "72",
+      "D": "18"
+    },
+    "correct": "B",
+    "explanation": "24 = 2^3 x 3, 36 = 2^2 x 3^2. HCF takes the lowest power of each common prime: 2^2 x 3 = 12.",
+    "topic": "Number and Numeration",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the Lowest Common Multiple (LCM) of 4 and 6.",
+    "options": {
+      "A": "10",
+      "B": "2",
+      "C": "24",
+      "D": "12"
+    },
+    "correct": "D",
+    "explanation": "Multiples of 4: 4,8,12...; multiples of 6: 6,12...; the lowest common multiple is 12.",
+    "topic": "Number and Numeration",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Evaluate 3/4 + 1/6, giving your answer as a single fraction in its lowest terms.",
+    "options": {
+      "A": "4/10",
+      "B": "7/12",
+      "C": "11/12",
+      "D": "2/5"
+    },
+    "correct": "C",
+    "explanation": "LCM of 4 and 6 is 12. 3/4 = 9/12, 1/6 = 2/12. 9/12 + 2/12 = 11/12.",
+    "topic": "Fractions, Decimals, Approximations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Express 0.375 as a fraction in its lowest terms.",
+    "options": {
+      "A": "37/100",
+      "B": "3/8",
+      "C": "3/5",
+      "D": "5/8"
+    },
+    "correct": "B",
+    "explanation": "0.375 = 375/1000 = 3/8 after dividing numerator and denominator by 125.",
+    "topic": "Fractions, Decimals, Approximations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Simplify 2^3 x 2^4.",
+    "options": {
+      "A": "2^12",
+      "B": "2^7",
+      "C": "2^1",
+      "D": "4^7"
+    },
+    "correct": "B",
+    "explanation": "When multiplying powers of the same base, add the indices: 2^3 x 2^4 = 2^(3+4) = 2^7.",
+    "topic": "Indices",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Evaluate 2^0.",
+    "options": {
+      "A": "2",
+      "B": "0",
+      "C": "1",
+      "D": "undefined"
+    },
+    "correct": "C",
+    "explanation": "Any non-zero number raised to the power of zero equals 1, by definition.",
+    "topic": "Indices",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Express 4,500,000 in standard form.",
+    "options": {
+      "A": "4.5 x 10^6",
+      "B": "4.5 x 10^5",
+      "C": "4.5 x 10^7",
+      "D": "45 x 10^5"
+    },
+    "correct": "A",
+    "explanation": "4,500,000 = 4.5 x 1,000,000 = 4.5 x 10^6.",
+    "topic": "Standard Form",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Given that log 2 = 0.3010 and log 3 = 0.4771, find log 6.",
+    "options": {
+      "A": "1.4331",
+      "B": "0.1761",
+      "C": "0.7781",
+      "D": "0.6021"
+    },
+    "correct": "C",
+    "explanation": "log 6 = log(2 x 3) = log 2 + log 3 = 0.3010 + 0.4771 = 0.7781.",
+    "topic": "Logarithms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Simplify sqrt(50) into the form a*sqrt(2), where a is a whole number.",
+    "options": {
+      "A": "25sqrt(2)",
+      "B": "10sqrt(2)",
+      "C": "2sqrt(5)",
+      "D": "5sqrt(2)"
+    },
+    "correct": "D",
+    "explanation": "sqrt(50) = sqrt(25 x 2) = sqrt(25) x sqrt(2) = 5sqrt(2).",
+    "topic": "Surds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If the first term of an Arithmetic Progression (A.P.) is 3 and the common difference is 4, find the 5th term.",
+    "options": {
+      "A": "19",
+      "B": "23",
+      "C": "15",
+      "D": "17"
+    },
+    "correct": "A",
+    "explanation": "nth term = a + (n-1)d = 3 + (5-1)(4) = 3 + 16 = 19.",
+    "topic": "Sequence and Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the sum of the first 4 terms of the Geometric Progression (G.P.) 2, 6, 18, 54, ...",
+    "options": {
+      "A": "60",
+      "B": "90",
+      "C": "80",
+      "D": "70"
+    },
+    "correct": "C",
+    "explanation": "Sum = 2 + 6 + 18 + 54 = 80.",
+    "topic": "Sequence and Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If P = {1,2,3,4} and Q = {3,4,5,6}, find P intersection Q.",
+    "options": {
+      "A": "{1,2,3,4,5,6}",
+      "B": "empty set",
+      "C": "{3,4}",
+      "D": "{1,2,5,6}"
+    },
+    "correct": "C",
+    "explanation": "The intersection contains only elements present in both sets: 3 and 4 appear in both P and Q, so P n Q = {3,4}.",
+    "topic": "Sets",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If P = {1,2,3,4} and Q = {3,4,5,6}, find P union Q.",
+    "options": {
+      "A": "{1,2}",
+      "B": "{3,4}",
+      "C": "{1,2,3,4,5,6}",
+      "D": "empty set"
+    },
+    "correct": "C",
+    "explanation": "The union contains all elements present in either set: {1,2,3,4,5,6}.",
+    "topic": "Sets",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Divide N4500 in the ratio 2:3:4.",
+    "options": {
+      "A": "N500, N1500, N2500",
+      "B": "N1500, N1500, N1500",
+      "C": "N900, N1350, N1800",
+      "D": "N1000, N1500, N2000"
+    },
+    "correct": "D",
+    "explanation": "Total parts = 2+3+4 = 9. Each part = 4500/9 = 500. So the shares are 2x500=1000, 3x500=1500, 4x500=2000.",
+    "topic": "Ratio, Proportions, Rates",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find 15% of N2000.",
+    "options": {
+      "A": "N400",
+      "B": "N300",
+      "C": "N150",
+      "D": "N200"
+    },
+    "correct": "B",
+    "explanation": "15% of 2000 = (15/100) x 2000 = 300.",
+    "topic": "Percentages",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A trader buys an item for N800 and sells it for N1000. Find the percentage profit.",
+    "options": {
+      "A": "12.5%",
+      "B": "80%",
+      "C": "20%",
+      "D": "25%"
+    },
+    "correct": "D",
+    "explanation": "Profit = 1000-800 = 200. Percentage profit = (200/800) x 100% = 25%.",
+    "topic": "Percentages",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Expand and simplify (x+3)(x+2).",
+    "options": {
+      "A": "x^2+5x+5",
+      "B": "x^2+x+6",
+      "C": "x^2+6x+5",
+      "D": "x^2+5x+6"
+    },
+    "correct": "D",
+    "explanation": "(x+3)(x+2) = x^2+2x+3x+6 = x^2+5x+6.",
+    "topic": "Algebraic Expressions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Factorize x^2 - 9.",
+    "options": {
+      "A": "(x+9)(x-1)",
+      "B": "(x-9)(x+1)",
+      "C": "(x+3)(x-3)",
+      "D": "(x-3)(x-3)"
+    },
+    "correct": "C",
+    "explanation": "x^2 - 9 is a difference of two squares: x^2 - 3^2 = (x+3)(x-3).",
+    "topic": "Algebraic Processes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Solve for x: 3x + 5 = 20.",
+    "options": {
+      "A": "x = 15",
+      "B": "x = 5",
+      "C": "x = 3",
+      "D": "x = 25/3"
+    },
+    "correct": "B",
+    "explanation": "3x = 20-5 = 15, so x = 15/3 = 5.",
+    "topic": "Linear Equations",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Solve the simultaneous equations x + y = 7 and x - y = 3.",
+    "options": {
+      "A": "x=4, y=3",
+      "B": "x=5, y=2",
+      "C": "x=3, y=4",
+      "D": "x=2, y=5"
+    },
+    "correct": "B",
+    "explanation": "Adding both equations: 2x = 10, so x = 5. Substituting: 5 + y = 7, so y = 2.",
+    "topic": "Linear Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Solve the quadratic equation x^2 - 5x + 6 = 0.",
+    "options": {
+      "A": "x = 1 or x = 6",
+      "B": "x = 2 or x = 3",
+      "C": "x = -2 or x = -3",
+      "D": "x = 2 or x = -3"
+    },
+    "correct": "B",
+    "explanation": "x^2-5x+6 = (x-2)(x-3) = 0, so x = 2 or x = 3 (sum of roots = 5, product = 6, both consistent).",
+    "topic": "Quadratic Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Make r the subject of the formula A = pi*r^2.",
+    "options": {
+      "A": "r = (A/pi)^2",
+      "B": "r = A/pi",
+      "C": "r = sqrt(A/pi)",
+      "D": "r = sqrt(A)*pi"
+    },
+    "correct": "C",
+    "explanation": "A = pi*r^2, so r^2 = A/pi, and taking the square root of both sides gives r = sqrt(A/pi).",
+    "topic": "Change of Subject",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Solve the inequality 2x - 3 > 7.",
+    "options": {
+      "A": "x < 5",
+      "B": "x > 5",
+      "C": "x > 10",
+      "D": "x > 2"
+    },
+    "correct": "B",
+    "explanation": "2x > 7+3 = 10, so x > 5.",
+    "topic": "Linear Inequalities",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If y varies directly as x, and y = 10 when x = 2, find y when x = 5.",
+    "options": {
+      "A": "20",
+      "B": "25",
+      "C": "15",
+      "D": "12.5"
+    },
+    "correct": "B",
+    "explanation": "Direct variation: y = kx. 10 = k(2), so k = 5. When x=5, y = 5(5) = 25.",
+    "topic": "Variation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If y is inversely proportional to x, and y = 4 when x = 3, find y when x = 6.",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "8",
+      "D": "12"
+    },
+    "correct": "B",
+    "explanation": "Inverse variation: y = k/x. 4 = k/3, so k = 12. When x=6, y = 12/6 = 2.",
+    "topic": "Variation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the perimeter of a rectangle with length 8 cm and width 5 cm.",
+    "options": {
+      "A": "20 cm",
+      "B": "40 cm",
+      "C": "13 cm",
+      "D": "26 cm"
+    },
+    "correct": "D",
+    "explanation": "Perimeter of a rectangle = 2(length + width) = 2(8+5) = 2(13) = 26 cm.",
+    "topic": "Mensuration — Perimeter",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the area of a rectangle with length 8 cm and width 5 cm.",
+    "options": {
+      "A": "40 cm²",
+      "B": "20 cm²",
+      "C": "13 cm²",
+      "D": "26 cm²"
+    },
+    "correct": "A",
+    "explanation": "Area of a rectangle = length x width = 8 x 5 = 40 cm².",
+    "topic": "Mensuration — Area",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the area of a triangle with base 10 cm and height 6 cm.",
+    "options": {
+      "A": "120 cm²",
+      "B": "16 cm²",
+      "C": "60 cm²",
+      "D": "30 cm²"
+    },
+    "correct": "D",
+    "explanation": "Area of a triangle = ½ x base x height = ½ x 10 x 6 = 30 cm².",
+    "topic": "Mensuration — Area",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the circumference of a circle of radius 7 cm (take pi = 22/7).",
+    "options": {
+      "A": "154 cm",
+      "B": "14 cm",
+      "C": "44 cm",
+      "D": "22 cm"
+    },
+    "correct": "C",
+    "explanation": "Circumference = 2*pi*r = 2 x (22/7) x 7 = 44 cm.",
+    "topic": "Mensuration — Circles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the area of a circle of radius 7 cm (take pi = 22/7).",
+    "options": {
+      "A": "49 cm²",
+      "B": "22 cm²",
+      "C": "154 cm²",
+      "D": "44 cm²"
+    },
+    "correct": "C",
+    "explanation": "Area = pi*r^2 = (22/7) x 7 x 7 = 22 x 7 = 154 cm².",
+    "topic": "Mensuration — Circles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the volume of a cube of side 4 cm.",
+    "options": {
+      "A": "16 cm³",
+      "B": "48 cm³",
+      "C": "12 cm³",
+      "D": "64 cm³"
+    },
+    "correct": "D",
+    "explanation": "Volume of a cube = side³ = 4 x 4 x 4 = 64 cm³.",
+    "topic": "Mensuration — Volume",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A right-angled triangle has legs of length 3 cm and 4 cm. Find the length of the hypotenuse.",
+    "options": {
+      "A": "25 cm",
+      "B": "12 cm",
+      "C": "7 cm",
+      "D": "5 cm"
+    },
+    "correct": "D",
+    "explanation": "By Pythagoras' theorem, hypotenuse² = 3² + 4² = 9+16 = 25, so hypotenuse = sqrt(25) = 5 cm.",
+    "topic": "Plane Geometry — Pythagoras",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "The sum of the interior angles of a triangle is",
+    "options": {
+      "A": "360°",
+      "B": "180°",
+      "C": "270°",
+      "D": "90°"
+    },
+    "correct": "B",
+    "explanation": "The sum of the interior angles of any triangle is always 180°.",
+    "topic": "Plane Geometry — Triangles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "The sum of the interior angles of a quadrilateral is",
+    "options": {
+      "A": "360°",
+      "B": "180°",
+      "C": "270°",
+      "D": "540°"
+    },
+    "correct": "A",
+    "explanation": "The sum of the interior angles of any quadrilateral (4-sided polygon) is 360°.",
+    "topic": "Plane Geometry — Polygons",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Two angles on a straight line are supplementary. If one angle is 65°, find the other.",
+    "options": {
+      "A": "25°",
+      "B": "35°",
+      "C": "115°",
+      "D": "295°"
+    },
+    "correct": "C",
+    "explanation": "Angles on a straight line sum to 180°, so the other angle = 180 - 65 = 115°.",
+    "topic": "Plane Geometry — Angles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Given a right-angled triangle with opposite side 3, adjacent side 4, and hypotenuse 5, find sin(theta), where theta is the angle opposite the side of length 3.",
+    "options": {
+      "A": "3/5",
+      "B": "4/3",
+      "C": "3/4",
+      "D": "4/5"
+    },
+    "correct": "A",
+    "explanation": "sin(theta) = opposite/hypotenuse = 3/5.",
+    "topic": "Trigonometry — Ratios",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Given a right-angled triangle with opposite side 3, adjacent side 4, and hypotenuse 5, find cos(theta), where theta is the angle opposite the side of length 3.",
+    "options": {
+      "A": "5/4",
+      "B": "3/4",
+      "C": "4/5",
+      "D": "3/5"
+    },
+    "correct": "C",
+    "explanation": "cos(theta) = adjacent/hypotenuse = 4/5.",
+    "topic": "Trigonometry — Ratios",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Evaluate sin 30°.",
+    "options": {
+      "A": "0",
+      "B": "sqrt(3)/2",
+      "C": "1/2",
+      "D": "1"
+    },
+    "correct": "C",
+    "explanation": "sin 30° = 1/2, a standard special-angle trigonometric value.",
+    "topic": "Trigonometry — Special Angles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Evaluate cos 60°.",
+    "options": {
+      "A": "1/2",
+      "B": "sqrt(3)/2",
+      "C": "0",
+      "D": "1"
+    },
+    "correct": "A",
+    "explanation": "cos 60° = 1/2, a standard special-angle trigonometric value.",
+    "topic": "Trigonometry — Special Angles",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find dy/dx if y = x^3.",
+    "options": {
+      "A": "3x^2",
+      "B": "x^4/4",
+      "C": "x^2",
+      "D": "3x"
+    },
+    "correct": "A",
+    "explanation": "By the power rule, d/dx(x^n) = n*x^(n-1), so d/dx(x^3) = 3x^2.",
+    "topic": "Introductory Calculus — Differentiation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the integral of 2x with respect to x.",
+    "options": {
+      "A": "x^2/2 + C",
+      "B": "x^2 + C",
+      "C": "2 + C",
+      "D": "2x^2 + C"
+    },
+    "correct": "B",
+    "explanation": "Integral of 2x dx = 2 * (x^2/2) + C = x^2 + C.",
+    "topic": "Introductory Calculus — Integration",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the mean of the numbers 4, 6, 8, 10, 12.",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "6",
+      "D": "9"
+    },
+    "correct": "A",
+    "explanation": "Mean = sum/count = (4+6+8+10+12)/5 = 40/5 = 8.",
+    "topic": "Statistics — Central Tendency",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the median of the numbers 3, 7, 5, 9, 1.",
+    "options": {
+      "A": "3",
+      "B": "9",
+      "C": "5",
+      "D": "7"
+    },
+    "correct": "C",
+    "explanation": "Arranging in order: 1, 3, 5, 7, 9. With 5 values, the median is the middle (3rd) value: 5.",
+    "topic": "Statistics — Central Tendency",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A fair coin is tossed once. Find the probability of obtaining a head.",
+    "options": {
+      "A": "0",
+      "B": "1/2",
+      "C": "1/4",
+      "D": "1"
+    },
+    "correct": "B",
+    "explanation": "A fair coin has 2 equally likely outcomes (head, tail); the probability of a head is 1/2.",
+    "topic": "Probability",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A fair six-sided die is rolled once. Find the probability of obtaining a number greater than 4.",
+    "options": {
+      "A": "1/2",
+      "B": "2/3",
+      "C": "1/6",
+      "D": "1/3"
+    },
+    "correct": "D",
+    "explanation": "Numbers greater than 4 on a die are 5 and 6 — 2 favourable outcomes out of 6 total, so probability = 2/6 = 1/3.",
+    "topic": "Probability",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "In modular arithmetic, evaluate 17 mod 5.",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "2",
+      "D": "1"
+    },
+    "correct": "C",
+    "explanation": "17 divided by 5 gives a quotient of 3 with remainder 2 (5x3=15, 17-15=2), so 17 mod 5 = 2.",
+    "topic": "Modular Arithmetic",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A binary operation * is defined on real numbers by a*b = a + b - ab. Evaluate 2*3.",
+    "options": {
+      "A": "1",
+      "B": "6",
+      "C": "5",
+      "D": "-1"
+    },
+    "correct": "D",
+    "explanation": "2*3 = 2 + 3 - (2x3) = 5 - 6 = -1.",
+    "topic": "Binary Operations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the determinant of the 2x2 matrix [[2,3],[1,4]].",
+    "options": {
+      "A": "11",
+      "B": "5",
+      "C": "8",
+      "D": "-1"
+    },
+    "correct": "B",
+    "explanation": "For a 2x2 matrix [[a,b],[c,d]], determinant = ad - bc = (2x4) - (3x1) = 8 - 3 = 5.",
+    "topic": "Matrices and Determinants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Add the matrices [[1,2],[3,4]] and [[5,6],[7,8]].",
+    "options": {
+      "A": "[[4,4],[4,4]]",
+      "B": "[[5,12],[21,32]]",
+      "C": "[[6,8],[10,12]]",
+      "D": "[[6,6],[6,6]]"
+    },
+    "correct": "C",
+    "explanation": "Matrix addition adds corresponding entries: [1+5,2+6],[3+7,4+8] = [[6,8],[10,12]].",
+    "topic": "Matrices and Determinants",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Simplify the algebraic fraction (x^2-4)/(x-2), for x not equal to 2.",
+    "options": {
+      "A": "x-2",
+      "B": "x-4",
+      "C": "x+2",
+      "D": "x^2-2"
+    },
+    "correct": "C",
+    "explanation": "x^2-4 factorizes as (x-2)(x+2), so (x-2)(x+2)/(x-2) = x+2 (cancelling the common factor, valid since x is not 2).",
+    "topic": "Algebraic Fractions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A relation maps every element of set A to exactly one element of set B. This type of relation is called a",
+    "options": {
+      "A": "one-to-many relation",
+      "B": "many-to-many relation",
+      "C": "function (mapping)",
+      "D": "an empty relation"
+    },
+    "correct": "C",
+    "explanation": "A function (or mapping) is a relation in which every element of the domain (set A) is associated with exactly one element of the codomain (set B).",
+    "topic": "Functions and Relations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "If f(x) = 2x + 3, find f(4).",
+    "options": {
+      "A": "7",
+      "B": "8",
+      "C": "9",
+      "D": "11"
+    },
+    "correct": "D",
+    "explanation": "f(4) = 2(4) + 3 = 8 + 3 = 11.",
+    "topic": "Functions and Relations",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "On the x-y coordinate plane, the point (3, -2) lies in which quadrant?",
+    "options": {
+      "A": "Third quadrant",
+      "B": "Fourth quadrant",
+      "C": "First quadrant",
+      "D": "Second quadrant"
+    },
+    "correct": "B",
+    "explanation": "The fourth quadrant has a positive x-coordinate and negative y-coordinate, matching the point (3, -2).",
+    "topic": "Coordinate Geometry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the distance between the points (0,0) and (3,4) on the coordinate plane.",
+    "options": {
+      "A": "5",
+      "B": "12",
+      "C": "7",
+      "D": "25"
+    },
+    "correct": "A",
+    "explanation": "Distance = sqrt((3-0)^2 + (4-0)^2) = sqrt(9+16) = sqrt(25) = 5, using the distance formula (equivalent to Pythagoras).",
+    "topic": "Coordinate Geometry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the gradient (slope) of the line joining the points (1,2) and (3,8).",
+    "options": {
+      "A": "6",
+      "B": "3",
+      "C": "2",
+      "D": "4"
+    },
+    "correct": "B",
+    "explanation": "Gradient = (y2-y1)/(x2-x1) = (8-2)/(3-1) = 6/2 = 3.",
+    "topic": "Coordinate Geometry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the volume of a cylinder of radius 7 cm and height 10 cm (take pi = 22/7).",
+    "options": {
+      "A": "440 cm³",
+      "B": "1540 cm³",
+      "C": "220 cm³",
+      "D": "1100 cm³"
+    },
+    "correct": "B",
+    "explanation": "Volume of a cylinder = pi*r^2*h = (22/7) x 7 x 7 x 10 = 22 x 7 x 10 = 1540 cm³.",
+    "topic": "Mensuration — Volume",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the volume of a sphere of radius 3 cm (take pi = 22/7, and use volume = 4/3*pi*r^3).",
+    "options": {
+      "A": "36 cm³",
+      "B": "approximately 452.6 cm³",
+      "C": "approximately 28.3 cm³",
+      "D": "approximately 113.14 cm³"
+    },
+    "correct": "D",
+    "explanation": "Volume = 4/3 x pi x r^3 = 4/3 x (22/7) x 27 = (4x22x27)/(3x7) = 2376/21 ≈ 113.14 cm³.",
+    "topic": "Mensuration — Volume",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A ship sails from port A on a bearing of 060° to port B. Find the bearing of port A from port B (the back bearing).",
+    "options": {
+      "A": "300°",
+      "B": "060°",
+      "C": "120°",
+      "D": "240°"
+    },
+    "correct": "D",
+    "explanation": "The back bearing is found by adding 180° to the original bearing (since it's less than 180°): 060° + 180° = 240°.",
+    "topic": "Trigonometry — Bearings",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A ladder leans against a wall, making an angle of 60° with the ground. If the foot of the ladder is 4 m from the wall, find the height the ladder reaches up the wall, given tan 60° = sqrt(3).",
+    "options": {
+      "A": "4 m",
+      "B": "4sqrt(3) m",
+      "C": "4/sqrt(3) m",
+      "D": "8 m"
+    },
+    "correct": "B",
+    "explanation": "tan(angle) = opposite/adjacent = height/4. So height = 4 x tan 60° = 4sqrt(3) m.",
+    "topic": "Trigonometry — Angles of Elevation",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the range of the data set: 5, 12, 8, 20, 3.",
+    "options": {
+      "A": "20",
+      "B": "12",
+      "C": "17",
+      "D": "8"
+    },
+    "correct": "C",
+    "explanation": "Range = highest value - lowest value = 20 - 3 = 17.",
+    "topic": "Statistics — Dispersion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A bag contains 4 red balls and 6 blue balls. Find the probability of picking a red ball at random.",
+    "options": {
+      "A": "6/10",
+      "B": "4/6",
+      "C": "1/4",
+      "D": "4/10"
+    },
+    "correct": "D",
+    "explanation": "Total balls = 4+6 = 10. Probability of red = number of red balls / total balls = 4/10 (= 2/5).",
+    "topic": "Probability",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A vector is represented by the column (3, 4). Find its magnitude.",
+    "options": {
+      "A": "25",
+      "B": "5",
+      "C": "12",
+      "D": "7"
+    },
+    "correct": "B",
+    "explanation": "Magnitude = sqrt(3^2 + 4^2) = sqrt(9+16) = sqrt(25) = 5.",
+    "topic": "Vectors",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A shape is reflected across the x-axis. A point originally at (2,5) moves to",
+    "options": {
+      "A": "(-2,5)",
+      "B": "(5,2)",
+      "C": "(2,-5)",
+      "D": "(-2,-5)"
+    },
+    "correct": "C",
+    "explanation": "Reflection across the x-axis keeps the x-coordinate unchanged and negates the y-coordinate: (2,5) -> (2,-5).",
+    "topic": "Transformations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A point (3,4) is translated by the vector (2,-1). Find its new position.",
+    "options": {
+      "A": "(5,5)",
+      "B": "(6,-4)",
+      "C": "(5,3)",
+      "D": "(1,5)"
+    },
+    "correct": "C",
+    "explanation": "Translation adds the vector components to the original coordinates: (3+2, 4+(-1)) = (5,3).",
+    "topic": "Transformations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A sum of N10,000 is invested at 5% simple interest per annum. Find the interest earned after 2 years.",
+    "options": {
+      "A": "N5000",
+      "B": "N500",
+      "C": "N1000",
+      "D": "N2000"
+    },
+    "correct": "C",
+    "explanation": "Simple Interest = (Principal x Rate x Time)/100 = (10000 x 5 x 2)/100 = 1000.",
+    "topic": "Financial Arithmetic — Simple Interest",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "An item marked N5000 is sold at a discount of 10%. Find the selling price.",
+    "options": {
+      "A": "N4900",
+      "B": "N5500",
+      "C": "N500",
+      "D": "N4500"
+    },
+    "correct": "D",
+    "explanation": "Discount = 10% of 5000 = 500. Selling price = 5000 - 500 = 4500.",
+    "topic": "Financial Arithmetic — Discount",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the value of x in the proportion x:8 = 3:4.",
+    "options": {
+      "A": "6",
+      "B": "12",
+      "C": "24",
+      "D": "2"
+    },
+    "correct": "A",
+    "explanation": "Cross-multiplying: 4x = 8x3 = 24, so x = 24/4 = 6.",
+    "topic": "Ratio, Proportions, Rates",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Two triangles are similar if their corresponding angles are equal and their corresponding sides are",
+    "options": {
+      "A": "equal in length",
+      "B": "parallel to each other",
+      "C": "in the same ratio (proportional)",
+      "D": "perpendicular to each other"
+    },
+    "correct": "C",
+    "explanation": "Similar triangles have equal corresponding angles and corresponding sides that are in the same ratio (proportional), though not necessarily equal in length.",
+    "topic": "Plane Geometry — Similarity",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Two triangles are congruent if they have exactly the same",
+    "options": {
+      "A": "colour",
+      "B": "perimeter only, regardless of shape",
+      "C": "position only",
+      "D": "shape and size"
+    },
+    "correct": "D",
+    "explanation": "Congruent triangles are identical in both shape and size — one can be superimposed exactly on the other, unlike similar triangles which only match in shape.",
+    "topic": "Plane Geometry — Congruence",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A circle's chord subtends an angle at the centre that is how many times the angle it subtends at the circumference (on the same arc)?",
+    "options": {
+      "A": "Half",
+      "B": "The same",
+      "C": "Twice",
+      "D": "Three times"
+    },
+    "correct": "C",
+    "explanation": "The angle subtended by an arc at the centre of a circle is twice the angle subtended by the same arc at any point on the remaining circumference — a standard circle theorem.",
+    "topic": "Plane Geometry — Circles",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "The angle in a semicircle (subtended by the diameter, at the circumference) is always",
+    "options": {
+      "A": "90°",
+      "B": "45°",
+      "C": "60°",
+      "D": "180°"
+    },
+    "correct": "A",
+    "explanation": "By a standard circle theorem, the angle subtended at the circumference by the diameter of a circle is always a right angle (90°).",
+    "topic": "Plane Geometry — Circles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Solve for x: 5(x-2) = 3x + 4.",
+    "options": {
+      "A": "x = 3",
+      "B": "x = -7",
+      "C": "x = 1",
+      "D": "x = 7"
+    },
+    "correct": "D",
+    "explanation": "5x - 10 = 3x + 4. So 5x - 3x = 4 + 10, giving 2x = 14, so x = 7.",
+    "topic": "Linear Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Using the quadratic formula, find the roots of x^2 - 3x - 4 = 0.",
+    "options": {
+      "A": "x = 4 or x = -1",
+      "B": "x = -4 or x = -1",
+      "C": "x = -4 or x = 1",
+      "D": "x = 4 or x = 1"
+    },
+    "correct": "A",
+    "explanation": "x^2-3x-4 factorizes as (x-4)(x+1) = 0 (since -4 x 1 = -4 and -4+1 = -3), so x = 4 or x = -1.",
+    "topic": "Quadratic Equations",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "Find the value of x if 3x = 81 (i.e. 3 raised to the power x equals 81).",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "27",
+      "D": "9"
+    },
+    "correct": "A",
+    "explanation": "81 = 3^4 (3x3x3x3 = 81), so x = 4.",
+    "topic": "Indices",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  },
+  {
+    "stem": "A number is chosen at random from 1 to 20. Find the probability that it is a multiple of 5.",
+    "options": {
+      "A": "1/20",
+      "B": "1/5",
+      "C": "1/4",
+      "D": "4/5"
+    },
+    "correct": "B",
+    "explanation": "Multiples of 5 from 1 to 20 are 5, 10, 15, 20 -- 4 favourable outcomes out of 20 total, so probability = 4/20 = 1/5.",
+    "topic": "Probability",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (full step-by-step calculation required for every question) by a separate agent process with no access to the stored answer key — agreed, 77/77.",
+    "section": "JAMB Mathematics"
+  }
+]
