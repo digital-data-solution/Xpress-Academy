@@ -1,0 +1,802 @@
+[
+  {
+    "stem": "Choose the word nearest in meaning to \"foundation\" in: The builders laid a strong foundation before erecting the walls.",
+    "options": {
+      "A": "door",
+      "B": "base",
+      "C": "roof",
+      "D": "ceiling"
+    },
+    "correct": "B",
+    "explanation": "In construction, a \"foundation\" is the base/lower supporting structure on which a building rests.",
+    "topic": "Lexis \u2014 Building and Construction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"irrigation\" in: Farmers use irrigation to water their crops during the dry season.",
+    "options": {
+      "A": "planting seeds",
+      "B": "weeding",
+      "C": "harvesting",
+      "D": "the artificial supply of water to land"
+    },
+    "correct": "D",
+    "explanation": "Irrigation refers to the artificial application of water to land or crops to help growth, especially in dry conditions.",
+    "topic": "Lexis \u2014 Agriculture",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"trawler\" in: The fishermen used a trawler to catch fish far out at sea.",
+    "options": {
+      "A": "a small canoe",
+      "B": "a fishing rod",
+      "C": "a fishing boat that drags a large net",
+      "D": "a type of fish"
+    },
+    "correct": "C",
+    "explanation": "A trawler is a fishing boat equipped to drag a large net (a trawl) through the water to catch fish.",
+    "topic": "Lexis \u2014 Fishing",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"shares\" in: She bought shares in the company listed on the stock exchange.",
+    "options": {
+      "A": "physical goods for sale",
+      "B": "units of ownership in a company",
+      "C": "company employees",
+      "D": "government bonds only"
+    },
+    "correct": "B",
+    "explanation": "Shares represent units of ownership in a company, which can be bought and sold, typically on a stock exchange.",
+    "topic": "Lexis \u2014 Stock Exchange",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"contagious\" in: The doctor warned that the disease was highly contagious.",
+    "options": {
+      "A": "incurable",
+      "B": "mild",
+      "C": "easily spread from person to person",
+      "D": "rare"
+    },
+    "correct": "C",
+    "explanation": "Contagious describes a disease that can be easily transmitted (spread) from one person to another, especially by direct or indirect contact.",
+    "topic": "Lexis \u2014 Health",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"deforestation\" in: Deforestation has led to increased soil erosion in the area.",
+    "options": {
+      "A": "the clearing/removal of forests",
+      "B": "the irrigation of farmland",
+      "C": "the planting of new trees",
+      "D": "the protection of wildlife"
+    },
+    "correct": "A",
+    "explanation": "Deforestation refers to the clearing or removal of forests or trees, often for agriculture, logging, or urban development.",
+    "topic": "Lexis \u2014 Environment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"custodian\" in: The chief priest is the custodian of the village shrine.",
+    "options": {
+      "A": "destroyer",
+      "B": "guardian/keeper",
+      "C": "visitor",
+      "D": "builder"
+    },
+    "correct": "B",
+    "explanation": "A custodian is a person who has responsibility for taking care of or protecting something \u2014 a guardian or keeper.",
+    "topic": "Lexis \u2014 Culture and Institutions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"verdict\" in: The jury delivered its verdict after two hours of deliberation.",
+    "options": {
+      "A": "an appeal",
+      "B": "a punishment only",
+      "C": "a formal decision/judgement",
+      "D": "a question"
+    },
+    "correct": "C",
+    "explanation": "A verdict is a formal decision or judgement made by a jury or judge at the end of a trial.",
+    "topic": "Lexis \u2014 Law and Order",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"chassis\" in: The mechanic inspected the chassis of the vehicle for rust.",
+    "options": {
+      "A": "the steering wheel",
+      "B": "the supporting frame of a vehicle",
+      "C": "the engine only",
+      "D": "the fuel tank"
+    },
+    "correct": "B",
+    "explanation": "The chassis is the supporting frame of a motor vehicle, on which the body and other parts are mounted.",
+    "topic": "Lexis \u2014 Motor Vehicles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"itinerary\" in: She planned her itinerary carefully before the long journey.",
+    "options": {
+      "A": "a ticket",
+      "B": "a passport",
+      "C": "a detailed travel plan/route",
+      "D": "luggage"
+    },
+    "correct": "C",
+    "explanation": "An itinerary is a planned route or detailed schedule for a journey, typically listing the places to be visited.",
+    "topic": "Lexis \u2014 Travelling",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"bureaucracy\" in: Getting the permit involved a lot of bureaucracy.",
+    "options": {
+      "A": "a form of punishment",
+      "B": "a system of officials and administrative procedures",
+      "C": "a natural disaster",
+      "D": "a type of celebration"
+    },
+    "correct": "B",
+    "explanation": "Bureaucracy refers to a system of government or organisation with many officials and administrative procedures/rules.",
+    "topic": "Lexis \u2014 Government and Administration",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"referee\" in: The referee blew the whistle to stop the match.",
+    "options": {
+      "A": "a spectator",
+      "B": "a team captain",
+      "C": "a coach",
+      "D": "an official who enforces the rules of a game"
+    },
+    "correct": "D",
+    "explanation": "A referee is an official responsible for enforcing the rules and making decisions during a sporting match.",
+    "topic": "Lexis \u2014 Sports",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"pilgrimage\" in: Many believers embark on a pilgrimage to the holy city each year.",
+    "options": {
+      "A": "a journey to a sacred place for religious reasons",
+      "B": "a scientific expedition",
+      "C": "a vacation",
+      "D": "a business trip"
+    },
+    "correct": "A",
+    "explanation": "A pilgrimage is a journey, often a long one, made to a sacred place as an act of religious devotion.",
+    "topic": "Lexis \u2014 Religion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"innovation\" in: The company is known for its innovation in mobile technology.",
+    "options": {
+      "A": "a legal dispute",
+      "B": "the repetition of old ideas",
+      "C": "the introduction of new ideas or methods",
+      "D": "a financial loss"
+    },
+    "correct": "C",
+    "explanation": "Innovation refers to the introduction of new ideas, methods, or products, especially in a field like technology.",
+    "topic": "Lexis \u2014 Science and Technology",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"livestock\" in: The farmer kept livestock including cattle and goats.",
+    "options": {
+      "A": "crops grown for food",
+      "B": "wild animals in a forest",
+      "C": "farm animals raised for use or profit",
+      "D": "farming equipment"
+    },
+    "correct": "C",
+    "explanation": "Livestock refers to animals kept or raised on a farm for use (e.g. meat, milk) or profit, such as cattle, goats, or poultry.",
+    "topic": "Lexis \u2014 Animal Husbandry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"endorsement\" in: The athlete received a lucrative endorsement deal from a sports brand.",
+    "options": {
+      "A": "a resignation",
+      "B": "public support/approval, especially for a product",
+      "C": "a punishment",
+      "D": "a rejection"
+    },
+    "correct": "B",
+    "explanation": "An endorsement is a public statement of support or approval, commonly given by a well-known person for a product in advertising.",
+    "topic": "Lexis \u2014 Advertising",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"pulmonary\" in: The patient was diagnosed with a pulmonary infection.",
+    "options": {
+      "A": "relating to the skin",
+      "B": "relating to the heart",
+      "C": "relating to the lungs",
+      "D": "relating to the kidneys"
+    },
+    "correct": "C",
+    "explanation": "Pulmonary means relating to the lungs, as in \"pulmonary infection\" (a lung infection).",
+    "topic": "Lexis \u2014 Human Body Systems",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: The number of students who passed ___ increased this year.",
+    "options": {
+      "A": "have",
+      "B": "were",
+      "C": "are",
+      "D": "has"
+    },
+    "correct": "D",
+    "explanation": "\"The number of\" is treated as singular, so it takes a singular verb \u2014 \"has increased.\"",
+    "topic": "Structure \u2014 Subject-Verb Agreement",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: By next year, she ___ her degree.",
+    "options": {
+      "A": "will have completed",
+      "B": "completed",
+      "C": "will complete",
+      "D": "completes"
+    },
+    "correct": "A",
+    "explanation": "The future perfect tense (\"will have completed\") is used to describe an action that will be finished before a specified future time (\"by next year\").",
+    "topic": "Structure \u2014 Tenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option with the correct form: The teacher, as well as the students, ___ excited about the trip.",
+    "options": {
+      "A": "have been",
+      "B": "is",
+      "C": "are",
+      "D": "were"
+    },
+    "correct": "B",
+    "explanation": "With \"as well as,\" the verb agrees with the first-mentioned subject (\"the teacher\"), which is singular, so \"is\" is correct.",
+    "topic": "Structure \u2014 Subject-Verb Agreement",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence: I suggest that he ___ the report before the meeting.",
+    "options": {
+      "A": "reviewing",
+      "B": "reviewed",
+      "C": "review",
+      "D": "reviews"
+    },
+    "correct": "C",
+    "explanation": "After a verb of suggestion (\"suggest that\"), the subjunctive (base form) is used regardless of subject \u2014 \"suggest that he review,\" not \"reviews.\"",
+    "topic": "Structure \u2014 Subjunctive",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified (high/medium-high confidence). Minor nuance: British informal usage sometimes drops the subjunctive after 'suggest that', but the mandative subjunctive (option C) is the standard WAEC/formal-grammar answer and the only fully defensible single choice.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option with the correct article: This is ___ unique opportunity.",
+    "options": {
+      "A": "no article needed",
+      "B": "an",
+      "C": "the",
+      "D": "a"
+    },
+    "correct": "D",
+    "explanation": "\"Unique\" begins with a consonant sound (\"yoo-\"), even though it starts with the vowel letter 'u', so \"a\" is used, not \"an.\"",
+    "topic": "Structure \u2014 Articles",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence: Not only did he arrive late, ___ he forgot the documents.",
+    "options": {
+      "A": "so",
+      "B": "or",
+      "C": "and",
+      "D": "but also"
+    },
+    "correct": "D",
+    "explanation": "\"Not only...but also\" is a correlative conjunction pair used to link two related points, both here indicating what went wrong.",
+    "topic": "Structure \u2014 Conjunctions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option with the correctly punctuated sentence involving a semicolon.",
+    "options": {
+      "A": "I have a test tomorrow I must study tonight.",
+      "B": "I have a test tomorrow, I must study tonight.",
+      "C": "I have a test tomorrow; I must study tonight.",
+      "D": "I have a test tomorrow: I must study tonight."
+    },
+    "correct": "C",
+    "explanation": "A semicolon correctly joins two closely related independent clauses without a coordinating conjunction, unlike a comma alone (option A), which creates a comma splice.",
+    "topic": "Punctuation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"to hit the nail on the head\"",
+    "options": {
+      "A": "to make a mistake",
+      "B": "to start a project",
+      "C": "to cause an injury",
+      "D": "to say or do something exactly right"
+    },
+    "correct": "D",
+    "explanation": "\"To hit the nail on the head\" means to describe or identify something exactly right, or to say exactly the correct thing about a situation.",
+    "topic": "Lexis \u2014 Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"abundant\" in: The region enjoys abundant rainfall throughout the year.",
+    "options": {
+      "A": "seasonal",
+      "B": "scarce",
+      "C": "heavy",
+      "D": "plentiful"
+    },
+    "correct": "B",
+    "explanation": "Abundant means existing in large quantities/plentiful; its opposite is \"scarce\" (existing in small quantities, insufficient).",
+    "topic": "Lexis \u2014 Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"lenient\" in: The judge was known for being lenient with first-time offenders.",
+    "options": {
+      "A": "strict",
+      "B": "patient",
+      "C": "fair",
+      "D": "merciful"
+    },
+    "correct": "A",
+    "explanation": "Lenient means permissive or merciful, not harsh; its opposite is \"strict\" (demanding strict obedience, severe).",
+    "topic": "Lexis \u2014 Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence: Between you and ___, I think the plan will fail.",
+    "options": {
+      "A": "me",
+      "B": "myself",
+      "C": "mine",
+      "D": "I"
+    },
+    "correct": "A",
+    "explanation": "After a preposition (\"between\"), the object pronoun \"me\" is required, not the subject pronoun \"I\" \u2014 a common error even among fluent speakers.",
+    "topic": "Structure \u2014 Pronouns",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence: She is one of the students who ___ always punctual.",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "has been",
+      "D": "are"
+    },
+    "correct": "D",
+    "explanation": "\"Who\" refers back to \"students\" (plural) in \"one of the students who,\" so the verb must be plural: \"are.\"",
+    "topic": "Structure \u2014 Subject-Verb Agreement",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option with the correct comparative form: Of the two routes, this one is ___.",
+    "options": {
+      "A": "shorter",
+      "B": "more short",
+      "C": "shortest",
+      "D": "most short"
+    },
+    "correct": "A",
+    "explanation": "When comparing exactly two things, the comparative form (\"shorter\") is used, not the superlative (\"shortest\"), which is reserved for comparing three or more.",
+    "topic": "Structure \u2014 Comparatives and Superlatives",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly completes the sentence in reported speech: She said, \"I will call you tomorrow.\" -> She said that ___.",
+    "options": {
+      "A": "she calls me tomorrow",
+      "B": "she is calling me tomorrow",
+      "C": "she would call me the next day",
+      "D": "she will call me tomorrow"
+    },
+    "correct": "C",
+    "explanation": "In reported speech, \"will\" shifts back to \"would,\" and \"tomorrow\" (relative to the original time of speaking) shifts to \"the next day.\"",
+    "topic": "Structure \u2014 Reported Speech",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"under\" in: The cat is under the table.",
+    "options": {
+      "A": "adjective",
+      "B": "conjunction",
+      "C": "adverb",
+      "D": "preposition"
+    },
+    "correct": "D",
+    "explanation": "\"Under\" shows the relationship (location) between \"the cat\" and \"the table,\" making it a preposition.",
+    "topic": "Word Classes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that correctly identifies the part of speech of \"however\" in: He was tired; however, he continued working.",
+    "options": {
+      "A": "conjunction",
+      "B": "noun",
+      "C": "pronoun",
+      "D": "adverb (conjunctive adverb)"
+    },
+    "correct": "D",
+    "explanation": "\"However\" here functions as a conjunctive adverb, connecting two independent clauses while showing contrast, distinct from a simple coordinating conjunction like \"but.\"",
+    "topic": "Word Classes",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "From the options, choose the word in which the letters 'oo' are pronounced the same way as in the word \"MOON.\"",
+    "options": {
+      "A": "BOOK",
+      "B": "FOOT",
+      "C": "GOOD",
+      "D": "ROOM"
+    },
+    "correct": "D",
+    "explanation": "In \"MOON\" and \"ROOM,\" the letters 'oo' represent the long vowel sound /u:/; in \"BOOK,\" \"FOOT,\" and \"GOOD,\" the 'oo' instead represents the short vowel sound /u/.",
+    "topic": "Oral English \u2014 Vowel Sounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word in which the letter 'a' is pronounced the same way as in the word \"CAT.\"",
+    "options": {
+      "A": "FATHER",
+      "B": "MAN",
+      "C": "CAR",
+      "D": "CAKE"
+    },
+    "correct": "B",
+    "explanation": "In \"CAT\" and \"MAN,\" the letter 'a' represents the short vowel sound /ae/; in \"CAR\" and \"FATHER,\" it represents /a:/, and in \"CAKE,\" it represents the diphthong /ei/.",
+    "topic": "Oral English \u2014 Vowel Sounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word with a consonant cluster at the beginning, unlike the others.",
+    "options": {
+      "A": "CAT",
+      "B": "DOG",
+      "C": "STOP",
+      "D": "SUN"
+    },
+    "correct": "C",
+    "explanation": "\"STOP\" begins with the consonant cluster \"st\" (two consonant sounds together); \"CAT,\" \"DOG,\" and \"SUN\" each begin with a single consonant sound.",
+    "topic": "Oral English \u2014 Consonant Clusters",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word that rhymes with \"FLOOR.\"",
+    "options": {
+      "A": "FAR",
+      "B": "DOOR",
+      "C": "FLOWER",
+      "D": "FLOUR"
+    },
+    "correct": "B",
+    "explanation": "\"FLOOR\" and \"DOOR\" both end with the same sound /o:/, making them rhyme.",
+    "topic": "Oral English \u2014 Rhymes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word that rhymes with \"TRUE.\"",
+    "options": {
+      "A": "TROUGH",
+      "B": "BLUE",
+      "C": "TRY",
+      "D": "TREE"
+    },
+    "correct": "B",
+    "explanation": "\"TRUE\" and \"BLUE\" both end with the same sound /u:/, making them rhyme; the other options end with different sounds.",
+    "topic": "Oral English \u2014 Rhymes",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "In the word \"OBJECT\" (used as a noun, meaning a thing), the stress falls on which syllable?",
+    "options": {
+      "A": "Neither syllable is stressed",
+      "B": "The first syllable (OB-ject)",
+      "C": "Both syllables equally",
+      "D": "The second syllable (ob-JECT)"
+    },
+    "correct": "B",
+    "explanation": "As a noun (a thing), \"OBJECT\" is stressed on the first syllable; as a verb (to object/protest), the stress shifts to the second syllable (ob-JECT).",
+    "topic": "Oral English \u2014 Word Stress",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word that has three syllables.",
+    "options": {
+      "A": "BEAUTIFUL",
+      "B": "RUN",
+      "C": "HAPPY",
+      "D": "SAD"
+    },
+    "correct": "A",
+    "explanation": "\"BEAUTIFUL\" (BEAU-ti-ful) has three syllables; \"HAPPY\" has two, and \"SAD\"/\"RUN\" each have one.",
+    "topic": "Oral English \u2014 Syllables",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "In the sentence \"I said RED, not BLUE\" (spoken to correct a misunderstanding), the strong stress placed on \"RED\" to highlight the contrast is called",
+    "options": {
+      "A": "emphatic stress",
+      "B": "a silent stress",
+      "C": "sentence rhythm only",
+      "D": "word stress"
+    },
+    "correct": "A",
+    "explanation": "Emphatic stress is extra stress placed on a particular word to emphasize contrast, correction, or importance within a sentence \u2014 distinct from the normal, fixed word stress of a word spoken alone.",
+    "topic": "Oral English \u2014 Emphatic Stress",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "A statement such as \"He is coming today.\" typically ends with which intonation pattern, when spoken normally (not as a question)?",
+    "options": {
+      "A": "rising intonation",
+      "B": "no intonation at all",
+      "C": "falling intonation",
+      "D": "a sudden pause with no pitch change"
+    },
+    "correct": "C",
+    "explanation": "A normal declarative statement typically ends with falling intonation, in contrast to a yes/no question, which typically ends with rising intonation.",
+    "topic": "Oral English \u2014 Intonation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "A yes/no question, such as \"Are you coming?\", typically ends with which intonation pattern?",
+    "options": {
+      "A": "flat, unchanging pitch",
+      "B": "no clear pattern",
+      "C": "falling intonation",
+      "D": "rising intonation"
+    },
+    "correct": "D",
+    "explanation": "A yes/no question typically ends with rising intonation, in contrast to a statement or a WH-question, which typically ends with falling intonation.",
+    "topic": "Oral English \u2014 Intonation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "The phonetic symbol /th/ (as in \"think\") represents which type of consonant sound, distinguishing it from /dh/ (as in \"this\")?",
+    "options": {
+      "A": "a voiced sound, same as /dh/",
+      "B": "a silent sound",
+      "C": "a vowel sound",
+      "D": "a voiceless sound, unlike the voiced /dh/"
+    },
+    "correct": "D",
+    "explanation": "The \"th\" sound in \"think\" is voiceless (no vocal cord vibration), while the \"th\" sound in \"this\" is voiced (with vocal cord vibration) \u2014 two distinct phonemes represented by the same spelling.",
+    "topic": "Oral English \u2014 Phonetic Symbols",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "From the options, choose the word that has a silent letter.",
+    "options": {
+      "A": "HONEST",
+      "B": "HORSE",
+      "C": "HOUSE",
+      "D": "HAPPY"
+    },
+    "correct": "A",
+    "explanation": "\"HONEST\" has a silent 'h' at the beginning (pronounced \"ON-est\"); \"HORSE,\" \"HAPPY,\" and \"HOUSE\" all pronounce their initial 'h'.",
+    "topic": "Oral English \u2014 Silent Letters",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 3 \u2014 Oral English (Nigeria variant)"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to \"lucrative\" in: He found a lucrative business opportunity abroad.",
+    "options": {
+      "A": "profitable",
+      "B": "risky",
+      "C": "illegal",
+      "D": "temporary"
+    },
+    "correct": "A",
+    "explanation": "Lucrative means producing a great deal of profit; \"profitable\" is the closest synonym.",
+    "topic": "Lexis \u2014 Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the word opposite in meaning to \"meticulous\" in: The accountant was meticulous in checking every figure.",
+    "options": {
+      "A": "precise",
+      "B": "careless",
+      "C": "careful",
+      "D": "thorough"
+    },
+    "correct": "B",
+    "explanation": "Meticulous means showing great attention to detail, very careful; its opposite is \"careless\" (not giving enough attention).",
+    "topic": "Lexis \u2014 Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that best completes the sentence: He denied ___ the money.",
+    "options": {
+      "A": "to steal",
+      "B": "steal",
+      "C": "stolen",
+      "D": "stealing"
+    },
+    "correct": "D",
+    "explanation": "\"Deny\" is followed by a gerund (-ing form), not an infinitive \u2014 \"denied stealing,\" not \"denied to steal.\"",
+    "topic": "Structure \u2014 Gerunds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option that best explains the idiom: \"to burn the midnight oil\"",
+    "options": {
+      "A": "to start a fire accidentally",
+      "B": "to relax after work",
+      "C": "to waste resources",
+      "D": "to work or study late into the night"
+    },
+    "correct": "D",
+    "explanation": "\"To burn the midnight oil\" means to work or study late into the night, an idiom originating from the era of oil lamps used for light.",
+    "topic": "Lexis \u2014 Idiomatic Expressions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  },
+  {
+    "stem": "Choose the option with the correctly punctuated sentence.",
+    "options": {
+      "A": "The manager,s office is on the third floor.",
+      "B": "The managers office is on the third floor.",
+      "C": "The manager's' office is on the third floor.",
+      "D": "The manager's office is on the third floor."
+    },
+    "correct": "D",
+    "explanation": "The apostrophe before 's' (\"manager's\") correctly shows singular possession \u2014 the office belonging to the manager.",
+    "topic": "Punctuation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Paper 1 \u2014 Lexis & Structure"
+  }
+]
