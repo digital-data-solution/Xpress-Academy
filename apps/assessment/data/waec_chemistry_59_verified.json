@@ -1,0 +1,946 @@
+[
+  {
+    "stem": "Chemistry is best described as the branch of science that studies",
+    "options": {
+      "A": "matter, its composition, properties, and the changes it undergoes",
+      "B": "only the stars and planets",
+      "C": "only mechanical forces and motion",
+      "D": "only living organisms"
+    },
+    "correct": "A",
+    "explanation": "Chemistry is the branch of science concerned with the composition, structure, properties of matter, and the changes it undergoes during chemical reactions.",
+    "topic": "Introduction to Chemistry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The mass of a substance per unit volume is a physical quantity called its",
+    "options": {
+      "A": "weight",
+      "B": "viscosity",
+      "C": "density",
+      "D": "solubility"
+    },
+    "correct": "C",
+    "explanation": "Density is a fundamental physical quantity in chemistry, defined as mass per unit volume, commonly measured in the laboratory.",
+    "topic": "Introduction to Chemistry",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The number of protons found in the nucleus of an atom is called its",
+    "options": {
+      "A": "atomic number",
+      "B": "valency",
+      "C": "neutron number",
+      "D": "mass number"
+    },
+    "correct": "A",
+    "explanation": "The atomic number of an element is defined as the number of protons in the nucleus of an atom of that element, and it determines the element's identity.",
+    "topic": "Structure of the Atom",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The sum of the number of protons and neutrons in the nucleus of an atom is called its",
+    "options": {
+      "A": "atomic number",
+      "B": "mass number",
+      "C": "electron configuration",
+      "D": "valency"
+    },
+    "correct": "B",
+    "explanation": "The mass number of an atom is the total number of protons and neutrons (collectively called nucleons) present in its nucleus.",
+    "topic": "Structure of the Atom",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "An atom of sodium has atomic number 11 and mass number 23. The number of neutrons it contains is",
+    "options": {
+      "A": "34",
+      "B": "23",
+      "C": "11",
+      "D": "12"
+    },
+    "correct": "D",
+    "explanation": "Number of neutrons = mass number - atomic number = 23 - 11 = 12.",
+    "topic": "Structure of the Atom",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Particles found within the nucleus of an atom, carrying no electric charge, are called",
+    "options": {
+      "A": "electrons",
+      "B": "ions",
+      "C": "neutrons",
+      "D": "protons"
+    },
+    "correct": "C",
+    "explanation": "Neutrons are electrically neutral (uncharged) particles found in the nucleus of an atom, alongside positively charged protons.",
+    "topic": "Structure of the Atom",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The technique used to separate a suspended insoluble solid from a liquid by allowing it to settle and pouring off the liquid is called",
+    "options": {
+      "A": "chromatography",
+      "B": "filtration",
+      "C": "decantation",
+      "D": "sublimation"
+    },
+    "correct": "C",
+    "explanation": "Decantation is the process of separating a settled solid from a liquid by carefully pouring off the liquid, leaving the solid behind — simpler than filtration but requires the solid to settle first.",
+    "topic": "Standard Separation Techniques for Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The technique used to obtain a pure solid from its solution by allowing the solvent to evaporate slowly, forming solid crystals, is called",
+    "options": {
+      "A": "distillation",
+      "B": "decantation",
+      "C": "crystallization",
+      "D": "sublimation"
+    },
+    "correct": "C",
+    "explanation": "Crystallization is the process of obtaining pure solid crystals from a solution, typically by slow evaporation of the solvent, allowing well-formed crystals to grow.",
+    "topic": "Standard Separation Techniques for Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A pure substance, unlike a mixture, has a",
+    "options": {
+      "A": "composition that changes with location",
+      "B": "variable composition and no fixed melting point",
+      "C": "fixed composition and a sharp, definite melting/boiling point",
+      "D": "melting point that spans a wide range"
+    },
+    "correct": "C",
+    "explanation": "A pure substance has a fixed chemical composition and a sharp, definite melting and boiling point, unlike a mixture, which melts/boils over a range and has variable composition.",
+    "topic": "Standard Separation Techniques for Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Elements in the same group (vertical column) of the periodic table generally have the same number of",
+    "options": {
+      "A": "electrons in their outermost shell (valence electrons)",
+      "B": "electron shells",
+      "C": "protons",
+      "D": "neutrons"
+    },
+    "correct": "A",
+    "explanation": "Elements in the same group of the periodic table have the same number of valence (outermost shell) electrons, which is why they show similar chemical properties.",
+    "topic": "Periodic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Moving from left to right across a period of the periodic table, atomic radius generally",
+    "options": {
+      "A": "decreases steadily",
+      "B": "increases steadily",
+      "C": "remains exactly constant",
+      "D": "increases then suddenly doubles"
+    },
+    "correct": "A",
+    "explanation": "Across a period, increasing nuclear charge pulls the electron cloud in more tightly (electrons added to the same shell), so atomic radius generally decreases from left to right.",
+    "topic": "Periodic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Elements in Period 3 of the periodic table, moving from sodium (Na) to argon (Ar), show a gradation from",
+    "options": {
+      "A": "radioactive to stable character",
+      "B": "non-metallic to metallic character",
+      "C": "gaseous to liquid state only",
+      "D": "metallic to non-metallic character"
+    },
+    "correct": "D",
+    "explanation": "Across Period 3, elements show a gradation from strongly metallic character (sodium, magnesium) through to non-metallic character (chlorine) and finally the noble gas argon.",
+    "topic": "Periodic Chemistry",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A chemical bond formed by the complete transfer of one or more electrons from a metal atom to a non-metal atom is called a(n)",
+    "options": {
+      "A": "covalent bond",
+      "B": "metallic bond",
+      "C": "hydrogen bond",
+      "D": "ionic (electrovalent) bond"
+    },
+    "correct": "D",
+    "explanation": "An ionic (electrovalent) bond forms through the complete transfer of electrons, typically from a metal to a non-metal, producing oppositely charged ions held together by electrostatic attraction.",
+    "topic": "Chemical Bonds",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A covalent bond in which both shared electrons are donated by only one of the two bonding atoms is called a",
+    "options": {
+      "A": "ionic bond",
+      "B": "hydrogen bond",
+      "C": "metallic bond",
+      "D": "coordinate (dative) bond"
+    },
+    "correct": "D",
+    "explanation": "A coordinate (dative covalent) bond forms when both electrons of the shared pair come from just one of the two bonding atoms, rather than one from each.",
+    "topic": "Chemical Bonds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Transition metals typically exhibit properties such as forming coloured compounds and having",
+    "options": {
+      "A": "no catalytic activity whatsoever",
+      "B": "extremely low melting points",
+      "C": "only one fixed oxidation state",
+      "D": "variable (multiple) oxidation states"
+    },
+    "correct": "D",
+    "explanation": "Transition metals are characterized by variable (multiple) oxidation states and the formation of coloured compounds, unlike the fixed single oxidation states typical of Group I/II metals.",
+    "topic": "Chemical Bonds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A balanced chemical equation must have equal numbers of each type of atom on",
+    "options": {
+      "A": "the reactant side only",
+      "B": "neither side, since mass is not conserved",
+      "C": "the product side only",
+      "D": "both the reactant and product sides"
+    },
+    "correct": "D",
+    "explanation": "A balanced chemical equation obeys the Law of Conservation of Mass — the number of atoms of each element must be equal on both the reactant and product sides.",
+    "topic": "Stoichiometry and Chemical Reactions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The formula that shows the actual (real) number of atoms of each element present in one molecule or formula unit of a compound -- which may be a whole-number multiple of the simplest ratio -- is called the compound's",
+    "options": {
+      "A": "chemical (molecular) formula",
+      "B": "ionic symbol",
+      "C": "structural formula only",
+      "D": "empirical formula"
+    },
+    "correct": "A",
+    "explanation": "The chemical (molecular) formula shows the actual number of each type of atom present in one unit of a compound, which may be a multiple of the empirical formula's simplest whole-number ratio -- e.g. glucose's molecular formula C6H12O6 is twice its empirical formula CH2O.",
+    "topic": "Stoichiometry and Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Original stem was flagged as genuinely ambiguous (could be read as pointing to either chemical or empirical formula) — rewritten for clarity, correct answer unchanged, verifier's own independent answer already matched before the rewrite.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "12 g of magnesium (molar mass 24 g/mol) reacted completely with oxygen. The number of moles of magnesium reacted is",
+    "options": {
+      "A": "1 mol",
+      "B": "2 mol",
+      "C": "0.5 mol",
+      "D": "12 mol"
+    },
+    "correct": "C",
+    "explanation": "Number of moles = mass/molar mass = 12/24 = 0.5 mol.",
+    "topic": "Stoichiometry and Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The three states of matter recognised in classical chemistry are solid, liquid, and",
+    "options": {
+      "A": "plasma",
+      "B": "crystal",
+      "C": "vapour only",
+      "D": "gas"
+    },
+    "correct": "D",
+    "explanation": "The three classical states of matter are solid, liquid, and gas, each distinguished by the arrangement and movement of their constituent particles.",
+    "topic": "States of Matter",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "According to the kinetic theory, particles in a gas are",
+    "options": {
+      "A": "tightly packed with no movement",
+      "B": "in continuous, random motion with large spaces between them",
+      "C": "only vibrating in a fixed position",
+      "D": "arranged in a fixed, regular lattice"
+    },
+    "correct": "B",
+    "explanation": "The kinetic theory describes gas particles as being in continuous, random motion, with large spaces between them and negligible intermolecular forces except during collisions.",
+    "topic": "States of Matter",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The change of state directly from solid to gas, without passing through the liquid state, is called",
+    "options": {
+      "A": "condensation",
+      "B": "melting",
+      "C": "sublimation",
+      "D": "evaporation"
+    },
+    "correct": "C",
+    "explanation": "Sublimation is the direct change of a substance from the solid state to the gaseous state (and vice versa) without passing through the liquid state, e.g. solid carbon (IV) oxide.",
+    "topic": "States of Matter",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A chemical reaction that releases heat energy to the surroundings, causing a temperature rise, is described as",
+    "options": {
+      "A": "endothermic",
+      "B": "isothermic",
+      "C": "adiabatic",
+      "D": "exothermic"
+    },
+    "correct": "D",
+    "explanation": "An exothermic reaction releases heat energy to the surroundings, resulting in a temperature increase in the immediate environment.",
+    "topic": "Energy and Energy Changes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A chemical reaction that absorbs heat energy from the surroundings, causing a temperature drop, is described as",
+    "options": {
+      "A": "spontaneous only",
+      "B": "catalytic only",
+      "C": "endothermic",
+      "D": "exothermic"
+    },
+    "correct": "C",
+    "explanation": "An endothermic reaction absorbs heat energy from the surroundings, resulting in a temperature decrease in the immediate environment.",
+    "topic": "Energy and Energy Changes",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The minimum energy that reacting particles must possess for a collision between them to result in a successful chemical reaction is called the",
+    "options": {
+      "A": "activation energy",
+      "B": "bond energy",
+      "C": "ionization energy",
+      "D": "lattice energy"
+    },
+    "correct": "A",
+    "explanation": "Activation energy is the minimum energy that colliding particles must possess for their collision to result in a successful reaction, forming products.",
+    "topic": "Energy and Energy Changes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A substance that turns blue litmus paper red is classified chemically as",
+    "options": {
+      "A": "a neutral salt",
+      "B": "a pure solvent",
+      "C": "an acid",
+      "D": "a base"
+    },
+    "correct": "C",
+    "explanation": "Acids turn blue litmus paper red; bases (alkalis) do the opposite, turning red litmus paper blue.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A solution with a pH of exactly 7 at room temperature is classified as",
+    "options": {
+      "A": "a strong electrolyte only",
+      "B": "strongly acidic",
+      "C": "strongly alkaline",
+      "D": "neutral"
+    },
+    "correct": "D",
+    "explanation": "A pH of exactly 7 (at 25°C) represents a neutral solution — neither acidic nor alkaline, such as pure water.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A substance that ionizes (or dissociates) in solution to conduct an electric current is called a(n)",
+    "options": {
+      "A": "insulator",
+      "B": "catalyst",
+      "C": "electrolyte",
+      "D": "non-electrolyte"
+    },
+    "correct": "C",
+    "explanation": "An electrolyte is a substance that, when dissolved in water (or molten), ionizes/dissociates into ions that can conduct an electric current.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The salt produced when an acid completely neutralizes a base, with no excess of either reactant, is called a",
+    "options": {
+      "A": "acid salt",
+      "B": "normal (neutral) salt",
+      "C": "double salt",
+      "D": "basic salt"
+    },
+    "correct": "B",
+    "explanation": "A normal (neutral) salt results from the complete neutralization of an acid by a base, with no unreplaced hydrogen ions and no excess base remaining.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A solution containing the maximum amount of dissolved solute possible at a given temperature, in equilibrium with undissolved solute, is called",
+    "options": {
+      "A": "a concentrated acid only",
+      "B": "an unsaturated solution",
+      "C": "a dilute solution",
+      "D": "a saturated solution"
+    },
+    "correct": "D",
+    "explanation": "A saturated solution contains the maximum amount of solute that can dissolve at a given temperature, in dynamic equilibrium with any undissolved excess solute present.",
+    "topic": "Solubility of Substances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "For most solid solutes, an increase in temperature generally causes their solubility in water to",
+    "options": {
+      "A": "become zero immediately",
+      "B": "remain exactly unchanged",
+      "C": "increase",
+      "D": "decrease"
+    },
+    "correct": "C",
+    "explanation": "For most solid solutes, solubility in water generally increases as temperature rises, though there are notable exceptions.",
+    "topic": "Solubility of Substances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A substance that increases the rate of a chemical reaction without being permanently consumed in the process is called a",
+    "options": {
+      "A": "product",
+      "B": "solvent",
+      "C": "reactant",
+      "D": "catalyst"
+    },
+    "correct": "D",
+    "explanation": "A catalyst speeds up a chemical reaction by providing an alternative reaction pathway with a lower activation energy, without being permanently used up itself.",
+    "topic": "Chemical Kinetics and Equilibrium",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Increasing the temperature of a reacting mixture generally increases the rate of reaction mainly because it",
+    "options": {
+      "A": "increases the kinetic energy and collision frequency of particles",
+      "B": "decreases the concentration of reactants",
+      "C": "decreases the pressure of the system",
+      "D": "removes the catalyst from the mixture"
+    },
+    "correct": "A",
+    "explanation": "Higher temperature increases the kinetic energy of particles, so they collide more frequently and with more energy exceeding the activation energy, increasing the reaction rate.",
+    "topic": "Chemical Kinetics and Equilibrium",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "In a reversible reaction that has reached dynamic equilibrium, the concentrations of reactants and products",
+    "options": {
+      "A": "become exactly equal to each other",
+      "B": "both fall to zero",
+      "C": "remain constant, though the forward and reverse reactions continue",
+      "D": "both increase without limit"
+    },
+    "correct": "C",
+    "explanation": "At dynamic equilibrium, the forward and reverse reactions continue at equal rates, so the concentrations of reactants and products remain constant over time (not necessarily equal to each other).",
+    "topic": "Chemical Kinetics and Equilibrium",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "According to Le Chatelier's Principle, a system at equilibrium, when disturbed, will shift in the direction that",
+    "options": {
+      "A": "always favours the reactants",
+      "B": "opposes/counteracts the imposed change",
+      "C": "has no effect on the disturbance",
+      "D": "always favours the products"
+    },
+    "correct": "B",
+    "explanation": "Le Chatelier's Principle states that when a system at equilibrium is disturbed (e.g. by changing concentration, pressure, or temperature), it shifts in the direction that tends to counteract that disturbance.",
+    "topic": "Chemical Kinetics and Equilibrium",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "In a chemical reaction, the substance that loses electrons is said to be",
+    "options": {
+      "A": "reduced",
+      "B": "hydrolysed",
+      "C": "oxidized",
+      "D": "neutralized"
+    },
+    "correct": "C",
+    "explanation": "Oxidation is defined as the loss of electrons by a substance (or an increase in oxidation number); the corresponding gain of electrons is called reduction.",
+    "topic": "Redox Reactions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "In a chemical reaction, the substance that gains electrons is said to be",
+    "options": {
+      "A": "hydrolysed",
+      "B": "oxidized",
+      "C": "reduced",
+      "D": "combusted"
+    },
+    "correct": "C",
+    "explanation": "Reduction is defined as the gain of electrons by a substance (or a decrease in oxidation number), the counterpart process to oxidation.",
+    "topic": "Redox Reactions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A substance that causes another substance to be reduced, while itself being oxidized in the process, is called a(n)",
+    "options": {
+      "A": "oxidizing agent",
+      "B": "indicator",
+      "C": "reducing agent",
+      "D": "catalyst"
+    },
+    "correct": "C",
+    "explanation": "A reducing agent donates electrons to another substance (causing it to be reduced) and is itself oxidized in the process.",
+    "topic": "Redox Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Devices that convert chemical energy directly into electrical energy through spontaneous redox reactions are called",
+    "options": {
+      "A": "resistors",
+      "B": "capacitors",
+      "C": "electrochemical (galvanic) cells",
+      "D": "electrolytic cells"
+    },
+    "correct": "C",
+    "explanation": "Electrochemical (galvanic/voltaic) cells convert chemical energy into electrical energy through spontaneous redox reactions occurring at separated electrodes.",
+    "topic": "Redox Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Carbon's ability to form long chains and rings by bonding with other carbon atoms, the structural basis of organic chemistry, is called",
+    "options": {
+      "A": "hybridization",
+      "B": "catenation",
+      "C": "isomerism",
+      "D": "polymerization"
+    },
+    "correct": "B",
+    "explanation": "Catenation is carbon's unique ability to form strong, stable covalent bonds with other carbon atoms, creating long chains and rings — the foundation of the vast diversity of organic compounds.",
+    "topic": "Chemistry of Carbon Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Hydrocarbons containing only carbon-carbon single bonds, described as saturated, are called",
+    "options": {
+      "A": "alkanes",
+      "B": "aromatic compounds",
+      "C": "alkenes",
+      "D": "alkynes"
+    },
+    "correct": "A",
+    "explanation": "Alkanes are saturated hydrocarbons, containing only single (sigma) covalent bonds between carbon atoms, with the general formula CnH2n+2.",
+    "topic": "Chemistry of Carbon Compounds",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Petroleum (crude oil), a major raw material for the chemical/petrochemical industry, is primarily a mixture of",
+    "options": {
+      "A": "proteins and carbohydrates",
+      "B": "hydrocarbons",
+      "C": "inorganic acids",
+      "D": "metal salts"
+    },
+    "correct": "B",
+    "explanation": "Petroleum is mainly a complex mixture of hydrocarbons of varying chain lengths, separated into useful fractions (petrol, kerosene, diesel, etc.) by fractional distillation.",
+    "topic": "Chemistry, Industry and the Environment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The excessive release of gases such as sulphur (IV) oxide from burning fossil fuels is a major contributor to the environmental problem known as",
+    "options": {
+      "A": "acid rain",
+      "B": "global cooling",
+      "C": "soil fertility improvement",
+      "D": "ozone layer thickening"
+    },
+    "correct": "A",
+    "explanation": "Sulphur (IV) oxide and nitrogen oxides released from burning fossil fuels react with atmospheric moisture to form acidic compounds, which fall as acid rain, damaging the environment.",
+    "topic": "Chemistry, Industry and the Environment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Proteins, essential biological molecules, are polymers built up from many repeating units called",
+    "options": {
+      "A": "amino acids",
+      "B": "monosaccharides",
+      "C": "nucleotides",
+      "D": "fatty acids"
+    },
+    "correct": "A",
+    "explanation": "Proteins are polymers made of long chains of amino acid units joined together by peptide bonds.",
+    "topic": "Basic Biochemistry and Synthetic Polymers",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Biological catalysts, usually proteins, that speed up specific biochemical reactions in living organisms are called",
+    "options": {
+      "A": "hormones only",
+      "B": "enzymes",
+      "C": "vitamins",
+      "D": "minerals"
+    },
+    "correct": "B",
+    "explanation": "Enzymes are biological catalysts, typically proteins, that speed up specific biochemical reactions in living organisms without being permanently consumed.",
+    "topic": "Basic Biochemistry and Synthetic Polymers",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Large synthetic molecules such as polythene, made by joining together many small repeating monomer units, are called",
+    "options": {
+      "A": "synthetic polymers",
+      "B": "isotopes",
+      "C": "amino acids",
+      "D": "monosaccharides"
+    },
+    "correct": "A",
+    "explanation": "Synthetic polymers (e.g. polythene, PVC) are man-made large molecules built up from the repeated joining of small monomer units through polymerization reactions.",
+    "topic": "Basic Biochemistry and Synthetic Polymers",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The specific arrangement of electrons within the shells/orbitals of an atom is called its",
+    "options": {
+      "A": "electron configuration",
+      "B": "valency only",
+      "C": "atomic number",
+      "D": "mass number"
+    },
+    "correct": "A",
+    "explanation": "Electron configuration describes the specific arrangement/distribution of electrons within the various shells and subshells of an atom.",
+    "topic": "Structure of the Atom",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Atoms of the same element that have the same atomic number but different mass numbers (due to differing neutron counts) are called",
+    "options": {
+      "A": "isomers",
+      "B": "isobars",
+      "C": "isotopes",
+      "D": "allotropes"
+    },
+    "correct": "C",
+    "explanation": "Isotopes are atoms of the same element (same atomic number/proton count) that differ in the number of neutrons, and therefore in mass number.",
+    "topic": "Structure of the Atom",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The technique used to separate the components of a mixture of miscible liquids with different boiling points is called",
+    "options": {
+      "A": "filtration",
+      "B": "decantation",
+      "C": "magnetic separation",
+      "D": "fractional distillation"
+    },
+    "correct": "D",
+    "explanation": "Fractional distillation separates a mixture of miscible liquids based on differences in their boiling points, commonly used to separate crude oil into its fractions.",
+    "topic": "Standard Separation Techniques for Mixtures",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Elements found on the far right of the periodic table (Group 0/VIII), such as helium and neon, are chemically characterized by their",
+    "options": {
+      "A": "strong tendency to lose electrons",
+      "B": "high reactivity with water",
+      "C": "strong metallic properties",
+      "D": "chemical inertness, due to a full outer electron shell"
+    },
+    "correct": "D",
+    "explanation": "The noble gases (Group 0/VIII) have a complete (full) outer electron shell, making them chemically very unreactive (inert) under normal conditions.",
+    "topic": "Periodic Chemistry",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A covalent bond formed by the mutual sharing of one pair of electrons between two atoms is called a",
+    "options": {
+      "A": "coordinate bond only",
+      "B": "triple metallic bond",
+      "C": "single covalent bond",
+      "D": "double ionic bond"
+    },
+    "correct": "C",
+    "explanation": "A single covalent bond involves the sharing of one pair of electrons between two bonding atoms; double and triple covalent bonds involve two and three shared pairs respectively.",
+    "topic": "Chemical Bonds",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The empirical formula of a compound shows the",
+    "options": {
+      "A": "exact number of each type of atom present in one molecule",
+      "B": "three-dimensional shape of the molecule",
+      "C": "simplest whole-number ratio of the different atoms present",
+      "D": "total number of electrons in the compound"
+    },
+    "correct": "C",
+    "explanation": "The empirical formula expresses the simplest whole-number ratio of the atoms of each element present in a compound, which may differ from the actual molecular formula.",
+    "topic": "Stoichiometry and Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "One mole of any gas occupies approximately what volume at standard temperature and pressure (s.t.p.)?",
+    "options": {
+      "A": "44.8 dm³",
+      "B": "22.4 dm³",
+      "C": "1 dm³",
+      "D": "11.2 dm³"
+    },
+    "correct": "B",
+    "explanation": "By Avogadro's Law, one mole of any gas occupies approximately 22.4 dm³ (22,400 cm³) at standard temperature and pressure — a key constant in gas-volume calculations.",
+    "topic": "Stoichiometry and Chemical Reactions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "During the change of state from liquid to solid (freezing), heat energy is",
+    "options": {
+      "A": "neither absorbed nor released",
+      "B": "released to the surroundings",
+      "C": "absorbed from the surroundings",
+      "D": "converted entirely into light"
+    },
+    "correct": "B",
+    "explanation": "Freezing (liquid to solid) is an exothermic process — heat energy (the latent heat of fusion) is released to the surroundings as particles lose kinetic energy and form a more ordered solid structure.",
+    "topic": "States of Matter",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The heat energy change accompanying the complete combustion of one mole of a substance in excess oxygen is called the heat (enthalpy) of",
+    "options": {
+      "A": "neutralization",
+      "B": "solution",
+      "C": "formation only, never combustion",
+      "D": "combustion"
+    },
+    "correct": "D",
+    "explanation": "The heat (enthalpy) of combustion is the heat energy released when one mole of a substance is completely burnt in excess oxygen under standard conditions.",
+    "topic": "Energy and Energy Changes",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Water that reacts with soap to form an insoluble scum rather than a lasting lather, due to dissolved calcium/magnesium salts, is described as",
+    "options": {
+      "A": "hard water",
+      "B": "soft water",
+      "C": "deionized water",
+      "D": "distilled water"
+    },
+    "correct": "A",
+    "explanation": "Hard water contains dissolved calcium and/or magnesium salts, which react with soap to form an insoluble scum instead of a lasting lather.",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "A base that is soluble in water, producing hydroxide ions in solution, is more specifically called a(n)",
+    "options": {
+      "A": "alkali",
+      "B": "salt",
+      "C": "oxide only",
+      "D": "acid"
+    },
+    "correct": "A",
+    "explanation": "An alkali is a base that is soluble in water, releasing hydroxide ions (OH-) into solution — all alkalis are bases, but not all bases are alkalis (some are insoluble).",
+    "topic": "Acids, Bases and Salts",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "The gradual destruction of metals, especially iron, through chemical/electrochemical reaction with substances in the environment (such as oxygen and moisture) is called",
+    "options": {
+      "A": "corrosion",
+      "B": "neutralization",
+      "C": "electrolysis",
+      "D": "catenation"
+    },
+    "correct": "A",
+    "explanation": "Corrosion is the gradual deterioration of a metal (e.g. rusting of iron) caused by chemical or electrochemical reaction with its environment, notably oxygen and moisture.",
+    "topic": "Redox Reactions",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Alkenes, unlike alkanes, are described as unsaturated hydrocarbons because they contain",
+    "options": {
+      "A": "no carbon atoms at all",
+      "B": "only carbon-hydrogen bonds",
+      "C": "at least one carbon-to-carbon double bond",
+      "D": "only single carbon-carbon bonds"
+    },
+    "correct": "C",
+    "explanation": "Alkenes are unsaturated hydrocarbons containing at least one carbon-to-carbon double bond, distinguishing them from the fully saturated alkanes.",
+    "topic": "Chemistry of Carbon Compounds",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  },
+  {
+    "stem": "Untreated industrial waste discharged directly into rivers and lakes without proper treatment is a major cause of",
+    "options": {
+      "A": "water pollution",
+      "B": "ozone layer thickening",
+      "C": "increased biodiversity",
+      "D": "improved drinking water quality"
+    },
+    "correct": "A",
+    "explanation": "Discharging untreated industrial waste into water bodies introduces harmful chemicals and pathogens, a major cause of water pollution and a serious threat to aquatic ecosystems.",
+    "topic": "Chemistry, Industry and the Environment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-solved (shown-work required for all calculations) by a separate agent process with no access to the stored answer key — agreed, 59/59.",
+    "section": "WAEC Chemistry"
+  }
+]
