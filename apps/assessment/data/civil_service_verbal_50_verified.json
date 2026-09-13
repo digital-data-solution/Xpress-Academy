@@ -1,0 +1,802 @@
+[
+  {
+    "stem": "Choose the word nearest in meaning to ABUNDANT.",
+    "options": {
+      "A": "Fragile",
+      "B": "Plentiful",
+      "C": "Empty",
+      "D": "Scarce"
+    },
+    "correct": "B",
+    "explanation": "Abundant means existing in large quantities; 'plentiful' is the closest synonym.",
+    "topic": "Synonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to CANDID.",
+    "options": {
+      "A": "Frank and honest",
+      "B": "Nervous",
+      "C": "Deceptive",
+      "D": "Hidden"
+    },
+    "correct": "A",
+    "explanation": "Candid means truthful and straightforward, i.e. frank and honest.",
+    "topic": "Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to METICULOUS.",
+    "options": {
+      "A": "Careless and sloppy",
+      "B": "Fast but inaccurate",
+      "C": "Very careful and precise",
+      "D": "Lazy and uninterested"
+    },
+    "correct": "C",
+    "explanation": "Meticulous describes someone who shows great attention to detail; very careful and precise.",
+    "topic": "Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to BENEVOLENT.",
+    "options": {
+      "A": "Cruel",
+      "B": "Stingy",
+      "C": "Indifferent",
+      "D": "Kind and generous"
+    },
+    "correct": "D",
+    "explanation": "Benevolent means well-meaning and kindly, i.e. kind and generous.",
+    "topic": "Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to OBSOLETE.",
+    "options": {
+      "A": "Modern",
+      "B": "Expensive",
+      "C": "Useful",
+      "D": "No longer in use"
+    },
+    "correct": "D",
+    "explanation": "Obsolete describes something outdated and no longer in use.",
+    "topic": "Synonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word nearest in meaning to RETICENT.",
+    "options": {
+      "A": "Confident and assertive",
+      "B": "Angry and confrontational",
+      "C": "Talkative and outspoken",
+      "D": "Reserved and reluctant to speak"
+    },
+    "correct": "D",
+    "explanation": "Reticent describes someone reserved, not revealing their thoughts easily.",
+    "topic": "Synonyms",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to GENEROUS.",
+    "options": {
+      "A": "Stingy",
+      "B": "Friendly",
+      "C": "Kind",
+      "D": "Wealthy"
+    },
+    "correct": "A",
+    "explanation": "Generous means willing to give freely; its opposite is stingy.",
+    "topic": "Antonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to TRANSPARENT.",
+    "options": {
+      "A": "Obvious",
+      "B": "Clear",
+      "C": "Opaque",
+      "D": "Thin"
+    },
+    "correct": "C",
+    "explanation": "Transparent means able to be seen through; its opposite is opaque.",
+    "topic": "Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to DILIGENT.",
+    "options": {
+      "A": "Honest",
+      "B": "Hardworking",
+      "C": "Smart",
+      "D": "Lazy"
+    },
+    "correct": "D",
+    "explanation": "Diligent means hardworking and careful; its opposite is lazy.",
+    "topic": "Antonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to ABUNDANCE.",
+    "options": {
+      "A": "Plenty",
+      "B": "Scarcity",
+      "C": "Growth",
+      "D": "Wealth"
+    },
+    "correct": "B",
+    "explanation": "Abundance means a large quantity of something; its opposite is scarcity.",
+    "topic": "Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to HUMBLE.",
+    "options": {
+      "A": "Shy",
+      "B": "Arrogant",
+      "C": "Modest",
+      "D": "Quiet"
+    },
+    "correct": "B",
+    "explanation": "Humble means having a modest view of one's importance; its opposite is arrogant.",
+    "topic": "Antonyms",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Choose the word most nearly OPPOSITE in meaning to EXPAND.",
+    "options": {
+      "A": "Contract",
+      "B": "Increase",
+      "C": "Extend",
+      "D": "Grow"
+    },
+    "correct": "A",
+    "explanation": "Expand means to increase in size; its opposite is contract.",
+    "topic": "Antonyms",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "DOCTOR is to HOSPITAL as TEACHER is to ___.",
+    "options": {
+      "A": "Classroom",
+      "B": "Student",
+      "C": "Book",
+      "D": "Blackboard"
+    },
+    "correct": "A",
+    "explanation": "A doctor's typical workplace is a hospital; a teacher's typical workplace is a classroom.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "BIRD is to NEST as BEE is to ___.",
+    "options": {
+      "A": "Sting",
+      "B": "Hive",
+      "C": "Honey",
+      "D": "Flower"
+    },
+    "correct": "B",
+    "explanation": "A bird lives in a nest; a bee lives in a hive -- animal-to-home relationship.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "PEN is to WRITE as KNIFE is to ___.",
+    "options": {
+      "A": "Sharp",
+      "B": "Cut",
+      "C": "Blade",
+      "D": "Kitchen"
+    },
+    "correct": "B",
+    "explanation": "A pen's function is to write; a knife's function is to cut -- tool-to-function relationship.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "HAPPY is to SAD as HOT is to ___.",
+    "options": {
+      "A": "Warm",
+      "B": "Boiling",
+      "C": "Cold",
+      "D": "Sunny"
+    },
+    "correct": "C",
+    "explanation": "Happy and sad are opposites; hot and cold are opposites -- antonym-pair relationship.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "FISH is to SCHOOL as WOLF is to ___.",
+    "options": {
+      "A": "Den",
+      "B": "Pack",
+      "C": "Hunt",
+      "D": "Forest"
+    },
+    "correct": "B",
+    "explanation": "A group of fish is called a school; a group of wolves is called a pack -- animal-to-group-name relationship.",
+    "topic": "Analogies",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "AUTHOR is to BOOK as SCULPTOR is to ___.",
+    "options": {
+      "A": "Marble",
+      "B": "Statue",
+      "C": "Museum",
+      "D": "Chisel"
+    },
+    "correct": "B",
+    "explanation": "An author creates a book; a sculptor creates a statue -- creator-to-creation relationship.",
+    "topic": "Analogies",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "FINGER is to HAND as PETAL is to ___.",
+    "options": {
+      "A": "Flower",
+      "B": "Leaf",
+      "C": "Stem",
+      "D": "Garden"
+    },
+    "correct": "A",
+    "explanation": "A finger is part of a hand; a petal is part of a flower -- part-to-whole relationship.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "VIRUS is to DISEASE as SPARK is to ___.",
+    "options": {
+      "A": "Fire",
+      "B": "Heat",
+      "C": "Ash",
+      "D": "Smoke"
+    },
+    "correct": "A",
+    "explanation": "A virus is the direct cause of a disease; a spark is the direct cause (ignition) of a fire -- smoke, ash, and heat are effects of the fire itself, not of the spark. Cause-to-effect relationship.",
+    "topic": "Analogies",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "KITTEN is to CAT as CALF is to ___.",
+    "options": {
+      "A": "Sheep",
+      "B": "Horse",
+      "C": "Goat",
+      "D": "Cow"
+    },
+    "correct": "D",
+    "explanation": "A kitten is a baby cat; a calf is a baby cow -- young-to-parent-animal relationship.",
+    "topic": "Analogies",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "DOCTOR is to PATIENT as LAWYER is to ___.",
+    "options": {
+      "A": "Law",
+      "B": "Client",
+      "C": "Court",
+      "D": "Judge"
+    },
+    "correct": "B",
+    "explanation": "A doctor's professional relationship is with a patient; a lawyer's is with a client.",
+    "topic": "Analogies",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which word does NOT belong with the others: Apple, Banana, Carrot, Mango?",
+    "options": {
+      "A": "Banana",
+      "B": "Mango",
+      "C": "Apple",
+      "D": "Carrot"
+    },
+    "correct": "D",
+    "explanation": "Carrot is a vegetable, while apple, banana, and mango are all fruits.",
+    "topic": "Classification",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which of the following does NOT belong with the others: Triangle, Square, Circle, Cube?",
+    "options": {
+      "A": "Triangle",
+      "B": "Square",
+      "C": "Cube",
+      "D": "Circle"
+    },
+    "correct": "C",
+    "explanation": "A cube is a three-dimensional solid, while triangle, square, and circle are all two-dimensional shapes.",
+    "topic": "Classification",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which word does NOT belong with the others: Whisper, Shout, Yell, Scream?",
+    "options": {
+      "A": "Shout",
+      "B": "Scream",
+      "C": "Yell",
+      "D": "Whisper"
+    },
+    "correct": "D",
+    "explanation": "Whisper describes speaking quietly, while shout, yell, and scream all describe speaking loudly.",
+    "topic": "Classification",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which of the following does NOT belong with the others: Salmon, Trout, Dolphin, Tuna?",
+    "options": {
+      "A": "Tuna",
+      "B": "Trout",
+      "C": "Salmon",
+      "D": "Dolphin"
+    },
+    "correct": "D",
+    "explanation": "A dolphin is a mammal, while salmon, trout, and tuna are all fish.",
+    "topic": "Classification",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which word does NOT belong with the others: Doctor, Teacher, Engineer, Hospital?",
+    "options": {
+      "A": "Teacher",
+      "B": "Hospital",
+      "C": "Doctor",
+      "D": "Engineer"
+    },
+    "correct": "B",
+    "explanation": "Hospital is a place, while doctor, teacher, and engineer are all professions.",
+    "topic": "Classification",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Which of the following does NOT belong with the others: Inch, Metre, Kilogram, Foot?",
+    "options": {
+      "A": "Metre",
+      "B": "Inch",
+      "C": "Kilogram",
+      "D": "Foot"
+    },
+    "correct": "C",
+    "explanation": "Kilogram measures mass, while inch, metre, and foot all measure length.",
+    "topic": "Classification",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "The manager was very ___ about the new policy, refusing to consider any alternative view.",
+    "options": {
+      "A": "curious",
+      "B": "flexible",
+      "C": "generous",
+      "D": "rigid"
+    },
+    "correct": "D",
+    "explanation": "'Refusing to consider any alternative' describes an unyielding, rigid attitude.",
+    "topic": "Sentence Completion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Despite the heavy rain, the farmers continued to work, showing great ___.",
+    "options": {
+      "A": "confusion",
+      "B": "perseverance",
+      "C": "weakness",
+      "D": "laziness"
+    },
+    "correct": "B",
+    "explanation": "Continuing to work despite difficulty shows perseverance.",
+    "topic": "Sentence Completion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "The committee could not reach a decision because the members held ___ opinions.",
+    "options": {
+      "A": "silent",
+      "B": "conflicting",
+      "C": "identical",
+      "D": "similar"
+    },
+    "correct": "B",
+    "explanation": "An inability to agree implies the opinions were conflicting, not similar or identical.",
+    "topic": "Sentence Completion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "It is ___ that all civil servants arrive at work on time.",
+    "options": {
+      "A": "unnecessary",
+      "B": "forbidden",
+      "C": "optional",
+      "D": "mandatory"
+    },
+    "correct": "D",
+    "explanation": "A workplace requirement that must be followed is described as mandatory.",
+    "topic": "Sentence Completion",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "The new employee was praised for her ___ attention to detail in every report she submitted.",
+    "options": {
+      "A": "occasional",
+      "B": "rushed",
+      "C": "careless",
+      "D": "meticulous"
+    },
+    "correct": "D",
+    "explanation": "Being praised for attention to detail fits 'meticulous', meaning very careful and precise.",
+    "topic": "Sentence Completion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "The government introduced new measures to ___ corruption in public offices.",
+    "options": {
+      "A": "encourage",
+      "B": "reward",
+      "C": "ignore",
+      "D": "curb"
+    },
+    "correct": "D",
+    "explanation": "Measures against corruption are meant to curb (restrain/reduce) it.",
+    "topic": "Sentence Completion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, each letter is replaced by the next letter of the alphabet, so CAT is written as DBU. How is DOG written in the same code?",
+    "options": {
+      "A": "EPH",
+      "B": "EOH",
+      "C": "DPH",
+      "D": "EPI"
+    },
+    "correct": "A",
+    "explanation": "Shifting each letter forward by one: D->E, O->P, G->H, giving EPH.",
+    "topic": "Coding-Decoding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, each letter is replaced by the next letter of the alphabet, so BOOK is written as CPPL. How is PAGE written in the same code?",
+    "options": {
+      "A": "QBGF",
+      "B": "QAHF",
+      "C": "PBHF",
+      "D": "QBHF"
+    },
+    "correct": "D",
+    "explanation": "Shifting each letter forward by one: P->Q, A->B, G->H, E->F, giving QBHF.",
+    "topic": "Coding-Decoding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, each letter is replaced by its position in the alphabet (A=1, B=2, ... Z=26), so APPLE is written as 1-16-16-12-5. What word does 2-9-18-4 represent?",
+    "options": {
+      "A": "CIRD",
+      "B": "BIRD",
+      "C": "BIRS",
+      "D": "BIRT"
+    },
+    "correct": "B",
+    "explanation": "B=2, I=9, R=18, D=4, spelling BIRD.",
+    "topic": "Coding-Decoding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, each letter is replaced by the next letter of the alphabet, so MONEY is written as NPOFZ. How would POWER be written in the same code?",
+    "options": {
+      "A": "PPXFS",
+      "B": "QOXFS",
+      "C": "QPXFS",
+      "D": "QPXES"
+    },
+    "correct": "C",
+    "explanation": "Shifting each letter forward by one: P->Q, O->P, W->X, E->F, R->S, giving QPXFS.",
+    "topic": "Coding-Decoding",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, each letter is replaced by the previous letter of the alphabet, so FLOWER is written as EKNVDQ. How is GARDEN written in the same code?",
+    "options": {
+      "A": "FZQCDM",
+      "B": "FZPCDM",
+      "C": "EZQCDM",
+      "D": "FZQDCM"
+    },
+    "correct": "A",
+    "explanation": "Shifting each letter back by one: G->F, A->Z, R->Q, D->C, E->D, N->M, giving FZQCDM.",
+    "topic": "Coding-Decoding",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "In a certain code, letters are represented by their position in the alphabet (A=1, B=2, ... Z=26). What word does the sequence 12-15-22-5 represent?",
+    "options": {
+      "A": "LOVE",
+      "B": "LOSE",
+      "C": "LIVE",
+      "D": "LORE"
+    },
+    "correct": "A",
+    "explanation": "L=12, O=15, V=22, E=5, spelling LOVE.",
+    "topic": "Coding-Decoding",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "All civil servants are punctual. Musa is a civil servant. What can be concluded?",
+    "options": {
+      "A": "Musa may or may not be punctual",
+      "B": "The conclusion cannot be determined",
+      "C": "Musa is punctual",
+      "D": "Musa is not punctual"
+    },
+    "correct": "C",
+    "explanation": "This is a valid syllogism: if all members of a group have a property, and Musa belongs to that group, Musa has the property.",
+    "topic": "Logical Deduction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "No fish can fly. A tilapia is a fish. What can be concluded?",
+    "options": {
+      "A": "A tilapia cannot fly",
+      "B": "A tilapia can fly",
+      "C": "The conclusion cannot be determined",
+      "D": "Some fish can fly"
+    },
+    "correct": "A",
+    "explanation": "Since no fish can fly and a tilapia is a fish, a tilapia cannot fly.",
+    "topic": "Logical Deduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Some teachers are parents. All parents are adults. Which conclusion validly follows?",
+    "options": {
+      "A": "All teachers are adults",
+      "B": "All adults are teachers",
+      "C": "No teachers are adults",
+      "D": "Some teachers are adults"
+    },
+    "correct": "D",
+    "explanation": "Only 'some teachers are adults' follows validly -- the premises don't support 'all teachers' or 'all adults'.",
+    "topic": "Logical Deduction",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "If it rains, the ground gets wet. The ground is wet. What can be validly concluded?",
+    "options": {
+      "A": "It definitely rained last night",
+      "B": "Rain never falls in this area",
+      "C": "It certainly did not rain",
+      "D": "It may have rained, but other causes are also possible"
+    },
+    "correct": "D",
+    "explanation": "This is the 'affirming the consequent' fallacy -- a wet ground doesn't prove rain, since other causes (e.g. a burst pipe) are possible.",
+    "topic": "Logical Deduction",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Every staff member who is late will be queried. Ade was queried. What can be validly concluded?",
+    "options": {
+      "A": "Ade was definitely late that day",
+      "B": "Ade has never once been late",
+      "C": "Ade is not a staff member at all",
+      "D": "Ade may have been queried for a reason other than being late"
+    },
+    "correct": "D",
+    "explanation": "The rule only states lateness leads to being queried, not that being queried implies lateness -- other reasons for querying are possible.",
+    "topic": "Logical Deduction",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Complete the letter series: A, C, E, G, ___",
+    "options": {
+      "A": "K",
+      "B": "J",
+      "C": "I",
+      "D": "H"
+    },
+    "correct": "C",
+    "explanation": "Each letter skips one (steps of 2 through the alphabet): A, C, E, G, I.",
+    "topic": "Letter Series",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Complete the letter series: Z, X, V, T, ___",
+    "options": {
+      "A": "S",
+      "B": "Q",
+      "C": "P",
+      "D": "R"
+    },
+    "correct": "D",
+    "explanation": "Each letter steps back by 2 through the alphabet: Z, X, V, T, R.",
+    "topic": "Letter Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Complete the letter series: B, D, G, K, ___",
+    "options": {
+      "A": "O",
+      "B": "N",
+      "C": "P",
+      "D": "Q"
+    },
+    "correct": "C",
+    "explanation": "The gap between letters increases each time (+2, +3, +4, +5): B, D, G, K, P.",
+    "topic": "Letter Series",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Complete the letter series: AB, DE, GH, ___",
+    "options": {
+      "A": "JK",
+      "B": "HI",
+      "C": "IJ",
+      "D": "KL"
+    },
+    "correct": "A",
+    "explanation": "Each pair skips one letter before it starts (AB, _C_, DE, _F_, GH, _I_, JK).",
+    "topic": "Letter Series",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  },
+  {
+    "stem": "Complete the letter series: J, L, N, P, ___",
+    "options": {
+      "A": "Q",
+      "B": "S",
+      "C": "R",
+      "D": "T"
+    },
+    "correct": "C",
+    "explanation": "Each letter steps forward by 2 through the alphabet: J, L, N, P, R.",
+    "topic": "Letter Series",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently blind-verified by two separate reviewers with no shared context; answer confirmed.",
+    "section": "Verbal Reasoning"
+  }
+]
