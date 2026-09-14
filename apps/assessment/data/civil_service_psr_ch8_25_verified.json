@@ -1,0 +1,402 @@
+[
+  {
+    "stem": "Per Rule 080101, what is a 'cheaper point' under the PSR?",
+    "options": {
+      "A": "The officer's actual duty station, regardless of cost",
+      "B": "Any airport with the lowest available ticket price on a given day",
+      "C": "A place that may substitute for an officer's Nigerian home place as a journey's start/end point, without costing Government more",
+      "D": "A discount travel agency approved for government bookings"
+    },
+    "correct": "C",
+    "explanation": "Rule 080101(i): a cheaper point substitutes for the officer's Nigerian home place, provided it involves neither greater cash disbursement nor more excessive transport use than the standard journey.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080101, how many kilograms does one 'load' weigh, where freight rates are related to weight?",
+    "options": {
+      "A": "50 kilograms",
+      "B": "100 kilograms",
+      "C": "10 kilograms",
+      "D": "25 kilograms"
+    },
+    "correct": "D",
+    "explanation": "Rule 080101(ii): one load weighs 25 kilograms where freight rates are related to weight.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080102, what must be established before transport at Government expense is authorized for a journey?",
+    "options": {
+      "A": "Approval from the National Planning Commission",
+      "B": "The necessity for the journey must be fully established",
+      "C": "Nothing further -- authorization is automatic for all Grade Level 12+ officers",
+      "D": "Only the officer's own written request is required"
+    },
+    "correct": "B",
+    "explanation": "Rule 080102: the necessity for any journey at Government expense shall be fully established before authorization.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080103, what factors determine the transport and route authorized for a journey at Government expense?",
+    "options": {
+      "A": "Only the total distance to be traveled",
+      "B": "Cost, the exigency of duty, and the officer's Grade Level",
+      "C": "Only the officer's personal preference",
+      "D": "Only the availability of a Government-owned vehicle"
+    },
+    "correct": "B",
+    "explanation": "Rule 080103(a): the transport and route must be determined by the cost, exigency of duty and the Grade Level of the Officer involved.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080104, who must give authority, in writing, for the use of transport at Government expense?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "Permanent Secretaries/Heads of Extra-Ministerial Offices or their authorized representatives",
+      "C": "The Federal Civil Service Commission directly, in every case",
+      "D": "The officer's immediate colleague of equal grade"
+    },
+    "correct": "B",
+    "explanation": "Rule 080104: authority shall be given in writing by Permanent Secretaries/Heads of Extra-Ministerial Offices or their authorized representatives, per the Financial Regulations.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080105, what must an officer do if they wish to use transport in excess of what the PSR provides?",
+    "options": {
+      "A": "Wait until their next promotion to qualify for the higher allowance",
+      "B": "Pay for the excess themselves, in advance",
+      "C": "Submit a written appeal to the Federal Civil Service Commission",
+      "D": "Nothing -- any excess is automatically covered by Government"
+    },
+    "correct": "B",
+    "explanation": "Rule 080105: if an officer wishes to avail transport in excess of that provided by the PSR, he must pay for such excess himself, in advance.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080105, what specifically must be ascertained and specified when an officer's children are included in authorized free transport?",
+    "options": {
+      "A": "The number of siblings each child has",
+      "B": "The name of each child's school",
+      "C": "The age of each child concerned",
+      "D": "Each child's current grade level in school"
+    },
+    "correct": "C",
+    "explanation": "Rule 080105: when the Officer's children are included, the age of each child concerned must be ascertained and specified.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080106, which of the following is explicitly treated as serious misconduct?",
+    "options": {
+      "A": "Traveling with one fewer child than the maximum family allowance permits",
+      "B": "Claiming payment in arrears for free transport not actually utilized for the purpose claimed",
+      "C": "Declining to use an authorized free transport facility altogether",
+      "D": "Requesting an upgrade to Business Class at the officer's own personal expense"
+    },
+    "correct": "B",
+    "explanation": "Rule 080106: claiming payment in arrears for free transport not utilized for the purpose claimed is explicitly named as serious misconduct.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080107, under what condition may staff travel at Government expense as an Orderly or personal attendant to another officer?",
+    "options": {
+      "A": "Only if the Office of the Head of the Civil Service of the Federation has authorized the employment of such a person",
+      "B": "Automatically, for any officer on Grade Level 15 and above",
+      "C": "Any time their own Permanent Secretary personally approves it",
+      "D": "Never, under any circumstances"
+    },
+    "correct": "A",
+    "explanation": "Rule 080107: no staff shall travel at Government expense as Orderly/personal attendant unless authorized by the Office of the Head of the Civil Service of the Federation.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080201, the family passenger fare allowance covers one spouse and how many children?",
+    "options": {
+      "A": "Six children",
+      "B": "An unlimited number of children",
+      "C": "Four children",
+      "D": "Two children"
+    },
+    "correct": "C",
+    "explanation": "Rule 080201(a): family passenger fare allowances are for one spouse and four children.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080201, when does the baggage allowance for a spouse, child, or servant apply?",
+    "options": {
+      "A": "Automatically, whether or not they travel with the officer",
+      "B": "Whenever the officer requests it, regardless of who travels",
+      "C": "Only when the spouse, child, or servant actually travels",
+      "D": "Only for the spouse -- children and servants are never covered"
+    },
+    "correct": "C",
+    "explanation": "Rule 080201(c): the baggage allowance for a spouse, child or servant only applies when they actually travel.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080202, which of the following is explicitly classified as a 'duty journey'?",
+    "options": {
+      "A": "A journey undertaken entirely at the officer's own discretion, without instruction",
+      "B": "A journey to visit family members unrelated to medical treatment",
+      "C": "A journey purely for personal vacation, with no medical or duty purpose",
+      "D": "A health trip recommended by a Medical Board for a change of scene or climate"
+    },
+    "correct": "D",
+    "explanation": "Rule 080202(f): health trips -- journeys recommended by a Medical Board for change of scene or climate -- are classified as duty journeys.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080203, within how long of an officer's retirement (or death) must the retirement/repatriation transport concession be utilized?",
+    "options": {
+      "A": "One year",
+      "B": "One month",
+      "C": "Two years",
+      "D": "Six months"
+    },
+    "correct": "D",
+    "explanation": "Rule 080203(b): the concession must be utilized within six months of the date of retirement or of the death of the officer.",
+    "topic": "Chapter 8 \u2014 Definitions, Authority, and Duty Journeys",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080204, which class of air travel is provided for Permanent Secretaries, Ministers, and above?",
+    "options": {
+      "A": "Premium Economy",
+      "B": "First Class",
+      "C": "Business Class",
+      "D": "Economy Class"
+    },
+    "correct": "C",
+    "explanation": "Rule 080204(a)(i): Business Class is provided for Permanent Secretaries, Ministers and above.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080204, which class of air travel is provided for officers on GL.07-17?",
+    "options": {
+      "A": "Economy Class",
+      "B": "Business Class",
+      "C": "Premium Economy",
+      "D": "First Class"
+    },
+    "correct": "A",
+    "explanation": "Rule 080204(a)(ii): Economy Class is provided for Officers on GL.07-17.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080204, how are journeys by road or river transport handled for officers on GL.06 and below?",
+    "options": {
+      "A": "They are not eligible for any road or river transport facility",
+      "B": "They must pay the full fare themselves and seek reimbursement only after retirement",
+      "C": "They automatically receive Business Class air tickets instead",
+      "D": "Either tickets or cash in lieu of tickets, at rates set in Federal Treasury Circulars"
+    },
+    "correct": "D",
+    "explanation": "Rule 080204(b): for road/river transport, GL.06 and below officers receive either tickets or cash in lieu, at rates in Federal Treasury Circulars.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080205, transport of an officer's motor vehicle for repair normally does NOT apply to which situation?",
+    "options": {
+      "A": "Transport to the nearest place with adequate repair facilities",
+      "B": "Ordinary maintenance or servicing of the vehicle",
+      "C": "Essential large-scale servicing, such as a new vehicle's first 1,000-kilometer service",
+      "D": "A vehicle stationed where no adequate repair facilities exist"
+    },
+    "correct": "B",
+    "explanation": "Rule 080205: this rule normally does not apply to vehicles requiring ordinary maintenance or servicing, though an exception may be made for essential large-scale servicing.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080206, free transport of an officer's vehicle by train or boat may be granted by a Permanent Secretary in which specific circumstance?",
+    "options": {
+      "A": "Only when the officer is being promoted to a higher grade level",
+      "B": "When an officer is purchasing a new vehicle",
+      "C": "Only for officers on GL.15 and above",
+      "D": "Whenever an officer requests it, with no further justification needed"
+    },
+    "correct": "B",
+    "explanation": "Rule 080206: free transport by train or boat may be granted when an officer is purchasing a new vehicle (or, separately, when assuming duty/transferring/on tour, subject to necessity and economy conditions).",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080301, an officer on a duty visit outside Nigeria is eligible for air passage for whom, in the ordinary case?",
+    "options": {
+      "A": "No one -- air passage must be self-funded on all overseas duty visits",
+      "B": "Their entire immediate family, regardless of duration",
+      "C": "Themselves and their spouse, regardless of duration",
+      "D": "Themselves only"
+    },
+    "correct": "D",
+    "explanation": "Rule 080301(a): air passage is for the officer alone, unless the duty lasts nine months or more, in which case the spouse may also travel at Government expense.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080301, what allowance is an officer entitled to when a host Government or institution covers their accommodation/hotel expenses abroad?",
+    "options": {
+      "A": "Estacode Supplementation allowance, at the approved rates",
+      "B": "A full duplicate of the normal estacode allowance, paid in addition",
+      "C": "No allowance at all -- accommodation coverage cancels all further entitlements",
+      "D": "A one-time cash bonus unrelated to estacode"
+    },
+    "correct": "A",
+    "explanation": "Rule 080301(c): where accommodation/hotel costs are met by the host Government or institution, the officer is entitled to Estacode Supplementation allowance at the approved rates.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080302, an officer discharging official duties abroad during vacation leave, who must take accommodation away from their normal residence, is treated as being on what?",
+    "options": {
+      "A": "A duty visit, eligible for duty allowance abroad as in Rule 080301",
+      "B": "A training course, subject to Chapter 7's bond conditions",
+      "C": "Ordinary vacation leave, with no additional allowance",
+      "D": "Unpaid leave, regardless of the duties performed"
+    },
+    "correct": "A",
+    "explanation": "Rule 080302: such an officer is treated as proceeding on duty visit and is eligible for duty allowance abroad as indicated in Rule 080301, so long as no accommodation is Government-provided at that destination.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080303, if accommodation IS provided for an officer discharging duties abroad during vacation leave, what are they eligible for instead?",
+    "options": {
+      "A": "A refund of daily traveling expenses plus a daily subsistence allowance",
+      "B": "A one-time lump-sum bonus in lieu of daily expenses",
+      "C": "Full Estacode Supplementation at the maximum available rate",
+      "D": "Nothing further -- provided accommodation cancels all other allowances"
+    },
+    "correct": "A",
+    "explanation": "Rule 080303: where accommodation is provided, the officer is eligible for a refund of daily travelling expenses necessarily incurred, plus a daily subsistence allowance.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080401, at whose discretion may an officer take necessary extra equipment (e.g. office equipment, survey instruments, tents) on a journey?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The officer's Permanent Secretary/Head of Extra-Ministerial Office",
+      "C": "The Federal Civil Service Commission alone",
+      "D": "The officer's own discretion, with no approval required"
+    },
+    "correct": "B",
+    "explanation": "Rule 080401: an officer may take necessary extra equipment at the discretion of his Permanent Secretary/Head of Extra-Ministerial Office.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080402, how many kilograms of official documents/papers/office necessities may an officer traveling on duty by air take at Government expense, beyond the standard tariff baggage allowance?",
+    "options": {
+      "A": "Up to a maximum of 25 kilograms",
+      "B": "There is no fixed maximum -- it is entirely discretionary",
+      "C": "Up to a maximum of 10 kilograms",
+      "D": "Up to a maximum of 5 kilograms"
+    },
+    "correct": "C",
+    "explanation": "Rule 080402: an officer may take official documents, papers and office necessities up to a maximum of 10 kilograms, in addition to the tariff baggage allowance.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 080403, when may an officer be provided free Government transport between their house and the airport/seaport/motor park?",
+    "options": {
+      "A": "Only when traveling for personal, non-official reasons",
+      "B": "Only for officers on Grade Level 17, regardless of purpose",
+      "C": "When proceeding on transfer, at both the old and new station",
+      "D": "Never -- this transport must always be arranged privately"
+    },
+    "correct": "C",
+    "explanation": "Rule 080403: when proceeding on transfer, an officer may be provided free Government transport between house and airport/seaport/motor park at their station, and vice versa on arrival at the new station.",
+    "topic": "Chapter 8 \u2014 Travel Classes, Vehicles, and Duty Abroad",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
