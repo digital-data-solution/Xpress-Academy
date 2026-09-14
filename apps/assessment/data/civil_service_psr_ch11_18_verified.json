@@ -1,0 +1,290 @@
+[
+  {
+    "stem": "Per Rule 110101, how is an 'appeal' defined under the PSR?",
+    "options": {
+      "A": "A formal request for a pay increase unrelated to any decision",
+      "B": "A request submitted only after resignation from the Service",
+      "C": "A formal request made by an aggrieved Officer for reconsideration of the decision of an appropriate authority",
+      "D": "Any informal complaint raised verbally to a colleague"
+    },
+    "correct": "C",
+    "explanation": "Rule 110101: an appeal is a formal request made by an aggrieved Officer for reconsideration of the decision of an appropriate authority.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110101, how does a 'petition' differ from an appeal?",
+    "options": {
+      "A": "A petition can only be submitted by a group of at least five officers",
+      "B": "A petition is identical to an appeal in every respect, with no distinction",
+      "C": "A petition is a formal complaint for consideration of a matter affecting the Officer personally or bordering on general/public interest, not necessarily tied to reconsidering a specific decision",
+      "D": "A petition may only be submitted after an appeal has already failed"
+    },
+    "correct": "C",
+    "explanation": "Rule 110101: a petition is a formal complaint made by an Officer to an appropriate authority for consideration of a matter affecting the Officer personally or bordering on general/public interest.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110102, which authority should representations relating to appointments, promotion, transfer, and discipline be addressed to?",
+    "options": {
+      "A": "The Head of the officer's MDA only",
+      "B": "The National Planning Commission",
+      "C": "The Head of the Civil Service of the Federation",
+      "D": "The Chairman, Federal Civil Service Commission"
+    },
+    "correct": "D",
+    "explanation": "Rule 110102(a): matters relating to appointments, promotion, transfer and discipline go to the Chairman, Federal Civil Service Commission.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110102, which authority handles representations about leave, passages, allowances, pensions, and gratuities?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The Head of the Civil Service of the Federation",
+      "C": "The Career Management Office",
+      "D": "The Chairman, Federal Civil Service Commission"
+    },
+    "correct": "B",
+    "explanation": "Rule 110102(b): the Head of the Civil Service of the Federation handles matters relating to other conditions of service such as leave, passages, allowances, pensions, and gratuities.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110103, in what form must a communication to the Head of Government be transmitted through the proper channel?",
+    "options": {
+      "A": "Unsealed and in triplicate",
+      "B": "Unsealed and in a single copy only",
+      "C": "Sealed and in a single copy",
+      "D": "Sealed and in duplicate"
+    },
+    "correct": "A",
+    "explanation": "Rule 110103: the Officer must transmit such communication unsealed and in triplicate to the appropriate channel.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110103, what happens to a letter or document received by the Head of Government otherwise than through the proper channel?",
+    "options": {
+      "A": "It is forwarded directly to the National Assembly",
+      "B": "It is destroyed without further notice",
+      "C": "It is automatically actioned with top priority",
+      "D": "It will be returned to the writer"
+    },
+    "correct": "D",
+    "explanation": "Rule 110103: every letter or document received by the Head of Government otherwise than through the proper channel will be returned to the writer.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110201, within how long must an appeal from an aggrieved Officer be handled and concluded?",
+    "options": {
+      "A": "One year",
+      "B": "One month",
+      "C": "Six months",
+      "D": "Three months"
+    },
+    "correct": "C",
+    "explanation": "Rule 110201(i): appeal from an aggrieved Officer shall be handled and concluded within six months.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110201, before proceeding to court, what must an Officer generally do first?",
+    "options": {
+      "A": "Obtain permission from the National Assembly",
+      "B": "Nothing further -- Officers may proceed directly to court at any time with no prior steps",
+      "C": "Exhaust all avenues provided in the Public Service Rules and Circulars for redress, and obtain the Head of the Civil Service of the Federation's permission",
+      "D": "Resign from the Service first"
+    },
+    "correct": "C",
+    "explanation": "Rule 110201(ii): Officers should exhaust all avenues provided in the PSR and Circulars for redress before proceeding to courts, and must also obtain the permission of the Head of the Civil Service of the Federation before proceeding to court.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110203, what is the proper first course of action for an Officer who is dissatisfied with a decision, consistent with the prohibition on outside influence?",
+    "options": {
+      "A": "To submit the matter directly to the President",
+      "B": "To make representation to his immediate superior Officer or Permanent Secretary/Head of Extra-Ministerial Office",
+      "C": "To seek the personal intervention of a prominent public figure",
+      "D": "To publicize the grievance in the press"
+    },
+    "correct": "B",
+    "explanation": "Rule 110203: if dissatisfied, the proper course is to make representation to his immediate superior Officer or Permanent Secretary/Head of Extra-Ministerial Office.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110204, through whom must an appeal/petition be submitted, before it reaches the Chairman of the FCSC or the Head of the Civil Service of the Federation?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The petitioner's immediate superior Officer and the Permanent Secretary/Head of Extra-Ministerial Office",
+      "C": "Only the officer's own labour union representative",
+      "D": "No intermediate channel is required -- petitions go directly to the final authority"
+    },
+    "correct": "B",
+    "explanation": "Rule 110204: an appeal/petition must be submitted through the proper departmental channels -- the petitioner's immediate superior Officer and the Permanent Secretary/Head of Extra-Ministerial Office, who forward it with comments and recommendations.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110205, in how many copies must an appeal/petition addressed to the appropriate channels be submitted?",
+    "options": {
+      "A": "In triplicate",
+      "B": "In quadruplicate",
+      "C": "In duplicate",
+      "D": "In a single copy only"
+    },
+    "correct": "C",
+    "explanation": "Rule 110205: an appeal/petition must be submitted in duplicate, with one copy retained by the Permanent Secretary/Head of Extra-Ministerial Office.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110206, which of the following must an appeal/petition bear?",
+    "options": {
+      "A": "The full name, staff number, signature and address of the petitioner",
+      "B": "Only the petitioner's staff number, with no other identifying information",
+      "C": "The signature of the petitioner's immediate superior only, not the petitioner's own",
+      "D": "No identifying information at all, to preserve anonymity"
+    },
+    "correct": "A",
+    "explanation": "Rule 110206: an appeal/petition must bear the full name, staff number, signature and address of the petitioner.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110207, when a person submits a petition on behalf of an illiterate person, what must the petition contain?",
+    "options": {
+      "A": "Nothing additional -- the petition is treated identically to any other",
+      "B": "A medical certificate confirming the petitioner's illiteracy",
+      "C": "The signature of a court-appointed guardian only",
+      "D": "A statement that the writer has been asked to write on behalf of the illiterate person"
+    },
+    "correct": "D",
+    "explanation": "Rule 110207: the petition shall contain a statement that the writer has been asked to write on behalf of the illiterate person.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110208, will an appeal/petition be entertained if it deals with a case in which legal action is pending in a Court of Law?",
+    "options": {
+      "A": "No -- this is explicitly listed as a disqualifying condition",
+      "B": "Yes, provided the officer withdraws the court case within thirty days",
+      "C": "Only if the Federal Civil Service Commission grants special dispensation",
+      "D": "Yes, pending legal action has no bearing on whether a petition is entertained"
+    },
+    "correct": "A",
+    "explanation": "Rule 110208(a)(ii): an appeal/petition will not be entertained if it deals with a case in which legal action is pending in a Court of Law.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110208, will an appeal/petition be entertained if it merely repeats the substance of a previous petition?",
+    "options": {
+      "A": "No, unless it introduces new relevant matter",
+      "B": "No, under no circumstances, even with new relevant matter",
+      "C": "Yes, provided it is resubmitted within thirty days of the original",
+      "D": "Yes, repetition alone is never grounds for rejection"
+    },
+    "correct": "A",
+    "explanation": "Rule 110208(a)(v): a petition which merely repeats the substance of a previous petition without introducing new relevant matter will not be entertained.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110209, an appeal/petition submitted more than how long after the decision complained of will not be entertained, unless supported by valid reasons?",
+    "options": {
+      "A": "Three months",
+      "B": "One year",
+      "C": "One month",
+      "D": "Six months"
+    },
+    "correct": "D",
+    "explanation": "Rule 110209: an appeal/petition submitted more than six months after the decision complained of will not be entertained, unless such delay is supported by valid reasons.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110210, what must every appeal/petition include, regardless of length?",
+    "options": {
+      "A": "A concise statement of the nature of the redress sought",
+      "B": "A notarized affidavit from a court official",
+      "C": "A list of every officer who supports the petition",
+      "D": "A formal legal citation of relevant case law"
+    },
+    "correct": "A",
+    "explanation": "Rule 110210: an appeal/petition shall conclude by stating concisely the nature of the redress sought.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 110210, what additional requirement applies to a petition exceeding two pages of foolscap?",
+    "options": {
+      "A": "It must be submitted in five copies instead of two",
+      "B": "It must also include a summary of the reasons adduced in support of the redress sought",
+      "C": "It must be approved in advance by the petitioner's Permanent Secretary before submission",
+      "D": "It must be personally delivered by the petitioner rather than sent by post"
+    },
+    "correct": "B",
+    "explanation": "Rule 110210: a petition which exceeds two pages of foolscap must also include a summary of the reasons adduced in support of the redress sought.",
+    "topic": "Chapter 11 \u2014 Petitions and Appeals",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
