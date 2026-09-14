@@ -1,0 +1,770 @@
+[
+  {
+    "stem": "Under the Public Service Rules (PSR), which category of officers is exempt from the Rules where they conflict with their own specific constitutional or appointment terms?",
+    "options": {
+      "A": "Holders of specific high offices such as the President, Vice President, National Assembly members, and the judiciary at senior levels",
+      "B": "All officers on Grade Level 15 and above",
+      "C": "All officers with more than 20 years of service",
+      "D": "Officers serving in Extra-Ministerial Offices only"
+    },
+    "correct": "A",
+    "explanation": "Rule 010101 lists a specific set of high constitutional/statutory offices (President, Vice President, National Assembly, senior judiciary, FCSC, Auditor-General, and others) exempt from the PSR where it conflicts with their own terms.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 010102, what happens if a provision of the PSR conflicts with the Constitution of the Federal Republic of Nigeria?",
+    "options": {
+      "A": "The PSR always overrides the Constitution on conditions of service",
+      "B": "The PSR applies only to the extent that it is not inconsistent with the Constitution",
+      "C": "The affected rule is automatically void for the whole Public Service",
+      "D": "The conflict is resolved by the Head of the Civil Service of the Federation personally"
+    },
+    "correct": "B",
+    "explanation": "Rule 010102: the Rules apply only to the extent that they are not inconsistent with the Constitution and any other applicable law.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Whose responsibility is it, under Rule 010103, to become acquainted with the Public Service Rules?",
+    "options": {
+      "A": "Every individual officer, personally",
+      "B": "Only the Human Resources department of each Ministry",
+      "C": "Only officers on Grade Level 07 and above",
+      "D": "Only newly appointed officers during their first year"
+    },
+    "correct": "A",
+    "explanation": "Rule 010103 places this duty on every officer individually, not just on HR or a specific grade band.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under the PSR's General Definition (Rule 010105), what does \"Interdiction\" mean?",
+    "options": {
+      "A": "Temporary removal of an officer from normal duties while dismissal proceedings are pending, on half salary",
+      "B": "Complete removal of an officer from duty with no salary at all",
+      "C": "A formal warning letter with no effect on salary or duties",
+      "D": "Permanent removal of an officer from the Public Service with full loss of pension"
+    },
+    "correct": "A",
+    "explanation": "Interdiction (Rule 010105) is the temporary removal from normal duties during dismissal proceedings, with the officer placed on half salary pending the case's determination.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "How does \"Suspension\" differ from \"Interdiction\" under the PSR's definitions?",
+    "options": {
+      "A": "Suspension only applies to Permanent Secretaries, Interdiction to all other officers",
+      "B": "The two terms mean exactly the same thing under the PSR",
+      "C": "Suspension means the officer earns no salary at all, while Interdiction means the officer is placed on half salary",
+      "D": "Suspension is a lesser penalty than Interdiction and only applies to junior officers"
+    },
+    "correct": "C",
+    "explanation": "Rule 010105 defines Suspension as removal from duty with NO salary earned, once a serious prima facie case is established \u2014 a materially harsher status than Interdiction's half salary.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under the PSR's General Definition, a \"Junior Officer\" is a pensionable officer on which Grade Level band?",
+    "options": {
+      "A": "GL.10 and below",
+      "B": "GL.06 and below",
+      "C": "GL.15 and above",
+      "D": "GL.07 and above"
+    },
+    "correct": "B",
+    "explanation": "Rule 010105 defines a Junior Officer as a pensionable officer on Grade Level 06 and below, and their equivalent.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the current Pass Mark for a promotion examination under the PSR's General Definition?",
+    "options": {
+      "A": "75%",
+      "B": "50%",
+      "C": "70%",
+      "D": "60%"
+    },
+    "correct": "D",
+    "explanation": "Rule 010105 defines Pass Mark as the score below which a candidate is considered to have failed a promotion examination \u2014 currently 60%.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 010107, how do the PSR's provisions apply when the Rules refer to an \"Officer\" or \"Staff\" using masculine pronouns?",
+    "options": {
+      "A": "The provisions apply equally to both genders, notwithstanding the masculine phrasing used throughout the Rules",
+      "B": "They apply only to officers appointed before 2021",
+      "C": "Gender-specific application is left to each Ministry's own discretion",
+      "D": "They apply only to male officers; a separate set of rules governs female officers"
+    },
+    "correct": "A",
+    "explanation": "Rule 010107 states explicitly that despite using masculine terms throughout, the PSR's provisions apply equally to both genders.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 010108, what must form part of the inventory of every Public Service office?",
+    "options": {
+      "A": "A copy of the annual government budget",
+      "B": "A list of all officers who have ever been dismissed",
+      "C": "A copy of the Public Service Rules",
+      "D": "A copy of the Nigerian Constitution only"
+    },
+    "correct": "C",
+    "explanation": "Rule 010108 requires a copy of the Public Service Rules to form part of the inventory of items in every Public Service office.",
+    "topic": "Chapter 1 \u2014 Introduction",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "On whose authority are appointments to offices in the Federal Civil Service made?",
+    "options": {
+      "A": "The Federal Civil Service Commission",
+      "B": "Each Ministry's Permanent Secretary acting entirely independently",
+      "C": "The Office of the Head of the Civil Service of the Federation acting alone",
+      "D": "The National Assembly"
+    },
+    "correct": "A",
+    "explanation": "Rule 020101: appointments to offices in the Federal Civil Service are made on the authority of the Federal Civil Service Commission (FCSC).",
+    "topic": "Chapter 2 \u2014 Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Which body makes appointments to posts graded GL.07-17 in the Federal Civil Service?",
+    "options": {
+      "A": "The Federal Civil Service Commission",
+      "B": "The Code of Conduct Bureau",
+      "C": "The National Population Commission",
+      "D": "Each individual Ministry's Junior Staff Committee"
+    },
+    "correct": "A",
+    "explanation": "Rule 020102(i): the Federal Civil Service Commission makes appointments to posts graded GL.07-17, advertised in three national newspapers and the Commission's website.",
+    "topic": "Chapter 2 \u2014 Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the application deadline, from the date of advertisement placement, for a Federal Civil Service vacancy?",
+    "options": {
+      "A": "Two weeks",
+      "B": "One year",
+      "C": "Three months",
+      "D": "Six weeks"
+    },
+    "correct": "D",
+    "explanation": "Rule 020102(i): the deadline for submission of applications is six weeks from the date the advertisement is placed.",
+    "topic": "Chapter 2 \u2014 Recruitment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020202, what percentage of all recruitment into the Public Service is reserved for persons with disability?",
+    "options": {
+      "A": "10%",
+      "B": "2%",
+      "C": "15%",
+      "D": "5%"
+    },
+    "correct": "D",
+    "explanation": "Rule 020202(e)(ii): five percent (5%) of all recruitments in the Service shall be reserved for persons with disability.",
+    "topic": "Chapter 2 \u2014 Recruitment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020206, what is the minimum and maximum age for eligibility for appointment into the Federal Public Service?",
+    "options": {
+      "A": "Not less than 18 years and not more than 50 years",
+      "B": "Not less than 18 years and not more than 60 years",
+      "C": "Not less than 16 years and not more than 45 years",
+      "D": "Not less than 21 years and not more than 55 years"
+    },
+    "correct": "A",
+    "explanation": "Rule 020206(a): every applicant must not be less than 18 years and not more than 50 years of age.",
+    "topic": "Chapter 2 \u2014 Recruitment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020207, when is prior specific approval from the FCSC (or the relevant Board) required before appointing a candidate?",
+    "options": {
+      "A": "Whenever the candidate has more than one academic degree",
+      "B": "Whenever the candidate is above 40 years of age",
+      "C": "When the candidate has a prior criminal conviction, or was previously dismissed or forced to resign/retire from public service",
+      "D": "Whenever the candidate applies for a post outside their home state"
+    },
+    "correct": "C",
+    "explanation": "Rule 020207(a): no candidate can be appointed without prior specific FCSC/Board approval if they have a criminal conviction or a prior dismissal/forced resignation or retirement from public service.",
+    "topic": "Chapter 2 \u2014 Recruitment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is prohibited under Rule 020211 regarding an officer's personal associations?",
+    "options": {
+      "A": "Membership of any secret society",
+      "B": "Membership of a professional trade union",
+      "C": "Membership of any political party before appointment",
+      "D": "Membership of a religious organization"
+    },
+    "correct": "A",
+    "explanation": "Rule 020211: no public officer shall be a member of any secret society; anyone who was a member before appointment must formally renounce membership.",
+    "topic": "Chapter 2 \u2014 Recruitment",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the standard probationary period before an officer can be confirmed in the Federal Civil Service?",
+    "options": {
+      "A": "Six months",
+      "B": "One year",
+      "C": "Three years",
+      "D": "Two years"
+    },
+    "correct": "D",
+    "explanation": "Rule 020301: officers on probation are normally required to serve for two years before confirmation.",
+    "topic": "Chapter 2 \u2014 Probation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020301, to what minimum period can an officer's probation be reduced if they already have relevant prior public service?",
+    "options": {
+      "A": "Not less than one month",
+      "B": "Not less than six months",
+      "C": "Not less than one year",
+      "D": "Probation can never be reduced below two years"
+    },
+    "correct": "B",
+    "explanation": "Rule 020301: the two-year probation period may be reduced to not less than six months by deducting any previous satisfactory public service in a post of cognate status.",
+    "topic": "Chapter 2 \u2014 Probation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "After how many months of service does a newly recruited officer become eligible to sit the compulsory confirmation examination (COMPRO)?",
+    "options": {
+      "A": "Eighteen months",
+      "B": "Three months",
+      "C": "Six months",
+      "D": "One year"
+    },
+    "correct": "C",
+    "explanation": "Rule 020306: a newly recruited officer who has spent six months and above shall be allowed to sit for the compulsory examination for confirmation in the Service.",
+    "topic": "Chapter 2 \u2014 Probation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the maximum total duration of a Contract Appointment, including renewals?",
+    "options": {
+      "A": "Ten years",
+      "B": "Four years",
+      "C": "Six years",
+      "D": "Two years"
+    },
+    "correct": "B",
+    "explanation": "Rule 020405(vii): the duration of a contract appointment should be 1-2 years and renewable, but not more than four years in all.",
+    "topic": "Chapter 2 \u2014 Contract Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "A Contract Appointment post must not be below which Senior Grade Level?",
+    "options": {
+      "A": "SGL.12",
+      "B": "SGL.15",
+      "C": "SGL.17",
+      "D": "SGL.06"
+    },
+    "correct": "A",
+    "explanation": "Rule 020405(iii): the FCSC ensures the post to which contract appointment is made must not be below Senior Grade Level 12.",
+    "topic": "Chapter 2 \u2014 Contract Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020402/020403, in which circumstance can a Contract Appointment be offered to an expatriate?",
+    "options": {
+      "A": "Only when suitable Nigerians are not available",
+      "B": "Whenever the expatriate holds a postgraduate degree",
+      "C": "Expatriates can never be offered contract appointments",
+      "D": "Only during the officer's first year of eligibility"
+    },
+    "correct": "A",
+    "explanation": "Rule 020403(iv): contract appointment may be offered to expatriates only when suitable Nigerians are not available.",
+    "topic": "Chapter 2 \u2014 Contract Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "For how many calendar months does a Sabbatical Appointment run?",
+    "options": {
+      "A": "12 calendar months",
+      "B": "24 calendar months",
+      "C": "18 calendar months",
+      "D": "6 calendar months"
+    },
+    "correct": "A",
+    "explanation": "Rule 020413: Sabbatical Appointment, for officers on GL.15 and above, runs for a period of 12 calendar months.",
+    "topic": "Chapter 2 \u2014 Sabbatical Appointments",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "During a Sabbatical Appointment, who continues to pay the officer's salary?",
+    "options": {
+      "A": "The host MDA/Organization",
+      "B": "The officer receives no salary during the sabbatical",
+      "C": "The Federal Civil Service Commission directly",
+      "D": "The parent MDA/Organization"
+    },
+    "correct": "D",
+    "explanation": "Rule 020414: the host organization covers travel, lodging, and sundries, while the parent MDA continues paying the officer's salary for the duration of the leave.",
+    "topic": "Chapter 2 \u2014 Sabbatical Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "How many months' advance notice must a contract officer give if they wish to be re-engaged?",
+    "options": {
+      "A": "Not less than one year",
+      "B": "Not less than one month",
+      "C": "No advance notice is required",
+      "D": "Not less than four months before their leave is due"
+    },
+    "correct": "D",
+    "explanation": "Rule 020408: an officer serving on contract who desires re-engagement must inform government in writing not less than four months before their leave is due.",
+    "topic": "Chapter 2 \u2014 Contract Appointments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under the PSR, what is the key difference between \"Transfer\" and \"Secondment\"?",
+    "options": {
+      "A": "Transfer is a permanent release to another service, while Secondment is a temporary release to another approved body or organization",
+      "B": "There is no real difference \u2014 the PSR uses the two terms interchangeably",
+      "C": "Transfer only applies to junior officers, while Secondment only applies to senior officers",
+      "D": "Transfer applies to international postings only, Secondment to domestic postings only"
+    },
+    "correct": "A",
+    "explanation": "Rule 020501 distinguishes them precisely: Transfer is the permanent release of an officer from one scheduled service to another, while Secondment is a temporary release to another approved body or recognized international organization.",
+    "topic": "Chapter 2 \u2014 Transfer and Secondment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the maximum total duration of an ordinary secondment (not specifically in the public interest)?",
+    "options": {
+      "A": "Four years",
+      "B": "Two years",
+      "C": "Eight years",
+      "D": "Six years"
+    },
+    "correct": "A",
+    "explanation": "Rule 020503(f): secondment runs a maximum of two years in the first instance, extendable, but the total period must not exceed four years for an ordinary secondment.",
+    "topic": "Chapter 2 \u2014 Transfer and Secondment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the maximum duration of a secondment specifically deemed to be in the public interest?",
+    "options": {
+      "A": "Six years",
+      "B": "Two years",
+      "C": "Four years",
+      "D": "Ten years"
+    },
+    "correct": "A",
+    "explanation": "Rule 020503(g): where it is in the public interest to second an officer, the period of secondment shall not exceed six years.",
+    "topic": "Chapter 2 \u2014 Transfer and Secondment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "According to Rule 020603, what is the explicit underlying principle that must guide all posting decisions?",
+    "options": {
+      "A": "Cost minimization for the posting MDA",
+      "B": "The personal preference of the outgoing Permanent Secretary",
+      "C": "Strict seniority, with the most senior officer always given first choice of posting",
+      "D": "Fairness to all officers, so the system is not used as a tool for coercion, punishment, or cronyism"
+    },
+    "correct": "D",
+    "explanation": "Rule 020603: fairness to all officers is explicitly the underlying principle in posting decisions, specifically so the system is never used for coercion, punishment, or cronyism.",
+    "topic": "Chapter 2 \u2014 Posting",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020610, can a Labour Union Executive be posted out of their MDA?",
+    "options": {
+      "A": "No, not until their tenure in office expires",
+      "B": "Yes, at any time the Permanent Secretary decides",
+      "C": "Yes, but only with the written consent of the union itself",
+      "D": "No, union executives can never be posted for their entire career"
+    },
+    "correct": "A",
+    "explanation": "Rule 020610: Labour Union Executives shall not be posted out of their MDAs until the expiration of their tenure in office.",
+    "topic": "Chapter 2 \u2014 Posting",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under the PSR, how often must pool officers be posted, at minimum?",
+    "options": {
+      "A": "Posting of pool officers is entirely optional",
+      "B": "Mandatorily after every one year",
+      "C": "Mandatorily after every ten years",
+      "D": "Mandatorily after every four years"
+    },
+    "correct": "D",
+    "explanation": "Rule 020602(iii): posting of pool officers in the Service shall be mandatory after every four (4) years.",
+    "topic": "Chapter 2 \u2014 Posting",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020703, is an Acting Appointment intended as a way to test an officer's suitability for promotion?",
+    "options": {
+      "A": "Only if the acting officer requests it in writing",
+      "B": "No \u2014 the Rules explicitly state it is not intended as a means of testing suitability for promotion",
+      "C": "Only for posts at SGL.14 and above",
+      "D": "Yes \u2014 it is the Public Service's standard formal method for trialling promotion candidates"
+    },
+    "correct": "B",
+    "explanation": "Rule 020703 states this explicitly: acting appointment is not intended as a means of testing suitability for promotion; it exists to fill temporarily vacant posts.",
+    "topic": "Chapter 2 \u2014 Acting Appointment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the maximum initial period of an Acting Appointment, and by how much can it be extended?",
+    "options": {
+      "A": "Three months initially, extendable for three further months",
+      "B": "Six months initially, extendable for six further months",
+      "C": "Two years initially, with no extension possible",
+      "D": "One year initially, extendable for one further year"
+    },
+    "correct": "D",
+    "explanation": "Rule 020704(b): the period of acting appointment shall not exceed one year, but in exceptional circumstances may be extended for another one year.",
+    "topic": "Chapter 2 \u2014 Acting Appointment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the minimum number of years an officer must spend in a GL.07-14 post before becoming eligible for promotion?",
+    "options": {
+      "A": "2 years",
+      "B": "1 year",
+      "C": "3 years",
+      "D": "5 years"
+    },
+    "correct": "C",
+    "explanation": "Rule 020802(c): the minimum time-in-post for promotion eligibility is 2 years for GL.06 and below, 3 years for GL.07-14, and 4 years for GL.15-17.",
+    "topic": "Chapter 2 \u2014 Promotion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the minimum number of years an officer must spend in a GL.15-17 post before becoming eligible for promotion?",
+    "options": {
+      "A": "2 years",
+      "B": "6 years",
+      "C": "3 years",
+      "D": "4 years"
+    },
+    "correct": "D",
+    "explanation": "Rule 020802(c): the minimum time-in-post for GL.15-17 is 4 years, the highest of the three grade bands.",
+    "topic": "Chapter 2 \u2014 Promotion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020802(d), what is promotion in the Federal Civil Service meant to be based strictly on?",
+    "options": {
+      "A": "Strict seniority alone, regardless of performance",
+      "B": "The personal recommendation of the outgoing post-holder",
+      "C": "Competitive merit from amongst all eligible candidates",
+      "D": "Length of total service in the Federal Civil Service, regardless of grade"
+    },
+    "correct": "C",
+    "explanation": "Rule 020802(d): promotion shall be made strictly on the basis of competitive merit from amongst all eligible candidates.",
+    "topic": "Chapter 2 \u2014 Promotion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020802(d)(ii), when are seniority and previous performance records used as the deciding factor in a promotion decision?",
+    "options": {
+      "A": "They are always the primary and only deciding factor in every promotion decision",
+      "B": "Only for officers below GL.06",
+      "C": "Seniority and past performance are never considered under the PSR",
+      "D": "Only when choosing between candidates who have equal potential for promotion"
+    },
+    "correct": "D",
+    "explanation": "Rule 020802(d)(ii): seniority and previous performance records are taken into account specifically when choosing between candidates with equal potential for promotion \u2014 not as the primary criterion.",
+    "topic": "Chapter 2 \u2014 Promotion",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "To be eligible for appointment as a Permanent Secretary, what grade and position must a candidate already hold?",
+    "options": {
+      "A": "A Director on Grade Level 17, in the mainstream of the Federal Civil Service",
+      "B": "A Deputy Director on Grade Level 15",
+      "C": "A Permanent Secretary in a State Civil Service",
+      "D": "Any officer on Grade Level 14 or above"
+    },
+    "correct": "A",
+    "explanation": "Rule 020811(a): the candidate must be a Director on GL.17 and in the main stream of the Federal Civil Service.",
+    "topic": "Chapter 2 \u2014 Promotion (Permanent Secretary)",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020811(f), can a female civil servant establish state indigeneship for Permanent Secretary eligibility through marriage?",
+    "options": {
+      "A": "Only with the express written consent of the Head of the Civil Service of the Federation",
+      "B": "Only if the marriage occurred before her appointment to the Civil Service",
+      "C": "No \u2014 the Rules explicitly exclude marriage as a basis for indigeneship in this context",
+      "D": "Yes \u2014 marriage to an indigene of the state is an accepted route to establishing indigeneship"
+    },
+    "correct": "C",
+    "explanation": "Rule 020811(f) states this explicitly: indigeneship of a state must not be by marriage in the case of a female civil servant.",
+    "topic": "Chapter 2 \u2014 Promotion (Permanent Secretary)",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the total maximum number of years a Permanent Secretary can serve, including any renewal of their term?",
+    "options": {
+      "A": "There is no limit as long as performance remains satisfactory",
+      "B": "Eight years (a four-year term, renewable once)",
+      "C": "Twelve years (a four-year term, renewable twice)",
+      "D": "Four years, with no renewal possible"
+    },
+    "correct": "B",
+    "explanation": "Rule 020909: a Permanent Secretary holds office for a term of four years, renewable for a further term of four years subject to satisfactory performance, and no more \u2014 eight years total.",
+    "topic": "Chapter 2 \u2014 Promotion (Permanent Secretary)",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "After how many years in a Director post (GL.17 or equivalent) must an officer compulsorily retire from that post?",
+    "options": {
+      "A": "Eight years",
+      "B": "There is no fixed limit for Directors",
+      "C": "Twelve years",
+      "D": "Four years"
+    },
+    "correct": "A",
+    "explanation": "Rule 020909: a Director or equivalent shall compulsorily retire upon serving eight years on the post.",
+    "topic": "Chapter 2 \u2014 Promotion",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the mandatory retirement age under the PSR?",
+    "options": {
+      "A": "60 years or 35 years of pensionable service, whichever is earlier",
+      "B": "65 years of age only, regardless of years of service",
+      "C": "55 years or 30 years of service, whichever is later",
+      "D": "40 years of pensionable service only, regardless of age"
+    },
+    "correct": "A",
+    "explanation": "Rule 020908(i): the mandatory retirement age is 60 years or 35 years of pensionable service, whichever is earlier \u2014 a dual threshold, not a single fixed age.",
+    "topic": "Chapter 2 \u2014 Leaving the Service",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What happens to an officer who fails a promotion examination three consecutive times, or is absent without an acceptable reason?",
+    "options": {
+      "A": "They are demoted one grade level but remain in service",
+      "B": "Nothing \u2014 there is no limit on the number of attempts allowed",
+      "C": "They are automatically enrolled in remedial training with no effect on employment",
+      "D": "They are deemed to have exited the service after the third failed or missed attempt"
+    },
+    "correct": "D",
+    "explanation": "Rule 020906(i): officers who fail promotion examinations after three consecutive attempts, or who are absent without an acceptable reason, are deemed to have exited the service.",
+    "topic": "Chapter 2 \u2014 Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 020906(i), which reason for missing a promotion examination is automatically considered acceptable?",
+    "options": {
+      "A": "Any reason submitted in writing, regardless of supporting evidence",
+      "B": "Personal or family travel, with no supporting documentation required",
+      "C": "Ill-health alone is never an acceptable excuse under the PSR",
+      "D": "Ill-health, supported by a medical report from a recognized Healthcare Provider"
+    },
+    "correct": "D",
+    "explanation": "Rule 020906(i): absence on the ground of ill-health must be supported by a medical report from a recognized Healthcare Provider to be considered acceptable; other reasons are evaluated case-by-case by the FCSC.",
+    "topic": "Chapter 2 \u2014 Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under the Contributory Pension Scheme referenced in Chapter 2, which Act governs mandatory pension participation for Federal Civil Service officers?",
+    "options": {
+      "A": "The Federal Civil Service Commission Act, 2014",
+      "B": "The Public Service Rules Act, 2021",
+      "C": "The Pension Reform Act, 2004",
+      "D": "The Pension Reform Act, 2014"
+    },
+    "correct": "D",
+    "explanation": "Rule 021001: all pensionable officers shall participate in the Contributory Pension Scheme as provided for in the Pension Reform Act, 2014.",
+    "topic": "Chapter 2 \u2014 Pension",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Within how long after retirement are retirement benefits meant to be paid to a departing officer?",
+    "options": {
+      "A": "One week",
+      "B": "Three months",
+      "C": "One year",
+      "D": "One month"
+    },
+    "correct": "D",
+    "explanation": "Rule 021003: retirement benefits shall be paid to the officer within one month of retirement.",
+    "topic": "Chapter 2 \u2014 Pension",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is the main stated purpose of issuing a Certificate of Service to a departing officer?",
+    "options": {
+      "A": "To serve as a reference covering the officer's public service when seeking other employment",
+      "B": "To notify the officer's state of origin of their retirement",
+      "C": "To formally record any unresolved disciplinary allegations against the officer",
+      "D": "To calculate the officer's final pension entitlement"
+    },
+    "correct": "A",
+    "explanation": "Rule 021103: the main purpose of issuing a Certificate of Service is that it may be used as a reference covering the holder's public service when seeking other employment.",
+    "topic": "Chapter 2 \u2014 Certificate of Service",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 021105, can adverse comments about an officer's conduct appear on their Certificate of Service?",
+    "options": {
+      "A": "Only for officers who left the Service through resignation",
+      "B": "Only if approved in writing by the Head of the Civil Service of the Federation",
+      "C": "No \u2014 adverse comments should not form part of the Certificate of Service",
+      "D": "Yes, provided the comments are factually accurate"
+    },
+    "correct": "C",
+    "explanation": "Rule 021105 states explicitly that adverse comment should not form a part of the Certificate of Service \u2014 any disciplinary issue must be handled through proper process before the officer leaves, not noted on the exit certificate.",
+    "topic": "Chapter 2 \u2014 Certificate of Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
