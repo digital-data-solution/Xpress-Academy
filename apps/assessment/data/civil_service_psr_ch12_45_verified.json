@@ -1,0 +1,722 @@
+[
+  {
+    "stem": "Per Rule 120106, what period does a 'Leave Year' cover?",
+    "options": {
+      "A": "1st January to 31st December",
+      "B": "Whatever twelve-month period each MDA sets independently",
+      "C": "1st April to 31st March",
+      "D": "1st July to 30th June"
+    },
+    "correct": "A",
+    "explanation": "Rule 120106: Leave Year is the period between 1st January and 31st December.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120203, how many working days of annual leave is an officer on GL.07 and above entitled to?",
+    "options": {
+      "A": "30 working days",
+      "B": "35 working days",
+      "C": "21 working days",
+      "D": "14 working days"
+    },
+    "correct": "A",
+    "explanation": "Rule 120203(a): GL.07 and above are entitled to 30 working days.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120203, how many working days of annual leave is an officer on GL.03 and below entitled to?",
+    "options": {
+      "A": "21 working days",
+      "B": "10 working days",
+      "C": "30 working days",
+      "D": "14 working days"
+    },
+    "correct": "D",
+    "explanation": "Rule 120203(c): GL.03 and below are entitled to 14 working days.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120204, an officer qualifies for their next annual leave not less than how long after the previous one?",
+    "options": {
+      "A": "Three months",
+      "B": "Six months",
+      "C": "One year",
+      "D": "Nine months"
+    },
+    "correct": "B",
+    "explanation": "Rule 120204: an officer shall qualify for annual leave not less than six months after the previous leave within a leave earning service year.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120205, by what date must the Permanent Secretary/Head of Extra-Ministerial Office approve the Leave Roster for the coming year?",
+    "options": {
+      "A": "31st December",
+      "B": "1st March",
+      "C": "30th June",
+      "D": "31st January"
+    },
+    "correct": "A",
+    "explanation": "Rule 120205(b): the Permanent Secretary must approve the Leave Roster for the coming year not later than 31st December.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120206, what happens to annual leave not taken within the calendar year concerned?",
+    "options": {
+      "A": "It is forfeited -- officers are not allowed to accumulate leave",
+      "B": "It is converted into a cash payment at the officer's request",
+      "C": "It automatically carries over and doubles the following year's entitlement",
+      "D": "It may be accumulated for up to three years before forfeiture"
+    },
+    "correct": "A",
+    "explanation": "Rule 120206: any leave not taken within the calendar year concerned will be forfeited; no Officer is allowed to accumulate leave.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120206, into how many installments may annual leave normally be split?",
+    "options": {
+      "A": "It may not be split under any circumstances",
+      "B": "Exactly four",
+      "C": "Not more than two",
+      "D": "Not more than three"
+    },
+    "correct": "C",
+    "explanation": "Rule 120206: normally the full leave will be taken at one time but it may be taken in not more than two installments.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120210, if an officer's leave is curtailed and they're recalled to duty, within how many days of completing that assignment must the remaining leave be taken?",
+    "options": {
+      "A": "Sixty (60) days",
+      "B": "Thirty (30) days",
+      "C": "Ninety (90) days",
+      "D": "One hundred and eighty (180) days"
+    },
+    "correct": "C",
+    "explanation": "Rule 120210: any portion of leave curtailed shall be taken immediately and not later than ninety (90) days of completion of the assignment.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120211, what form must an officer complete and submit upon return from annual leave?",
+    "options": {
+      "A": "Resumption of Duty Certificate (Form L.10)",
+      "B": "Leave Roster Approval Form",
+      "C": "Annual Performance Appraisal Form",
+      "D": "Statutory Declaration Form (Gen. 74)"
+    },
+    "correct": "A",
+    "explanation": "Rule 120211: on return from annual leave, every Officer must complete and submit a Resumption of Duty Certificate (Form L.10).",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120212, what is 'Proportionate Leave' (Pro-rata)?",
+    "options": {
+      "A": "An additional bonus leave granted after ten years of continuous service",
+      "B": "A leave type granted only to officers on GL.15 and above",
+      "C": "A vacation granted to a new or retiring Officer in proportion to the number of days put into service",
+      "D": "A leave type used interchangeably with sick leave"
+    },
+    "correct": "C",
+    "explanation": "Rule 120212: proportionate leave is a vacation granted to a new or retiring Officer in proportion to the number of days he has put into the service.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120212, what is the minimum period of service reckonable for calculating proportionate leave?",
+    "options": {
+      "A": "There is no minimum; even a single day counts",
+      "B": "90 days",
+      "C": "30 days -- any period under 30 days is not reckonable",
+      "D": "7 days"
+    },
+    "correct": "C",
+    "explanation": "Rule 120212: any period of service under 30 days is not reckonable for proportionate leave purposes.",
+    "topic": "Chapter 12 \u2014 Leave Basics and Annual Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120214, what is the maximum aggregate duration of Casual Leave within a leave year?",
+    "options": {
+      "A": "14 calendar days",
+      "B": "3 calendar days",
+      "C": "30 calendar days",
+      "D": "7 calendar days"
+    },
+    "correct": "D",
+    "explanation": "Rule 120214: Casual Leave is absence not exceeding an aggregate of 7 calendar days within a leave year.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120214, when may Casual Leave be granted?",
+    "options": {
+      "A": "Only during the first three months of employment",
+      "B": "Only after an Officer has exhausted his annual leave",
+      "C": "Only in place of sick leave",
+      "D": "At any time, regardless of annual leave status"
+    },
+    "correct": "B",
+    "explanation": "Rule 120214: casual leave shall only be granted after an Officer has exhausted his annual leave.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120215, who may grant casual leave in excess of seven days in a leave year?",
+    "options": {
+      "A": "No one -- seven days is an absolute, non-extendable cap",
+      "B": "The Federal Civil Service Commission exclusively",
+      "C": "Any superior officer, without further approval",
+      "D": "Only the Permanent Secretary/Head of Extra-Ministerial Office"
+    },
+    "correct": "D",
+    "explanation": "Rule 120215: casual leave in excess of seven days in any leave year may be granted only by the Permanent Secretary/Head of Extra-Ministerial Office.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120218, how many working days of maternity leave is a pregnant officer entitled to at a stretch, with full pay?",
+    "options": {
+      "A": "112 working days",
+      "B": "90 working days",
+      "C": "84 working days",
+      "D": "60 working days"
+    },
+    "correct": "A",
+    "explanation": "Rule 120218(i): a pregnant female staff is entitled to 112 working days Maternity leave at a stretch with full pay.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120218, maternity leave must begin not less than how many working days from the Expected Date of Delivery?",
+    "options": {
+      "A": "7 working days",
+      "B": "28 working days",
+      "C": "60 working days",
+      "D": "14 working days"
+    },
+    "correct": "B",
+    "explanation": "Rule 120218(i): maternity leave begins not less than 28 working days from the Expected Date of Delivery.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120218, how many working days of maternity leave does an officer adopting a child under four months old receive?",
+    "options": {
+      "A": "28 working days",
+      "B": "112 working days",
+      "C": "84 working days",
+      "D": "56 working days"
+    },
+    "correct": "C",
+    "explanation": "Rule 120218(ii): where a female Officer adopts a child under four months old, she shall enjoy 84 working days maternity leave.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120219, how many working days of paternity leave is a serving male officer entitled to?",
+    "options": {
+      "A": "7 working days",
+      "B": "14 working days",
+      "C": "28 working days",
+      "D": "21 working days"
+    },
+    "correct": "B",
+    "explanation": "Rule 120219: paternity leave is for a period of 14 working days.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120219, paternity leave may be taken not more than once in how many years, for a maximum of how many children?",
+    "options": {
+      "A": "Once in five years, for a maximum of two children",
+      "B": "Once in two years, for a maximum of four children",
+      "C": "Once in ten years, for a maximum of six children",
+      "D": "Once a year, with no limit on children"
+    },
+    "correct": "B",
+    "explanation": "Rule 120219: paternity leave is not more than once in two years for a maximum of four children.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120220, how many hours off-duty per day is a nursing mother granted, and for how long after resuming duty from maternity leave?",
+    "options": {
+      "A": "One hour a day, for up to three months",
+      "B": "Two hours a day, for up to six months",
+      "C": "Three hours a day, for up to twelve months",
+      "D": "Two hours a day, with no time limit"
+    },
+    "correct": "B",
+    "explanation": "Rule 120220: a nursing officer shall be granted two hours off-duty every day, up to a maximum period of six months from resumption of duty.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120222, special leave with full pay for a NON-compulsory examination requires the Permanent Secretary to certify which of the following?",
+    "options": {
+      "A": "That passing the examination is likely to enhance the officer's value to the Service",
+      "B": "That the officer has fewer than five years of service remaining",
+      "C": "That the examination is administered exclusively outside Nigeria",
+      "D": "That the officer has already failed the examination at least once"
+    },
+    "correct": "A",
+    "explanation": "Rule 120222(a): the Permanent Secretary must certify that passing the examination is likely to enhance the officer's value to the Service.",
+    "topic": "Chapter 12 \u2014 Casual, Sick, Maternity, Paternity, and Examination Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120223, sabbatical leave is available to officers on which grade level and above?",
+    "options": {
+      "A": "GL.12 or equivalent",
+      "B": "GL.15 or equivalent",
+      "C": "GL.07 or equivalent",
+      "D": "GL.17 or equivalent"
+    },
+    "correct": "B",
+    "explanation": "Rule 120223: sabbatical leave applies to an Officer on GL.15 or equivalent and above.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120223, sabbatical leave is granted for how long, and how often?",
+    "options": {
+      "A": "Twenty-four calendar months, once in ten years",
+      "B": "Twelve calendar months, once a year",
+      "C": "Twelve (12) calendar months, once in five (5) years",
+      "D": "Six calendar months, once in two years"
+    },
+    "correct": "C",
+    "explanation": "Rule 120223: sabbatical leave shall be for a period of twelve calendar months once in five years.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120224, how far in advance must an officer's written application for sabbatical leave be submitted?",
+    "options": {
+      "A": "Two years in advance",
+      "B": "One month in advance",
+      "C": "There is no minimum notice period",
+      "D": "Six months in advance"
+    },
+    "correct": "D",
+    "explanation": "Rule 120224(a): the request must be through written application to the officer's superior six months in advance.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120224, can an officer under a Performance Improvement Plan or disciplinary action proceed on sabbatical leave?",
+    "options": {
+      "A": "Only if the Officer's Permanent Secretary personally waives this requirement",
+      "B": "Yes, provided the disciplinary matter is resolved within one month",
+      "C": "No -- only confirmed Officers not under a PIP or disciplinary action are allowed",
+      "D": "Yes, sabbatical leave is unrelated to performance or disciplinary status"
+    },
+    "correct": "C",
+    "explanation": "Rule 120224(a): only confirmed Officers not under a performance improvement plan or disciplinary action are allowed to proceed on sabbatical leave.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120224, is an officer on sabbatical leave granted notional promotion?",
+    "options": {
+      "A": "No, and they also lose eligibility to sit promotion examinations",
+      "B": "Yes, but only for officers on GL.17",
+      "C": "Yes, notional promotion is automatic during sabbatical leave",
+      "D": "No -- though they remain eligible to sit for promotion interviews/examinations at the nearest designated centers"
+    },
+    "correct": "D",
+    "explanation": "Rule 120224(f): an Officer on sabbatical leave shall not be granted notional promotion, but remains eligible to sit for promotion interviews/examinations.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120224, after returning from sabbatical leave, how long must an officer work for Government before exiting the Service?",
+    "options": {
+      "A": "Six months",
+      "B": "Five years",
+      "C": "Two years",
+      "D": "One year"
+    },
+    "correct": "D",
+    "explanation": "Rule 120224(g): upon return from sabbatical leave, the officer must work for Government for a period of one year before exiting from Service.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120224, does an officer continue to receive their emolument while on sabbatical leave?",
+    "options": {
+      "A": "Only 50% of emolument is paid during sabbatical leave",
+      "B": "No, sabbatical leave is entirely without pay",
+      "C": "Yes -- the Officer shall continue to enjoy his emolument within the period",
+      "D": "Only if the sabbatical is taken within Nigeria"
+    },
+    "correct": "C",
+    "explanation": "Rule 120224(h): when an Officer is on sabbatical leave, he shall continue to enjoy his emolument within the period.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120226, which of the following is one of the three types of study leave listed?",
+    "options": {
+      "A": "Casual Leave",
+      "B": "Leave for In-service Training",
+      "C": "Leave on Compassionate Ground",
+      "D": "Sabbatical Leave"
+    },
+    "correct": "B",
+    "explanation": "Rule 120226: the three types of study leave are Leave for In-service Training, Study leave with pay, and Study leave without pay.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120227, in-service training is granted for how long, with normal emoluments, allowances, and course fees?",
+    "options": {
+      "A": "One to two years",
+      "B": "Six months to one year",
+      "C": "Five to six years",
+      "D": "Three to four years"
+    },
+    "correct": "D",
+    "explanation": "Rule 120227: officers shall be granted in-service training for a period of three to four years with normal emoluments, allowances and course fees.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120228, what is the maximum duration of study leave with pay, before any extension?",
+    "options": {
+      "A": "Three years",
+      "B": "Two years",
+      "C": "One year",
+      "D": "Four years"
+    },
+    "correct": "B",
+    "explanation": "Rule 120228(a): the duration of study leave with pay shall not exceed two years, with a possible one-year extension where justified.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120230, what is the maximum duration of study leave without pay in the first instance, before any extension?",
+    "options": {
+      "A": "Six years",
+      "B": "Three years",
+      "C": "Two years",
+      "D": "Four years"
+    },
+    "correct": "D",
+    "explanation": "Rule 120230(a): the duration of study leave without pay shall not be more than four years in the first instance, after which a one-year extension may be applied for.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120230, are officers on study leave without pay entitled to their normal emoluments and allowances?",
+    "options": {
+      "A": "Yes, but only for the first year of the leave",
+      "B": "No -- officers on study leave without pay are not entitled to normal emoluments and allowances",
+      "C": "Only if the course of study is undertaken within Nigeria",
+      "D": "Yes, they retain full emoluments and allowances throughout"
+    },
+    "correct": "B",
+    "explanation": "Rule 120230(a): officers on study leave without pay are not entitled to normal emoluments and allowances.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120231, whose approval is required before an officer is released to proceed on study leave?",
+    "options": {
+      "A": "The officer's own discretion, with no further approval needed",
+      "B": "The Federal Civil Service Commission's Examination Board",
+      "C": "The Head of the Civil Service of the Federation, on the recommendation of the Officer's Permanent Secretary",
+      "D": "The National Planning Commission, acting alone"
+    },
+    "correct": "C",
+    "explanation": "Rule 120231: the release of any Officer on study leave shall be subject to the approval of the Head of the Civil Service of the Federation on the recommendation of the Officer's Permanent Secretary.",
+    "topic": "Chapter 12 \u2014 Sabbatical Leave and Study Leave",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120233, an officer may be allowed special compassionate leave, on full pay, for up to how long, for the burial of a spouse, child, or parent?",
+    "options": {
+      "A": "Three days",
+      "B": "Two weeks",
+      "C": "One week",
+      "D": "One month"
+    },
+    "correct": "B",
+    "explanation": "Rule 120233: special leave on compassionate ground may be granted for up to two weeks for burial of spouse/child/parents/parents of spouse.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120234, is 'Leave of Absence' granted with or without pay?",
+    "options": {
+      "A": "Without pay",
+      "B": "With half pay in every case",
+      "C": "With pay only for the first six months",
+      "D": "With full pay in every case"
+    },
+    "correct": "A",
+    "explanation": "Rule 120234: Leave of Absence shall be approved by the Head of the Civil Service of the Federation, on the recommendation of the Permanent Secretary, and shall be without pay.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120237, does Leave of Absence cover appointments such as Minister or Secretary to the Government of the Federation?",
+    "options": {
+      "A": "No -- an Officer who accepts such an appointment is deemed to have resigned from service from the date of acceptance",
+      "B": "Only if the President personally grants an exception",
+      "C": "Yes, but only for a maximum of one year",
+      "D": "Yes, Leave of Absence specifically exists to cover political appointments"
+    },
+    "correct": "A",
+    "explanation": "Rule 120237: Leave of Absence shall not cover political appointments; an Officer who accepts such an offer is deemed to have resigned from the date of acceptance.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120238, an officer joining their spouse abroad on a course of instruction is eligible for free passage at Government expense where the course lasts at least how long?",
+    "options": {
+      "A": "Six (6) months",
+      "B": "Three (3) months",
+      "C": "Twelve (12) months",
+      "D": "Nine (9) months"
+    },
+    "correct": "D",
+    "explanation": "Rule 120238: the Officer is eligible for free passage at Government expense where the course of instruction is not less than nine months.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120239, on grounds of public policy, for how long may a spouse be granted leave without pay to join their spouse on a posting abroad, in the first instance?",
+    "options": {
+      "A": "Two years, with no extension possible",
+      "B": "Ten years, with no extension possible",
+      "C": "One year, subject to extension of up to five years",
+      "D": "Four years, subject to an extension of not more than one year"
+    },
+    "correct": "D",
+    "explanation": "Rule 120239(d): the period a spouse can be on leave of absence shall be four years in the first instance and subject to an extension of not more than one year.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120243, how much notice must officers give before their effective retirement date?",
+    "options": {
+      "A": "Three months",
+      "B": "One month",
+      "C": "Six months",
+      "D": "One year"
+    },
+    "correct": "A",
+    "explanation": "Rule 120243: Officers are required to give three months' notice to retire from service before the effective date of retirement.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120243, what must retiring officers do at the commencement of the three-month pre-retirement notice period?",
+    "options": {
+      "A": "Take their full annual leave entitlement for the year",
+      "B": "Submit their final performance appraisal for the year",
+      "C": "Proceed immediately on the mandatory one-month pre-retirement workshop/seminar",
+      "D": "Nominate their successor within the department"
+    },
+    "correct": "C",
+    "explanation": "Rule 120243: at the commencement of the three months, officers should proceed immediately on the mandatory one-month pre-retirement workshop/seminar.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120244, when a Medical Board recommends an officer is medically unfit to continue in Service, how long is the vacation leave granted before retirement takes effect?",
+    "options": {
+      "A": "Two months",
+      "B": "Six months",
+      "C": "Three months",
+      "D": "One month"
+    },
+    "correct": "A",
+    "explanation": "Rule 120244: the length of leave granted shall be two months, commencing on the day the Medical Board declares the officer unfit, with retirement taking effect on its expiration.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120245, what happens to an officer who, without acceptable excuse, fails to resume duty on the approved date after vacation leave?",
+    "options": {
+      "A": "He is automatically dismissed with no further process",
+      "B": "He will be regarded as absent without leave and without pay",
+      "C": "He is automatically granted an additional week of leave",
+      "D": "Nothing -- a short delay beyond the approved date carries no consequence"
+    },
+    "correct": "B",
+    "explanation": "Rule 120245: an Officer who without acceptable excuse fails to resume duty on the approved date will be regarded as absent without leave and without pay.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120246, are officers who are dismissed entitled to any form of leave?",
+    "options": {
+      "A": "No -- officers who are dismissed shall not be entitled to any form of leave",
+      "B": "Only if the dismissal is later overturned on appeal",
+      "C": "Yes, but only casual leave, not annual leave",
+      "D": "Yes, dismissed officers retain full leave entitlement"
+    },
+    "correct": "A",
+    "explanation": "Rule 120246: officers who are dismissed shall not be entitled to any form of leave.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 120247/120248, how does the calculation of annual leave differ from the calculation of other leave types such as casual, sick, or maternity leave?",
+    "options": {
+      "A": "Annual leave is calculated in calendar months; other leave types in working days",
+      "B": "There is no difference -- all leave types are calculated identically",
+      "C": "Annual leave excludes weekends; other leave types include them",
+      "D": "Annual leave is based on working days; other leave types exclude Saturdays, Sundays, and public holidays from the count"
+    },
+    "correct": "D",
+    "explanation": "Rule 120247: annual vacation leave shall be based on working days. Rule 120248: other leave (casual, sick, maternity, etc.) shall not be inclusive of Saturdays, Sundays and Public Holidays occurring therein.",
+    "topic": "Chapter 12 \u2014 Compassionate Leave, Leave of Absence, and Retirement Transitions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
