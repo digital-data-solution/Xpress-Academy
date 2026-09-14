@@ -1,0 +1,338 @@
+[
+  {
+    "stem": "Per Rule 030101, what must all officers undergo on joining the Service, in addition to passing the prescribed confirmation examination?",
+    "options": {
+      "A": "Direct enrollment in the National Youth Service Corps",
+      "B": "An induction training course",
+      "C": "A separate certification exam administered by their state government",
+      "D": "A one-year secondment abroad"
+    },
+    "correct": "B",
+    "explanation": "Rule 030101(i): all officers on joining the Service shall undergo an induction training course, in addition to passing the prescribed confirmation examination.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Which office is responsible for conducting and supervising confirmation examinations, per Rule 030102?",
+    "options": {
+      "A": "The Public Service Institute of Nigeria (PSIN)",
+      "B": "Each Ministry's own internal examinations unit",
+      "C": "The Career Management Office (CMO) in the Office of the Head of the Civil Service of the Federation",
+      "D": "The Federal Civil Service Commission, acting alone"
+    },
+    "correct": "C",
+    "explanation": "Rule 030102 assigns this responsibility specifically to the CMO within OHCSF.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Who chairs the Examination Board established under Rule 030103?",
+    "options": {
+      "A": "The Chairman of the Federal Civil Service Commission",
+      "B": "The Head of the Civil Service of the Federation personally",
+      "C": "The Permanent Secretary, CMO (OHCSF)",
+      "D": "The Director, Learning and Development Department (OHCSF)"
+    },
+    "correct": "C",
+    "explanation": "Rule 030103(a) names the Permanent Secretary, CMO (OHCSF) as Chairman; the Director, Learning and Development Department serves as Secretary, not Chairman.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What role does the Director, Learning and Development Department (OHCSF) play on the Examination Board, per Rule 030103?",
+    "options": {
+      "A": "Chairman",
+      "B": "Secretary",
+      "C": "Deputy Chairman",
+      "D": "An ordinary member with no formal office"
+    },
+    "correct": "B",
+    "explanation": "Rule 030103(h) names this role as Secretary of the Board.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030104, what happens to an officer who fails the confirmation examination after three consecutive attempts?",
+    "options": {
+      "A": "They only lose eligibility for further promotion, not their job",
+      "B": "They shall be required to resign or withdraw from the service",
+      "C": "They are demoted one grade level and permitted to retake the exam the following year",
+      "D": "They are transferred to a different Ministry for a fresh attempt"
+    },
+    "correct": "B",
+    "explanation": "Rule 030104.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 030105, within how long from taking up their appointment must all officers take the confirmation examination?",
+    "options": {
+      "A": "Within three years",
+      "B": "Within six months",
+      "C": "Within two years",
+      "D": "Within one year"
+    },
+    "correct": "C",
+    "explanation": "Rule 030105: all officers must take the confirmation examination within two years from the date of taking up their appointments.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030105, what happens to an officer who fails to take the confirmation examination at all within three years of their first appointment?",
+    "options": {
+      "A": "They are demoted to the lowest grade in their cadre",
+      "B": "They are given one final one-year extension before any consequence",
+      "C": "They are automatically confirmed without needing to sit the exam",
+      "D": "They shall be required to resign from the service"
+    },
+    "correct": "D",
+    "explanation": "Rule 030105: an officer who fails to take the confirmation examination after 3 years of first appointment shall be required to resign from the service.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "How frequently is the confirmation examination held, per Rule 030106?",
+    "options": {
+      "A": "Twice a year",
+      "B": "Once a year",
+      "C": "Once every two years",
+      "D": "Continuously, on a rolling basis"
+    },
+    "correct": "B",
+    "explanation": "Rule 030106: confirmation examination shall be held once a year.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 030107, is an officer generally allowed to consult reference books such as the Public Service Rules during the confirmation examination?",
+    "options": {
+      "A": "Yes, but only during the Group A Law Examination",
+      "B": "No, reference materials are banned for every paper without exception",
+      "C": "Yes, except for the General Paper, Office Procedure/Routine, or Special Paper components",
+      "D": "No, except for Police and Para-Military officers, who may use them freely"
+    },
+    "correct": "C",
+    "explanation": "Rule 030107: reference is allowed to Public Service reference books, but textbooks/reference books are not allowed for the General Paper, Office Procedure/Routine, or Special Paper.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Which category of officer is exempt from taking Group A of the confirmation examination, per Rule 030109?",
+    "options": {
+      "A": "Officers on Grade Level 15 and above",
+      "B": "Any officer who has served more than ten years",
+      "C": "Officers who hold any postgraduate degree, regardless of field",
+      "D": "An Administrative Officer/Professional with a Nigerian law qualification, or called to the Nigerian Bar"
+    },
+    "correct": "D",
+    "explanation": "Rule 030109.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What is Group A of the Senior Officers' confirmation examination (COMPRO I & III) focused on, per Chapter 3, Section 2?",
+    "options": {
+      "A": "Office Procedure and Routine",
+      "B": "Computer Appreciation and Literacy",
+      "C": "Financial Regulations only",
+      "D": "Law -- the Nigerian Legal System and key legislation"
+    },
+    "correct": "D",
+    "explanation": "Section 2, Group A -- Law Examination, covering the Nigerian Legal System, Ministerial Government Procedure, the Constitution, and named legislation.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Which subject group in the Senior Officers' confirmation examination specifically covers the Public Service Rules and Financial Regulations, per Chapter 3, Section 2?",
+    "options": {
+      "A": "There is no group covering these -- they are tested separately from the confirmation exam",
+      "B": "Group C -- Computer Appreciation and Literacy",
+      "C": "Group A -- Law Examination",
+      "D": "Group B -- Official Publications and Other Subject Areas"
+    },
+    "correct": "D",
+    "explanation": "Section 2, Group B lists the Public Service Rules and Financial Regulations among its examination subjects.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "What does Group C of the Senior Officers' confirmation examination test, per Chapter 3, Section 2?",
+    "options": {
+      "A": "Criminal Law",
+      "B": "Police Orders and Instructions",
+      "C": "Computer Appreciation and Literacy",
+      "D": "Ministerial Government Procedure"
+    },
+    "correct": "C",
+    "explanation": "Section 2, Group C -- Examination on Computer Appreciation and Literacy.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Which additional subject is prescribed under Rule 030301 specifically for Clerical Assistants on GL.03 only?",
+    "options": {
+      "A": "Practical Accounting",
+      "B": "Business Law",
+      "C": "Elementary Mathematics",
+      "D": "Advanced Statistics"
+    },
+    "correct": "C",
+    "explanation": "Rule 030301(vii): Elementary Mathematics is prescribed for Clerical Assistants on GL.03 only, in addition to the general COMPRO II subjects.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030302, what happens to a Clerical Officer on GL.04 whose examination performance is exceptional ('accelerated level')?",
+    "options": {
+      "A": "They are transferred to the Federal Civil Service Commission head office",
+      "B": "They are immediately promoted to GL.08 with no further training required",
+      "C": "They are automatically advanced to GL.06 after one year of CSGM training, and converted to the Executive Officer cadre",
+      "D": "They receive a one-time cash bonus but no change in grade"
+    },
+    "correct": "C",
+    "explanation": "Rule 030302: exceptional GL04 Clerical Officers are automatically advanced to GL06 after successfully completing one year of Certificate in Supervisory General Management (CSGM) training, and converted to the Executive Officer Cadre.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 030401, which officers are specifically required to pass the Police and Para-Military confirmation/promotion examinations?",
+    "options": {
+      "A": "All Police and Para-Military officers, regardless of confirmation status",
+      "B": "Only officers above Grade Level 12 in the Police and Para-Military services",
+      "C": "Only Junior Para-Military Officers",
+      "D": "Unconfirmed Senior Police Officers, and unconfirmed Para-Military Officers (Senior and Junior)"
+    },
+    "correct": "D",
+    "explanation": "Rule 030401.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 030501, an officer directly appointed to the Federal Public Service must have served for how long before becoming eligible to sit the confirmation examination?",
+    "options": {
+      "A": "One year",
+      "B": "Two years",
+      "C": "One month",
+      "D": "Six months"
+    },
+    "correct": "D",
+    "explanation": "Rule 030501(a): officers eligible for the examinations must have served for six (6) months after taking up their appointments.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030501(c), an officer transferred from another scheduled Service is still required to pass the confirmation examination if, at the date of transfer, they are under what age?",
+    "options": {
+      "A": "Forty years",
+      "B": "Thirty-five years",
+      "C": "Thirty years",
+      "D": "Fifty years"
+    },
+    "correct": "A",
+    "explanation": "Rule 030501(c): applies to officers transferred from other scheduled Service who at the date of transfer are under the age of forty and have not satisfied conditions for confirmation.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030501(d), for further advancement beyond Grade Level 10, officers are required to attend which kind of institution and pass a prescribed examination?",
+    "options": {
+      "A": "An approved institution such as ASCON, PSIN, or CMD",
+      "B": "A foreign university with a public administration program",
+      "C": "The National Assembly's own legislative training institute",
+      "D": "Any private-sector management training provider"
+    },
+    "correct": "A",
+    "explanation": "Rule 030501(d): officers must attend the Administrative Staff College of Nigeria (ASCON), Public Service Institute of Nigeria (PSIN), Centre for Management Development (CMD), or another approved institution, and pass the prescribed examination.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 030502, what should be used in place of the Gazette of First Appointment and Confirmation of Appointment, if these are not available within two years?",
+    "options": {
+      "A": "The officer's most recent annual performance appraisal",
+      "B": "A sworn affidavit from the officer's Permanent Secretary",
+      "C": "A letter from the Federal Civil Service Commission confirming service history",
+      "D": "The COMPRO examination result"
+    },
+    "correct": "D",
+    "explanation": "Rule 030502: where the Gazette documents are not available within two years, the COMPRO examination result should be used in their place.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 030601, who determines the fees paid to examiners and invigilators for confirmation examinations?",
+    "options": {
+      "A": "The Federal Ministry of Finance, on a fixed annual schedule",
+      "B": "The Office of the Head of the Civil Service of the Federation, from time to time",
+      "C": "Each individual Examination Board member, by consensus",
+      "D": "The National Salaries, Incomes and Wages Commission"
+    },
+    "correct": "B",
+    "explanation": "Rule 030601: fees shall be paid to examiners and invigilators at rates determined from time to time by the Office of the Head of the Civil Service of the Federation.",
+    "topic": "Chapter 3 \u2014 Prescribed Examination for Confirmation",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
