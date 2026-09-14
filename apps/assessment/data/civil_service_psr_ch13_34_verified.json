@@ -1,0 +1,546 @@
+[
+  {
+    "stem": "Per Rule 130102, what happens if a candidate is not finally passed as physically fit for Service after the compulsory medical examination on appointment?",
+    "options": {
+      "A": "The appointment shall not be proceeded with",
+      "B": "The candidate is offered a lower grade level appointment instead",
+      "C": "The appointment proceeds regardless, with a note added to the officer's file",
+      "D": "The candidate is placed on probation pending re-examination in one year"
+    },
+    "correct": "A",
+    "explanation": "Rule 130102: if the candidate is not finally passed as physically fit for Service, his appointment shall not be proceeded with.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130103, how often must an officer present themselves for examination to certify they remain sound in health and fit to continue in Service?",
+    "options": {
+      "A": "Every five years",
+      "B": "Every ten years",
+      "C": "Every year",
+      "D": "Every two years"
+    },
+    "correct": "A",
+    "explanation": "Rule 130103: in every five years, an officer shall present himself for examination to certify fitness to continue in Service.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130104, how are an officer's medical certificates, Medical Board reports, and confidential health reports treated?",
+    "options": {
+      "A": "As fully public records, available to any officer who requests them",
+      "B": "As records available only to the officer's immediate family",
+      "C": "As records automatically destroyed after five years",
+      "D": "Strictly confidential -- no copies except those specifically allowed by this Chapter shall be furnished"
+    },
+    "correct": "D",
+    "explanation": "Rule 130104: these documents shall be treated strictly confidential; no copies except those mentioned in this Chapter shall be furnished.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130106, when must an officer present themselves for a medical examination in relation to Leave of Absence?",
+    "options": {
+      "A": "Only at the very start of the Leave of Absence, never at its end",
+      "B": "At the expiration of the Leave of Absence, to confirm continued fitness to return to duty",
+      "C": "Only if the officer personally requests it",
+      "D": "Never -- Leave of Absence carries no medical examination requirement"
+    },
+    "correct": "B",
+    "explanation": "Rule 130106: at the expiration of an Officer's Leave of Absence, he shall be required to present himself for examination to confirm continued fitness to return to his duties.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130107, who bears the fee for an examination conducted under Rules 130105 or 130106, absent special arrangement?",
+    "options": {
+      "A": "The relevant MDAs",
+      "B": "The examining Healthcare Provider, at their own cost",
+      "C": "The National Health Insurance Scheme exclusively",
+      "D": "The officer personally, in every case"
+    },
+    "correct": "A",
+    "explanation": "Rule 130107(a): fees for the examination shall, in the absence of special regulations to the contrary, be paid by the relevant MDAs.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130108, under what condition may an officer be granted leave to visit a Medical Specialist/Dentist?",
+    "options": {
+      "A": "Only if a Healthcare Provider certifies that they are unable to deal with the case themselves and delay would definitely affect the officer's health",
+      "B": "Only for officers on GL.15 and above",
+      "C": "Automatically, upon the officer's own written request with no certification needed",
+      "D": "Only during the officer's own annual leave period"
+    },
+    "correct": "A",
+    "explanation": "Rule 130108: leave to visit a Specialist/Dentist requires the Healthcare Provider to certify inability to handle the case and that postponing consultation would definitely affect the officer's health.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130108, without a medical certificate, what type of leave may an officer apply for instead to visit a specialist?",
+    "options": {
+      "A": "Leave of Absence under Rule 120234",
+      "B": "Sabbatical leave under Rule 120223",
+      "C": "Casual leave under Rule 120214",
+      "D": "Compassionate leave under Rule 120233"
+    },
+    "correct": "C",
+    "explanation": "Rule 130108: if no medical certificate is given, it will be open to an Officer to apply for casual leave under Rule 120214.",
+    "topic": "Chapter 13 \u2014 General Medical Requirements",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130201, what determines the medical facilities and scale of charges provided to officers and their families in Nigeria?",
+    "options": {
+      "A": "The Federal Ministry of Finance",
+      "B": "Each individual MDA's own internal policy",
+      "C": "The National Health Insurance Scheme (NHIS)",
+      "D": "The officer's own private insurance provider"
+    },
+    "correct": "C",
+    "explanation": "Rule 130201: medical facilities in Nigeria and the scale of charges will be determined by the NHIS.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130202, who bears the expenses when a staff member chooses treatment by a private practitioner instead of an authorized Healthcare Provider?",
+    "options": {
+      "A": "The staff member themselves, in full",
+      "B": "The National Health Insurance Scheme",
+      "C": "The Government and staff member split the cost equally",
+      "D": "The Government, in full"
+    },
+    "correct": "A",
+    "explanation": "Rule 130202: a staff who prefers private practitioner treatment must himself bear all expenses incurred.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130205, which of the following is one of the required conditions for a refund of medical expenses incurred while overseas on leave or duty?",
+    "options": {
+      "A": "The Officer's spouse also fell ill at the same time",
+      "B": "The Officer traveled first class for the entire journey",
+      "C": "The illness was not due to the Officer's own negligence",
+      "D": "The illness occurred within the first week of travel"
+    },
+    "correct": "C",
+    "explanation": "Rule 130205(a): one required condition is that the illness was not due to the Officer's own negligence.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130206(a), who grants approval for journeys outside Nigeria specifically for medical treatment?",
+    "options": {
+      "A": "The Nigerian Mission abroad, without further approval",
+      "B": "The National Health Insurance Scheme directly",
+      "C": "The Head of the Civil Service of the Federation, based on Healthcare Provider recommendation and Federal Ministry of Health certification",
+      "D": "The officer's own Permanent Secretary, acting alone"
+    },
+    "correct": "C",
+    "explanation": "Rule 130206(a): approval for overseas medical treatment journeys will only be granted by the Head of Civil Service of the Federation based on Healthcare Provider recommendation and Federal Ministry of Health certification.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130206(c), in exceptional cases where a dependent of an officer must travel abroad for treatment, to what extent is Government's financial involvement limited?",
+    "options": {
+      "A": "The full estimated expenses",
+      "B": "One quarter of the estimated expenses",
+      "C": "Government provides no financial support for dependents' overseas treatment",
+      "D": "Half of the estimated expenses"
+    },
+    "correct": "D",
+    "explanation": "Rule 130206(c): Government's involvement for dependents' overseas treatment in exceptional cases is limited to half of the estimated expenses.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130206(d), who selects the Consultant or clinic abroad for an officer's approved overseas medical treatment?",
+    "options": {
+      "A": "The Federal Ministry of Finance",
+      "B": "The Nigerian Mission (unless a prior relationship with a Consultant already exists)",
+      "C": "Whichever Consultant charges the lowest fee",
+      "D": "The officer's own choice, with no further oversight"
+    },
+    "correct": "B",
+    "explanation": "Rule 130206(d): the choice of Consultants/clinic abroad will be made by the Nigerian Mission, though the Mission may endorse an existing patient-Consultant relationship.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130207, what is required before a spouse may be permitted to accompany an ailing officer abroad at Government expense?",
+    "options": {
+      "A": "A minimum of ten years of the officer's continuous service",
+      "B": "Approval from the National Assembly",
+      "C": "Nothing further -- this privilege is automatic for every officer traveling abroad for treatment",
+      "D": "Specific approval from the Accounting Officer, obtained prior to the journey abroad"
+    },
+    "correct": "D",
+    "explanation": "Rule 130207: this privilege is not automatic; a necessary requirement is that specific approval from the Accounting Officer be obtained prior to the journey abroad.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130208(a), officers on which salary grade level(s) must undertake a mandatory comprehensive medical check-up locally once a year?",
+    "options": {
+      "A": "GL.16 and above",
+      "B": "All grade levels equally",
+      "C": "GL.12 to 15",
+      "D": "GL.07 and below"
+    },
+    "correct": "A",
+    "explanation": "Rule 130208(a): officers on salary grade level 16 and above shall undertake mandatory medical check-up locally once a year.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130208(b), how often are officers on GL.12 to 15 entitled to a local medical check-up?",
+    "options": {
+      "A": "Once in five years",
+      "B": "Once in two years",
+      "C": "Once in three years",
+      "D": "Once a year"
+    },
+    "correct": "B",
+    "explanation": "Rule 130208(b): officers on grade levels 12 to 15 are entitled to medical check-up locally once in two years.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130208(c), how often are other officers (below GL.12) in the Service entitled to a local medical check-up?",
+    "options": {
+      "A": "Every five years",
+      "B": "Every year",
+      "C": "Every three years",
+      "D": "Every two years"
+    },
+    "correct": "C",
+    "explanation": "Rule 130208(c): other Officers in the Service shall be entitled to medical check-up locally every three years.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130208(d), can the medical check-up entitlement described in this Rule be monetized (converted to a cash payment)?",
+    "options": {
+      "A": "Yes, officers may elect to receive cash in lieu of the check-up",
+      "B": "No -- the provision for medical check-up shall not be monetized",
+      "C": "Yes, but only for officers on GL.16 and above",
+      "D": "Yes, once every five years"
+    },
+    "correct": "B",
+    "explanation": "Rule 130208(d): the provision for medical check-up as stated shall not be monetized.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130209, whose approval is required for overseas periodic medical check-ups for Permanent Secretaries, Directors-General, and Chief Executives?",
+    "options": {
+      "A": "Approval from the Federal Civil Service Commission alone",
+      "B": "Presidential approval",
+      "C": "Approval from the officer's own Permanent Secretary",
+      "D": "No approval is required for this category"
+    },
+    "correct": "B",
+    "explanation": "Rule 130209(i)(g): Permanent Secretaries/Directors-General/Chief Executives require Presidential approval for overseas periodic medical check-ups.",
+    "topic": "Chapter 13 \u2014 Facilities for Medical Treatment",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130301, which of the following is explicitly listed as a document that may support a prolonged absence from duty on ground of illness?",
+    "options": {
+      "A": "A signed letter from any family member",
+      "B": "Excuse Duty Certificate",
+      "C": "A personal diary entry describing symptoms",
+      "D": "A pharmacy receipt for medication"
+    },
+    "correct": "B",
+    "explanation": "Rule 130301: prolonged absence should be supported by an Excuse Duty Certificate, Light Duty Certificate, or Medical Certificate of Treatment.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130302, within how many hours must an officer receiving medical treatment report to their employer?",
+    "options": {
+      "A": "48 hours",
+      "B": "One week",
+      "C": "72 hours",
+      "D": "24 hours"
+    },
+    "correct": "A",
+    "explanation": "Rule 130302: an Officer receiving medical treatment shall report to his employer within 48 hours.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130305, what is the maximum period an initial certificate of excuse/light duty may cover, absent a Healthcare Provider's own examination of the patient?",
+    "options": {
+      "A": "One day",
+      "B": "Three days",
+      "C": "Seven days",
+      "D": "Fourteen days"
+    },
+    "correct": "B",
+    "explanation": "Rule 130305: the period on the first certificate issued shall not exceed three days unless the Healthcare Provider has examined the patient, in which case up to seven days.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130305, what is the maximum total sick leave allowable through successive extensions before a Medical Board examination becomes mandatory?",
+    "options": {
+      "A": "Six months",
+      "B": "One year",
+      "C": "Three months",
+      "D": "One month"
+    },
+    "correct": "C",
+    "explanation": "Rule 130305: not more than a total of three months sick leave may be allowed on such extension; if still not fit, the Officer shall be examined by a Medical Board.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130306, which of the following must a Healthcare Provider explicitly report to the Officer's Ministry?",
+    "options": {
+      "A": "The exact medication dosage prescribed",
+      "B": "The Officer's personal opinions about their treatment plan",
+      "C": "The Officer's home address, if already on file",
+      "D": "When an Officer refuses or is neglecting to carry out the medical advice given"
+    },
+    "correct": "D",
+    "explanation": "Rule 130306(b): a Healthcare Provider must report when an Officer refuses or is neglecting to carry out medical advice given.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130307, what happens to an officer who fails to comply with a Medical Board's recommendations?",
+    "options": {
+      "A": "He is transferred to a different Ministry",
+      "B": "He is automatically dismissed with no further process",
+      "C": "He shall render himself liable to be treated as having been absent without leave",
+      "D": "Nothing -- Medical Board recommendations are purely advisory with no consequence for non-compliance"
+    },
+    "correct": "C",
+    "explanation": "Rule 130307: an Officer who fails to comply with this rule shall render himself liable to be treated as having been absent without leave.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130309, what must the Human Resource Management/Administration department maintain for each officer?",
+    "options": {
+      "A": "A list of the officer's outstanding personal debts",
+      "B": "A record of the officer's personal bank account details",
+      "C": "A complete copy of the officer's medical history, updated monthly",
+      "D": "An up-to-date record of residential addresses, telephone numbers and contact details of next of kin"
+    },
+    "correct": "D",
+    "explanation": "Rule 130309: HRM/Administration must maintain an up-to-date record of residential addresses, telephone numbers and next-of-kin contact details.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130310, within how many hours must an enquiry be made at an officer's recorded address if their absence is unexplained?",
+    "options": {
+      "A": "48 hours",
+      "B": "One week",
+      "C": "72 hours",
+      "D": "24 hours"
+    },
+    "correct": "D",
+    "explanation": "Rule 130310: if an Officer's absence is not explained within 24 hours, enquiry shall be made at his recorded address.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130317(i), what is the maximum aggregate sick leave allowable to an officer during any twelve-month period?",
+    "options": {
+      "A": "Six months",
+      "B": "One month",
+      "C": "Three months",
+      "D": "Two months"
+    },
+    "correct": "C",
+    "explanation": "Rule 130317(i): the maximum aggregate sick leave allowed during any period of twelve months shall be three months.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130317(ii), what emolument does an officer incapacitated by an injury sustained in the course of official duty receive, until discharged from sick leave or permanently invalidated?",
+    "options": {
+      "A": "No emolument at all",
+      "B": "Full emolument",
+      "C": "Half emolument only",
+      "D": "A fixed disability stipend unrelated to their normal salary"
+    },
+    "correct": "B",
+    "explanation": "Rule 130317(ii): an Officer incapacitated by an injury sustained in the course of official duties shall be entitled to draw full emolument until discharged from sick leave or permanently invalidated.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130318, what happens to an officer recommended by a Medical Board or Healthcare Provider to be permanently invalidated?",
+    "options": {
+      "A": "He is immediately dismissed without any leave entitlement",
+      "B": "He is automatically transferred to a lighter-duty post indefinitely",
+      "C": "He must wait one full year before any action is taken",
+      "D": "He will forthwith commence vacation leave prior to retirement, in accordance with Rule 120244"
+    },
+    "correct": "D",
+    "explanation": "Rule 130318: an Officer recommended to be permanently invalided will forthwith commence vacation leave prior to retirement in accordance with Rule 120244.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130401, when a serving officer dies abroad on official duty, what is one of the specific costs Government's responsibility for repatriation covers?",
+    "options": {
+      "A": "Relocation costs for the officer's entire extended family",
+      "B": "Preparation of the body (embalming)",
+      "C": "A memorial scholarship fund in the officer's name",
+      "D": "A permanent monument at the officer's home town"
+    },
+    "correct": "B",
+    "explanation": "Rule 130401(i): Government's responsibility includes preparation of the body (embalming).",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130402, at what percentage of total annual emolument does Government cover burial expenses for a pensionable officer on GL.03-06 who dies in service?",
+    "options": {
+      "A": "100%",
+      "B": "90%",
+      "C": "70%",
+      "D": "110%"
+    },
+    "correct": "D",
+    "explanation": "Rule 130402(i)(a): GL.03-06 burial expenses are covered at 110% of total annual emolument.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130402, at what percentage of total annual emolument does Government cover burial expenses for a pensionable officer on GL.15-17 who dies in service?",
+    "options": {
+      "A": "90%",
+      "B": "70%",
+      "C": "100%",
+      "D": "110%"
+    },
+    "correct": "B",
+    "explanation": "Rule 130402(i)(d)/(e): GL.15-16 and GL.17 burial expenses are both covered at 70% of total annual emolument.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 130402, at what percentage of total annual emolument does Government cover burial expenses for a Consolidated-salary pensionable officer who dies in service?",
+    "options": {
+      "A": "80%",
+      "B": "110%",
+      "C": "100%",
+      "D": "70%"
+    },
+    "correct": "C",
+    "explanation": "Rule 130402(i)(f): Consolidated-salary officers' burial expenses are covered at 100% of total annual emolument.",
+    "topic": "Chapter 13 \u2014 Sick Leave Procedures and Burial Expenses",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
