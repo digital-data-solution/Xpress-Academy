@@ -1,0 +1,818 @@
+[
+  {
+    "stem": "Per Rule 100102, in whom is the power to dismiss and exercise disciplinary control over officers in the Federal Civil Service vested?",
+    "options": {
+      "A": "The Federal Civil Service Commission",
+      "B": "The National Assembly",
+      "C": "Each individual Permanent Secretary, without exception",
+      "D": "The Head of the Civil Service of the Federation, personally and exclusively"
+    },
+    "correct": "A",
+    "explanation": "Rule 100102: the power to dismiss and to exercise disciplinary control is vested in the Federal Civil Service Commission.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100103, the FCSC has delegated the power of dismissal specifically to Permanent Secretaries only for officers at which grade levels?",
+    "options": {
+      "A": "GL.06 and below",
+      "B": "All grade levels, with no limit",
+      "C": "GL.13 and below",
+      "D": "GL.10 and below"
+    },
+    "correct": "A",
+    "explanation": "Rule 100103: full disciplinary powers are delegated for GL.13 and below, but the power of dismissal specifically only for GL.06 and below.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100104, can a Director-General or Chief Executive Officer remove an officer from service without Board approval?",
+    "options": {
+      "A": "Yes, a DG/CEO may remove any officer without Board approval at any time",
+      "B": "Yes, but only for officers on GL.15 and above",
+      "C": "No, removal always requires Presidential approval regardless of grade",
+      "D": "No, except for officers on GL.06 and below, based on the recommendation of the Junior Staff Committee"
+    },
+    "correct": "D",
+    "explanation": "Rule 100104: no officer shall be removed by a DG/CEO without Board approval, except GL.06-and-below officers based on JSC recommendation.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100201, how is 'general inefficiency' defined?",
+    "options": {
+      "A": "A single serious act of wrongdoing that damages the Service's image",
+      "B": "A series of omissions or incompetence whose cumulative effect shows the officer cannot efficiently discharge their duties",
+      "C": "Any instance of lateness to work, regardless of frequency",
+      "D": "Refusal to accept a lawful transfer or posting"
+    },
+    "correct": "B",
+    "explanation": "Rule 100201: general inefficiency consists of a series of omissions or incompetence whose cumulative effect shows the officer is incapable of efficiently discharging their duties.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100203, how many written warnings must an officer have received before removal proceedings for general inefficiency may begin?",
+    "options": {
+      "A": "Three",
+      "B": "Five",
+      "C": "Two",
+      "D": "One"
+    },
+    "correct": "A",
+    "explanation": "Rule 100203: before removal proceedings for general inefficiency may be commenced, the officer must have been warned on three occasions in writing.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100204, can a female public servant be required to resign or retire by reason of pregnancy alone?",
+    "options": {
+      "A": "No -- though if her condition interferes with efficient performance, she may at Management's discretion be given lighter duties",
+      "B": "Yes, but only after the second trimester",
+      "C": "Yes, pregnancy alone is sufficient grounds for compulsory retirement",
+      "D": "No, and no change to her duties may ever be made regardless of her condition"
+    },
+    "correct": "A",
+    "explanation": "Rule 100204: no female public servant shall be required to resign or retire by reason of pregnancy alone, but she may be given lighter duties at Management's discretion if her condition interferes with efficient performance.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100208, what is the standard notice period for termination of an officer's appointment for inefficiency?",
+    "options": {
+      "A": "Six calendar months in every case",
+      "B": "No notice is required in any case of termination for inefficiency",
+      "C": "One calendar month, unless another period is appropriate to the officer's term of service",
+      "D": "Twenty-four hours"
+    },
+    "correct": "C",
+    "explanation": "Rule 100208: the period of notice shall be one calendar month unless another period is appropriate in light of a particular officer's term of service.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100206, besides the officer, which two offices must be informed whenever an increment is withheld or deferred?",
+    "options": {
+      "A": "The Career Management Office and the National Planning Commission",
+      "B": "The Federal Civil Service Commission and the National Assembly",
+      "C": "The Accountant General of the Federation and the Auditor General for the Federation",
+      "D": "The Ministry of Justice and the Ministry of Finance"
+    },
+    "correct": "C",
+    "explanation": "Rule 100206(c): in all cases of withholding or deferment of increment, the Accountant General of the Federation and the Auditor General for the Federation must be informed.",
+    "topic": "Chapter 10 \u2014 Introduction and General Inefficiency",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100301, how is 'misconduct' defined?",
+    "options": {
+      "A": "A specific act of wrong-doing or improper behaviour, inimical to the image of the Service, which can be investigated and proved",
+      "B": "An act that automatically results in dismissal with no further process",
+      "C": "A single instance of lateness to work, regardless of cause",
+      "D": "Any act, proven or not, that a superior officer personally disapproves of"
+    },
+    "correct": "A",
+    "explanation": "Rule 100301: misconduct is a specific act of wrong-doing or improper behaviour which is inimical to the image of the service and which can be investigated and proved.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100301, which of the following is explicitly listed as an example of misconduct?",
+    "options": {
+      "A": "Bribery",
+      "B": "Cyber fraud/crime",
+      "C": "Habitual lateness to work",
+      "D": "Embezzlement"
+    },
+    "correct": "C",
+    "explanation": "Rule 100301(c): habitual lateness to work is listed under misconduct. (Cyber fraud, bribery, and embezzlement are listed under the more severe Serious Misconduct in Rule 100402.)",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100302, when a superior officer becomes dissatisfied with a subordinate's behaviour, what is the superior's first duty?",
+    "options": {
+      "A": "To withhold the officer's next increment automatically",
+      "B": "To publicly reprimand the officer in front of colleagues",
+      "C": "To inform the officer in writing, with details of the unsatisfactory behaviour, and call for a written response within a specified time",
+      "D": "To immediately recommend dismissal to the Federal Civil Service Commission"
+    },
+    "correct": "C",
+    "explanation": "Rule 100302: the superior officer must inform the subordinate in writing, giving details of the unsatisfactory behaviour, and call for written representations within a specific time.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100303, before the FCSC acts on a Tribunal of Inquiry's disciplinary recommendations against an officer, what must first happen?",
+    "options": {
+      "A": "Nothing further -- the Tribunal's recommendations are automatically binding",
+      "B": "The matter must first be referred to the National Assembly",
+      "C": "The officer must be dismissed pending any further review",
+      "D": "The affected officer must be called upon to reply to the allegations made against him"
+    },
+    "correct": "D",
+    "explanation": "Rule 100303: the Commission/Board shall not act on Tribunal recommendations until it has called upon the affected officer to reply to the allegations.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100304, once misconduct is brought to a superior officer's attention, through whom must it be reported to the Director, Human Resource?",
+    "options": {
+      "A": "The officer's own labour union representative",
+      "B": "The superior officer's HOD",
+      "C": "The National Planning Commission",
+      "D": "Directly to the Federal Civil Service Commission, bypassing all other channels"
+    },
+    "correct": "B",
+    "explanation": "Rule 100304(b): it shall be the duty of the superior officer to report it through his HOD to the Director, Human Resource, without delay.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100306, what happens to disciplinary proceedings against a female staff member that would otherwise occur during her maternity leave?",
+    "options": {
+      "A": "They are automatically decided in the officer's favour",
+      "B": "They proceed exactly as scheduled, with no accommodation for the leave",
+      "C": "They are permanently cancelled and cannot be revived",
+      "D": "They are postponed until the leave has expired, without prejudice to the proceedings"
+    },
+    "correct": "D",
+    "explanation": "Rule 100306: disciplinary proceedings during maternity leave shall be postponed until the leave expires; the postponement does not prejudice the proceedings.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100307(v), who may NOT be a member of the board of inquiry convened in a dismissal case?",
+    "options": {
+      "A": "The head of the officer's own department",
+      "B": "The Chairman appointed by the Commission",
+      "C": "Any officer from a different Ministry",
+      "D": "Any officer senior to the accused officer"
+    },
+    "correct": "A",
+    "explanation": "Rule 100307(v): the board shall consist of not less than three persons; the head of the Officer's department shall not be a member of the board.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100307(xiii), within how many days must all disciplinary procedures commence and be completed, except where criminal cases are involved?",
+    "options": {
+      "A": "120 days",
+      "B": "60 days",
+      "C": "90 days",
+      "D": "30 days"
+    },
+    "correct": "B",
+    "explanation": "Rule 100307(xiii): all disciplinary procedures must commence and be completed within a period of 60 days except where it involves criminal cases.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100307(xi), what happens if the Commission does not approve an officer's dismissal and does not consider any penalty warranted?",
+    "options": {
+      "A": "The matter is automatically referred to the President",
+      "B": "The officer remains suspended indefinitely pending a further review",
+      "C": "The officer is reinstated forthwith and entitled to the full salary denied him if interdicted or suspended",
+      "D": "The officer must resign voluntarily within thirty days"
+    },
+    "correct": "C",
+    "explanation": "Rule 100307(xi): if the Commission does not approve dismissal and considers no penalty should be imposed, the officer is reinstated forthwith with full back pay.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100309, may a fine be imposed on an officer as punishment for an offence committed in the course of his duties?",
+    "options": {
+      "A": "Yes, fines are the standard first-line penalty for misconduct",
+      "B": "No -- no fine shall be imposed as punishment for an offence committed in the course of duty",
+      "C": "Yes, but only for offences involving financial loss to government",
+      "D": "Only with the officer's own written consent"
+    },
+    "correct": "B",
+    "explanation": "Rule 100309: no fine shall be imposed on any Officer as a punishment for an offence committed in the course of his duties.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100310, what may happen to an officer if the public revenue sustains a loss due to that officer's neglect or fault?",
+    "options": {
+      "A": "Nothing -- surcharge is not an available remedy under the PSR",
+      "B": "He may be surcharged with the amount, and sums due to him from Government may be withheld to satisfy the surcharge",
+      "C": "The loss is written off and no action is taken against the officer",
+      "D": "He is automatically dismissed with no further procedure"
+    },
+    "correct": "B",
+    "explanation": "Rule 100310(a): an officer may be surcharged with the amount of a loss caused by his neglect or fault, and sums due to him may be withheld to satisfy the surcharge.",
+    "topic": "Chapter 10 \u2014 Misconduct",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100401, how is 'serious misconduct' defined?",
+    "options": {
+      "A": "Any act of misconduct repeated more than three times",
+      "B": "A specific act of very serious wrong-doing and improper behaviour, inimical to the Service's image, which if proven may lead to dismissal",
+      "C": "A minor administrative error with no disciplinary consequence",
+      "D": "Any act committed outside of normal working hours"
+    },
+    "correct": "B",
+    "explanation": "Rule 100401: serious misconduct is a specific act of very serious wrong doing and improper behaviour which, if proven, may lead to dismissal.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100402, which of the following is explicitly listed as an example of serious misconduct?",
+    "options": {
+      "A": "Bankruptcy",
+      "B": "Refusal to accept a posting",
+      "C": "Improper dressing while on duty",
+      "D": "Habitual lateness to work"
+    },
+    "correct": "A",
+    "explanation": "Rule 100402(h): bankruptcy is listed among the examples of serious misconduct. (The other options are listed under ordinary Misconduct in Rule 100301.)",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100404, at what proportion of pay may an officer be interdicted pending determination of a serious misconduct case?",
+    "options": {
+      "A": "No pay whatsoever",
+      "B": "Not more than half pay (50%)",
+      "C": "Full pay, with no reduction",
+      "D": "Two-thirds pay"
+    },
+    "correct": "B",
+    "explanation": "Rule 100404(i)/(iii): the Permanent Secretary may interdict an officer on not more than half pay; the letter shall indicate 50% of emoluments while on interdiction.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100404, what should be considered before resorting to interdiction, where an officer's continued duties are against the public interest?",
+    "options": {
+      "A": "Reducing the officer's rank by two grade levels",
+      "B": "Transferring the officer to a foreign posting",
+      "C": "Putting the officer on alternative duties",
+      "D": "Immediate dismissal, bypassing interdiction entirely"
+    },
+    "correct": "C",
+    "explanation": "Rule 100404(ii): consideration shall be given to putting the officer on alternative duties; interdiction shall only be resorted to where this is not possible.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100404, what happens if proceedings reveal an interdicted officer is not guilty of the charge against them?",
+    "options": {
+      "A": "The officer remains interdicted pending a further separate review",
+      "B": "The officer is reinstated but receives no back pay of any kind",
+      "C": "The officer must reapply for their former position",
+      "D": "The officer is immediately reinstated and receives the full amount of emoluments denied during interdiction"
+    },
+    "correct": "D",
+    "explanation": "Rule 100404(iv): if proceedings reveal the officer is not guilty, he shall immediately be reinstated and receive the full amount of emoluments denied while interdicted.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100405, within how many days must an interdicted officer comply with instructions delivered to their notified address, to avoid being regarded as absent without leave?",
+    "options": {
+      "A": "Thirty days",
+      "B": "Fourteen days",
+      "C": "Seven days",
+      "D": "Two days"
+    },
+    "correct": "C",
+    "explanation": "Rule 100405(c): if the officer fails to comply with instructions delivered to the notified address within seven days, he will be regarded as absent from duty without leave.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100405, can an officer under interdiction or suspension leave Nigeria without specific approval?",
+    "options": {
+      "A": "Yes, provided he notifies the Federal Civil Service Commission after the fact",
+      "B": "Yes, but only with his own Permanent Secretary's verbal consent",
+      "C": "Yes, freely, with no approval required",
+      "D": "No -- he shall not leave the country without the specific approval of the Head of the Civil Service of the Federation"
+    },
+    "correct": "D",
+    "explanation": "Rule 100405(a): the officer shall not leave the country without the specific approval of the Head of the Civil Service of the Federation.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100406, how does 'suspension' differ from 'interdiction' under the PSR?",
+    "options": {
+      "A": "They are fully interchangeable terms with identical legal effect",
+      "B": "Suspension can only be applied to officers on GL.15 and above",
+      "C": "Suspension always means full pay is retained, unlike interdiction",
+      "D": "Suspension should not be used as a synonym for interdiction -- it applies where a serious prima facie case requires immediately barring the officer from duties and emoluments"
+    },
+    "correct": "D",
+    "explanation": "Rule 100406: suspension should not be used as a synonym for interdiction; it applies where a serious prima facie case has been established and the officer must be immediately barred from duties and emoluments pending investigation.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100407, what does a dismissed officer forfeit, subject to the Pension Reform Act 2014?",
+    "options": {
+      "A": "Nothing -- dismissal has no effect on any accrued benefits",
+      "B": "Only their final month's salary",
+      "C": "All claims to retiring benefits, leave, or transport grant",
+      "D": "Only their eligibility for future re-employment, with all benefits intact"
+    },
+    "correct": "C",
+    "explanation": "Rule 100407: an officer who is dismissed forfeits all claims to retiring benefits, leave or transport grant, subject to the Pension Reform Act 2014 (as amended).",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100408, from what date does an officer's dismissal take effect?",
+    "options": {
+      "A": "Thirty days after the notification is sent",
+      "B": "The date on which he is notified of the dismissal",
+      "C": "The date the disciplinary proceedings first began",
+      "D": "The first day of the following calendar month"
+    },
+    "correct": "B",
+    "explanation": "Rule 100408: dismissal shall take effect from the date on which the officer is notified thereof, with specific fallback provisions for an officer who evades notification.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100410, if an officer is convicted on a criminal charge, may the Commission dismiss or punish him without following the full Rule 100307 procedure?",
+    "options": {
+      "A": "No, the full Rule 100307 procedure must always be followed regardless of a criminal conviction",
+      "B": "No, a criminal conviction has no bearing on disciplinary proceedings at all",
+      "C": "Only if the officer personally consents to skip the standard procedure",
+      "D": "Yes -- the Commission may consider the court proceedings and dismiss or otherwise punish the officer without following Rule 100307's procedure"
+    },
+    "correct": "D",
+    "explanation": "Rule 100410: if convicted, the Commission may dismiss or otherwise punish the officer based on the court proceedings, without following the procedures prescribed in Rule 100307.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100411, can disciplinary action proceed against an officer even where related criminal proceedings are contemplated but not yet instituted?",
+    "options": {
+      "A": "No, only if the officer has already been formally charged",
+      "B": "Yes -- nothing prevents disciplinary action being taken or continued regardless of the status of any related criminal proceedings",
+      "C": "No, disciplinary action must always wait until any criminal proceedings are fully resolved",
+      "D": "Yes, but only after written approval from the National Assembly"
+    },
+    "correct": "B",
+    "explanation": "Rule 100411(a): nothing shall prevent disciplinary action being taken or continued, whether criminal proceedings have been instituted, are about to be instituted, or are merely contemplated.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100412, from what date is an officer convicted of a criminal offence (beyond minor traffic/sanitary offences) suspended?",
+    "options": {
+      "A": "Thirty days after conviction",
+      "B": "The date the officer's appeal, if any, is exhausted",
+      "C": "The date the criminal charge was first filed",
+      "D": "The date of conviction"
+    },
+    "correct": "D",
+    "explanation": "Rule 100412: an officer convicted of a criminal offence shall be suspended with effect from the date of conviction, pending determination of his case by the Commission.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100414, an officer is deemed to be in 'serious financial embarrassment' if the aggregate of their unsecured debts and liabilities exceeds what threshold?",
+    "options": {
+      "A": "One month's emoluments",
+      "B": "Three times their monthly emoluments",
+      "C": "Ten times their monthly emoluments",
+      "D": "Their total annual emoluments"
+    },
+    "correct": "B",
+    "explanation": "Rule 100414(1)(a): an officer is deemed in serious financial embarrassment if unsecured debts and liabilities exceed three times his monthly emoluments.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100414, while an officer remains in serious financial embarrassment, what are they disqualified from?",
+    "options": {
+      "A": "Receiving their regular monthly salary",
+      "B": "Being assigned to any duties whatsoever",
+      "C": "Promotion or acting in a higher appointment",
+      "D": "Taking any form of annual leave"
+    },
+    "correct": "C",
+    "explanation": "Rule 100414(7): as long as an officer is in serious financial embarrassment, he shall be disqualified from promotion or acting in a higher appointment.",
+    "topic": "Chapter 10 \u2014 Serious Misconduct: Interdiction, Suspension, Dismissal",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100415, what must every officer with access to classified or restricted papers do before being granted such access?",
+    "options": {
+      "A": "Publicly disclose their full financial history",
+      "B": "Sign the Oath of Secrecy",
+      "C": "Obtain a separate security clearance from the National Assembly",
+      "D": "Complete a mandatory five-year probationary period"
+    },
+    "correct": "B",
+    "explanation": "Rule 100415: officers with access to classified or restricted papers must have signed the Oath of Secrecy before being granted such access.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100419, what is required before an officer leaving the Public Service may take a public record with them?",
+    "options": {
+      "A": "Written permission of the Permanent Secretary, Service Policies and Strategies Office, OHCSF",
+      "B": "Verbal approval from any Permanent Secretary",
+      "C": "Approval from the National Planning Commission",
+      "D": "No permission is ever required -- officers may take any record they personally worked on"
+    },
+    "correct": "A",
+    "explanation": "Rule 100419: no Officer may, on leaving the Public Service, take with him any public record without the written permission of the Permanent Secretary, Service Policies and Strategies Office, OHCSF.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100421, may an officer act as editor of a departmental or staff magazine without special permission?",
+    "options": {
+      "A": "Yes -- departmental/staff magazines are explicitly exempted from the general publication-permission requirement",
+      "B": "No, officers are barred from any involvement in any publication whatsoever",
+      "C": "Yes, but only after first resigning from the Public Service",
+      "D": "No, all publication activity of any kind requires prior written permission with no exceptions"
+    },
+    "correct": "A",
+    "explanation": "Rule 100421(i)(a): the general restriction on acting as editor/managing a publication explicitly excepts departmental or staff magazines, professional journals, and publications by voluntary organizations.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100422, is an officer permitted to vote in an election?",
+    "options": {
+      "A": "Only officers on GL.15 and above may vote",
+      "B": "No, officers are barred from voting in any election while serving",
+      "C": "Only in local government elections, not state or national ones",
+      "D": "Yes -- nothing in the political-activities rule prevents an officer from voting"
+    },
+    "correct": "D",
+    "explanation": "Rule 100422(e): nothing in this rule shall be deemed to prevent an officer from voting at an election.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100423, how far before an election must an officer seeking elective office tender their resignation?",
+    "options": {
+      "A": "One month before the election",
+      "B": "Six months before the election",
+      "C": "Immediately upon declaring candidacy, with no fixed timeframe",
+      "D": "Three months before the election"
+    },
+    "correct": "D",
+    "explanation": "Rule 100423(i): any officer seeking elective office is to tender his resignation three months before the election.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100424, may a public officer be a Director of a private company operating in Nigeria?",
+    "options": {
+      "A": "No -- officers must not be Directors in private companies; they may only be Directors in public companies if nominated by Government",
+      "B": "Yes, freely, with no restriction of any kind",
+      "C": "Yes, but only after obtaining shareholder approval",
+      "D": "No, and they may not hold shares in any company either, public or private"
+    },
+    "correct": "A",
+    "explanation": "Rule 100424(a): officers are not prohibited from holding shares, except that they must not be Directors in private companies, and may only be Directors in public companies if nominated by Government.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100424, within how many working days must a public officer disclose investment information when required to do so by their Permanent Secretary?",
+    "options": {
+      "A": "Ten working days",
+      "B": "One working day",
+      "C": "Three working days",
+      "D": "Thirty working days"
+    },
+    "correct": "C",
+    "explanation": "Rule 100424(b): a public officer, whenever required, shall disclose within three working days full information about any investments held.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100425, which professionals are explicitly granted an exemption from the general prohibition on private practice?",
+    "options": {
+      "A": "Private Medical Practitioners and Law Lecturers in Universities",
+      "B": "All officers working in the Federal Ministry of Justice",
+      "C": "Officers who have served more than twenty years",
+      "D": "Every officer on GL.15 and above, without further qualification"
+    },
+    "correct": "A",
+    "explanation": "Rule 100425: exemptions are granted to private Medical Practitioners, Law Lecturers in Universities, and public servants in ICT/Agricultural Business value chain fields (provided no conflict with official duties).",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100429, may an officer on leave of absence accept paid employment?",
+    "options": {
+      "A": "Yes, but only if the employer is a registered charity",
+      "B": "Only with the prior express approval of the Office of the Head of the Civil Service of the Federation",
+      "C": "No, under no circumstances whatsoever, even with approval",
+      "D": "Yes, freely, with no approval required while on leave"
+    },
+    "correct": "B",
+    "explanation": "Rule 100429: an officer on leave of absence shall not accept any paid employment without previously obtaining the express approval of the OHCSF.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100433, are officers permitted to accept small personal gifts exchanged between colleagues and friends?",
+    "options": {
+      "A": "Yes -- the general prohibition on accepting gifts explicitly does not apply to small personal gifts exchanged between colleagues and friends",
+      "B": "No, unless the gift is first reported to the Federal Civil Service Commission",
+      "C": "Yes, but only from gifts given by other government officials",
+      "D": "No, any gift of any kind or size is strictly prohibited"
+    },
+    "correct": "A",
+    "explanation": "Rule 100433(a): the rule against accepting gifts in recognition of service shall not be regarded as applying to small personal gifts exchanged between colleagues and friends.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100434, what must be done with gifts from traditional rulers or chiefs that cannot be refused without giving offence?",
+    "options": {
+      "A": "They are sold and the proceeds donated to charity",
+      "B": "They may be kept personally by the receiving officer",
+      "C": "They must be immediately destroyed",
+      "D": "They shall be handed over to the Government"
+    },
+    "correct": "D",
+    "explanation": "Rule 100434: gifts from traditional rulers, chiefs and other persons which cannot be refused without giving offence shall be handed over to the Government.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100435, are serving officers permitted to accept chieftaincy titles?",
+    "options": {
+      "A": "Yes, freely, with no restriction of any kind",
+      "B": "No, not while serving -- except an inherited title, or an award, with due clearance obtained through OHCSF",
+      "C": "No, under absolutely no circumstances, including after retirement",
+      "D": "Yes, but only after ten years of service"
+    },
+    "correct": "B",
+    "explanation": "Rule 100435: serving officers are prohibited from accepting chieftaincy titles until after retirement, except where a traditional title is bestowed by inheritance or an award is received, with due clearance obtained through OHCSF.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100501, where a Committee finds an officer's misconduct involves or is prejudicial to the security of the State, how is the officer treated?",
+    "options": {
+      "A": "The matter is handled exclusively outside the Public Service Rules framework",
+      "B": "The Officer is automatically dismissed with no hearing of any kind",
+      "C": "The Officer is subject to the normal disciplinary procedure, but the punishment for the misconduct shall be aggravated",
+      "D": "The Officer is exempt from all disciplinary procedure entirely"
+    },
+    "correct": "C",
+    "explanation": "Rule 100501: the Officer shall be subject to the normal disciplinary procedure, provided that the punishment for such misconduct shall be aggravated.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100601, under what governing law is the question of pension and gratuity dealt with when an officer is retired in the public interest?",
+    "options": {
+      "A": "The Interpretation Act",
+      "B": "The Labour Act",
+      "C": "The Pension Reform Act (as amended)",
+      "D": "The Public Service Rules alone, with no reference to any external Act"
+    },
+    "correct": "C",
+    "explanation": "Rule 100601: in every such case, the question of pension and gratuity shall be dealt with under the Pension Reform Act (as amended).",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100701, when a Permanent Secretary is alleged to have committed misconduct, whose duty is it to draw the Head of the Civil Service of the Federation's attention to it?",
+    "options": {
+      "A": "The Permanent Secretary's immediate subordinate",
+      "B": "The Permanent Secretary's own Minister",
+      "C": "Any member of the public who becomes aware of it",
+      "D": "The Federal Civil Service Commission Chairman"
+    },
+    "correct": "B",
+    "explanation": "Rule 100701: it shall be the duty of the Permanent Secretary's Minister to draw the attention of the Head of the Civil Service of the Federation to the infractions.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100701, to whom does the Federal Service Management Committee submit its report and recommendations on a Permanent Secretary's alleged misconduct?",
+    "options": {
+      "A": "The Federal Civil Service Commission, for a final and unappealable decision",
+      "B": "Directly to the National Assembly for a floor vote",
+      "C": "The Head of the Civil Service of the Federation, who transmits it to the President for consideration and approval",
+      "D": "The Permanent Secretary's own Ministry, for internal resolution"
+    },
+    "correct": "C",
+    "explanation": "Rule 100701(iv): the Committee submits its report with recommendations to the Head of the Civil Service of the Federation, who transmits it to the President for consideration and approval.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 100702, which of the following is explicitly listed as a disciplinary measure available under the Guidelines for a Permanent Secretary?",
+    "options": {
+      "A": "Surcharge",
+      "B": "Permanent ineligibility for any future government contract",
+      "C": "Public flogging",
+      "D": "Immediate loss of Nigerian citizenship"
+    },
+    "correct": "A",
+    "explanation": "Rule 100702(vi): surcharge is explicitly listed among the disciplinary measures, alongside dismissal/termination/retirement, reduction in rank/salary, withholding of increment, loss of pay, reprimand, and written/verbal warnings.",
+    "topic": "Chapter 10 \u2014 Conduct Restrictions, State Security, and Senior Officer Discipline",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
