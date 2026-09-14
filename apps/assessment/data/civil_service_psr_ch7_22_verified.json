@@ -1,0 +1,354 @@
+[
+  {
+    "stem": "Per Rule 070101, how is staff development defined?",
+    "options": {
+      "A": "A one-time orientation given only to new recruits",
+      "B": "A mandatory annual bonus scheme tied to length of service",
+      "C": "The policy of enhancing staff knowledge, skills, attitude, effectiveness and efficiency to meet career goals and prepare for changing duties",
+      "D": "A disciplinary process for underperforming officers"
+    },
+    "correct": "C",
+    "explanation": "Rule 070101: staff development is the policy of enhancing knowledge, skills, attitude, effectiveness and efficiency to meet career goals and prepare for changing duties and responsibilities.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070103, training opportunities across MDAs are meant to be distributed in what manner?",
+    "options": {
+      "A": "Strictly in order of seniority, oldest officers first",
+      "B": "Exclusively to officers within two years of retirement",
+      "C": "Only to officers on Grade Level 15 and above",
+      "D": "Equitably to all staff"
+    },
+    "correct": "D",
+    "explanation": "Rule 070103: training opportunities shall be equitably distributed to all staff in MDAs.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070104, what defines a 'Course of Instruction within Nigeria'?",
+    "options": {
+      "A": "A course that can only be taken during annual leave",
+      "B": "A course an officer undertakes locally but outside their own station, at a Federal Training Centre, University, or approved institution",
+      "C": "A course undertaken strictly within the officer's own MDA building",
+      "D": "Any course delivered entirely online, regardless of location"
+    },
+    "correct": "B",
+    "explanation": "Rule 070104: a course of instruction within Nigeria is undertaken locally but outside the officer's station, at a Federal Training Centre, University or approved Public Service training institution.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070105, which training category is long-term postgraduate training considered crucial to both the officer and the MDA's mandate?",
+    "options": {
+      "A": "Category C",
+      "B": "Category A",
+      "C": "Category B",
+      "D": "Category D"
+    },
+    "correct": "B",
+    "explanation": "Rule 070105(a): Category A is long-term training toward a postgraduate degree that is very crucial and beneficial both to the officer and to the MDA's mandate.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070105, which training category is long-term postgraduate training that's beneficial to the officer but not crucial to the MDA's mandate?",
+    "options": {
+      "A": "Category E",
+      "B": "Category B",
+      "C": "Category A",
+      "D": "Category C"
+    },
+    "correct": "B",
+    "explanation": "Rule 070105(b): Category B is long-term training toward a postgraduate degree beneficial to the officer but not crucial to the MDA's mandate.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070105, which category covers officers pursuing a degree or qualification that might not even relate to their current schedule of duties?",
+    "options": {
+      "A": "Category F",
+      "B": "Category C",
+      "C": "Category D",
+      "D": "Category A"
+    },
+    "correct": "B",
+    "explanation": "Rule 070105(c): Category C is for officers who desire a degree or qualification in a field that might not be relevant to their current duties.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070105, what is 'Category D' training?",
+    "options": {
+      "A": "A mandatory annual refresher exam for all officers",
+      "B": "Long-term overseas postgraduate study, fully government-funded",
+      "C": "In-house training -- customized, cost-effective, short-term, delivered within or outside the office premises",
+      "D": "Online courses leading to the award of a full degree"
+    },
+    "correct": "C",
+    "explanation": "Rule 070105(d): Category D is in-house training -- a customized, cost-effective, short-term training/programme delivered within or outside the office premises.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070105, what is 'Category F' training?",
+    "options": {
+      "A": "Short-term online courses not leading to any qualification",
+      "B": "Online courses leading to the award of degrees at accredited institutions",
+      "C": "Overseas study exclusively for Directors and Permanent Secretaries",
+      "D": "In-house training delivered on the office premises only"
+    },
+    "correct": "B",
+    "explanation": "Rule 070105(f): Category F is online courses leading to the award of degrees in accredited institutions.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070201, what is a course of instruction 'on station'?",
+    "options": {
+      "A": "A course undertaken locally within the officer's own station, at accredited centers or the MDA's own training hubs",
+      "B": "A course that requires relocation to a different MDA",
+      "C": "Any course taken entirely outside Nigeria",
+      "D": "A course delivered exclusively by video call from home"
+    },
+    "correct": "A",
+    "explanation": "Rule 070201: on-station course of instruction is undertaken locally within the officer's station, at accredited centers, approved locations, Management Development Institutions, or the MDA's training hubs.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070203, who must furnish an officer with detailed instructions and advance written notice of allowances before an overseas course or duty?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The host country's own government",
+      "C": "The officer's Permanent Secretary/Head of Extra-Ministerial Office",
+      "D": "The Federal Civil Service Commission, directly"
+    },
+    "correct": "C",
+    "explanation": "Rule 070203: the Permanent Secretary/Head of Extra-Ministerial Office must furnish detailed instructions and inform the officer in advance and in writing of eligible allowances and travel facilities.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070205, an officer attending a course of instruction must sign a bond to refund government expenses if they fail to do which of the following?",
+    "options": {
+      "A": "Publish a research paper based on the course",
+      "B": "Achieve a specific minimum grade on the course",
+      "C": "Return to Nigeria after the course",
+      "D": "Complete the course within exactly one calendar year"
+    },
+    "correct": "C",
+    "explanation": "Rule 070205(b): the bond covers failing to return to Nigeria, among other conditions (obtaining a certificate of attendance, not taking further unapproved courses, and not resigning within three years).",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070205, within how many years of completing a course of instruction must an officer avoid resigning, to remain compliant with their bond?",
+    "options": {
+      "A": "Ten years",
+      "B": "Five years",
+      "C": "One year",
+      "D": "Three years"
+    },
+    "correct": "D",
+    "explanation": "Rule 070205(d): the bond requires not resigning from Service within a period of three years of completing the course.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070206, a senior officer sent overseas on a course of instruction is eligible for free air passage for whom?",
+    "options": {
+      "A": "Their entire immediate family, regardless of course duration",
+      "B": "Themselves and their spouse, regardless of course duration",
+      "C": "No one -- passage must always be self-funded",
+      "D": "Themselves only"
+    },
+    "correct": "D",
+    "explanation": "Rule 070206: a senior officer is eligible for free air passage for himself only; the spouse may accompany at government expense only where the course lasts nine months or more.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070206, for a course lasting nine months or more, who else may accompany a senior officer overseas at government expense?",
+    "options": {
+      "A": "No one -- the nine-month threshold only affects the officer's own return ticket",
+      "B": "Both the spouse and all dependent children",
+      "C": "Their spouse",
+      "D": "Any one dependent child, but not the spouse"
+    },
+    "correct": "C",
+    "explanation": "Rule 070206: where the course duration is not less than nine months, the officer's spouse may accompany him at Government expense.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070208, when a donor agency/country sponsors a course, what is the officer entitled to if the donor's allowance is lower than the standard estacode allowance?",
+    "options": {
+      "A": "The difference between their normal estacode allowance and the donor's lower allowance/facilities",
+      "B": "Nothing extra -- the donor's rate applies in full regardless",
+      "C": "A one-time cash bonus unrelated to the estacode difference",
+      "D": "Double the standard estacode allowance, as compensation"
+    },
+    "correct": "A",
+    "explanation": "Rule 070208: officers are entitled to be paid the difference between their normal estacode allowance and the donor's allowance/facilities, where the latter is lower.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070209, what happens to an officer's Federal Government emoluments if they receive a salary from an overseas employer during a training course?",
+    "options": {
+      "A": "Nothing changes -- both salaries are paid in full automatically",
+      "B": "They must immediately resign from the Federal Public Service",
+      "C": "Their Federal Government salary is automatically doubled",
+      "D": "They become ineligible for Federal Government emolument or allowance, unless specifically approved otherwise by the Permanent Secretary, Career Management Office"
+    },
+    "correct": "D",
+    "explanation": "Rule 070209: an officer receiving an overseas salary during training is not eligible for Federal Government emolument or allowance, except as specifically approved by the Permanent Secretary, Career Management Office (OHCSF).",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070210, what specific circumstance requires a female officer on a training course of not more than six months to refund some or all of its cost if interrupted?",
+    "options": {
+      "A": "Transfer to a different Ministry mid-course",
+      "B": "Pregnancy",
+      "C": "A family emergency of any kind",
+      "D": "Any personal illness, regardless of cause"
+    },
+    "correct": "B",
+    "explanation": "Rule 070210: a female Officer on a course of not more than six months' duration enters an agreement to refund the whole or part of the cost if the course is interrupted on grounds of pregnancy.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070301, where are nomination application forms sent for processing when training facilities require a foreign government's technical assistance scheme?",
+    "options": {
+      "A": "The Office of the Head of the Civil Service of the Federation",
+      "B": "The National Planning Commission",
+      "C": "The Career Management Office",
+      "D": "The Federal Civil Service Commission"
+    },
+    "correct": "B",
+    "explanation": "Rule 070301: application forms for nominations of candidates under a foreign Government's technical assistance scheme are forwarded to the National Planning Commission for processing.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070302, what happens to an officer's emoluments while attending a course under a technical assistance scheme?",
+    "options": {
+      "A": "Their emoluments are halved for the duration of the course",
+      "B": "Their emoluments are paid by the donor government exclusively",
+      "C": "Their emoluments are suspended for the full duration of the course",
+      "D": "They continue to receive their emoluments"
+    },
+    "correct": "D",
+    "explanation": "Rule 070302: officers attending courses under a technical assistance scheme will continue to receive their emoluments.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070303, who decides the special conditions (such as leave without pay) when an officer takes a course purely at their own request?",
+    "options": {
+      "A": "The Office of the Head of the Civil Service of the Federation",
+      "B": "The officer themselves, subject to no approval",
+      "C": "The National Planning Commission",
+      "D": "The donor agency funding the course"
+    },
+    "correct": "A",
+    "explanation": "Rule 070303: special conditions, which may include leave without pay and withdrawal of allowances, are decided by the Office of the Head of the Civil Service of the Federation.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070304, what is the maximum period of study leave with pay that may be granted for a postgraduate course not offered by any institution in Nigeria?",
+    "options": {
+      "A": "Four years",
+      "B": "Six years",
+      "C": "One year",
+      "D": "Two years"
+    },
+    "correct": "A",
+    "explanation": "Rule 070304: officers may be granted study leave with pay subject to a maximum of four years, in exceptional cases where the course is not offered by any Nigerian institution.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 070304, are officers pursuing private studies for a higher degree on their own initiative hindered from doing so?",
+    "options": {
+      "A": "No, provided their studies do not interfere with official duties",
+      "B": "No, but only if they are already on Grade Level 15 or above",
+      "C": "Yes, unless they first resign from the Federal Public Service",
+      "D": "Yes, private study for a higher degree is prohibited entirely"
+    },
+    "correct": "A",
+    "explanation": "Rule 070304: officers engaged in private studies for higher degrees shall not be hindered, provided their studies do not interfere with official duties.",
+    "topic": "Chapter 7 \u2014 Training and Staff Development",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
