@@ -1,0 +1,402 @@
+[
+  {
+    "stem": "Per Rule 170101, how is a 'Parastatal' defined?",
+    "options": {
+      "A": "A government-owned organization established by statute to render specified services to the public",
+      "B": "A committee formed to investigate a single administrative matter",
+      "C": "A private company that has received a one-time government grant",
+      "D": "Any organization with more than 500 employees"
+    },
+    "correct": "A",
+    "explanation": "Rule 170101: a Parastatal is a government-owned organization established by statute to render specified service(s) to the public.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170102, which of the following is explicitly listed as one of the categories of Parastatals?",
+    "options": {
+      "A": "Research and Development Agencies",
+      "B": "Judicial Review Agencies",
+      "C": "Private Sector Liaison Agencies",
+      "D": "Foreign Diplomatic Agencies"
+    },
+    "correct": "A",
+    "explanation": "Rule 170102: the five categories are Regulatory Agencies, General Services, Infrastructure/Utility Agencies, Paramilitary Agencies, and Research and Development Agencies.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170103, whose approval is required for a Parastatal's Conditions of Service, Scheme of Service, and Organizational Structure?",
+    "options": {
+      "A": "The National Planning Commission, acting alone",
+      "B": "Each Parastatal's own Chief Executive Officer, without further approval",
+      "C": "The Federal Civil Service Commission, without reference to any Board",
+      "D": "The Office of the Head of the Civil Service of the Federation, on the recommendation of the various Boards/Councils"
+    },
+    "correct": "D",
+    "explanation": "Rule 170103: Conditions of Service, Scheme of Service and Organizational Structure shall be approved by OHCSF, on the recommendation of the various Boards/Councils.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170104, what happens where a Parastatal has no internal rules or regulations on a given matter?",
+    "options": {
+      "A": "The matter is simply left unregulated until the Parastatal drafts its own rule",
+      "B": "The relevant provisions of the Public Service Rules shall apply",
+      "C": "The Parastatal must suspend all operations relating to that matter",
+      "D": "The Federal Civil Service Commission drafts a one-off ruling specific to that Parastatal"
+    },
+    "correct": "B",
+    "explanation": "Rule 170104: in the absence of internal rules and regulations on any matter, the relevant provisions of the Public Service Rules shall apply.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170104, are variations in probationary periods across different Parastatals treated as inconsistencies with the Public Service Rules?",
+    "options": {
+      "A": "No -- such variations only reflect organizational peculiarities, not inconsistencies with the PSR",
+      "B": "Variations are prohibited outright and never occur in practice",
+      "C": "Yes, but only for Paramilitary Agencies specifically",
+      "D": "Yes, any variation at all is treated as a breach of the PSR requiring correction"
+    },
+    "correct": "A",
+    "explanation": "Rule 170104: variations in probationary periods and maturity periods for promotion only reflect organizational peculiarities and not inconsistencies with the Public Service Rules.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170201, what is explicitly included among the administrative policies a Board/Council may set?",
+    "options": {
+      "A": "Policies relating to appointment, promotion and discipline of staff",
+      "B": "Policies determining the exchange rate for the Naira",
+      "C": "Policies setting the Parastatal's own criminal sentencing guidelines",
+      "D": "Policies governing the internal affairs of other, unrelated Parastatals"
+    },
+    "correct": "A",
+    "explanation": "Rule 170201: administrative policies set by the Board/Council may include those relating to appointment, promotion and discipline of staff.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170201(a), is a Board directly involved in the day-to-day management of a Parastatal?",
+    "options": {
+      "A": "Only for Parastatals classified as Regulatory Agencies",
+      "B": "Yes, the Board manages all day-to-day operations personally",
+      "C": "No -- a Board shall not be involved directly in the day-to-day management of a Parastatal",
+      "D": "Yes, but only during the Parastatal's first year of operation"
+    },
+    "correct": "C",
+    "explanation": "Rule 170201(a): a Board shall not be involved directly in the day-to-day management of a Parastatal.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170201(b), at what level does a Minister exercise control of Parastatals?",
+    "options": {
+      "A": "The Minister has no role in controlling Parastatals at all",
+      "B": "At every operational level, directly and without limitation",
+      "C": "At the policy level only, through the Board of the Parastatal",
+      "D": "Only at the level of individual staff hiring decisions"
+    },
+    "correct": "C",
+    "explanation": "Rule 170201(b): a Minister exercises control of Parastatals at policy level only, through the Board of the Parastatals.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170202, may a Part-Time Member of a Board retain an official vehicle for permanent personal use?",
+    "options": {
+      "A": "No -- no Part-Time Member of the Board shall be allowed to retain official vehicle for use on a permanent basis",
+      "B": "Only Board Chairmen are permitted this privilege",
+      "C": "Yes, but only for Board members serving more than five years",
+      "D": "Yes, freely, with no restriction of any kind"
+    },
+    "correct": "A",
+    "explanation": "Rule 170202: no Part-Time Member of the Board shall be allowed to retain official vehicle for use on a permanent basis.",
+    "topic": "Chapter 17 \u2014 Definition and Board/Council Authority",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170301(i), what staff committees must be established in all Federal Government Parastatals?",
+    "options": {
+      "A": "Only a Senior Staff Committee -- Junior Staff Committees are optional",
+      "B": "A single unified Staff Committee covering all grade levels",
+      "C": "Junior Staff Committee and Senior Staff Committee",
+      "D": "A Disciplinary Tribunal separate from any Staff Committee"
+    },
+    "correct": "C",
+    "explanation": "Rule 170301(i): appropriate staff committees (Junior Staff Committee and Senior Staff Committee) shall be established in all Federal Government parastatals.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170301(ii), on whose authority are appointments and promotions in Parastatals made?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "Each individual Chief Executive Officer, acting entirely alone",
+      "C": "The Boards/Councils, through the appropriate Staff Management Committees",
+      "D": "The Federal Civil Service Commission, directly and exclusively"
+    },
+    "correct": "C",
+    "explanation": "Rule 170301(ii): appointments and promotions are made on the authority of the Boards/Councils through the appropriate Staff Management Committees, within approved manning levels.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170302, what principle must Parastatal appointments have due regard to, in addition to merit and credibility?",
+    "options": {
+      "A": "The principle of strict regional exclusivity",
+      "B": "The principle of appointing only serving military officers",
+      "C": "The principle of automatic appointment by seniority alone",
+      "D": "The Federal Character Principle"
+    },
+    "correct": "D",
+    "explanation": "Rule 170302: appointments shall ensure merit, credibility and equal employment opportunity, with due regard to the Federal Character Principle.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170303, who approves promotion for Senior Staff in a Parastatal?",
+    "options": {
+      "A": "The Federal Civil Service Commission directly",
+      "B": "The Board/Council, on the recommendation of the Senior Staff Committee",
+      "C": "The Junior Staff Committee",
+      "D": "The Chief Executive Officer, acting entirely alone"
+    },
+    "correct": "B",
+    "explanation": "Rule 170303: the Board/Council approves promotion for Senior Staff on the recommendation of the Senior Staff Committee.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170303, who approves promotion for Junior Staff in a Parastatal?",
+    "options": {
+      "A": "The Office of the Head of the Civil Service of the Federation",
+      "B": "The supervising Ministry's own Permanent Secretary",
+      "C": "The Board/Council directly, without delegation",
+      "D": "The Chief Executive Officer, on the recommendation of the Junior Staff Committee"
+    },
+    "correct": "D",
+    "explanation": "Rule 170303: promotion for Junior Staff is delegated to the Chief Executive Officer of the Agency, on the recommendation of the Junior Staff Committee.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170305, disciplinary control over Officers on SGL.07 and above in a Parastatal is vested in the Staff Committees, subject to whose approval?",
+    "options": {
+      "A": "The Boards/Councils",
+      "B": "The National Assembly",
+      "C": "The Chief Executive Officer alone, with no further approval",
+      "D": "The officer's own immediate colleagues, by vote"
+    },
+    "correct": "A",
+    "explanation": "Rule 170305: disciplinary control is vested in the appropriate Staff Committees, subject to the approval of the Boards/Councils for Officers on SGL.07 and above.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170305, who exercises disciplinary power in the absence of a Board/Council?",
+    "options": {
+      "A": "The Federal Civil Service Commission directly",
+      "B": "The Minister of the supervisory Ministry",
+      "C": "The Chief Executive Officer, for all grade levels without exception",
+      "D": "No one -- disciplinary matters are simply suspended until a Board/Council is appointed"
+    },
+    "correct": "B",
+    "explanation": "Rule 170305: in the absence of the Boards/Councils, the Minister of the supervisory Ministry shall exercise such powers.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170305, who approves disciplinary recommendations in respect of Officers on SGL.06 and below?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The Board/Council exclusively, with no delegation permitted",
+      "C": "The Chief Executive Officer",
+      "D": "The supervising Ministry's Permanent Secretary"
+    },
+    "correct": "C",
+    "explanation": "Rule 170305: the Chief Executive Officer shall approve the recommendations of the appropriate Committee in respect of Officers on SGL.06 and below.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170306, membership of the JSC and SSC in Parastatals must include which representatives?",
+    "options": {
+      "A": "Only elected representatives from the officer's own trade union",
+      "B": "A representative of the Department of Human Resource Management of the supervising Ministry, and an observer from OHCSF",
+      "C": "A representative from a rival Parastatal in the same sector",
+      "D": "Only members appointed directly by the National Assembly"
+    },
+    "correct": "B",
+    "explanation": "Rule 170306: membership shall include the representative of the Department of Human Resource Management of the supervising Ministry and an observer from OHCSF.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170307, which chapter of the Public Service Rules guides Parastatals in addressing disciplinary matters?",
+    "options": {
+      "A": "Chapter 11",
+      "B": "Chapter 10 (Sections 2 to 6)",
+      "C": "Chapter 3",
+      "D": "Chapter 12"
+    },
+    "correct": "B",
+    "explanation": "Rule 170307: the provisions of Sections 2 to 6 in Chapter 10 of the Public Service Rules shall guide all Parastatals in addressing disciplinary matters.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170307, when Chapter 10 references the Federal Civil Service Commission or the Head of the Civil Service of the Federation, who performs that function in a Parastatal?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The Board/Council",
+      "C": "No substitute role exists -- those references simply do not apply to Parastatals",
+      "D": "The officer's own trade union representative"
+    },
+    "correct": "B",
+    "explanation": "Rule 170307: where reference is made to the Federal Civil Service Commission or HCSF, the Board/Councils shall perform such functions.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170307, who performs the function of Permanent Secretary within a Parastatal's disciplinary procedure?",
+    "options": {
+      "A": "The Chief Executive Officer of the Parastatal",
+      "B": "The Head of the Civil Service of the Federation personally",
+      "C": "The supervising Ministry's own Permanent Secretary",
+      "D": "The Board/Council Chairman"
+    },
+    "correct": "A",
+    "explanation": "Rule 170307: the Chief Executive Officer (CEO) of parastatals shall perform the functions of Permanent Secretary.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170308, do Paramilitary Services use the general Parastatal disciplinary procedures described in this Chapter?",
+    "options": {
+      "A": "Yes, but only for officers below SGL.06",
+      "B": "No -- the disciplinary procedures adopted in their respective Services shall apply instead",
+      "C": "Yes, Paramilitary Services follow the exact same procedure as every other Parastatal",
+      "D": "Paramilitary Services are entirely exempt from any disciplinary procedure"
+    },
+    "correct": "B",
+    "explanation": "Rule 170308: in the case of Paramilitary Services, the disciplinary procedures adopted in their respective Services shall also apply.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170309, why are observers from OHCSF and Supervising Ministries placed on relevant Staff Committees for Parastatals?",
+    "options": {
+      "A": "To directly manage the day-to-day operations of the Parastatal",
+      "B": "To replace the Chief Executive Officer when absent",
+      "C": "For monitoring and compliance with extant rules",
+      "D": "To cast the deciding vote on all appointment decisions"
+    },
+    "correct": "C",
+    "explanation": "Rule 170309: observers from OHCSF and Supervising Ministries are present for monitoring and compliance with extant rules.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170401(a), which section of the Public Service Rules on Leaving the Service applies to all Parastatals?",
+    "options": {
+      "A": "Section 1 in Chapter 12",
+      "B": "Section 3 in Chapter 10",
+      "C": "Section 4 in Chapter 13",
+      "D": "Section 9 in Chapter 2"
+    },
+    "correct": "D",
+    "explanation": "Rule 170401(a): the provisions of Section 9 in Chapter 2 of the Public Service Rules on Leaving the Service shall apply to all Parastatals.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 170501, through which channels must an officer of a Parastatal route a representation to the Head of Government?",
+    "options": {
+      "A": "Directly to the Federal Civil Service Commission, bypassing the Parastatal entirely",
+      "B": "Only through the officer's own trade union, with no further routing",
+      "C": "The petitioner's superior Officer, the Chief Executive Officer, the Board/Council, and the Supervising Ministry",
+      "D": "Directly to the Head of Government, bypassing all other channels"
+    },
+    "correct": "C",
+    "explanation": "Rule 170501: representations shall route through the petitioner's superior Officer, the Chief Executive Officer, the Board/Council, and the Supervising Ministry.",
+    "topic": "Chapter 17 \u2014 Appointments, Discipline, and Leaving the Service",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
