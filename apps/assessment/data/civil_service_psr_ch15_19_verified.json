@@ -1,0 +1,306 @@
+[
+  {
+    "stem": "Per Rule 150101, who appoints the Inventions and Awards Committee?",
+    "options": {
+      "A": "The Minister or Head of Extra-Ministerial Offices",
+      "B": "The National Planning Commission",
+      "C": "The Federal Civil Service Commission",
+      "D": "The Head of the Civil Service of the Federation"
+    },
+    "correct": "A",
+    "explanation": "Rule 150101: the Committee is appointed by the Minister or Head of Extra-Ministerial Offices.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150101, who chairs the Inventions and Awards Committee?",
+    "options": {
+      "A": "A Judicial or Legal Officer",
+      "B": "A representative of the Registrar of Patents and Designs",
+      "C": "The most senior serving inventor in the MDA",
+      "D": "The Permanent Secretary personally"
+    },
+    "correct": "A",
+    "explanation": "Rule 150101: the Committee consists of the Chairman, Judicial or Legal Officer, and such other persons as may be appointed.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150101, where is the notice of appointment of Committee members published?",
+    "options": {
+      "A": "In the Federal Government Gazette exclusively",
+      "B": "It is not published; it remains an internal document",
+      "C": "In a national daily newspaper",
+      "D": "On the website of each MDA"
+    },
+    "correct": "D",
+    "explanation": "Rule 150101: the notice of appointment of Committee members shall be published on the website of each MDA.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150103, when do the Committee's own procedural rules come into force?",
+    "options": {
+      "A": "Immediately upon the Committee's first meeting",
+      "B": "Only after they have been approved by the Minister or Head of Extra-Ministerial Offices",
+      "C": "Only after ratification by the Federal Civil Service Commission",
+      "D": "They never require any external approval"
+    },
+    "correct": "B",
+    "explanation": "Rule 150103: no such rules shall come into force until approved by the Minister or Head of Extra-Ministerial Offices.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150103, is an officer entitled to appear personally before the Committee?",
+    "options": {
+      "A": "Yes -- or be represented in such manner as may be approved",
+      "B": "Only with the express permission of the Head of Government",
+      "C": "Only if the officer is a GL.15 or above",
+      "D": "No, all proceedings are conducted entirely in writing"
+    },
+    "correct": "A",
+    "explanation": "Rule 150103: an Officer shall be entitled to appear personally before the Committee or be represented in such manner as may be approved.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150104, what must an officer who has made an invention do immediately?",
+    "options": {
+      "A": "Report it under Secret Cover to Government through his Permanent Secretary/Head of Extra-Ministerial Office",
+      "B": "File for a foreign patent before informing Government",
+      "C": "Publicly announce the invention to secure priority",
+      "D": "Sell the rights to a private company for evaluation"
+    },
+    "correct": "A",
+    "explanation": "Rule 150104: an Officer who has made an invention must immediately report it under Secret Cover to Government through his Permanent Secretary.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150104, with which body may an officer lodge an application for provisional protection of an invention?",
+    "options": {
+      "A": "The National Planning Commission",
+      "B": "The Federal Civil Service Commission",
+      "C": "The Registrar of Patents and Designs",
+      "D": "The Inventions and Awards Committee directly, bypassing the Registrar"
+    },
+    "correct": "C",
+    "explanation": "Rule 150104: the officer may lodge an application for provisional protection with the Registrar of Patents and Designs.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150104, who decides whether an invention shall be regarded as secret?",
+    "options": {
+      "A": "The inventing Officer, at their own discretion",
+      "B": "The Registrar of Patents and Designs, acting alone",
+      "C": "The Minister or Head of Extra-Ministerial Offices",
+      "D": "The Federal High Court"
+    },
+    "correct": "C",
+    "explanation": "Rule 150104: the Minister or Head of Extra-Ministerial Offices shall decide as expeditiously as possible whether the invention shall be regarded as secret.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150201, who decides whether an Officer shall be allowed controlling rights in a patent?",
+    "options": {
+      "A": "The Head of Government",
+      "B": "The officer's own Permanent Secretary, without further approval",
+      "C": "The Registrar of Patents and Designs",
+      "D": "The Inventions and Awards Committee, acting alone"
+    },
+    "correct": "A",
+    "explanation": "Rule 150201: as soon as practicable, the Head of Government shall decide whether the Officer shall or shall not be allowed controlling rights in the patent.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150201, if an invention is in all respects alien to the Officer's employment, what is he normally granted?",
+    "options": {
+      "A": "Only a one-time cash award, with no patent rights",
+      "B": "No rights at all, since it falls outside his duties",
+      "C": "Full rights in the invention",
+      "D": "Rights shared equally with the Registrar of Patents and Designs"
+    },
+    "correct": "C",
+    "explanation": "Rule 150201: where an invention is in all respects alien to the employment of the Officer, he shall normally be granted the full rights in such invention.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150201, pending the Head of Government's decision on controlling rights, to whom do all rights in the invention belong?",
+    "options": {
+      "A": "They remain legally unassigned until the patent is formally granted",
+      "B": "They belong jointly to the Officer and the Registrar of Patents and Designs",
+      "C": "They are deemed to belong to and be held in trust for the Government",
+      "D": "They belong entirely and irrevocably to the inventing Officer"
+    },
+    "correct": "C",
+    "explanation": "Rule 150201: pending the decision as to controlling rights, all rights in the invention shall be deemed to belong to and be held in trust for the Government.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150202(a), if the Head of Government allows the Officer controlling rights in the patent, who is responsible for the expenditure of taking out the patent?",
+    "options": {
+      "A": "The Government, in full",
+      "B": "The Registrar of Patents and Designs",
+      "C": "The Inventions and Awards Committee",
+      "D": "The Officer"
+    },
+    "correct": "D",
+    "explanation": "Rule 150202(a): the Officer shall be responsible for all expenditure in taking out the patent.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150202(b), which of the following may the Head of Government reserve as a condition when granting controlling rights?",
+    "options": {
+      "A": "The right to dismiss the Officer without further process",
+      "B": "A right of user of the invention free of royalty, and/or a share of any commercial proceeds",
+      "C": "The right to prevent the Officer from ever being promoted",
+      "D": "The right to reassign the patent to a foreign government"
+    },
+    "correct": "B",
+    "explanation": "Rule 150202(b): the Head of Government may reserve a right of user free of royalty and/or a right to share of commercial proceeds.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150202(c), may an Officer apply for an award even where Government has reserved rights under Rule 150202(b)?",
+    "options": {
+      "A": "Only with special Presidential dispensation",
+      "B": "Only if the reserved rights are later waived entirely",
+      "C": "No, reserving any rights automatically disqualifies the Officer from any award",
+      "D": "Yes -- the Officer may apply for an award whether or not any rights are reserved"
+    },
+    "correct": "D",
+    "explanation": "Rule 150202(c): the Officer may, whether any rights are reserved under sub-paragraph (b) or not, apply to the Invention and Awards Committee for an award.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150301, who determines whether an award shall be made and its amount?",
+    "options": {
+      "A": "The Head of Government, after investigation by the Invention and Awards Committee",
+      "B": "The officer's own Permanent Secretary, without further review",
+      "C": "The Registrar of Patents and Designs, acting alone",
+      "D": "The Federal Civil Service Commission"
+    },
+    "correct": "A",
+    "explanation": "Rule 150301: the question of an award and its amount shall be determined by the Head of Government after investigation by the Invention and Awards Committee.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150301(b), does reserving a royalty-free right of user to Government count against the Officer when fixing an award?",
+    "options": {
+      "A": "It automatically disqualifies the Officer from receiving any award at all",
+      "B": "No -- it shall not be taken into account, unless and until Government actually exercises that right",
+      "C": "Yes, but only for inventions made within the officer's first five years of service",
+      "D": "Yes, it is always deducted in full from any award amount"
+    },
+    "correct": "B",
+    "explanation": "Rule 150301(b): the reservation of a right of user free of royalty shall not be taken into account, but exercising that right is deemed a material change under Rule 150302.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150302, if circumstances materially change after an award has already been paid, can the original decision reduce the amount already paid?",
+    "options": {
+      "A": "Yes, if the Committee unanimously recommends a reduction",
+      "B": "Yes, the Head of Government may reduce it at any time without limit",
+      "C": "No -- the amount of an award which has been paid shall not be reduced",
+      "D": "Yes, but only by up to 50% of the original amount"
+    },
+    "correct": "C",
+    "explanation": "Rule 150302: in any modification of the original decision, the amount of an award which has been paid shall not be reduced.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150302, if an inventor considers a Head of Government award unacceptable, what recourse do they have?",
+    "options": {
+      "A": "None -- the Head of Government's decision is final and unappealable in every respect",
+      "B": "They may apply to the Court to determine whether the award is fair remuneration under the Patents and Designs Act",
+      "C": "They may only appeal to the Inventions and Awards Committee a second time",
+      "D": "They must resign from the Service before pursuing any further claim"
+    },
+    "correct": "B",
+    "explanation": "Rule 150302: where the inventor considers an award unacceptable, he may apply to the Court to determine whether it is a fair remuneration under the Patents and Designs Act.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 150303, does this Chapter affect an Officer's duties and liabilities under the Official Secrets Act?",
+    "options": {
+      "A": "Yes, it fully replaces the Official Secrets Act for inventions",
+      "B": "No -- nothing in this Chapter shall affect those duties and liabilities",
+      "C": "It applies only to officers who have never signed the Oath of Secrecy",
+      "D": "Yes, it suspends Official Secrets Act obligations during patent proceedings"
+    },
+    "correct": "B",
+    "explanation": "Rule 150303: nothing in this Chapter shall affect the duties and liabilities of any Officer under the provisions of the Official Secrets Act.",
+    "topic": "Chapter 15 \u2014 Innovations and Inventions",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
