@@ -1,0 +1,178 @@
+[
+  {
+    "stem": "Per Rule 160101, are officers generally entitled to compensation from public funds for loss of private property in circumstances arising outside of their service?",
+    "options": {
+      "A": "Yes, in full, regardless of the circumstances of the loss",
+      "B": "Yes, provided the loss occurred within Nigeria",
+      "C": "No -- and officers may consider insuring their own property against loss or damage instead",
+      "D": "Yes, but only up to 50% of the property's value"
+    },
+    "correct": "C",
+    "explanation": "Rule 160101: officers will not, in general, be entitled to compensation from public funds for loss of property arising outside their service; officers may consider insuring their property instead.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160201, where an officer dies in active service, what is paid to their legal representative or designated Next of Kin?",
+    "options": {
+      "A": "A one-time discretionary gift determined by the Permanent Secretary",
+      "B": "Only the officer's final month's unpaid salary",
+      "C": "Nothing, unless the death occurred while on official duty travel",
+      "D": "Their entitlements under the life insurance policy maintained under Section 8 of the Pension Reform Act, 2014"
+    },
+    "correct": "D",
+    "explanation": "Rule 160201: where an Officer dies in active service, the legal representative or designated Next of Kin is paid entitlements under the life insurance policy maintained under Section 8 of the Pension Reform Act, 2014.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160202(a), if an officer's private vehicle is damaged as a direct result of civil disturbance while being used for official duties, who accepts responsibility?",
+    "options": {
+      "A": "Government",
+      "B": "No one -- civil disturbance damage is explicitly excluded from any compensation",
+      "C": "The officer's private insurer exclusively, with no Government involvement",
+      "D": "The officer themselves, in full"
+    },
+    "correct": "A",
+    "explanation": "Rule 160202(a): if the Officer's private vehicle, whilst being used for official duties, is damaged as a direct result of civil disturbances, Government will accept responsibility for such damage.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160202(a), does 'official duties' for this purpose include the officer's ordinary journey between house and office?",
+    "options": {
+      "A": "Yes -- 'Official duties' is deemed to include journeys between house and office",
+      "B": "Only for officers on GL.15 and above",
+      "C": "Only if the officer has no other means of transport",
+      "D": "No, only formally assigned duty travel counts as official duties"
+    },
+    "correct": "A",
+    "explanation": "Rule 160202(a): for the purpose of this Rule, 'Official duties' will be deemed to include journeys between house and office.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160202(b), if an officer's private vehicle is damaged beyond repair in an accident during official duties, to what extent does Government accept responsibility?",
+    "options": {
+      "A": "Government accepts no responsibility in accident cases, only civil-disturbance cases",
+      "B": "The difference between the indemnity covered by the insurance and the cost of replacing the vehicle",
+      "C": "The full replacement cost of the vehicle, with no reference to the insurance indemnity",
+      "D": "Half of the vehicle's original purchase price"
+    },
+    "correct": "B",
+    "explanation": "Rule 160202(b): Government shall accept responsibility to the extent of the difference between the indemnity covered by the insurance and the cost of replacing the vehicle.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160203(a), how long after an officer is declared missing must they remain not found before a Board of Enquiry is set up?",
+    "options": {
+      "A": "Two years",
+      "B": "Three months",
+      "C": "Six months",
+      "D": "One year"
+    },
+    "correct": "D",
+    "explanation": "Rule 160203(a): where an Officer is reported missing and is not found within a period of one year from the date declared missing, a Board of Enquiry shall be set up.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160203(b), once a missing officer is presumed dead, what is the Next of Kin entitled to?",
+    "options": {
+      "A": "Only the Officer's outstanding unpaid salary for the final month",
+      "B": "Death benefit under the Group Life Assurance Scheme (GLA) and the total amount accrued to the Officer's Retirement Savings Account",
+      "C": "Only a one-time cash gift of unspecified amount",
+      "D": "Nothing, until the officer's body is formally recovered"
+    },
+    "correct": "B",
+    "explanation": "Rule 160203(b): the Next-of-Kin shall be entitled to death benefit under the GLA and the total amount accrued to the Officer's Retirement Savings Account.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160204, who pays the premium for the free health insurance cover an officer enjoys on official assignment outside Nigeria?",
+    "options": {
+      "A": "The officer's private insurer, with no Government involvement",
+      "B": "The host country's government",
+      "C": "The officer themselves, with later reimbursement",
+      "D": "Government"
+    },
+    "correct": "D",
+    "explanation": "Rule 160204: an Officer on official assignment outside Nigeria shall enjoy free health insurance cover for the duration of the assignment, with the premium at Government expense.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160205, who is responsible for arranging insurance during a stop-over en route to an officer's approved destination abroad?",
+    "options": {
+      "A": "Government, at full expense, identical to coverage at the final destination",
+      "B": "The Nigerian Mission in the stop-over country",
+      "C": "No insurance arrangement is required for a stop-over",
+      "D": "The Officer themselves, making their own arrangements"
+    },
+    "correct": "D",
+    "explanation": "Rule 160205: officers who make stop-over en route to an approved destination shall make their own arrangements for insurance from the place of stop-over.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160206, under which Act is compensation for fatal cases or injury in a workplace (or outside it) treated?",
+    "options": {
+      "A": "The Labour Act",
+      "B": "The Employees' Compensation Act 2010",
+      "C": "The Patents and Designs Act",
+      "D": "The Pension Reform Act 2014"
+    },
+    "correct": "B",
+    "explanation": "Rule 160206: compensation in fatal cases/injury in a work place or outside the normal working place shall be treated as provided for in the Employees' Compensation Act 2010.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 160206, within how long after the incident must compensation payment for a fatal case or injury be made?",
+    "options": {
+      "A": "Three months",
+      "B": "One year",
+      "C": "One month",
+      "D": "Six months"
+    },
+    "correct": "A",
+    "explanation": "Rule 160206: payment shall be within three months after the incidence.",
+    "topic": "Chapter 16 \u2014 Compensation and Insurance",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
