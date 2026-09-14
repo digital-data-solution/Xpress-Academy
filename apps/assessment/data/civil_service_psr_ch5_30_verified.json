@@ -1,0 +1,482 @@
+[
+  {
+    "stem": "Per Rule 050102, at what interval must Permanent Secretaries/Heads of Extra-Ministerial Offices render Progress Reports on officers on probation, measured from first appointment?",
+    "options": {
+      "A": "Every six months",
+      "B": "Every two months",
+      "C": "Every twelve months",
+      "D": "Every three months"
+    },
+    "correct": "A",
+    "explanation": "Rule 050102: Progress Reports are rendered at intervals of six months with effect from the date of first appointment.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050102, how far before an officer's probationary period (or second tour of contract) expires must the final Progress Report be rendered?",
+    "options": {
+      "A": "Not later than one week before",
+      "B": "Not later than two months before",
+      "C": "On the exact day it expires",
+      "D": "Not later than six months before"
+    },
+    "correct": "B",
+    "explanation": "Rule 050102: the final Progress Report shall be rendered not later than two months before the probationary period or second tour of contract is due to expire.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050104, the final Progress Report rendered after how many months of service must include a definite recommendation on confirmation, termination, or contract renewal?",
+    "options": {
+      "A": "24 months",
+      "B": "6 months",
+      "C": "21 months",
+      "D": "12 months"
+    },
+    "correct": "C",
+    "explanation": "Rule 050104: the final Progress Report rendered after 21 months' service shall include a definite recommendation.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 050101, what is one of the two core purposes of Progress Reports on officers on probation?",
+    "options": {
+      "A": "To calculate the officer's eventual pension entitlement",
+      "B": "To give an officer whose suitability is in doubt timely warning and a reasonable opportunity to correct their faults",
+      "C": "To set the officer's confirmation examination date",
+      "D": "To determine which Ministry the officer will be transferred to next"
+    },
+    "correct": "B",
+    "explanation": "Rule 050101: Progress Reports build a full record for judging suitability, and ensure an officer in doubt gets timely warning and a fair chance to improve.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050201, what system did the Performance Management System (PMS) replace for the Federal Public Service?",
+    "options": {
+      "A": "The Annual Performance Evaluation Report (APER)",
+      "B": "The Scheme of Service",
+      "C": "The Compulsory Confirmation Examination",
+      "D": "The Certificate of Service"
+    },
+    "correct": "A",
+    "explanation": "Rule 050201: the PMS shall replace the Annual Performance Evaluation Report (APER) for the Federal Public Service.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050202, besides measurable output (objectives and targets), what else does the PMS focus on?",
+    "options": {
+      "A": "The officer's disciplinary history only",
+      "B": "The officer's state of origin and indigeneship status",
+      "C": "Specified competencies -- the knowledge, skills, and personal attributes needed to deliver job tasks",
+      "D": "The officer's seniority and years of service alone"
+    },
+    "correct": "C",
+    "explanation": "Rule 050202(b): PMS focuses on measurable output as well as specified competencies (knowledge, skills, personal attributes) needed to deliver job tasks and meet targets.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050204, what is required of a Reporting Officer relative to the officer being reported on?",
+    "options": {
+      "A": "Any officer from a different department, to ensure objectivity",
+      "B": "A member of the Federal Civil Service Commission",
+      "C": "At least five years more service than them, regardless of grade",
+      "D": "At least one substantive grade above them, and their immediate Superior Officer"
+    },
+    "correct": "D",
+    "explanation": "Rule 050204: a Reporting Officer must be at least one substantive grade above the officer being reported on, and their immediate Superior Officer.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050205, how must the substance of an adverse comment on an officer's work or conduct be conveyed to them?",
+    "options": {
+      "A": "Only at the officer's own request",
+      "B": "Verbally only, with no written record kept",
+      "C": "Anonymously, without identifying the Reporting Officer",
+      "D": "In writing, in sympathetic terms, aimed at helping them overcome the shortcoming"
+    },
+    "correct": "D",
+    "explanation": "Rule 050205: adverse comments must be conveyed in writing, in sympathetic terms, with the objective of enabling the officer to overcome the shortcoming.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050206, who is responsible for furnishing performance reports on an officer who has been seconded to another Ministry/Extra-Ministerial Office?",
+    "options": {
+      "A": "The officer themselves, via self-appraisal only",
+      "B": "The Federal Civil Service Commission directly",
+      "C": "The Permanent Secretary/Head of the Extra-Ministerial Office to which the officer is seconded",
+      "D": "The officer's original Permanent Secretary, from before the secondment"
+    },
+    "correct": "C",
+    "explanation": "Rule 050206: when an officer is seconded elsewhere, the host Permanent Secretary/Head of Extra-Ministerial Office is responsible for furnishing the reports.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050301, the Performance Management Cycle runs on what annual timeline?",
+    "options": {
+      "A": "April to March of every year",
+      "B": "The Nigerian fiscal year, October to September",
+      "C": "Whatever twelve-month period each MDA independently chooses",
+      "D": "January to December of every year"
+    },
+    "correct": "D",
+    "explanation": "Rule 050301: the Performance Management Cycle shall run from January to December of every year.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050301, by when must Key Performance Indicators (KPIs) be drawn and agreed upon each year?",
+    "options": {
+      "A": "By January",
+      "B": "By December",
+      "C": "By June",
+      "D": "By March"
+    },
+    "correct": "A",
+    "explanation": "Rule 050301(ii): KPIs shall be drawn and agreed upon by January of each year, with final appraisal by December of the same year.",
+    "topic": "Chapter 5 \u2014 Probation Reports and PMS",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 050401, who is responsible for ensuring the successful implementation of the PMS across all levels of officers in a Federal Public Service institution?",
+    "options": {
+      "A": "The Federal Civil Service Commission Chairman",
+      "B": "Each individual employee's direct supervisor only",
+      "C": "The Accounting Officer",
+      "D": "The Director of Human Resource Management alone"
+    },
+    "correct": "C",
+    "explanation": "Rule 050401: the Accounting Officer of every Federal Public Service institution shall be responsible for ensuring the successful implementation of the PMS.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050401(iii), who prepares the Annual Performance Management Report for the Accounting Officer at the end of each cycle?",
+    "options": {
+      "A": "The Career Management Office",
+      "B": "The Performance Appraisal Committee",
+      "C": "The Director HRM",
+      "D": "The Head of the Civil Service of the Federation personally"
+    },
+    "correct": "C",
+    "explanation": "Rule 050401(iii): the Director HRM shall prepare Annual Performance Management Reports for the Accounting Officer at the end of each cycle.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050402, what document is Individual Performance Planning based on, capturing scope, responsibilities, and reporting lines?",
+    "options": {
+      "A": "The Certificate of Service",
+      "B": "The Job Description (JD)",
+      "C": "The Progress Report",
+      "D": "The Scheme of Service"
+    },
+    "correct": "B",
+    "explanation": "Rule 050402(ii): Job Descriptions capture detailed job content, and performance expectations are based on their contents.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050402, what form documents the agreed performance expectations, signed off by both supervisor and direct reports?",
+    "options": {
+      "A": "The Monthly Performance Dialogue Form",
+      "B": "The Performance Planning Form",
+      "C": "The End of Year Performance Appraisal Form",
+      "D": "The Quarterly Performance Review Form"
+    },
+    "correct": "B",
+    "explanation": "Rule 050402(iv): performance agreements are documented in the Performance Planning Form, signed off by both the supervisor and direct reports.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050403, what are ongoing appraiser/appraisee discussions throughout the year called?",
+    "options": {
+      "A": "Underperformance Review",
+      "B": "Performance Planning",
+      "C": "Performance Monitoring",
+      "D": "Performance Rewards"
+    },
+    "correct": "C",
+    "explanation": "Rule 050403: agreed tasks and targets are subject to regular reviews via appraiser/appraisee discussions, in a process called Performance Monitoring.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050403, what two forms capture Performance Monitoring discussions?",
+    "options": {
+      "A": "The Performance Planning Form and the Job Description",
+      "B": "The Monthly Performance Dialogue Form and the Quarterly Performance Review Form",
+      "C": "The Performance Improvement Plan and the End of Year Appraisal Form",
+      "D": "The Progress Report and the Certificate of Service"
+    },
+    "correct": "B",
+    "explanation": "Rule 050403(iv): Performance Monitoring discussions shall be captured in the Monthly Performance Dialogue Form and the Quarterly Performance Review Form.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050403, whose second opinion is required to endorse an employee's performance monitoring assessment?",
+    "options": {
+      "A": "The employee's own peers, via a 360-degree review",
+      "B": "The Federal Civil Service Commission",
+      "C": "The next direct supervisor above the immediate supervisor",
+      "D": "The employee themselves, via self-endorsement"
+    },
+    "correct": "C",
+    "explanation": "Rule 050403(iii): a second opinion and endorsement shall be required from the next direct supervisor.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050404, what form documents the outcomes of the performance appraisal process?",
+    "options": {
+      "A": "The Monthly Performance Dialogue Form",
+      "B": "The Performance Planning Form",
+      "C": "The Performance Improvement Plan",
+      "D": "The End of Year Performance Appraisal Form"
+    },
+    "correct": "D",
+    "explanation": "Rule 050404(iii): outcomes from the appraisal process shall be documented in the End of Year Performance Appraisal Form.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050405, when may performance incentives or bonuses actually be paid?",
+    "options": {
+      "A": "As soon as an employee's self-appraisal is submitted",
+      "B": "After the annual performance appraisal results are fully signed off by the Accounting Officer and the Head of the Civil Service of the Federation",
+      "C": "Immediately at the start of each Performance Management Cycle",
+      "D": "Automatically each January, regardless of appraisal results"
+    },
+    "correct": "B",
+    "explanation": "Rule 050405(iii): incentives or bonuses shall be paid after the annual results have been fully signed off by the Accounting Officers and the Head of the Civil Service of the Federation.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050405, what other rule-based system explicitly feeds into performance rewards and recognition, and is covered in a later PSR chapter?",
+    "options": {
+      "A": "The confirmation examination system in Chapter 3",
+      "B": "The leave system in Chapter 12",
+      "C": "The reward and recognition system prescribed in Chapter 6 of the PSR",
+      "D": "The discipline system in Chapter 10"
+    },
+    "correct": "C",
+    "explanation": "Rule 050405(ii): employee performance shall largely be used in determining rewards and recognition prescribed in Chapter 6 of the PSR.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050406, how is underperformance defined?",
+    "options": {
+      "A": "A score below 80% on the confirmation examination",
+      "B": "An appraisal outcome below average and/or not in line with expectations for the respective job role",
+      "C": "A failure to attend the annual end-of-year review meeting",
+      "D": "Any single missed deadline, regardless of overall performance"
+    },
+    "correct": "B",
+    "explanation": "Rule 050406(i): underperformance is defined as an appraisal outcome which is below average and/or not considered in line with expectations for the job role.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050406, what is the formal process adopted for serious underperformance?",
+    "options": {
+      "A": "Automatic withholding of the next increment",
+      "B": "Referral straight to the Discipline procedures of Chapter 10",
+      "C": "Immediate interdiction pending investigation",
+      "D": "The Performance Improvement Plan (PIP)"
+    },
+    "correct": "D",
+    "explanation": "Rule 050406(iv): in cases where performance issues are of a very serious nature, the Performance Improvement Plan (PIP) process shall be adopted.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050406, who is responsible for coordinating implementation of Performance Improvement Plan actions?",
+    "options": {
+      "A": "The Director HRM, in collaboration with the Appraisers",
+      "B": "The Federal Civil Service Commission, acting alone",
+      "C": "The employee's own Reporting Officer, without HRM involvement",
+      "D": "The Performance Appraisal Committee, before implementation begins"
+    },
+    "correct": "A",
+    "explanation": "Rule 050406(vii): implementation of PIP actions shall be coordinated by the Director HRM in collaboration with the Appraisers.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050406, who determines and shares the final decision on whether an employee is retained after a Performance Improvement Plan period?",
+    "options": {
+      "A": "The Federal Civil Service Commission's Examination Board",
+      "B": "The Performance Appraisal Committee",
+      "C": "The Director HRM, without further review",
+      "D": "The employee's immediate supervisor alone"
+    },
+    "correct": "B",
+    "explanation": "Rule 050406(viii): such actions or decisions shall be determined by the Performance Appraisal Committee and shared with the individual.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050501, what happens for an employee who was on approved absence for part of the performance period, upon their return to work?",
+    "options": {
+      "A": "They have a review session with their supervisor to set/review their performance targets for the rest of the year",
+      "B": "They are placed on a mandatory Performance Improvement Plan",
+      "C": "Their entire annual appraisal for that year is automatically waived",
+      "D": "They must restart the full Performance Management Cycle from January"
+    },
+    "correct": "A",
+    "explanation": "Rule 050501(i): employees away on approved absence for part of the period have a review session with their supervisor on return, to set/review targets for the rest of the year.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050601, beyond appointment, promotion, and discipline, what additional responsibility do the Senior Staff Committee and Junior Staff Committee hold?",
+    "options": {
+      "A": "Reviewing and managing outcomes of annual performance appraisals for staff",
+      "B": "Approving all secondments and transfers",
+      "C": "Setting Ministry-wide salary scales",
+      "D": "Conducting the confirmation examinations directly"
+    },
+    "correct": "A",
+    "explanation": "Rule 050601(i): the SSC and JSC, in addition to appointment/promotion/discipline, review and manage outcomes of annual performance appraisals.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050601, where are escalated/disputed performance appraisal cases referred for resolution?",
+    "options": {
+      "A": "The Appraisal Committee of OHCSF/FCSC",
+      "B": "The officer's original Reporting Officer, for a second opinion",
+      "C": "The Federal High Court",
+      "D": "The National Industrial Court"
+    },
+    "correct": "A",
+    "explanation": "Rule 050601(i): escalated cases would be referred to the Appraisal Committee of OHCSF/FCSC for resolution.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050702, where is the Central Coordinating Body responsible for monitoring the effectiveness of the performance management process domiciled?",
+    "options": {
+      "A": "The Office of the Head of the Civil Service of the Federation (OHCSF)",
+      "B": "The Office of the Accountant General of the Federation",
+      "C": "The Career Management Office",
+      "D": "The Federal Civil Service Commission"
+    },
+    "correct": "A",
+    "explanation": "Rule 050702: the Central Coordinating Body shall be domiciled in the OHCSF.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 050703, who owns all records generated during any phase of the annual Performance Management cycle?",
+    "options": {
+      "A": "The employee's Reporting Officer personally",
+      "B": "The individual employee whose performance is recorded",
+      "C": "Whichever MDA generated the record, exclusively",
+      "D": "The Federal Government of Nigeria"
+    },
+    "correct": "D",
+    "explanation": "Rule 050703: all such records are, and shall remain, the property of the Federal Government of Nigeria.",
+    "topic": "Chapter 5 \u2014 Performance Management Cycle",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
