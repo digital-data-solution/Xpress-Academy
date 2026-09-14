@@ -1,0 +1,498 @@
+[
+  {
+    "stem": "Per Rule 140101(a), how is an 'allowance' defined under the PSR?",
+    "options": {
+      "A": "A monetary benefit other than salary, granted to an Officer for a specific purpose",
+      "B": "A non-monetary benefit such as extra leave days",
+      "C": "A general annual bonus paid to all officers regardless of role",
+      "D": "A deduction from salary for disciplinary reasons"
+    },
+    "correct": "A",
+    "explanation": "Rule 140101(a): an allowance is a monetary benefit other than salary granted to an Officer for a specific purpose.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140101(b), which body periodically reviews all Allowances provided for in this Chapter?",
+    "options": {
+      "A": "The National Salaries, Incomes and Wages Commission",
+      "B": "The Office of the Accountant General of the Federation",
+      "C": "The Federal Civil Service Commission",
+      "D": "The National Planning Commission"
+    },
+    "correct": "A",
+    "explanation": "Rule 140101(b): allowances are subject to periodic review by the National Salaries, Incomes and Wages Commission, at OHCSF's instance.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140104, to which of the following is Kilometer Allowance explicitly payable?",
+    "options": {
+      "A": "Officers taking sabbatical leave abroad",
+      "B": "Officers receiving a Responsibility Allowance",
+      "C": "Officers attending a local training course under 28 days",
+      "D": "Newly appointed Officers reporting to their duty station"
+    },
+    "correct": "D",
+    "explanation": "Rule 140104: Kilometer Allowance is paid to newly appointed Officers reporting to duty, retiring officers, officers using their cars for responsibilities, and officers on transfer/posting.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140105, Disengagement Allowance is paid at what uniform rate of an officer's gross annual emolument?",
+    "options": {
+      "A": "10%",
+      "B": "25%",
+      "C": "50%",
+      "D": "2%"
+    },
+    "correct": "B",
+    "explanation": "Rule 140105: Disengagement allowance is paid at uniform rates of 25% of gross annual emolument, plus Kilometer Allowance.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140106, an officer posted to a new station away from their city of domicile is eligible for hotel accommodation (or an allowance in lieu) for how many days?",
+    "options": {
+      "A": "The first 28 days",
+      "B": "The first 14 days",
+      "C": "The first 90 days",
+      "D": "The first 7 days"
+    },
+    "correct": "A",
+    "explanation": "Rule 140106: officers are eligible for hotel accommodation for the first 28 days, or an allowance in lieu, as specified in the extant Circular.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140107, what is Duty Tour Allowance granted to cover?",
+    "options": {
+      "A": "Lodging and feeding expenses during approved official tours",
+      "B": "Tuition fees for a postgraduate degree",
+      "C": "The full cost of relocating an officer's household permanently",
+      "D": "Medical expenses incurred while on tour"
+    },
+    "correct": "A",
+    "explanation": "Rule 140107: Duty Tour Allowance is granted to enable Officers pay for lodging and feeding expenses during approved official tours.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140108(c), for local running, what percentage of Duty Tour Allowance is an officer granted, in addition to airport taxi at prevailing rates?",
+    "options": {
+      "A": "10%",
+      "B": "50%",
+      "C": "30%",
+      "D": "100%"
+    },
+    "correct": "C",
+    "explanation": "Rule 140108(c): for local running, Officers are granted 30% of their duty tour allowance in addition to airport taxi at prevailing rates.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140109(a), which of the following is explicitly listed as a circumstance making an officer eligible for estacode allowance?",
+    "options": {
+      "A": "Attending a local training course under 28 days",
+      "B": "Taking annual leave entirely within Nigeria",
+      "C": "Undertaking special duty abroad",
+      "D": "Receiving a Uniform Allowance"
+    },
+    "correct": "C",
+    "explanation": "Rule 140109(a)(i): officers are eligible for estacode allowance when they undertake special duty abroad, among other listed circumstances.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140109(b), whose approval is required for Overseas Duty Tour and estacode allowance for most public servants?",
+    "options": {
+      "A": "The Head of the Civil Service of the Federation, on the recommendation of the Permanent Secretary",
+      "B": "The Federal Civil Service Commission's Examination Board",
+      "C": "The officer's own discretion, with no further approval",
+      "D": "The National Planning Commission, acting alone"
+    },
+    "correct": "A",
+    "explanation": "Rule 140109(b): Overseas Duty Tour and estacode allowance shall be subject to HCSF approval, on the recommendation of the Permanent Secretary/Head of Extra-Ministerial Office.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140111(a), an officer on a duty visit outside Nigeria is eligible for air passage for whom, in the ordinary case?",
+    "options": {
+      "A": "Their entire immediate family, regardless of duration",
+      "B": "Themselves and their spouse, regardless of duration",
+      "C": "Themselves only",
+      "D": "No one -- air passage must be self-funded"
+    },
+    "correct": "C",
+    "explanation": "Rule 140111(a): air passage is for the officer alone, unless the duty lasts nine months or more, in which case the spouse may accompany at public expense.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140112(a), where a donor provides free boarding and lodging during training, what percentage of estacode is the officer entitled to for the whole duration of the course?",
+    "options": {
+      "A": "100 percent",
+      "B": "30 percent",
+      "C": "10 percent",
+      "D": "40 percent"
+    },
+    "correct": "C",
+    "explanation": "Rule 140112(a): where the donor provides free boarding and lodging, the officer is entitled to 10 percent of appropriate estacode for the whole duration of the course.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140112(b), where a donor provides free lodging alone (no boarding), what percentage of estacode is the officer paid to meet boarding and incidental expenses?",
+    "options": {
+      "A": "10 percent",
+      "B": "50 percent",
+      "C": "70 percent",
+      "D": "40 percent"
+    },
+    "correct": "D",
+    "explanation": "Rule 140112(b): where the donor provides free lodging alone, the officer is paid 40 percent of estacode to meet boarding and incidental expenses.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140114(b), under which of the following conditions is Warm Clothing Allowance NOT payable to an officer?",
+    "options": {
+      "A": "If the officer is on GL.17 or above",
+      "B": "If the duty/course takes place earlier than three years from when the officer last drew the allowance",
+      "C": "If the duty/course lasts longer than six months",
+      "D": "If the duty/course is undertaken in a tropical climate country"
+    },
+    "correct": "B",
+    "explanation": "Rule 140114(b)(iii): the allowance is not payable if the duty/course takes place earlier than three years from the date the officer last drew warm clothing allowance.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140115(b)(i), for a local course exceeding 28 days where board/lodging is not provided, what percentage of Duty Tour Allowance applies for the first 28 days?",
+    "options": {
+      "A": "10%",
+      "B": "100%",
+      "C": "50%",
+      "D": "30%"
+    },
+    "correct": "D",
+    "explanation": "Rule 140115(b)(i): for courses exceeding 28 days without provided board/lodging, officers get 30% of DTA for the first 28 days, and Circular-set rates thereafter.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140116, officers attending training at Federal Training Institutes or Management Development Institutes are entitled to training allowance at what percentage of normal Duty Tour Allowance?",
+    "options": {
+      "A": "100%",
+      "B": "50%",
+      "C": "30%",
+      "D": "70%"
+    },
+    "correct": "A",
+    "explanation": "Rule 140116: officers attending training at FTIs/MDIs are entitled to transportation allowance and training allowance at 100% of normal Duty Tour Allowance.",
+    "topic": "Chapter 14 \u2014 Travel, Duty, and Estacode Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140119(a), which functionaries' Chief Confidential Secretaries are covered by Responsibility Allowance?",
+    "options": {
+      "A": "Only those attached to the Federal Civil Service Commission",
+      "B": "Those attached to the President, Vice President, Senate President, Speaker, Chief Justice, SGF, HCSF, and Ministers",
+      "C": "Only those attached to state government officials",
+      "D": "Only those attached to individual Permanent Secretaries"
+    },
+    "correct": "B",
+    "explanation": "Rule 140119(a): Chief Confidential Secretaries attached to the President, Vice President, Senate President, Speaker, Chief Justice, SGF, HCSF, and Ministers are covered.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140121, Overtime Allowance is payable to officers on which grade levels?",
+    "options": {
+      "A": "Only GL.17",
+      "B": "GL.15 and above",
+      "C": "GL.14 and below",
+      "D": "All grade levels equally"
+    },
+    "correct": "C",
+    "explanation": "Rule 140121: Overtime Allowance shall be paid to Officers on GL.14 and below.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140122, what is the normal approved working time per week for purposes of computing Overtime?",
+    "options": {
+      "A": "9:00 am to 5:00 pm, Monday to Saturday",
+      "B": "8:00 am to 4:00 pm, Monday to Friday",
+      "C": "8:00 am to 6:00 pm, Monday to Friday",
+      "D": "7:00 am to 3:00 pm, Monday to Friday"
+    },
+    "correct": "B",
+    "explanation": "Rule 140122: the normal approved working time is 8:00 am to 4:00 pm from Monday to Friday, excluding Saturdays, Sundays and Public holidays.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140125, overtime on normal working days is paid at what rate of the monthly consolidated salary, subject to a maximum of how many hours per month?",
+    "options": {
+      "A": "1.5%, subject to a maximum of 30 hours",
+      "B": "0.7%, subject to a maximum of 45 hours",
+      "C": "2%, subject to a maximum of 20 hours",
+      "D": "0.7%, subject to a maximum of 60 hours"
+    },
+    "correct": "B",
+    "explanation": "Rule 140125: overtime on normal working days is paid at 0.7% of monthly consolidated salary, subject to a maximum of 45 hours in one month.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140127, at what rate is time worked on public holidays paid, relative to the normal overtime rate?",
+    "options": {
+      "A": "1.5 times the normal overtime rate",
+      "B": "Double the normal overtime rate",
+      "C": "The same as the normal overtime rate",
+      "D": "Three times the normal overtime rate"
+    },
+    "correct": "B",
+    "explanation": "Rule 140127: time worked on public holidays shall be paid at double the normal overtime rate (weekends are paid at 1.5 times the normal rate), but must be approved by the Accounting Officer/Chief Executive.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140128, on what basis is overtime paid to an officer eligible for overtime who is duly authorized to act in a post that attracts overtime payment?",
+    "options": {
+      "A": "On his full acting emolument",
+      "B": "On half of his acting emolument",
+      "C": "Overtime is not payable at all during an acting appointment",
+      "D": "On his substantive emolument only, regardless of the acting post"
+    },
+    "correct": "A",
+    "explanation": "Rule 140128: when an eligible Officer is duly authorized to act in a post attracting overtime payment, he will be paid overtime on his full acting emolument.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140130, is Acting Allowance paid if the period of acting appointment does not extend beyond one month?",
+    "options": {
+      "A": "Yes, at the full 100% rate regardless of duration",
+      "B": "No -- no allowance shall be paid if the acting period does not extend beyond one month",
+      "C": "Yes, at half the normal rate for periods under one month",
+      "D": "Only if the officer specifically requests it in writing"
+    },
+    "correct": "B",
+    "explanation": "Rule 140130: no allowances shall be paid if the period of acting appointment does not extend beyond one month.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140131, when an officer is recommended to act in a grade immediately higher than their own, what rate of Acting Allowance are they entitled to?",
+    "options": {
+      "A": "75 percent rate",
+      "B": "25 percent rate",
+      "C": "100 percent rate",
+      "D": "50 percent rate"
+    },
+    "correct": "C",
+    "explanation": "Rule 140131: an officer acting in a grade immediately higher than their own is regarded as fully performing the higher post's duties and is entitled to 100 percent rate of acting allowance.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140130, is Acting Allowance affected by an officer's continuous absence due to ill-health beyond 14 days during the acting period?",
+    "options": {
+      "A": "Yes, but only if the absence exceeds 90 days",
+      "B": "No, ill-health absence has no effect on the calculation of Acting Allowance",
+      "C": "No, Acting Allowance is entirely unaffected by any form of absence",
+      "D": "Yes -- days in excess of 14 days of continuous ill-health absence are excluded from the allowance period"
+    },
+    "correct": "D",
+    "explanation": "Rule 140130: Acting Allowance is paid except for any days in excess of 14 days of continuous absence from duty on account of ill-health.",
+    "topic": "Chapter 14 \u2014 Responsibility, Overtime, and Acting Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140134, when is Resettlement Allowance paid?",
+    "options": {
+      "A": "Only to officers on their very first appointment",
+      "B": "Only to officers retiring from the Service",
+      "C": "Where an officer is posted or transferred and it is established that their living condition has been disturbed",
+      "D": "Automatically to every officer at the end of each calendar year"
+    },
+    "correct": "C",
+    "explanation": "Rule 140134: Resettlement allowance shall be paid where an Officer is posted or transferred and it is established or confirmed that his living condition has been disturbed.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140135, which of the following is explicitly included in the definition of 'transfer' for Resettlement Allowance purposes?",
+    "options": {
+      "A": "An officer's own resignation from the Service",
+      "B": "A change of job title with no change of station",
+      "C": "A promotion within the same duty post",
+      "D": "Transfer or secondment to the Service of another Government in the Federation"
+    },
+    "correct": "D",
+    "explanation": "Rule 140135(ii): transfer includes secondment to the Service of another Government in the Federation, in addition to station-to-station transfer during a tour of Service.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140136, at what rate of an officer's annual total emolument is Resettlement Allowance paid?",
+    "options": {
+      "A": "25%",
+      "B": "5%",
+      "C": "10%",
+      "D": "2%"
+    },
+    "correct": "D",
+    "explanation": "Rule 140136: Resettlement Allowance shall be paid at the rate of 2% of an Officer's annual total emolument.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140137, what allowance is an officer entitled to if their transfer is made at their own request?",
+    "options": {
+      "A": "Neither transport nor resettlement allowance",
+      "B": "The full resettlement allowance, identical to an involuntary transfer",
+      "C": "Only transport allowance, not resettlement allowance",
+      "D": "Double the normal resettlement allowance, as compensation for self-initiated relocation"
+    },
+    "correct": "C",
+    "explanation": "Rule 140137: an Officer whose transfer is at his own request shall be entitled to only transport allowance and not resettlement allowance.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140143, Shift Duty Allowance for non-Health-professional officers is paid at what rate of their monthly salary?",
+    "options": {
+      "A": "25%",
+      "B": "15%",
+      "C": "10%",
+      "D": "5%"
+    },
+    "correct": "B",
+    "explanation": "Rule 140143: officers who perform shift duties and are not Health professionals shall be paid shift duty allowance at the rate of 15% of their monthly salaries.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140144, what is the annual rate of the Non-Accident Bonus paid to eligible drivers?",
+    "options": {
+      "A": "\u20a625,000.00",
+      "B": "\u20a6100,000.00",
+      "C": "\u20a610,000.00",
+      "D": "\u20a650,000.00"
+    },
+    "correct": "D",
+    "explanation": "Rule 140144: non-accident bonus shall be paid at the rate of \u20a650,000.00 per annum.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 140144, for how long must a driver have been driving an assigned vehicle in a year to qualify for the Non-Accident Bonus?",
+    "options": {
+      "A": "The entire twelve months, with no exceptions",
+      "B": "Not less than six months",
+      "C": "Not less than one month",
+      "D": "Not less than three months"
+    },
+    "correct": "B",
+    "explanation": "Rule 140144: the bonus is for drivers with vehicle assigned who have been driving for a period of not less than six months in a year.",
+    "topic": "Chapter 14 \u2014 Resettlement, Teaching, and Other Allowances",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
