@@ -1,0 +1,306 @@
+[
+  {
+    "stem": "Per Rule 090101, what is a defining feature of a 'virtual meeting/engagement' under the PSR?",
+    "options": {
+      "A": "It requires prior written approval from the Federal Civil Service Commission for every instance",
+      "B": "It can only take place using a Government-issued laptop",
+      "C": "Officers communicate effectively via pre-scheduled teleconference, web conference, or video conference, regardless of physical location",
+      "D": "It must always involve at least 10 participants from different MDAs"
+    },
+    "correct": "C",
+    "explanation": "Rule 090101: virtual meetings/engagements occur when Officers communicate effectively during pre-scheduled teleconferences, web conferences, or video conferences, irrespective of physical location.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090102, what is the main rationale for implementing virtual meetings/engagements in the Public Service?",
+    "options": {
+      "A": "To reduce the total number of Public Service employees required",
+      "B": "To replace in-person meetings permanently in all circumstances",
+      "C": "To ensure employees can respond to work demands remotely, keeping MDAs functioning with minimal disruption during a pandemic/emergency",
+      "D": "To cut travel allowance costs as the primary objective"
+    },
+    "correct": "C",
+    "explanation": "Rule 090102: implementation is to ensure employees respond to work demands remotely, so MDAs continue functioning adequately with minimal disruption during a pandemic/emergency.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090103, which of the following is explicitly listed as a scenario this chapter covers?",
+    "options": {
+      "A": "Promotion interviews for Permanent Secretary appointment",
+      "B": "Confirmation examinations under Chapter 3",
+      "C": "Disciplinary hearings under Chapter 10",
+      "D": "Bilateral negotiation with other countries"
+    },
+    "correct": "D",
+    "explanation": "Rule 090103(viii): bilateral negotiation with other countries is explicitly listed among the scenarios this chapter covers.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090103, are meetings of Boards of Federal Government Parastatals/Agencies covered by this chapter's scope?",
+    "options": {
+      "A": "No, this chapter applies only to Ministries directly",
+      "B": "Yes, they are explicitly listed",
+      "C": "Only if the meeting is held outside Nigeria",
+      "D": "No, only Statutory Commission Boards are covered"
+    },
+    "correct": "B",
+    "explanation": "Rule 090103(iii): meetings of Boards of all Federal Government Parastatals/Agencies are explicitly listed.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090104, which guidelines must all high-level intra- and inter-governmental meetings be conducted in line with?",
+    "options": {
+      "A": "Guidelines prescribed from time to time by the Federal Ministry of Communications and Digital Economy",
+      "B": "There are no specific guidelines -- discretion is left entirely to each MDA",
+      "C": "Guidelines issued by the Federal Civil Service Commission",
+      "D": "Guidelines issued by the Office of the Accountant General of the Federation"
+    },
+    "correct": "A",
+    "explanation": "Rule 090104: due to the sensitive nature of information, high-level meetings shall be conducted per Guidelines prescribed by the Federal Ministry of Communications and Digital Economy.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090105, what must Officers follow when hosting or joining virtual engagements?",
+    "options": {
+      "A": "No fixed protocol -- each meeting sets its own rules independently",
+      "B": "Only the rules that apply to in-person meetings",
+      "C": "Whatever informal practice their own Ministry happens to prefer",
+      "D": "The approved protocol and standards for virtual engagements outlined in Section 2"
+    },
+    "correct": "D",
+    "explanation": "Rule 090105: Officers shall follow the approved protocol and be guided by the standards for virtual engagements outlined in Section 2.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090201, who must approve a virtual meeting's predefined agenda?",
+    "options": {
+      "A": "The Federal Ministry of Communications and Digital Economy, for every meeting",
+      "B": "The Secretary alone, without further approval",
+      "C": "The Chairperson",
+      "D": "Each individual participant, by unanimous consent"
+    },
+    "correct": "C",
+    "explanation": "Rule 090201: there shall be a predefined agenda for every virtual meeting, approved by the Chairperson and shared via official emails.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090201, how is the approved meeting agenda shared with participants?",
+    "options": {
+      "A": "It is not shared in advance -- participants receive it only on request",
+      "B": "Only verbally, during the meeting itself",
+      "C": "Via official emails, ahead of the scheduled meeting",
+      "D": "Via a public social media announcement"
+    },
+    "correct": "C",
+    "explanation": "Rule 090201: the agenda is shared with all participants ahead of the scheduled meeting via official emails.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090202, whose responsibility is it to confirm participant availability ahead of a virtual meeting?",
+    "options": {
+      "A": "Each participant's own Permanent Secretary",
+      "B": "The Secretary of the meeting",
+      "C": "The Chairperson alone",
+      "D": "The Federal Civil Service Commission"
+    },
+    "correct": "B",
+    "explanation": "Rule 090202: the Secretary of the meeting must confirm availability of participants ahead of the meeting.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090203, how far in advance of the meeting must approved materials and reference documents be circulated to participants?",
+    "options": {
+      "A": "There is no minimum lead time specified",
+      "B": "At least 24 hours before the meeting",
+      "C": "At least one week before the meeting",
+      "D": "At least 48 hours before the meeting"
+    },
+    "correct": "B",
+    "explanation": "Rule 090203: materials shall be approved by the Chairperson and circulated to participants at least 24 hours before the meeting.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090204, which of the following is an explicit ground rule during virtual meetings?",
+    "options": {
+      "A": "Sidebar conversations are permitted as long as they are kept brief",
+      "B": "Speaker phones must always remain unmuted for transparency",
+      "C": "No multi-tasking, such as running e-mail or handling files while participating",
+      "D": "Participants may remain anonymous and are not required to identify themselves"
+    },
+    "correct": "C",
+    "explanation": "Rule 090204(ii): no multi-tasking (e.g., running e-mail or treating files while participating in virtual meetings) is an explicit ground rule.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090204, what must participants do when they speak during a virtual meeting?",
+    "options": {
+      "A": "Identify themselves",
+      "B": "Remain muted at all times, even while speaking",
+      "C": "Wait for explicit permission from the Federal Ministry of Communications and Digital Economy",
+      "D": "Submit their comment in writing only, never verbally"
+    },
+    "correct": "A",
+    "explanation": "Rule 090204(iii): participants must identify themselves when they speak.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090204, for meetings expected to last beyond one hour, what break is required?",
+    "options": {
+      "A": "No break is required, regardless of duration",
+      "B": "A mandatory 1-hour break",
+      "C": "A 5-minute break only",
+      "D": "A 10-15 minute break"
+    },
+    "correct": "D",
+    "explanation": "Rule 090204(v): where meetings are expected to last beyond one hour, a 10-15 minute break shall be observed.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090204, which body's policy should guide all activities during virtual meetings?",
+    "options": {
+      "A": "The Ministry of Communications and Digital Economy",
+      "B": "The Office of the Head of the Civil Service of the Federation",
+      "C": "The National Planning Commission",
+      "D": "The Federal Civil Service Commission"
+    },
+    "correct": "A",
+    "explanation": "Rule 090204(vi): the policy on virtual engagements by the Ministry of Communications and Digital Economy should guide all activities during virtual meetings.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090205, what is required of Officers regarding their appearance when participating in a meeting from home?",
+    "options": {
+      "A": "They must dress formally",
+      "B": "Officers must wear their MDA's uniform, if one exists",
+      "C": "Casual dress is explicitly encouraged to promote comfort",
+      "D": "No dress code applies when working from a non-work environment"
+    },
+    "correct": "A",
+    "explanation": "Rule 090205(i): Appearance -- participants must dress formally.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090205, what kind of residential work space is expected when participating in meetings from home?",
+    "options": {
+      "A": "A public co-working space, to ensure accountability",
+      "B": "A dedicated home office registered with the officer's MDA",
+      "C": "Any location is acceptable, with no expectations set",
+      "D": "The most convenient and serene environment available"
+    },
+    "correct": "D",
+    "explanation": "Rule 090205(ii): participating in meetings from home shall be done in the most convenient and serene environment.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090206, for ad-hoc meetings, what is the Secretary's first step in reaching attendees?",
+    "options": {
+      "A": "Reach out to all attendees via phone calls to inform them of the meeting",
+      "B": "Immediately circulate the meeting link with no prior notice",
+      "C": "Post a public notice on the MDA's website",
+      "D": "Wait for attendees to check their email independently"
+    },
+    "correct": "A",
+    "explanation": "Rule 090206: for ad-hoc meetings, the Secretary shall reach out to all attendees via phone calls, informing them of the meeting, after which the link, agenda and documents are circulated.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090206, what is circulated to attendees only after the initial phone-call notification for an ad-hoc meeting?",
+    "options": {
+      "A": "Nothing further -- the phone call alone is sufficient",
+      "B": "The link to the meeting, agenda, and relevant documents",
+      "C": "A formal written invitation requiring a physical signature",
+      "D": "Only the meeting link, with agenda and documents withheld"
+    },
+    "correct": "B",
+    "explanation": "Rule 090206: after the phone calls, the link to the meeting, agenda and relevant documents shall be circulated.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 090207, when Officers use personal devices to connect to virtual meetings, what governs their use?",
+    "options": {
+      "A": "No specific guidelines apply -- personal devices are used entirely at each officer's own discretion",
+      "B": "A blanket prohibition on using any personal device for official engagements",
+      "C": "The officer's own device manufacturer's terms of service, exclusively",
+      "D": "Guidelines on the use of personal devices for official engagement, issued by the Federal Ministry of Communications and Digital Economy"
+    },
+    "correct": "D",
+    "explanation": "Rule 090207: personal devices shall be used in line with guidelines on the use of personal devices for official engagement, issued by the Federal Ministry of Communications and Digital Economy.",
+    "topic": "Chapter 9 \u2014 Virtual Meetings and Engagements",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
