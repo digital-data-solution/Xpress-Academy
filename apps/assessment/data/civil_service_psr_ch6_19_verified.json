@@ -1,0 +1,306 @@
+[
+  {
+    "stem": "Per Rule 060101, what does 'Reward' specifically refer to in this chapter?",
+    "options": {
+      "A": "A cash bonus paid alongside every annual increment",
+      "B": "MDA or Presidential award of gifts, certificates, and/or letters of commendation to deserving officers",
+      "C": "A one-time salary grade advancement",
+      "D": "A certificate of merit given automatically after 10 years of service"
+    },
+    "correct": "B",
+    "explanation": "Rule 060101: Reward refers to MDAs or Presidential award of gifts, certificates and/or letter of commendation to deserving Officers.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060101, 'Recognition' specifically refers to a certificate of merit and/or gifts given to officers who have served meritoriously for which milestone years?",
+    "options": {
+      "A": "15, 25, or 35 years",
+      "B": "10, 20, or 30 years",
+      "C": "5, 10, or 15 years",
+      "D": "20, 30, or 40 years"
+    },
+    "correct": "A",
+    "explanation": "Rule 060101: Recognition refers to certificate of merit and/or gifts given to Officers who have served meritoriously for a period of 15, 25 or 35 years.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060102, what is the Reward and Recognition Scheme (R&RS) primarily described as?",
+    "options": {
+      "A": "A mandatory disciplinary tracking system",
+      "B": "A pension top-up scheme for long-serving officers",
+      "C": "A motivational tool deployed to improve work ethic and performance in the Service",
+      "D": "A replacement for the Annual Performance Evaluation Report"
+    },
+    "correct": "C",
+    "explanation": "Rule 060102: the R&RS is a motivational tool deployed to improve work ethic and performance in the Service.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060104, on what basis must the recipient of any R&RS award be selected?",
+    "options": {
+      "A": "A random ballot among all eligible officers",
+      "B": "Being considered the best on the basis of outstanding performance and exemplary conduct, per the approved R&RS criteria",
+      "C": "Being personally nominated by the Head of the Civil Service of the Federation alone",
+      "D": "Strict seniority, with the longest-serving eligible officer automatically selected"
+    },
+    "correct": "B",
+    "explanation": "Rule 060104: the recipient must have been considered the best on the basis of outstanding performance of duties and exemplary conduct as outlined in the approved R&RS.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Where are the detailed R&RS award criteria formally set out, per Rule 060104?",
+    "options": {
+      "A": "In the annual Federal Budget appropriation act",
+      "B": "In each officer's Progress Report",
+      "C": "In the officer's individual employment contract",
+      "D": "In the approved Rewards and Recognition Scheme (R&RS), attached as an annexure to the PSR"
+    },
+    "correct": "D",
+    "explanation": "Rule 060104: criteria are as outlined in the approved Rewards and Recognition Scheme (R&RS) attached as annexure to the PSR.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060105, which of these is listed under Category A -- Service-wide Awards & Recognition Scheme?",
+    "options": {
+      "A": "The Mentorship Award",
+      "B": "The Ethic & Professionalism Award",
+      "C": "The Permanent Secretary Exemplary Conduct Award",
+      "D": "The Presidential Distinguished Public Service Career Award"
+    },
+    "correct": "D",
+    "explanation": "Rule 060105(A)(i): the Presidential Distinguished Public Service Career Award is a Service-wide (Category A) award.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060105, which category of awards includes the 'Honourable Minister Unique Act Award' and 'Bravery Awards'?",
+    "options": {
+      "A": "Category C -- MDAs Awards & Recognition Scheme",
+      "B": "Category D -- Departmental Awards & Recognition Scheme",
+      "C": "Category B -- Sectorial MDAs Awards and Recognition",
+      "D": "Category A -- Service-wide Awards & Recognition Scheme"
+    },
+    "correct": "A",
+    "explanation": "Rule 060105(C): the Honourable Minister Unique Act Award and Bravery Awards are listed under Category C, MDAs Awards & Recognition Scheme.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060105, which awards are listed under Category D -- Departmental Awards & Recognition Scheme?",
+    "options": {
+      "A": "The Public Service Excellence Award and the Sports Achievement Award",
+      "B": "The Ethic & Professionalism Award and the Mentorship Award",
+      "C": "The Hon. Minister Commendation Award and the Sector Merit Award",
+      "D": "The Long Service Merit Award and Recognition of Retired Civil Servants"
+    },
+    "correct": "B",
+    "explanation": "Rule 060105(D): Category D lists the Ethic & Professionalism Award and the Mentorship Award.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060105, which category covers Sectorial MDA-level awards such as the 'Hon. Minister Commendation Award' and recognition for the best-serving sectoral CEO?",
+    "options": {
+      "A": "Category A -- Service-wide Awards & Recognition Scheme",
+      "B": "Category B -- Sectorial MDAs Awards and Recognition",
+      "C": "Category C -- MDAs Awards & Recognition Scheme",
+      "D": "Category D -- Departmental Awards & Recognition Scheme"
+    },
+    "correct": "B",
+    "explanation": "Rule 060105(B) lists these under Sectorial MDAs Awards and Recognition.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060105, is 'Recognition of Retired Permanent Secretaries' listed under Service-wide (Category A) awards, or MDA-level (Category C) awards?",
+    "options": {
+      "A": "Sectorial, Category B",
+      "B": "Departmental, Category D",
+      "C": "MDA-level, Category C",
+      "D": "Service-wide, Category A"
+    },
+    "correct": "D",
+    "explanation": "Rule 060105(A)(vi): Recognition of Retired Permanent Secretaries is listed under Category A, Service-wide Awards.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060106, within what timeframe must each MDA make its Awards and Recognitions?",
+    "options": {
+      "A": "Strictly once every calendar quarter",
+      "B": "Within thirty days of the officer's retirement",
+      "C": "Only during the officer's confirmation examination window",
+      "D": "Within the timeframes prescribed in the R&RS"
+    },
+    "correct": "D",
+    "explanation": "Rule 060106: each MDA shall make such Awards and Recognitions within the time frames prescribed in the R&RS.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060107, through what mechanism are the specific selection criteria for each award category communicated?",
+    "options": {
+      "A": "An annual act of the National Assembly",
+      "B": "Individual verbal briefings from each officer's Permanent Secretary",
+      "C": "A fixed annex permanently printed within the PSR text itself",
+      "D": "Circulars from time to time from the Office of the Head of the Civil Service of the Federation"
+    },
+    "correct": "D",
+    "explanation": "Rule 060107: specific criteria shall be communicated through circulars from time to time from the OHCSF.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060108, which of these is explicitly listed as a possible form of reward under the R&RS?",
+    "options": {
+      "A": "An automatic one-grade-level promotion",
+      "B": "A permanent waiver of the confirmation examination requirement",
+      "C": "Sponsorship for attendance of a Masterclass or local training programme",
+      "D": "An automatic increase in annual leave entitlement"
+    },
+    "correct": "C",
+    "explanation": "Rule 060108: rewards include certificates, commendation letters, plaques/trophies, medals, cash gifts, and sponsorship for Masterclasses and local training programmes, among others.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060108, besides cash gifts and certificates, what international opportunity is explicitly listed as a possible reward?",
+    "options": {
+      "A": "Permanent relocation to a Nigerian diplomatic mission abroad",
+      "B": "A tour of the international administrative headquarters of one of the funding Agencies",
+      "C": "A guaranteed secondment to the United Nations",
+      "D": "Automatic enrollment in a foreign university's degree programme"
+    },
+    "correct": "B",
+    "explanation": "Rule 060108: other rewards include a tour of international Administrative headquarters of one of the funding Agencies, and sponsorship to attend a relevant foreign short course.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060109, what is provided by OHCSF to ensure transparency and fairness in selecting award winners?",
+    "options": {
+      "A": "A public opinion poll open to all citizens",
+      "B": "A single national ranking of all civil servants by seniority",
+      "C": "A selection guidelines handbook outlining the criteria for specific awards and their corresponding weightings",
+      "D": "A lottery system administered by the Federal Civil Service Commission"
+    },
+    "correct": "C",
+    "explanation": "Rule 060109: selection guidelines handbook, outlining the criteria for specific awards and corresponding weightings, are provided by OHCSF.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060109, what constitutes the Selection Committees for each category of awards?",
+    "options": {
+      "A": "They are elected annually by all serving civil servants",
+      "B": "There are no formal Selection Committees -- awards are decided by MDA heads alone",
+      "C": "They consist solely of the President and the Head of the Civil Service",
+      "D": "They are constituted in line with the Guidelines for Recognition and Reward System"
+    },
+    "correct": "D",
+    "explanation": "Rule 060109: Selection Committees for each category of Awards are to be constituted in line with the Guidelines for Recognition and Reward System.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060110, how often is the Public Service Awards Ceremony held to recognize Service-Wide Awardees?",
+    "options": {
+      "A": "Only in years without a general election",
+      "B": "Annually",
+      "C": "Every two years",
+      "D": "Once every five years"
+    },
+    "correct": "B",
+    "explanation": "Rule 060110: the Public Service Awards Ceremony shall be held annually to recognize and celebrate Service-Wide Awardees.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060110, where is information about the R&RS, including the names of awardees, published?",
+    "options": {
+      "A": "It is not published anywhere, for confidentiality reasons",
+      "B": "In the Federal Government Gazette only",
+      "C": "In the monthly Service Welfare Newsletter",
+      "D": "On the front page of a national daily newspaper"
+    },
+    "correct": "C",
+    "explanation": "Rule 060110: information regarding the R&RS, including names of the various Awardees, shall be published in the monthly Service Welfare Newsletter.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 060103, what is the Reward and Recognition System meant to serve as, in relation to other aspects of people management?",
+    "options": {
+      "A": "A one-off event unconnected to ongoing HR practice",
+      "B": "A fully independent system with no link to performance appraisal results",
+      "C": "A replacement for the disciplinary process",
+      "D": "An enabler for all other strands of effective people management, in an integrated fashion"
+    },
+    "correct": "D",
+    "explanation": "Rule 060103: implementation of the R&RS links rewards and recognition to measurable performance as an enabler for all other strands of effective people management, in an integrated fashion.",
+    "topic": "Chapter 6 \u2014 Reward and Recognition",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
