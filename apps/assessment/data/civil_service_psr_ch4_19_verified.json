@@ -1,0 +1,306 @@
+[
+  {
+    "stem": "Per Rule 040102, from what date is an officer's emolument on first appointment generally paid?",
+    "options": {
+      "A": "From the date the officer is placed on the IPPIS platform",
+      "B": "From the date of the appointment letter",
+      "C": "From the first day of the following calendar month",
+      "D": "From the date the officer assumes duty"
+    },
+    "correct": "D",
+    "explanation": "Rule 040102: on first appointment, emolument shall as a general rule be paid as from the date of assumption of duty.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040102, within how long of assuming duty must an officer be placed on the IPPIS platform?",
+    "options": {
+      "A": "One month",
+      "B": "One year",
+      "C": "Six months",
+      "D": "Two months"
+    },
+    "correct": "D",
+    "explanation": "Rule 040102: all officers shall be placed on the IPPIS platform within two months of assumption of duty.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040103, from what date does a staff member transferred from another scheduled service become eligible for the emolument attached to their new office?",
+    "options": {
+      "A": "From the date the transfer decision is signed",
+      "B": "From the date they assume duty in the new office",
+      "C": "From the date of their original first appointment to the Public Service",
+      "D": "From the first day of the following incremental year"
+    },
+    "correct": "B",
+    "explanation": "Rule 040103: a staff on transfer is eligible for the emolument attached to the new office with effect from the date they assume duty.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040104(i), where an officer is promoted to a grade level that does not overlap their old grade level, where are they placed on the new salary scale?",
+    "options": {
+      "A": "At the maximum point of the new salary grade level",
+      "B": "At the minimum point of the new salary grade level",
+      "C": "At the same numeric point they held on the old grade level",
+      "D": "At the midpoint between the old and new grade levels"
+    },
+    "correct": "B",
+    "explanation": "Rule 040104(i): if the officer is promoted to a grade level that does not overlap the old one, they are placed at the minimum point of the new salary grade level.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040104(ii), if an officer's former emolument is already higher than the minimum point of their new grade level, where are they placed?",
+    "options": {
+      "A": "At exactly their former emolument, frozen until the next incremental date",
+      "B": "At the maximum point of the new grade level",
+      "C": "At the next point higher than their former emolument, after accounting for the increment they would otherwise have earned",
+      "D": "At the minimum point of the new grade level regardless"
+    },
+    "correct": "C",
+    "explanation": "Rule 040104(ii): they are placed on the next point higher than their former emolument, taking into consideration the increment they would have earned had they not been promoted.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040104(iii), by when must promotion arrears be paid?",
+    "options": {
+      "A": "Within the year the promotion is effected",
+      "B": "Within the same month the promotion is effected",
+      "C": "Whenever the officer's next incremental date falls",
+      "D": "Within two years of the promotion"
+    },
+    "correct": "A",
+    "explanation": "Rule 040104(iii): payment of promotion arrears shall be made within the year promotion is effected.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "How does Rule 040201 define an increment?",
+    "options": {
+      "A": "A predetermined amount added to an officer's annual emolument every calendar year",
+      "B": "A one-time bonus payable only on promotion",
+      "C": "A discretionary amount set entirely by the officer's Permanent Secretary",
+      "D": "A percentage of the officer's basic salary paid quarterly"
+    },
+    "correct": "A",
+    "explanation": "Rule 040201: increment is a predetermined amount added to the annual emolument of an officer every calendar year.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "EASY",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040202, which of these is explicitly listed as a ground on which an officer's increment would normally NOT be granted?",
+    "options": {
+      "A": "The officer has fewer than three years of total service",
+      "B": "The officer recently transferred from another Ministry",
+      "C": "The officer is on interdiction or suspension",
+      "D": "The officer is on approved annual leave"
+    },
+    "correct": "C",
+    "explanation": "Rule 040202: an increment is normally granted unless the officer is on interdiction/suspension, has a pending disciplinary action, or is held back on account of poor performance.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040203, an officer's incremental date is fixed as 1st January of the year following at least how many months of service or promotion?",
+    "options": {
+      "A": "Nine months",
+      "B": "Three months",
+      "C": "Six months",
+      "D": "One year"
+    },
+    "correct": "C",
+    "explanation": "Rule 040203: the incremental date is 1st January of the year following at least six months of service or promotion.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040205, what is the shortest period for which an increment may initially be deferred?",
+    "options": {
+      "A": "Three months",
+      "B": "One month",
+      "C": "Two months",
+      "D": "Six months"
+    },
+    "correct": "A",
+    "explanation": "Rule 040205: the deferment period must be fixed at the time of deferment, and must not be less than three months nor more than six months.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040205, what is the longest period for which an increment may be deferred, even after extension?",
+    "options": {
+      "A": "One year",
+      "B": "Nine months",
+      "C": "Three months",
+      "D": "Six months"
+    },
+    "correct": "D",
+    "explanation": "Rule 040205: if less than six months in the first instance, the deferment may be increased, but only up to six months.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040205, when a deferred increment is eventually granted, from what point does it become effective?",
+    "options": {
+      "A": "From the start of the following calendar year",
+      "B": "Immediately on the date the decision to grant it is made",
+      "C": "The day following the expiration of the deferment period",
+      "D": "Retroactively, from the original incremental date"
+    },
+    "correct": "C",
+    "explanation": "Rule 040205: if a deferred increment is eventually granted, it does not become effective until the day following the expiration of the specific period of deferment.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040205, if a deferred increment is still not granted by the time six months have passed from when it was originally due, what must happen?",
+    "options": {
+      "A": "It must be withheld",
+      "B": "The deferment period is automatically extended by another six months",
+      "C": "The matter is referred directly to the Federal Civil Service Commission for a fresh decision",
+      "D": "It must be automatically granted in full"
+    },
+    "correct": "A",
+    "explanation": "Rule 040205: if a deferred increment is not granted at or before the expiration of six months from the date it was originally due, it must be withheld.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040206, what happens to an officer whose increment is withheld?",
+    "options": {
+      "A": "They lose all future eligibility for increments permanently",
+      "B": "They become ineligible for that increment until their next incremental date",
+      "C": "Their emolument is reduced below its pre-increment level",
+      "D": "They are automatically placed under disciplinary investigation"
+    },
+    "correct": "B",
+    "explanation": "Rule 040206: an officer's increment is withheld when it is decided not to grant it, and they cease to be eligible for it until their next incremental date.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040204, which penalty is described as more serious: deferring an increment, or withholding it?",
+    "options": {
+      "A": "Withholding it",
+      "B": "Deferring it",
+      "C": "They are treated as equally serious under the Rules",
+      "D": "Neither is treated as a penalty"
+    },
+    "correct": "A",
+    "explanation": "Rule 040204: the Permanent Secretary/Head of Extra-Ministerial Office bears in mind that to withhold an increment is a more serious penalty than to defer it.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040207, can a deferred or withheld increment be restored with retrospective effect because the officer's service later improves?",
+    "options": {
+      "A": "Yes, provided the officer formally appeals within thirty days",
+      "B": "No -- it cannot be restored retrospectively for that reason",
+      "C": "Yes, but only with the Federal Civil Service Commission's prior written approval",
+      "D": "Yes, automatically, once service improves for six consecutive months"
+    },
+    "correct": "B",
+    "explanation": "Rule 040207: an increment deferred or withheld cannot be restored with retrospective effect in consequence of improved service during a later increment-earning period.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "HARD",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Under Rule 040209, which body may grant special increments to mitigate the lasting effects of a previously withheld increment?",
+    "options": {
+      "A": "The Career Management Office",
+      "B": "The Federal Civil Service Commission",
+      "C": "The Office of the Accountant General of the Federation",
+      "D": "The officer's own Permanent Secretary, acting alone"
+    },
+    "correct": "B",
+    "explanation": "Rule 040209: the Federal Civil Service Commission may at a subsequent incremental date grant one or more special increments to mitigate the lasting effects of a withheld increment.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040210, within how long must a decision to defer or withhold an increment, or stop a salary, be communicated to the relevant offices and the officer concerned?",
+    "options": {
+      "A": "Two weeks",
+      "B": "One week",
+      "C": "Three months",
+      "D": "One month"
+    },
+    "correct": "A",
+    "explanation": "Rule 040210: such decisions shall be communicated within two weeks to the Office of the Accountant General of the Federation, the Office of the Auditor-General for the Federation, the Office of the Head of the Civil Service of the Federation, and the officer concerned.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  },
+  {
+    "stem": "Per Rule 040208, when a decision is made to restore a previously withheld or deferred increment, what must the Permanent Secretary/Head of Extra-Ministerial Office do?",
+    "options": {
+      "A": "Refer the decision to the Federal Civil Service Commission for ratification before informing the officer",
+      "B": "Publish the decision in the Federal Government Gazette",
+      "C": "Wait until the officer's next incremental date to inform them",
+      "D": "Immediately bring the decision to the notice of the officer"
+    },
+    "correct": "D",
+    "explanation": "Rule 040208: immediately on deciding to restore an increment, the Permanent Secretary/Head of Extra-Ministerial Office should bring the decision to the notice of the officer.",
+    "topic": "Chapter 4 \u2014 Emoluments and Increments",
+    "difficulty": "MEDIUM",
+    "verified": true,
+    "verification_note": "Independently verified against the real transcribed PSR source text by two separate reviewers with no shared context (one automated subagent, one direct cross-check against the source transcript); answer confirmed.",
+    "section": "Civil Service \u2014 Public Service Rules"
+  }
+]
