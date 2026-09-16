@@ -6,7 +6,7 @@ from django.core.management.base import BaseCommand
 from apps.catalog.management.commands.export_lesson_video_json import Command as ExportCommand
 from apps.catalog.models import Course, Lesson
 
-SAMPLES_DIR = Path(settings.BASE_DIR) / "video" / "scripts" / "samples"
+SAMPLES_DIR = Path(settings.BASE_DIR) / "video" / "samples"
 
 
 class Command(BaseCommand):
