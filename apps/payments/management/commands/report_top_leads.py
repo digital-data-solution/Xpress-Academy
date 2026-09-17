@@ -20,10 +20,16 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("--limit", type=int, default=10, help="How many total leads to print.")
         parser.add_argument("--days", type=int, default=30, help="Only consider activity in the last N days.")
+        parser.add_argument(
+            "--exclude-email", action="append", default=[],
+            help="Email to exclude (repeatable) -- use for your own account and any other internal/QA "
+                 "testing addresses, so test clicks never show up as a 'hot lead.'",
+        )
 
     def handle(self, *args, **options):
         limit = options["limit"]
         since = timezone.now() - timezone.timedelta(days=options["days"])
+        excluded = {e.lower() for e in options["exclude_email"]}
 
         rows = []
 
@@ -42,6 +48,8 @@ class Command(BaseCommand):
             if p.user_id in seen_users:
                 continue  # keep only the most recent attempt per user
             seen_users.add(p.user_id)
+            if p.user.email.lower() in excluded:
+                continue
             profile = getattr(p.user, "profile", None)
             phone = (profile.whatsapp_number or profile.phone) if profile else ""
             name = f"{p.user.first_name} {p.user.last_name}".strip() or p.user.email
@@ -70,6 +78,8 @@ class Command(BaseCommand):
             ).select_related("profile")
         }
         for a in attempts:
+            if a.student_email.lower() in excluded:
+                continue
             score = a.score_percent if a.score_percent is not None else 100
             phone = phone_by_email.get(a.student_email.lower(), "")
             reason = (
@@ -91,6 +101,8 @@ class Command(BaseCommand):
             for u in User.objects.filter(email__in=[l.email for l in leads]).select_related("profile")
         }
         for l in leads:
+            if l.email.lower() in excluded:
+                continue
             phone = phone_by_email2.get(l.email.lower(), "")
             reason = f"Left an email via the '{l.source or 'unknown'}' capture point on {l.created_at:%Y-%m-%d}."
             rows.append({
