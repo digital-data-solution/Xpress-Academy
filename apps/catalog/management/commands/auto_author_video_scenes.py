@@ -23,6 +23,7 @@ import re
 from html import unescape
 
 from django.core.management.base import BaseCommand, CommandError
+from django.db.models import Q
 
 from apps.catalog.models import Course, Lesson, VideoScene
 
@@ -210,19 +211,27 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--course", type=int, action="append", default=[], help="Course pk to author. Repeatable.")
+        parser.add_argument(
+            "--course-slug", action="append", default=[],
+            help="Course slug to author. Repeatable. Faster than --all-published when you only need one "
+                 "or two courses -- no need to look up a numeric pk first.",
+        )
         parser.add_argument("--all-published", action="store_true", help="Author every published course's lessons.")
         parser.add_argument("--dry-run", action="store_true", help="Print what would be created, write nothing.")
 
     def handle(self, *args, **options):
         if options["all_published"]:
             courses = Course.objects.filter(is_published=True)
-        elif options["course"]:
-            courses = Course.objects.filter(pk__in=options["course"])
-            missing = set(options["course"]) - set(courses.values_list("pk", flat=True))
-            if missing:
-                raise CommandError(f"No Course with pk in {sorted(missing)}.")
+        elif options["course"] or options["course_slug"]:
+            courses = Course.objects.filter(
+                Q(pk__in=options["course"]) | Q(slug__in=options["course_slug"])
+            )
+            missing_pks = set(options["course"]) - set(courses.values_list("pk", flat=True))
+            missing_slugs = set(options["course_slug"]) - set(courses.values_list("slug", flat=True))
+            if missing_pks or missing_slugs:
+                raise CommandError(f"No Course found for pk in {sorted(missing_pks)} or slug in {sorted(missing_slugs)}.")
         else:
-            raise CommandError("Pass --course=<pk> (repeatable) or --all-published.")
+            raise CommandError("Pass --course=<pk>, --course-slug=<slug> (either repeatable) or --all-published.")
 
         lessons = Lesson.objects.filter(module__course__in=courses).select_related("module__course").order_by(
             "module__course__pk", "module__order"
