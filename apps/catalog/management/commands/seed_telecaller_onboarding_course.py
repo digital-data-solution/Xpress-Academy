@@ -33,18 +33,21 @@ from apps.organizations.models import Organization
 #     separate product surface (apps.licensing) from individual course
 #     sales.
 #
-# Deliberately NOT covered, honestly flagged as a stub instead of
-# fabricated: the actual Call Assignments / Call Logs screens in the
-# external Xpress CRM tool. That system isn't part of this codebase --
-# no screenshots or docs exist here to ground it in. Module 7 says so
-# directly rather than guessing at a UI nobody here has seen.
+# Module 7 (Call Assignments / Call Logs / CRM login) was originally
+# an honest stub -- that CRM tool isn't part of this codebase. It's
+# now real, grounded content, sourced directly from the CRM session
+# (xpress-digital-and-data-solutions-3a), which confirmed it has read
+# access to that repo and cited real file paths (CallAssignment.js,
+# CallLog.js, StaffAccount.js, MyPerformance.jsx) and exact field/
+# dropdown values -- relayed secondhand here, same as every other
+# fact in this file, not independently verified by this codebase.
 
 MODULES = [
     ("Welcome — What This Role Actually Covers",
      """<h2>Your job, in one sentence</h2>
 <p>You call real people who have already shown some interest in Xpress Digital Academy — someone who started paying and stopped, someone who took a free diagnostic test, someone who left an email — and help them either finish enrolling or tell you honestly they're not interested. Both outcomes are useful to the company; only one of them requires you to be persuasive.</p>
-<h2>What this course covers, and what it doesn't yet</h2>
-<p>This course covers: what the company actually sells (so you can answer questions accurately), exactly where the people on your call list come from and why that matters, how to log every call outcome honestly, how to handle the objections you'll actually hear, and a clear line for when to close something yourself versus hand it to Sam. It does <strong>not yet</strong> cover the actual Call Assignments and Call Logs screens in the CRM tool itself — that module is a placeholder until someone can walk through the real screens with you (see Module 7). Don't take that as this course being unfinished carelessly; it's a deliberate choice not to guess at a tool this course's author has never seen.</p>
+<h2>What this course covers</h2>
+<p>This course covers: what the company actually sells (so you can answer questions accurately), exactly where the people on your call list come from and why that matters, how to log every call outcome honestly, how to handle the objections you'll actually hear, a clear line for when to close something yourself versus hand it to Sam, and — in Module 7 — the real Call Assignments and Call Logs screens you'll actually use, plus your first CRM login.</p>
 <h2>One real company-wide commitment that applies directly to you</h2>
 <p>From the company's own onboarding material: <em>"I will update the CRM immediately — stale data costs the whole company."</em> That's not generic advice for you specifically — it's a company-wide commitment every hire agrees to, and your role is one of the places it matters most directly: a call you don't log accurately is worse than a call that never happened, because someone else may act on the stale information.</p>"""),
     ("What Xpress Digital & Data Solutions Actually Sells",
@@ -77,6 +80,8 @@ MODULES = [
 <p>There's no incentive here to make your numbers look better by marking a clear "not interested" as "follow up later." A dishonest log costs the company a wasted second call and costs you credibility the first time someone checks. A clean, honest "not interested — cited price" is more valuable data than a vague "will call back" that both of you know isn't true.</p>
 <h2>Never mark someone "converted" who hasn't actually paid</h2>
 <p>Interest is not a sale. Someone saying "okay, I'll enroll" on the phone is a good sign, but the only thing that actually confirms a conversion is the payment itself completing — grant_access() firing, the enrollment existing. Log real interest as real interest, and let the payment status speak for the actual outcome. Overstating a call's result is the kind of small dishonesty that compounds into leadership trusting the data less over time.</p>
+<h2>This isn't just advice — it's actually checked</h2>
+<p>A "Converted" outcome in Call Logs doesn't count as fully real the moment you log it — it sits as <strong>unverified</strong> until someone other than you confirms it, and can be marked <strong>disputed</strong> if it doesn't hold up. There's no upside to inflating a conversion here; it just gets caught and disputed, which costs you more credibility than an honest "follow-up needed" ever would.</p>
 <h2>Record the actual objection, in their words where you can</h2>
 <p>"Price" and "price — thought it would include one-on-one tutoring, ₦5,000 felt high just for self-paced videos" are very different notes. The second one is something the business can actually act on (maybe that expectation needs clarifying on the sales page); the first one is nearly useless six months from now.</p>"""),
     ("Handling Objections",
@@ -99,11 +104,26 @@ MODULES = [
 <p>"I paid and didn't get access" or "the site gave me an error" are real operational issues, not sales conversations — get the person's email and what happened, and hand it off rather than trying to diagnose it yourself on the call.</p>
 <h2>The judgment call: genuine anger or a serious complaint</h2>
 <p>If someone is seriously unhappy — not just objecting to price, but upset about something that already happened — that's worth a human above you knowing about directly, even if you could technically smooth it over yourself on the call. When in doubt, escalate rather than quietly resolve; a complaint that reaches Sam late is worse than one that reaches him a little early.</p>"""),
-    ("Using Call Assignments & Call Logs in the CRM — Coming Soon",
-     """<h2>This module is deliberately incomplete</h2>
-<p>Everything else in this course is grounded in real, verified facts about how Xpress Digital Academy actually works. The specifics of navigating <strong>Call Assignments</strong> and <strong>Call Logs</strong> inside the CRM tool are not something this course can honestly cover yet — that CRM is a separate system, and no screenshots, walkthrough, or documentation of those actual screens exist anywhere this course was written from.</p>
-<h2>What to do instead, for now</h2>
-<p>Ask your manager or Sam directly for a live walkthrough of the Call Assignments and Call Logs screens before your first real batch of calls. This module will be filled in with the real workflow once that walkthrough happens — treat its current absence as an honest gap being tracked, not as something overlooked.</p>"""),
+    ("Using Call Assignments & Call Logs in the CRM",
+     """<h2>Your first login is a separate system from Academy</h2>
+<p>The CRM you'll work in day to day is a completely different system from the Xpress Digital Academy platform this training runs on — different login, different backend. You'll be given an email and a <strong>temporary password</strong>. The first time you log in, you're prompted right there on the same login page to set a real password before you can go any further — it's not a separate step you do later. Two-factor authentication (an authenticator app, same idea as Google Authenticator) is available afterward from your profile if you want the extra security, but it's optional, not forced.</p>
+<h2>"My Assignments" — how a call brief actually works</h2>
+<p>When Sam or a manager assigns you a call, it shows up as an assignment with a status badge: <strong>pending → claimed → completed</strong> (or <strong>cancelled</strong>, if it's called off). Each assignment is a real brief, not just a name and number — it includes the contact's name, phone, and company; which channel to use (phone, WhatsApp, Facebook/Instagram DM, email, walk-in, or other); <strong>why this call is happening</strong>; background context on the person; specific talking points; the actual goal of the conversation; any tools or materials you'll need; what a good outcome looks like; and a deadline. Read the whole brief before you dial — it exists so you're never calling someone cold with no context. If the assignment belongs to a portfolio with a manager attached, that manager is automatically copied on the brief and notified once you mark it complete.</p>
+<h2>Call Logs — the exact fields</h2>
+<p>Every call gets logged, whether it's against an assignment or a call you made on your own initiative. A log records: portfolio, channel, the contact's name/phone/company, the <strong>outcome</strong>, call duration in minutes, and notes. The outcome is a fixed list — pick the one that's actually true, don't approximate:</p>
+<ul>
+<li>Connected</li>
+<li>Left voicemail</li>
+<li>No answer</li>
+<li>Wrong number</li>
+<li>Call-back requested</li>
+<li>Not interested</li>
+<li>Converted</li>
+<li>Follow-up needed</li>
+</ul>
+<p>If the call needs a follow-up, set a <strong>next-action date and note</strong> right there in the same log entry — that's what actually reminds you (and anyone else who might pick it up) later. A follow-up you plan to "just remember" is exactly the kind of stale data Module 4 already covered.</p>
+<h2>One thing worth re-reading from Module 4</h2>
+<p>A "Converted" outcome here isn't final the moment you log it — it stays unverified until someone else confirms it, and can be marked disputed. Log it because it's true, not because it looks good on your own numbers.</p>"""),
 ]
 
 FINAL_EXAM_QUESTIONS = [
@@ -116,6 +136,12 @@ FINAL_EXAM_QUESTIONS = [
     ("A lead asks for a refund on a course they already paid for. What do you do?",
      "Escalate to Sam -- refunds are manual-only by design, never something to promise or resolve on the call.",
      "Tell them you'll escalate it to Sam", "Confirm the refund yourself to close the call quickly"),
+    ("Does logging a call as \"Converted\" in Call Logs immediately count it as a real conversion?",
+     "No -- it stays unverified until someone other than you confirms it, and can be marked disputed.",
+     "No -- it needs verification from someone else first", "Yes -- logging it as Converted is what makes it official"),
+    ("On your very first CRM login with a temporary password, what happens?",
+     "You're prompted right there on the login page to set a real password before continuing -- not a separate later step.",
+     "You're prompted immediately to set a real password", "You log in normally and change your password whenever you feel like it"),
     ("A lead pushes back with \"is this legit?\" What's the strongest honest answer?",
      "Point to real, verifiable facts: certificate verification, Paystack (not personal transfer), and the real refund path.",
      "Point to verifiable certificates and real Paystack payment", "Insist it's definitely not a scam and move on"),
@@ -147,6 +173,12 @@ class Command(BaseCommand):
         parser.add_argument(
             "--email", default="omalesamuel4god@gmail.com",
             help="Email of a User to enroll in the course once seeded.",
+        )
+        parser.add_argument(
+            "--sync-content", action="store_true",
+            help="If the course already exists, delete and rebuild its modules/lessons/final quiz to "
+                 "match MODULES/FINAL_EXAM_QUESTIONS in this file. Safe as long as no real learner has "
+                 "started it yet -- progress/attempts would be lost otherwise.",
         )
 
     def handle(self, *args, **options):
@@ -188,14 +220,27 @@ class Command(BaseCommand):
                 },
             )
 
-            if not created:
-                self.stdout.write(self.style.WARNING(f"{course.title} already exists — leaving as-is."))
+            if not created and not options["sync_content"]:
+                self.stdout.write(self.style.WARNING(
+                    f"{course.title} already exists — leaving content as-is (pass --sync-content to rebuild "
+                    "modules/lessons/quiz to match this file, e.g. after editing MODULES)."
+                ))
                 if course.required_group_id != telecaller_group.id:
                     course.required_group = telecaller_group
                     course.save(update_fields=["required_group"])
                     self.stdout.write(self.style.SUCCESS("  Updated required_group to Telecaller."))
             else:
-                self.stdout.write(self.style.SUCCESS(f"Created course: {course}"))
+                if not created:
+                    course.modules.all().delete()
+                    old_quizzes = list(course.quizzes.filter(scope="FINAL").select_related("bank"))
+                    old_banks = [q.bank for q in old_quizzes]
+                    for q in old_quizzes:
+                        q.delete()
+                    for b in old_banks:
+                        b.delete()  # cascades to its Questions/Choices too
+                    self.stdout.write(self.style.WARNING(f"Rebuilding content for existing course: {course}"))
+                else:
+                    self.stdout.write(self.style.SUCCESS(f"Created course: {course}"))
                 for i, (title, body) in enumerate(MODULES, start=1):
                     module = Module.objects.create(
                         course=course, order=i, title=title, unlock_rule=Module.UnlockRule.IMMEDIATE,
