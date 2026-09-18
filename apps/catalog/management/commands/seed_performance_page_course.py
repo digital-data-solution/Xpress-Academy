@@ -73,7 +73,13 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument(
             "--email", default="omalesamuel4god@gmail.com",
-            help="Email of a User to enroll in the course once seeded.",
+            help="Email of a User to enroll in the course once seeded. Ignored if --all-staff is passed.",
+        )
+        parser.add_argument(
+            "--all-staff", action="store_true",
+            help="Enroll every user who is staff -- defined as already enrolled in at least one other "
+                 "is_staff_training course -- instead of just one --email. This page is relevant to any "
+                 "staff member, not one role, but deliberately doesn't touch regular paying learners.",
         )
         parser.add_argument(
             "--sync-content", action="store_true",
@@ -163,18 +169,36 @@ class Command(BaseCommand):
                 )
                 self.stdout.write(self.style.SUCCESS("Created the final check."))
 
-        email = options["email"].strip()
-        if email:
-            user = User.objects.filter(email__iexact=email).first()
-            if not user:
-                self.stdout.write(self.style.WARNING(f"No user found for {email} — not enrolled. Run again once they've signed up."))
-            else:
+        if options["all_staff"]:
+            from apps.accounts.signal_receivers import _send_welcome_to_training_email
+
+            staff_users = User.objects.filter(
+                enrollments__course__is_staff_training=True
+            ).distinct()
+            enrolled_count, already_count = 0, 0
+            for user in staff_users:
                 enrollment, enrolled_now = Enrollment.objects.get_or_create(user=user, course=course)
                 if enrolled_now:
-                    from apps.accounts.signal_receivers import _send_welcome_to_training_email
                     _send_welcome_to_training_email(user, course)
-                    self.stdout.write(self.style.SUCCESS(f"Enrolled {email} in {course.title} and sent the welcome email."))
+                    enrolled_count += 1
                 else:
-                    self.stdout.write(self.style.WARNING(f"{email} was already enrolled."))
+                    already_count += 1
+            self.stdout.write(self.style.SUCCESS(
+                f"Enrolled {enrolled_count} staff member(s) (already enrolled: {already_count})."
+            ))
+        else:
+            email = options["email"].strip()
+            if email:
+                user = User.objects.filter(email__iexact=email).first()
+                if not user:
+                    self.stdout.write(self.style.WARNING(f"No user found for {email} — not enrolled. Run again once they've signed up."))
+                else:
+                    enrollment, enrolled_now = Enrollment.objects.get_or_create(user=user, course=course)
+                    if enrolled_now:
+                        from apps.accounts.signal_receivers import _send_welcome_to_training_email
+                        _send_welcome_to_training_email(user, course)
+                        self.stdout.write(self.style.SUCCESS(f"Enrolled {email} in {course.title} and sent the welcome email."))
+                    else:
+                        self.stdout.write(self.style.WARNING(f"{email} was already enrolled."))
 
         self.stdout.write(self.style.SUCCESS("Done — course is published (is_staff_training=True, hidden from the public catalog)."))
