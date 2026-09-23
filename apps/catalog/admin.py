@@ -194,14 +194,22 @@ class LessonAdmin(SortableAdminMixin, admin.ModelAdmin):
     search_fields = ["title", "module__title", "module__course__title"]
     prepopulated_fields = {"slug": ("title",)}
     inlines = [VideoSceneInline]
+    readonly_fields = ["generated_video_url", "generated_teaser_url", "youtube_video_id"]
     fieldsets = (
         (None, {"fields": ("module", "order", "title", "slug", "type", "is_preview")}),
-        ("Video", {"fields": ("video_provider", "video_id", "duration_seconds", "generated_video")}),
+        ("Video", {"fields": (
+            "video_provider", "video_id", "duration_seconds", "generated_video",
+            "generated_video_url", "generated_teaser_url", "youtube_video_id",
+        )}),
         ("Content", {"fields": ("body", "attachment", "transcript")}),
     )
 
     def has_video(self, obj):
-        return bool(obj.video_id)
+        # Matches templates/enrollment/lesson_player.html's own check — the
+        # legacy video_id (Bunny/Cloudinary streaming) was never wired up to
+        # playback, so checking it here made this column lie about lessons
+        # with a real generated_video_url/generated_video attached.
+        return bool(obj.generated_video_url or obj.generated_video or obj.video_id)
 
     has_video.boolean = True
 
