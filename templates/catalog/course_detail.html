@@ -29,6 +29,15 @@
     {% if course.prerequisite_id and not prerequisite_met %}
       <div class="chip" style="background:#fef3c7; color:#92400e;">🔒 Requires "{{ course.prerequisite.title }}" completed first</div>
     {% endif %}
+    {% for included in included_courses %}
+      <div class="chip" style="background:#dcfce7; color:#166534;">
+        {% if is_enrolled %}
+          ✓ Also in your account: <a href="{% url 'enrollment:curriculum' course_slug=included.slug %}">{{ included.title }}</a>
+        {% else %}
+          ✓ Includes free access to "{{ included.title }}"
+        {% endif %}
+      </div>
+    {% endfor %}
     <p style="margin-top:16px;">
       {% if is_enrolled %}
         <a class="btn" href="{% url 'enrollment:curriculum' course_slug=course.slug %}">Go to course</a>

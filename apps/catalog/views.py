@@ -75,7 +75,9 @@ def course_detail(request, slug):
                 course=course.prerequisite, status="COMPLETED"
             ).exists()
 
+    from .bundles import get_included_courses
+
     return render(request, "catalog/course_detail.html", {
         "course": course, "modules": modules, "faqs": faqs, "is_enrolled": is_enrolled,
-        "prerequisite_met": prerequisite_met,
+        "prerequisite_met": prerequisite_met, "included_courses": get_included_courses(course),
     })

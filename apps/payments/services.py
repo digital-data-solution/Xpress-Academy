@@ -293,6 +293,20 @@ def _create_or_get_enrollment(*, user, course, cohort=None, source, partner=None
     return enrollment, created
 
 
+def _grant_included_courses(*, user, course, source) -> None:
+    """Enroll the learner in every course bundled with `course` (see
+    apps.catalog.bundles). Deliberately no partner/cohort and no
+    welcome email — the partner was credited for the course actually
+    bought, and the main course's welcome email is the one the learner
+    expects. Idempotent: an existing enrollment is left untouched."""
+    from apps.catalog.bundles import get_included_courses
+
+    for included in get_included_courses(course):
+        _enrollment, created = _create_or_get_enrollment(user=user, course=included, source=source)
+        if created:
+            logger.info("grant_included: enrolled %s in %s (included with %s)", user.email, included.title, course.title)
+
+
 @transaction.atomic
 def grant_free_access(*, user, course) -> Enrollment:
     """Entry point for Course.PricingModel.FREE and CERTIFICATE_PAID —
@@ -304,6 +318,7 @@ def grant_free_access(*, user, course) -> Enrollment:
     enrollment, created = _create_or_get_enrollment(
         user=user, course=course, source=Enrollment.Source.PURCHASE,
     )
+    _grant_included_courses(user=user, course=course, source=Enrollment.Source.PURCHASE)
     if created:
         logger.info("grant_free_access: enrolled %s in %s (pricing_model=%s)", user.email, course.title, course.pricing_model)
 
@@ -367,6 +382,7 @@ def grant_access(payment: Payment, verify_data: dict) -> Enrollment | None:
         user=payment.user, course=payment.course, cohort=payment.cohort,
         source=source, partner=payment.partner,
     )
+    _grant_included_courses(user=payment.user, course=payment.course, source=source)
 
     if payment.coupon:
         # F() expression, not a Python read-modify-write — the

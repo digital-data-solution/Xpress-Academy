@@ -782,3 +782,60 @@ class TestCoursePrerequisite:
         resp = client.get(f"/checkout/{advanced.slug}/")
         assert resp.status_code == 302
         assert Enrollment.objects.filter(user=user, course=advanced).exists()
+
+
+@pytest.mark.django_db
+class TestIncludedCourses:
+    """apps.catalog.bundles — buying the PSR exam prep must also give
+    the narrated PSR guide (and vice versa), so nobody pays and gets
+    only a question bank."""
+
+    @pytest.fixture
+    def psr_pair(self, org):
+        programme = Programme.objects.create(organization=org, title="PSR", audience=Audience.GENERAL)
+        common = dict(organization=org, programme=programme, audience=Audience.GENERAL, price_ngn=5000,
+                      is_published=True, review_status=Course.ReviewStatus.APPROVED)
+        exam = Course.objects.create(title="PSR Exam Prep", slug="civil-service-psr-exam-prep", **common)
+        guide = Course.objects.create(title="PSR Complete Guide", slug="public-service-rules-guide", **common)
+        return exam, guide
+
+    def test_buying_exam_prep_grants_guide(self, user, psr_pair):
+        exam, guide = psr_pair
+        grant_access(make_payment(user, exam), {})
+        assert Enrollment.objects.filter(user=user, course=exam).exists()
+        included = Enrollment.objects.get(user=user, course=guide)
+        assert included.status == Enrollment.Status.ACTIVE
+        assert included.source == Enrollment.Source.PURCHASE
+
+    def test_buying_guide_grants_exam_prep(self, user, psr_pair):
+        exam, guide = psr_pair
+        grant_access(make_payment(user, guide), {})
+        assert Enrollment.objects.filter(user=user, course=exam).exists()
+
+    def test_existing_enrollment_is_left_alone(self, user, psr_pair):
+        exam, guide = psr_pair
+        existing = Enrollment.objects.create(user=user, course=guide, source=Enrollment.Source.MANUAL)
+        grant_access(make_payment(user, exam), {})
+        existing.refresh_from_db()
+        assert existing.source == Enrollment.Source.MANUAL
+        assert Enrollment.objects.filter(user=user, course=guide).count() == 1
+
+    def test_unpublished_included_course_is_not_granted(self, user, psr_pair):
+        exam, guide = psr_pair
+        Course.objects.filter(pk=guide.pk).update(is_published=False)
+        grant_access(make_payment(user, exam), {})
+        assert not Enrollment.objects.filter(user=user, course=guide).exists()
+
+    def test_unrelated_course_grants_nothing_extra(self, user, course, psr_pair):
+        grant_access(make_payment(user, course), {})
+        assert Enrollment.objects.filter(user=user).count() == 1
+
+    def test_course_page_shows_included_course(self, user, psr_pair):
+        exam, guide = psr_pair
+        client = Client()
+        resp = client.get(f"/courses/{exam.slug}/")
+        assert b"Includes free access" in resp.content and b"PSR Complete Guide" in resp.content
+        Enrollment.objects.create(user=user, course=exam, source=Enrollment.Source.PURCHASE)
+        client.force_login(user)
+        resp = client.get(f"/courses/{exam.slug}/")
+        assert f"/{guide.slug}/".encode() in resp.content
