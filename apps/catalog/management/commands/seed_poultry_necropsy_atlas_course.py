@@ -48,8 +48,14 @@ class Command(BaseCommand):
         parser.add_argument("--price", type=int, default=20000, help="Price in NGN (default 20000; confirm with Sam).")
         parser.add_argument("--publish", action="store_true",
                             help="Also approve and publish (same as publish_psr_courses). Sam's call only.")
+        parser.add_argument("--sync-content", action="store_true",
+                            help="Course already exists: update each lesson's text in place from the JSON "
+                                 "(matched by title). Never deletes anything, so learner progress is kept.")
 
     def handle(self, *args, **options):
+        if options["sync_content"]:
+            self._sync_content()
+            return
         self._seed(options)
         if options["publish"]:
             course = Course.objects.filter(slug=SLUG).first()
@@ -148,6 +154,29 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(
                 "Course is UNPUBLISHED. Re-run with --publish (or approve + publish in admin) to go live."
             ))
+
+    @transaction.atomic
+    def _sync_content(self):
+        course = Course.objects.filter(slug=SLUG).first()
+        if not course:
+            self.stderr.write(self.style.ERROR("Course not found — run without --sync-content first."))
+            return
+        data = json.loads(DATA.read_text(encoding="utf-8"))
+        changed = missing = 0
+        for part in data["parts"]:
+            for les in part["lessons"]:
+                num = f"{les['number']}. " if les.get("number") else ""
+                title = f"{num}{les['title']}"[:255]
+                lesson = Lesson.objects.filter(module__course=course, title=title).first()
+                if lesson is None:
+                    missing += 1
+                    self.stdout.write(self.style.WARNING(f"  Not found, skipped: {title}"))
+                elif lesson.body != les["html"]:
+                    lesson.body = les["html"]
+                    lesson.save(update_fields=["body"])
+                    changed += 1
+                    self.stdout.write(f"  Updated: {title}")
+        self.stdout.write(self.style.SUCCESS(f"Synced {course.title}: {changed} lesson(s) updated, {missing} not found."))
 
     def _make_bank(self, org, name, description, items):
         bank = QuestionBank.objects.create(organization=org, name=name, description=description)
