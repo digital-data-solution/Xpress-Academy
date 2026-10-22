@@ -141,3 +141,37 @@ def test_resend_payload_routes_replies_to_read_inbox(settings):
 def test_nameless_contact_is_greeted_sir_ma():
     assert SelarContact(name="").first_name == "Sir/Ma"
     assert SelarContact(name="muniba yakubu").first_name == "Muniba"
+
+
+@pytest.mark.django_db
+class TestActivation:
+    def test_claim_grants_access_and_reference_is_single_use(self, psr_course, client):
+        r = client.post("/selar/activate/", {"name": "Efe Ade", "email": "e@x.com", "reference": "s466kf16168bx"})
+        assert r.status_code == 200 and b"unlocked" in r.content
+        c = SelarContact.objects.get(email="e@x.com")
+        assert (c.status, c.reference, c.reference_verified) == (SelarContact.Status.PAID, "S466KF16168BX", False)
+        assert Enrollment.objects.filter(user__email="e@x.com", course=psr_course).exists()
+
+        r = client.post("/selar/activate/", {"name": "Friend", "email": "friend@x.com", "reference": "S466KF16168BX"})
+        assert b"already been used" in r.content
+        assert not User.objects.filter(email="friend@x.com").exists()
+
+    def test_bad_reference_rejected(self, psr_course, client):
+        r = client.post("/selar/activate/", {"name": "X", "email": "x@x.com", "reference": "12345"})
+        assert b"starts with S" in r.content
+        assert not SelarContact.objects.exists()
+
+    def test_import_verifies_claim_and_reports_fakes(self, psr_course, client, tmp_path, capsys):
+        client.post("/selar/activate/", {"name": "Real", "email": "real@x.com", "reference": "SREAL0000001"})
+        client.post("/selar/activate/", {"name": "Fake", "email": "fake@x.com", "reference": "SFAKE0000001"})
+        SelarContact.objects.update(created_at=timezone.now() - timedelta(days=3))
+        path = tmp_path / "sales.csv"
+        path.write_text(
+            "Products(s),Customer Fullname,Customer Email,Reference,Transaction Date,Total\n"
+            "PSR Complete Pack,Real Buyer,other@x.com,SREAL0000001,\"Oct 22nd 2026, 9:59 AM\",\"NGN 5,000\"\n",
+            encoding="utf-8",
+        )
+        call_command("import_selar_contacts", csv=str(path))
+        assert SelarContact.objects.get(email="real@x.com").reference_verified
+        out = capsys.readouterr().out
+        assert "fake@x.com" in out and "real@x.com" not in out

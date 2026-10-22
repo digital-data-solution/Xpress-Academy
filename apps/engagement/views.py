@@ -4,7 +4,7 @@ import logging
 from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponseForbidden, JsonResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -52,6 +52,32 @@ def capture_lead(request):
 
     messages.success(request, "You're on the list — check your inbox for a confirmation.")
     return redirect(next_url)
+
+
+def selar_activate(request):
+    """Where a Selar buyer of the PSR pack unlocks the video course on
+    this site. The downloadable pack deliberately carries no video
+    links, so the videos stay behind a per-buyer login — see
+    apps.engagement.selar.claim_reference."""
+    from .forms import SelarActivationForm
+    from .selar import ClaimError, claim_reference
+
+    form = SelarActivationForm(request.POST or None)
+    error = None
+    if request.method == "POST" and form.is_valid():
+        try:
+            contact = claim_reference(**form.cleaned_data)
+        except ClaimError as exc:
+            error = str(exc)
+        else:
+            from apps.accounts.models import User
+            user = User.objects.filter(email__iexact=contact.email).first()
+            return render(request, "engagement/selar_activated.html", {
+                "email": contact.email, "has_password": bool(user and user.has_usable_password()),
+            })
+    elif request.method == "POST":
+        error = "Please fill in your name, the email you paid with, and your Selar order reference."
+    return render(request, "engagement/selar_activate.html", {"form": form, "error": error})
 
 
 @csrf_exempt

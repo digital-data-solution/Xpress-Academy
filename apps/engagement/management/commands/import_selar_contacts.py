@@ -23,7 +23,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
 from apps.engagement.models import SelarContact
-from apps.engagement.selar import record_contact, send_selar_followups
+from apps.engagement.selar import record_contact, send_selar_followups, unverified_claims
 
 EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 
@@ -73,11 +73,19 @@ class Command(BaseCommand):
                         continue
                     paid = _amount(_col(row, "total")) > 0
                     status = SelarContact.Status.PAID if paid else SelarContact.Status.FREE
-                    record_contact(
+                    contact = record_contact(
                         email=match.group(0), name=_col(row, "fullname") or _col(row, "customer", "name"), phone=_col(row, "mobile"),
                         status=status, when=_when(_col(row, "date")),
                     )
                     counts[status] += 1
+                    reference = _col(row, "reference").upper()
+                    if paid and reference:
+                        # Confirms an activation-page claim made with this
+                        # reference, whichever email it was claimed with.
+                        SelarContact.objects.filter(reference=reference).update(reference_verified=True)
+                        if not contact.reference and not SelarContact.objects.filter(reference=reference).exists():
+                            contact.reference, contact.reference_verified = reference, True
+                            contact.save(update_fields=["reference", "reference_verified", "updated_at"])
 
         for entry in opts["abandoned"]:
             match = EMAIL_RE.search(entry)
@@ -88,5 +96,11 @@ class Command(BaseCommand):
             counts[SelarContact.Status.ABANDONED] += 1
 
         self.stdout.write(f"Imported: {counts}")
+        suspicious = list(unverified_claims())
+        for c in suspicious:
+            self.stdout.write(self.style.WARNING(
+                f"UNVERIFIED activation: {c.email} used reference {c.reference} on {c.created_at:%d %b} "
+                "and it is not in any imported Selar sales export. Check it on Selar before removing access."
+            ))
         if opts["send_now"]:
             self.stdout.write(f"Sent: {send_selar_followups()}")

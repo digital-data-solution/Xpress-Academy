@@ -115,6 +115,16 @@ class SelarContact(TimeStampedModel):
     unsubscribed = models.BooleanField(
         default=False, help_text="Tick when someone replies asking to stop — no further follow-ups are sent.",
     )
+    # Selar order reference (e.g. S466KF16168BX). Set by a buyer on the
+    # activation page, which grants video access immediately; confirmed
+    # when the same reference shows up in an imported Selar sales export.
+    # One reference unlocks one account, so a shared reference is useless.
+    reference = models.CharField(max_length=20, blank=True, db_index=True)
+    reference_verified = models.BooleanField(
+        default=False,
+        help_text="True once this reference appears in a real Selar sales export. "
+                  "Unverified claims older than a few days are reported by import_selar_contacts.",
+    )
 
     class Meta:
         ordering = ["-status_changed_at"]

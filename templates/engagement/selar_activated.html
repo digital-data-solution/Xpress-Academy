@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Your PSR course is ready — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Your videos are unlocked ✅</h1>
+      <p class="auth-sub">The PSR 2021 video course is now on the account for <strong>{{ email }}</strong>.</p>
+      {% if has_password %}
+        <p><a class="btn" href="{% url 'accounts:login' %}" style="width:100%; text-align:center;">Log in to watch</a></p>
+      {% else %}
+        <p>One last step: set your password.</p>
+        <ol style="padding-left:18px;">
+          <li>Tap the button below</li>
+          <li>Enter <strong>{{ email }}</strong></li>
+          <li>Open the link we email you and choose a password</li>
+        </ol>
+        <p><a class="btn" href="{% url 'accounts:forgot_password' %}" style="width:100%; text-align:center;">Set my password</a></p>
+        <p style="font-size:13px; color:#6b7280;">We've also emailed you these steps.</p>
+      {% endif %}
+      <p class="auth-links" style="font-size:13px;">Tip: one chapter a week, then that chapter's practice questions in your PDF.</p>
+    </div>
+  </div>
+{% endblock %}

@@ -21,6 +21,7 @@ site through its own checkout drops out of the sales emails.
 """
 
 import logging
+import re
 from datetime import timedelta
 
 from django.conf import settings
@@ -75,6 +76,41 @@ def record_contact(*, email, name="", phone="", status, when=None) -> SelarConta
     return contact
 
 
+REFERENCE_RE = re.compile(r"^S[A-Z0-9]{10,14}$")
+
+
+class ClaimError(ValueError):
+    pass
+
+
+def claim_reference(*, email, name, reference) -> SelarContact:
+    """The activation page: a Selar buyer swaps their order reference
+    for website access (the PSR videos live behind a login rather than
+    in the downloadable pack). Access is granted at once and the
+    reference is checked against Selar's sales export at the next
+    import. Each reference can unlock exactly one email."""
+    reference = re.sub(r"\s+", "", reference or "").upper()
+    email = email.strip().lower()
+    if not REFERENCE_RE.match(reference):
+        raise ClaimError("That doesn't look like a Selar order reference. It starts with S, e.g. S466KF16168BX.")
+    taken = SelarContact.objects.filter(reference=reference).exclude(email=email).exists()
+    if taken:
+        raise ClaimError("This order reference has already been used to activate another account.")
+    contact = record_contact(email=email, name=name, status=SelarContact.Status.PAID)
+    if not contact.reference:
+        contact.reference = reference
+        contact.save(update_fields=["reference", "updated_at"])
+    grant_site_access(contact)
+    return contact
+
+
+def unverified_claims(*, older_than_days=2):
+    cutoff = timezone.now() - timedelta(days=older_than_days)
+    return SelarContact.objects.filter(
+        status=SelarContact.Status.PAID, reference_verified=False, created_at__lt=cutoff,
+    ).exclude(reference="")
+
+
 def _bought_on_site(email) -> bool:
     from apps.enrollment.models import Enrollment
     return Enrollment.objects.filter(user__email__iexact=email, course__slug=PSR_COURSE_SLUG).exists()
@@ -113,7 +149,7 @@ def grant_site_access(contact: SelarContact):
     ctx = {**_context(contact), "has_password": user.has_usable_password(), "course_title": course.title}
     transaction.on_commit(lambda: send_email(
         to_email=contact.email, user=user, template_key="selar_buyer_welcome",
-        subject="Your PSR course is also ready online — Xpress Digital Academy",
+        subject="Your PSR video course is ready — Xpress Digital Academy",
         html=render_to_string("emails/selar_buyer_welcome.html", ctx),
         dedupe_key=f"selar:buyer-welcome:{contact.email}",
     ))

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Activate your PSR video course — Xpress Digital Academy{% endblock %}
+{% block main_class %}container-narrow{% endblock %}
+{% block content %}
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <span class="logo-mark">XA</span>
+      <h1>Activate your PSR video course</h1>
+      <p class="auth-sub">Thank you for buying the PSR 2021 Complete Pack on Selar. Enter your details below to unlock the 34 video lessons on our website.</p>
+      {% if error %}
+        <div class="form-error-list"><p style="margin:0;">{{ error }}</p></div>
+      {% endif %}
+      <form class="login-form" method="post" data-once>
+        {% csrf_token %}
+        <label for="id_name">Full name</label>
+        <input type="text" name="name" id="id_name" value="{{ form.data.name|default:'' }}" autocomplete="name" required autofocus>
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" value="{{ form.data.email|default:'' }}" autocomplete="email" required>
+        <label for="id_reference">Selar order reference</label>
+        <input type="text" name="reference" id="id_reference" value="{{ form.data.reference|default:'' }}" placeholder="e.g. S466KF16168BX" autocapitalize="characters" required>
+        <p style="font-size:13px; color:#6b7280; margin:4px 0 12px;">You'll find it in the receipt email Selar sent you after payment. It starts with the letter S.</p>
+        <button class="btn" type="submit" style="width:100%; margin-top:6px;">Activate my videos</button>
+      </form>
+      <p class="auth-links" style="font-size:13px;">Each order reference activates one account. Need help? Email <a href="mailto:contact@xpressdigitalanddatasolutions.online">contact@xpressdigitalanddatasolutions.online</a></p>
+    </div>
+  </div>
+{% endblock %}
