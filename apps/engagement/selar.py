@@ -118,7 +118,7 @@ def _bought_on_site(email) -> bool:
 
 
 def _context(contact):
-    return {"first_name": contact.first_name, "paid_url": PAID_URL, "free_url": FREE_URL, "team_url": TEAM_URL,
+    return {"first_name": contact.first_name, "paid_url": PAID_URL, "free_url": FREE_URL, "team_url": TEAM_URL, "is_office": contact.is_office,
             "site_url": settings.SITE_URL}
 
 

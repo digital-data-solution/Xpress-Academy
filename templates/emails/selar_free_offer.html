@@ -1,6 +1,20 @@
 {% extends "emails/_base.html" %}
 {% block body %}
   <p>Dear {{ first_name }},</p>
+{% if is_office %}
+  <p>Thank you for downloading our free PSR 2021 practice questions for your office.</p>
+  <p>Promotion exams have several sections, and most of them are hard to predict. The PSR section is different. Every question comes from one document your officers can master completely, and teams that prepare together keep each other on track.</p>
+  <p>Our <strong>Team Pack</strong> covers <strong>10 officers for ₦35,000</strong> (₦3,500 each instead of ₦5,000). Each officer gets their own personal access to:</p>
+  <ul style="padding-left:18px;">
+    <li><strong>34 short video lessons</strong> covering all 17 chapters of PSR 2021</li>
+    <li><strong>437 practice questions</strong>, each with the answer and the exact rule number</li>
+    <li><strong>Bonus General Knowledge</strong> practice questions</li>
+    <li>A <strong>certificate of completion</strong> when they pass the final test</li>
+  </ul>
+  <p>After payment, simply send us the officers' names and emails. We activate everyone within 24 hours.</p>
+  <p style="margin:24px 0;"><a href="{{ team_url }}" style="background:#166534; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:600;">Get the Team Pack: ₦35,000 for 10 officers</a></p>
+  <p style="font-size:14px;">For a larger directorate or department, reply to this email and we'll send a quote. For a single officer, the individual pack is ₦5,000: <a href="{{ paid_url }}">{{ paid_url }}</a></p>
+{% else %}
   <p>Promotion exams have several sections, and most of them are hard to predict. The PSR section is different. Every question comes from one document you can master completely.</p>
   <p>Officers who get the PSR to their fingertips early walk into the exam with that section already secured, and spend the rest of their study time on the harder sections. That's the advantage the full pack gives you:</p>
   <ul style="padding-left:18px;">
@@ -13,6 +27,7 @@
   <p style="margin:24px 0;"><a href="{{ paid_url }}" style="background:#166534; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:600;">Get the full pack: ₦5,000</a></p>
   <p style="font-size:14px;">Prefer to study online instead? Our PSR video course is also on our website for ₦5,000, with instant access: <a href="{{ site_url }}/courses/public-service-rules-guide/">{{ site_url }}/courses/public-service-rules-guide/</a></p>
   <p style="font-size:14px;">Preparing with colleagues? Our <a href="{{ team_url }}">Team Pack</a> covers 10 officers for ₦35,000.</p>
+{% endif %}
   <p>Payment goes through Selar's secure checkout (card, USSD or bank transfer), and you get your download immediately. If anything goes wrong, reply to this email and we'll fix it the same day.</p>
   <p>Wishing you success,<br>Xpress Digital Academy</p>
   <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you downloaded our free PSR sample on Selar. Reply "stop" and we won't email you again.</p>

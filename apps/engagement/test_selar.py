@@ -175,3 +175,15 @@ class TestActivation:
         assert SelarContact.objects.get(email="real@x.com").reference_verified
         out = capsys.readouterr().out
         assert "fake@x.com" in out and "real@x.com" not in out
+
+
+@pytest.mark.django_db
+def test_office_account_gets_team_offer():
+    c = record_contact(email="pid@x.com", name="PORTS INSPECTION DIRECTORATE YABA-LAGOS",
+                       status=SelarContact.Status.FREE, when=timezone.now() - timedelta(days=5))
+    assert c.is_office and c.first_name == "Sir/Ma"
+    assert not SelarContact(name="Grace Osabo").is_office
+    from django.template.loader import render_to_string
+    from .selar import _context
+    html = render_to_string("emails/selar_free_offer.html", _context(c))
+    assert "Dear Sir/Ma" in html and "Team Pack: ₦35,000 for 10 officers" in html

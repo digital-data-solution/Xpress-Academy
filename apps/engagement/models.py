@@ -1,3 +1,5 @@
+import re
+
 from django.db import models
 
 from apps.catalog.models import Course, Lesson
@@ -89,6 +91,12 @@ class LiveSession(TimeStampedModel):
         return f"{self.course.title} — {self.title} ({self.starts_at:%Y-%m-%d %H:%M})"
 
 
+OFFICE_NAME_RE = re.compile(
+    r"\b(directorate|department|dept|division|unit|office|ministry|agency|commission|secretariat|"
+    r"inspection|headquarters|hq|zonal|laboratory|lab)\b", re.IGNORECASE,
+)
+
+
 class SelarContact(TimeStampedModel):
     """Someone who touched one of our Selar products (free sample
     download, abandoned checkout, or paid purchase). Selar has no
@@ -133,8 +141,16 @@ class SelarContact(TimeStampedModel):
         return f"{self.email} ({self.status})"
 
     @property
+    def is_office(self):
+        """A shared office account (e.g. "PORTS INSPECTION DIRECTORATE
+        YABA-LAGOS") rather than a person — gets a team-focused offer."""
+        return bool(OFFICE_NAME_RE.search(self.name))
+
+    @property
     def first_name(self):
-        # No personal name (blank, or an office account such as
-        # "PORTS INSPECTION DIRECTORATE") -> "Dear Sir/Ma", the
-        # respectful default for a Nigerian professional audience.
-        return self.name.split()[0].title() if self.name.strip() else "Sir/Ma"
+        # No personal name (blank, or an office account) -> "Dear
+        # Sir/Ma", the respectful default for a Nigerian professional
+        # audience.
+        if self.is_office or not self.name.strip():
+            return "Sir/Ma"
+        return self.name.split()[0].title()
