@@ -36,6 +36,7 @@ logger = logging.getLogger(__name__)
 
 PAID_URL = "https://selar.com/37c32yp3md"
 FREE_URL = "https://selar.com/8621772r27"
+TEAM_URL = "https://selar.com/78exycg197"
 PSR_COURSE_SLUG = "public-service-rules-guide"
 
 # (status, step key, minimum days in status, subject, template)
@@ -117,7 +118,7 @@ def _bought_on_site(email) -> bool:
 
 
 def _context(contact):
-    return {"first_name": contact.first_name, "paid_url": PAID_URL, "free_url": FREE_URL,
+    return {"first_name": contact.first_name, "paid_url": PAID_URL, "free_url": FREE_URL, "team_url": TEAM_URL,
             "site_url": settings.SITE_URL}
 
 
