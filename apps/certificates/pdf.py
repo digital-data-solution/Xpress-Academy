@@ -171,7 +171,7 @@ def build_certificate_pdf(certificate) -> bytes:
     # language as the "XA" logo mark and the cert-seal element on the
     # site's own certificate page, not a photo/graphic asset.
     seal_r = 1.15 * cm
-    seal_cy = height - 3.15 * cm
+    seal_cy = height - 2.9 * cm
     c.setFillColor(PRIMARY)
     c.circle(cx, seal_cy, seal_r, stroke=0, fill=1)
     c.setStrokeColor(colors.white)
@@ -185,6 +185,7 @@ def build_certificate_pdf(certificate) -> bytes:
 
     c.setFont("Helvetica-Bold", 10)
     c.setFillColor(MUTED)
+    # Clear of the seal above (its bottom edge sits at height - 4.05cm).
     c.drawCentredString(cx, height - 4.55 * cm, "XPRESS DIGITAL ACADEMY")
 
     c.setFont("Times-Bold", 30)
@@ -242,9 +243,12 @@ def build_certificate_pdf(certificate) -> bytes:
     c.drawCentredString(cx, qr_y - 0.4 * cm, "Scan to verify authenticity")
 
     # Required wording, verbatim — see module docstring.
+    # Above the rule, not below it: the bottom band belongs to the
+    # serial/date and the signature block, and a signature image
+    # drawn there used to run straight through this line.
     c.setFont("Helvetica", 9)
     c.setFillColor(MUTED)
-    c.drawCentredString(cx, 3.5 * cm, CERTIFICATE_WORDING)
+    c.drawCentredString(cx, 4.3 * cm, CERTIFICATE_WORDING)
 
     # A thin rule separates the formal wording/meta footer from the
     # certificate body above it.
