@@ -204,3 +204,10 @@ def test_admin_import_page(client):
     assert SelarContact.objects.get(email="ada@x.com").status == SelarContact.Status.FREE
     assert SelarContact.objects.get(email="bayo@x.com").status == SelarContact.Status.ABANDONED
     assert EmailLog.objects.filter(dedupe_key="selar:abandoned-1:bayo@x.com").exists()
+
+
+@pytest.mark.django_db
+def test_rerun_reports_no_new_sends():
+    record_contact(email="b@x.com", status=SelarContact.Status.ABANDONED)
+    assert send_selar_followups() == {"abandoned-1": 1}
+    assert send_selar_followups() == {}

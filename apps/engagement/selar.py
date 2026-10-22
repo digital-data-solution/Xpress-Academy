@@ -31,7 +31,7 @@ from django.db import transaction
 from django.template.loader import render_to_string
 from django.utils import timezone
 
-from .models import SelarContact
+from .models import EmailLog, SelarContact
 from .services import send_email
 
 logger = logging.getLogger(__name__)
@@ -239,6 +239,8 @@ def send_selar_followups(*, now=None) -> dict:
             continue
         status, step, _days, subject, template = due[-1]
         key = f"selar:{step}:{contact.email}"
+        if EmailLog.objects.filter(dedupe_key=key, status=EmailLog.Status.SENT).exists():
+            continue  # already sent on an earlier run; keeps the returned counts honest
         ctx = {**_context(contact), "is_last": step == "abandoned-2"}
         log = send_email(
             to_email=contact.email, template_key=f"selar_{step}",
