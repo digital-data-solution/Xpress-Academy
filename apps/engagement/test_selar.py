@@ -125,3 +125,15 @@ class TestImportCommand:
         assert SelarContact.objects.get(email="k@x.com").status == SelarContact.Status.PAID
         ay = SelarContact.objects.get(email="ay@x.com")
         assert (ay.name, ay.status) == ("Ayombo Ogunyemi", SelarContact.Status.ABANDONED)
+
+
+def test_resend_payload_routes_replies_to_read_inbox(settings):
+    from unittest.mock import MagicMock, patch
+
+    from .gateway import ResendGateway
+
+    settings.EMAIL_REPLY_TO = "contact@example.com"
+    with patch("apps.engagement.gateway.requests.post") as post:
+        post.return_value = MagicMock(status_code=200, json=lambda: {"id": "r1"})
+        ResendGateway(api_key="k").send(to_email="a@x.com", from_email="academy@example.com", subject="s", html="h")
+    assert post.call_args.kwargs["json"]["reply_to"] == ["contact@example.com"]

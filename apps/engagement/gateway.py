@@ -25,7 +25,10 @@ class ResendGateway:
             resp = requests.post(
                 f"{RESEND_BASE_URL}/emails",
                 headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
-                json={"from": from_email, "to": [to_email], "subject": subject, "html": html},
+                json={
+                    "from": from_email, "to": [to_email], "subject": subject, "html": html,
+                    **({"reply_to": [settings.EMAIL_REPLY_TO]} if settings.EMAIL_REPLY_TO else {}),
+                },
                 timeout=REQUEST_TIMEOUT_SECONDS,
             )
         except requests.RequestException as exc:

@@ -98,6 +98,9 @@ DEFAULT_FROM_EMAIL_FALLBACK = env(
     "DEFAULT_FROM_EMAIL_FALLBACK",
     default="Xpress Digital Academy <academy@xpressdigitalanddatasolutions.online>",
 )
+# academy@ is send-only (a Resend sender with no mailbox behind it), so
+# replies are routed to the inbox someone actually reads.
+EMAIL_REPLY_TO = env("EMAIL_REPLY_TO", default="Xpress Digital Academy <contact@xpressdigitalanddatasolutions.online>")
 # A generous ceiling, not a target — see apps/engagement/services.py::send_email.
 EMAIL_RATE_LIMIT_PER_MINUTE = env.int("EMAIL_RATE_LIMIT_PER_MINUTE", default=100)
 

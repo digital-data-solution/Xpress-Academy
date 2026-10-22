@@ -68,7 +68,9 @@ def _send_via_smtp(*, to_email, from_email, subject, html) -> str:
         use_ssl=settings.EMAIL_USE_SSL,
         fail_silently=False, timeout=10,
     )
-    message = EmailMultiAlternatives(subject=subject, body=html, from_email=from_email, to=[to_email], connection=backend)
+    message = EmailMultiAlternatives(subject=subject, body=html, from_email=from_email, to=[to_email],
+        reply_to=[settings.EMAIL_REPLY_TO] if settings.EMAIL_REPLY_TO else None, connection=backend,
+    )
     message.attach_alternative(html, "text/html")
     message.send()
     return "smtp"
