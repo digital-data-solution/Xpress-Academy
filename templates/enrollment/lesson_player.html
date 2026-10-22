@@ -39,10 +39,11 @@
       apps.catalog.models.Lesson.generated_video_url's own comment on why
       there are two fields.
     {% endcomment %}
+    {# nodownload hides the browser's save button and the email overlay makes a screen recording traceable — deterrents for casual WhatsApp forwarding, not DRM. #}
     {% if lesson.generated_video_url %}
-      <video controls preload="metadata" style="width:100%;border-radius:8px;background:#000" src="{{ lesson.generated_video_url }}"></video>
+      <div style="position:relative"><video controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false" preload="metadata" style="width:100%;border-radius:8px;background:#000" src="{{ lesson.generated_video_url }}"></video><div aria-hidden="true" style="position:absolute;top:10px;right:12px;font-size:12px;color:rgba(255,255,255,.45);pointer-events:none;user-select:none">{{ request.user.email }}</div></div>
     {% else %}
-      <video controls preload="metadata" style="width:100%;border-radius:8px;background:#000" src="{{ lesson.generated_video.url }}"></video>
+      <div style="position:relative"><video controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false" preload="metadata" style="width:100%;border-radius:8px;background:#000" src="{{ lesson.generated_video.url }}"></video><div aria-hidden="true" style="position:absolute;top:10px;right:12px;font-size:12px;color:rgba(255,255,255,.45);pointer-events:none;user-select:none">{{ request.user.email }}</div></div>
     {% endif %}
   {% endif %}
 
