@@ -20,9 +20,11 @@ Anyone PAID, unsubscribed, or already enrolled in the PSR course on this
 site through its own checkout drops out of the sales emails.
 """
 
+import csv
+import io
 import logging
 import re
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.db import transaction
@@ -75,6 +77,68 @@ def record_contact(*, email, name="", phone="", status, when=None) -> SelarConta
     if changed:
         contact.save(update_fields=changed + ["updated_at"])
     return contact
+
+
+EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+
+
+def _col(row, *needles):
+    for key, value in row.items():
+        if key and all(n in key.lower() for n in needles):
+            return (value or "").strip()
+    return ""
+
+
+def _amount(text):
+    digits = re.sub(r"[^\d.]", "", text or "")
+    return float(digits) if digits else 0.0
+
+
+def _when(text):
+    # Selar shows e.g. "Oct 22nd 2026, 11:50 AM"; fall back to now if the export format differs.
+    cleaned = re.sub(r"(\d)(st|nd|rd|th)", r"\1", text or "")
+    for fmt in ("%b %d %Y, %I:%M %p", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+        try:
+            return timezone.make_aware(datetime.strptime(cleaned, fmt))
+        except ValueError:
+            continue
+    return timezone.now()
+
+
+def import_csv_text(text) -> dict:
+    """Load a Selar Sales CSV export (as text). Free-sample rows
+    (total 0) become FREE contacts and paid rows PAID; a paid row's
+    order reference confirms any activation-page claim made with it.
+    Safe to re-run with the same export."""
+    counts = {s: 0 for s in SelarContact.Status.values}
+    for row in csv.DictReader(io.StringIO(text.lstrip("\ufeff"))):
+        match = EMAIL_RE.search(_col(row, "email"))
+        if not match:
+            continue
+        paid = _amount(_col(row, "total")) > 0
+        status = SelarContact.Status.PAID if paid else SelarContact.Status.FREE
+        contact = record_contact(
+            email=match.group(0), name=_col(row, "fullname") or _col(row, "customer", "name"),
+            phone=_col(row, "mobile"), status=status, when=_when(_col(row, "date")),
+        )
+        counts[status] += 1
+        reference = _col(row, "reference").upper()
+        if paid and reference:
+            SelarContact.objects.filter(reference=reference).update(reference_verified=True)
+            if not contact.reference and not SelarContact.objects.filter(reference=reference).exists():
+                contact.reference, contact.reference_verified = reference, True
+                contact.save(update_fields=["reference", "reference_verified", "updated_at"])
+    return counts
+
+
+def import_abandoned(entry) -> SelarContact:
+    """One line from a Selar abandoned-transaction email: "Full Name <email>"."""
+    match = EMAIL_RE.search(entry)
+    if not match:
+        raise ValueError(f"No email address in {entry!r}")
+    name = entry[:match.start()].strip(" <\"'")
+    return record_contact(email=match.group(0), name=name, status=SelarContact.Status.ABANDONED)
+
 
 
 REFERENCE_RE = re.compile(r"^S[A-Z0-9]{10,14}$")

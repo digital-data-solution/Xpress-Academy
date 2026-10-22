@@ -1,0 +1,9 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <p>Paste the Selar Sales export, or upload it, and add any abandoned checkouts. Re-importing the same rows is safe: nobody is emailed twice.</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="default" value="Import">
+  </form>
+{% endblock %}

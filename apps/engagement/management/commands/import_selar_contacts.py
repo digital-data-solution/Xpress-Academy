@@ -15,40 +15,10 @@ PAID. Re-running with the same file is safe: status only moves forward
 and every email is deduped.
 """
 
-import csv
-import re
-from datetime import datetime
-
 from django.core.management.base import BaseCommand, CommandError
-from django.utils import timezone
 
 from apps.engagement.models import SelarContact
-from apps.engagement.selar import record_contact, send_selar_followups, unverified_claims
-
-EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
-
-
-def _col(row, *needles):
-    for key, value in row.items():
-        if key and all(n in key.lower() for n in needles):
-            return (value or "").strip()
-    return ""
-
-
-def _amount(text):
-    digits = re.sub(r"[^\d.]", "", text or "")
-    return float(digits) if digits else 0.0
-
-
-def _when(text):
-    # Selar shows e.g. "Oct 22nd 2026, 11:50 AM"; fall back to now if the export format differs.
-    cleaned = re.sub(r"(\d)(st|nd|rd|th)", r"\1", text or "")
-    for fmt in ("%b %d %Y, %I:%M %p", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
-        try:
-            return timezone.make_aware(datetime.strptime(cleaned, fmt))
-        except ValueError:
-            continue
-    return timezone.now()
+from apps.engagement.selar import import_abandoned, import_csv_text, send_selar_followups, unverified_claims
 
 
 class Command(BaseCommand):
@@ -67,32 +37,14 @@ class Command(BaseCommand):
 
         if opts["csv"]:
             with open(opts["csv"], newline="", encoding="utf-8-sig") as fh:
-                for row in csv.DictReader(fh):
-                    match = EMAIL_RE.search(_col(row, "email"))
-                    if not match:
-                        continue
-                    paid = _amount(_col(row, "total")) > 0
-                    status = SelarContact.Status.PAID if paid else SelarContact.Status.FREE
-                    contact = record_contact(
-                        email=match.group(0), name=_col(row, "fullname") or _col(row, "customer", "name"), phone=_col(row, "mobile"),
-                        status=status, when=_when(_col(row, "date")),
-                    )
-                    counts[status] += 1
-                    reference = _col(row, "reference").upper()
-                    if paid and reference:
-                        # Confirms an activation-page claim made with this
-                        # reference, whichever email it was claimed with.
-                        SelarContact.objects.filter(reference=reference).update(reference_verified=True)
-                        if not contact.reference and not SelarContact.objects.filter(reference=reference).exists():
-                            contact.reference, contact.reference_verified = reference, True
-                            contact.save(update_fields=["reference", "reference_verified", "updated_at"])
+                for status, n in import_csv_text(fh.read()).items():
+                    counts[status] += n
 
         for entry in opts["abandoned"]:
-            match = EMAIL_RE.search(entry)
-            if not match:
-                raise CommandError(f"No email address in {entry!r}")
-            name = entry[:match.start()].strip(" <\"'")
-            record_contact(email=match.group(0), name=name, status=SelarContact.Status.ABANDONED)
+            try:
+                import_abandoned(entry)
+            except ValueError as exc:
+                raise CommandError(str(exc))
             counts[SelarContact.Status.ABANDONED] += 1
 
         self.stdout.write(f"Imported: {counts}")

@@ -187,3 +187,20 @@ def test_office_account_gets_team_offer():
     from .selar import _context
     html = render_to_string("emails/selar_free_offer.html", _context(c))
     assert "Dear Sir/Ma" in html and "Team Pack: ₦35,000 for 10 officers" in html
+
+
+@pytest.mark.django_db
+def test_admin_import_page(client):
+    admin_user = User.objects.create_superuser(email="boss@x.com", password="pw-12345678")
+    client.force_login(admin_user)
+    from django.urls import reverse
+    url = reverse("admin:engagement_selarcontact_import")
+    assert client.get(url).status_code == 200
+    r = client.post(url, {
+        "csv_text": "Customer Fullname,Customer Email,Transaction Date,Total\nAda Obi,ada@x.com,\"Oct 22nd 2026, 9:59 AM\",NGN 0\n",
+        "abandoned": "Bayo Ade <bayo@x.com>", "send_now": "on",
+    })
+    assert r.status_code == 302
+    assert SelarContact.objects.get(email="ada@x.com").status == SelarContact.Status.FREE
+    assert SelarContact.objects.get(email="bayo@x.com").status == SelarContact.Status.ABANDONED
+    assert EmailLog.objects.filter(dedupe_key="selar:abandoned-1:bayo@x.com").exists()
