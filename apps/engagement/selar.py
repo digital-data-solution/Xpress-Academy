@@ -40,9 +40,9 @@ PSR_COURSE_SLUG = "public-service-rules-guide"
 # (status, step key, minimum days in status, subject, template)
 SEQUENCE = [
     (SelarContact.Status.FREE, "free-score", 2,
-     "How did you score on the PSR questions, {first_name}?", "selar_free_score.html"),
+     "How did you score on the PSR questions?", "selar_free_score.html"),
     (SelarContact.Status.FREE, "free-offer", 5,
-     "{first_name}, cover the whole PSR section before your exam", "selar_free_offer.html"),
+     "Cover the whole PSR section before your exam", "selar_free_offer.html"),
     (SelarContact.Status.ABANDONED, "abandoned-1", 0,
      "Your PSR pack is still waiting for you", "selar_abandoned.html"),
     (SelarContact.Status.ABANDONED, "abandoned-2", 2,

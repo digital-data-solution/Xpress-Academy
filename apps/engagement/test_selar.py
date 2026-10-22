@@ -54,7 +54,6 @@ class TestSequence:
         assert keys() == {"selar:free-score:a@x.com"}
         send_selar_followups(now=now + timedelta(days=3))
         assert keys() == {"selar:free-score:a@x.com", "selar:free-offer:a@x.com"}
-        assert "Ada" in EmailLog.objects.get(dedupe_key="selar:free-score:a@x.com").subject
 
     def test_late_import_sends_only_latest_due_step(self):
         record_contact(email="a@x.com", status=SelarContact.Status.FREE, when=timezone.now() - timedelta(days=9))
