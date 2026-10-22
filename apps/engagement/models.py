@@ -87,3 +87,41 @@ class LiveSession(TimeStampedModel):
 
     def __str__(self):
         return f"{self.course.title} — {self.title} ({self.starts_at:%Y-%m-%d %H:%M})"
+
+
+class SelarContact(TimeStampedModel):
+    """Someone who touched one of our Selar products (free sample
+    download, abandoned checkout, or paid purchase). Selar has no
+    webhooks on the free plan, so these arrive by import — see the
+    import_selar_contacts command and apps.engagement.selar for the
+    follow-up sequence they drive. Its own model rather than Lead:
+    a Lead has no name and no notion of where in the funnel someone
+    stopped, and both matter for the follow-up copy."""
+
+    class Status(models.TextChoices):
+        FREE = "FREE", "Downloaded free sample"
+        ABANDONED = "ABANDONED", "Abandoned paid checkout"
+        PAID = "PAID", "Paid"
+
+    email = models.EmailField(unique=True)
+    name = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=40, blank=True)
+    status = models.CharField(max_length=10, choices=Status.choices)
+    # When the contact entered their current status — the follow-up
+    # schedule counts days from here, not from created_at, so someone
+    # who downloads the free sample and abandons checkout a week later
+    # starts the abandoned-cart sequence fresh.
+    status_changed_at = models.DateTimeField()
+    unsubscribed = models.BooleanField(
+        default=False, help_text="Tick when someone replies asking to stop — no further follow-ups are sent.",
+    )
+
+    class Meta:
+        ordering = ["-status_changed_at"]
+
+    def __str__(self):
+        return f"{self.email} ({self.status})"
+
+    @property
+    def first_name(self):
+        return (self.name.split() or ["there"])[0].title()

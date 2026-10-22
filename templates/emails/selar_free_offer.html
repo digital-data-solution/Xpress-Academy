@@ -1,0 +1,16 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hello {{ first_name }},</p>
+  <p>The PSR is one section of your promotion exam, and it's the section you can master completely with a plan. The full pack gives you that plan:</p>
+  <ul style="padding-left:18px;">
+    <li>34 short video lessons covering all 17 chapters of PSR 2021, in plain English</li>
+    <li>437 practice questions, each with the answer <strong>and</strong> the rule number</li>
+    <li>A bonus set of 197 aptitude questions (General Knowledge, Numerical, Verbal)</li>
+  </ul>
+  <p>One chapter a week gets you through the whole PSR in about 4 months, well before exam time.</p>
+  <p style="margin:24px 0;"><a href="{{ paid_url }}" style="background:#166534; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:600;">Get the full pack: ₦5,000, one-time</a></p>
+  <p style="font-size:14px;">Prefer to study online instead? Our PSR video course is also on our website for ₦5,000, with instant access: <a href="{{ site_url }}/courses/public-service-rules-guide/">{{ site_url }}/courses/public-service-rules-guide/</a></p>
+  <p>Payment goes through Selar's secure checkout (card, USSD or bank transfer), and you download immediately. You also get the course on our website, with a video player and progress tracking. If anything goes wrong, reply to this email and we'll fix it the same day.</p>
+  <p>Xpress Digital Academy</p>
+  <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you downloaded our free PSR sample on Selar. Reply "stop" and we won't email you again.</p>
+{% endblock %}

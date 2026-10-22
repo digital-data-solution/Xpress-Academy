@@ -1,0 +1,20 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hello {{ first_name }},</p>
+  {% if is_last %}
+  <p>Just a last reminder: your PSR 2021 Complete Pack is still available at the same price.</p>
+  {% else %}
+  <p>We noticed you started getting the PSR 2021 Complete Pack but didn't finish. No problem. Sometimes the network fails or the bank app delays.</p>
+  {% endif %}
+  <p style="margin:24px 0;"><a href="{{ paid_url }}" style="background:#166534; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:600;">Complete my order: ₦5,000</a></p>
+  <p style="font-size:14px;">Prefer to study online instead? Our PSR video course is also on our website for ₦5,000, with instant access: <a href="{{ site_url }}/courses/public-service-rules-guide/">{{ site_url }}/courses/public-service-rules-guide/</a></p>
+  <p><strong>Questions people ask us:</strong></p>
+  <ul style="padding-left:18px;">
+    <li><strong>Is payment safe?</strong> Yes. It goes through Selar's secure checkout (Paystack). If you pay by bank transfer, you get a one-time account number created just for your order.</li>
+    <li><strong>How do I receive it?</strong> You download it immediately after payment. It's a small file that works even on a slow network, and you also get the course on our website.</li>
+    <li><strong>What if something goes wrong?</strong> Reply to this email and we'll sort it out the same day.</li>
+  </ul>
+  <p>Want to see the quality first? Try the free 34-question sample: <a href="{{ free_url }}">{{ free_url }}</a></p>
+  <p>Xpress Digital Academy</p>
+  <p style="font-size:12px; color:#9ca3af; margin-top:20px;">You're getting this because you started a checkout on our Selar store. Reply "stop" and we won't email you again.</p>
+{% endblock %}

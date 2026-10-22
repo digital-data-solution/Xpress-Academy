@@ -1,0 +1,17 @@
+{% extends "emails/_base.html" %}
+{% block body %}
+  <p>Hello {{ first_name }},</p>
+  <p>Thank you for buying the PSR 2021 Complete Pack. Your download from Selar is yours to keep. As a bonus, we've also opened <strong>{{ course_title }}</strong> for you on our website, with a video player, progress tracking and practice questions.</p>
+  {% if has_password %}
+  <p><a href="{{ site_url }}/account/login/">Log in</a> with this email address and you'll find it on your dashboard.</p>
+  {% else %}
+  <p>To get in, set a password once:</p>
+  <ol style="padding-left:18px;">
+    <li>Open <a href="{{ site_url }}/account/forgot-password/">{{ site_url }}/account/forgot-password/</a></li>
+    <li>Enter this email address</li>
+    <li>Click the link we send you and choose a password</li>
+  </ol>
+  {% endif %}
+  <p>Our tip: one chapter a week, then that chapter's questions. Any problem at all, reply to this email.</p>
+  <p>Wishing you success in your exam,<br>Xpress Digital Academy</p>
+{% endblock %}

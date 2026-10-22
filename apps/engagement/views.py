@@ -88,6 +88,7 @@ def run_scheduled_tasks(request):
         reconcile_pending_payments_task,
         remind_live_session,
         send_graduate_marketing_emails_task,
+        send_selar_followups_task,
         send_weekly_staff_training_email_task,
         sweep_paystack_transactions_task,
         unlock_dripped_modules,
@@ -105,6 +106,7 @@ def run_scheduled_tasks(request):
         ("reconcile_pending_payments", reconcile_pending_payments_task),
         ("sweep_paystack_transactions", sweep_paystack_transactions_task),
         ("send_graduate_marketing_emails", send_graduate_marketing_emails_task),
+        ("send_selar_followups", send_selar_followups_task),
         ("send_weekly_staff_training_email", send_weekly_staff_training_email_task),
         ("advance_compulsory_training_chains", advance_compulsory_training_chains_task),
     ]:

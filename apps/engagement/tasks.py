@@ -278,6 +278,15 @@ def send_graduate_marketing_emails_task():
 
 
 @shared_task
+def send_selar_followups_task():
+    """Daily — follow-up emails for Selar free-sample downloaders,
+    abandoned checkouts and buyers. Logic lives in apps.engagement.selar;
+    thin wrapper like send_graduate_marketing_emails_task above."""
+    from .selar import send_selar_followups
+    return send_selar_followups()
+
+
+@shared_task
 def send_weekly_staff_training_email_task():
     """Runs daily via run_scheduled_tasks (no real weekly cron slot on
     the free tier — see the Render deploy notes), but only actually
