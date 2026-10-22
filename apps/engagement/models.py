@@ -124,4 +124,7 @@ class SelarContact(TimeStampedModel):
 
     @property
     def first_name(self):
-        return (self.name.split() or ["there"])[0].title()
+        # No personal name (blank, or an office account such as
+        # "PORTS INSPECTION DIRECTORATE") -> "Dear Sir/Ma", the
+        # respectful default for a Nigerian professional audience.
+        return self.name.split()[0].title() if self.name.strip() else "Sir/Ma"

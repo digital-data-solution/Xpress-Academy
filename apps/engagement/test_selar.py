@@ -136,3 +136,8 @@ def test_resend_payload_routes_replies_to_read_inbox(settings):
         post.return_value = MagicMock(status_code=200, json=lambda: {"id": "r1"})
         ResendGateway(api_key="k").send(to_email="a@x.com", from_email="academy@example.com", subject="s", html="h")
     assert post.call_args.kwargs["json"]["reply_to"] == ["contact@example.com"]
+
+
+def test_nameless_contact_is_greeted_sir_ma():
+    assert SelarContact(name="").first_name == "Sir/Ma"
+    assert SelarContact(name="muniba yakubu").first_name == "Muniba"
