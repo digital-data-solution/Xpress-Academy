@@ -3,7 +3,7 @@
 The task functions this schedule calls mostly wrap logic that already
 existed and worked before Celery did: `expire_attempt_if_stale`
 (Phase 4), `issue_certificate` (Phase 5), and
-`reconcile_pending_payments`/`sweep_paystack_transactions` (Phase 6,
+`reconcile_pending_payments`/`sweep_flutterwave_transactions` (Phase 6,
 previously only reachable as management commands — this is what
 finally puts them on the schedule the payments addendum called for).
 Phase 7 adds the schedule, not new business logic, for those.
@@ -52,8 +52,8 @@ app.conf.beat_schedule = {
         "task": "apps.engagement.tasks.reconcile_pending_payments_task",
         "schedule": crontab(minute="*/10"),
     },
-    "sweep-paystack-transactions": {
-        "task": "apps.engagement.tasks.sweep_paystack_transactions_task",
+    "sweep-flutterwave-transactions": {
+        "task": "apps.engagement.tasks.sweep_flutterwave_transactions_task",
         "schedule": crontab(hour=2, minute=0),  # daily 02:00 WAT
     },
     # --- Phase 11: operations/signals — build spec §5, "money hourly,

@@ -364,7 +364,7 @@ class TestCheckoutRequiresVerification:
         client.force_login(user)
         resp = client.get(f"/checkout/{course.slug}/")
         assert resp.status_code == 200
-        assert b"Pay with Paystack" in resp.content
+        assert b"Pay securely with Flutterwave" in resp.content
 
 
 @pytest.mark.django_db

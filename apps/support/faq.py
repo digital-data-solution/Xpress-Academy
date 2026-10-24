@@ -31,7 +31,7 @@ FAQ_ENTRIES = [
         keywords=("payment", "paid", "pay", "debit", "debited", "charged", "pending", "transaction"),
         question="I paid but the site still shows the course/certificate as unpaid",
         answer=(
-            "If Paystack already debited you but the course still looks unpaid, this is usually "
+            "If you were already debited but the course still looks unpaid, this is usually "
             "a payment that didn't get confirmed back to us — it happens if the browser tab closes "
             "right after paying, before the redirect finishes. It's not lost: our system reconciles "
             "pending payments automatically. If it's been more than 30 minutes and still hasn't updated, "

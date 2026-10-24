@@ -1,6 +1,14 @@
+import hmac
+import json
+import logging
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 from apps.catalog.models import Course
 from apps.enrollment.models import Enrollment
@@ -16,6 +24,8 @@ from .services import (
     record_coupon_attempt,
     verify_and_grant,
 )
+
+logger = logging.getLogger(__name__)
 
 
 @login_required
@@ -151,11 +161,19 @@ def checkout_certificate(request, course_slug):
 def checkout_return(request):
     """The learner lands here after paying — build spec §9/addendum
     §2.3. Never trusts the query string beyond "which reference to
-    check"; the actual status always comes from calling Paystack."""
-    reference = request.GET.get("reference") or request.GET.get("trxref")
+    check"; the actual status always comes from calling Flutterwave."""
+    reference = request.GET.get("tx_ref")
     if not reference:
         return render(request, "payments/return_error.html", {
             "message": "No payment reference was provided.",
+        })
+
+    if request.GET.get("status") == "cancelled":
+        # Flutterwave sends cancelled checkouts back here too. Nothing
+        # was charged; the PENDING Payment ages out to ABANDONED.
+        return render(request, "payments/return_error.html", {
+            "message": "You cancelled the payment, so you have not been charged. You can try again any time.",
+            "cancelled": True,
         })
 
     payment, error = verify_and_grant(reference)
@@ -187,3 +205,36 @@ def checkout_return(request):
 
     messages.success(request, f"You're enrolled in {payment.course.title}.")
     return redirect("enrollment:curriculum", course_slug=payment.course.slug)
+
+
+@csrf_exempt
+@require_POST
+def flutterwave_webhook(request):
+    """Flutterwave's server-to-server notice that a charge completed —
+    the fast path, so access is granted even if the learner never makes
+    it back to /checkout/return/. Authenticated by the `verif-hash`
+    header (the secret hash set in the Flutterwave dashboard), and even
+    then the body is never trusted: it only says which reference to
+    check, and verify_and_grant asks Flutterwave for the real status,
+    exactly as the return handler does. Verify-on-return and
+    reconciliation keep running regardless."""
+    expected = settings.FLUTTERWAVE_SECRET_HASH
+    received = request.headers.get("verif-hash", "")
+    if not expected or not hmac.compare_digest(received, expected):
+        logger.warning("flutterwave_webhook: rejected request with missing/invalid verif-hash")
+        return HttpResponse(status=401)
+
+    try:
+        payload = json.loads(request.body)
+    except ValueError:
+        return HttpResponse(status=400)
+
+    data = payload.get("data") or {}
+    reference = data.get("tx_ref") or ""
+    if payload.get("event") == "charge.completed" and reference.startswith("XDA-"):
+        _payment, error = verify_and_grant(reference)
+        if error:
+            logger.warning("flutterwave_webhook: %s not granted: %s", reference, error)
+    # Anything else (other events, non-Academy references) is acknowledged
+    # and ignored — a non-200 would only make Flutterwave retry it.
+    return HttpResponse(status=200)

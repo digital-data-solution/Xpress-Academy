@@ -1,11 +1,11 @@
-"""Payment lifecycle per the payments addendum (supersedes build spec
-§4's webhook-based rules): verify-on-return + reconciliation, never
-webhooks — the Paystack account is shared with Xpress Vet Marketplace
-and only has room for one webhook URL, already claimed.
+"""Payment lifecycle: verify-on-return, the Flutterwave webhook, and
+reconciliation. None of them trusts what it is told — each one only
+learns *which* reference to check, then asks Flutterwave for the real
+status through verify_and_grant().
 
 grant_access() is the single choke point every path calls — the
-return handler, the reconciliation task, and (for a manual case) an
-admin action. No other code creates an Enrollment from a payment.
+return handler, the webhook, the reconciliation task, and (for a
+manual case) an admin action. No other code creates an Enrollment from a payment.
 """
 
 import logging
@@ -17,7 +17,7 @@ from django.utils import timezone
 
 from apps.enrollment.models import Cohort, Enrollment
 
-from .gateway import PaystackError, PaystackGateway
+from .gateway import FlutterwaveGateway, GatewayError
 from .models import Coupon, CouponAttempt, Payment
 
 logger = logging.getLogger(__name__)
@@ -59,12 +59,12 @@ class PaymentInitError(Exception):
 
 def generate_reference(course, user) -> str:
     # XDA- prefix per the addendum: instantly identifiable in a shared
-    # Paystack dashboard that also carries Xpress Vet traffic.
+    # Flutterwave dashboard that also carries Xpress Digital store traffic.
     return f"XDA-{course.id}-{user.id}-{uuid.uuid4().hex[:12]}"
 
 
 def generate_license_reference(institutional_license, user) -> str:
-    # Same XDA- prefix, deliberately -- sweep_paystack_transactions's
+    # Same XDA- prefix, deliberately -- sweep_flutterwave_transactions's
     # is_academy check keys off this prefix (or metadata.product,
     # which initialize_license_payment also sets), so an institutional
     # payment gets the exact same reconciliation safety net as a
@@ -103,11 +103,11 @@ def initialize_payment(
     purpose=Payment.Purpose.COURSE_ACCESS, custom_amount_kobo=None,
 ) -> tuple[Payment, str]:
     """Returns (payment, authorization_url). Raises PaymentInitError if
-    Paystack rejects the call — the Payment row still exists, marked
+    Flutterwave rejects the call — the Payment row still exists, marked
     FAILED, so nothing is lost track of.
 
     Deliberately NOT wrapped in transaction.atomic: the Payment must
-    be created and persisted *before* the Paystack call regardless of
+    be created and persisted *before* the Flutterwave call regardless of
     what happens next, and if this whole function were one atomic
     block, raising PaymentInitError after marking it FAILED would roll
     back the FAILED save AND the original creation — the Payment
@@ -124,16 +124,16 @@ def initialize_payment(
     # custom_amount_kobo: PAY_WHAT_YOU_WANT courses — the buyer's own
     # entered amount, already validated against course.minimum_price_ngn
     # by the caller (checkout()). Still floored at MIN_CHARGE_KOBO —
-    # Paystack itself won't process a literal ₦0 charge.
+    # Flutterwave itself won't process a literal ₦0 charge.
     amount_kobo = max(custom_amount_kobo, MIN_CHARGE_KOBO) if custom_amount_kobo is not None else compute_amount_kobo(course, coupon)
     reference = generate_reference(course, user)
 
-    # Created BEFORE calling Paystack — per the addendum, "a payment
-    # that exists on Paystack but not locally is the dangerous
+    # Created BEFORE calling Flutterwave — per the addendum, "a payment
+    # that exists on Flutterwave but not locally is the dangerous
     # direction. Never let that happen."
     payment = Payment.objects.create(
         user=user, course=course, cohort=cohort,
-        reference=reference, amount_kobo=amount_kobo,
+        provider=Payment.Provider.FLUTTERWAVE, reference=reference, amount_kobo=amount_kobo,
         coupon=coupon, partner=partner, purpose=purpose,
         # Phase 10 — snapshotted at init time (this is when we know
         # the session's referral state), read back at grant_access
@@ -154,11 +154,11 @@ def initialize_payment(
     }
 
     try:
-        response = PaystackGateway().initialize_transaction(
+        response = FlutterwaveGateway().initialize_transaction(
             email=user.email, amount_kobo=amount_kobo, reference=reference,
             callback_url=callback_url, metadata=metadata,
         )
-    except PaystackError as exc:
+    except GatewayError as exc:
         payment.status = Payment.Status.FAILED
         payment.raw_init_response = {"error": str(exc)}
         payment.save(update_fields=["status", "raw_init_response", "updated_at"])
@@ -177,7 +177,7 @@ def initialize_license_payment(*, user, institutional_license) -> tuple[Payment,
     computation): the amount is whatever staff already quoted onto
     InstitutionalLicense.amount_kobo, since institutional pricing is
     negotiated per deal, not a fixed SKU. Same "Payment exists before
-    the Paystack call, never the reverse" discipline, same single
+    the Flutterwave call, never the reverse" discipline, same single
     global callback_url as every other payment (checkout_return
     branches on payment.purpose, same as it already does for
     CERTIFICATE)."""
@@ -193,7 +193,7 @@ def initialize_license_payment(*, user, institutional_license) -> tuple[Payment,
 
     payment = Payment.objects.create(
         user=user, course=None, institutional_license=institutional_license,
-        reference=reference, amount_kobo=amount_kobo, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
+        provider=Payment.Provider.FLUTTERWAVE, reference=reference, amount_kobo=amount_kobo, purpose=Payment.Purpose.INSTITUTIONAL_LICENSE,
     )
 
     callback_url = f"{_site_url()}/checkout/return/"
@@ -206,11 +206,11 @@ def initialize_license_payment(*, user, institutional_license) -> tuple[Payment,
     }
 
     try:
-        response = PaystackGateway().initialize_transaction(
+        response = FlutterwaveGateway().initialize_transaction(
             email=user.email, amount_kobo=amount_kobo, reference=reference,
             callback_url=callback_url, metadata=metadata,
         )
-    except PaystackError as exc:
+    except GatewayError as exc:
         payment.status = Payment.Status.FAILED
         payment.raw_init_response = {"error": str(exc)}
         payment.save(update_fields=["status", "raw_init_response", "updated_at"])
@@ -232,21 +232,27 @@ def _verify_data_matches(payment: Payment, verify_data: dict) -> str | None:
     they didn't — per addendum §2.3, every one of these is asserted,
     never just the amount."""
     if verify_data.get("status") != "success":
-        return f"Paystack reports status={verify_data.get('status')!r}"
+        return f"Flutterwave reports status={verify_data.get('status')!r}"
     if verify_data.get("amount") != payment.amount_kobo:
         return f"Amount mismatch: expected {payment.amount_kobo}, got {verify_data.get('amount')}"
     if verify_data.get("currency") != "NGN":
         return f"Currency mismatch: {verify_data.get('currency')!r}"
     if verify_data.get("reference") != payment.reference:
         return "Reference mismatch"
-    if (verify_data.get("metadata") or {}).get("product") != PRODUCT_TAG:
+    # Flutterwave doesn't always echo meta back on verify. A product tag
+    # that is present must be ours; a missing one is accepted only for an
+    # XDA- reference (generated here, and already matched above).
+    product = (verify_data.get("metadata") or {}).get("product")
+    if product is not None and product != PRODUCT_TAG:
         return "metadata.product mismatch — not an Academy transaction"
+    if product is None and not payment.reference.startswith("XDA-"):
+        return "metadata.product missing — not an Academy transaction"
     return None
 
 
 def verify_and_grant(reference: str) -> tuple[Payment | None, str | None]:
     """The return-handler and reconciliation entry point. reference is
-    untrusted input (query string / listed from Paystack) — it only
+    untrusted input (query string / listed from Flutterwave) — it only
     says which transaction to check, never what its status is.
     Returns (payment, error_message). error_message is None on success
     (including the idempotent already-SUCCESS case)."""
@@ -259,9 +265,9 @@ def verify_and_grant(reference: str) -> tuple[Payment | None, str | None]:
         return payment, None  # idempotent — do not re-verify or re-grant
 
     try:
-        verify_response = PaystackGateway().verify_transaction(reference)
-    except PaystackError as exc:
-        logger.error("verify_and_grant: Paystack verify failed for %s: %s", reference, exc)
+        verify_response = FlutterwaveGateway().verify_transaction(reference)
+    except GatewayError as exc:
+        logger.error("verify_and_grant: Flutterwave verify failed for %s: %s", reference, exc)
         return payment, "Payment could not be confirmed right now. Please contact support."
 
     verify_data = verify_response.get("data", {})
@@ -313,7 +319,7 @@ def grant_free_access(*, user, course) -> Enrollment:
     both grant course access immediately, no payment involved (the
     CERTIFICATE_PAID payment happens later, at certificate time, via
     grant_access with Payment.Purpose.CERTIFICATE). No Payment row at
-    all here — there's nothing to reconcile against Paystack for
+    all here — there's nothing to reconcile against Flutterwave for
     something that was never charged."""
     enrollment, created = _create_or_get_enrollment(
         user=user, course=course, source=Enrollment.Source.PURCHASE,
@@ -457,8 +463,11 @@ def reconcile_pending_payments(*, now=None) -> dict:
     window_start = now - timezone.timedelta(days=7)
     window_end = now - timezone.timedelta(minutes=5)
 
+    # Only Flutterwave payments can be verified — anything left PENDING
+    # from the old payment provider just ages out to ABANDONED below.
     stale_but_recent = Payment.objects.filter(
-        status=Payment.Status.PENDING, initialized_at__lte=window_end, initialized_at__gte=window_start,
+        status=Payment.Status.PENDING, provider=Payment.Provider.FLUTTERWAVE,
+        initialized_at__lte=window_end, initialized_at__gte=window_start,
     ).order_by("initialized_at")[:200]
 
     too_old = Payment.objects.filter(status=Payment.Status.PENDING, initialized_at__lt=window_start)
@@ -479,8 +488,8 @@ def reconcile_pending_payments(*, now=None) -> dict:
     return {"checked": checked, "granted": granted, "abandoned": abandoned_count}
 
 
-def sweep_paystack_transactions(*, now=None) -> dict:
-    """Daily, 02:00 WAT (config/celery.py). Lists recent Paystack
+def sweep_flutterwave_transactions(*, now=None) -> dict:
+    """Daily, 02:00 WAT (config/celery.py). Lists recent Flutterwave
     successes, filters to Academy transactions only, and flags (never
     auto-grants) any with no matching local SUCCESS Payment — raised
     as a real apps.operations Signal (payment.reconcile_mismatch,
@@ -496,11 +505,11 @@ def sweep_paystack_transactions(*, now=None) -> dict:
     page = 1
     while True:
         try:
-            response = PaystackGateway().list_transactions(
+            response = FlutterwaveGateway().list_transactions(
                 from_dt=from_dt, to_dt=now, status="success", page=page, per_page=100
             )
-        except PaystackError as exc:
-            logger.error("sweep_paystack_transactions: list call failed: %s", exc)
+        except GatewayError as exc:
+            logger.error("sweep_flutterwave_transactions: list call failed: %s", exc)
             break
 
         transactions = response.get("data", [])
@@ -512,7 +521,7 @@ def sweep_paystack_transactions(*, now=None) -> dict:
             metadata = txn.get("metadata") or {}
             is_academy = reference.startswith("XDA-") or metadata.get("product") == PRODUCT_TAG
             if not is_academy:
-                continue  # Xpress Vet's transaction — ignore entirely, never log customer detail
+                continue  # Xpress Digital store's transaction — ignore entirely, never log customer detail
             seen += 1
 
             local = Payment.objects.filter(reference=reference, status=Payment.Status.SUCCESS).first()
@@ -525,10 +534,10 @@ def sweep_paystack_transactions(*, now=None) -> dict:
 
             payment_reconcile_mismatch(reference, {"amount": txn.get("amount"), "paid_at": txn.get("paid_at")})
             flagged += 1
-            logger.critical("sweep_paystack_transactions: reconciliation mismatch for %s", reference)
+            logger.critical("sweep_flutterwave_transactions: reconciliation mismatch for %s", reference)
 
         meta = response.get("meta", {})
-        if page * 100 >= meta.get("total", 0):
+        if page >= meta.get("total_pages", 0):
             break
         page += 1
 
@@ -536,7 +545,7 @@ def sweep_paystack_transactions(*, now=None) -> dict:
 
 
 def refund_payment(payment: Payment, reason: str) -> Payment:
-    """Manual only — addendum §5: never call Paystack's refund API from
+    """Manual only — addendum §5: never call Flutterwave's refund API from
     Academy code. Sam issues the refund from the dashboard by hand;
     this just records it and the caller is responsible for revoking
     the Enrollment separately (not done automatically — a refund

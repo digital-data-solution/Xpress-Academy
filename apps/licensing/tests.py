@@ -628,14 +628,14 @@ class TestPayLicenseView:
         assert resp.status_code == 200
         assert resp.context["amount_ngn"] == 500_000
 
-    def test_posting_redirects_to_paystack(self, pending_license, proprietor):
+    def test_posting_redirects_to_flutterwave(self, pending_license, proprietor):
         client = Client()
         client.force_login(proprietor)
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/xyz"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/xyz"}}
             resp = client.post(reverse("licensing:pay_license", kwargs={"license_id": pending_license.pk}))
         assert resp.status_code == 302
-        assert resp.url == "https://paystack.test/pay/xyz"
+        assert resp.url == "https://checkout.flutterwave.test/pay/xyz"
 
     def test_already_active_license_redirects_to_dashboard(self, pending_license, proprietor):
         pending_license.status = InstitutionalLicense.Status.ACTIVE
@@ -663,13 +663,13 @@ class TestPayLicenseView:
         directly."""
         from apps.payments.services import initialize_license_payment
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
 
         client = Client()
         client.force_login(proprietor)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = {
                 "status": True,
                 "data": {
@@ -677,7 +677,7 @@ class TestPayLicenseView:
                     "reference": payment.reference, "metadata": {"product": "xpress_academy"},
                 },
             }
-            resp = client.get(f"/checkout/return/?reference={payment.reference}", follow=True)
+            resp = client.get(f"/checkout/return/?tx_ref={payment.reference}", follow=True)
 
         assert resp.status_code == 200
         pending_license.refresh_from_db()

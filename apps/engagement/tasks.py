@@ -15,7 +15,7 @@ from apps.assessment.services import expire_all_stale_attempts
 from apps.catalog.models import Module
 from apps.enrollment.models import Enrollment
 from apps.enrollment.services import get_progress_percent, is_module_unlocked
-from apps.payments.services import reconcile_pending_payments, sweep_paystack_transactions
+from apps.payments.services import reconcile_pending_payments, sweep_flutterwave_transactions
 
 from .models import EmailLog, LiveSession
 from .services import send_email
@@ -260,9 +260,9 @@ def reconcile_pending_payments_task():
 
 
 @shared_task
-def sweep_paystack_transactions_task():
-    """Daily 02:00 WAT — same as above for sweep_paystack_transactions."""
-    return sweep_paystack_transactions()
+def sweep_flutterwave_transactions_task():
+    """Daily 02:00 WAT — same as above for sweep_flutterwave_transactions."""
+    return sweep_flutterwave_transactions()
 
 
 @shared_task

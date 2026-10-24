@@ -8,9 +8,9 @@ institutional_license set), so everything downstream — course access,
 progress, quizzes, certificates — already works with zero new code.
 See apps.enrollment.models.Enrollment.
 
-Paystack invoicing is deliberately NOT built here yet — the build
+Online invoicing is deliberately NOT built here yet — the build
 spec's own constraint is explicit: "Ask me before changing anything
-in the Paystack path." Institution/InstitutionalLicense carry the
+in the payment path." Institution/InstitutionalLicense carry the
 fields a later invoicing step will need (amount_kobo, paid_at) in the
 same shape as payments.Payment, so that work is additive when it
 comes, not a redesign.
@@ -85,7 +85,7 @@ class InstitutionalLicense(TimeStampedModel):
 
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
 
-    # Paystack invoicing isn't wired up yet (see module docstring) —
+    # Online invoicing isn't wired up yet (see module docstring) —
     # these fields exist now so that step is additive later, in the
     # same shape as payments.Payment.amount_kobo/paid_at, for reuse of
     # the same reconciliation patterns when it's built.

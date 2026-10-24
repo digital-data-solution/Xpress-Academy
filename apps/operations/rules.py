@@ -10,7 +10,7 @@ NOT implemented, and why — flagged here rather than silently missing:
     partner.pilot_midpoint, partner.results_ready — all depend on
     models Phase 10 hasn't built yet (Instructor, CourseReview,
     rating, Complaint, webhook) or, for webhook_failures specifically,
-    a webhook that will never exist on this Paystack account at all
+    a webhook that will never exist on this Flutterwave account at all
     (see ARCHITECTURE.md).
   - system.service_down, system.backup_stale — the app can't reliably
     self-report true downtime (if the process is down, it can't raise
@@ -48,7 +48,7 @@ def _org():
 # --- MONEY ---------------------------------------------------------
 
 def payment_reconcile_mismatch(reference: str, raw_data: dict):
-    """Called from apps.payments.services.sweep_paystack_transactions
+    """Called from apps.payments.services.sweep_flutterwave_transactions
     in place of the old ReconciliationFlag stand-in — this IS the
     operations.Signal system that model's docstring said to migrate
     to. CRITICAL, INTERRUPT: a human looks at it, never auto-granted."""
@@ -58,9 +58,9 @@ def payment_reconcile_mismatch(reference: str, raw_data: dict):
     signal, _ = raise_signal(
         organization=org, key="payment.reconcile_mismatch", category=Signal.Category.MONEY,
         severity=Signal.Severity.CRITICAL,
-        title=f"Paystack shows a paid Academy transaction with no local match: {reference}",
+        title=f"Flutterwave shows a paid Academy transaction with no local match: {reference}",
         detail=f"Amount: {raw_data.get('amount')}, paid_at: {raw_data.get('paid_at')}.",
-        recommended_action="Review the transaction on Paystack and grant access manually via admin "
+        recommended_action="Review the transaction on Flutterwave and grant access manually via admin "
                             "after confirming it's genuine — do not assume, verify.",
         dedupe_key=f"payment.reconcile_mismatch:{reference}",
         action_url=f"/admin/payments/payment/?q={reference}",
@@ -85,7 +85,7 @@ def payment_none_today():
         title="No successful payments in the last 72 hours",
         detail="At least one course is published and priced, but nothing has sold in 3 days.",
         recommended_action="Check the checkout flow end to end with a real test card, and confirm "
-                            "PAYSTACK_SECRET_KEY/PUBLIC_KEY are the right ones for this environment.",
+                            "FLUTTERWAVE_SECRET_KEY is the right one for this environment.",
         dedupe_key="payment.none_today",
         action_url="/checkout/",
     )

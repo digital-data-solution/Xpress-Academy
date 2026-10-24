@@ -132,7 +132,13 @@ class Payment(TimeStampedModel):
         null=True, blank=True,
     )
 
-    provider = models.CharField(max_length=20, default="PAYSTACK")
+    class Provider(models.TextChoices):
+        # PAYSTACK stays only so historical rows keep a valid label —
+        # nothing creates or verifies Paystack payments any more.
+        FLUTTERWAVE = "FLUTTERWAVE", "Flutterwave"
+        PAYSTACK = "PAYSTACK", "Paystack (retired)"
+
+    provider = models.CharField(max_length=20, choices=Provider.choices, default=Provider.FLUTTERWAVE)
     reference = models.CharField(max_length=100, unique=True, db_index=True)
     amount_kobo = models.PositiveIntegerField()
     currency = models.CharField(max_length=3, default="NGN")
@@ -202,8 +208,8 @@ class Payment(TimeStampedModel):
 class ReconciliationFlag(TimeStampedModel):
     """Stand-in for the Phase 11 operations.Signal system, which
     doesn't exist yet. The payments addendum §2.4 requires
-    sweep_paystack_transactions to raise a CRITICAL, human-reviewed
-    flag for any Academy-tagged Paystack success with no matching
+    sweep_flutterwave_transactions to raise a CRITICAL, human-reviewed
+    flag for any Academy-tagged Flutterwave success with no matching
     local Payment — "a human looks at it," never an auto-grant. When
     Phase 11 ships, replace creation of this model with
     Signal(key="payment.reconcile_mismatch", severity=CRITICAL,

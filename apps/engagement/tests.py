@@ -561,7 +561,7 @@ class TestRunScheduledTasksEndpoint:
 
     def test_correct_secret_runs_tasks(self, settings, client):
         settings.CRON_SECRET = "the-real-secret"
-        with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
+        with patch("apps.payments.services.FlutterwaveGateway.list_transactions") as mock_list:
             mock_list.return_value = {"data": []}
             resp = client.post("/internal/run-scheduled-tasks/", HTTP_X_CRON_SECRET="the-real-secret")
         assert resp.status_code == 200

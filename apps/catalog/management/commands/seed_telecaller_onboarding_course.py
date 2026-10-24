@@ -29,7 +29,7 @@ from apps.organizations.models import Organization
 #   - "Escalate vs close it yourself" is grounded in real, documented
 #     platform rules: refunds are manual-only through Sam
 #     (ARCHITECTURE.md / apps.payments.services.refund_payment never
-#     calls Paystack's refund API), and institutional licensing is a
+#     calls the payment gateway's refund API), and institutional licensing is a
 #     separate product surface (apps.licensing) from individual course
 #     sales.
 #
@@ -88,7 +88,7 @@ MODULES = [
      """<h2>"It's too expensive"</h2>
 <p>Most Academy courses are priced between ₦2,000 and ₦20,000 — real money, and a legitimate concern, not something to argue past. Anchor on real value already delivered for free: the diagnostic they took (if that's how they got here) already showed them something real about their own gap, at zero cost. The paid course is the next step past that, not a leap of faith. Don't discount informally on a call — that's not something you're authorized to offer, and it undermines the actual coupon system the business uses deliberately.</p>
 <h2>"Is this legit? / I don't want to get scammed"</h2>
-<p>A completely reasonable question in Nigeria's online-course market, and worth answering directly rather than brushing off. Real facts you can point to: verifiable certificates (a real serial number, checkable at a public URL, showing name/course/date, or a clear "not found"/"revoked" state — never a vague broken page), payment through Paystack (not a personal bank transfer to an individual), and — if it's true for the course in question — a real refund path that goes through a person (Sam), not a black hole.</p>
+<p>A completely reasonable question in Nigeria's online-course market, and worth answering directly rather than brushing off. Real facts you can point to: verifiable certificates (a real serial number, checkable at a public URL, showing name/course/date, or a clear "not found"/"revoked" state — never a vague broken page), payment through Flutterwave, a licensed payment gateway (not a personal bank transfer to an individual), and — if it's true for the course in question — a real refund path that goes through a person (Sam), not a black hole.</p>
 <h2>"Let me think about it"</h2>
 <p>Don't push past this — pushing here reads as exactly the kind of pressure that makes "is this a scam?" feel more justified, not less. A genuine "let me think" is a fine outcome to log as-is. If you want a soft next step, offering to note their real question or hesitation for a follow-up (with their permission) is fine; a hard-sell close is not.</p>
 <h2>"I don't have time to study"</h2>
@@ -97,7 +97,7 @@ MODULES = [
      """<h2>You can close it yourself when...</h2>
 <p>The person is ready to enroll in a specific individual course at its listed price — send them the checkout link, done. This is the large majority of positive outcomes on your calls, and it's entirely within what you're expected to handle directly.</p>
 <h2>Always escalate to Sam: refunds</h2>
-<p>Refunds are <strong>manual-only, always</strong>, by real platform design — the system flips a payment's status to REFUNDED, but nothing in the codebase ever calls Paystack's actual refund API automatically. If someone asks about a refund, that's a "let me get you to the right person," not something you resolve or promise on the call.</p>
+<p>Refunds are <strong>manual-only, always</strong>, by real platform design — the system flips a payment's status to REFUNDED, but nothing in the codebase ever calls Flutterwave's actual refund API automatically. If someone asks about a refund, that's a "let me get you to the right person," not something you resolve or promise on the call.</p>
 <h2>Always escalate: bulk or institutional interest</h2>
 <p>If a school, company, or organization asks about licensing courses for many people at once rather than one individual enrolling, that's a completely different product surface (institutional licensing) with its own pricing and process — not something to quote a per-course price for. Pass it on rather than improvise an answer.</p>
 <h2>Escalate: anything about a technical problem or a payment that already went wrong</h2>
@@ -143,8 +143,8 @@ FINAL_EXAM_QUESTIONS = [
      "You're prompted right there on the login page to set a real password before continuing -- not a separate later step.",
      "You're prompted immediately to set a real password", "You log in normally and change your password whenever you feel like it"),
     ("A lead pushes back with \"is this legit?\" What's the strongest honest answer?",
-     "Point to real, verifiable facts: certificate verification, Paystack (not personal transfer), and the real refund path.",
-     "Point to verifiable certificates and real Paystack payment", "Insist it's definitely not a scam and move on"),
+     "Point to real, verifiable facts: certificate verification, Flutterwave (not personal transfer), and the real refund path.",
+     "Point to verifiable certificates and real Flutterwave payment", "Insist it's definitely not a scam and move on"),
     ("Why does it matter whether you log a call outcome immediately vs. at the end of the day?",
      "Immediate logging preserves the real specifics (the actual objection, the actual course) that memory smooths over later.",
      "Immediate logging keeps the real details accurate", "It doesn't matter, as long as it's logged eventually"),

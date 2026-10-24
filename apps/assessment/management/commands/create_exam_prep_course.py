@@ -19,7 +19,7 @@ around here.
 
 pricing_model=PAID by design, not institution-only: an individual can
 also buy direct access through the normal checkout flow with zero
-extra code (Payment/Paystack already handles any PAID course) — the
+extra code (Payment/Flutterwave already handles any PAID course) — the
 institutional path (InstitutionalLicense.courses) is additive on top
 of that, not a replacement for it.
 

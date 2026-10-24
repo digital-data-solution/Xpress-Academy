@@ -49,12 +49,10 @@ services:
         sync: false  # Supabase — see runbook. Use the port-6543 pooler URL here, 5432 only for migrate.
       - key: REDIS_URL
         fromService: { type: redis, name: xpress-academy-redis, property: connectionString }
-      - key: PAYSTACK_SECRET_KEY
-        sync: false
-      - key: PAYSTACK_PUBLIC_KEY
-        sync: false
-      - key: PAYSTACK_ACCOUNT_LABEL
-        value: shared_xpressvet
+      - key: FLUTTERWAVE_SECRET_KEY
+        sync: false  # Xpress Digital and Data Solutions Flutterwave account
+      - key: FLUTTERWAVE_SECRET_HASH
+        sync: false  # Flutterwave dashboard → Settings → Webhooks → Secret hash
       - key: RESEND_API_KEY
         sync: false
       - key: DEFAULT_FROM_EMAIL_FALLBACK
@@ -97,12 +95,10 @@ envVarGroups:
         sync: false
       - key: REDIS_URL
         sync: false
-      - key: PAYSTACK_SECRET_KEY
-        sync: false
-      - key: PAYSTACK_PUBLIC_KEY
-        sync: false
-      - key: PAYSTACK_ACCOUNT_LABEL
-        value: shared_xpressvet
+      - key: FLUTTERWAVE_SECRET_KEY
+        sync: false  # Xpress Digital and Data Solutions Flutterwave account
+      - key: FLUTTERWAVE_SECRET_HASH
+        sync: false  # Flutterwave dashboard → Settings → Webhooks → Secret hash
       - key: RESEND_API_KEY
         sync: false
       - key: DEFAULT_FROM_EMAIL_FALLBACK

@@ -43,7 +43,7 @@ class PaymentAdmin(admin.ModelAdmin):
         # Payments are created by initialize_payment(), not authored in admin.
         return False
 
-    @admin.action(description="Mark selected as refunded (does NOT call Paystack — see payments addendum §5)")
+    @admin.action(description="Mark selected as refunded (does NOT call Flutterwave — see payments addendum §5)")
     def mark_refunded(self, request, queryset):
         count = 0
         for payment in queryset.filter(status=Payment.Status.SUCCESS):
@@ -51,8 +51,8 @@ class PaymentAdmin(admin.ModelAdmin):
             count += 1
         self.message_user(
             request,
-            f"{count} payment(s) marked refunded locally. Issue the actual refund from the Paystack "
-            f"dashboard by hand — this never calls Paystack's refund API.",
+            f"{count} payment(s) marked refunded locally. Issue the actual refund from the Flutterwave "
+            f"dashboard by hand — this never calls Flutterwave's refund API.",
         )
 
 

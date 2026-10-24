@@ -322,8 +322,8 @@ class TestEndToEndCheckoutWiring:
         client = Client()
         client.force_login(buyer)
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{instructor_course.slug}/")
 
         payment = Payment.objects.get(user=buyer, course=instructor_course)
@@ -333,9 +333,9 @@ class TestEndToEndCheckoutWiring:
             "status": "success", "amount": payment.amount_kobo, "currency": "NGN",
             "reference": payment.reference, "metadata": {"product": "xpress_academy"},
         }
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = {"status": True, "data": verify_data}
-            client.get(f"/checkout/return/?reference={payment.reference}")
+            client.get(f"/checkout/return/?tx_ref={payment.reference}")
 
         assert EarningsEntry.objects.filter(payment=payment, entry_type=EarningsEntry.EntryType.INSTRUCTOR_EARNING).exists()
         assert get_instructor_balance(instructor) == 500_000  # 50% platform-traffic rate
@@ -351,8 +351,8 @@ class TestEndToEndCheckoutWiring:
         client.force_login(buyer)
         client.get(f"/courses/{instructor_course.slug}/?ref={instructor.referral_code}")  # captures the referral
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{instructor_course.slug}/")
 
         payment = Payment.objects.get(user=buyer, course=instructor_course)

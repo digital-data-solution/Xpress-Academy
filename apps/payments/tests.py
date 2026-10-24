@@ -1,5 +1,5 @@
 """Coverage required by the payments addendum §6 before Phase 6 is
-considered done. All Paystack HTTP calls are mocked — no real network
+considered done. All Flutterwave HTTP calls are mocked — no real network
 calls, no real keys needed to run this suite."""
 
 import threading
@@ -15,7 +15,7 @@ from apps.catalog.models import Audience, Course, Programme
 from apps.enrollment.models import Enrollment
 from apps.organizations.models import Organization
 
-from .gateway import PaystackError
+from .gateway import GatewayError
 from .models import Coupon, Partner, Payment
 from .services import (
     CouponInvalid,
@@ -25,7 +25,7 @@ from .services import (
     initialize_license_payment,
     initialize_payment,
     reconcile_pending_payments,
-    sweep_paystack_transactions,
+    sweep_flutterwave_transactions,
     verify_and_grant,
 )
 
@@ -94,25 +94,25 @@ class TestComputeAmount:
 class TestInitializePayment:
     def test_includes_callback_url_and_metadata_product(self, user, course):
         """Addendum §6, first required test."""
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             initialize_payment(user=user, course=course)
 
         _args, kwargs = mock_init.call_args
         assert kwargs["callback_url"].endswith("/checkout/return/")
         assert kwargs["metadata"]["product"] == "xpress_academy"
 
-    def test_payment_row_created_before_paystack_call(self, user, course):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
+    def test_payment_row_created_before_gateway_call(self, user, course):
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
             def check_payment_exists_already(**kwargs):
                 assert Payment.objects.filter(reference=kwargs["reference"]).exists()
-                return {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+                return {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             mock_init.side_effect = check_payment_exists_already
             initialize_payment(user=user, course=course)
 
-    def test_paystack_failure_marks_payment_failed_not_lost(self, user, course):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.side_effect = PaystackError("simulated network failure")
+    def test_gateway_failure_marks_payment_failed_not_lost(self, user, course):
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.side_effect = GatewayError("simulated network failure")
             with pytest.raises(PaymentInitError):
                 initialize_payment(user=user, course=course)
         payment = Payment.objects.get(user=user, course=course)
@@ -148,9 +148,9 @@ class TestVerifyAndGrant:
         assert error
         assert Enrollment.objects.count() == 0
 
-    def test_paystack_reports_failed_grants_nothing(self, user, course):
+    def test_gateway_reports_failed_grants_nothing(self, user, course):
         payment = make_payment(user, course)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(status="failed", reference=payment.reference, amount=payment.amount_kobo)
             result_payment, error = verify_and_grant(payment.reference)
 
@@ -160,7 +160,7 @@ class TestVerifyAndGrant:
 
     def test_mismatched_amount_grants_nothing_and_marks_failed(self, user, course):
         payment = make_payment(user, course)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo - 1)
             result_payment, error = verify_and_grant(payment.reference)
 
@@ -170,7 +170,7 @@ class TestVerifyAndGrant:
 
     def test_wrong_metadata_product_grants_nothing(self, user, course):
         payment = make_payment(user, course)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo, product="xpress_vet")
             result_payment, error = verify_and_grant(payment.reference)
 
@@ -179,7 +179,7 @@ class TestVerifyAndGrant:
 
     def test_valid_success_grants_access(self, user, course):
         payment = make_payment(user, course)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
             result_payment, error = verify_and_grant(payment.reference)
 
@@ -191,7 +191,7 @@ class TestVerifyAndGrant:
         payment = make_payment(user, course)
         payment.status = Payment.Status.SUCCESS
         payment.save(update_fields=["status"])
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             _payment, error = verify_and_grant(payment.reference)
             mock_verify.assert_not_called()
         assert error is None
@@ -306,15 +306,15 @@ def pending_license(org, course, proprietor):
 
 @pytest.mark.django_db
 class TestInstitutionalLicensePayment:
-    """Question-bank-engine build spec §B's Paystack invoicing piece —
+    """Question-bank-engine build spec §B's online invoicing piece —
     same verify-on-return discipline as course purchases, deliberately
     NOT a new call to the gateway (still only initialize_transaction/
     verify_transaction, per the payments addendum's "no requests.post
-    to Paystack anywhere else" rule)."""
+    to Flutterwave anywhere else" rule)."""
 
     def test_includes_callback_url_and_metadata(self, proprietor, pending_license):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             initialize_license_payment(user=proprietor, institutional_license=pending_license)
 
         _args, kwargs = mock_init.call_args
@@ -324,8 +324,8 @@ class TestInstitutionalLicensePayment:
         assert kwargs["amount_kobo"] == pending_license.amount_kobo
 
     def test_reference_uses_xda_prefix_for_reconciliation(self, proprietor, pending_license):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
         assert payment.reference.startswith("XDA-")
 
@@ -341,20 +341,20 @@ class TestInstitutionalLicensePayment:
         with pytest.raises(PaymentInitError):
             initialize_license_payment(user=proprietor, institutional_license=pending_license)
 
-    def test_paystack_failure_marks_payment_failed_not_lost(self, proprietor, pending_license):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.side_effect = PaystackError("simulated network failure")
+    def test_gateway_failure_marks_payment_failed_not_lost(self, proprietor, pending_license):
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.side_effect = GatewayError("simulated network failure")
             with pytest.raises(PaymentInitError):
                 initialize_license_payment(user=proprietor, institutional_license=pending_license)
         payment = Payment.objects.get(institutional_license=pending_license)
         assert payment.status == Payment.Status.FAILED
 
     def test_valid_success_activates_the_license(self, proprietor, pending_license):
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             payment, _url = initialize_license_payment(user=proprietor, institutional_license=pending_license)
 
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
             result_payment, error = verify_and_grant(payment.reference)
 
@@ -387,7 +387,7 @@ class TestInstitutionalLicensePayment:
         change behaviour for the ordinary, still-required-course
         purposes."""
         payment = make_payment(user, course)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
             result_payment, error = verify_and_grant(payment.reference)
         assert error is None
@@ -399,13 +399,13 @@ class TestInstitutionalLicensePayment:
 class TestReconciliation:
     def test_stale_pending_that_succeeded_is_picked_up_and_granted(self, user, course):
         """Addendum §6: "A PENDING payment older than 5 minutes that
-        succeeded on Paystack is picked up by reconciliation and
+        succeeded on Flutterwave is picked up by reconciliation and
         granted." """
         payment = make_payment(user, course)
         payment.initialized_at = timezone.now() - timezone.timedelta(minutes=10)
         payment.save(update_fields=["initialized_at"])
 
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
             result = reconcile_pending_payments()
 
@@ -414,7 +414,7 @@ class TestReconciliation:
 
     def test_payment_younger_than_5_minutes_not_touched(self, user, course):
         payment = make_payment(user, course)  # just created, well within 5 minutes
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             result = reconcile_pending_payments()
             mock_verify.assert_not_called()
         assert result["checked"] == 0
@@ -433,9 +433,9 @@ class TestReconciliation:
 @pytest.mark.django_db
 class TestSweep:
     def test_ignores_non_academy_references_entirely(self, user, course):
-        """Addendum §6: "sweep_paystack_transactions ignores non-XDA-
+        """Addendum §6: "sweep_flutterwave_transactions ignores non-XDA-
         references entirely." """
-        with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
+        with patch("apps.payments.services.FlutterwaveGateway.list_transactions") as mock_list:
             mock_list.return_value = {
                 "status": True,
                 "data": [
@@ -443,7 +443,7 @@ class TestSweep:
                 ],
                 "meta": {"total": 1},
             }
-            result = sweep_paystack_transactions()
+            result = sweep_flutterwave_transactions()
 
         assert result["seen"] == 0
         assert result["flagged"] == 0
@@ -455,7 +455,7 @@ class TestSweep:
         (payment.reconcile_mismatch) instead of the old
         ReconciliationFlag stand-in — see apps.payments.models.Payment
         and apps.operations.rules.payment_reconcile_mismatch."""
-        with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
+        with patch("apps.payments.services.FlutterwaveGateway.list_transactions") as mock_list:
             mock_list.return_value = {
                 "status": True,
                 "data": [
@@ -464,7 +464,7 @@ class TestSweep:
                 ],
                 "meta": {"total": 1},
             }
-            result = sweep_paystack_transactions()
+            result = sweep_flutterwave_transactions()
 
         assert result["seen"] == 1
         assert result["flagged"] == 1
@@ -478,20 +478,20 @@ class TestSweep:
         payment.status = Payment.Status.SUCCESS
         payment.save(update_fields=["status"])
 
-        with patch("apps.payments.services.PaystackGateway.list_transactions") as mock_list:
+        with patch("apps.payments.services.FlutterwaveGateway.list_transactions") as mock_list:
             mock_list.return_value = {
                 "status": True,
                 "data": [{"reference": payment.reference, "amount": payment.amount_kobo, "metadata": {"product": "xpress_academy"}}],
                 "meta": {"total": 1},
             }
-            result = sweep_paystack_transactions()
+            result = sweep_flutterwave_transactions()
 
         assert result["flagged"] == 0
 
 
 @pytest.mark.django_db
 class TestRefund:
-    def test_refund_never_calls_paystack_api(self, user, course):
+    def test_refund_never_calls_gateway_api(self, user, course):
         payment = make_payment(user, course)
         payment.status = Payment.Status.SUCCESS
         payment.save(update_fields=["status"])
@@ -566,9 +566,9 @@ class TestCheckoutViews:
         payment = make_payment(user, course)
         client = Client()
         client.force_login(user)
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
-            resp = client.get(f"/checkout/return/?reference={payment.reference}")
+            resp = client.get(f"/checkout/return/?tx_ref={payment.reference}")
         assert resp.status_code == 302
         assert Enrollment.objects.filter(user=user, course=course).exists()
 
@@ -598,8 +598,8 @@ class TestCouponBruteForceProtection:
         for _ in range(5):
             client.post(f"/checkout/{course.slug}/", {"coupon_code": "GUESS-WRONG"})
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             resp = client.post(f"/checkout/{course.slug}/")  # no coupon_code at all
         assert resp.status_code == 302  # full-price checkout still proceeds normally
 
@@ -625,8 +625,8 @@ class TestCouponBruteForceProtection:
         Coupon.objects.create(code="SAVE10", discount_type=Coupon.DiscountType.PERCENT, value=10)
         client = Client()
         client.force_login(user)
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             resp = client.post(f"/checkout/{course.slug}/", {"coupon_code": "SAVE10"})
         assert resp.status_code == 302
 
@@ -639,8 +639,8 @@ class TestReferralCapture:
         client.force_login(user)
         client.get(f"/checkout/{course.slug}/?ref=testclinic")  # captures into session
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{course.slug}/")
 
         payment = Payment.objects.get(user=user, course=course)
@@ -651,8 +651,8 @@ class TestReferralCapture:
         client.force_login(user)
         client.get(f"/checkout/{course.slug}/?ref=doesnotexist")
 
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{course.slug}/")
 
         payment = Payment.objects.get(user=user, course=course)
@@ -709,8 +709,8 @@ class TestPricingModels:
         course.save(update_fields=["pricing_model", "minimum_price_ngn"])
         client = Client()
         client.force_login(user)
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{course.slug}/", {"amount_ngn": "7000"})
         payment = Payment.objects.get(user=user, course=course)
         assert payment.amount_kobo == 700_000
@@ -741,14 +741,14 @@ class TestPricingModels:
 
         client = Client()
         client.force_login(user)
-        with patch("apps.payments.services.PaystackGateway.initialize_transaction") as mock_init:
-            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://paystack.test/pay/x"}}
+        with patch("apps.payments.services.FlutterwaveGateway.initialize_transaction") as mock_init:
+            mock_init.return_value = {"status": True, "data": {"authorization_url": "https://checkout.flutterwave.test/pay/x"}}
             client.post(f"/checkout/{course.slug}/certificate/")
         payment = Payment.objects.get(user=user, course=course, purpose=Payment.Purpose.CERTIFICATE)
 
-        with patch("apps.payments.services.PaystackGateway.verify_transaction") as mock_verify:
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
             mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
-            resp = client.get(f"/checkout/return/?reference={payment.reference}")
+            resp = client.get(f"/checkout/return/?tx_ref={payment.reference}")
 
         assert resp.status_code == 302
         assert Certificate.objects.filter(enrollment=enrollment).count() == 1
@@ -839,3 +839,127 @@ class TestIncludedCourses:
         client.force_login(user)
         resp = client.get(f"/courses/{exam.slug}/")
         assert f"/{guide.slug}/".encode() in resp.content
+
+
+class _FakeResponse:
+    def __init__(self, status_code, body):
+        self.status_code = status_code
+        self._body = body
+
+    def json(self):
+        return self._body
+
+
+class TestFlutterwaveGateway:
+    """The gateway normalizes Flutterwave's v3 shapes so services.py
+    reads amounts in kobo and status == "success"."""
+
+    def test_initialize_sends_naira_and_returns_hosted_link(self):
+        from .gateway import FlutterwaveGateway
+        body = {"status": "success", "data": {"link": "https://checkout.flutterwave.com/v3/hosted/pay/abc"}}
+        with patch("apps.payments.gateway.requests.request", return_value=_FakeResponse(200, body)) as mock_request:
+            result = FlutterwaveGateway(secret_key="test").initialize_transaction(
+                email="a@b.com", amount_kobo=500000, reference="XDA-1", callback_url="https://x/checkout/return/",
+                metadata={"product": "xpress_academy", "coupon_code": None},
+            )
+        payload = mock_request.call_args.kwargs["json"]
+        assert payload["amount"] == "5000"
+        assert payload["tx_ref"] == "XDA-1"
+        assert payload["currency"] == "NGN"
+        assert "coupon_code" not in payload["meta"]  # nulls dropped
+        assert result["data"]["authorization_url"] == "https://checkout.flutterwave.com/v3/hosted/pay/abc"
+
+    def test_verify_normalizes_successful_to_success_in_kobo(self):
+        from .gateway import FlutterwaveGateway
+        body = {"status": "success", "data": {
+            "id": 99, "tx_ref": "XDA-1", "amount": 3500, "currency": "NGN", "status": "successful",
+            "meta": None, "created_at": "2026-10-24T20:00:00.000Z",
+        }}
+        with patch("apps.payments.gateway.requests.request", return_value=_FakeResponse(200, body)):
+            data = FlutterwaveGateway(secret_key="test").verify_transaction("XDA-1")["data"]
+        assert data["status"] == "success"
+        assert data["amount"] == 350000
+        assert data["reference"] == "XDA-1"
+        assert data["metadata"] == {}
+
+    def test_unknown_reference_raises_gateway_error(self):
+        from .gateway import FlutterwaveGateway
+        body = {"status": "error", "message": "No transaction was found for this id", "data": None}
+        with patch("apps.payments.gateway.requests.request", return_value=_FakeResponse(400, body)):
+            with pytest.raises(GatewayError):
+                FlutterwaveGateway(secret_key="test").verify_transaction("XDA-missing")
+
+
+@pytest.mark.django_db
+class TestFlutterwaveReturn:
+    def test_missing_meta_still_grants_for_academy_reference(self, user, course):
+        payment = make_payment(user, course)
+        data = verify_response(reference=payment.reference, amount=payment.amount_kobo)
+        data["data"]["metadata"] = {}
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction", return_value=data):
+            _payment, error = verify_and_grant(payment.reference)
+        assert error is None
+        payment.refresh_from_db()
+        assert payment.status == Payment.Status.SUCCESS
+
+    def test_cancelled_checkout_shows_no_charge_message(self, user, course):
+        payment = make_payment(user, course)
+        client = Client()
+        client.force_login(user)
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
+            resp = client.get(f"/checkout/return/?status=cancelled&tx_ref={payment.reference}")
+            mock_verify.assert_not_called()
+        assert b"Payment cancelled" in resp.content
+        payment.refresh_from_db()
+        assert payment.status == Payment.Status.PENDING
+
+
+@pytest.mark.django_db
+class TestFlutterwaveWebhook:
+    URL = "/payments/flutterwave/webhook/"
+
+    def _post(self, client, body, hash_value="test-hash"):
+        import json as _json
+        headers = {"HTTP_VERIF_HASH": hash_value} if hash_value is not None else {}
+        return client.post(self.URL, data=_json.dumps(body), content_type="application/json", **headers)
+
+    def test_valid_hash_reverifies_and_grants(self, settings, user, course):
+        settings.FLUTTERWAVE_SECRET_HASH = "test-hash"
+        payment = make_payment(user, course)
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = verify_response(reference=payment.reference, amount=payment.amount_kobo)
+            resp = self._post(Client(), {"event": "charge.completed", "data": {"tx_ref": payment.reference, "status": "successful"}})
+            mock_verify.assert_called_once_with(payment.reference)
+        assert resp.status_code == 200
+        payment.refresh_from_db()
+        assert payment.status == Payment.Status.SUCCESS
+        assert Enrollment.objects.filter(user=user, course=course).exists()
+
+    def test_body_claiming_success_is_not_trusted(self, settings, user, course):
+        settings.FLUTTERWAVE_SECRET_HASH = "test-hash"
+        payment = make_payment(user, course)
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
+            mock_verify.return_value = verify_response(status="failed", reference=payment.reference, amount=payment.amount_kobo)
+            resp = self._post(Client(), {"event": "charge.completed", "data": {"tx_ref": payment.reference, "status": "successful"}})
+        assert resp.status_code == 200
+        assert not Enrollment.objects.filter(user=user, course=course).exists()
+
+    def test_wrong_or_missing_hash_rejected(self, settings, user, course):
+        settings.FLUTTERWAVE_SECRET_HASH = "test-hash"
+        payment = make_payment(user, course)
+        body = {"event": "charge.completed", "data": {"tx_ref": payment.reference}}
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
+            assert self._post(Client(), body, hash_value="wrong").status_code == 401
+            assert self._post(Client(), body, hash_value=None).status_code == 401
+            mock_verify.assert_not_called()
+
+    def test_rejects_everything_when_hash_not_configured(self, settings, user, course):
+        settings.FLUTTERWAVE_SECRET_HASH = ""
+        assert self._post(Client(), {"event": "charge.completed", "data": {"tx_ref": "XDA-x"}}, hash_value="").status_code == 401
+
+    def test_non_academy_reference_ignored(self, settings):
+        settings.FLUTTERWAVE_SECRET_HASH = "test-hash"
+        with patch("apps.payments.services.FlutterwaveGateway.verify_transaction") as mock_verify:
+            resp = self._post(Client(), {"event": "charge.completed", "data": {"tx_ref": "STORE-123"}})
+            mock_verify.assert_not_called()
+        assert resp.status_code == 200

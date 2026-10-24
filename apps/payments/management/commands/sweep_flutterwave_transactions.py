@@ -1,11 +1,11 @@
 from django.core.management.base import BaseCommand
 
-from apps.payments.services import sweep_paystack_transactions
+from apps.payments.services import sweep_flutterwave_transactions
 
 
 class Command(BaseCommand):
     help = (
-        "List the last 48h of successful Paystack transactions, filter to Academy-tagged "
+        "List the last 48h of successful Flutterwave transactions, filter to Academy-tagged "
         "ones, and flag (never auto-grant) any with no matching local SUCCESS payment. "
         "Meant to run daily at 02:00 WAT — see the payments addendum §2.4. This is the "
         "safety net that would have caught a missed payment entirely; run it on a schedule "
@@ -13,7 +13,7 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **options):
-        result = sweep_paystack_transactions()
+        result = sweep_flutterwave_transactions()
         if result["flagged"]:
             self.stdout.write(self.style.WARNING(
                 f"Saw {result['seen']} Academy transaction(s), flagged {result['flagged']} "

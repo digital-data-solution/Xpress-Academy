@@ -235,7 +235,7 @@ class EarningsEntry(TimeStampedModel):
 class Payout(TimeStampedModel):
     """Manual only — build spec §2: "Generate the statement, Sam
     reviews, Sam pays by bank transfer, Sam marks it sent with the
-    reference." No automated transfers or Paystack subaccount splits."""
+    reference." No automated transfers or payment-gateway subaccount splits."""
 
     class Status(models.TextChoices):
         DRAFT = "DRAFT", "Draft"

@@ -16,7 +16,7 @@ class Command(BaseCommand):
 
         samples = [
             ("payment.reconcile_mismatch", Signal.Category.MONEY, Signal.Severity.CRITICAL,
-             "Paystack shows a paid transaction with no local match: XDA-demo-0001"),
+             "Flutterwave shows a paid transaction with no local match: XDA-demo-0001"),
             ("payment.refund_spike", Signal.Category.MONEY, Signal.Severity.URGENT,
              "Refund rate 22% on Practical Dog Breeding over 30 days"),
             ("course.completion_low", Signal.Category.QUALITY, Signal.Severity.ATTENTION,

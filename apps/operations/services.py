@@ -1,6 +1,6 @@
 """Signal lifecycle — raise/acknowledge/snooze/resolve/dismiss. Every
 rule in rules.py calls raise_signal(); nothing else creates a Signal
-row, same one-choke-point discipline as send_email() and the Paystack
+row, same one-choke-point discipline as send_email() and the Flutterwave
 gateway elsewhere in this codebase.
 """
 

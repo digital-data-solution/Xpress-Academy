@@ -15,7 +15,7 @@ def evaluate_money_rules():
     rules.payment_none_today()
     rules.payment_refund_spike()
     # payment.reconcile_mismatch is event-driven, called directly from
-    # apps.payments.services.sweep_paystack_transactions — not polled here.
+    # apps.payments.services.sweep_flutterwave_transactions — not polled here.
 
 
 @shared_task
